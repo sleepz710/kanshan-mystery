@@ -7,6 +7,7 @@ from backend.studio.service import StudioService
 
 def mount_studio(application):
     from backend.studio.api import router
+    from backend.studio.share import router as share_router
 
     application.state.studio = StudioService()
     previous_lifespan = application.router.lifespan_context
@@ -21,3 +22,4 @@ def mount_studio(application):
 
     application.router.lifespan_context = lifespan
     application.include_router(router)
+    application.include_router(share_router)

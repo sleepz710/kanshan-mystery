@@ -64,8 +64,11 @@ class Job:
     problems: list[str] = field(default_factory=list)
 
     def public(self) -> dict:
-        return {"status": self.status, "progress": self.progress, "story_id": self.story_id,
-                "owner_token": self.owner_token if self.mode == "share" else None, "error": self.error}
+        result = {"status": self.status, "progress": self.progress, "story_id": self.story_id,
+                  "owner_token": self.owner_token if self.mode == "share" else None, "error": self.error}
+        if self.mode == "share" and self.status == "done":
+            result["share_url"] = f"/?story={self.story_id}"
+        return result
 
 
 class StudioService:
@@ -200,7 +203,13 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
             material.append("出题人与编剧已确认的剧情讨论：\n" + json.dumps(history, ensure_ascii=False))
         task = asyncio.create_task(self._generate(job, material, chat.strategy))
         self.tasks.add(task)
-        task.add_done_callback(self.tasks.discard)
+
+        def completed(done):
+            self.tasks.discard(done)
+            if done.cancelled() and job.status == "running":
+                job.status, job.progress, job.error = "failed", "生成已中止", "服务关闭，请重新生成。"
+
+        task.add_done_callback(completed)
         return job
 
     async def _generate(self, job: Job, material: list[str], strategy: str):
@@ -270,7 +279,12 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
             raise LLMError("剧本格式经三轮修订仍不完整，请重试。") from exc
         story["checked"] = not problems
         job.problems = problems
-        await asyncio.to_thread(self._save, story)
+        if job.mode == "share":
+            from backend.studio.share import publish
+
+            job.owner_token = await asyncio.to_thread(publish, self.stories_dir, story_id, lambda: self._save(story))
+        else:
+            await asyncio.to_thread(self._save, story)
         job.story_id = story_id
         job.status = "done"
         job.progress = "剧场已准备好" if not problems else "剧场已保存，检查未全部通过，请决定是否试玩"
