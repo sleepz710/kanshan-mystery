@@ -282,6 +282,16 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 - 程序检查:格式和字段齐全;编号引用都存在;从开局状态出发按条件推演,所有线索都拿得到、所有谎话都拆得穿、每个结局都可能触发;每道结局题的答案在选项里;`admit`、`secrets` 的事实在该角色的 `knows` 里。信任度条件按保底规则视为最终能满足。
 - 可解性检查:两次模型调用。只给汤面,用编剧模型答结局题,答对超过一半说明太容易;给出全部线索,用演员模型答,有题答错说明推不出来。两种情况都算不通过。
 
+### 6.9 生成剧场后端交接（任务 07 → 06 → 13）
+
+- 检查器是异步 `await check(story)`；`check_structure(story)` 只做程序检查。模拟模式返回固定盲答，不表示已经完成真实语义评测。
+- 06 补充 `requirements.txt` 的 `python-multipart`、`trafilatura` 依赖，在 `create_app` 的静态目录挂载前调用 `mount_studio(application)`；应用通过 `app.state.studio` 持有会话和生成任务。测试放 `backend/studio/test_studio.py`；既有 API 路由清单断言改为包含游戏接口，允许新增剧场路由。`.env.example` 补编剧/演员配置并保留旧版 `LLM_MODEL`，方便 02 升级前联调。
+- 生成剧本使用服务端随机 `generated-<uuid>` 编号，写入 `data/stories/`；最多三轮“生成、审稿、检查”。仍不通过但格式完整时存 `checked: false`，只返回编号和不剧透的问题提示，由玩家决定开局；格式已损坏的模型输出返回失败，不发布不能读取的 YAML。
+- 自己玩时公开回复采用固定的流程文案，模型的剧情讨论只在 share 模式显示；详细检查问题保存在服务端，play 模式不回传涉及真相的编号或原文。
+- 聊天、任务、游戏进度目前保存在单服务进程内，重启清空；生成 YAML 和出题人令牌摘要落盘。关闭服务时取消未完成的生成任务，重新打开对话可重试。
+- 02 已按 6.2 从 `stories/` 与 `data/stories/` 加载及列举剧本；挂载剧场时复用引擎的 `generated_stories_dir`，自定义路径也保持一致。13 从 `app.state.engine.games` 读取匹配 `state.story.id` 的对局；进度字段以 `turns`、`acquired_clues`、`exposed`、`ending` 为约定，旧引擎回合数从 histories 计算，未接入的拆穿与结局显示为空。
+- 分享模式的 owner 接口必须验证 `X-Owner-Token`，令牌只在对应生成任务返回，磁盘只存 SHA-256 摘要。分享链接为 `/?story=<story_id>`，share 任务完成时额外返回 `share_url`；完整剧本仅从 owner 接口返回，进度接口与案件列表都不含剧本真相。13 在 `studio/service.py` 的原子发布阶段接入 `share.py`，在剧场路由挂载处注册 owner 路由；本轮只实现 13 的后端，页面由前端任务对接。
+
 ## 7. 技术栈
 
 - 后端:Python 3.11+、FastAPI、uvicorn、PyYAML、openai SDK、python-multipart(上传文件)、trafilatura(网页正文)。
