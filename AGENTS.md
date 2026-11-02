@@ -1,6 +1,6 @@
 # AGENTS.md
 
-这是一个学生团队的比赛项目:看山谜案馆,一个多智能体反诈推理游戏,三天完成。每个人用自己的 AI 编程助手(Codex、Claude Code 等)分工开发,本文件是所有助手共用的规则。
+这是一个学生团队的比赛项目:看山谜案馆,一个多智能体推理剧场,11 月 4 日(周三)晚提交,最迟 11 月 5 日。每个人用自己的 AI 编程助手(Codex、Claude Code 等)分工开发,本文件是所有助手共用的规则。
 
 ## 开工前
 
@@ -55,8 +55,8 @@
 详见 `SPEC.md` 第 5、7 节。下面的命令在任务 02 完成后可用。
 
 - 后端 Python 3.11+、FastAPI;前端原生 HTML/CSS/JS,由后端直接提供。
-- 目录:`backend/` 后端,`frontend/` 前端,`stories/` 剧本,`tests/` 测试,`eval/` 评测脚本。
+- 目录:`backend/` 后端(`backend/studio/` 生成剧场),`frontend/` 前端,`stories/` 招牌案件,`data/stories/` 生成的剧本(不入库),`tests/` 测试,`eval/` 评测脚本,`deploy/` 部署。
 - 安装:`pip install -r requirements.txt`
 - 运行:`uvicorn backend.app:app --reload`,打开 http://localhost:8000
-- 没有 API key 时在 `.env` 里设 `LLM_MOCK=1`,用模拟回复开发。
+- 没有 API key 时在 `.env` 里设 `LLM_MOCK=1`,用模拟回复开发。模型配置见 `SPEC.md` 第 7 节。
 - 测试:`pytest`
