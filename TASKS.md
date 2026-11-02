@@ -1,19 +1,17 @@
 # TASKS
 
-状态:待认领 / 进行中 / 待合并 / 已完成
+三天计划,从 2026-11-02 算起。任务由队员当面分配,这里记任务内容、分支和交接;01–04 第一天并行开工。
 
-三天计划,从 2026-11-02 算起。人少就一人认领多个;01–04 第一天并行开工。
-
-| 编号 | 任务 | 改动范围 | 负责人 | 状态 | 分支 |
-|---|---|---|---|---|---|
-| 00 | 选定题目,写完 SPEC.md | `SPEC.md`、`docs/` | 全队 | 已完成 | main |
-| 01 | 剧本 v1 | `stories/` | Plus A | 待合并 | task/01-story |
-| 02 | 后端骨架:引擎、接口、模拟模式 | `backend/`、`tests/`、`requirements.txt`、`.env.example` | | 待认领 | task/02-backend |
-| 03 | 角色智能体、核查、对质 | `backend/agents.py` | | 待认领 | task/03-agents |
-| 04 | 前端界面 | `frontend/` | | 待认领 | task/04-frontend |
-| 05 | 联调与试玩 | 全部 | 全队 | 待认领 | 各自分支 |
-| 06 | 泄密率测试(加分) | `eval/` | | 待认领 | task/06-eval |
-| 07 | 提交物:基本信息、海报、视频、README | `README.md`、`docs/` | | 待认领 | main |
+| 编号 | 任务 | 改动范围 | 分支 |
+|---|---|---|---|
+| 00 | 选定题目,写完 SPEC.md(已完成) | `SPEC.md`、`docs/` | main |
+| 01 | 剧本 v1 | `stories/` | task/01-story |
+| 02 | 后端骨架:引擎、接口、模拟模式 | `backend/`、`tests/`、`requirements.txt`、`.env.example` | task/02-backend |
+| 03 | 角色智能体、核查、对质 | `backend/agents.py` | task/03-agents |
+| 04 | 前端界面 | `frontend/` | task/04-frontend |
+| 05 | 联调与试玩 | 全部 | 各自分支 |
+| 06 | 泄密率测试(加分) | `eval/` | task/06-eval |
+| 07 | 提交物:基本信息、海报、视频、README | `README.md`、`docs/` | main |
 
 ## 每天的目标
 
