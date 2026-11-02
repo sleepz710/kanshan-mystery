@@ -41,6 +41,16 @@ class GameState:
     revealed: bool = False
     hint_counts: dict[int, int] = field(default_factory=dict)
 
+    @property
+    def exposed(self) -> set[str]:
+        """任务 13 读取的公开进度字段。"""
+        return self.exposed_lies
+
+    @property
+    def ending(self) -> dict[str, Any] | None:
+        """最近一次公开结局，供出题人进度页读取。"""
+        return self.last_ending
+
 
 class GameEngine:
     def __init__(self, stories_dir: Path | None = None, generated_stories_dir: Path | None = None):

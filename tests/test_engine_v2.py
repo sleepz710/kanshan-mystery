@@ -63,6 +63,17 @@ def write_story(directory, story):
     (directory / (story["id"] + ".yaml")).write_text(yaml.safe_dump(story, allow_unicode=True), encoding="utf-8")
 
 
+@pytest.mark.asyncio
+async def test_owner_progress_field_aliases(setup_game):
+    engine, game_id, _ = setup_game
+    await take_evidence(engine, game_id)
+    await engine.show(game_id, "a", "x")
+    state = engine.games[game_id]
+    assert state.exposed == {"la", "lz"}
+    await engine.accuse(game_id, {"q1": "b", "q2": "b"})
+    assert engine.games[game_id].ending["id"] == "wrong"
+
+
 @pytest.fixture
 def controlled_agents(monkeypatch):
     calls = {"reply": [], "confront": [], "check": []}
