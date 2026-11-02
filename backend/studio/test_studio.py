@@ -233,6 +233,54 @@ async def test_dns_private_result_is_rejected(monkeypatch):
 
 
 @pytest.mark.asyncio
+async def test_public_fetch_pins_dns_address_and_extracts_text(monkeypatch):
+    loop = asyncio.get_running_loop()
+    monkeypatch.setattr(loop, "getaddrinfo", AsyncMock(return_value=[(socket.AF_INET, socket.SOCK_STREAM, 6, "", ("93.184.216.34", 443))]))
+    client_type = httpx.AsyncClient
+
+    def handle(request):
+        assert request.url.host == "93.184.216.34"
+        assert request.headers["host"] == "example.com"
+        assert request.extensions["sni_hostname"] == "example.com"
+        return httpx.Response(200, headers={"content-type": "text/html"}, text="<html><body><article><h1>一封消失的信</h1><p>桌上还放着完整的信封，但是里面的信不见了。秘书说没有动过它，保安却见到有人在走廊寄出一个包裹。</p></article></body></html>")
+
+    monkeypatch.setattr(ingest.httpx, "AsyncClient", lambda **kw: client_type(transport=httpx.MockTransport(handle), **kw))
+    text = await ingest.fetch_url("https://example.com/soup")
+    assert "信封" in text and "<html>" not in text
+
+
+@pytest.mark.asyncio
+async def test_redirect_is_rechecked_and_cannot_enter_private_network(monkeypatch):
+    loop = asyncio.get_running_loop()
+
+    async def dns(host, port, **kw):
+        address = "127.0.0.1" if host == "localhost" else "93.184.216.34"
+        return [(socket.AF_INET, socket.SOCK_STREAM, 6, "", (address, port))]
+
+    monkeypatch.setattr(loop, "getaddrinfo", dns)
+    client_type = httpx.AsyncClient
+    requests = []
+
+    def redirect(request):
+        requests.append(request)
+        return httpx.Response(302, headers={"location": "http://localhost/private"})
+
+    monkeypatch.setattr(ingest.httpx, "AsyncClient", lambda **kw: client_type(transport=httpx.MockTransport(redirect), **kw))
+    with pytest.raises(ingest.InputError, match="公网"):
+        await ingest.fetch_url("https://example.com/")
+    assert len(requests) == 1
+
+
+@pytest.mark.asyncio
+async def test_close_before_task_starts_does_not_leave_running_job(tmp_path):
+    studio = StudioService(tmp_path)
+    chat = studio.create_chat("play")["chat_id"]
+    result = await studio.message(chat, "生成一个案子", {})
+    await studio.close()
+    assert studio.jobs[result["job"]["id"]].status == "failed"
+
+
+@pytest.mark.asyncio
 async def test_two_models_and_provider_thinking_flags(monkeypatch):
     monkeypatch.setenv("LLM_MOCK", "0")
     monkeypatch.setenv("LLM_API_KEY", "test-key")

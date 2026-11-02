@@ -47,13 +47,14 @@ async def _public_address(url: str) -> tuple[httpx.URL, str]:
         if parsed.port not in {None, 80, 443}:
             raise InputError("只支持普通网页端口。")
         port = parsed.port or (443 if parsed.scheme == "https" else 80)
-        addresses = await asyncio.wait_for(asyncio.get_running_loop().getaddrinfo(parsed.hostname, port, type=socket.SOCK_STREAM), timeout=10)
+        hostname = parsed.hostname.encode("idna").decode("ascii")
+        addresses = await asyncio.wait_for(asyncio.get_running_loop().getaddrinfo(hostname, port, type=socket.SOCK_STREAM), timeout=10)
         if not addresses or any(not ipaddress.ip_address(item[4][0]).is_global for item in addresses):
             raise InputError("只支持公网网页，请改为粘贴文字。")
         # 请求固定到已校验的 IP，避免检查之后再次 DNS 解析指向内网。
         target = httpx.URL(url).copy_with(host=addresses[0][4][0], fragment=None)
-        return target, parsed.hostname
-    except (ValueError, socket.gaierror, TimeoutError) as exc:
+        return target, hostname
+    except (ValueError, UnicodeError, socket.gaierror, TimeoutError) as exc:
         if isinstance(exc, InputError):
             raise
         raise InputError("网址无法解析，请检查地址或粘贴文字。") from exc
@@ -64,7 +65,7 @@ async def fetch_url(url: str) -> str:
         async with httpx.AsyncClient(timeout=15, follow_redirects=False, trust_env=False) as client:
             for _ in range(4):
                 target, hostname = await _public_address(url)
-                async with client.stream("GET", target, headers={"Host": hostname, "User-Agent": "KanshanMystery/1.0"}, extensions={"sni_hostname": hostname}) as response:
+                async with client.stream("GET", target, headers={"Host": httpx.URL(url).netloc.decode("ascii"), "User-Agent": "KanshanMystery/1.0"}, extensions={"sni_hostname": hostname}) as response:
                     if response.is_redirect:
                         if not response.headers.get("location"):
                             raise InputError("网页跳转地址无效，请粘贴文字。")
