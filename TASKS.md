@@ -7,7 +7,7 @@
 | 编号 | 任务 | 改动范围 | 负责人 | 状态 | 分支 |
 |---|---|---|---|---|---|
 | 00 | 选定题目,写完 SPEC.md | `SPEC.md`、`docs/` | 全队 | 已完成 | main |
-| 01 | 剧本 v1 | `stories/` | | 待认领 | task/01-story |
+| 01 | 剧本 v1 | `stories/` | Plus A | 进行中 | task/01-story |
 | 02 | 后端骨架:引擎、接口、模拟模式 | `backend/`、`tests/`、`requirements.txt`、`.env.example` | | 待认领 | task/02-backend |
 | 03 | 角色智能体、核查、对质 | `backend/agents.py` | | 待认领 | task/03-agents |
 | 04 | 前端界面 | `frontend/` | | 待认领 | task/04-frontend |
@@ -39,6 +39,8 @@
 - 完成标准:按 SPEC 6.1 写出 `stories/lost-tuition.yaml`:3 个角色、7 条左右线索、至少 1 个对质事件、3 条以上提示、4 道结局题、复盘和 3 条反诈知识点;每条线索都有拿到的途径,线索链能走通。案件草案见 `docs/g-mystery-draft.md`。
 - 依赖:无,最先开始。
 - 进展:
+
+  - 2026-11-02:Plus A 认领,按 SPEC 6.1 编写剧本。
 
 ### 02 后端骨架:引擎、接口、模拟模式
 
