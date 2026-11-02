@@ -147,7 +147,7 @@ def test_backend_root_and_api_docs(client):
     assert client.get("/").status_code == 200
     assert client.get("/docs").status_code == 200
     schema = client.get("/openapi.json").json()
-    assert set(schema["paths"]) == {
+    assert set(schema["paths"]) >= {
         "/api/games", "/api/games/{game_id}/talk", "/api/games/{game_id}/show",
         "/api/games/{game_id}/accuse",
     }

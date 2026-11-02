@@ -9,6 +9,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from backend.engine import GameEngine, GameError
 from backend.llm import LLMError
+from backend.studio import mount_studio
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -128,6 +129,7 @@ def create_app(
     async def accuse(game_id: str, body: AccuseRequest) -> dict:
         return await engine.accuse(game_id, body.answers)
 
+    mount_studio(application)
     static_dir = frontend_dir if frontend_dir is not None else PROJECT_ROOT / "frontend"
     if static_dir.is_dir():
         # 放在 API 路由之后，避免静态目录拦截 /api 与 /docs。
