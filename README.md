@@ -1,8 +1,63 @@
 # 看山谜案馆
 
-多智能体推理剧场:玩家和几个各怀秘密的 AI 角色对话、出示证据、拆穿谎话,查出真相。可以玩团队打磨的招牌案件,也可以把一碗海龟汤、一段小说或一个网址发给编剧智能体,当场生成一个新案子,还能出题发给朋友玩。比赛「高级组」参赛作品,主题 AI 陪伴交互,开发中。
+和 AI 角色对话，把证据连成真相。看山谜案馆是一座多智能体推理剧场：玩家问话、出示证据、拆穿谎话，在角色对质中重建事件经过。比赛高级组参赛作品，主题为 AI 陪伴交互。
 
-进度和待办见 [docs/STATUS.md](docs/STATUS.md)。
+招牌案件《一笔消失的学费》从两万元学费失踪开始，包含四个角色、十二条线索、五句谎话与三个结局。刘看山是玩家的调查搭档，每局提供五次是非问答，并按调查进度给出提示。
+
+进度见 [docs/STATUS.md](docs/STATUS.md)，分工见 [TASKS.md](TASKS.md)。作品介绍、海报和视频录制稿见 [比赛提交材料](docs/submission/README.md)。
+
+## 当前进度
+
+2026-11-02：招牌案件、游戏后端、角色与核查、对质、刘看山、剧本检查器和本地部署已合入。当前主分支通过 272 项自动测试，正式案件通过程序结构检查。
+
+游戏前端、生成剧场与出题给朋友仍待合入和完整联调。当前可通过 `/docs` 调用游戏接口；根路径在前端接入前显示后端启动信息。
+
+## 快速运行
+
+需要 Python 3.11+。首次获取代码：
+
+```bash
+git clone https://github.com/sleepz710/kanshan-mystery.git
+cd kanshan-mystery
+```
+
+### Windows / PowerShell
+
+```powershell
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+# 仅首次创建；已有 .env 时保留原文件，按 .env.example 补齐变量
+Copy-Item .env.example .env
+.venv\Scripts\python.exe -m uvicorn backend.app:app --reload
+```
+
+### macOS / Linux
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+# 仅首次创建；已有 .env 时保留原文件，按 .env.example 补齐变量
+cp .env.example .env
+.venv/bin/python -m uvicorn backend.app:app --reload
+```
+
+配置样例默认 `LLM_MOCK=1`，无需模型密钥。打开 [接口文档](http://127.0.0.1:8000/docs)，先调用 `POST /api/games`，请求体为 `{"story_id":"lost-tuition"}`；再将返回的 `game_id` 用于对话、出示证据和提交推理接口。模拟回复固定，用于开发联调。
+
+接真实模型时，在 `.env` 将 `LLM_MOCK` 改为 `0`，填写 `LLM_API_KEY` 和对应模型配置；完整变量说明见下方部署一节，样例见 [.env.example](.env.example)。修改配置后重启服务，进程环境变量优先于 `.env`。
+
+Windows 运行测试：`.venv\Scripts\python.exe -m pytest`；macOS / Linux 使用 `.venv/bin/python -m pytest`。自动测试隔离本地密钥并使用模拟客户端。
+
+## 智能体如何协作
+
+| 模块 | 职责 |
+|---|---|
+| 世界引擎 | 保存 YAML 事实与局内状态，计算信任、拆穿条件、事件、结局和评级 |
+| 角色智能体 | 使用各自获准的事实、当前谎话和本角色对话历史回应玩家 |
+| 核查智能体 | 检查回复的越界和矛盾，未通过时要求重写一次 |
+| 刘看山 | 回答「是／不是／不重要」；引擎按阶段发放调查提示 |
+| 编剧与检查器 | 按玩家素材改编剧本，检查引用、线索可达性与可解性；生成入口待合入 |
+
+后端使用 FastAPI，前端采用原生 HTML/CSS/JavaScript。演员与编剧可分别配置 OpenAI 兼容模型服务。
 
 ## 目录
 
@@ -18,6 +73,11 @@
 | `docs/story-v2.md` | 招牌案件的完整故事,含汤底 |
 | `docs/g-mystery-draft.md` | 第一版的多智能体设计草案 |
 | `docs/assets/` | 图片等素材 |
+| `docs/submission/` | 作品信息、海报、视频脚本、字幕和 B 站发布文案 |
+| `backend/` | 游戏引擎、接口、智能体与剧本检查器 |
+| `stories/` | 招牌案件 YAML；调查路线含完整剧情答案 |
+| `tests/` | 自动测试与固定样本 |
+| `deploy/` | 本地启动、口令保护与公网部署配置 |
 
 ## 怎么一起干活
 
