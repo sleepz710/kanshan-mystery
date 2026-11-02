@@ -207,7 +207,10 @@ def create_app(
             and static_dir.is_dir()
         ):
             try:
-                return await static_files.get_response(path.lstrip("/"), request.scope)
+                static_response = await static_files.get_response(path.lstrip("/"), request.scope)
+                # 每次用 ETag 向服务器确认，部署更新后不会出现新 HTML 配旧 JS。
+                static_response.headers["Cache-Control"] = "no-cache"
+                return static_response
             except StarletteHTTPException as error:
                 if error.status_code != 404:
                     raise
