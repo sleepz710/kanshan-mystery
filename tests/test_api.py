@@ -13,7 +13,8 @@ from backend.llm import LLMError
 @pytest.fixture
 def client(monkeypatch):
     monkeypatch.setenv("LLM_MOCK", "1")
-    with TestClient(create_app()) as test_client:
+    stories = Path(__file__).parent / "fixtures" / "v1"
+    with TestClient(create_app(stories_dir=stories)) as test_client:
         yield test_client
 
 
@@ -29,7 +30,8 @@ def test_creation_exposes_only_player_information(client):
     assert len(created["questions"]) == 4
     assert all(set(c) == {"id", "name", "avatar", "profile"} for c in created["characters"])
     assert all(set(q) == {"id", "text", "options"} for q in created["questions"])
-    assert set(created) == {"game_id", "title", "intro", "characters", "questions"}
+    assert set(created) == {"game_id", "title", "intro", "characters", "questions", "kanshan"}
+    assert created["kanshan"]["asks_left"] == 5
 
 
 def test_real_story_roundtrip_with_mock_model(client):
@@ -75,7 +77,12 @@ def test_real_story_roundtrip_with_mock_model(client):
     assert ending.status_code == 200, ending.text
     assert ending.json()["score"] == ending.json()["total"]
     assert all(ending.json()["results"].values())
-    assert len(ending.json()["lessons"]) == 3
+    assert "truth" not in ending.json()
+    assert "lessons" not in ending.json()
+    assert isinstance(ending.json()["rating"], str)
+    reveal = client.post(f"/api/games/{game_id}/reveal")
+    assert reveal.status_code == 200
+    assert len(reveal.json()["lessons"]) == 3
     assert client.post(
         f"/api/games/{game_id}/talk", json={"character_id": "xiaolin", "text": "继续"}
     ).status_code == 409
@@ -149,7 +156,8 @@ def test_backend_root_and_api_docs(client):
     schema = client.get("/openapi.json").json()
     assert set(schema["paths"]) == {
         "/api/games", "/api/games/{game_id}/talk", "/api/games/{game_id}/show",
-        "/api/games/{game_id}/accuse",
+        "/api/games/{game_id}/accuse", "/api/stories", "/api/games/{game_id}/ask",
+        "/api/games/{game_id}/reveal",
     }
     for path in ["/.env", "/SPEC.md", "/stories/lost-tuition.yaml"]:
         assert client.get(path).status_code == 404
@@ -158,8 +166,36 @@ def test_backend_root_and_api_docs(client):
 def test_frontend_is_served_without_hiding_api(tmp_path, monkeypatch):
     monkeypatch.setenv("LLM_MOCK", "1")
     (tmp_path / "index.html").write_text("<h1>看山谜案馆</h1>", encoding="utf-8")
-    with TestClient(create_app(frontend_dir=tmp_path)) as test_client:
+    application = create_app(frontend_dir=tmp_path)
+
+    @application.get("/api/studio/integration-probe")
+    async def studio_route_added_later():
+        return {"ok": True}
+
+    with TestClient(application) as test_client:
         assert "看山谜案馆" in test_client.get("/").text
         assert test_client.get("/docs").status_code == 200
         assert test_client.post("/api/games", json={"story_id": "lost-tuition"}).status_code == 201
         assert test_client.get("/../SPEC.md").status_code == 404
+        assert test_client.get("/api/studio/integration-probe").json() == {"ok": True}
+
+
+def test_story_listing_is_public_only(client):
+    response = client.get("/api/stories")
+    assert response.status_code == 200
+    story = next(s for s in response.json() if s["id"] == "lost-tuition")
+    assert set(story) == {"id", "title", "intro", "source", "characters"}
+    assert story["source"] == "official"
+    assert story["characters"] == 3
+
+
+def test_kanshan_ask_quota_and_no_early_reveal(client):
+    game_id = start_game(client)["game_id"]
+    assert client.post(f"/api/games/{game_id}/reveal").status_code == 409
+    for remaining in range(4, -1, -1):
+        response = client.post(f"/api/games/{game_id}/ask", json={"question": "这是是非题吗？"})
+        assert response.status_code == 200, response.text
+        assert response.json() == {"answer": "不重要", "asks_left": remaining}
+    assert client.post(
+        f"/api/games/{game_id}/ask", json={"question": "还可以问吗？"}
+    ).status_code == 409

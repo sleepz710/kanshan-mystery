@@ -46,7 +46,7 @@ def main():
         schema = json.load(response)
     if args.ready:
         return
-    for path in ("/", "/docs", "/api/games", "/studio/"):
+    for path in ("/", "/docs", "/api/stories", "/api/games", "/studio/"):
         try:
             request(path, authenticated=False)
         except HTTPError as error:
@@ -57,11 +57,19 @@ def main():
     with request("/") as response:
         if response.status != 200:
             raise RuntimeError("首页未正常返回。")
+    with request("/api/stories") as response:
+        stories = json.load(response)
+        if not any(story["id"] == "lost-tuition" for story in stories):
+            raise RuntimeError("案件列表中缺少招牌案件。")
     with request("/api/games", body={"story_id": "lost-tuition"}) as response:
         game = json.load(response)
-        if response.status != 201 or not game["game_id"] or not game["characters"]:
+        if (
+            response.status != 201 or not game["game_id"] or not game["characters"]
+            or not game["questions"] or not game["kanshan"]["greeting"]
+            or game["kanshan"]["asks_left"] != 5
+        ):
             raise RuntimeError("开局结果不完整。")
-    print("通过：页面和 API 的口令保护、首页、API 文档、招牌案件开局。")
+    print("通过：页面和 API 的口令保护、首页、API 文档、案件列表、第二版招牌案件开局。")
     if "/api/studio/chats" not in schema["paths"]:
         print("待联调：当前后端尚未挂载生成剧场接口。")
 

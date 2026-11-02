@@ -39,9 +39,15 @@ def test_wrong_password(client):
 def test_password_opens_docs_and_game(client):
     auth = ("judge", "local-test-password")
     assert client.get("/docs", auth=auth).status_code == 200
+    stories = client.get("/api/stories", auth=auth)
+    assert stories.status_code == 200
+    assert any(story["id"] == "lost-tuition" for story in stories.json())
     response = client.post("/api/games", auth=auth, json={"story_id": "lost-tuition"})
     assert response.status_code == 201
     assert response.json()["characters"]
+    assert response.json()["questions"]
+    assert response.json()["kanshan"]["greeting"]
+    assert response.json()["kanshan"]["asks_left"] == 5
 
 
 @pytest.mark.parametrize("username,password", [("", "long-test-password"), ("bad:user", "long-test-password"), ("judge", "short")])
