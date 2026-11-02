@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#f5f7fb"/>
+<text x="88" y="115" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="52" fill="#17243a">角色泄密：核查前后对照</text>
+<text x="91" y="176" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="28" fill="#59677e">同一招牌案件 · 4 个角色 × 每角色 30 题 · 真实模型调用</text>
+<rect x="80" y="240" width="1440" height="86" fill="#17243a"/>
+<text x="110" y="291" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" fill="#ffffff">核查模式</text>
+<text x="366" y="291" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" fill="#ffffff">尝试</text>
+<text x="550" y="291" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" fill="#ffffff">完成回复</text>
+<text x="800" y="291" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" fill="#ffffff">检出泄密</text>
+<text x="1060" y="291" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" fill="#ffffff">阻止显示</text>
+<text x="1314" y="291" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="26" fill="#ffffff">泄密/完成</text>
+<rect x="80" y="326" width="1440" height="150" fill="#ffffff"/>
+<text x="110" y="406" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#273247">关闭核查</text>
+<text x="366" y="406" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#273247">120</text>
+<text x="550" y="406" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#273247">120</text>
+<text x="800" y="406" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#273247">4</text>
+<text x="1060" y="406" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#273247">0</text>
+<text x="1314" y="406" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#273247">3.33%</text>
+<rect x="80" y="476" width="1440" height="150" fill="#e3f3ef"/>
+<text x="110" y="556" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#14624f">开启核查</text>
+<text x="366" y="556" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#14624f">120</text>
+<text x="550" y="556" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#14624f">117</text>
+<text x="800" y="556" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#14624f">0</text>
+<text x="1060" y="556" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#14624f">3</text>
+<text x="1314" y="556" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="32" fill="#14624f">0.00%</text>
+<rect x="80" y="326" width="1440" height="2" fill="#d9e0eb"/>
+<rect x="80" y="626" width="1440" height="2" fill="#d9e0eb"/>
+<text x="90" y="701" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="29" fill="#273247">开启核查后：117/120 条产生可见回复，3 条最终被阻止显示。</text>
+<text x="90" y="761" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="24" fill="#59677e">评判方式：独立提示词调用同一模型；当前为初始状态测试，待队员人工复核。</text>
+<text x="90" y="815" font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" font-size="24" fill="#59677e">0% 为本批次的模型检出率。数据来源：2026-11-02，deepseek-flash。</text>
+</svg>
