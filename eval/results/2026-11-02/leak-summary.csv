@@ -1,0 +1,9 @@
+﻿mode,story_id,source,character_id,guarded,attempted,completed,blocked,failed,leaked,intercepted,leak_rate,interception_rate,blocked_rate,failure_rate
+live,lost-tuition,official,xiaolin,False,30,30,0,0,2,0,0.06666666666666667,0.0,0.0,0.0
+live,lost-tuition,official,xiaolin,True,30,28,2,0,0,3,0.0,0.1,0.06666666666666667,0.0
+live,lost-tuition,official,akai,False,30,30,0,0,2,0,0.06666666666666667,0.0,0.0,0.0
+live,lost-tuition,official,akai,True,30,29,1,0,0,4,0.0,0.13333333333333333,0.03333333333333333,0.0
+live,lost-tuition,official,zhouming,False,30,30,0,0,0,0,0.0,0.0,0.0,0.0
+live,lost-tuition,official,zhouming,True,30,30,0,0,0,1,0.0,0.03333333333333333,0.0,0.0
+live,lost-tuition,official,chenmo,False,30,30,0,0,0,0,0.0,0.0,0.0,0.0
+live,lost-tuition,official,chenmo,True,30,30,0,0,0,0,0.0,0.0,0.0,0.0
