@@ -1,4 +1,4 @@
-"""OpenAI 兼容的 JSON 调用层，默认使用离线模拟模式。"""
+"""演员与编剧共用的 JSON 调用层，默认使用离线模拟模式。"""
 
 from __future__ import annotations
 
@@ -13,6 +13,9 @@ from openai import APIConnectionError, APIError, APITimeoutError, AsyncOpenAI
 
 
 _ENV_FILE = Path(__file__).resolve().parents[1] / ".env"
+_DEFAULT_BASE_URL = "https://api.deepseek.com"
+_DEFAULT_MODELS = {"actor": "deepseek-flash", "writer": "deepseek-v4-pro"}
+_DEFAULT_MAX_TOKENS = {"actor": 1024, "writer": 8192}
 
 
 class LLMError(RuntimeError):
@@ -34,23 +37,57 @@ def is_mock_mode() -> bool:
     return mode == "1"
 
 
-def _real_settings() -> tuple[str, str, str]:
-    names = ("LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL")
-    values = [os.environ.get(name, "").strip() for name in names]
-    missing = [name for name, value in zip(names, values) if not value]
-    if missing:
-        raise LLMError(
-            "真实模型模式缺少配置：" + "、".join(missing) + "。",
-            status_code=503,
-        )
-    base_url, api_key, model = values
+def _setting(name: str) -> str:
+    return os.environ.get(name, "").strip()
+
+
+def _is_deepseek_url(base_url: str, setting_name: str) -> bool:
     try:
         url = urlsplit(base_url)
-        valid_url = url.scheme in {"http", "https"} and bool(url.hostname)
+        valid_url = (
+            url.scheme in {"http", "https"}
+            and bool(url.hostname)
+            and url.username is None
+            and url.password is None
+            and not any(char.isspace() for char in base_url)
+        )
+        # 访问 port 会验证 "https://host:invalid" 这类配置。
+        url.port
     except ValueError:
         valid_url = False
     if not valid_url:
-        raise LLMError("LLM_BASE_URL 需要填写 HTTP 或 HTTPS 接口地址。", status_code=503)
+        raise LLMError(f"{setting_name} 需要填写有效的 HTTP 或 HTTPS 接口地址。", status_code=503)
+    return url.hostname == "api.deepseek.com"
+
+
+def _real_settings(purpose: str = "actor") -> tuple[str, str, str]:
+    base_url = _setting("LLM_BASE_URL") or _DEFAULT_BASE_URL
+    api_key = _setting("LLM_API_KEY")
+    base_name = "LLM_BASE_URL"
+    key_name = "LLM_API_KEY"
+    model_name = "LLM_ACTOR_MODEL" if purpose == "actor" else "LLM_WRITER_MODEL"
+
+    if purpose == "writer":
+        if writer_base := _setting("LLM_WRITER_BASE_URL"):
+            base_url = writer_base
+            base_name = "LLM_WRITER_BASE_URL"
+        api_key = _setting("LLM_WRITER_API_KEY") or api_key
+        key_name = "LLM_WRITER_API_KEY 或 LLM_API_KEY"
+
+    is_deepseek = _is_deepseek_url(base_url, base_name)
+    model = _setting(model_name)
+    if purpose == "actor":
+        model = model or _setting("LLM_MODEL")
+    if not model and is_deepseek:
+        model = _DEFAULT_MODELS[purpose]
+
+    missing = []
+    if not api_key:
+        missing.append(key_name)
+    if not model:
+        missing.append(model_name)
+    if missing:
+        raise LLMError("真实模型模式缺少配置：" + "、".join(missing) + "。", status_code=503)
     return base_url, api_key, model
 
 
@@ -59,21 +96,43 @@ def _reject_non_json_number(value: str) -> None:
 
 
 async def complete_json(
-    messages: list[dict], *, mock_response: dict | None = None
+    messages: list[dict],
+    *,
+    purpose: str = "actor",
+    mock_response: dict | None = None,
+    max_tokens: int | None = None,
 ) -> dict:
     """返回 JSON 对象；调用方负责校验自己的业务字段。
 
-    真实调用使用 Chat Completions，兼容项目待选的模型服务。
+    purpose="actor" 用于角色、核查、对质和汤主问答，默认 1024 tokens；
+    purpose="writer" 用于编剧与审稿，默认 8192 tokens。调用方可覆盖 max_tokens。
+    DeepSeek 官方接口分别关闭、开启思考模式；其他兼容接口不带专属参数。
     messages 中必须明确要求模型输出 JSON。单次请求超时 30 秒，最多重试一次。
     模拟模式只返回 mock_response 的副本，不创建模型客户端。
     """
+
+    if purpose not in ("actor", "writer"):
+        raise LLMError("purpose 需要填写 actor 或 writer。", status_code=503)
+    if max_tokens is not None and (type(max_tokens) is not int or max_tokens <= 0):
+        raise LLMError("max_tokens 需要填写正整数。", status_code=503)
+    token_limit = max_tokens if max_tokens is not None else _DEFAULT_MAX_TOKENS[purpose]
 
     if is_mock_mode():
         if not isinstance(mock_response, dict):
             raise LLMError("模拟调用需要提供 mock_response JSON 对象。", status_code=503)
         return deepcopy(mock_response)
 
-    base_url, api_key, model = _real_settings()
+    base_url, api_key, model = _real_settings(purpose)
+    request = {
+        "model": model,
+        "messages": messages,
+        "response_format": {"type": "json_object"},
+        "max_tokens": token_limit,
+    }
+    if _is_deepseek_url(base_url, "LLM_BASE_URL"):
+        request["extra_body"] = {
+            "thinking": {"type": "disabled" if purpose == "actor" else "enabled"}
+        }
     try:
         async with AsyncOpenAI(
             api_key=api_key,
@@ -81,11 +140,7 @@ async def complete_json(
             timeout=30.0,
             max_retries=1,
         ) as client:
-            completion = await client.chat.completions.create(
-                model=model,
-                messages=messages,
-                response_format={"type": "json_object"},
-            )
+            completion = await client.chat.completions.create(**request)
     except APITimeoutError as exc:
         raise LLMError("模型服务响应超时，请稍后重试。", status_code=504) from exc
     except APIConnectionError as exc:

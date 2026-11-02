@@ -1,4 +1,5 @@
 import asyncio
+import os
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock
 
@@ -9,11 +10,17 @@ from openai import APIConnectionError, APIError, APITimeoutError
 from backend import llm
 
 
+ENV_NAMES = (
+    "LLM_MOCK", "LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL",
+    "LLM_ACTOR_MODEL", "LLM_WRITER_MODEL", "LLM_WRITER_BASE_URL", "LLM_WRITER_API_KEY",
+)
+
+
 @pytest.fixture(autouse=True)
 def isolated_environment(monkeypatch, tmp_path):
     monkeypatch.setattr(llm, "_ENV_FILE", tmp_path / "missing.env")
-    for key in ("LLM_MOCK", "LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL"):
-        # 先登记环境恢复动作，dotenv 后续写入的变量也会在测试结束时清理。
+    for key in ENV_NAMES:
+        # 先登记恢复动作，dotenv 后续写入的变量也会在测试结束时清理。
         monkeypatch.setenv(key, "")
         monkeypatch.delenv(key)
 
@@ -22,7 +29,8 @@ def real_mode(monkeypatch):
     monkeypatch.setenv("LLM_MOCK", "0")
     monkeypatch.setenv("LLM_BASE_URL", "https://model.example.test/v1")
     monkeypatch.setenv("LLM_API_KEY", "test-key-not-a-real-secret")
-    monkeypatch.setenv("LLM_MODEL", "test-model")
+    monkeypatch.setenv("LLM_ACTOR_MODEL", "test-actor")
+    monkeypatch.setenv("LLM_WRITER_MODEL", "test-writer")
 
 
 def fake_client(monkeypatch, content='{"reply": "你好"}', *, error=None, choices=None):
@@ -47,15 +55,20 @@ def fake_client(monkeypatch, content='{"reply": "你好"}', *, error=None, choic
     return constructor, create
 
 
-def test_default_mock_never_constructs_client_and_returns_independent_data(monkeypatch):
+@pytest.mark.parametrize("purpose", ["actor", "writer"])
+def test_default_mock_never_constructs_client_and_returns_independent_data(monkeypatch, purpose):
     constructor = Mock(side_effect=AssertionError("模拟模式不应创建模型客户端"))
     monkeypatch.setattr(llm, "AsyncOpenAI", constructor)
     source = {"reply": "模拟", "reveal": ["c1"]}
-    result = asyncio.run(llm.complete_json([], mock_response=source))
+    result = asyncio.run(llm.complete_json([], purpose=purpose, mock_response=source))
     result["reveal"].append("c2")
     assert llm.is_mock_mode() is True
     assert source["reveal"] == ["c1"]
     constructor.assert_not_called()
+
+
+def test_old_mock_call_remains_compatible():
+    assert asyncio.run(llm.complete_json([], mock_response={"ok": True})) == {"ok": True}
 
 
 def test_mock_requires_an_explicit_json_object():
@@ -64,15 +77,23 @@ def test_mock_requires_an_explicit_json_object():
     assert error.value.status_code == 503
 
 
-def test_env_file_is_utf8_and_does_not_override_process_environment(monkeypatch, tmp_path):
+def test_env_file_is_utf8_and_process_model_and_key_take_priority(monkeypatch, tmp_path):
     env_file = tmp_path / "config.env"
-    env_file.write_text("# 中文配置\nLLM_MOCK=0\nLLM_MODEL=来自文件\n", encoding="utf-8")
+    env_file.write_text(
+        "# 中文配置\nLLM_MOCK=0\nLLM_ACTOR_MODEL=来自文件\nLLM_WRITER_MODEL=文件编剧\n"
+        "LLM_API_KEY=file-test-key\nLLM_WRITER_API_KEY=file-writer-key\n",
+        encoding="utf-8",
+    )
     monkeypatch.setattr(llm, "_ENV_FILE", env_file)
     monkeypatch.setenv("LLM_MOCK", "1")
-    monkeypatch.setenv("LLM_MODEL", "process-model")
+    monkeypatch.setenv("LLM_ACTOR_MODEL", "process-model")
+    monkeypatch.setenv("LLM_API_KEY", "process-test-key")
+    monkeypatch.setenv("LLM_WRITER_API_KEY", "process-writer-key")
     assert llm.is_mock_mode() is True
-    import os
-    assert os.environ["LLM_MODEL"] == "process-model"
+    assert os.environ["LLM_ACTOR_MODEL"] == "process-model"
+    assert os.environ["LLM_WRITER_MODEL"] == "文件编剧"
+    assert os.environ["LLM_API_KEY"] == "process-test-key"
+    assert os.environ["LLM_WRITER_API_KEY"] == "process-writer-key"
 
 
 def test_env_file_can_select_real_mode(monkeypatch, tmp_path):
@@ -90,25 +111,200 @@ def test_invalid_mode_is_a_configuration_error(monkeypatch, mode):
     assert error.value.status_code == 503
 
 
-def test_real_mode_requires_configuration_and_does_not_fall_back(monkeypatch):
+@pytest.mark.parametrize("purpose", ["", "reviewer", None, [], True])
+def test_unknown_purpose_is_rejected_including_mock_mode(purpose):
+    with pytest.raises(llm.LLMError, match="purpose") as error:
+        asyncio.run(llm.complete_json([], purpose=purpose, mock_response={}))
+    assert error.value.status_code == 503
+
+
+@pytest.mark.parametrize("value", [0, -1, True, 1.5, "2048"])
+def test_invalid_token_limit_is_rejected(value):
+    with pytest.raises(llm.LLMError, match="max_tokens") as error:
+        asyncio.run(llm.complete_json([], max_tokens=value, mock_response={}))
+    assert error.value.status_code == 503
+
+
+def test_real_mode_requires_key_without_falling_back_to_mock(monkeypatch):
     monkeypatch.setenv("LLM_MOCK", "0")
     constructor = Mock(side_effect=AssertionError("缺配置时不应创建客户端"))
     monkeypatch.setattr(llm, "AsyncOpenAI", constructor)
-    with pytest.raises(llm.LLMError, match="LLM_BASE_URL.*LLM_API_KEY.*LLM_MODEL") as error:
+    with pytest.raises(llm.LLMError, match="LLM_API_KEY") as error:
         asyncio.run(llm.complete_json([], mock_response={"reply": "不应使用"}))
     assert error.value.status_code == 503
     constructor.assert_not_called()
 
 
-@pytest.mark.parametrize("missing", ["LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL"])
-def test_each_real_setting_is_required(monkeypatch, missing):
+@pytest.mark.parametrize(
+    "purpose, model, tokens, thinking",
+    [("actor", "deepseek-flash", 1024, "disabled"), ("writer", "deepseek-v4-pro", 8192, "enabled")],
+)
+def test_default_deepseek_purposes_select_models_and_thinking(monkeypatch, purpose, model, tokens, thinking):
+    monkeypatch.setenv("LLM_MOCK", "0")
+    monkeypatch.setenv("LLM_API_KEY", "shared-test-key")
+    constructor, create = fake_client(monkeypatch)
+    messages = [{"role": "user", "content": "请用 JSON 回复"}]
+    assert asyncio.run(llm.complete_json(messages, purpose=purpose)) == {"reply": "你好"}
+    constructor.assert_called_once_with(
+        api_key="shared-test-key", base_url="https://api.deepseek.com", timeout=30.0, max_retries=1
+    )
+    create.assert_awaited_once_with(
+        model=model, messages=messages, response_format={"type": "json_object"}, max_tokens=tokens,
+        extra_body={"thinking": {"type": thinking}},
+    )
+    assert "temperature" not in create.await_args.kwargs
+
+
+@pytest.mark.parametrize("base_url", ["https://api.deepseek.com/v1", "https://API.DEEPSEEK.COM:443/v1/"])
+def test_official_deepseek_host_is_recognized_with_version_path(monkeypatch, base_url):
+    monkeypatch.setenv("LLM_MOCK", "0")
+    monkeypatch.setenv("LLM_BASE_URL", base_url)
+    monkeypatch.setenv("LLM_API_KEY", "shared-test-key")
+    _, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([]))
+    assert create.await_args.kwargs["extra_body"] == {"thinking": {"type": "disabled"}}
+
+
+def test_actor_model_override_takes_priority_over_legacy_model(monkeypatch):
     real_mode(monkeypatch)
-    monkeypatch.delenv(missing)
-    with pytest.raises(llm.LLMError, match=missing):
-        asyncio.run(llm.complete_json([]))
+    monkeypatch.setenv("LLM_MODEL", "legacy-model")
+    _, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([]))
+    assert create.await_args.kwargs["model"] == "test-actor"
 
 
-@pytest.mark.parametrize("base_url", ["file:///tmp/model", "model.example.test/v1", "http://["])
+def test_legacy_model_is_actor_fallback_for_old_real_calls(monkeypatch):
+    real_mode(monkeypatch)
+    monkeypatch.delenv("LLM_ACTOR_MODEL")
+    monkeypatch.setenv("LLM_MODEL", "legacy-model")
+    _, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([]))
+    assert create.await_args.kwargs["model"] == "legacy-model"
+
+
+def test_legacy_actor_model_does_not_replace_writer_model(monkeypatch):
+    monkeypatch.setenv("LLM_MOCK", "0")
+    monkeypatch.setenv("LLM_API_KEY", "shared-test-key")
+    monkeypatch.setenv("LLM_MODEL", "legacy-actor")
+    _, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([], purpose="writer"))
+    assert create.await_args.kwargs["model"] == "deepseek-v4-pro"
+
+
+def test_writer_can_use_its_own_provider_key_and_model(monkeypatch):
+    monkeypatch.setenv("LLM_MOCK", "0")
+    monkeypatch.setenv("LLM_API_KEY", "actor-test-key")
+    monkeypatch.setenv("LLM_WRITER_BASE_URL", "https://api.openai.com/v1")
+    monkeypatch.setenv("LLM_WRITER_API_KEY", "writer-test-key")
+    monkeypatch.setenv("LLM_WRITER_MODEL", "writer-model")
+    constructor, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([], purpose="writer"))
+    assert constructor.call_args.kwargs["api_key"] == "writer-test-key"
+    assert constructor.call_args.kwargs["base_url"] == "https://api.openai.com/v1"
+    assert create.await_args.kwargs == {
+        "model": "writer-model", "messages": [], "response_format": {"type": "json_object"}, "max_tokens": 8192
+    }
+
+
+def test_writer_specific_settings_can_work_without_actor_settings(monkeypatch):
+    monkeypatch.setenv("LLM_MOCK", "0")
+    monkeypatch.setenv("LLM_BASE_URL", "invalid-unused-actor-url")
+    monkeypatch.setenv("LLM_WRITER_BASE_URL", "https://writer.example.test/v1")
+    monkeypatch.setenv("LLM_WRITER_API_KEY", "writer-test-key")
+    monkeypatch.setenv("LLM_WRITER_MODEL", "writer-model")
+    constructor, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([], purpose="writer"))
+    assert constructor.call_args.kwargs["api_key"] == "writer-test-key"
+    assert create.await_args.kwargs["model"] == "writer-model"
+
+
+def test_actor_ignores_writer_overrides(monkeypatch):
+    real_mode(monkeypatch)
+    monkeypatch.setenv("LLM_WRITER_BASE_URL", "invalid-unused-writer-url")
+    monkeypatch.setenv("LLM_WRITER_API_KEY", "writer-test-key")
+    constructor, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([]))
+    assert constructor.call_args.kwargs["api_key"] == "test-key-not-a-real-secret"
+    assert create.await_args.kwargs["model"] == "test-actor"
+
+
+@pytest.mark.parametrize("blank_overrides", [False, True])
+def test_writer_falls_back_to_common_address_and_key_independently(monkeypatch, blank_overrides):
+    real_mode(monkeypatch)
+    if blank_overrides:
+        monkeypatch.setenv("LLM_WRITER_BASE_URL", " ")
+        monkeypatch.setenv("LLM_WRITER_API_KEY", " ")
+    constructor, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([], purpose="writer"))
+    assert constructor.call_args.kwargs["base_url"] == "https://model.example.test/v1"
+    assert constructor.call_args.kwargs["api_key"] == "test-key-not-a-real-secret"
+    assert create.await_args.kwargs["model"] == "test-writer"
+
+
+@pytest.mark.parametrize("override", ["address", "key"])
+def test_writer_can_override_only_one_connection_setting(monkeypatch, override):
+    real_mode(monkeypatch)
+    if override == "address":
+        monkeypatch.setenv("LLM_WRITER_BASE_URL", "https://writer.example.test/v1")
+    else:
+        monkeypatch.setenv("LLM_WRITER_API_KEY", "writer-test-key")
+    constructor, _ = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([], purpose="writer"))
+    kwargs = constructor.call_args.kwargs
+    assert kwargs["base_url"] == (
+        "https://writer.example.test/v1" if override == "address" else "https://model.example.test/v1"
+    )
+    assert kwargs["api_key"] == (
+        "writer-test-key" if override == "key" else "test-key-not-a-real-secret"
+    )
+
+
+@pytest.mark.parametrize("purpose", ["actor", "writer"])
+def test_openai_requires_an_explicit_model_instead_of_deepseek_default(monkeypatch, purpose):
+    monkeypatch.setenv("LLM_MOCK", "0")
+    monkeypatch.setenv("LLM_BASE_URL", "https://api.openai.com/v1")
+    monkeypatch.setenv("LLM_API_KEY", "shared-test-key")
+    constructor, _ = fake_client(monkeypatch)
+    name = "LLM_ACTOR_MODEL" if purpose == "actor" else "LLM_WRITER_MODEL"
+    with pytest.raises(llm.LLMError, match=name) as error:
+        asyncio.run(llm.complete_json([], purpose=purpose))
+    assert error.value.status_code == 503
+    constructor.assert_not_called()
+
+
+def test_writer_provider_override_requires_writer_model_even_with_legacy_actor(monkeypatch):
+    monkeypatch.setenv("LLM_MOCK", "0")
+    monkeypatch.setenv("LLM_API_KEY", "shared-test-key")
+    monkeypatch.setenv("LLM_MODEL", "actor-model")
+    monkeypatch.setenv("LLM_WRITER_BASE_URL", "https://api.openai.com/v1")
+    with pytest.raises(llm.LLMError, match="LLM_WRITER_MODEL"):
+        asyncio.run(llm.complete_json([], purpose="writer"))
+
+
+def test_writer_reports_missing_shared_or_specific_key(monkeypatch):
+    monkeypatch.setenv("LLM_MOCK", "0")
+    with pytest.raises(llm.LLMError, match="LLM_WRITER_API_KEY 或 LLM_API_KEY"):
+        asyncio.run(llm.complete_json([], purpose="writer"))
+
+
+@pytest.mark.parametrize(
+    "base_url",
+    ["https://api.openai.com/v1", "https://api.deepseek.com.evil.test/v1", "https://fakeapi.deepseek.com/v1"],
+)
+@pytest.mark.parametrize("purpose", ["actor", "writer"])
+def test_non_deepseek_providers_never_receive_thinking_parameters(monkeypatch, base_url, purpose):
+    real_mode(monkeypatch)
+    monkeypatch.setenv("LLM_BASE_URL", base_url)
+    _, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([], purpose=purpose))
+    assert "extra_body" not in create.await_args.kwargs
+    assert "temperature" not in create.await_args.kwargs
+
+
+@pytest.mark.parametrize(
+    "base_url",
+    ["file:///tmp/model", "model.example.test/v1", "http://[", "https://model.test:invalid", "https://bad host/v1", "https://api.deepseek.com@evil.test/v1"],
+)
 def test_invalid_endpoint_is_a_configuration_error(monkeypatch, base_url):
     real_mode(monkeypatch)
     monkeypatch.setenv("LLM_BASE_URL", base_url)
@@ -117,23 +313,36 @@ def test_invalid_endpoint_is_a_configuration_error(monkeypatch, base_url):
     assert error.value.status_code == 503
 
 
-def test_real_adapter_passes_json_mode_and_explicit_client_limits(monkeypatch):
+def test_writer_invalid_endpoint_reports_the_writer_setting(monkeypatch):
+    real_mode(monkeypatch)
+    monkeypatch.setenv("LLM_WRITER_BASE_URL", "invalid-writer-url")
+    with pytest.raises(llm.LLMError, match="LLM_WRITER_BASE_URL"):
+        asyncio.run(llm.complete_json([], purpose="writer"))
+
+
+@pytest.mark.parametrize("purpose", ["actor", "writer"])
+def test_explicit_token_limit_replaces_the_purpose_default(monkeypatch, purpose):
+    real_mode(monkeypatch)
+    _, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([], purpose=purpose, max_tokens=2048))
+    assert create.await_args.kwargs["max_tokens"] == 2048
+
+
+def test_real_adapter_keeps_client_limits_and_legacy_call_signature(monkeypatch):
     real_mode(monkeypatch)
     constructor, create = fake_client(monkeypatch)
     messages = [{"role": "user", "content": "请用 JSON 回复"}]
     assert asyncio.run(llm.complete_json(messages)) == {"reply": "你好"}
     constructor.assert_called_once_with(
         api_key="test-key-not-a-real-secret",
-        base_url="https://model.example.test/v1",
-        timeout=30.0,
-        max_retries=1,
+        base_url="https://model.example.test/v1", timeout=30.0, max_retries=1,
     )
     create.assert_awaited_once_with(
-        model="test-model", messages=messages, response_format={"type": "json_object"}
+        model="test-actor", messages=messages, response_format={"type": "json_object"}, max_tokens=1024,
     )
 
 
-@pytest.mark.parametrize("content", ["not JSON", "[]", "null", "", None, '{"value": NaN}', '{"value": Infinity}'])
+@pytest.mark.parametrize("content", ["not JSON", "[]", "null", "", "  \n  ", None, '{"value": NaN}', '{"value": Infinity}'])
 def test_invalid_or_non_object_model_output_is_rejected(monkeypatch, content):
     real_mode(monkeypatch)
     fake_client(monkeypatch, content)

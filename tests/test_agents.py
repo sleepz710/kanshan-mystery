@@ -52,7 +52,7 @@ def test_no_available_clues_produces_neutral_reply_without_private_context(conte
 
 def test_mock_check_is_an_explicit_placeholder(context):
     assert asyncio.run(agents.check_reply(context, {"reply": "固定内容"})) == {
-        "ok": True, "leaked": []
+        "ok": True, "leaked": [], "contradiction": ""
     }
 
 

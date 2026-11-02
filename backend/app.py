@@ -1,10 +1,12 @@
 """任务 02：游戏接口与前端静态文件入口。"""
 
 from pathlib import Path
+from typing import Annotated, Literal
 
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from pydantic import BaseModel, ConfigDict, Field
 
 from backend.engine import GameEngine, GameError
@@ -38,6 +40,23 @@ class AccuseRequest(InputModel):
     answers: dict[str, str] = Field(min_length=1, max_length=50)
 
 
+class AskRequest(InputModel):
+    question: str = Field(min_length=1, max_length=4000)
+
+
+class StoryInfo(BaseModel):
+    id: str
+    title: str
+    intro: str
+    source: Literal["official", "generated"]
+    characters: int
+
+
+class KanshanInfo(BaseModel):
+    greeting: str
+    asks_left: int
+
+
 class CharacterInfo(BaseModel):
     id: str
     name: str
@@ -57,6 +76,7 @@ class NewGameResponse(BaseModel):
     intro: str
     characters: list[CharacterInfo]
     questions: list[QuestionInfo]
+    kanshan: KanshanInfo
 
 
 class ClueInfo(BaseModel):
@@ -70,10 +90,20 @@ class EventLine(BaseModel):
     text: str
 
 
-class EventInfo(BaseModel):
-    type: str
+class ConfrontEvent(BaseModel):
+    type: Literal["confront"]
     text: str
     lines: list[EventLine]
+
+
+class ExposedEvent(BaseModel):
+    type: Literal["exposed"]
+    character: str
+    lie: str
+    text: str
+
+
+EventInfo = Annotated[ConfrontEvent | ExposedEvent, Field(discriminator="type")]
 
 
 class TurnResponse(BaseModel):
@@ -84,24 +114,45 @@ class TurnResponse(BaseModel):
     trust: dict[str, int]
 
 
+class EndingInfo(BaseModel):
+    id: str
+    title: str
+    text: str
+    retry: bool
+
+
 class EndingResponse(BaseModel):
     score: int
     total: int
     results: dict[str, bool]
+    ending: EndingInfo
+    rating: str
+
+
+class RevealResponse(BaseModel):
     truth: str
     lessons: list[str]
 
 
+class AskResponse(BaseModel):
+    answer: Literal["是", "不是", "不重要"]
+    asks_left: int
+
+
 def create_app(
-    *, stories_dir: Path | None = None, frontend_dir: Path | None = None
+    *, stories_dir: Path | None = None, generated_stories_dir: Path | None = None,
+    frontend_dir: Path | None = None
 ) -> FastAPI:
     """每个应用实例有独立的内存游戏；前端文件只从 frontend 目录提供。"""
     application = FastAPI(
         title="看山谜案馆 API",
         description="模拟模式可直接联调；游戏进度保存在当前服务进程内。",
-        version="0.1.0",
+        version="0.2.0",
     )
-    engine = GameEngine(stories_dir=stories_dir or PROJECT_ROOT / "stories")
+    engine = GameEngine(
+        stories_dir=stories_dir or PROJECT_ROOT / "stories",
+        generated_stories_dir=generated_stories_dir or PROJECT_ROOT / "data" / "stories",
+    )
     application.state.engine = engine
 
     @application.exception_handler(GameError)
@@ -111,6 +162,10 @@ def create_app(
     @application.exception_handler(LLMError)
     async def model_error_handler(request: Request, error: LLMError) -> JSONResponse:
         return JSONResponse(status_code=error.status_code, content={"detail": str(error)})
+
+    @application.get("/api/stories", response_model=list[StoryInfo])
+    async def list_stories() -> list[dict]:
+        return engine.list_stories()
 
     @application.post("/api/games", response_model=NewGameResponse, status_code=201)
     async def new_game(body: NewGameRequest) -> dict:
@@ -128,19 +183,39 @@ def create_app(
     async def accuse(game_id: str, body: AccuseRequest) -> dict:
         return await engine.accuse(game_id, body.answers)
 
-    static_dir = frontend_dir if frontend_dir is not None else PROJECT_ROOT / "frontend"
-    if static_dir.is_dir():
-        # 放在 API 路由之后，避免静态目录拦截 /api 与 /docs。
-        application.mount("/", StaticFiles(directory=static_dir, html=True), name="frontend")
-    else:
+    @application.post("/api/games/{game_id}/ask", response_model=AskResponse)
+    async def ask(game_id: str, body: AskRequest) -> dict:
+        return await engine.ask(game_id, body.question)
 
-        @application.get("/", include_in_schema=False)
-        async def backend_ready() -> dict:
-            return {
+    @application.post("/api/games/{game_id}/reveal", response_model=RevealResponse)
+    async def reveal(game_id: str) -> dict:
+        return await engine.reveal(game_id)
+
+    static_dir = frontend_dir if frontend_dir is not None else PROJECT_ROOT / "frontend"
+    static_files = StaticFiles(directory=static_dir, html=True, check_dir=False)
+
+    @application.middleware("http")
+    async def frontend_files(request: Request, call_next):
+        response = await call_next(request)
+        path = request.url.path
+        # API 始终交给路由；06 在应用创建后挂载生成剧场路由也能正常响应。
+        if (
+            response.status_code == 404 and request.method in {"GET", "HEAD"}
+            and path != "/api" and not path.startswith("/api/")
+            and static_dir.is_dir()
+        ):
+            try:
+                return await static_files.get_response(path.lstrip("/"), request.scope)
+            except StarletteHTTPException as error:
+                if error.status_code != 404:
+                    raise
+        if response.status_code == 404 and path == "/" and request.method == "GET":
+            return JSONResponse({
                 "name": "看山谜案馆",
                 "message": "后端已启动，可在 /docs 调试接口。前端接入后在此显示游戏。",
                 "docs": "/docs",
-            }
+            })
+        return response
 
     return application
 
