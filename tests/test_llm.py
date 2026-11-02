@@ -1,4 +1,5 @@
 import asyncio
+import json
 import os
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, Mock
@@ -348,26 +349,65 @@ def test_real_adapter_keeps_client_limits_and_legacy_call_signature(monkeypatch)
 @pytest.mark.parametrize("content", ["not JSON", "[]", "null", "", "  \n  ", None, '{"value": NaN}', '{"value": Infinity}'])
 def test_invalid_or_non_object_model_output_is_rejected(monkeypatch, content):
     real_mode(monkeypatch)
-    fake_client(monkeypatch, content)
+    _, create = fake_client(monkeypatch, content)
     with pytest.raises(llm.LLMError) as error:
         asyncio.run(llm.complete_json([]))
     assert error.value.status_code == 502
+    assert type(error.value) is llm.LLMError
+    assert create.await_count == 2
+
+
+@pytest.mark.parametrize("first_content", ['{"bad": "private-invalid-secret-sentinel}', "", " \n ", None, "[]", "null"])
+def test_one_format_repair_can_recover_without_reinjecting_invalid_content(monkeypatch, first_content):
+    real_mode(monkeypatch)
+    constructor, create = fake_client(monkeypatch)
+    def completion(content):
+        return SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=content), finish_reason="stop")])
+    create.side_effect = [completion(first_content), completion('{"reply": "已修复"}')]
+    messages = [{"role": "system", "content": "请按规定用 JSON 回答。"}, {"role": "user", "content": "继续调查"}]
+    original = json.loads(json.dumps(messages, ensure_ascii=False))
+    result = asyncio.run(llm.complete_json(messages))
+    assert result == {"reply": "已修复"}
+    assert constructor.call_count == 1 and create.await_count == 2
+    first, repaired = [call.kwargs for call in create.await_args_list]
+    assert first["messages"] == original
+    assert repaired["messages"][:-1] == original
+    assert repaired["messages"][-1] == {"role": "user", "content": llm._JSON_REPAIR_INSTRUCTION}
+    assert "private-invalid-secret-sentinel" not in json.dumps(repaired["messages"])
+    assert all(message["role"] != "assistant" for message in repaired["messages"])
+    assert {key: value for key, value in first.items() if key != "messages"} == {
+        key: value for key, value in repaired.items() if key != "messages"}
+    assert messages == original
+
+
+def test_two_invalid_replies_stop_after_one_format_repair(monkeypatch):
+    real_mode(monkeypatch)
+    _, create = fake_client(monkeypatch)
+    def completion(content):
+        return SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content=content), finish_reason="stop")])
+    create.side_effect = [completion("private-first-invalid-sentinel"), completion("private-second-invalid-sentinel")]
+    with pytest.raises(llm.LLMError, match="有效的 JSON") as error:
+        asyncio.run(llm.complete_json([{"role": "user", "content": "请返回 JSON"}]))
+    assert create.await_count == 2 and type(error.value) is llm.LLMError
+    assert "private-" not in str(error.value)
 
 
 def test_empty_choices_is_rejected(monkeypatch):
     real_mode(monkeypatch)
-    fake_client(monkeypatch, choices=[])
+    _, create = fake_client(monkeypatch, choices=[])
     with pytest.raises(llm.LLMError, match="没有返回"):
         asyncio.run(llm.complete_json([]))
+    assert create.await_count == 1
 
 
 def test_truncated_output_is_rejected_even_if_it_parses(monkeypatch):
     real_mode(monkeypatch)
-    fake_client(monkeypatch, choices=[
+    _, create = fake_client(monkeypatch, choices=[
         SimpleNamespace(message=SimpleNamespace(content='{"reply": "部分"}'), finish_reason="length")
     ])
     with pytest.raises(llm.LLMError, match="长度限制"):
         asyncio.run(llm.complete_json([]))
+    assert create.await_count == 1
 
 
 @pytest.mark.parametrize("kind, status", [("timeout", 504), ("connection", 502), ("api", 502)])
@@ -380,9 +420,10 @@ def test_sdk_failures_are_mapped_without_exposing_provider_content(monkeypatch, 
         provider_error = APIConnectionError(message="provider-private-detail", request=request)
     else:
         provider_error = APIError("provider-private-detail", request=request, body={"internal": "hidden"})
-    fake_client(monkeypatch, error=provider_error)
+    _, create = fake_client(monkeypatch, error=provider_error)
     with pytest.raises(llm.LLMError) as error:
         asyncio.run(llm.complete_json([]))
     assert error.value.status_code == status
+    assert create.await_count == 1
     assert "provider-private-detail" not in str(error.value)
     assert "test-key-not-a-real-secret" not in str(error.value)
