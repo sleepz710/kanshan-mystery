@@ -25,6 +25,7 @@
 
 ## 提交
 
+- `git add` 时写明自己改过的文件路径,不用 `git add -A` 或 `git add .`,免得把别人放在目录里的草稿一起提交。
 - commit 信息:`<类型>: <做了什么>`,类型用 feat / fix / docs / refactor / test / chore / wip,描述用中文即可。
 - API key 只放 `.env`(已被 `.gitignore` 忽略);仓库里放 `.env.example`,写明需要哪些变量。
 - 下载的原始数据和缓存放 `data/`,不入库;测试和演示要用的小样本放 `tests/fixtures/` 并提交。
