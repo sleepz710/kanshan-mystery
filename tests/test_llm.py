@@ -148,11 +148,14 @@ def test_default_deepseek_purposes_select_models_and_thinking(monkeypatch, purpo
     constructor.assert_called_once_with(
         api_key="shared-test-key", base_url="https://api.deepseek.com", timeout=30.0, max_retries=1
     )
+    additional = {"temperature": 0} if purpose == "actor" else {}
     create.assert_awaited_once_with(
         model=model, messages=messages, response_format={"type": "json_object"}, max_tokens=tokens,
         extra_body={"thinking": {"type": thinking}},
+        **additional,
     )
-    assert "temperature" not in create.await_args.kwargs
+    if purpose == "writer":
+        assert "temperature" not in create.await_args.kwargs
 
 
 @pytest.mark.parametrize("base_url", ["https://api.deepseek.com/v1", "https://API.DEEPSEEK.COM:443/v1/"])

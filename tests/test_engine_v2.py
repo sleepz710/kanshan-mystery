@@ -74,6 +74,17 @@ async def test_owner_progress_field_aliases(setup_game):
     assert engine.games[game_id].ending["id"] == "wrong"
 
 
+@pytest.mark.asyncio
+async def test_exposed_feedback_contains_only_the_newly_admitted_fact(setup_game):
+    engine, game_id, _ = setup_game
+    await take_evidence(engine, game_id)
+    result = await engine.show(game_id, "a", "x")
+    event = next(e for e in result["events"] if e["type"] == "exposed" and e["lie"] == "la")
+    assert "第一阶段事实" in event["text"]
+    assert "第二阶段事实" not in event["text"]
+    assert "受信任条件保护的事实" not in event["text"]
+
+
 @pytest.fixture
 def controlled_agents(monkeypatch):
     calls = {"reply": [], "confront": [], "check": []}

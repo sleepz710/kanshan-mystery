@@ -227,7 +227,8 @@ class GameEngine:
                 for lie in character["lies"]:
                     if lie["id"] not in state.exposed_lies and self._condition(state, character["id"], lie["until"]):
                         state.exposed_lies.add(lie["id"])
-                        events.append({"type": "exposed", "character": character["id"], "lie": lie["id"], "text": f"{character['name']}的说法被拆穿了。"})
+                        admission = next(f["text"] for f in state.story["facts"] if f["id"] == lie["admit"])
+                        events.append({"type": "exposed", "character": character["id"], "lie": lie["id"], "text": f"{character['name']}的说法被拆穿了。已确认：{admission}"})
                         changed = True
         return events
 

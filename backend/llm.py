@@ -133,6 +133,8 @@ async def complete_json(
         request["extra_body"] = {
             "thinking": {"type": "disabled" if purpose == "actor" else "enabled"}
         }
+        if purpose == "actor":
+            request["temperature"] = 0
     try:
         async with AsyncOpenAI(
             api_key=api_key,

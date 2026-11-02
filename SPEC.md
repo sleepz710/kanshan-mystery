@@ -307,6 +307,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
   ```
 
 - DeepSeek 默认开思考模式。演员的请求要加 `extra_body={"thinking": {"type": "disabled"}}`;思考模式下 `temperature` 不生效。OpenAI 不认这个参数,`llm.py` 按接口地址决定加不加。细节以 [DeepSeek 文档](https://api-docs.deepseek.com/guides/thinking_mode/) 为准。旧模型名 `deepseek-chat`、`deepseek-reasoner` 按官方公告 2026-07-24 下线,不要再用。
+- DeepSeek 演员请求使用 `temperature=0`,优先保证事实与结构稳定;编剧思考模式和其他服务不附加这个参数。
 - 运行:`pip install -r requirements.txt`,`uvicorn backend.app:app --reload`,打开 http://localhost:8000。
 - 部署:部署到公网,提交体验链接,平台见 `docs/STATUS.md`。服务器上的 key 只放环境变量;体验版加访问口令,或按 IP 限制每天开局和生成的次数,防止 key 被刷。部署和更新步骤写进 README。
 
