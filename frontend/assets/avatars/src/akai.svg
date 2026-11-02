@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- 阿凯：室友，外向爱吹牛。刺猬头、咧嘴笑、脖子上挂游戏耳机 -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="36%" r="72%">
+      <stop offset="0" stop-color="#f6b46a"/>
+      <stop offset="1" stop-color="#d9762c"/>
+    </radialGradient>
+    <clipPath id="mouth"><path d="M106 146H150Q147 170 128 170Q109 170 106 146Z"/></clipPath>
+  </defs>
+  <rect width="256" height="256" fill="url(#bg)"/>
+  <path d="M34 256C36 212 70 186 128 186C186 186 220 212 222 256Z" fill="#323846"/>
+  <path d="M100 188L114 230M156 188L142 230" stroke="#ebe5d9" stroke-width="4" stroke-linecap="round"/>
+  <path d="M110 158H146V190C146 199 138 205 128 205C118 205 110 199 110 190Z" fill="#e2b18b"/>
+  <path d="M84 188C84 214 172 214 172 188" fill="none" stroke="#1e2026" stroke-width="9" stroke-linecap="round"/>
+  <ellipse cx="82" cy="192" rx="16" ry="19" fill="#1e2026"/>
+  <ellipse cx="174" cy="192" rx="16" ry="19" fill="#1e2026"/>
+  <ellipse cx="80" cy="192" rx="8" ry="11" fill="#56d6c8"/>
+  <ellipse cx="176" cy="192" rx="8" ry="11" fill="#56d6c8"/>
+  <ellipse cx="78" cy="188" rx="3" ry="4" fill="#b9f3ec"/>
+  <ellipse cx="174" cy="188" rx="3" ry="4" fill="#b9f3ec"/>
+  <ellipse cx="80" cy="126" rx="10" ry="14" fill="#e8bd98"/>
+  <ellipse cx="176" cy="126" rx="10" ry="14" fill="#e8bd98"/>
+  <path d="M80 112C80 76 100 60 128 60C156 60 176 76 176 112V128C176 158 156 176 128 176C100 176 80 158 80 128Z" fill="#f2cfae"/>
+  <path d="M75 118C70 92 78 72 92 62L86 42L106 53L111 33L127 49L139 31L148 51L166 40L163 60C178 70 187 92 181 118C175 102 165 92 153 88C141 96 117 98 100 92C90 98 81 106 75 118Z" fill="#3b2a22"/>
+  <path d="M111 33L127 49L139 31L134 52Q124 56 116 50Z" fill="#6e4a33"/>
+  <path d="M97 106Q107 98 118 103M138 103Q149 98 159 106" fill="none" stroke="#2a2320" stroke-width="4.5" stroke-linecap="round"/>
+  <ellipse cx="110" cy="123" rx="5.5" ry="6.5" fill="#2a2320"/>
+  <ellipse cx="146" cy="123" rx="5.5" ry="6.5" fill="#2a2320"/>
+  <circle cx="112" cy="121" r="1.8" fill="#fff"/>
+  <circle cx="148" cy="121" r="1.8" fill="#fff"/>
+  <path d="M106 146H150Q147 170 128 170Q109 170 106 146Z" fill="#7a2c27"/>
+  <g clip-path="url(#mouth)">
+    <rect x="104" y="144" width="48" height="8" fill="#fff"/>
+    <ellipse cx="128" cy="172" rx="14" ry="8" fill="#d9655d"/>
+  </g>
+  <g transform="rotate(-18 160 146)">
+    <rect x="148" y="140" width="26" height="11" rx="5.5" fill="#f3d39b"/>
+    <rect x="157" y="140" width="8" height="11" fill="#e7bd77"/>
+  </g>
+</svg>

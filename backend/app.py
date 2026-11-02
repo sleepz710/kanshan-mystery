@@ -11,6 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from backend.engine import GameEngine, GameError
 from backend.llm import LLMError
+from backend.studio import mount_studio
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -191,6 +192,7 @@ def create_app(
     async def reveal(game_id: str) -> dict:
         return await engine.reveal(game_id)
 
+    mount_studio(application)
     static_dir = frontend_dir if frontend_dir is not None else PROJECT_ROOT / "frontend"
     static_files = StaticFiles(directory=static_dir, html=True, check_dir=False)
 
