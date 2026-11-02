@@ -56,6 +56,13 @@
 - 依赖:SPEC 第二版。
 - 进展:
   - 2026-11-02:按第一版 SPEC 写的旧版已开 PR,待按第二版升级。
+  - 2026-11-02:PPYC467 完成 `backend/engine.py`、`backend/app.py`、`backend/llm.py` 和模拟 `backend/agents.py`,补齐 `requirements.txt`、`.env.example` 与测试。代码在 `task/02-backend`,通过 PR 交付。
+  - 验证:完整测试 99 项通过;用实际启动的 uvicorn 服务验证新建、对话、出示证据、提交推理和 `/docs`。真实剧本在模拟模式下可收集全部 7 条线索、触发一次对质并完成判分。
+  - 运行:安装 `requirements.txt` 后执行 `uvicorn backend.app:app --reload`;默认 `LLM_MOCK=1`,无需密钥。打开 `/docs` 可联调,前端目录接入后根路径显示游戏。游戏存在当前服务进程的内存中,重启会清空,联调时使用单进程。
+  - 任务 03 接口:替换 `agents.reply(context, retry_leaked=None)`、`agents.check_reply(context, candidate)`、`agents.confront(contexts, event)` 三个异步函数;完整 context 字段见 `backend/agents.py`。真实 JSON 客户端在 `llm.complete_json`;当前三个角色函数在 `LLM_MOCK=0` 时返回 503,等待任务 03 接入。
+  - 引擎约定:普通回合按起点信任度判断可交线索,核查通过后应用信任变化;出示证据先计入该角色的已看证据。事件线索在对质结束后只发一次。结局 `score` 是正确题数、`total` 是题目数(当前 4 题);请求出错不会留下半个回合。
+  - 下一步:任务 03 实现真实角色和核查,核查时结合 `shown_clue`、`history` 处理对已出示证据的引用,避免仅凭静态 `knows` 误拦正常回答;任务 04 按 SPEC 6.2 联调,新建成功为 HTTP 201,回合成功为 200。头像由前端提供。
+  - 当前验证范围:模型请求均用模拟客户端测试,未调用真实模型;真实角色的记忆表现和语义泄密核查在任务 03 完成后一起试玩。
 
 ### 03 角色智能体、核查、对质
 
