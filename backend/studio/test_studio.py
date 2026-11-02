@@ -27,7 +27,7 @@ def mock_mode(monkeypatch):
 
 @pytest.fixture
 def client(tmp_path):
-    app = create_app()
+    app = create_app(generated_stories_dir=tmp_path / "stories")
     app.state.studio = StudioService(tmp_path / "stories")
     with TestClient(app) as client:
         yield client

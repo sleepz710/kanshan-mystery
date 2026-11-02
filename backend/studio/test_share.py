@@ -43,6 +43,29 @@ def test_cross_story_tokens_are_rejected(client):
     assert response.status_code == 403
 
 
+def test_generated_story_can_be_played_and_owner_sees_real_progress(client):
+    job = share_job(client)
+    created = client.post("/api/games", json={"story_id": job["story_id"]})
+    assert created.status_code == 201, created.text
+    game_id = created.json()["game_id"]
+    assert job["story_id"] in {s["id"] for s in client.get("/api/stories").json()}
+    collected = set()
+    for _ in range(4):
+        response = client.post(f"/api/games/{game_id}/talk", json={"character_id": "wang", "text": "你有什么线索？"})
+        assert response.status_code == 200, response.text
+        collected.update(c["id"] for c in response.json()["new_clues"])
+    assert "c1" in collected
+    for character, clue in [("lin", "c1"), ("chen", "c2")]:
+        response = client.post(f"/api/games/{game_id}/show", json={"character_id": character, "clue_id": clue})
+        assert response.status_code == 200, response.text
+    ended = client.post(f"/api/games/{game_id}/accuse", json={"answers": {"q1": "林青", "q2": "陈明", "q3": "王平"}})
+    assert ended.status_code == 200 and ended.json()["ending"]["id"] == "truth"
+    progress = client.get(f"/api/stories/{job['story_id']}/owner", headers={"X-Owner-Token": job["owner_token"]}).json()["games"]
+    assert progress[0]["turns"] == 6
+    assert progress[0]["exposed"] == ["l1", "l2"]
+    assert progress[0]["ending"] == "truth"
+
+
 def test_play_story_has_no_owner_access(client):
     chat = new_chat(client)
     result = client.post(f"/api/studio/chats/{chat}/messages", data={"text": "直接开始一个新案件"}).json()
@@ -79,11 +102,9 @@ def test_progress_is_per_story_and_excludes_conversations(client):
 def test_legacy_engine_progress_uses_user_turns(client):
     job = share_job(client)
     engine = client.app.state.engine
-    game = engine.new_game("lost-tuition")
-    state = engine.games[game["game_id"]]
-    state.story["id"] = job["story_id"]
-    state.histories["xiaolin"] = [{"role": "user", "content": "你好"}, {"role": "assistant", "content": "你好"}]
-    state.acquired_clues.add("c1")
+    engine.games["legacy-game"] = SimpleNamespace(
+        story={"id": job["story_id"]}, acquired_clues={"c1"},
+        histories={"xiaolin": [{"role": "user", "content": "你好"}, {"role": "assistant", "content": "你好"}]})
     response = client.get(f"/api/stories/{job['story_id']}/owner", headers={"X-Owner-Token": job["owner_token"]}).json()
     assert response["games"][0]["turns"] == 1
     assert response["games"][0]["exposed"] == []

@@ -187,7 +187,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 }
 ```
 
-`hint` 有值时是刘看山说的提示。`accuse` 之后,结局带 `retry: true` 的可以继续问话、再次提交。
+`hint` 有值时是刘看山说的提示。`accuse` 之后,结局带 `retry: true` 的可以继续问话、再次提交,保留已获线索、信任度和使用次数。`rating` 为字符串(S/A/B/C)。`reveal` 需要先提交过一次推理,返回汤底后结束本局。汤主问答只有成功返回合法答案才扣次数。
 
 生成剧场:
 
@@ -231,7 +231,9 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 5. 保底:谎话被拆穿,该角色信任度 +1;和一个角色累计聊满 4 回合,信任度至少为 1。信任度上限 3。
 6. 提示:连续 3 回合没有新线索,刘看山找 `hints` 里第一个 `done` 还没满足的阶段,先给 `vague`;同一阶段再卡 3 回合,给 `direct`。
 
-结局:`accuse` 按 6.2 判分,再按 `endings` 从上往下匹配。`when` 有两种写法:`{correct: [题号]}` 表示这些题都答对,`{chose: {题号: 选项}}` 表示选了这个选项;不写 `when` 的是兜底结局。评级由引擎算,参考答对题数、回合数、问刘看山的次数,具体规则由做结局页的人定。
+结局:`accuse` 按 6.2 判分,再按 `endings` 从上往下匹配。`when` 有两种写法:`{correct: [题号]}` 表示这些题都答对,`{chose: {题号: 选项}}` 表示选了这个选项;不写 `when` 的是兜底结局。
+
+评级由引擎返回字符串:全对、成功调查回合不超过 20、汤主问答不超过 2 次为 S;其余答对至少 80% 为 A、至少 60% 为 B、否则 C。调查回合只计算成功的 `talk` 和 `show`;失败请求不计数,问答单独计数,重新调查保留这些计数。前端按这个字段显示评级。
 
 ### 6.6 刘看山
 
@@ -287,7 +289,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 - 生成剧本使用服务端随机 `generated-<uuid>` 编号，写入 `data/stories/`；最多三轮“生成、审稿、检查”。仍不通过但格式完整时存 `checked: false`，只返回编号和不剧透的问题提示，由玩家决定开局；格式已损坏的模型输出返回失败，不发布不能读取的 YAML。
 - 自己玩时公开回复采用固定的流程文案，模型的剧情讨论只在 share 模式显示；详细检查问题保存在服务端，play 模式不回传涉及真相的编号或原文。
 - 聊天、任务、游戏进度目前保存在单服务进程内，重启清空；生成 YAML 和出题人令牌摘要落盘。关闭服务时取消未完成的生成任务，重新打开对话可重试。
-- 02 需按 6.2 从 `stories/` 与 `data/stories/` 加载及列举剧本。13 从 `app.state.engine.games` 读取匹配 `state.story.id` 的对局；进度字段以 `turns`、`acquired_clues`、`exposed`、`ending` 为约定，旧引擎回合数从 histories 计算，未接入的拆穿与结局显示为空。
+- 02 已按 6.2 从 `stories/` 与 `data/stories/` 加载及列举剧本；挂载剧场时复用引擎的 `generated_stories_dir`，自定义路径也保持一致。13 从 `app.state.engine.games` 读取匹配 `state.story.id` 的对局；进度字段以 `turns`、`acquired_clues`、`exposed`、`ending` 为约定，旧引擎回合数从 histories 计算，未接入的拆穿与结局显示为空。
 - 分享模式的 owner 接口必须验证 `X-Owner-Token`，令牌只在对应生成任务返回，磁盘只存 SHA-256 摘要。分享链接为 `/?story=<story_id>`，share 任务完成时额外返回 `share_url`；完整剧本仅从 owner 接口返回，进度接口与案件列表都不含剧本真相。13 在 `studio/service.py` 的原子发布阶段接入 `share.py`，在剧场路由挂载处注册 owner 路由；本轮只实现 13 的后端，页面由前端任务对接。
 
 ## 7. 技术栈
@@ -315,6 +317,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
   ```
 
 - DeepSeek 默认开思考模式。演员的请求要加 `extra_body={"thinking": {"type": "disabled"}}`;思考模式下 `temperature` 不生效。OpenAI 不认这个参数,`llm.py` 按接口地址决定加不加。细节以 [DeepSeek 文档](https://api-docs.deepseek.com/guides/thinking_mode/) 为准。旧模型名 `deepseek-chat`、`deepseek-reasoner` 按官方公告 2026-07-24 下线,不要再用。
+- DeepSeek 演员请求使用 `temperature=0`,优先保证事实与结构稳定;编剧思考模式和其他服务不附加这个参数。
 - 运行:`pip install -r requirements.txt`,`uvicorn backend.app:app --reload`,打开 http://localhost:8000。
 - 部署:部署到公网,提交体验链接,平台见 `docs/STATUS.md`。服务器上的 key 只放环境变量;体验版加访问口令,或按 IP 限制每天开局和生成的次数,防止 key 被刷。部署和更新步骤写进 README。
 
