@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="看山">
+  <path d="M12 9.5Q60 6.5 108.5 10.5Q112 60 109.5 108.5Q60 112.5 11 109.5Q7.5 60 12 9.5Z" fill="#c8372d"/>
+  <g fill="none" stroke="#fbf3e6" stroke-width="7.5" stroke-linecap="square" stroke-linejoin="miter">
+    <!-- 看 -->
+    <path d="M50 20L34 26"/>
+    <path d="M25 34H53"/>
+    <path d="M28 44H50"/>
+    <path d="M19 55H58"/>
+    <path d="M39 27C38.5 44 34 60 19 76" stroke-linecap="butt"/>
+    <path d="M35 63H56V99H35Z"/>
+    <path d="M35 75H56M35 87H56"/>
+    <!-- 山 -->
+    <path d="M84.5 21V97"/>
+    <path d="M69 48V97H100V48"/>
+  </g>
+</svg>

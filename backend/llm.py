@@ -16,6 +16,7 @@ _ENV_FILE = Path(__file__).resolve().parents[1] / ".env"
 _DEFAULT_BASE_URL = "https://api.deepseek.com"
 _DEFAULT_MODELS = {"actor": "deepseek-flash", "writer": "deepseek-v4-pro"}
 _DEFAULT_MAX_TOKENS = {"actor": 1024, "writer": 8192}
+_JSON_REPAIR_INSTRUCTION = "只返回合法 JSON 对象，字符串正确转义，不要 Markdown 或解释。"
 
 
 class LLMError(RuntimeError):
@@ -95,6 +96,28 @@ def _reject_non_json_number(value: str) -> None:
     raise ValueError("JSON 不支持的数值：" + value)
 
 
+class _JSONFormatError(LLMError):
+    """只对可修复的回复格式错误触发一次应用层重试。"""
+
+
+def _decode_completion(completion) -> dict:
+    if not completion.choices:
+        raise LLMError("模型没有返回回复内容。")
+    choice = completion.choices[0]
+    if choice.finish_reason == "length":
+        raise LLMError("模型回复超过长度限制，请缩短输入后重试。")
+    content = choice.message.content
+    if not isinstance(content, str) or not content.strip():
+        raise _JSONFormatError("模型没有返回回复内容。")
+    try:
+        result = json.loads(content, parse_constant=_reject_non_json_number)
+    except (json.JSONDecodeError, ValueError) as exc:
+        raise _JSONFormatError("模型没有返回有效的 JSON，请重试。") from exc
+    if not isinstance(result, dict):
+        raise _JSONFormatError("模型返回的 JSON 必须是对象。")
+    return result
+
+
 async def complete_json(
     messages: list[dict],
     *,
@@ -107,7 +130,8 @@ async def complete_json(
     purpose="actor" 用于角色、核查、对质和汤主问答，默认 1024 tokens；
     purpose="writer" 用于编剧与审稿，默认 8192 tokens。调用方可覆盖 max_tokens。
     DeepSeek 官方接口分别关闭、开启思考模式；其他兼容接口不带专属参数。
-    messages 中必须明确要求模型输出 JSON。单次请求超时 30 秒，最多重试一次。
+    messages 中必须明确要求模型输出 JSON。单次请求超时 30 秒，SDK 最多重试一次。
+    格式错误会追加通用 JSON 说明后重发一次，不回灌无效回复；网络与截断错误直接返回。
     模拟模式只返回 mock_response 的副本，不创建模型客户端。
     """
 
@@ -125,7 +149,7 @@ async def complete_json(
     base_url, api_key, model = _real_settings(purpose)
     request = {
         "model": model,
-        "messages": messages,
+        "messages": deepcopy(messages),
         "response_format": {"type": "json_object"},
         "max_tokens": token_limit,
     }
@@ -143,6 +167,17 @@ async def complete_json(
             max_retries=1,
         ) as client:
             completion = await client.chat.completions.create(**request)
+            try:
+                return _decode_completion(completion)
+            except _JSONFormatError:
+                request["messages"] = [
+                    *deepcopy(messages),
+                    {"role": "user", "content": _JSON_REPAIR_INSTRUCTION},
+                ]
+                completion = await client.chat.completions.create(**request)
+                return _decode_completion(completion)
+    except _JSONFormatError as exc:
+        raise LLMError(exc.message, status_code=exc.status_code) from exc
     except APITimeoutError as exc:
         raise LLMError("模型服务响应超时，请稍后重试。", status_code=504) from exc
     except APIConnectionError as exc:
@@ -150,18 +185,3 @@ async def complete_json(
     except APIError as exc:
         raise LLMError("模型服务请求失败，请检查模型配置后重试。") from exc
 
-    if not completion.choices:
-        raise LLMError("模型没有返回回复内容。")
-    choice = completion.choices[0]
-    if choice.finish_reason == "length":
-        raise LLMError("模型回复超过长度限制，请缩短输入后重试。")
-    content = choice.message.content
-    if not isinstance(content, str) or not content.strip():
-        raise LLMError("模型没有返回回复内容。")
-    try:
-        result = json.loads(content, parse_constant=_reject_non_json_number)
-    except (json.JSONDecodeError, ValueError) as exc:
-        raise LLMError("模型没有返回有效的 JSON，请重试。") from exc
-    if not isinstance(result, dict):
-        raise LLMError("模型返回的 JSON 必须是对象。")
-    return result

@@ -1,0 +1,7 @@
+﻿stage,mode,story_id,source,status,turns,ending_id,termination,reasons,raw_sha256
+initial,live,lost-tuition,official,error,7,,model_or_data_error,['unspecified'],0de0e062051e09cf75bf7196e1a8473d294bfbf8346826720e0d161ea8d20884
+diagnostic,live,lost-tuition,official,error,7,,model_or_data_error,['unspecified'],8e9b0756b1e0a5256f1f127d84defd5ad651a5b0a93c1d657d967c2a63143ee9
+json-recovery,live,lost-tuition,official,error,4,,model_or_data_error,['invalid_json'],355270a3e0dd7dde2691b2fe75b4023c5ee2425e67455b9124392941bf1c3968
+guard-diagnostic,live,lost-tuition,official,error,1,,engine_error,['guard_rejected'],7a74ec5310fc93850dc7cf01dfb98976018167bda8abec521f11dc28ef860a8f
+trace,live,lost-tuition,official,error,8,,model_or_data_error,['invalid_json'],67f844a96747260238868782275ce0bffd9a0a2f9f0dcac091bd4a76e19f8b62
+strict-player,live,lost-tuition,official,success,11,truth,ending,[],00fc69af9a4da0986ad7135f38a25aa90f3172f69a84996526cc2ee610d6c405
