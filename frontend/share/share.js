@@ -13,6 +13,7 @@
   let games = [];
   let refreshedAt = 0;
   let refreshing = false;
+  let refreshError = '';
   let timer = null;
   let progressBox = null;
   // 剧本里按编号查人物、事实、线索、谎话、事件、结局
@@ -57,7 +58,7 @@
       }
     }
     if (!response.ok) throw new ApiError(response.status, errorMessage(response.status, data));
-    if (!data || typeof data.story !== 'object' || !Array.isArray(data.games)) {
+    if (!data || !data.story || typeof data.story !== 'object' || Array.isArray(data.story) || !Array.isArray(data.games)) {
       throw new ApiError(response.status, '服务返回的内容无法读取，请重试。');
     }
     return data;
@@ -108,7 +109,7 @@
       else if (key === 'chose') for (const [q, option] of Object.entries(value)) parts.push(`${q} 选「${option}」`);
       else parts.push(`${key}: ${JSON.stringify(value)}`);
     }
-    return parts.join('，并且');
+    return parts.join('，并且') || '无额外条件';
   }
 
   // ---------- 页面骨架 ----------
@@ -276,7 +277,9 @@
         h('span', { class: 'count' }, `${games.length} 局`),
         h('span', { class: 'updated' }, refreshedAt ? `${fmtTime(refreshedAt)} 更新，每 20 秒自动刷新` : ''),
         refresh),
+      ...(refreshError ? [h('p', { class: 'refresh-error', role: 'status' }, icon('alert'), refreshError)] : []),
       list);
+    progressBox.setAttribute('aria-busy', String(refreshing));
   }
 
   async function refreshGames(manual) {
@@ -292,6 +295,7 @@
       const data = await fetchOwner(token);
       games = data.games;
       refreshedAt = Date.now();
+      refreshError = '';
       if (manual) toast('进度已更新。', 'success', 1800);
     } catch (error) {
       if (!(error instanceof ApiError)) throw error;
@@ -301,6 +305,7 @@
         return;
       }
       // 网络或服务暂时出错：保留上次的进度，下一轮再试
+      refreshError = `${error.message}当前显示上次成功读取的进度，稍后会自动重试。`;
       if (manual) toast(error.message, 'error');
     }
     refreshing = false;
@@ -370,7 +375,7 @@
     return section('s-clues', '线索', clues.length, h('div', { class: 'cards' }, clues.map((clue) => h('article', { class: 'card clue' },
       h('h3', null, refChip(clue.id), tidy(clue.title)),
       h('p', null, tidy(clue.content)),
-      h('small', { class: 'cond' }, `由${clue.holder ? personName(clue.holder) : '对质'}交出${clue.requires ? `，条件：${condText(clue.requires)}` : '，问到就给'}`)))));
+      h('small', { class: 'cond' }, `由${clue.holder ? personName(clue.holder) : '对质'}交出${Object.keys(clue.requires || {}).length ? `，条件：${condText(clue.requires)}` : '，问到就给'}`)))));
   }
 
   function eventsBlock() {
@@ -413,7 +418,7 @@
     const endings = (story.ending && story.ending.endings) || [];
     return section('s-endings', '结局', endings.length, h('div', { class: 'cards' }, endings.map((ending) => h('article', { class: 'card' },
       h('h3', null, refChip(ending.id), tidy(ending.title), ending.retry ? h('span', { class: 'tag tag-red' }, '可重新调查') : null),
-      h('small', { class: 'cond' }, ending.when ? `触发：${condText(ending.when)}` : '触发：前面的结局都不满足时'),
+      h('small', { class: 'cond' }, Object.keys(ending.when || {}).length ? `触发：${condText(ending.when)}` : '触发：前面的结局都不满足时'),
       h('p', null, tidy(ending.text || ''))))));
   }
 
@@ -462,6 +467,7 @@
       story = data.story;
       games = data.games;
       refreshedAt = Date.now();
+      refreshError = '';
     } catch (error) {
       if (!(error instanceof ApiError)) throw error;
       showError(error);
