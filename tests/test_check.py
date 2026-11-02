@@ -71,6 +71,15 @@ def test_event_can_unlock_clue_without_holder_condition():
     assert checker.check_structure(story)["ok"]
 
 
+def test_event_reward_cannot_be_obtained_before_its_event():
+    story = sample_story()
+    story["clues"][2]["requires"] = {}
+    story["events"][0]["when"] = {"has": "c3"}
+    result = checker.check_structure(story)
+    assert not result["ok"]
+    assert any("c3 拿不到" in p for p in result["problems"])
+
+
 @pytest.mark.parametrize("mutation, fragment", [
     (lambda s: s["characters"][0]["lies"][0].update(admit="f2"), "knows"),
     (lambda s: s["characters"][1]["secrets"][0].update(fact="f1"), "knows"),

@@ -16,7 +16,7 @@ from backend import llm
 
 
 Text = Annotated[str, Field(min_length=1, max_length=30000)]
-Id = Annotated[str, Field(pattern=r"^[a-z0-9][a-z0-9- _]*$", min_length=1, max_length=80)]
+Id = Annotated[str, Field(pattern=r"^[a-z0-9][a-z0-9_-]*$", min_length=1, max_length=80)]
 Condition = dict[str, str | int]
 
 
@@ -209,6 +209,7 @@ def _references(story: dict) -> list[str]:
 def _reachability(story: dict) -> list[str]:
     # 所有条件均为单调条件；将可取得证据出示给所有角色，反复闭包即覆盖所有可能路径。
     acquired, exposed, happened = set(), set(), set()
+    event_clues = {clue for event in story["events"] for clue in event["unlock"]}
 
     def satisfied(condition):
         return all(
@@ -220,7 +221,7 @@ def _reachability(story: dict) -> list[str]:
     while True:
         before = (len(acquired), len(exposed), len(happened))
         for clue in story["clues"]:
-            if satisfied(clue["requires"]):
+            if clue["id"] not in event_clues and satisfied(clue["requires"]):
                 acquired.add(clue["id"])
         for char in story["characters"]:
             for lie in char["lies"]:
