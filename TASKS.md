@@ -125,7 +125,8 @@
 - 进展:
   - 2026-11-02:Codex 按用户「没有服务器，先本地」的要求完成本地部署交付，分支 `task/12-deploy`。`deploy/gateway.py` 统一用体验账号/口令保护页面、文档和全部 API；`local.ps1` 提供 Windows 后台启动、状态、停止、一条命令更新（拉当前上游、安装依赖、pytest、重启）；`smoke.py` 验证口令、首页和招牌案件开局。README 已写本地、手机局域网和 Linux 公网部署步骤，预备了 systemd、Caddy HTTPS 和 Linux 更新脚本。
   - 本地配置：根目录已创建被 Git 忽略的 `.env`，`LLM_MOCK=1`、账号 `judge`、随机口令见 `DEPLOY_PASSWORD`。服务仅监听 `http://127.0.0.1:8000`，文档在 `/docs`；日志与 PID 在 `.cache/deploy/`。Docker Desktop 的 Secrets Engine socket 初始化失败，本次改用 Python 直接部署。
-  - 验证：完整 `pytest` 113 项通过（含 14 项部署口令测试）；实际服务完成未认证请求拦截、认证后首页/文档和 POST 开局；Windows 启动、状态、停止进程树与端口释放已验证；PowerShell、Linux 更新脚本语法通过。
+  - 验证：完整 `pytest` 113 项通过（含 14 项部署口令测试）；实际服务完成未认证请求拦截、认证后首页/文档和 POST 开局；Windows 启动、状态、停止进程树与端口释放已验证；一条命令更新已实测完成拉取、113 项测试和重启；PowerShell、Linux 更新脚本语法通过。
+  - 交付：代码提交 `57bf015` 已推送到 `task/12-deploy`。GitHub 插件创建 PR 返回 404，手动创建入口：https://github.com/sleepz710/kanshan-mystery/pull/new/task/12-deploy 。
   - 下一步：02/04/06/08 合入后更新并验收完整游戏、生成剧场；提供公网服务器 SSH 和域名后安装服务、配置真实模型，再用电脑和手机流量验收 HTTPS 体验链接。
   - 卡点：暂无服务器与域名，尚无公网体验链接；当前 main 无游戏前端及生成剧场，手机和生成剧场未实机验收。systemd/Caddy 配置尚未在目标服务器运行。
 
