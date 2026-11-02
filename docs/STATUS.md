@@ -25,6 +25,7 @@
 - 本轮分工:游戏后端按 02 → 03 → 05 → 10 推进;先保持正式剧本不变。评级字段及计数口径已补全到 SPEC 6.2、6.5。
 - 游戏前端分 `index.html`、`game.html`、`ending.html` 三页;公共样式 `frontend/css/base.css` 和脚本 `frontend/js/ui.js`、`api.js`、`store.js` 供生成剧场、出题页复用,保持同一套视觉。对局记录存在浏览器 localStorage。
 - 角色头像放 `frontend/assets/avatars/`,文件名取剧本的 `avatar` 字段;文件不存在时前端显示名字首字,生成的剧本不用提供头像图片。看山徽标是 `frontend/assets/logo.svg`。
+- 生成剧场页面是 `/studio/`,`/studio/?mode=share` 直接进出题模式。出题模式生成完,前端把 `owner_token` 存在 localStorage `kanshan:owner:<story_id>`;出题人页面地址为 `/share/?story=<story_id>`(任务 13 的 `frontend/share/`),从这个键读令牌。
 
 ## 待决定
 
@@ -71,3 +72,4 @@
 - 2026-11-02:任务 11 提交材料第一版位于 `docs/submission/`，已备作品信息、海报、约 3 分钟视频录制稿、字幕与 B 站发布文案，并接入任务 10 招牌案实测；README 已补直接运行步骤。正式视频等待前端、生成与分享合入及 09 联调，生成案件批量数据和团队信息待补。详细交接见 TASKS 11。
 - 2026-11-02:Claude Code 完成 04 游戏前端:首页、游戏页、结局页接通第二版接口,附看山徽标和四个角色头像;模拟模式下验证了拿线索、拆穿、对质、提示、问答、结案和揭晓汤底,电脑和手机尺寸都看过。
 - 2026-11-02:改动任务 02 的 `backend/app.py`(分支 `fix/static-no-cache`):前端静态文件响应加 `Cache-Control: no-cache`,浏览器每次用 ETag 向服务器确认,部署更新后不再出现新 HTML 配旧 JS;`/api/` 响应不变。来源是 TASKS 04 已知问题,本地与 `deploy/gateway.py` 部署同时生效。
+- 2026-11-02:Claude Code 完成 08 生成剧场前端 `/studio/`:聊天式输入、上传 txt/md、贴网址、不剧透的生成进度、案件卡片开局,出题模式给分享链接并在浏览器保存 owner_token;定下出题人页面地址和令牌的存放键(见「已确定」),出题人页面待 13 实现。

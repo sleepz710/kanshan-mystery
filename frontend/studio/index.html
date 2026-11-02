@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>新建剧场 · 看山谜案馆</title>
+  <meta name="description" content="把海龟汤、小说片段、网址或一句想法交给编剧，改编成一局新的推理剧场。">
+  <meta name="theme-color" content="#101217">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/studio/studio.css">
+  <script src="/js/ui.js" defer></script>
+  <script src="/js/api.js" defer></script>
+  <script src="/js/store.js" defer></script>
+  <script src="/studio/studio.js" defer></script>
+</head>
+<body class="page-studio">
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="/" title="回到首页"><img src="/assets/logo.svg" alt="看山谜案馆"><b>看山谜案馆</b></a>
+      <div class="page-name">
+        <strong>新建剧场</strong>
+        <span class="tag" id="mode-tag" hidden></span>
+      </div>
+      <button class="btn btn-ghost btn-sm" type="button" id="btn-new"><i data-icon="plus"></i><span>新对话</span></button>
+    </header>
+
+    <main class="studio" id="studio">
+      <div class="thread" id="thread">
+        <div class="column">
+          <section class="welcome">
+            <span class="writer-seal" aria-hidden="true">编</span>
+            <h1>新建剧场</h1>
+            <p class="welcome-text">把一碗海龟汤、一段小说、一个网址，或者一句「我想玩一个发生在……的案子」交给编剧。编剧会安排人物、证据和谎话，一两分钟后开一局新的。</p>
+            <div class="modes" id="modes" role="radiogroup" aria-label="玩法">
+              <button type="button" role="radio" data-mode="play" aria-checked="true">
+                <b><i data-icon="eye"></i>自己玩</b>
+                <small>编剧保留谜底，生成完直接开局</small>
+              </button>
+              <button type="button" role="radio" data-mode="share" aria-checked="false">
+                <b><i data-icon="share"></i>出题给朋友</b>
+                <small>可以和编剧讨论剧情，生成后拿到分享链接</small>
+              </button>
+            </div>
+            <p class="modes-lock" id="modes-lock" hidden>对话开始后玩法不能再换，要换请点「新对话」。</p>
+          </section>
+          <div class="messages" id="messages" role="log" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <div class="dock">
+        <div class="column">
+          <div class="suggest" id="suggest"></div>
+          <form class="composer" id="composer" autocomplete="off">
+            <ul class="attachments" id="attachments" aria-label="待发送的附件"></ul>
+            <div class="composer-row">
+              <label class="btn btn-ghost btn-icon attach-btn" for="file-input" title="上传 txt 或 md 文件"><i data-icon="file"></i><span class="sr-only">上传文件</span></label>
+              <input class="sr-only" type="file" id="file-input" accept=".txt,.md,text/plain,text/markdown" multiple>
+              <label class="sr-only" for="say">发给编剧的话</label>
+              <textarea id="say" rows="1" maxlength="20000" enterkeyhint="send" placeholder="海龟汤、小说、网址或一句想法"></textarea>
+              <button class="btn btn-primary btn-icon" id="btn-send" aria-label="发送"><i data-icon="send"></i></button>
+            </div>
+            <p class="composer-note" id="composer-note"></p>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
