@@ -180,6 +180,24 @@ def test_frontend_is_served_without_hiding_api(tmp_path, monkeypatch):
         assert test_client.get("/api/studio/integration-probe").json() == {"ok": True}
 
 
+def test_frontend_files_are_revalidated_on_every_load(tmp_path):
+    (tmp_path / "index.html").write_text("<h1>看山谜案馆</h1>", encoding="utf-8")
+    (tmp_path / "js").mkdir()
+    (tmp_path / "js" / "game.js").write_text("console.log('看山');", encoding="utf-8")
+
+    with TestClient(create_app(frontend_dir=tmp_path)) as test_client:
+        for path in ["/", "/js/game.js"]:
+            response = test_client.get(path)
+            assert response.status_code == 200
+            assert response.headers["cache-control"] == "no-cache"
+            revalidated = test_client.get(path, headers={"If-None-Match": response.headers["etag"]})
+            assert revalidated.status_code == 304
+            assert revalidated.headers["cache-control"] == "no-cache"
+        api = test_client.get("/api/stories")
+        assert api.status_code == 200
+        assert "cache-control" not in api.headers
+
+
 def test_story_listing_is_public_only(client):
     response = client.get("/api/stories")
     assert response.status_code == 200
