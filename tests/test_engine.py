@@ -11,7 +11,7 @@ from backend import agents
 from backend.engine import GameEngine, GameError
 
 
-STORIES = Path(__file__).resolve().parents[1] / "stories"
+STORIES = Path(__file__).resolve().parent / "fixtures" / "v1"
 
 
 @pytest.fixture
@@ -360,8 +360,11 @@ async def test_complete_answers_are_scored_in_code_and_finish_game(engine):
     result = await engine.accuse(game_id, {"q1": "刷单返利诈骗", "q2": "周明", "q3": "阿凯", "q4": "卖卡收款凭据"})
     assert result["score"] == 3 and result["total"] == 4
     assert result["results"] == {"q1": True, "q2": True, "q3": True, "q4": False}
-    assert result["truth"] == engine.games[game_id].story["ending"]["truth"]
-    assert len(result["lessons"]) == 3
+    assert "truth" not in result and "lessons" not in result
+    assert result["ending"]["retry"] is False
+    revealed = await engine.reveal(game_id)
+    assert revealed["truth"] == engine.games[game_id].story["ending"]["truth"]
+    assert len(revealed["lessons"]) == 3
     for operation in [lambda: engine.talk(game_id, "xiaolin", "继续"), lambda: engine.show(game_id, "xiaolin", "c1")]:
         with pytest.raises(GameError) as error:
             await operation()

@@ -41,6 +41,12 @@ async def reply(context: dict, *, retry_leaked: list[str] | None = None) -> dict
 
     _require_mock_mode()
     available = context["available_clues"]
+    if context.get("active_lies"):
+        return {
+            "reply": context["active_lies"][0]["claim"],
+            "reveal": [available[0]["id"]] if available else [],
+            "trust_delta": 1,
+        }
     if available:
         clue = available[0]
         return {"reply": clue["content"], "reveal": [clue["id"]], "trust_delta": 1}
@@ -55,7 +61,7 @@ async def check_reply(context: dict, candidate: dict) -> dict:
     """模拟核查固定通过；语义核查由任务 03 实现。"""
 
     _require_mock_mode()
-    return {"ok": True, "leaked": []}
+    return {"ok": True, "leaked": [], "contradiction": ""}
 
 
 async def confront(contexts: list[dict], event: dict) -> list[dict]:
