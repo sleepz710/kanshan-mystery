@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>结案报告 · 看山谜案馆</title>
+  <meta name="theme-color" content="#101217">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/ending.css">
+  <script src="/js/ui.js" defer></script>
+  <script src="/js/api.js" defer></script>
+  <script src="/js/store.js" defer></script>
+  <script src="/js/ending.js" defer></script>
+</head>
+<body class="page-ending">
+  <header class="ending-top">
+    <a class="brand" href="/"><img src="/assets/logo.svg" alt=""><b>看山谜案馆</b></a>
+    <a class="btn btn-ghost btn-sm" id="back-game" href="/game.html"><i data-icon="back"></i>回到调查</a>
+  </header>
+
+  <main class="ending">
+    <article class="report paper" id="report">
+      <div class="report-head">
+        <span class="report-label">结案报告</span>
+        <p class="report-case" id="case-title"></p>
+        <h1 id="ending-title"></h1>
+      </div>
+      <div class="rating" id="rating" aria-live="polite"></div>
+      <div class="report-score" id="score"></div>
+      <p class="report-text" id="ending-text"></p>
+      <h2 class="report-sub">你的推理</h2>
+      <ol class="answers" id="answers"></ol>
+      <p class="rating-rule">评级：全部答对、调查不超过 20 回合、问刘看山不超过 2 次为 S；其余答对至少八成为 A，至少六成为 B，再往下为 C。</p>
+    </article>
+
+    <div class="ending-actions" id="actions"></div>
+
+    <section class="truth" id="truth" hidden aria-labelledby="truth-title">
+      <div class="truth-paper paper">
+        <span class="report-label" id="truth-title">汤底</span>
+        <p class="truth-text" id="truth-text"></p>
+      </div>
+      <div class="lessons-box" id="lessons-box">
+        <h2><i data-icon="shield"></i>反诈知识点</h2>
+        <ol class="lessons" id="lessons"></ol>
+      </div>
+      <div class="ending-actions" id="after-actions"></div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- 周明：隔壁宿舍大二，话少、紧张。长刘海、眼神躲闪、冒汗、连帽衫 -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="36%" r="72%">
+      <stop offset="0" stop-color="#93bca3"/>
+      <stop offset="1" stop-color="#5a8670"/>
+    </radialGradient>
+  </defs>
+  <rect width="256" height="256" fill="url(#bg)"/>
+  <path d="M34 256C36 212 70 186 128 186C186 186 220 212 222 256Z" fill="#6f7684"/>
+  <path d="M82 192C92 176 108 170 128 170C148 170 164 176 174 192C160 210 96 210 82 192Z" fill="#5c6370"/>
+  <path d="M112 200V236M144 200V236" stroke="#d9d4ca" stroke-width="4" stroke-linecap="round"/>
+  <path d="M110 158H146V188C146 197 138 202 128 202C118 202 110 197 110 188Z" fill="#e2b18b"/>
+  <ellipse cx="80" cy="128" rx="10" ry="14" fill="#e8bd98"/>
+  <ellipse cx="176" cy="128" rx="10" ry="14" fill="#e8bd98"/>
+  <path d="M80 112C80 76 100 60 128 60C156 60 176 76 176 112V128C176 158 156 176 128 176C100 176 80 158 80 128Z" fill="#f2cfae"/>
+  <ellipse cx="110" cy="130" rx="9.5" ry="7" fill="#fff"/>
+  <ellipse cx="146" cy="130" rx="9.5" ry="7" fill="#fff"/>
+  <circle cx="104.5" cy="131" r="4.8" fill="#2a2320"/>
+  <circle cx="140.5" cy="131" r="4.8" fill="#2a2320"/>
+  <path d="M100 123Q110 119 120 123M136 123Q146 119 156 123" fill="none" stroke="#2a2320" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M74 126C67 82 94 51 130 51C166 51 191 82 182 128C179 118 175 110 171 106L166 119L157 103L147 117L137 101L125 117L113 101L103 116L94 103L87 118C82 113 78 118 74 126Z" fill="#2a2320"/>
+  <path d="M116 156Q122 151 128 156Q134 161 140 156" fill="none" stroke="#a5675a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M183 92C176 103 174 110 178 115C182 120 189 116 189 109C189 103 186 98 183 92Z" fill="#c9ecfb" stroke="#8cc6e2" stroke-width="2.5"/>
+</svg>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>看山谜案馆 · AI 推理剧场</title>
+  <meta name="description" content="和各怀秘密的 AI 角色对话、出示证据、拆穿谎话，查出真相。">
+  <meta name="theme-color" content="#101217">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <script src="/js/ui.js" defer></script>
+  <script src="/js/api.js" defer></script>
+  <script src="/js/store.js" defer></script>
+  <script src="/js/home.js" defer></script>
+</head>
+<body class="page-home">
+  <header class="home-top">
+    <a class="brand" href="/"><img src="/assets/logo.svg" alt=""><b>看山谜案馆</b></a>
+    <a class="btn btn-ghost btn-sm" href="/studio/"><i data-icon="plus"></i>新建剧场</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-sky" aria-hidden="true">
+        <div class="moon"></div>
+        <svg class="mountains" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#36405a"/><stop offset="1" stop-color="#1b2030"/>
+            </linearGradient>
+            <linearGradient id="mid" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2a3246"/><stop offset="1" stop-color="#151922"/>
+            </linearGradient>
+            <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#c9d6ee" stop-opacity="0"/>
+              <stop offset=".55" stop-color="#c9d6ee" stop-opacity=".09"/>
+              <stop offset="1" stop-color="#c9d6ee" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="near" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#191d27"/><stop offset="1" stop-color="#101217"/>
+            </linearGradient>
+          </defs>
+          <path fill="url(#far)" opacity=".7" d="M0 250C90 232 150 196 230 204C310 212 352 160 430 150C508 140 566 196 646 188C726 180 788 126 866 116C944 106 1004 160 1084 170C1164 180 1226 132 1306 140C1374 147 1414 176 1440 184V420H0Z"/>
+          <rect y="170" width="1440" height="140" fill="url(#mist)"/>
+          <path fill="url(#mid)" d="M0 330C150 304 296 286 396 246C440 228 462 204 486 200C508 204 530 226 566 244C628 272 664 206 702 150C716 130 726 120 736 120C746 120 756 130 770 150C808 206 846 272 906 244C942 226 964 204 986 200C1010 204 1032 228 1076 246C1176 286 1298 304 1440 330V420H0Z"/>
+          <rect y="270" width="1440" height="110" fill="url(#mist)"/>
+          <path fill="url(#near)" d="M0 362C130 344 230 318 352 326C474 334 532 306 652 312C772 318 850 354 972 348C1094 342 1170 316 1290 320C1366 323 1412 334 1440 338V420H0Z"/>
+        </svg>
+      </div>
+      <div class="hero-inner">
+        <img class="hero-seal" src="/assets/logo.svg" alt="看山徽标" width="88" height="88">
+        <h1>看山谜案馆</h1>
+        <p class="tagline">和各怀秘密的 AI 角色对话、出示证据、拆穿谎话，查出真相。</p>
+        <ol class="steps">
+          <li><i data-icon="chat"></i>问话</li>
+          <li><i data-icon="evidence"></i>出示证据</li>
+          <li><i data-icon="bolt"></i>拆穿谎话</li>
+          <li><i data-icon="gavel"></i>提交推理</li>
+        </ol>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" id="hero-start" disabled>开始调查招牌案件</button>
+          <a class="btn btn-ghost btn-lg" href="/studio/">新建剧场</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cases" aria-labelledby="cases-title">
+      <div class="section-head">
+        <h2 id="cases-title">案件</h2>
+        <span class="section-note">刘看山知道每一案的汤底，但只回答是或不是</span>
+      </div>
+      <div id="resume"></div>
+      <div class="case-grid" id="case-grid" aria-busy="true">
+        <div class="case-card skeleton featured"></div>
+        <div class="case-card skeleton"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="home-foot">
+    <img src="/assets/logo.svg" alt="" width="20" height="20">
+    <span>看山谜案馆 · AI 推理剧场</span>
+  </footer>
+
+  <div class="launch" id="launch" hidden>
+    <div class="launch-box">
+      <img src="/assets/logo.svg" alt="" width="72" height="72">
+      <p id="launch-text">正在布置现场……</p>
+    </div>
+  </div>
+</body>
+</html>
