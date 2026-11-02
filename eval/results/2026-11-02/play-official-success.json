@@ -1,0 +1,463 @@
+{
+  "report_version": 1,
+  "evaluation": "play",
+  "mode": "live",
+  "generated_at_utc": "2026-11-02T12:19:05.349477+00:00",
+  "sample_directories": {
+    "official": "只读使用队友已完成的 v2 案件",
+    "generated": "本轮无生成案件样本"
+  },
+  "max_turns": 40,
+  "max_invalid_actions": 3,
+  "player": "actor_model_public_view",
+  "success_rule": "只检查公开结果：ending.id == truth，或全题正确（score == total 且 total > 0）",
+  "failure_rule": "不可重试的非成功结局，或回合耗尽且仍是可重试结局记 failed；未提交过推理或模型超时记 timeout；接口与动作持续错误记 error",
+  "denominators": {
+    "success_rate": "success / runs；错误与超时保留在分母中",
+    "average_success_turns": "成功对局回合数之和 / success；无成功时为 null"
+  },
+  "records": [
+    {
+      "run": 1,
+      "source": "official",
+      "story_id": "lost-tuition",
+      "mode": "live",
+      "status": "success",
+      "turns": 11,
+      "invalid_actions": 0,
+      "ending": {
+        "id": "truth",
+        "title": "真相大白",
+        "text": "陈默在活动室里坐了很久，最后自己拨通了 110。周明和阿凯把手里的聊天记录、转账记录都交了出来， 小林带着一整条证据链去派出所做了笔录。三天后，楼层群里那个叫「鹿鸣兼职」的号注销了。",
+        "retry": false
+      },
+      "history": [
+        {
+          "turn": 1,
+          "action": {
+            "action": "talk",
+            "character_id": "xiaolin",
+            "text": "小林，能说说这两万元是怎么转出去的吗？从你收到什么消息、怎么操作开始讲。"
+          },
+          "result": {
+            "reply": "我……我一开始就是被他们骗了，一分钱没赚到。群里说做任务能返利，先让我做小单，后来客服说有个大额连单，要先垫两万，做完返两万四。我就信了，8月28号晚上九点四十把钱转过去了。转完想提现，客服又说账户冻结，让我再交三万才能解冻，我没敢再转。",
+            "hint": null,
+            "trust": {
+              "xiaolin": 0,
+              "akai": 0,
+              "zhouming": 0,
+              "chenmo": 0
+            },
+            "new_clues": [
+              {
+                "id": "c1",
+                "title": "刷单群聊天记录",
+                "content": "客服先派小额任务并返利；8 月 28 日又称「大额连单先垫两万，做完返两万四」。 小林转出两万元后申请提现，客服改口「账户冻结，再交三万才能解冻」。 8 月 29 日群聊解散，客服失联。"
+              },
+              {
+                "id": "c2",
+                "title": "两万元转账回单",
+                "content": "8 月 28 日 21:40，小林转出 20000 元，收款账户户名为周明，正是隔壁宿舍的学生。 小林说这是父母为他攒的学费。"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "turn": 2,
+          "action": {
+            "action": "talk",
+            "character_id": "zhouming",
+            "text": "周明，小林的两万元转进了你名下的银行卡。这张卡现在在哪里？你有没有把卡借给或卖给别人？"
+          },
+          "result": {
+            "reply": "那张卡早就丢了，谁在用我也不知道。小林转钱的事我没收到，你别问我这个。",
+            "hint": null,
+            "trust": {
+              "xiaolin": 0,
+              "akai": 0,
+              "zhouming": 0,
+              "chenmo": 0
+            },
+            "new_clues": [],
+            "events": []
+          }
+        },
+        {
+          "turn": 3,
+          "action": {
+            "action": "talk",
+            "character_id": "akai",
+            "text": "阿凯，小林是怎么进那个刷单群的？你之前有没有在群里看到过兼职广告，或者拉过小林进群？"
+          },
+          "result": {
+            "reply": "小林怎么进群的我还真没细问，反正就是兼职的事。我自己也就是随手转了个链接，什么好处都没拿。群里广告挺多的，具体哪条我记不清了。",
+            "hint": null,
+            "trust": {
+              "xiaolin": 0,
+              "akai": 0,
+              "zhouming": 0,
+              "chenmo": 0
+            },
+            "new_clues": [],
+            "events": []
+          }
+        },
+        {
+          "turn": 4,
+          "action": {
+            "action": "talk",
+            "character_id": "chenmo",
+            "text": "陈默学长，你是兼职互助群的群主。小林进的那个刷单群，和你的群有关系吗？群里有没有人发过刷单兼职的广告？"
+          },
+          "result": {
+            "reply": "刷单群的事我真不清楚，收卡、刷单这些我都没碰过。周明我也不太熟，就是楼里见过。不过你要说借钱的事，我这儿倒有他暑假找人借生活费的聊天截图，我早就觉得他不对劲。",
+            "hint": null,
+            "trust": {
+              "xiaolin": 0,
+              "akai": 0,
+              "zhouming": 0,
+              "chenmo": 0
+            },
+            "new_clues": [
+              {
+                "id": "c12",
+                "title": "周明暑假找人借钱的聊天截图",
+                "content": "周明暑假给楼里几名同学发消息借生活费，说游戏充值花多了。 陈默主动拿出这些截图：「回单上写的是周明，我早就觉得他不对劲。」"
+              }
+            ],
+            "events": []
+          }
+        },
+        {
+          "turn": 5,
+          "action": {
+            "action": "ask",
+            "question": "周明名下的银行卡是被陈默用小号「鹿鸣兼职」收走的吗？"
+          },
+          "result": {
+            "answer": "是",
+            "asks_left": 4
+          }
+        },
+        {
+          "turn": 6,
+          "action": {
+            "action": "talk",
+            "character_id": "zhouming",
+            "text": "陈默说你暑假到处借钱，还拿出聊天截图。你的银行卡到底是怎么到别人手里的？是不是有人用小号「鹿鸣兼职」联系你收卡？"
+          },
+          "result": {
+            "reply": "借钱的事……是我暑假乱花钱，生活费不够才找楼里几个人周转的，这个我认。但卡的事我还是那句话，早就丢了，具体怎么到别人手里我不清楚。",
+            "hint": null,
+            "trust": {
+              "xiaolin": 0,
+              "akai": 0,
+              "zhouming": 0,
+              "chenmo": 0
+            },
+            "new_clues": [],
+            "events": []
+          }
+        },
+        {
+          "turn": 7,
+          "action": {
+            "action": "ask",
+            "question": "阿凯转给小林的兼职链接，是陈默在兼职互助群里发的吗？"
+          },
+          "result": {
+            "answer": "不是",
+            "asks_left": 3
+          }
+        },
+        {
+          "turn": 8,
+          "action": {
+            "action": "ask",
+            "question": "阿凯转给小林的兼职链接，是陈默私下单独发给阿凯的吗？"
+          },
+          "result": {
+            "answer": "不是",
+            "asks_left": 2
+          }
+        },
+        {
+          "turn": 9,
+          "action": {
+            "action": "talk",
+            "character_id": "akai",
+            "text": "阿凯，你转给小林的兼职链接是从哪里看到的？是群里谁发的，还是别人私聊发给你的？你自己有没有在那个刷单群里垫过钱？"
+          },
+          "result": {
+            "reply": "链接就是群里看到的，谁发的我没留意，私聊倒是没有。垫钱的事……我就看看，没真往里投。",
+            "hint": null,
+            "trust": {
+              "xiaolin": 0,
+              "akai": 0,
+              "zhouming": 0,
+              "chenmo": 0
+            },
+            "new_clues": [],
+            "events": []
+          }
+        },
+        {
+          "turn": 10,
+          "action": {
+            "action": "ask",
+            "question": "阿凯在刷单群里垫过钱、也被骗了钱吗？"
+          },
+          "result": {
+            "answer": "是",
+            "asks_left": 1
+          }
+        },
+        {
+          "turn": 11,
+          "action": {
+            "action": "accuse",
+            "answers": {
+              "q1": "周明把卡卖了，卡在骗子手里收钱",
+              "q2": "陈默，用小号「鹿鸣兼职」收的",
+              "q3": "陈默在兼职群发广告，阿凯进群后拉了小林",
+              "q4": "被利用来拉人，自己也被骗了钱",
+              "q5": "想打听查到了哪一步，把怀疑引到周明身上"
+            }
+          },
+          "result": {
+            "score": 5,
+            "total": 5,
+            "results": {
+              "q1": true,
+              "q2": true,
+              "q3": true,
+              "q4": true,
+              "q5": true
+            },
+            "rating": "A",
+            "ending": {
+              "id": "truth",
+              "title": "真相大白",
+              "text": "陈默在活动室里坐了很久，最后自己拨通了 110。周明和阿凯把手里的聊天记录、转账记录都交了出来， 小林带着一整条证据链去派出所做了笔录。三天后，楼层群里那个叫「鹿鸣兼职」的号注销了。",
+              "retry": false
+            }
+          }
+        }
+      ],
+      "attempts": [
+        {
+          "turn": 1,
+          "action": {
+            "action": "talk",
+            "character_id": "xiaolin",
+            "text": "小林，能说说这两万元是怎么转出去的吗？从你收到什么消息、怎么操作开始讲。"
+          },
+          "status": "success"
+        },
+        {
+          "turn": 2,
+          "action": {
+            "action": "talk",
+            "character_id": "zhouming",
+            "text": "周明，小林的两万元转进了你名下的银行卡。这张卡现在在哪里？你有没有把卡借给或卖给别人？"
+          },
+          "status": "success"
+        },
+        {
+          "turn": 3,
+          "action": {
+            "action": "talk",
+            "character_id": "akai",
+            "text": "阿凯，小林是怎么进那个刷单群的？你之前有没有在群里看到过兼职广告，或者拉过小林进群？"
+          },
+          "status": "success"
+        },
+        {
+          "turn": 4,
+          "action": {
+            "action": "talk",
+            "character_id": "chenmo",
+            "text": "陈默学长，你是兼职互助群的群主。小林进的那个刷单群，和你的群有关系吗？群里有没有人发过刷单兼职的广告？"
+          },
+          "status": "success"
+        },
+        {
+          "turn": 5,
+          "action": {
+            "action": "ask",
+            "question": "周明名下的银行卡是被陈默用小号「鹿鸣兼职」收走的吗？"
+          },
+          "status": "success"
+        },
+        {
+          "turn": 6,
+          "action": {
+            "action": "talk",
+            "character_id": "zhouming",
+            "text": "陈默说你暑假到处借钱，还拿出聊天截图。你的银行卡到底是怎么到别人手里的？是不是有人用小号「鹿鸣兼职」联系你收卡？"
+          },
+          "status": "success"
+        },
+        {
+          "turn": 7,
+          "action": {
+            "action": "ask",
+            "question": "阿凯转给小林的兼职链接，是陈默在兼职互助群里发的吗？"
+          },
+          "status": "success"
+        },
+        {
+          "turn": 8,
+          "action": {
+            "action": "ask",
+            "question": "阿凯转给小林的兼职链接，是陈默私下单独发给阿凯的吗？"
+          },
+          "status": "success"
+        },
+        {
+          "turn": 9,
+          "action": {
+            "action": "talk",
+            "character_id": "akai",
+            "text": "阿凯，你转给小林的兼职链接是从哪里看到的？是群里谁发的，还是别人私聊发给你的？你自己有没有在那个刷单群里垫过钱？"
+          },
+          "status": "success"
+        },
+        {
+          "turn": 10,
+          "action": {
+            "action": "ask",
+            "question": "阿凯在刷单群里垫过钱、也被骗了钱吗？"
+          },
+          "status": "success"
+        },
+        {
+          "turn": 11,
+          "action": {
+            "action": "accuse",
+            "answers": {
+              "q1": "周明把卡卖了，卡在骗子手里收钱",
+              "q2": "陈默，用小号「鹿鸣兼职」收的",
+              "q3": "陈默在兼职群发广告，阿凯进群后拉了小林",
+              "q4": "被利用来拉人，自己也被骗了钱",
+              "q5": "想打听查到了哪一步，把怀疑引到周明身上"
+            }
+          },
+          "status": "success"
+        }
+      ],
+      "errors": [],
+      "termination": "ending"
+    }
+  ],
+  "rows": [
+    {
+      "mode": "live",
+      "story_id": "lost-tuition",
+      "source": "official",
+      "runs": 1,
+      "success": 1,
+      "failed": 0,
+      "error": 0,
+      "timeout": 0,
+      "success_rate": 1.0,
+      "average_success_turns": 11.0
+    }
+  ],
+  "summary": {
+    "runs": 1,
+    "success": 1,
+    "failed": 0,
+    "error": 0,
+    "timeout": 0,
+    "success_rate": 1.0,
+    "average_success_turns": 11.0
+  },
+  "sample_provenance": {
+    "repository": "sleepz710/kanshan-mystery",
+    "commit": "552a80e68f48baba23d0efffb61f20871329d196",
+    "path": "stories/lost-tuition.yaml"
+  },
+  "model_configuration": {
+    "player": "deepseek-flash",
+    "actor": "deepseek-flash",
+    "guard": "deepseek-flash",
+    "kanshan": "deepseek-flash",
+    "thinking": "disabled",
+    "temperature": 0
+  },
+  "previous_diagnostic_runs": [
+    {
+      "stage": "initial",
+      "mode": "live",
+      "story_id": "lost-tuition",
+      "source": "official",
+      "status": "error",
+      "turns": 7,
+      "ending_id": null,
+      "termination": "model_or_data_error",
+      "reasons": [
+        "unspecified"
+      ],
+      "raw_sha256": "0de0e062051e09cf75bf7196e1a8473d294bfbf8346826720e0d161ea8d20884"
+    },
+    {
+      "stage": "diagnostic",
+      "mode": "live",
+      "story_id": "lost-tuition",
+      "source": "official",
+      "status": "error",
+      "turns": 7,
+      "ending_id": null,
+      "termination": "model_or_data_error",
+      "reasons": [
+        "unspecified"
+      ],
+      "raw_sha256": "8e9b0756b1e0a5256f1f127d84defd5ad651a5b0a93c1d657d967c2a63143ee9"
+    },
+    {
+      "stage": "json-recovery",
+      "mode": "live",
+      "story_id": "lost-tuition",
+      "source": "official",
+      "status": "error",
+      "turns": 4,
+      "ending_id": null,
+      "termination": "model_or_data_error",
+      "reasons": [
+        "invalid_json"
+      ],
+      "raw_sha256": "355270a3e0dd7dde2691b2fe75b4023c5ee2425e67455b9124392941bf1c3968"
+    },
+    {
+      "stage": "guard-diagnostic",
+      "mode": "live",
+      "story_id": "lost-tuition",
+      "source": "official",
+      "status": "error",
+      "turns": 1,
+      "ending_id": null,
+      "termination": "engine_error",
+      "reasons": [
+        "guard_rejected"
+      ],
+      "raw_sha256": "7a74ec5310fc93850dc7cf01dfb98976018167bda8abec521f11dc28ef860a8f"
+    },
+    {
+      "stage": "trace",
+      "mode": "live",
+      "story_id": "lost-tuition",
+      "source": "official",
+      "status": "error",
+      "turns": 8,
+      "ending_id": null,
+      "termination": "model_or_data_error",
+      "reasons": [
+        "invalid_json"
+      ],
+      "raw_sha256": "67f844a96747260238868782275ce0bffd9a0a2f9f0dcac091bd4a76e19f8b62"
+    }
+  ],
+  "note": "当前提示版本的一局招牌案件验证；历史失败保留，生成案件批量评测等待06样本。"
+}
