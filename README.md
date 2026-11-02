@@ -1,6 +1,6 @@
-# My_agent
+# 看山谜案馆
 
-比赛「高级组」参赛项目:做一个 AI 智能体,主题在前四个可选主题里选一个,目前处于选题阶段。项目名定下来后替换这个标题。
+多智能体反诈推理游戏:玩家当调查员,和几个各有记忆、各知一部分真相的 AI 角色对话、出示证据,查清一桩刷单返利诈骗。比赛「高级组」参赛作品,主题 AI 陪伴交互,开发中。
 
 进度和待办见 [docs/STATUS.md](docs/STATUS.md)。
 
@@ -10,11 +10,12 @@
 |---|---|
 | `AGENTS.md` | 所有 AI 编程助手共用的规则(Codex 等工具会自动读取) |
 | `CLAUDE.md` | 让 Claude Code 读取 AGENTS.md |
-| `SPEC.md` | 产品与技术规格,选题后填写 |
+| `SPEC.md` | 范围、接口、技术栈 |
 | `TASKS.md` | 任务清单、认领和交接 |
 | `docs/STATUS.md` | 项目进度、已定和待定事项 |
 | `docs/assignment.md` | 比赛主题与评分标准 |
-| `docs/ideas.md` | 选题头脑风暴 |
+| `docs/ideas.md` | 选题过程记录 |
+| `docs/g-mystery-draft.md` | 多智能体设计草案 |
 | `docs/assets/` | 图片等素材 |
 
 ## 怎么一起干活
