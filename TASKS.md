@@ -203,6 +203,12 @@
   - 实机:实际启动 uvicorn，HTTP 验证 play/share 的附件上传、生成、轮询、owner 预览和拒绝未授权访问；旧招牌案件仍可创建。`.env.example` 已补两组模型配置，环境中未配置真实密钥。
   - 对接:任务 08/前端实现 `frontend/share/` 出题人页面，浏览器保管 owner_token，并携带 `X-Owner-Token` 读取 owner 接口；任务 04 处理 `/?story=` 开局。当前主分支引擎尚未升级，v2 的拆穿/结局进度通过约定状态对象测试，待 02 合并实局验证；部署由 12 完成。
   - 2026-11-02:以 `maple579` 身份重提并完成 v2 联调；新增真实 GameEngine 的集成测试，验证分享案件开局后 owner 能读取 6 回合、两次拆穿及真相结局。页面与部署仍由对应前端/部署任务完成。
+  - 2026-11-02:Codex 从最新 `origin/main`（`a4980fe`）建立 `task/13-share-ui`，补齐 `frontend/share/share.css`；复用 `base.css` 的颜色、纸面、按钮、标签与 `ui.js` 的图标、头像和提示条。桌面双栏剧本卡片、手机单栏、粘性目录、折叠章节、进度卡及错误页面均已完成，375×812、320×812 无横向溢出。
+  - 接口核对:页面为 `/share/?story=<story_id>`，从 localStorage `kanshan:owner:<story_id>` 读取令牌，仅通过 `X-Owner-Token` 调用 SPEC 6.2 owner 接口；分享链接仍为 `/?story=<story_id>`。补上刷新失败的可见提示并保留旧进度，修正空条件、对质线索来源和无法从 owner 数据确认的提示阶段；从浏览器返回时重新读取剧本，点击目录会展开对应章节。
+  - 浏览器完整联调:`LLM_MOCK=1` 下从 `/studio/?mode=share` 输入素材生成「模拟剧场：消失的信」，点击出题人入口读取全部剧本，空进度为 0 局。再用分享链接开局，与王平交谈 4 回合、向林青出示 c1、向陈明出示 c2，完成两次拆穿和对质；3/3 答对、S 评级、结局「信的去向」。出题人页面实际显示 1 局、6 回合、7/8 条线索、2/2 次拆穿及对应结局，手动和每 20 秒自动刷新均正常。
+  - 异常与交互验证:无本地令牌、缺少案件编号、折叠后从目录重新展开均通过；停止本次测试服务后刷新，页面明确显示更新失败，保留完整剧本和最后一份进度。验收截图在本地 `data/share-ui-qa/owner-desktop.jpg`、`owner-mobile.jpg`（不入库）。
+  - 验证:`node --check frontend/share/share.js`、`git diff --check` 通过；使用 `.venv/Scripts/python.exe -m pytest -q -o cache_dir=data/.pytest_cache-share-ui-verified --basetemp=data/pytest-share-ui-verified`，全仓 363 项通过。
+  - 下一步:合并本前端 PR，任务 09 用真实编剧和部署地址复走分享流程。卡点:无。
 
 <!-- 新任务模板
 ### NN 任务名

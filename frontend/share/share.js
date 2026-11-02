@@ -12,6 +12,7 @@
   let story = null;
   let games = [];
   let refreshedAt = 0;
+  let refreshError = '';
   let refreshing = false;
   let timer = null;
   let progressBox = null;
@@ -57,7 +58,7 @@
       }
     }
     if (!response.ok) throw new ApiError(response.status, errorMessage(response.status, data));
-    if (!data || typeof data.story !== 'object' || !Array.isArray(data.games)) {
+    if (!data || !data.story || typeof data.story !== 'object' || Array.isArray(data.story) || !Array.isArray(data.games)) {
       throw new ApiError(response.status, '服务返回的内容无法读取，请重试。');
     }
     return data;
@@ -108,7 +109,7 @@
       else if (key === 'chose') for (const [q, option] of Object.entries(value)) parts.push(`${q} 选「${option}」`);
       else parts.push(`${key}: ${JSON.stringify(value)}`);
     }
-    return parts.join('，并且');
+    return parts.join('，并且') || '无额外条件';
   }
 
   // ---------- 页面骨架 ----------
@@ -206,31 +207,27 @@
 
   // ---------- 朋友们的进度 ----------
 
-  // 进度里只有线索和拆穿，提示阶段只按 has、exposed 判断；
-  // 对质用它解锁的线索是否到手判断，信任度、出示这类条件看不到，跳过
+  // owner 进度只提供线索和拆穿；其他条件无法确认时，不跳过该提示阶段。
   function reached(cond, got, exposed) {
-    let known = false;
+    let known = true;
     for (const [key, value] of Object.entries(cond || {})) {
       if (key === 'has') {
-        known = true;
         if (!got.has(value)) return false;
       } else if (key === 'exposed') {
-        known = true;
         if (!exposed.has(value)) return false;
-      } else if (key === 'event') {
-        const unlock = (ref.events.get(value) || {}).unlock || [];
-        if (unlock.length) {
-          known = true;
-          if (!unlock.every((id) => got.has(id))) return false;
-        }
-      }
+      } else known = false;
     }
     return known ? true : null;
   }
 
   function stuckHint(got, exposed) {
     const hints = (story.kanshan && story.kanshan.hints) || [];
-    return hints.find((hint) => reached(hint.done, got, exposed) === false);
+    for (const hint of hints) {
+      const done = reached(hint.done, got, exposed);
+      if (done === false) return hint;
+      if (done === null) return null;
+    }
+    return null;
   }
 
   function stat(value, label) {
@@ -261,7 +258,7 @@
         ? h('p', { class: 'game-exposed' }, h('span', null, '拆穿：'), [...exposed].map((id) => lieName(id)).join('、'))
         : null,
       ending && ending.retry ? h('p', { class: 'game-note' }, '结局可以重新调查，朋友可能还在继续查。') : null,
-      stuck ? h('p', { class: 'game-stuck' }, icon('bulb'), h('span', null, h('b', null, '可能卡在：'), tidy(stuck.vague))) : null);
+      stuck ? h('p', { class: 'game-stuck' }, icon('bulb'), h('span', null, h('b', null, '下一步提示：'), tidy(stuck.vague))) : null);
   }
 
   function renderProgress() {
@@ -276,6 +273,7 @@
         h('span', { class: 'count' }, `${games.length} 局`),
         h('span', { class: 'updated' }, refreshedAt ? `${fmtTime(refreshedAt)} 更新，每 20 秒自动刷新` : ''),
         refresh),
+      ...(refreshError ? [h('p', { class: 'refresh-error', role: 'status' }, `进度更新失败，当前显示上次结果：${refreshError}`)] : []),
       list);
   }
 
@@ -292,6 +290,7 @@
       const data = await fetchOwner(token);
       games = data.games;
       refreshedAt = Date.now();
+      refreshError = '';
       if (manual) toast('进度已更新。', 'success', 1800);
     } catch (error) {
       if (!(error instanceof ApiError)) throw error;
@@ -301,6 +300,7 @@
         return;
       }
       // 网络或服务暂时出错：保留上次的进度，下一轮再试
+      refreshError = error.message;
       if (manual) toast(error.message, 'error');
     }
     refreshing = false;
@@ -367,10 +367,16 @@
 
   function cluesBlock() {
     const clues = story.clues || [];
-    return section('s-clues', '线索', clues.length, h('div', { class: 'cards' }, clues.map((clue) => h('article', { class: 'card clue' },
-      h('h3', null, refChip(clue.id), tidy(clue.title)),
-      h('p', null, tidy(clue.content)),
-      h('small', { class: 'cond' }, `由${clue.holder ? personName(clue.holder) : '对质'}交出${clue.requires ? `，条件：${condText(clue.requires)}` : '，问到就给'}`)))));
+    return section('s-clues', '线索', clues.length, h('div', { class: 'cards' }, clues.map((clue) => {
+      const events = [...ref.events.values()].filter((event) => event.unlock.includes(clue.id));
+      const from = events.length
+        ? `对质 ${events.map((event) => event.id).join('、')} 后拿到`
+        : `由${personName(clue.holder)}交出${Object.keys(clue.requires || {}).length ? `，条件：${condText(clue.requires)}` : '，问到就给'}`;
+      return h('article', { class: 'card clue' },
+        h('h3', null, refChip(clue.id), tidy(clue.title)),
+        h('p', null, tidy(clue.content)),
+        h('small', { class: 'cond' }, from));
+    })));
   }
 
   function eventsBlock() {
@@ -413,7 +419,7 @@
     const endings = (story.ending && story.ending.endings) || [];
     return section('s-endings', '结局', endings.length, h('div', { class: 'cards' }, endings.map((ending) => h('article', { class: 'card' },
       h('h3', null, refChip(ending.id), tidy(ending.title), ending.retry ? h('span', { class: 'tag tag-red' }, '可重新调查') : null),
-      h('small', { class: 'cond' }, ending.when ? `触发：${condText(ending.when)}` : '触发：前面的结局都不满足时'),
+      h('small', { class: 'cond' }, Object.keys(ending.when || {}).length ? `触发：${condText(ending.when)}` : '触发：前面的结局都不满足时'),
       h('p', null, tidy(ending.text || ''))))));
   }
 
@@ -421,7 +427,10 @@
     const items = [['s-progress', '进度'], ['s-truth', '汤底'], ['s-people', '人物'], ['s-clues', '线索'],
       (story.events || []).length ? ['s-events', '对质'] : null, ['s-hints', '提示'], ['s-questions', '结局题'], ['s-endings', '结局'], ['s-facts', '事实']];
     return h('nav', { class: 'toc', 'aria-label': '页面目录' },
-      items.filter(Boolean).map(([id, label]) => h('a', { href: `#${id}` }, label)));
+      items.filter(Boolean).map(([id, label]) => h('a', { href: `#${id}`, onclick: () => {
+        const block = document.getElementById(id);
+        if (block instanceof HTMLDetailsElement) block.open = true;
+      } }, label)));
   }
 
   function render() {
@@ -441,6 +450,7 @@
   // ---------- 开始 ----------
 
   async function load() {
+    stopTimer();
     if (!storyId) {
       notice({
         kind: 'error',
@@ -462,6 +472,7 @@
       story = data.story;
       games = data.games;
       refreshedAt = Date.now();
+      refreshError = '';
     } catch (error) {
       if (!(error instanceof ApiError)) throw error;
       showError(error);
@@ -473,5 +484,9 @@
   }
 
   hydrateIcons();
+  window.addEventListener('pagehide', stopTimer);
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) load();
+  });
   load();
 })();
