@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- 陈默：大三学长，亲切热心的迎新志愿者。侧分头、细框眼镜、眯眼笑、志愿者挂绳 -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="36%" r="72%">
+      <stop offset="0" stop-color="#9e90d4"/>
+      <stop offset="1" stop-color="#62529f"/>
+    </radialGradient>
+  </defs>
+  <rect width="256" height="256" fill="url(#bg)"/>
+  <path d="M34 256C36 212 70 186 128 186C186 186 220 212 222 256Z" fill="#2c3753"/>
+  <path d="M104 186L128 214L152 186Z" fill="#f4f1ea"/>
+  <path d="M110 158H146V188C146 196 138 201 128 201C118 201 110 196 110 188Z" fill="#e2b18b"/>
+  <path d="M100 184L124 208L112 214ZM156 184L132 208L144 214Z" fill="#ffffff"/>
+  <path d="M112 196L128 234L144 196" fill="none" stroke="#d6473c" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="113" y="230" width="30" height="26" rx="4" fill="#f7f4ee"/>
+  <rect x="113" y="230" width="30" height="7" rx="3" fill="#d6473c"/>
+  <path d="M119 244H137M119 250H131" stroke="#b9b3a7" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="80" cy="126" rx="10" ry="14" fill="#e8bd98"/>
+  <ellipse cx="176" cy="126" rx="10" ry="14" fill="#e8bd98"/>
+  <path d="M80 112C80 76 100 60 128 60C156 60 176 76 176 112V128C176 158 156 176 128 176C100 176 80 158 80 128Z" fill="#f2cfae"/>
+  <path d="M76 120C69 76 97 49 134 50C169 51 189 77 180 120C179 111 177 105 173 101C148 104 117 97 97 80C90 90 82 104 76 120Z" fill="#2a2320"/>
+  <path d="M104 64C122 80 146 88 168 90" fill="none" stroke="#4d3e36" stroke-width="3" stroke-linecap="round"/>
+  <path d="M104 64C100 70 98 75 97 80" fill="none" stroke="#5a4a41" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M99 105Q109 100 119 104M137 104Q147 100 157 105" fill="none" stroke="#2a2320" stroke-width="4" stroke-linecap="round"/>
+  <path d="M102 127Q110 119 118 127M138 127Q146 119 154 127" fill="none" stroke="#2a2320" stroke-width="4.2" stroke-linecap="round"/>
+  <g fill="rgba(255,255,255,.12)" stroke="#3a3350" stroke-width="3">
+    <rect x="95" y="114" width="30" height="21" rx="6"/>
+    <rect x="131" y="114" width="30" height="21" rx="6"/>
+  </g>
+  <path d="M125 122H131" stroke="#3a3350" stroke-width="3"/>
+  <ellipse cx="99" cy="146" rx="9" ry="5" fill="#ee9d92" opacity=".35"/>
+  <ellipse cx="157" cy="146" rx="9" ry="5" fill="#ee9d92" opacity=".35"/>
+  <path d="M112 147Q128 163 144 147Q128 153 112 147Z" fill="#b25a52"/>
+</svg>

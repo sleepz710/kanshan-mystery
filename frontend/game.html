@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>调查中 · 看山谜案馆</title>
+  <meta name="theme-color" content="#101217">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-180.png">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/game.css">
+  <script src="/js/ui.js" defer></script>
+  <script src="/js/api.js" defer></script>
+  <script src="/js/store.js" defer></script>
+  <script src="/js/game.js" defer></script>
+</head>
+<body class="page-game">
+  <div class="app" id="app">
+    <header class="topbar">
+      <a class="brand" href="/" title="回到首页"><img src="/assets/logo.svg" alt="看山谜案馆"><b>看山谜案馆</b></a>
+      <div class="case-name">
+        <span class="case-label">正在调查</span>
+        <strong id="case-title"></strong>
+      </div>
+      <div class="stats" aria-label="调查进度">
+        <span class="stat" data-stat="turns"><b>0</b>回合</span>
+        <span class="stat" data-stat="clues"><b>0</b>线索</span>
+        <span class="stat stat-red" data-stat="exposed"><b>0</b>拆穿</span>
+      </div>
+      <button class="btn btn-ghost btn-sm" type="button" id="btn-intro"><i data-icon="file"></i><span>汤面</span></button>
+      <button class="btn btn-primary btn-sm" type="button" data-action="accuse"><i data-icon="gavel"></i><span>提交推理</span></button>
+    </header>
+
+    <main class="game" id="game" data-view="chat">
+      <aside class="panel" id="cast" aria-label="在场人物">
+        <h2 class="panel-title">在场人物</h2>
+        <ul class="cast-list" id="cast-list"></ul>
+      </aside>
+
+      <section class="panel" id="kanshan" aria-label="搭档刘看山">
+        <div class="ks-head">
+          <span class="avatar seal" style="--size: 42px"><img src="/assets/logo.svg" alt=""></span>
+          <div><b>刘看山</b><small>你的搭档 · 这碗汤的汤主</small></div>
+        </div>
+        <div class="ks-scroll">
+          <div class="ks-say" id="ks-say" aria-live="polite"></div>
+          <form class="ks-ask" id="ks-ask" autocomplete="off">
+            <label for="ks-input"><span>问他一个是非题</span><span class="pips" id="ks-pips"></span></label>
+            <div class="ks-row">
+              <input id="ks-input" maxlength="200" placeholder="例如：周明拿到那两万了吗？" enterkeyhint="send">
+              <button class="btn btn-blue" id="ks-submit">提问</button>
+            </div>
+            <p class="ks-rule" id="ks-rule">只答「是」「不是」「不重要」，每局 5 次。</p>
+          </form>
+          <ol class="ks-history" id="ks-history"></ol>
+        </div>
+      </section>
+
+      <section class="panel" id="chat" aria-label="对话">
+        <div class="chat-head" id="chat-head"></div>
+        <div class="status-bar" id="status-bar" hidden></div>
+        <div class="thread" id="thread" role="log" aria-live="polite"></div>
+        <div class="suggest" id="suggest"></div>
+        <form class="composer" id="composer" autocomplete="off">
+          <button class="btn btn-gold" type="button" id="btn-evidence" title="出示证据"><i data-icon="evidence"></i><span>出示证据</span></button>
+          <label class="sr-only" for="say">输入要问的话</label>
+          <textarea id="say" rows="1" maxlength="500" enterkeyhint="send"></textarea>
+          <button class="btn btn-primary btn-icon" id="btn-send" aria-label="发送"><i data-icon="send"></i></button>
+        </form>
+      </section>
+
+      <section class="panel board" id="board" data-tab="clues" aria-label="线索板与事件流">
+        <div class="board-tabs" role="tablist">
+          <button type="button" role="tab" data-tab="clues" aria-selected="true">线索板 <span class="count" id="clue-count">0</span></button>
+          <button type="button" role="tab" data-tab="events" aria-selected="false">事件流 <i class="dot" id="events-dot" hidden></i></button>
+        </div>
+        <div class="board-body" id="board-body">
+          <div class="clue-grid" id="clue-grid" data-pane="clues"></div>
+          <ol class="timeline" id="timeline" data-pane="events"></ol>
+        </div>
+      </section>
+    </main>
+
+    <nav class="tabbar" id="tabbar" aria-label="切换视图">
+      <button type="button" data-view="chat" aria-current="true"><i data-icon="chat"></i><span>审讯</span></button>
+      <button type="button" data-view="clues" aria-current="false"><i data-icon="clue"></i><span>线索</span><i class="badge" id="tab-clues" hidden></i></button>
+      <button type="button" data-view="events" aria-current="false"><i data-icon="events"></i><span>事件</span><i class="dot" id="tab-events" hidden></i></button>
+      <button type="button" data-view="kanshan" aria-current="false"><img src="/assets/logo.svg" alt=""><span>看山</span><i class="dot" id="tab-kanshan" hidden></i></button>
+    </nav>
+  </div>
+
+  <dialog class="modal intro" id="dlg-intro">
+    <div class="modal-head">
+      <span class="dossier-label"><i data-icon="file"></i>案件档案</span>
+      <span class="grow"></span>
+      <button class="btn btn-ghost btn-sm btn-icon modal-close" type="button" data-close aria-label="关闭"><i data-icon="close"></i></button>
+    </div>
+    <div class="modal-body" id="intro-body"></div>
+    <div class="modal-foot">
+      <span class="grow">问话、出示证据、拆穿谎话，查清了再提交推理。</span>
+      <button class="btn btn-primary" type="button" id="intro-go">开始调查</button>
+    </div>
+  </dialog>
+
+  <dialog class="modal sheet" id="dlg-evidence">
+    <div class="modal-head">
+      <h2 id="evidence-title">出示证据</h2>
+      <button class="btn btn-ghost btn-sm btn-icon modal-close" type="button" data-close aria-label="关闭"><i data-icon="close"></i></button>
+    </div>
+    <p class="modal-sub">把证据摆到对方面前，说法对不上的谎话会被当场拆穿。出示一次算一个回合。</p>
+    <div class="modal-body"><div class="evi-list" id="evidence-list"></div></div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" type="button" data-close>取消</button>
+      <button class="btn btn-gold" type="button" id="evidence-go" disabled>选择一条证据</button>
+    </div>
+  </dialog>
+
+  <dialog class="modal sheet" id="dlg-clue">
+    <div class="modal-head">
+      <h2>线索</h2>
+      <button class="btn btn-ghost btn-sm btn-icon modal-close" type="button" data-close aria-label="关闭"><i data-icon="close"></i></button>
+    </div>
+    <div class="modal-body" id="clue-body"></div>
+  </dialog>
+
+  <dialog class="modal accuse" id="dlg-accuse">
+    <div class="modal-head">
+      <h2>提交推理</h2>
+      <button class="btn btn-ghost btn-sm btn-icon modal-close" type="button" data-close aria-label="关闭"><i data-icon="close"></i></button>
+    </div>
+    <p class="modal-sub">根据线索回答下面的问题。结局不理想时还能回来继续调查，已有线索都保留。</p>
+    <form class="modal-body" id="accuse-form"></form>
+    <div class="modal-foot">
+      <span class="grow" id="accuse-progress"></span>
+      <button class="btn btn-ghost" type="button" data-close>再查查</button>
+      <button class="btn btn-primary" type="button" id="accuse-go" disabled>结案</button>
+    </div>
+  </dialog>
+</body>
+</html>

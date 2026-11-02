@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- 小林：大一新生，内向、着急又自责。圆眼镜、皱眉、书包带 -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="36%" r="72%">
+      <stop offset="0" stop-color="#8db8e8"/>
+      <stop offset="1" stop-color="#557fbc"/>
+    </radialGradient>
+  </defs>
+  <rect width="256" height="256" fill="url(#bg)"/>
+  <path d="M34 256C36 214 70 188 128 188C186 188 220 214 222 256Z" fill="#f4f1ea"/>
+  <path d="M72 200C80 218 85 238 87 256H64C62 240 57 225 50 212Z" fill="#2f4c78"/>
+  <path d="M184 200C176 218 171 238 169 256H192C194 240 199 225 206 212Z" fill="#2f4c78"/>
+  <path d="M110 158H146V190C146 199 138 205 128 205C118 205 110 199 110 190Z" fill="#e2b18b"/>
+  <path d="M104 189C111 202 119 207 128 207C137 207 145 202 152 189" fill="none" stroke="#d8d1c3" stroke-width="5"/>
+  <ellipse cx="80" cy="126" rx="10" ry="14" fill="#e8bd98"/>
+  <ellipse cx="176" cy="126" rx="10" ry="14" fill="#e8bd98"/>
+  <path d="M80 112C80 76 100 60 128 60C156 60 176 76 176 112V128C176 158 156 176 128 176C100 176 80 158 80 128Z" fill="#f2cfae"/>
+  <path d="M76 116C72 74 96 49 130 49C164 49 187 72 180 116C176 104 170 95 163 89C150 101 124 104 99 96C90 102 82 108 76 116Z" fill="#2a2320"/>
+  <path d="M124 52C126 40 138 34 148 38C140 41 136 46 136 53Z" fill="#2a2320"/>
+  <path d="M128 98C134 94 138 89 140 84" fill="none" stroke="#f2cfae" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
+  <path d="M97 109L116 102M140 102L159 109" stroke="#2a2320" stroke-width="4.5" stroke-linecap="round"/>
+  <ellipse cx="110" cy="125" rx="5" ry="6" fill="#2a2320"/>
+  <ellipse cx="146" cy="125" rx="5" ry="6" fill="#2a2320"/>
+  <circle cx="112" cy="123" r="1.6" fill="#fff"/>
+  <circle cx="148" cy="123" r="1.6" fill="#fff"/>
+  <g fill="rgba(255,255,255,.14)" stroke="#2a2320" stroke-width="3.5">
+    <circle cx="110" cy="125" r="15"/>
+    <circle cx="146" cy="125" r="15"/>
+  </g>
+  <path d="M125 124Q128 121 131 124" fill="none" stroke="#2a2320" stroke-width="3.5"/>
+  <ellipse cx="99" cy="146" rx="9" ry="5" fill="#ee9d92" opacity=".45"/>
+  <ellipse cx="157" cy="146" rx="9" ry="5" fill="#ee9d92" opacity=".45"/>
+  <path d="M118 155Q128 149 138 155" fill="none" stroke="#a8604f" stroke-width="4" stroke-linecap="round"/>
+</svg>
