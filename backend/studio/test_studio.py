@@ -12,6 +12,7 @@ import pytest
 import yaml
 from fastapi.testclient import TestClient
 
+from backend import llm
 from backend.app import create_app
 from backend.llm import LLMError
 from backend.studio import check as checker
@@ -21,8 +22,15 @@ from backend.studio.service import StudioService
 
 
 @pytest.fixture(autouse=True)
-def mock_mode(monkeypatch):
+def mock_mode(monkeypatch, tmp_path):
     monkeypatch.setenv("LLM_MOCK", "1")
+    monkeypatch.setattr(llm, "_ENV_FILE", tmp_path / "missing.env")
+
+    def no_sdk(*args, **kwargs):
+        pytest.fail("生成剧场回归必须提供模拟客户端。")
+
+    monkeypatch.setattr(llm, "AsyncOpenAI", no_sdk)
+    monkeypatch.setattr(checker, "AsyncOpenAI", no_sdk)
 
 
 @pytest.fixture
@@ -156,8 +164,14 @@ async def test_repair_problems_are_sent_to_next_writer_round(tmp_path, monkeypat
     chat = studio.create_chat("play")["chat_id"]
     result = await studio.message(chat, "生成一个新案子", {})
     await wait_jobs(studio)
-    assert studio.jobs[result["job"]["id"]].status == "done"
-    assert any("c4 依赖错误" in message["content"] for batch in calls for message in batch)
+    job = studio.jobs[result["job"]["id"]]
+    assert job.status == "done" and job.problems == []
+    model_inputs = [json.loads(batch[-1]["content"]) for batch in calls]
+    generation_inputs = [incoming for incoming in model_inputs if "previous_story" in incoming]
+    assert len(generation_inputs) == 2
+    assert generation_inputs[0]["previous_story"] is None
+    assert generation_inputs[1]["problems"] == ["c4 依赖错误"]
+    assert generation_inputs[1]["previous_story"]["title"] == mock_story()["title"]
 
 
 @pytest.mark.asyncio
@@ -167,7 +181,8 @@ async def test_model_outage_fails_job_and_allows_retry(tmp_path, monkeypatch):
     original = checker.complete_for
 
     async def outage(messages, **kwargs):
-        if "materials" in messages[-1]["content"] and "schema" in messages[-1]["content"]:
+        incoming = json.loads(messages[-1]["content"])
+        if "materials" in incoming and "previous_story" in incoming:
             raise LLMError("模型服务暂时不可用")
         return await original(messages, **kwargs)
 
