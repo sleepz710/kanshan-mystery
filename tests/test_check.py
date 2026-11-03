@@ -2,11 +2,15 @@
 
 import json
 from copy import deepcopy
+from pathlib import Path
 from unittest.mock import AsyncMock
 
 import pytest
+import yaml
 
+from backend.engine import GameEngine
 from backend.studio import check as checker
+from backend.studio.mock import mock_story
 
 
 def sample_story():
@@ -74,7 +78,7 @@ def test_event_can_unlock_clue_without_holder_condition():
 def test_event_reward_cannot_be_obtained_before_its_event():
     story = sample_story()
     story["clues"][2]["requires"] = {}
-    story["events"][0]["when"] = {"has": "c3"}
+    story["events"][0]["when"] = {"has": "c3", "to": "chen"}
     result = checker.check_structure(story)
     assert not result["ok"]
     assert any("c3 拿不到" in p for p in result["problems"])
@@ -133,3 +137,113 @@ async def test_intro_gives_away_majority(monkeypatch):
 @pytest.mark.parametrize("story", [None, [], {}, {"facts": None}])
 def test_malformed_external_story_returns_problems(story):
     assert not checker.check_structure(story)["ok"]
+
+
+def test_writer_schema_describes_only_supported_condition_shapes():
+    definitions = checker.Story.model_json_schema()["$defs"]
+    condition = definitions["Condition"]
+    assert set(condition["properties"]) == {"trust", "shown", "has", "exposed", "event"}
+    assert condition["properties"]["trust"]["minimum"] == 0
+    assert condition["properties"]["trust"]["maximum"] == 3
+    assert condition["properties"]["has"]["pattern"] == r"^[a-z0-9][a-z0-9_-]*$"
+    assert definitions["EventWhen"]["required"] == ["to"]
+    assert set(definitions["HintCondition"]["properties"]) == {"has", "exposed", "event"}
+    for name in ("Condition", "EventWhen", "HintCondition", "CorrectEndingWhen", "ChoseEndingWhen", "FallbackEndingWhen"):
+        assert definitions[name]["additionalProperties"] is False
+    assert definitions["CorrectEndingWhen"]["required"] == ["correct"]
+    assert definitions["CorrectEndingWhen"]["properties"]["correct"]["minItems"] == 1
+    assert definitions["ChoseEndingWhen"]["required"] == ["chose"]
+    assert definitions["ChoseEndingWhen"]["properties"]["chose"]["minProperties"] == 1
+    assert definitions["ChoseEndingWhen"]["properties"]["chose"]["additionalProperties"] is False
+    assert definitions["FallbackEndingWhen"]["properties"] == {}
+    assert len(definitions["Ending"]["properties"]["when"]["anyOf"]) == 3
+
+
+@pytest.mark.parametrize("mutation, location", [
+    (lambda s: s["clues"][0].update(condition={"has": "c1"}), "clues.0.condition"),
+    (lambda s: s["clues"][0].update(requires={"clue": "c1"}), "clues.0.requires.clue"),
+    (lambda s: s["clues"][0].update(requires={"has": 1}), "clues.0.requires.has"),
+    (lambda s: s["clues"][0].update(requires={"has": "invalid id"}), "clues.0.requires.has"),
+    (lambda s: s["clues"][0].update(requires={"trust": True}), "clues.0.requires.trust"),
+    (lambda s: s["events"][0].update(when={"has": "c1"}), "events.0.when.to"),
+    (lambda s: s["kanshan"]["hints"][0].update(done={"shown": "c1", "to": "lin"}), "kanshan.hints.0.done.shown"),
+    (lambda s: s["kanshan"]["hints"][0].update(done={"trust": 1}), "kanshan.hints.0.done.trust"),
+    (lambda s: s["ending"]["endings"][0].update(condition={"correct": ["q1"]}), "ending.endings.0.condition"),
+    (lambda s: s["ending"]["endings"][0].update(when={"all_correct": True}), "ending.endings.0.when"),
+    (lambda s: s["ending"]["endings"][0].update(when={"correct": ["q1"], "chose": {"q2": "陈明"}}), "ending.endings.0.when"),
+    (lambda s: s["ending"]["endings"][0].update(when={"correct": []}), "ending.endings.0.when"),
+    (lambda s: s["ending"]["endings"][0].update(when={"chose": {}}), "ending.endings.0.when"),
+])
+def test_unsupported_conditions_return_repairable_field_locations(mutation, location):
+    story = sample_story()
+    mutation(story)
+    result = checker.check_structure(story)
+    assert not result["ok"]
+    assert any(location in problem for problem in result["problems"])
+
+
+@pytest.mark.parametrize("when", [
+    {"has": "c1", "to": "chen"},
+    {"exposed": "l1", "to": "chen"},
+    {"trust": 1, "to": "chen"},
+])
+def test_event_conditions_with_target_match_engine_contract(when, tmp_path):
+    story = mock_story()
+    story["events"][0]["when"] = when
+    assert checker.check_structure(story) == {"ok": True, "problems": []}
+    normalized = checker.Story.model_validate(story).model_dump()
+    assert normalized["events"][0]["when"] == when
+    assert type(normalized["events"][0]["when"]) is dict
+    generated = tmp_path / "generated"
+    generated.mkdir()
+    (generated / f"{story['id']}.yaml").write_text(yaml.safe_dump(normalized, allow_unicode=True), encoding="utf-8")
+    game = GameEngine(tmp_path / "official", generated).new_game(story["id"])
+    assert game["title"] == story["title"]
+
+
+def test_valid_mock_and_official_v2_keep_plain_condition_dicts():
+    official_path = Path(__file__).resolve().parents[1] / "stories" / "lost-tuition.yaml"
+    for story in (mock_story(), yaml.safe_load(official_path.read_text(encoding="utf-8"))):
+        assert checker.check_structure(story) == {"ok": True, "problems": []}
+        normalized = checker.Story.model_validate(story).model_dump()
+        assert type(normalized["clues"][0]["requires"]) is dict
+        assert type(normalized["events"][0]["when"]) is dict
+        assert normalized["ending"]["endings"][-1]["when"] == {}
+        GameEngine._validate_story(normalized, normalized["id"])
+
+
+def test_writer_schema_names_reference_namespaces():
+    definitions = checker.Story.model_json_schema()["$defs"]
+    for record, field, namespace in (
+        ("Event", "confront", "characters.id"),
+        ("Event", "unlock", "clues.id"),
+        ("Character", "knows", "facts.id"),
+        ("Secret", "fact", "facts.id"),
+        ("Lie", "admit", "facts.id"),
+        ("Clue", "holder", "characters.id"),
+        ("EventWhen", "to", "characters.id"),
+    ):
+        assert namespace in definitions[record]["properties"][field]["description"]
+    assert "不得填写 clues.id" in definitions["Event"]["properties"]["confront"]["description"]
+
+
+def test_wrong_reference_kind_reports_owner_field_and_actual_namespace():
+    story = sample_story()
+    story["events"][0].update(confront=["c1", "c2"], unlock=["lin"])
+    story["characters"][0]["knows"].append("c1")
+    story["characters"][1]["secrets"][0]["fact"] = "lin"
+    story["characters"][0]["lies"][0]["admit"] = "c2"
+    story["clues"][0]["holder"] = "c3"
+    before = deepcopy(story)
+    result = checker.check_structure(story)
+    assert not result["ok"] and story == before
+    for diagnostic in (
+        "事件 e1.confront[0] 须引用 characters.id，c1 属于 clues.id。",
+        "事件 e1.confront[1] 须引用 characters.id，c2 属于 clues.id。",
+        "事件 e1.unlock[0] 须引用 clues.id，lin 属于 characters.id。",
+        "角色 lin.knows 须引用 facts.id，c1 属于 clues.id。",
+        "角色 chen.secrets[0].fact 须引用 facts.id，lin 属于 characters.id。",
+        "谎话 l1.admit 须引用 facts.id，c2 属于 clues.id。",
+        "线索 c1.holder 须引用 characters.id，c3 属于 clues.id。",
+    ):
+        assert diagnostic in result["problems"]
