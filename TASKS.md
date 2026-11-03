@@ -231,6 +231,7 @@
   - 验证:Python 3.14 下 `.venv/Scripts/python.exe -m pytest -q --ignore=data -o cache_dir=data/.pytest_cache-task14-all --basetemp=data/pytest-task14-all` 全仓 387 项通过；`git diff --check` 通过。覆盖软审稿不重跑、各类硬检查重跑、初稿/审稿/两种盲答/下一轮超时、play/share 保存与令牌、保留旧候选、关闭服务取消、失败日志、编剧格式恢复及回避后的信任/历史/对质。
   - 真实模型:演员/编剧均为 `deepseek-flash`，编剧对话 12.74 秒；生成阶段 590.04 秒（含对话总计 602.78 秒），任务 `c8c3d1b7f0644a9b895c5e9468950a80` 超时时成功保留 `generated-12266dfa836c473b8a0f074c4a88896a`，状态 done、checked false。日志记录初稿 98.58 秒、第二轮初稿 144.17 秒、审稿 224.30 秒、第三轮初稿超时中止 122.96 秒。结果在本地 `data/task14-live/result.json`，剧本在 `data/stories/`，均不入库。
   - 已知问题:这次真实候选仍有不支持的 `clue` 条件、结局条件错误和谎话数量超限，尚未通过全部硬检查；已在生成和审稿提示中补齐条件白名单、结局示例与总数量要求，补强后的提示尚未重新做真实完整生成。下一步:合并 PR，任务 09/10 继续生成样本与完整试玩，复核剧本质量；任务 14 的五项修复已完成。卡点:无。
+  - 交付:实现提交 `9010869` 已推送至 `task/14-fix-failures`；PR：https://github.com/sleepz710/kanshan-mystery/pull/23 ，等待用户合并。
 
 ### 15 生成剧场侧边栏与首页生成进度
 
