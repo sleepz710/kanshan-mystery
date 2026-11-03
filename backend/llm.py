@@ -14,7 +14,7 @@ from openai import APIConnectionError, APIError, APITimeoutError, AsyncOpenAI
 
 _ENV_FILE = Path(__file__).resolve().parents[1] / ".env"
 _DEFAULT_BASE_URL = "https://api.deepseek.com"
-_DEFAULT_MODELS = {"actor": "deepseek-flash", "writer": "deepseek-v4-pro"}
+_DEFAULT_MODELS = {"actor": "deepseek-flash", "writer": "deepseek-flash"}
 _DEFAULT_MAX_TOKENS = {"actor": 1024, "writer": 8192}
 _JSON_REPAIR_INSTRUCTION = "只返回合法 JSON 对象，字符串正确转义，不要 Markdown 或解释。"
 

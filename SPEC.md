@@ -301,7 +301,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 | 用途 | 默认模型 | 思考模式 |
 |---|---|---|
 | 演员:角色、核查、对质、刘看山、AI 试玩、可解性检查里的「给全部线索」 | `deepseek-flash` | 关,要快 |
-| 编剧:编剧对话、生成、审稿、可解性检查里的「只给汤面」 | `deepseek-v4-pro` | 开 |
+| 编剧:编剧对话、生成、审稿、可解性检查里的「只给汤面」 | `deepseek-flash` | 开 |
 
 - `.env`:
 
@@ -309,7 +309,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
   LLM_BASE_URL=https://api.deepseek.com
   LLM_API_KEY=
   LLM_ACTOR_MODEL=deepseek-flash
-  LLM_WRITER_MODEL=deepseek-v4-pro
+  LLM_WRITER_MODEL=deepseek-flash
   # 编剧换成 OpenAI 时填这两项,留空就用上面的
   LLM_WRITER_BASE_URL=
   LLM_WRITER_API_KEY=

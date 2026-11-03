@@ -138,7 +138,7 @@ def test_real_mode_requires_key_without_falling_back_to_mock(monkeypatch):
 
 @pytest.mark.parametrize(
     "purpose, model, tokens, thinking",
-    [("actor", "deepseek-flash", 1024, "disabled"), ("writer", "deepseek-v4-pro", 8192, "enabled")],
+    [("actor", "deepseek-flash", 1024, "disabled"), ("writer", "deepseek-flash", 8192, "enabled")],
 )
 def test_default_deepseek_purposes_select_models_and_thinking(monkeypatch, purpose, model, tokens, thinking):
     monkeypatch.setenv("LLM_MOCK", "0")
@@ -192,7 +192,7 @@ def test_legacy_actor_model_does_not_replace_writer_model(monkeypatch):
     monkeypatch.setenv("LLM_MODEL", "legacy-actor")
     _, create = fake_client(monkeypatch)
     asyncio.run(llm.complete_json([], purpose="writer"))
-    assert create.await_args.kwargs["model"] == "deepseek-v4-pro"
+    assert create.await_args.kwargs["model"] == "deepseek-flash"
 
 
 def test_writer_can_use_its_own_provider_key_and_model(monkeypatch):

@@ -296,7 +296,7 @@ async def complete_for(messages: list[dict], *, role: str, mock_response: dict) 
     writer = role == "writer"
     base = (os.getenv("LLM_WRITER_BASE_URL", "") if writer else "") or os.getenv("LLM_BASE_URL", "https://api.deepseek.com")
     key = (os.getenv("LLM_WRITER_API_KEY", "") if writer else "") or os.getenv("LLM_API_KEY", "")
-    model = os.getenv("LLM_WRITER_MODEL" if writer else "LLM_ACTOR_MODEL") or ("deepseek-v4-pro" if writer else "deepseek-flash")
+    model = os.getenv("LLM_WRITER_MODEL" if writer else "LLM_ACTOR_MODEL") or "deepseek-flash"
     if not key:
         raise llm.LLMError("请填写编剧或演员模型的 API key。", status_code=503)
     host = urlsplit(base).hostname
