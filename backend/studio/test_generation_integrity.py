@@ -163,7 +163,7 @@ async def test_unknown_condition_is_only_a_private_draft(runtime_root, monkeypat
 
     async def model(messages, **kwargs):
         if "story" in kwargs["mock_response"]:
-            return {"story": damaged_story(marker), "problems": []}
+            return {"story": damaged_story(marker)}
         return deepcopy(kwargs["mock_response"])
 
     monkeypatch.setattr(checker, "complete_for", model)
@@ -184,7 +184,7 @@ async def test_unknown_condition_is_only_a_private_draft(runtime_root, monkeypat
 @pytest.mark.asyncio
 @pytest.mark.parametrize("stop", ["deadline", "exhausted"])
 @pytest.mark.parametrize("damage", ["condition", "format"])
-async def test_bad_review_cannot_replace_playable_initial_draft(
+async def test_bad_later_generation_cannot_replace_playable_initial_draft(
     runtime_root, monkeypatch, stop, damage
 ):
     studio = StudioService(runtime_root / "stories")
@@ -202,8 +202,11 @@ async def test_bad_review_cannot_replace_playable_initial_draft(
                 blocked.set()
                 await asyncio.Event().wait()
             return {"story": damaged_story("INVALID_LATER_DRAFT", damage)}
-        if "story" in kwargs["mock_response"]:
-            return {"story": damaged_story("INVALID_REVIEW", damage), "problems": []}
+        if "problems" in kwargs["mock_response"]:
+            return {"problems": []}
+        if kwargs["role"] == "actor":
+            # 首轮盲答缺少证据，触发后续修订；后续坏稿不能覆盖首轮可运行稿。
+            return {"answers": {}}
         return deepcopy(kwargs["mock_response"])
 
     monkeypatch.setattr(checker, "complete_for", model)
@@ -232,23 +235,21 @@ async def test_local_condition_error_is_passed_to_the_repair_model(runtime_root,
         calls.append(deepcopy(incoming))
         if "materials" in incoming:
             generations += 1
-            story = damaged_story("INVALID_FIRST_DRAFT") if generations == 1 else valid_story()
+            story = damaged_story("INVALID_FIRST_DRAFT") if generations == 1 else valid_story("REPAIRED_GENERATION")
             return {"story": story}
-        if "story" in kwargs["mock_response"]:
-            return {"story": valid_story("REPAIRED_REVIEW"), "problems": []}
         return deepcopy(kwargs["mock_response"])
 
     monkeypatch.setattr(checker, "complete_for", model)
     await studio._generate(job, ["technical fixture"], "new")
 
-    assert job.status == "done"
+    assert job.status == "done" and generations == 2
     problems = [problem for item in calls for problem in item.get("problems", [])]
     assert any(
         "clue" in problem and any(location in problem for location in ("c1", "clues.0", "clues[0]"))
         for problem in problems
     ), "修订输入应指出实际坏掉的线索或字段，不能只重复通用条件规则。"
     engine = GameEngine(runtime_root / "no-official-stories", studio.stories_dir)
-    assert engine.new_game(job.story_id)["title"] == "REPAIRED_REVIEW"
+    assert engine.new_game(job.story_id)["title"] == "REPAIRED_GENERATION"
 
 
 @pytest.mark.asyncio
@@ -267,7 +268,7 @@ async def test_later_model_error_preserves_a_playable_candidate(
         if "materials" in incoming:
             generations += 1
             step = "later_generation" if generations > 1 else "generation"
-        elif "story" in kwargs["mock_response"]:
+        elif "problems" in kwargs["mock_response"]:
             step = "review"
         else:
             step = "intro_answers" if kwargs["role"] == "writer" else "clue_answers"
@@ -277,7 +278,7 @@ async def test_later_model_error_preserves_a_playable_candidate(
         if step == "generation":
             return {"story": valid_story()}
         if step == "review":
-            return {"story": valid_story("PLAYABLE_REVIEW"), "problems": []}
+            return {"problems": []}
         if failure_step == "later_generation" and step == "clue_answers":
             return {"answers": {}}
         return deepcopy(kwargs["mock_response"])
@@ -287,4 +288,4 @@ async def test_later_model_error_preserves_a_playable_candidate(
 
     assert failed
     saved = assert_published_game_opens(studio, job, runtime_root)
-    assert saved["title"] in {"PLAYABLE_INITIAL", "PLAYABLE_REVIEW"}
+    assert saved["title"] == "PLAYABLE_INITIAL"
