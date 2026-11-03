@@ -1,6 +1,10 @@
-/* 首页：案件列表、新建剧场入口、继续上一局；带 ?story=<id> 时直接开局。 */
+/* 首页：案件列表、新建剧场入口、生成中的剧场、继续上一局；带 ?story=<id> 时直接开局。 */
 (() => {
-  const { h, icon, hydrateIcons, tidy, api, store, toast, ApiError } = window.KS;
+  const { h, icon, hydrateIcons, tidy, api, store, chats, toast, ApiError } = window.KS;
+  const POLL_MS = 3000;
+  // 失败的生成在首页留半天，之后只在编剧页的对话记录里看得到
+  const FAILED_KEEP_MS = 12 * 3600 * 1000;
+  let pollTimer = null;
   const grid = document.getElementById('case-grid');
   const launch = document.getElementById('launch');
   const heroStart = document.getElementById('hero-start');
@@ -59,8 +63,56 @@
     return h('a', { class: 'case-card studio-card', href: '/studio/' },
       h('span', { class: 'studio-plus' }, icon('plus')),
       h('h3', null, '新建剧场'),
-      h('p', { class: 'case-intro' }, '把一碗海龟汤、一段小说、一个网址，或者一句「我想玩一个发生在……的案子」交给编剧，一两分钟后开一局新的。'),
+      h('p', { class: 'case-intro' }, '把一碗海龟汤、一段小说、一个网址，或者一句「我想玩一个发生在……的案子」交给编剧，几分钟后开一局新的。'),
       h('span', { class: 'studio-go' }, '和编剧聊聊', icon('arrow')));
+  }
+
+  // 这个浏览器里正在生成、或刚失败的剧场；生成完的已经在案件列表里
+  function pendingChats() {
+    return chats.list().filter((chat) => {
+      const job = chat.jobs.at(-1);
+      return job && (job.status === 'running' || (job.status === 'failed' && Date.now() - job.endedAt < FAILED_KEEP_MS));
+    });
+  }
+
+  function genCard(chat) {
+    const job = chat.jobs.at(-1);
+    const running = job.status === 'running';
+    const share = chat.mode === 'share';
+    return h('a', { class: `case-card gen-card ${job.status}`, href: `/studio/?chat=${encodeURIComponent(chat.chatId)}`, dataset: { chat: chat.chatId } },
+      h('div', { class: 'case-meta' },
+        running
+          ? h('span', { class: 'tag tag-gold' }, h('span', { class: 'spinner', 'aria-hidden': 'true' }), '生成中')
+          : h('span', { class: 'tag tag-red' }, '生成未完成'),
+        h('span', { class: 'meta-item' }, share ? '出题给朋友' : '自己玩'),
+        running ? h('span', { class: 'meta-item gen-clock' }, icon('clock'), chats.clock(Date.now() - job.startedAt)) : null),
+      h('h3', null, chats.title(chat)),
+      running
+        ? h('p', { class: 'gen-step' }, job.offline ? '和服务器的连接断了，正在重试……' : (job.steps.at(-1) || '编剧正在布置现场'))
+        : h('p', { class: 'gen-error' }, job.error || '生成没有完成，请回到对话重试。'),
+      h('span', { class: 'studio-go' }, running ? '查看进度' : '回到对话', icon('arrow')));
+  }
+
+  function renderPending() {
+    const cards = pendingChats().map(genCard);
+    for (const old of grid.querySelectorAll('.gen-card')) old.remove();
+    grid.querySelector('.studio-card')?.after(...cards);
+  }
+
+  // 首页也替编剧页查进度：生成完就重新拉案件列表，新案件出现在列表里
+  async function pollPending() {
+    pollTimer = null;
+    let finished = false;
+    for (const chat of chats.list()) {
+      const job = chats.runningJob(chat);
+      if (!job) continue;
+      await chats.checkJob(job);
+      chats.put(chat);
+      if (job.status !== 'running') finished = true;
+    }
+    if (finished) await loadStories();
+    else renderPending();
+    if (chats.list().some(chats.runningJob)) pollTimer = setTimeout(pollPending, POLL_MS);
   }
 
   async function loadStories() {
@@ -81,6 +133,7 @@
     grid.replaceChildren(
       ...official.map((story, index) => caseCard(story, index === 0)),
       studioCard(),
+      ...pendingChats().map(genCard),
       ...generated.map((story) => caseCard(story, false)));
     grid.removeAttribute('aria-busy');
     if (official.length) {
@@ -96,11 +149,23 @@
     if (!event.persisted) return;
     launch.hidden = true;
     renderResume();
+    renderPending();
+    if (!pollTimer && chats.list().some(chats.runningJob)) pollPending();
   });
+
+  setInterval(() => {
+    for (const node of grid.querySelectorAll('.gen-card.running')) {
+      const job = chats.get(node.dataset.chat)?.jobs.at(-1);
+      const clock = node.querySelector('.gen-clock');
+      if (job && clock) clock.replaceChildren(icon('clock'), chats.clock(Date.now() - job.startedAt));
+    }
+  }, 1000);
 
   hydrateIcons();
   const storyId = new URLSearchParams(location.search).get('story');
   if (storyId) startGame(storyId, { replace: true });
   renderResume();
-  loadStories();
+  loadStories().then(() => {
+    if (!pollTimer && chats.list().some(chats.runningJob)) pollPending();
+  });
 })();
