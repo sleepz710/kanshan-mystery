@@ -33,7 +33,7 @@
 
     <main class="game" id="game" data-view="chat">
       <aside class="panel" id="cast" aria-label="在场人物">
-        <h2 class="panel-title">在场人物</h2>
+        <h2 class="panel-title cast-title"><span>在场人物</span><button class="trust-help" type="button" data-trust-help aria-label="查看信任度说明" aria-describedby="trust-help" aria-expanded="false"><i data-icon="question"></i></button></h2>
         <ul class="cast-list" id="cast-list"></ul>
       </aside>
 
@@ -87,6 +87,16 @@
       <button type="button" data-view="events" aria-current="false"><i data-icon="events"></i><span>事件</span><i class="dot" id="tab-events" hidden></i></button>
       <button type="button" data-view="kanshan" aria-current="false"><img src="/assets/logo.svg" alt=""><span>看山</span><i class="dot" id="tab-kanshan" hidden></i></button>
     </nav>
+  </div>
+
+  <div class="trust-help-popover" id="trust-help" role="tooltip" hidden>
+    <b>信任度 · 0–3 格</b>
+    <p>表示角色愿意向你透露信息的程度，部分秘密和线索还需要对应证据。</p>
+    <ul>
+      <li>问话或出示证据后，信任可能增加 1 格、减少 1 格或不变；拆穿谎话额外增加 1 格，最高 3 格。</li>
+      <li>和同一角色累计完成 4 次问话后，正常回复时至少有 1 格。回避回复时信任不变，保底延后。</li>
+    </ul>
+    <p class="trust-help-note">信任高也可能说谎，判断真假要看证据。</p>
   </div>
 
   <dialog class="modal intro" id="dlg-intro">
