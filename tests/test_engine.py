@@ -221,7 +221,7 @@ async def test_failed_check_rewrites_once_and_commits_only_final_reply(engine, m
 
 
 @pytest.mark.asyncio
-async def test_two_failed_checks_commit_evasion_without_actor_clues_or_trust(engine, monkeypatch, agent_calls):
+async def test_two_failed_checks_commit_authorized_clue_without_trust(engine, monkeypatch, agent_calls):
     game_id = start(engine)
     await engine.talk(game_id, "xiaolin", "材料")
     await engine.talk(game_id, "xiaolin", "回单")
@@ -235,13 +235,16 @@ async def test_two_failed_checks_commit_evasion_without_actor_clues_or_trust(eng
     result = await engine.show(game_id, "zhou", "c2")
     assert len(agent_calls["reply"]) - count == 2
     state = engine.games[game_id]
-    assert result["reply"] == agents.evasive_reply(agent_calls["reply"][-1][0])["reply"]
-    assert result["new_clues"] == []
+    clue = agent_calls["reply"][-1][0]["available_clues"][0]
+    assert clue["title"] in result["reply"] and "交给你" in result["reply"]
+    assert result["new_clues"] == [clue]
     assert state.trust == previous.trust
-    assert state.acquired_clues == previous.acquired_clues
+    assert state.acquired_clues == previous.acquired_clues | {clue["id"]}
     assert state.shown["zhou"] == {"c2"}
     assert state.turns == previous.turns + 1
-    assert state.histories["zhou"][-1] == {"role": "assistant", "content": result["reply"]}
+    history = state.histories["zhou"][-1]
+    assert history["role"] == "assistant" and history["content"].startswith(result["reply"])
+    assert clue["content"] in history["content"]
 
 
 @pytest.mark.parametrize("bad", [None, "{}", {}, {"reply": "", "reveal": [], "trust_delta": 1},
