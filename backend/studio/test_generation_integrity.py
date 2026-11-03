@@ -206,7 +206,7 @@ async def test_bad_later_generation_cannot_replace_playable_initial_draft(
             return {"problems": []}
         if kwargs["role"] == "actor":
             # 首轮盲答缺少证据，触发后续修订；后续坏稿不能覆盖首轮可运行稿。
-            return {"answers": {}}
+            return {"answers": {q["id"]: None for q in mock_story()["ending"]["questions"]}}
         return deepcopy(kwargs["mock_response"])
 
     monkeypatch.setattr(checker, "complete_for", model)
@@ -280,7 +280,7 @@ async def test_later_model_error_preserves_a_playable_candidate(
         if step == "review":
             return {"problems": []}
         if failure_step == "later_generation" and step == "clue_answers":
-            return {"answers": {}}
+            return {"answers": {q["id"]: None for q in mock_story()["ending"]["questions"]}}
         return deepcopy(kwargs["mock_response"])
 
     monkeypatch.setattr(checker, "complete_for", model)

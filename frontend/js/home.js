@@ -53,12 +53,16 @@
       h('ol', { class: 'case-list' }, rows.map((row) => h('li', null, row))));
   }
 
-  function storyRow(story, label) {
-    return h('button', { class: 'case-row', type: 'button', onclick: () => startGame(story.id) },
+  function storyRow(story, label, legacyWarning) {
+    const warning = story.checked === false
+      ? '检查未全部通过，试玩可能遇到线索或推理问题。'
+      : typeof story.checked !== 'boolean' ? legacyWarning : null;
+    return h('button', { class: `case-row${warning ? ' has-warning' : ''}`, type: 'button', onclick: () => startGame(story.id) },
       h('span', { class: 'row-title' }, story.title),
       h('span', { class: 'row-desc' }, tidy(story.intro)),
       h('span', { class: 'row-meta' }, label ? `${label} · ` : null, `${story.characters} 位角色`),
-      icon('arrow', 'row-go'));
+      icon('arrow', 'row-go'),
+      warning ? h('span', { class: 'row-warning' }, icon('alert'), h('span', null, warning)) : null);
   }
 
   // 这个浏览器里正在生成、或刚失败的剧场
@@ -94,7 +98,7 @@
       .sort((a, b) => b.endedAt - a.endedAt);
     const seen = new Set();
     return done.filter((job) => !seen.has(job.storyId) && seen.add(job.storyId))
-      .map((job) => ({ story: byId.get(job.storyId), share: job.mode === 'share' }));
+      .map((job) => ({ story: byId.get(job.storyId), share: job.mode === 'share', warning: job.error }));
   }
 
   function inviteRow() {
@@ -108,7 +112,7 @@
   function mineShelf(mine) {
     const rows = [
       ...pendingChats().map(genRow),
-      ...mine.map(({ story, share }) => storyRow(story, share ? '出题给朋友' : null)),
+      ...mine.map(({ story, share, warning }) => storyRow(story, share ? '出题给朋友' : null, warning)),
     ];
     const action = rows.length ? h('a', { class: 'shelf-action', href: '/studio/' }, icon('plus'), '新建剧场') : null;
     return shelf('shelf-mine', '我的剧场', '这台浏览器里生成的', action, rows.length ? rows : [inviteRow()]);

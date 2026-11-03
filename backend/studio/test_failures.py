@@ -94,7 +94,7 @@ async def test_hard_failures_start_another_round(tmp_path, monkeypatch, failure)
             if failure == "intro_answers" and kwargs["role"] == "writer":
                 result["answers"] = {q["id"]: q["answer"] for q in mock_story()["ending"]["questions"]}
             if failure == "clue_answers" and kwargs["role"] == "actor":
-                result["answers"] = {}
+                result["answers"] = {q["id"]: None for q in mock_story()["ending"]["questions"]}
         return result
 
     monkeypatch.setattr(checker, "complete_for", model)

@@ -137,6 +137,10 @@ class StudioService:
                 raise InputError("每次最多两万字、五个文本附件。")
             if len(set(chat.files) | set(files)) > 10:
                 raise InputError("每段对话最多十个附件，请新建对话。")
+            command = text.strip().rstrip("。！!.")
+            strategy_commands = {"没看过答案": "unseen", "看过答案": "seen", "全新": "new"}
+            if not chat.materials and not files and (command in {"直接开始", "开始生成"} or command in strategy_commands):
+                return {"reply": "请先发送想改编的素材，或者一句案件题材，再开始生成。", "job": None}
             additions = [text] if text.strip() else []
             for name in files:
                 additions.append(f"附件 {name}：\n" + read_file(name, files))
@@ -151,8 +155,6 @@ class StudioService:
             history = [*chat.history, {"role": "user", "content": json.dumps({"text": text, "files": list(files)}, ensure_ascii=False)}]
             context = {"mode": chat.mode, "already_asked": chat.asked, "materials": chat.materials + additions,
                        "files": list(set(chat.files) | set(files)), "previous_strategy": chat.strategy}
-            command = text.strip().rstrip("。！!.")
-            strategy_commands = {"没看过答案": "unseen", "看过答案": "seen", "全新": "new"}
             decision = None
             if chat.materials and (command in {"直接开始", "开始生成"} or command in strategy_commands):
                 decision = Decision(action="generate", strategy=strategy_commands.get(command, chat.strategy))
@@ -374,11 +376,11 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
                 ], role="writer", mock_response={"story": mock_story()})
             except checker.ReplyFormatError as exc:
                 # 回复读不出来只算这一轮没过，下一轮重写
-                problems = [f"上一轮回复无法读取：{exc.message}完整返回一个合法 JSON 对象。"]
+                problems = [*problems, f"上一轮回复无法读取：{exc.message}完整返回一个合法 JSON 对象。"]
                 continue
             candidate = result.get("story")
             if not isinstance(candidate, dict):
-                problems = ["编剧输出必须包含 story 对象。"]
+                problems = [*problems, "编剧输出必须包含 story 对象。"]
                 continue
             candidate.update(id=story_id, source="generated")
             story = candidate
@@ -431,9 +433,21 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
         if job.mode == "share":
             from backend.studio.share import publish
 
-            job.owner_token = await asyncio.to_thread(publish, self.stories_dir, story_id, lambda: self._save(story))
+            write = asyncio.to_thread(publish, self.stories_dir, story_id, lambda: self._save(story))
         else:
-            await asyncio.to_thread(self._save, story)
+            write = asyncio.to_thread(self._save, story)
+        # 工作线程中的磁盘写入无法被 Task.cancel 中止；进入发布后先完成该次提交与状态收尾。
+        publishing = asyncio.create_task(write)
+        while True:
+            try:
+                published = await asyncio.shield(publishing)
+                break
+            except asyncio.CancelledError:
+                if publishing.cancelled():
+                    raise
+                logger.info("生成任务 %s 正在保存，完成发布后关闭", job.id)
+        if job.mode == "share":
+            job.owner_token = published
         job.story_id = story_id
         job.status = "done"
         job.progress = "剧场已准备好" if not job.problems else "剧场已保存，检查未全部通过，请决定是否试玩"

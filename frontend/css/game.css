@@ -169,6 +169,14 @@
 }
 .status-bar.done { background: rgba(228, 179, 92, .08); }
 .status-bar .grow { flex: 1; min-width: 12em; }
+.status-bar.unchecked { background: rgba(228, 179, 92, .08); }
+.quality-note {
+  display: flex; align-items: flex-start; gap: 7px;
+  color: var(--gold); font-size: 13px; line-height: 1.7;
+}
+.quality-note .icon { width: 16px; height: 16px; margin-top: 3px; }
+.status-bar .quality-note { flex-basis: 100%; min-width: 0; }
+#intro-body > .quality-note { margin-bottom: 14px; }
 
 .thread {
   flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain;

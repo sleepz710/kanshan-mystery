@@ -32,6 +32,7 @@
   };
 
   const SUGGESTIONS = ['说说你知道的情况', '你和这件事有什么关系？', '那天具体发生了什么？'];
+  const QUALITY_WARNING = '检查未全部通过，试玩可能遇到线索或推理问题。';
   const mobile = window.matchMedia('(max-width: 1023px)');
   const rendered = new WeakMap();
   let busy = false;
@@ -184,10 +185,17 @@
         h('span', { class: 'trust-label' }, '信任 ', trustMeter(state.trust[c.id]), trustHelpButton())));
   }
 
+  function qualityNote() {
+    return state.checked === false
+      ? h('p', { class: 'quality-note', role: 'note' }, icon('alert'), h('span', null, QUALITY_WARNING))
+      : null;
+  }
+
   function renderStatus() {
     const last = state.verdicts[state.verdicts.length - 1];
-    el.statusBar.hidden = !state.finished && !last;
+    el.statusBar.hidden = !state.finished && !last && state.checked !== false;
     el.statusBar.classList.toggle('done', state.finished);
+    el.statusBar.classList.toggle('unchecked', state.checked === false);
     if (state.finished) {
       el.statusBar.replaceChildren(
         h('span', { class: 'grow' }, state.reveal ? '本局已结案，汤底已经揭晓。' : '本局已结案。'),
@@ -197,7 +205,9 @@
       el.statusBar.replaceChildren(
         h('span', { class: 'grow' }, `上次推理：${last.ending.title}（答对 ${last.score}/${last.total}）。线索都还在，查到新东西再提交一次。`),
         h('button', { class: 'btn btn-blue btn-sm', type: 'button', onclick: openAccuse }, '再次提交'));
-    }
+    } else el.statusBar.replaceChildren();
+    const warning = qualityNote();
+    if (warning) el.statusBar.append(warning);
   }
 
   function messageNode(msg, owner) {
@@ -805,6 +815,7 @@
   function openIntro() {
     el.introBody.replaceChildren(
       h('h2', { class: 'intro-title' }, state.title),
+      qualityNote(),
       h('blockquote', { class: 'soup paper' }, state.intro),
       h('p', { class: 'intro-section' }, '相关人员'),
       h('div', { class: 'intro-cast' }, ...state.characters.map((c) => h('div', { class: 'intro-person' },
