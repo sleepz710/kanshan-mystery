@@ -4,7 +4,8 @@ import asyncio
 from copy import deepcopy
 import json
 import logging
-from unittest.mock import AsyncMock
+from types import SimpleNamespace
+from unittest.mock import AsyncMock, Mock
 
 import pytest
 import yaml
@@ -228,3 +229,104 @@ async def test_model_and_save_failures_are_logged(tmp_path, monkeypatch, caplog)
     await studio._generate(job, [], "new")
     assert job.status == "failed" and not list(tmp_path.glob("*.yaml"))
     assert "save-failure" in caplog.text and "磁盘不可写" in caplog.text
+
+
+def fake_openai(monkeypatch, replies):
+    """replies: [(content, finish_reason)]，依次作为模型回复。"""
+    monkeypatch.setenv("LLM_MOCK", "0")
+    monkeypatch.setenv("LLM_API_KEY", "test-key")
+    monkeypatch.setenv("LLM_BASE_URL", "https://api.deepseek.com")
+    monkeypatch.delenv("LLM_WRITER_BASE_URL", raising=False)
+    monkeypatch.delenv("LLM_WRITER_API_KEY", raising=False)
+    create = AsyncMock(side_effect=[
+        SimpleNamespace(choices=[SimpleNamespace(finish_reason=reason, message=SimpleNamespace(content=content))])
+        for content, reason in replies
+    ])
+
+    class Client:
+        chat = SimpleNamespace(completions=SimpleNamespace(create=create))
+
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *args):
+            pass
+
+    monkeypatch.setattr(checker, "AsyncOpenAI", Mock(return_value=Client()))
+    return create
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("bad", ["   \n  ", '{"story": {"title": "SECRET_TRUNCATED', "[1, 2]"])
+async def test_unreadable_reply_is_retried_once_with_repair_hint(monkeypatch, caplog, bad):
+    create = fake_openai(monkeypatch, [(bad, "stop"), ('{"story": {}}', "stop")])
+    with caplog.at_level(logging.WARNING):
+        assert await checker.complete_for([{"role": "user", "content": "素材"}], role="writer", mock_response={}) == {"story": {}}
+    assert create.await_count == 2
+    assert create.await_args_list[1].kwargs["messages"][-1] == {"role": "user", "content": checker._JSON_REPAIR_INSTRUCTION}
+    assert "编剧模型回复格式无效（第 1 次）" in caplog.text
+    assert "SECRET_TRUNCATED" not in caplog.text
+
+
+@pytest.mark.asyncio
+async def test_twice_unreadable_or_truncated_reply_raises_format_error(monkeypatch):
+    create = fake_openai(monkeypatch, [("  ", "stop"), ("", "stop")])
+    with pytest.raises(checker.ReplyFormatError, match="空内容"):
+        await checker.complete_for([], role="writer", mock_response={})
+    assert create.await_count == 2
+    create = fake_openai(monkeypatch, [('{"story": {', "length")])
+    with pytest.raises(checker.ReplyFormatError, match="长度"):
+        await checker.complete_for([], role="writer", mock_response={})
+    assert create.await_count == 1
+
+
+def step_of(kwargs):
+    mock = kwargs["mock_response"]
+    if "answers" in mock:
+        return "可解性"
+    return "审稿" if "problems" in mock else "生成"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failing, expected_calls, checked, problem", [
+    ("生成", ["生成", "生成", "审稿", "可解性", "可解性"], True, None),
+    ("审稿", ["生成", "审稿", "可解性", "可解性"], False, "审稿回复无法读取，本次未经审稿。"),
+    ("可解性", ["生成", "审稿", "可解性"], False, "可解性检查回复无法读取，未完成检查。"),
+])
+async def test_unreadable_step_does_not_fail_the_job(tmp_path, monkeypatch, failing, expected_calls, checked, problem):
+    studio, job = StudioService(tmp_path), Job("unreadable", "chat", "play")
+    calls = []
+
+    async def model(messages, **kwargs):
+        step = step_of(kwargs)
+        calls.append(step)
+        if step == failing and calls.count(step) == 1:
+            raise checker.ReplyFormatError("模型返回了空内容，请重试。", "空白回复")
+        return deepcopy(kwargs["mock_response"])
+
+    monkeypatch.setattr(checker, "complete_for", model)
+    await studio._generate(job, ["素材"], "new")
+    assert calls == expected_calls
+    assert job.status == "done"
+    assert saved(studio, job)["checked"] is checked
+    assert job.problems == ([] if problem is None else [problem])
+
+
+@pytest.mark.asyncio
+async def test_draft_the_engine_cannot_load_is_never_published(tmp_path, monkeypatch):
+    studio, job = StudioService(tmp_path), Job("broken-refs", "chat", "play")
+    broken = mock_story()
+    clue_id = broken["clues"][0]["id"]
+    for character in broken["characters"]:
+        character["knows"] = [clue_id]
+
+    async def model(messages, **kwargs):
+        mock = deepcopy(kwargs["mock_response"])
+        if "story" in mock:
+            mock["story"] = deepcopy(broken)
+        return mock
+
+    monkeypatch.setattr(checker, "complete_for", model)
+    await studio._generate(job, ["素材"], "new")
+    assert job.status == "failed" and job.draft is None
+    assert not list(tmp_path.glob("*.yaml"))
