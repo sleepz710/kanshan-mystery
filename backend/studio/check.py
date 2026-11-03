@@ -13,6 +13,7 @@ from urllib.parse import urlsplit
 
 from openai import APIError, AsyncOpenAI
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
+from typing_extensions import TypedDict
 
 from backend import llm
 
@@ -33,7 +34,49 @@ class ReplyFormatError(llm.LLMError):
 
 Text = Annotated[str, Field(min_length=1, max_length=30000)]
 Id = Annotated[str, Field(pattern=r"^[a-z0-9][a-z0-9_-]*$", min_length=1, max_length=80)]
-Condition = dict[str, str | int]
+
+
+class Condition(TypedDict, total=False):
+    __pydantic_config__ = ConfigDict(strict=True, extra="forbid", str_strip_whitespace=True)
+
+    trust: Annotated[int, Field(ge=0, le=3, description="所属角色的信任度不低于该值")]
+    shown: Annotated[Id, Field(description="引用 clues.id，已向所属角色出示的线索编号")]
+    has: Annotated[Id, Field(description="引用 clues.id，玩家已取得的线索编号")]
+    exposed: Annotated[Id, Field(description="引用 characters.lies.id，已拆穿的谎话编号")]
+    event: Annotated[Id, Field(description="引用 events.id，已发生的事件编号")]
+
+
+class EventWhen(Condition):
+    __pydantic_config__ = ConfigDict(strict=True, extra="forbid", str_strip_whitespace=True)
+
+    to: Annotated[Id, Field(description="引用 characters.id，条件所属的角色编号，事件必须指定")]
+
+
+class HintCondition(TypedDict, total=False):
+    __pydantic_config__ = ConfigDict(strict=True, extra="forbid", str_strip_whitespace=True)
+
+    has: Annotated[Id, Field(description="引用 clues.id，玩家已取得的线索编号")]
+    exposed: Annotated[Id, Field(description="引用 characters.lies.id，已拆穿的谎话编号")]
+    event: Annotated[Id, Field(description="引用 events.id，已发生的事件编号")]
+
+
+class CorrectEndingWhen(TypedDict):
+    __pydantic_config__ = ConfigDict(strict=True, extra="forbid", str_strip_whitespace=True)
+
+    correct: Annotated[list[Id], Field(min_length=1, description="引用 ending.questions.id，这些题号必须全部答对")]
+
+
+class ChoseEndingWhen(TypedDict):
+    __pydantic_config__ = ConfigDict(strict=True, extra="forbid", str_strip_whitespace=True)
+
+    chose: Annotated[dict[Id, Text], Field(min_length=1, description="键引用 ending.questions.id，值为该题 options 中的选项原文", json_schema_extra={"additionalProperties": False})]
+
+
+class FallbackEndingWhen(TypedDict):
+    __pydantic_config__ = ConfigDict(strict=True, extra="forbid")
+
+
+EndingWhen = CorrectEndingWhen | ChoseEndingWhen | FallbackEndingWhen
 
 
 class Record(BaseModel):
@@ -46,7 +89,7 @@ class Fact(Record):
 
 
 class Secret(Record):
-    fact: Id
+    fact: Id = Field(description="引用 facts.id，且必须包含在该角色的 knows 中")
     until: Condition
 
 
@@ -54,7 +97,7 @@ class Lie(Record):
     id: Id
     claim: Text
     until: Condition
-    admit: Id
+    admit: Id = Field(description="引用 facts.id，拆穿后承认的事实，且必须包含在该角色的 knows 中")
 
 
 class Character(Record):
@@ -63,7 +106,7 @@ class Character(Record):
     avatar: Text
     profile: Text
     persona: Text
-    knows: list[Id]
+    knows: list[Id] = Field(description="引用 facts.id 的列表，表示该角色知道的事实编号")
     secrets: list[Secret] = Field(default_factory=list)
     lies: list[Lie] = Field(default_factory=list)
     trust_start: int = Field(default=0, ge=0, le=3)
@@ -73,19 +116,19 @@ class Clue(Record):
     id: Id
     title: Text
     content: Text
-    holder: Id
+    holder: Id = Field(description="引用 characters.id，持有并交出这条线索的角色编号")
     requires: Condition = Field(default_factory=dict)
 
 
 class Event(Record):
     id: Id
-    when: Condition
-    confront: list[Id] = Field(min_length=2, max_length=2)
-    unlock: list[Id]
+    when: EventWhen
+    confront: list[Id] = Field(min_length=2, max_length=2, description="引用 characters.id，参与对质的两个不同角色编号；不得填写 clues.id 线索编号")
+    unlock: list[Id] = Field(description="引用 clues.id，事件触发后直接发给玩家的线索编号列表")
 
 
 class Hint(Record):
-    done: Condition
+    done: HintCondition
     vague: Text
     direct: Text
 
@@ -106,7 +149,7 @@ class Ending(Record):
     id: Id
     title: Text
     text: Text
-    when: dict = Field(default_factory=dict)
+    when: EndingWhen = Field(default_factory=dict)
     retry: bool = False
 
 
@@ -151,52 +194,49 @@ def _references(story: dict) -> list[str]:
                 problems.append(f"{key} 编号 {value} 重复。")
             all_ids.append(value)
 
+    groups["questions"] = {q["id"] for q in story["ending"]["questions"]}
+    groups["endings"] = {e["id"] for e in story["ending"]["endings"]}
+    namespaces = {group: f"{group}.id" for group in groups}
+    namespaces.update(lies="characters.lies.id", questions="ending.questions.id", endings="ending.endings.id")
+
     def ref(value, group, location):
         if value not in groups[group]:
-            problems.append(f"{location} 引用了不存在的 {value}。")
+            actual = "、".join(namespaces[key] for key, ids in groups.items() if value in ids)
+            detail = f"属于 {actual}" if actual else "未在剧本中定义"
+            problems.append(f"{location} 须引用 {namespaces[group]}，{value} {detail}。")
+            return False
+        return True
 
-    def condition(value, location, *, event=False, global_scope=False):
-        allowed = {"trust", "shown", "has", "exposed", "event"} | ({"to"} if event else set())
+    def condition(value, location):
         for key, target in value.items():
-            if key not in allowed:
-                problems.append(f"{location} 有未知条件 {key}。")
-            elif key == "trust":
-                if type(target) is not int or not 0 <= target <= 3:
-                    problems.append(f"{location} 的 trust 必须是 0 到 3 的整数。")
-            else:
+            if key != "trust":
                 group = {"shown": "clues", "has": "clues", "exposed": "lies", "event": "events", "to": "characters"}[key]
-                ref(target, group, location)
-        if "shown" in value and (event or global_scope) and "to" not in value:
-            problems.append(f"{location} 使用 shown 时必须指定 to 角色。")
-        if "to" in value and "shown" not in value:
-            problems.append(f"{location} 的 to 必须与 shown 一起使用。")
-        if "trust" in value and global_scope:
-            problems.append(f"{location} 没有所属角色，不能使用 trust。")
+                ref(target, group, f"{location}.{key}")
 
     for char in story["characters"]:
         for fact in char["knows"]:
-            ref(fact, "facts", char["id"])
-        for secret in char["secrets"]:
-            if secret["fact"] not in char["knows"]:
+            ref(fact, "facts", f"角色 {char['id']}.knows")
+        for index, secret in enumerate(char["secrets"]):
+            if ref(secret["fact"], "facts", f"角色 {char['id']}.secrets[{index}].fact") and secret["fact"] not in char["knows"]:
                 problems.append(f"{char['id']} 的秘密 {secret['fact']} 不在 knows 中。")
-            condition(secret["until"], f"{char['id']} 秘密 {secret['fact']}")
+            condition(secret["until"], f"角色 {char['id']}.secrets[{index}].until")
         for lie in char["lies"]:
-            if lie["admit"] not in char["knows"]:
+            if ref(lie["admit"], "facts", f"谎话 {lie['id']}.admit") and lie["admit"] not in char["knows"]:
                 problems.append(f"{lie['id']} 承认的事实 {lie['admit']} 不在 {char['id']} 的 knows 中。")
-            condition(lie["until"], lie["id"])
+            condition(lie["until"], f"谎话 {lie['id']}.until")
     for clue in story["clues"]:
-        ref(clue["holder"], "characters", clue["id"])
-        condition(clue["requires"], clue["id"])
+        ref(clue["holder"], "characters", f"线索 {clue['id']}.holder")
+        condition(clue["requires"], f"线索 {clue['id']}.requires")
     for event in story["events"]:
-        condition(event["when"], event["id"], event=True, global_scope=True)
+        condition(event["when"], f"事件 {event['id']}.when")
         if len(set(event["confront"])) != 2:
             problems.append(f"{event['id']} 对质必须包含两个不同的角色。")
-        for char in event["confront"]:
-            ref(char, "characters", event["id"])
-        for clue in event["unlock"]:
-            ref(clue, "clues", event["id"])
+        for index, char in enumerate(event["confront"]):
+            ref(char, "characters", f"事件 {event['id']}.confront[{index}]")
+        for index, clue in enumerate(event["unlock"]):
+            ref(clue, "clues", f"事件 {event['id']}.unlock[{index}]")
     for i, hint in enumerate(story["kanshan"]["hints"]):
-        condition(hint["done"], f"提示 {i + 1}", event=True, global_scope=True)
+        condition(hint["done"], f"提示 {i + 1}.done")
     for question in story["ending"]["questions"]:
         if question["answer"] not in question["options"]:
             problems.append(f"{question['id']} 的答案不在选项中。")
