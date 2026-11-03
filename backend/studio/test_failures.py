@@ -310,3 +310,23 @@ async def test_unreadable_step_does_not_fail_the_job(tmp_path, monkeypatch, fail
     assert job.status == "done"
     assert saved(studio, job)["checked"] is checked
     assert job.problems == ([] if problem is None else [problem])
+
+
+@pytest.mark.asyncio
+async def test_draft_the_engine_cannot_load_is_never_published(tmp_path, monkeypatch):
+    studio, job = StudioService(tmp_path), Job("broken-refs", "chat", "play")
+    broken = mock_story()
+    clue_id = broken["clues"][0]["id"]
+    for character in broken["characters"]:
+        character["knows"] = [clue_id]
+
+    async def model(messages, **kwargs):
+        mock = deepcopy(kwargs["mock_response"])
+        if "story" in mock:
+            mock["story"] = deepcopy(broken)
+        return mock
+
+    monkeypatch.setattr(checker, "complete_for", model)
+    await studio._generate(job, ["素材"], "new")
+    assert job.status == "failed" and job.draft is None
+    assert not list(tmp_path.glob("*.yaml"))

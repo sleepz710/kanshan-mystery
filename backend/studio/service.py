@@ -6,6 +6,7 @@ import asyncio
 import json
 import logging
 import re
+from copy import deepcopy
 from dataclasses import dataclass, field
 from time import monotonic
 from pathlib import Path
@@ -15,6 +16,7 @@ from uuid import uuid4
 import yaml
 from pydantic import Field, ValidationError
 
+from backend.engine import GameEngine
 from backend.llm import LLMError, is_mock_mode
 from backend.studio import check as checker
 from backend.studio.check import Record, Story
@@ -272,6 +274,11 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
             normalized = Story.model_validate(candidate).model_dump()
         except ValidationError as exc:
             return None, [f"格式 {'.'.join(map(str, e['loc']))}：{e['msg']}。" for e in exc.errors(include_input=False)]
+        try:
+            GameEngine._validate_story(deepcopy(normalized), normalized["id"])
+        except (KeyError, TypeError, ValueError):
+            # 引擎开不了局的稿子不能当候选保存；具体哪条引用错了由后面的结构检查列出，交给下一轮修
+            return normalized, []
         job.draft = normalized
         job.problems = list(pending)
         return normalized, []
