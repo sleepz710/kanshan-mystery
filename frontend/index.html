@@ -51,33 +51,30 @@
         </svg>
       </div>
       <div class="hero-inner">
-        <img class="hero-seal" src="/assets/logo.svg" alt="看山徽标" width="88" height="88">
+        <img class="hero-seal" src="/assets/logo.svg" alt="看山徽标" width="64" height="64">
         <h1>看山谜案馆</h1>
         <p class="tagline">和各怀秘密的 AI 角色对话、出示证据、拆穿谎话，查出真相。</p>
         <ol class="steps">
-          <li><i data-icon="chat"></i>问话</li>
-          <li><i data-icon="evidence"></i>出示证据</li>
-          <li><i data-icon="bolt"></i>拆穿谎话</li>
-          <li><i data-icon="gavel"></i>提交推理</li>
+          <li>问话</li>
+          <li>出示证据</li>
+          <li>拆穿谎话</li>
+          <li>提交推理</li>
         </ol>
-        <div class="hero-actions">
-          <button class="btn btn-primary btn-lg" id="hero-start" disabled>开始调查招牌案件</button>
-          <a class="btn btn-ghost btn-lg" href="/studio/">新建剧场</a>
-        </div>
       </div>
     </section>
 
-    <section class="cases" aria-labelledby="cases-title">
-      <div class="section-head">
-        <h2 id="cases-title">案件</h2>
-        <span class="section-note">刘看山知道每一案的汤底，但只回答是或不是</span>
-      </div>
+    <div class="cases">
       <div id="resume"></div>
-      <div class="case-grid" id="case-grid" aria-busy="true">
-        <div class="case-card skeleton featured"></div>
-        <div class="case-card skeleton"></div>
+      <div id="shelves" aria-busy="true">
+        <section class="shelf">
+          <div class="shelf-head"><h2>馆藏案件</h2></div>
+          <ol class="case-list">
+            <li class="case-row skeleton"></li>
+            <li class="case-row skeleton"></li>
+          </ol>
+        </section>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="home-foot">
