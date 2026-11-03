@@ -244,7 +244,7 @@ async def test_first_confrontation_line_is_repaired_before_next_actor_sees_it(mo
 
 
 @pytest.mark.asyncio
-async def test_failed_first_line_rewrite_never_calls_next_actor(monkeypatch, context):
+async def test_failed_first_line_rewrite_only_passes_evasion_to_next_actor(monkeypatch, context):
     second = deepcopy(context)
     second["character"]["id"] = "xiaolin"
     leak = context["forbidden_facts"][0]["text"]
@@ -253,12 +253,15 @@ async def test_failed_first_line_rewrite_never_calls_next_actor(monkeypatch, con
         {"ok": False, "leaked": ["f_hidden"], "contradiction": ""},
         valid_reply(reply="再次说出未解锁事实。"),
         {"ok": False, "leaked": ["f_hidden"], "contradiction": ""},
+        {"lines": [{"speaker": "xiaolin", "text": "那就稍后再聊。"}]},
     ])
-    with pytest.raises(llm.LLMError) as error:
-        await agents.confront([context, second], {"id": "e1"})
-    assert error.value.status_code == 502
-    assert len(calls) == 4
-    assert leak not in str(error.value)
+    result = await agents.confront([context, second], {"id": "e1"})
+    assert len(calls) == 5
+    assert leak not in json.dumps(result, ensure_ascii=False)
+    assert result[0]["text"] == agents.evasive_reply(context)["reply"]
+    next_payload = json.loads(calls[4]["messages"][-1]["content"])
+    assert next_payload["scene"]["public_lines"] == [result[0]]
+    assert "再次说出未解锁事实" not in json.dumps(next_payload, ensure_ascii=False)
     actor_requests = [json.loads(calls[index]["messages"][-1]["content"]) for index in (0, 2)]
     assert all(payload["character"]["id"] == "zhou" for payload in actor_requests)
 

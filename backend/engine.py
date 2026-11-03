@@ -207,6 +207,8 @@ class GameEngine:
             newly_exposed = state.exposed_lies - exposed_before
             for character in state.story["characters"]:
                 cid = character["id"]
+                if cid == character_id and candidate.get("_fallback"):
+                    continue
                 state.trust[cid] = min(3, state.trust[cid] + sum(l["id"] in newly_exposed for l in character["lies"]))
                 if state.talk_counts[cid] >= 4:
                     state.trust[cid] = max(1, state.trust[cid])
@@ -286,6 +288,8 @@ class GameEngine:
             "player_text": player_text, "shown_clue": deepcopy(shown_clue)}
 
     async def _checked_reply(self, context, initial=None):
+        if initial == agents.evasive_reply(context):
+            return initial
         retry_leaked = None
         context = deepcopy(context)
         for attempt in range(2):
@@ -302,7 +306,7 @@ class GameEngine:
                 return candidate
             retry_leaked = check["leaked"]
             context["check_feedback"] = check.get("contradiction", "")
-        raise GameError(502, "角色回复未通过核查，请重新提问。")
+        return {**agents.evasive_reply(context), "_fallback": True}
 
     async def _confront(self, state, event, shown_clue, *, context_state=None):
         source = context_state if context_state is not None else state

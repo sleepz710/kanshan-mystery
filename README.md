@@ -131,7 +131,7 @@ powershell -ExecutionPolicy Bypass -File deploy/local.ps1 update
 | `LLM_BASE_URL` | 共用接口地址，默认 `https://api.deepseek.com` |
 | `LLM_API_KEY` | 共用模型密钥，真实调用时填写 |
 | `LLM_ACTOR_MODEL` | 演员模型，默认 `deepseek-flash` |
-| `LLM_WRITER_MODEL` | 编剧模型，默认 `deepseek-v4-pro` |
+| `LLM_WRITER_MODEL` | 编剧模型，默认 `deepseek-flash`（开思考） |
 | `LLM_WRITER_BASE_URL` | 编剧独立接口，留空使用共用地址 |
 | `LLM_WRITER_API_KEY` | 编剧独立密钥，留空使用共用密钥 |
 

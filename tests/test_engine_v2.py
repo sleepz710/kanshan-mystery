@@ -336,7 +336,7 @@ async def test_contradiction_feedback_is_sent_to_single_rewrite(setup_game, monk
 
 
 @pytest.mark.asyncio
-async def test_failure_rolls_back_exposure_and_queued_event(setup_game, monkeypatch):
+async def test_rejected_lines_use_evasion_and_preserve_deterministic_events(setup_game, monkeypatch):
     engine, game_id, _ = setup_game
     await engine.talk(game_id, "b", "取X")
     before = deepcopy(engine.games[game_id])
@@ -345,11 +345,38 @@ async def test_failure_rolls_back_exposure_and_queued_event(setup_game, monkeypa
         return {"ok": False, "leaked": [], "contradiction": "不一致"}
 
     monkeypatch.setattr(agents, "check_reply", reject)
-    with pytest.raises(GameError):
-        await engine.show(game_id, "a", "x")
-    assert engine.games[game_id] == before
-    assert not engine.games[game_id].exposed_lies
-    assert not engine.games[game_id].triggered_events
+    result = await engine.show(game_id, "a", "x")
+    state = engine.games[game_id]
+    assert result["reply"] == "这件事我暂时不想多说。"
+    assert state.trust["a"] == before.trust["a"]
+    assert state.exposed_lies == {"la", "lz"}
+    assert state.triggered_events == {"e"}
+    assert [clue["id"] for clue in result["new_clues"]] == ["reward"]
+    lines = next(event["lines"] for event in result["events"] if event["type"] == "confront")
+    assert all(line["text"] == result["reply"] for line in lines)
+    assert all(any("【对质" in message["content"] for message in history) for history in state.histories.values())
+
+
+@pytest.mark.asyncio
+async def test_evasion_defers_four_turn_trust_floor(setup_game, monkeypatch):
+    engine, game_id, _ = setup_game
+
+    async def reject(context, candidate):
+        return {"ok": False, "leaked": [], "contradiction": "不一致"}
+
+    monkeypatch.setattr(agents, "check_reply", reject)
+    for _ in range(4):
+        result = await engine.talk(game_id, "a", "询问")
+        assert result["trust"]["a"] == 0 and not result["new_clues"]
+    state = engine.games[game_id]
+    assert state.turns == state.talk_counts["a"] == 4
+    assert len(state.histories["a"]) == 8
+
+    async def accept(context, candidate):
+        return {"ok": True, "leaked": [], "contradiction": ""}
+
+    monkeypatch.setattr(agents, "check_reply", accept)
+    assert (await engine.talk(game_id, "a", "继续"))["trust"]["a"] == 1
 
 
 def test_generated_listing_is_public_and_can_start(tmp_path, controlled_agents):
