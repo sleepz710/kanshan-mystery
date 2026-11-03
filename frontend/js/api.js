@@ -53,5 +53,6 @@
     ask: (gameId, question) => request('POST', `${game(gameId)}/ask`, { question }),
     accuse: (gameId, answers) => request('POST', `${game(gameId)}/accuse`, { answers }),
     reveal: (gameId) => request('POST', `${game(gameId)}/reveal`),
+    studioJob: (jobId) => request('GET', `/api/studio/jobs/${encodeURIComponent(jobId)}`),
   };
 })();

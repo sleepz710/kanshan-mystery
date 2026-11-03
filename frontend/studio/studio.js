@@ -1,7 +1,8 @@
-/* 生成剧场：和编剧聊天、上传 txt/md、贴网址；轮询不剧透的生成进度，完成后显示案件卡片并开局。 */
+/* 生成剧场：和编剧聊天、上传 txt/md、贴网址；轮询不剧透的生成进度，完成后显示案件卡片并开局。
+   侧边栏列出这个浏览器里的历次对话，新对话不覆盖旧的，各段对话的生成都在后台接着查。 */
 (() => {
   const {
-    h, icon, hydrateIcons, toast, confirmDialog, typeText, tidy, api, store, ApiError,
+    h, icon, hydrateIcons, toast, confirmDialog, typeText, tidy, api, store, chats, ApiError,
   } = window.KS;
 
   const $ = (id) => document.getElementById(id);
@@ -10,12 +11,9 @@
     modes: $('modes'), modesLock: $('modes-lock'), modeTag: $('mode-tag'), newChat: $('btn-new'),
     suggest: $('suggest'), composer: $('composer'), attachments: $('attachments'), fileInput: $('file-input'),
     say: $('say'), send: $('btn-send'), note: $('composer-note'),
+    sidebar: $('sidebar'), chatList: $('chat-list'), history: $('btn-history'), scrim: $('scrim'), sideNew: $('btn-side-new'),
   };
 
-  // 对话和生成任务存在服务器内存里；浏览器只记当前这段对话，刷新后接着显示、接着查进度
-  const SESSION_KEY = 'kanshan:studio';
-  // 出题人令牌按案件存，出题人页面 /share/?story=<id> 读取它
-  const OWNER_PREFIX = 'kanshan:owner:';
   // 与 backend/studio 的限制一致，发送前先提示
   const MAX_FILES = 5;
   const MAX_FILE_BYTES = 256 * 1024;
@@ -35,39 +33,16 @@
   // 自己玩模式下编剧只问一次改编方式，这几句是他给的选项
   const STRATEGY_REPLIES = ['没看过答案', '看过答案', '全新', '直接开始'];
 
-  // { chatId, mode, messages: [{ role: 'me' | 'writer', text, files }], jobs: [{ id, mode, after, status, progress, steps, storyId, error, story, startedAt, endedAt }] }
-  // job.after 是任务开始时的消息条数，卡片画在这条消息后面
+  // 当前打开的对话，结构见 chats.js；job.after 是任务开始时的消息条数，卡片画在这条消息后面
   let session = null;
   let attachments = [];
   let busy = false;
   let pollTimer = null;
-
-  // ---------- 本地记录 ----------
-
-  function readSession() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(SESSION_KEY));
-      return saved && saved.chatId && Array.isArray(saved.messages) && Array.isArray(saved.jobs) ? saved : null;
-    } catch {
-      // 本地存储被禁用或记录损坏：当作没有旧对话，新开一段
-      return null;
-    }
-  }
+  let polling = false;
 
   function save() {
-    try {
-      localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-    } catch {
-      // 隐私模式等禁用本地存储时，对话只保留在当前页面，刷新后重新开始
-    }
-  }
-
-  function keepOwnerToken(storyId, token) {
-    try {
-      localStorage.setItem(OWNER_PREFIX + storyId, token);
-    } catch {
-      toast('浏览器禁用了本地存储，出题人页面需要的访问令牌没能保存。', 'error', 8000);
-    }
+    chats.put(session);
+    renderSidebar();
   }
 
   // ---------- 接口（SPEC 6.2 生成剧场） ----------
@@ -111,22 +86,17 @@
   const studio = {
     newChat: (mode) => request('POST', '/api/studio/chats', { mode }),
     send: (chatId, form) => request('POST', `/api/studio/chats/${encodeURIComponent(chatId)}/messages`, form),
-    job: (jobId) => request('GET', `/api/studio/jobs/${encodeURIComponent(jobId)}`),
   };
 
   // ---------- 小工具 ----------
 
   const userCount = () => (session ? session.messages.filter((m) => m.role === 'me').length : 0);
-  const runningJob = () => (session ? session.jobs.find((j) => j.status === 'running') : undefined);
+  const runningJob = () => (session ? chats.runningJob(session) : undefined);
   const keepBottom = () => { el.thread.scrollTop = el.thread.scrollHeight; };
   const sizeText = (bytes) => (bytes < 1024 ? `${bytes} B` : `${Math.ceil(bytes / 1024)} KB`);
   const ownerUrl = (storyId) => `/share/?story=${encodeURIComponent(storyId)}`;
   const seal = () => h('span', { class: 'writer-seal', 'aria-hidden': 'true' }, '编');
-
-  function clock(ms) {
-    const s = Math.max(0, Math.floor(ms / 1000));
-    return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
-  }
+  const { clock } = chats;
 
   function hostOf(url) {
     try {
@@ -163,7 +133,7 @@
 
   // ---------- 生成任务卡片 ----------
 
-  const elapsedText = (job) => `已用 ${clock(Date.now() - job.startedAt)} · 通常一两分钟`;
+  const elapsedText = (job) => `已用 ${clock(Date.now() - job.startedAt)} · 通常要几分钟`;
 
   function stepsNode(job) {
     return h('ol', { class: 'job-steps' }, job.steps.map((step, i) => {
@@ -222,7 +192,7 @@
     let action = null;
     if (job === session.jobs.at(-1)) {
       action = job.lost
-        ? h('button', { class: 'btn btn-primary', type: 'button', onclick: () => resetChat({ ask: false }) }, icon('plus'), '新建对话')
+        ? h('button', { class: 'btn btn-primary', type: 'button', onclick: () => newChat(session.mode) }, icon('plus'), '新建对话')
         : h('button', { class: 'btn btn-primary', type: 'button', onclick: () => send('开始生成') }, icon('retry'), '重新生成');
     }
     return h('article', { class: cls, dataset: { job: job.id } },
@@ -254,58 +224,34 @@
     syncControls();
   }
 
-  async function storyInfo(storyId) {
-    let stories;
-    try {
-      stories = await api.stories();
-    } catch (error) {
-      if (!(error instanceof ApiError)) throw error;
-      // 卡片只是少了标题和汤面，开局不受影响
-      return null;
+  // 查所有对话里还在生成的任务：当前对话更新卡片，其他对话只更新侧边栏。查完还有在生成的就继续排下一轮
+  async function pollAll() {
+    polling = true;
+    let offline = false;
+    const others = chats.list().filter((c) => c.chatId !== (session && session.chatId) && chats.runningJob(c));
+    for (const chat of [session, ...others]) {
+      const job = chat && chats.runningJob(chat);
+      if (!job) continue;
+      if (!(await chats.checkJob(job))) offline = true;
+      // 等待期间可能切换了对话；当前对话用内存里的 session 存，避免拿旧对象覆盖
+      if (chat === session) {
+        save();
+        if (job.status === 'running') refreshRunning(job);
+        else finishJob(job);
+      } else if (!session || chat.chatId !== session.chatId) {
+        chats.put(chat);
+        renderSidebar();
+      }
     }
-    const found = stories.find((s) => s.id === storyId);
-    return found ? { title: found.title, intro: found.intro, characters: found.characters } : null;
+    polling = false;
+    pollTimer = null;
+    const more = runningJob() || chats.list().some((c) => chats.runningJob(c));
+    if (more) pollTimer = setTimeout(pollAll, offline ? POLL_MS * 3 : POLL_MS);
   }
 
-  function poll(job) {
-    clearTimeout(pollTimer);
-    const tick = async () => {
-      let data;
-      try {
-        data = await studio.job(job.id);
-      } catch (error) {
-        if (!(error instanceof ApiError)) throw error;
-        if (error.status === 404) {
-          Object.assign(job, {
-            status: 'failed', lost: true, offline: false, endedAt: Date.now(),
-            progress: '生成任务已丢失', error: '服务器重启过，这次生成没有保存下来。请新建对话再生成一次。',
-          });
-          save();
-          finishJob(job);
-          return;
-        }
-        job.offline = true;
-        refreshRunning(job);
-        pollTimer = setTimeout(tick, POLL_MS * 3);
-        return;
-      }
-      job.offline = false;
-      if (data.status === 'running') {
-        if (data.progress && data.progress !== job.steps.at(-1)) job.steps.push(data.progress);
-        save();
-        refreshRunning(job);
-        pollTimer = setTimeout(tick, POLL_MS);
-        return;
-      }
-      Object.assign(job, { status: data.status, progress: data.progress, storyId: data.story_id, error: data.error, endedAt: Date.now() });
-      if (data.status === 'done') {
-        if (data.owner_token) keepOwnerToken(data.story_id, data.owner_token);
-        job.story = await storyInfo(data.story_id);
-      }
-      save();
-      finishJob(job);
-    };
-    tick();
+  function startPolling() {
+    if (polling || pollTimer) return;
+    pollAll();
   }
 
   // ---------- 渲染 ----------
@@ -498,7 +444,7 @@
     if (job) {
       el.messages.append(jobNode(job, true));
       keepBottom();
-      poll(job);
+      startPolling();
     }
     busy = false;
     renderSuggest();
@@ -524,27 +470,79 @@
       syncControls();
       return false;
     }
-    clearTimeout(pollTimer);
-    session = { chatId: chat.chat_id, mode, messages: [{ role: 'writer', text: chat.reply }], jobs: [] };
+    const now = Date.now();
+    session = { chatId: chat.chat_id, mode, createdAt: now, updatedAt: now, messages: [{ role: 'writer', text: chat.reply }], jobs: [] };
+    chats.setCurrent(session.chatId);
     busy = false;
     save();
     renderAll();
     return true;
   }
 
-  async function resetChat({ ask = true } = {}) {
+  // 旧对话留在侧边栏；当前对话还没聊过就不再新建
+  async function resetChat() {
     if (busy) return;
-    if (ask && userCount()) {
-      const ok = await confirmDialog({
-        title: '开一段新对话？',
-        text: runningJob()
-          ? '编剧还在布置现场。换成新对话后这里不再显示进度，生成完的案件会出现在首页的案件列表里。'
-          : '当前对话会清空，已经生成的案件仍在首页的案件列表里。',
-        ok: '新对话',
-      });
-      if (!ok) return;
+    closeSidebar();
+    if (session && !userCount()) {
+      el.say.focus();
+      return;
     }
     if (await newChat(session ? session.mode : 'play')) el.say.focus();
+  }
+
+  function openChat(chatId) {
+    closeSidebar();
+    if (busy || (session && session.chatId === chatId)) return;
+    const chat = chats.get(chatId);
+    if (!chat) return;
+    session = chat;
+    chats.setCurrent(chatId);
+    attachments = [];
+    el.say.value = '';
+    autosize();
+    renderAll();
+    renderSidebar();
+    startPolling();
+  }
+
+  // ---------- 侧边栏 ----------
+
+  function chatStatus(chat) {
+    const job = chat.jobs.at(-1);
+    if (!job) return null;
+    if (job.status === 'running') return h('span', { class: 'chat-state running' }, h('span', { class: 'spinner', 'aria-hidden': 'true' }), '生成中');
+    if (job.status === 'done') return h('span', { class: 'chat-state done' }, icon('check'), '已生成');
+    return h('span', { class: 'chat-state failed' }, icon('alert'), '未完成');
+  }
+
+  function renderSidebar() {
+    const items = chats.list().filter((c) => chats.hasTalk(c) || (session && c.chatId === session.chatId));
+    el.chatList.replaceChildren(...items.map((chat) => {
+      const active = session && chat.chatId === session.chatId;
+      return h('li', null, h('button', {
+        class: `chat-item${active ? ' active' : ''}`,
+        type: 'button',
+        'aria-current': active ? 'true' : null,
+        onclick: () => openChat(chat.chatId),
+      },
+      h('span', { class: 'chat-title' }, chats.title(chat)),
+      h('span', { class: 'chat-meta' },
+        h('span', { class: `chat-mode ${chat.mode}` }, MODES[chat.mode].label),
+        chatStatus(chat),
+        h('span', { class: 'chat-time' }, chats.ago(chat.updatedAt)))));
+    }));
+  }
+
+  function openSidebar() {
+    el.sidebar.classList.add('open');
+    el.scrim.hidden = false;
+    el.history.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeSidebar() {
+    el.sidebar.classList.remove('open');
+    el.scrim.hidden = true;
+    el.history.setAttribute('aria-expanded', 'false');
   }
 
   async function handleError(error) {
@@ -644,6 +642,16 @@
     newChat(button.dataset.mode);
   });
   el.newChat.addEventListener('click', () => resetChat());
+  el.sideNew.addEventListener('click', () => resetChat());
+  el.history.addEventListener('click', () => (el.sidebar.classList.contains('open') ? closeSidebar() : openSidebar()));
+  el.scrim.addEventListener('click', closeSidebar);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && el.sidebar.classList.contains('open')) closeSidebar();
+  });
+  // 首页或另一个标签页更新了记录时，刷新侧边栏
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'kanshan:studio:chats') renderSidebar();
+  });
 
   // 建议、附件出现、手机键盘弹起让对话区变矮，或进度卡片变长时，原本停在底部的继续贴着底部
   let atBottom = true;
@@ -672,15 +680,19 @@
   hydrateIcons();
   renderNote();
   syncControls();
-  const wanted = new URLSearchParams(location.search).get('mode');
-  const saved = readSession();
-  // 带 ?mode=share 打开且旧对话还没聊过，按链接的玩法新开
-  const fresh = !saved || (wanted in MODES && wanted !== saved.mode && !saved.messages.some((m) => m.role === 'me'));
+  const params = new URLSearchParams(location.search);
+  const wanted = params.get('mode');
+  // 首页的生成卡片带 ?chat=<id> 打开对应对话
+  const saved = chats.get(params.get('chat')) || chats.get(chats.current());
+  if (params.has('chat') || params.has('mode')) history.replaceState(null, '', location.pathname);
+  // 带 ?mode= 打开时新开一段该玩法的对话，除非当前对话就是这个玩法且还没聊过
+  const fresh = !saved || (!params.has('chat') && wanted in MODES && !(wanted === saved.mode && !chats.hasTalk(saved)));
   if (fresh) newChat(wanted in MODES ? wanted : 'play');
   else {
     session = saved;
+    chats.setCurrent(saved.chatId);
     renderAll();
-    const job = runningJob();
-    if (job) poll(job);
   }
+  renderSidebar();
+  startPolling();
 })();

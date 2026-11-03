@@ -13,11 +13,13 @@
   <script src="/js/ui.js" defer></script>
   <script src="/js/api.js" defer></script>
   <script src="/js/store.js" defer></script>
+  <script src="/studio/chats.js" defer></script>
   <script src="/studio/studio.js" defer></script>
 </head>
 <body class="page-studio">
   <div class="app">
     <header class="topbar">
+      <button class="btn btn-ghost btn-icon btn-sm" type="button" id="btn-history" aria-controls="sidebar" aria-expanded="false" title="对话记录"><i data-icon="events"></i><span class="sr-only">对话记录</span></button>
       <a class="brand" href="/" title="回到首页"><img src="/assets/logo.svg" alt="看山谜案馆"><b>看山谜案馆</b></a>
       <div class="page-name">
         <strong>新建剧场</strong>
@@ -26,13 +28,24 @@
       <button class="btn btn-ghost btn-sm" type="button" id="btn-new"><i data-icon="plus"></i><span>新对话</span></button>
     </header>
 
+    <div class="studio-body">
+    <aside class="sidebar" id="sidebar" aria-label="对话记录">
+      <div class="sidebar-head">
+        <b>对话记录</b>
+        <button class="btn btn-ghost btn-sm" type="button" id="btn-side-new"><i data-icon="plus"></i>新对话</button>
+      </div>
+      <ul class="chat-list" id="chat-list"></ul>
+      <p class="sidebar-note">记录存在这个浏览器里。服务器重启后，旧对话只能查看，不能接着聊。</p>
+    </aside>
+    <div class="scrim" id="scrim" hidden></div>
+
     <main class="studio" id="studio">
       <div class="thread" id="thread">
         <div class="column">
           <section class="welcome">
             <span class="writer-seal" aria-hidden="true">编</span>
             <h1>新建剧场</h1>
-            <p class="welcome-text">把一碗海龟汤、一段小说、一个网址，或者一句「我想玩一个发生在……的案子」交给编剧。编剧会安排人物、证据和谎话，一两分钟后开一局新的。</p>
+            <p class="welcome-text">把一碗海龟汤、一段小说、一个网址，或者一句「我想玩一个发生在……的案子」交给编剧。编剧会安排人物、证据和谎话，几分钟后开一局新的。</p>
             <div class="modes" id="modes" role="radiogroup" aria-label="玩法">
               <button type="button" role="radio" data-mode="play" aria-checked="true">
                 <b><i data-icon="eye"></i>自己玩</b>
@@ -66,6 +79,7 @@
         </div>
       </div>
     </main>
+    </div>
   </div>
 </body>
 </html>

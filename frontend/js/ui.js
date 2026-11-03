@@ -76,7 +76,8 @@
     return nickname ? nickname[1] : name.slice(0, 1);
   }
 
-  // 剧本里的头像文件不存在时（生成的剧本常见）退回姓名首字
+  // 剧本里的头像文件不存在时（生成的剧本常见）退回姓名首字；记住缺的文件，重画时不再请求
+  const missingAvatars = new Set();
   function avatar(person, size = 44) {
     const el = h('span', { class: 'avatar', style: { '--size': `${size}px` } });
     if (person === 'kanshan') {
@@ -89,12 +90,15 @@
       el.style.setProperty('--hue', hue(person.id));
       el.replaceChildren(initial(person.name));
     };
-    if (!person.avatar) {
+    if (!person.avatar || missingAvatars.has(person.avatar)) {
       fallback();
       return el;
     }
     const img = h('img', { src: AVATAR_DIR + encodeURIComponent(person.avatar), alt: '', decoding: 'async' });
-    img.addEventListener('error', fallback, { once: true });
+    img.addEventListener('error', () => {
+      missingAvatars.add(person.avatar);
+      fallback();
+    }, { once: true });
     el.append(img);
     return el;
   }
