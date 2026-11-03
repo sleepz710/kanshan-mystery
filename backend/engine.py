@@ -186,9 +186,20 @@ class GameEngine:
             context = self._context(state, character_id, text, shown_clue)
             candidate = await self._checked_reply(context)
             allowed = {c["id"] for c in context["available_clues"]}
-            new_clues = self._grant(state, [cid for cid in candidate["reveal"] if cid in allowed])
+            reveal = [cid for cid in candidate["reveal"] if cid in allowed]
+            if not reveal and context["available_clues"]:
+                clue = context["available_clues"][0]
+                reveal = [clue["id"]]
+                handoff = f"这份《{clue['title']}》可以交给你，请收好。"
+                reply = handoff if candidate.get("_fallback") else f"{candidate['reply']}\n{handoff}"
+                candidate = {**candidate, "reply": reply, "reveal": reveal}
+            new_clues = self._grant(state, reveal, force=False)
             state.trust[character_id] = max(0, min(3, state.trust[character_id] + max(-1, min(1, candidate["trust_delta"]))))
-            state.histories[character_id].extend([{"role": "user", "content": text}, {"role": "assistant", "content": candidate["reply"]}])
+            history_reply = candidate["reply"]
+            if new_clues:
+                evidence = "\n".join(f"《{clue['title']}》：{clue['content']}" for clue in new_clues)
+                history_reply += "\n已交付证据：\n" + evidence
+            state.histories[character_id].extend([{"role": "user", "content": text}, {"role": "assistant", "content": history_reply}])
             state.turns += 1
             if clue_id is None:
                 state.talk_counts[character_id] += 1
@@ -248,6 +259,8 @@ class GameEngine:
         return result
 
     def _next_hint(self, state):
+        if state.story.get("source") == "generated" and not state.story.get("hints"):
+            return self._generated_hint(state)
         stages = state.story["kanshan"]["hints"]
         for index, stage in enumerate(stages):
             if self._condition(state, None, stage["done"]):
@@ -263,6 +276,34 @@ class GameEngine:
             state.hint_index += 1
             return text
         return None
+
+    def _generated_hint(self, state):
+        characters = {c["id"]: c["name"] for c in state.story["characters"]}
+        clues = {c["id"]: c for c in state.story["clues"]}
+        if set(clues) <= state.acquired_clues:
+            return "线索已经收齐，可以整理证据并提交推理。"
+        for character_id, name in characters.items():
+            available = self._context(state, character_id, "")["available_clues"]
+            if available:
+                return f"向{name}询问《{available[0]['title']}》，这份材料现在可以交给你。"
+
+        event_rewards = {cid for event in state.story["events"] for cid in event["unlock"]}
+        conditions = [(c["holder"], c.get("requires", {})) for c in clues.values()
+                      if c["id"] not in state.acquired_clues and c["id"] not in event_rewards]
+        conditions.extend((c["id"], lie["until"]) for c in state.story["characters"]
+                          for lie in c["lies"] if lie["id"] not in state.exposed_lies)
+        conditions.extend((event["when"]["to"], {k: v for k, v in event["when"].items() if k != "to"})
+                          for event in state.story["events"] if event["id"] not in state.triggered_events)
+        for character_id, condition in conditions:
+            clue_id = condition.get("shown")
+            if clue_id in state.acquired_clues and clue_id not in state.shown[character_id]:
+                return f"把已获得的《{clues[clue_id]['title']}》出示给{characters[character_id]}，再听听对方的说明。"
+        for character_id, condition in conditions:
+            if "trust" in condition and state.trust[character_id] < condition["trust"]:
+                remaining = {k: v for k, v in condition.items() if k != "trust"}
+                if self._condition(state, character_id, remaining):
+                    return f"继续和{characters[character_id]}交流，建立信任后再询问可公开的材料。"
+        return "可以继续询问其他角色，把已经获得的证据和各人的说法对照起来。"
 
     def _context(self, state, character_id, player_text, shown_clue=None):
         character = next(c for c in state.story["characters"] if c["id"] == character_id)
