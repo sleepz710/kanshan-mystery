@@ -73,7 +73,7 @@ async def test_one_round_uses_writer_actor_then_two_blind_answers(runtime_root, 
     assert [call["role"] for call in calls] == ["writer", "actor", "writer", "actor"]
     assert calls[1]["mock_response"] == {"problems": []}
     assert "problems" in calls[1]["messages"][0]["content"]
-    assert calls[2]["mock_response"] == {"answers": {}}
+    assert calls[2]["mock_response"] == {"answers": {q["id"]: None for q in mock_story()["ending"]["questions"]}}
     assert set(calls[3]["mock_response"]) == {"answers"}
     assert calls[3]["mock_response"]["answers"]
 

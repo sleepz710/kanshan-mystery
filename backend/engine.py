@@ -73,7 +73,8 @@ class GameEngine:
                 except GameError:
                     logging.getLogger(__name__).warning("跳过无法加载的剧本：%s", path.name)
                     continue
-                result.append({"id": story["id"], "title": story["title"], "intro": story["intro"], "source": story["source"], "characters": len(story["characters"])})
+                quality = {"checked": story["checked"]} if type(story.get("checked")) is bool else {}
+                result.append({"id": story["id"], "title": story["title"], "intro": story["intro"], "source": story["source"], "characters": len(story["characters"]), **quality})
         return result
 
     def new_game(self, story_id: str) -> dict:
@@ -85,7 +86,8 @@ class GameEngine:
             histories={c["id"]: [] for c in characters}, shown={c["id"]: set() for c in characters},
             talk_counts={c["id"]: 0 for c in characters})
         self._locks[game_id] = asyncio.Lock()
-        return {"game_id": game_id, "title": story["title"], "intro": story["intro"],
+        quality = {"checked": story["checked"]} if type(story.get("checked")) is bool else {}
+        return {"game_id": game_id, "title": story["title"], "intro": story["intro"], **quality,
             "characters": [{k: c[k] for k in ("id", "name", "avatar", "profile")} for c in characters],
             "questions": [{k: deepcopy(q[k]) for k in ("id", "text", "options")} for q in story["ending"]["questions"]],
             "kanshan": {"greeting": story["kanshan"]["greeting"], "asks_left": 5}}

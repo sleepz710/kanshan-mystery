@@ -47,7 +47,7 @@ def mock_mode(monkeypatch):
 async def test_valid_story_and_two_blind_calls(monkeypatch):
     story = sample_story()
     before = deepcopy(story)
-    model = AsyncMock(side_effect=[{"answers": {}}, {"answers": {"q1": "林青", "q2": "陈明"}}])
+    model = AsyncMock(side_effect=[{"answers": {"q1": None, "q2": None}}, {"answers": {"q1": "林青", "q2": "陈明"}}])
     monkeypatch.setattr(checker, "complete_for", model)
     assert await checker.check(story) == {"ok": True, "problems": []}
     assert story == before
@@ -121,7 +121,7 @@ async def test_missing_evidence_is_reported_by_blind_solver(monkeypatch):
     story = sample_story()
     story["clues"][1]["content"] = "一张空白纸"
     story["clues"][2]["content"] = "一段无关对话"
-    model = AsyncMock(side_effect=[{"answers": {}}, {"answers": {"q1": "林青", "q2": None}}])
+    model = AsyncMock(side_effect=[{"answers": {"q1": None, "q2": None}}, {"answers": {"q1": "林青", "q2": None}}])
     monkeypatch.setattr(checker, "complete_for", model)
     result = await checker.check(story)
     assert not result["ok"] and any("q2" in p and "线索支撑" in p for p in result["problems"])

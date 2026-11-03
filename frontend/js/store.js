@@ -65,6 +65,7 @@
       gameId: game.game_id,
       storyId,
       title: game.title,
+      ...(typeof game.checked === 'boolean' ? { checked: game.checked } : {}),
       intro: tidy(game.intro),
       characters: game.characters.map((c) => ({ ...c, profile: tidy(c.profile) })),
       questions: game.questions,

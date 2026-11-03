@@ -88,6 +88,12 @@
 .row-meta { color: var(--muted); font-size: 13px; white-space: nowrap; }
 .row-go { width: 18px; height: 18px; color: var(--muted); transition: transform .2s var(--ease-out), color .2s; }
 .case-row:hover .row-go { color: var(--gold); transform: translateX(3px); }
+.case-row.has-warning { row-gap: 6px; }
+.row-warning {
+  grid-column: 1 / -1; display: flex; align-items: flex-start; gap: 6px;
+  min-width: 0; color: var(--gold); font-size: 13px; line-height: 1.6; white-space: normal;
+}
+.row-warning .icon { width: 15px; height: 15px; margin-top: 3px; }
 
 /* 生成中、失败的剧场和没生成过时的邀请行 */
 .gen-row .row-title { color: var(--text-2); }

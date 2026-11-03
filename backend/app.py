@@ -51,6 +51,7 @@ class StoryInfo(BaseModel):
     intro: str
     source: Literal["official", "generated"]
     characters: int
+    checked: bool | None = None
 
 
 class KanshanInfo(BaseModel):
@@ -75,6 +76,7 @@ class NewGameResponse(BaseModel):
     game_id: str
     title: str
     intro: str
+    checked: bool | None = None
     characters: list[CharacterInfo]
     questions: list[QuestionInfo]
     kanshan: KanshanInfo
@@ -164,11 +166,11 @@ def create_app(
     async def model_error_handler(request: Request, error: LLMError) -> JSONResponse:
         return JSONResponse(status_code=error.status_code, content={"detail": str(error)})
 
-    @application.get("/api/stories", response_model=list[StoryInfo])
+    @application.get("/api/stories", response_model=list[StoryInfo], response_model_exclude_none=True)
     async def list_stories() -> list[dict]:
         return engine.list_stories()
 
-    @application.post("/api/games", response_model=NewGameResponse, status_code=201)
+    @application.post("/api/games", response_model=NewGameResponse, response_model_exclude_none=True, status_code=201)
     async def new_game(body: NewGameRequest) -> dict:
         return engine.new_game(body.story_id)
 
