@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 import re
 from copy import deepcopy
@@ -14,6 +15,20 @@ from openai import APIError, AsyncOpenAI
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
 from backend import llm
+
+
+logger = logging.getLogger(__name__)
+# DeepSeek 的 JSON 模式在输出不合格时会返回一串空白，官方建议重试；重试时补这一句
+_JSON_REPAIR_INSTRUCTION = "只返回合法 JSON 对象，字符串正确转义，不要 Markdown 或解释。"
+
+
+class ReplyFormatError(llm.LLMError):
+    """模型回复不是可用的 JSON 对象：空白、截断或语法错误。detail 只写长度和出错位置，不写剧本内容。"""
+
+    def __init__(self, message: str, detail: str, *, retry: bool = True) -> None:
+        super().__init__(message)
+        self.detail = detail
+        self.retry = retry
 
 
 Text = Annotated[str, Field(min_length=1, max_length=30000)]
@@ -304,19 +319,38 @@ async def complete_for(messages: list[dict], *, role: str, mock_response: dict) 
     if urlsplit(base).scheme not in {"http", "https"} or not host:
         raise llm.LLMError("模型接口地址需要使用 HTTP 或 HTTPS。", status_code=503)
     extra = {"extra_body": {"thinking": {"type": "enabled" if writer else "disabled"}}} if host == "api.deepseek.com" else {}
+    async with AsyncOpenAI(base_url=base, api_key=key, timeout=120, max_retries=1) as client:
+        for attempt in (1, 2):
+            try:
+                response = await client.chat.completions.create(model=model, messages=messages, response_format={"type": "json_object"}, **extra)
+            except APIError as exc:
+                raise llm.LLMError("编剧模型服务暂时不可用，请稍后重试。") from exc
+            try:
+                return _decode(response)
+            except ReplyFormatError as exc:
+                logger.warning("%s模型回复格式无效（第 %d 次）：%s", "编剧" if writer else "演员", attempt, exc.detail)
+                if attempt == 2 or not exc.retry:
+                    raise
+                messages = [*messages, {"role": "user", "content": _JSON_REPAIR_INSTRUCTION}]
+
+
+def _decode(response) -> dict:
+    if not response.choices:
+        raise ReplyFormatError("模型没有返回回复内容，请重试。", "没有 choices")
+    choice = response.choices[0]
+    content = choice.message.content or ""
+    if choice.finish_reason == "length":
+        # 同样的请求再发一次多半还是超长，交给生成流程按「这一轮没过」处理
+        raise ReplyFormatError("模型回复超过长度上限，请重试。", f"达到长度上限，已输出 {len(content)} 字", retry=False)
+    if not content.strip():
+        raise ReplyFormatError("模型返回了空内容，请重试。", f"空白回复（{len(content)} 个空白字符）")
     try:
-        async with AsyncOpenAI(base_url=base, api_key=key, timeout=120, max_retries=1) as client:
-            response = await client.chat.completions.create(model=model, messages=messages, response_format={"type": "json_object"}, **extra)
-    except APIError as exc:
-        raise llm.LLMError("编剧模型服务暂时不可用，请稍后重试。") from exc
-    if not response.choices or response.choices[0].finish_reason == "length":
-        raise llm.LLMError("模型未完成回复，请重试。")
-    try:
-        result = json.loads(response.choices[0].message.content or "")
-    except (ValueError, TypeError) as exc:
-        raise llm.LLMError("模型没有返回有效 JSON，请重试。") from exc
+        result = json.loads(content)
+    except ValueError as exc:
+        position = f"，出错位置第 {exc.pos} 字" if isinstance(exc, json.JSONDecodeError) else ""
+        raise ReplyFormatError("模型没有返回有效 JSON，请重试。", f"JSON 语法错误{position}，共 {len(content)} 字") from exc
     if not isinstance(result, dict):
-        raise llm.LLMError("模型 JSON 必须是对象。")
+        raise ReplyFormatError("模型返回的 JSON 必须是对象。", f"顶层是 {type(result).__name__}")
     return result
 
 
@@ -339,7 +373,7 @@ async def check(story: dict, *, complete: Callable[..., Awaitable[dict]] | None 
         ], role=role, mock_response=mock)
         answers = answer.get("answers")
         if not isinstance(answers, dict) or any(not isinstance(v, (str, type(None))) for v in answers.values()):
-            raise llm.LLMError("可解性检查未返回有效的 answers 对象。")
+            raise ReplyFormatError("可解性检查未返回有效的 answers 对象。", "answers 不是题号到选项的对象")
         correct = [q for q in questions if answers.get(q["id"]) == q["answer"]]
         if role == "writer" and len(correct) * 2 > len(questions):
             problems.append("只看汤面就答对超过一半结局题，汤面透露过多答案。")
