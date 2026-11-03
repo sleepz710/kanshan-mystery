@@ -28,6 +28,7 @@
     dlgEvidence: $('dlg-evidence'), evidenceTitle: $('evidence-title'), evidenceList: $('evidence-list'), evidenceGo: $('evidence-go'),
     dlgClue: $('dlg-clue'), clueBody: $('clue-body'),
     dlgAccuse: $('dlg-accuse'), accuseForm: $('accuse-form'), accuseProgress: $('accuse-progress'), accuseGo: $('accuse-go'),
+    trustHelp: $('trust-help'),
   };
 
   const SUGGESTIONS = ['说说你知道的情况', '你和这件事有什么关系？', '那天具体发生了什么？'];
@@ -36,6 +37,9 @@
   let busy = false;
   let pending = null;
   let evidenceChoice = null;
+  let trustHelpAnchor = null;
+  let trustHelpPinned = false;
+  let trustHelpTimer = null;
 
   const save = () => store.save(state);
   const person = (id) => state.characters.find((c) => c.id === id);
@@ -76,6 +80,64 @@
 
   // ---------- 渲染 ----------
 
+  function trustHelpButton() {
+    return h('button', {
+      class: 'trust-help', type: 'button', dataset: { trustHelp: '' },
+      'aria-label': '查看信任度说明', 'aria-describedby': 'trust-help', 'aria-expanded': 'false',
+    }, icon('question'));
+  }
+
+  function positionTrustHelp() {
+    if (!trustHelpAnchor) return;
+    const rect = trustHelpAnchor.getBoundingClientRect();
+    if (!trustHelpAnchor.isConnected || !rect.width || !rect.height) {
+      closeTrustHelp();
+      return;
+    }
+    const viewport = window.visualViewport;
+    const leftEdge = (viewport?.offsetLeft || 0) + 12;
+    const topEdge = (viewport?.offsetTop || 0) + 12;
+    const width = viewport?.width || window.innerWidth;
+    const height = viewport?.height || window.innerHeight;
+    el.trustHelp.style.width = `${Math.min(340, Math.max(0, width - 24))}px`;
+    el.trustHelp.style.maxWidth = `${Math.max(0, width - 24)}px`;
+    el.trustHelp.style.maxHeight = `${Math.max(0, height - 24)}px`;
+    const box = el.trustHelp.getBoundingClientRect();
+    const left = Math.max(leftEdge, Math.min(rect.right - box.width, leftEdge + width - 24 - box.width));
+    let top = rect.bottom + 8;
+    if (top + box.height > topEdge + height - 24) top = rect.top - box.height - 8;
+    top = Math.max(topEdge, Math.min(top, topEdge + height - 24 - box.height));
+    el.trustHelp.style.left = `${left}px`;
+    el.trustHelp.style.top = `${top}px`;
+  }
+
+  function openTrustHelp(button) {
+    clearTimeout(trustHelpTimer);
+    if (trustHelpAnchor !== button) {
+      trustHelpAnchor?.setAttribute('aria-expanded', 'false');
+      trustHelpPinned = false;
+    }
+    trustHelpAnchor = button;
+    button.setAttribute('aria-expanded', 'true');
+    el.trustHelp.hidden = false;
+    positionTrustHelp();
+  }
+
+  function closeTrustHelp() {
+    clearTimeout(trustHelpTimer);
+    trustHelpAnchor?.setAttribute('aria-expanded', 'false');
+    el.trustHelp.hidden = true;
+    trustHelpAnchor = null;
+    trustHelpPinned = false;
+  }
+
+  function scheduleTrustHelpClose() {
+    clearTimeout(trustHelpTimer);
+    trustHelpTimer = setTimeout(() => {
+      if (!trustHelpPinned && document.activeElement !== trustHelpAnchor) closeTrustHelp();
+    }, 120);
+  }
+
   function setStat(name, value, bump = false) {
     const node = document.querySelector(`.stat[data-stat="${name}"]`);
     const number = node.querySelector('b');
@@ -110,6 +172,7 @@
   }
 
   function renderChatHead() {
+    closeTrustHelp();
     const c = person(state.current);
     const broken = brokenCount(c.id);
     el.chatHead.style.setProperty('--accent', color(c.id));
@@ -118,7 +181,7 @@
       h('div', { class: 'chat-who' }, h('b', null, c.name), h('small', { title: c.profile }, c.profile)),
       h('div', { class: 'chat-trust' },
         broken ? h('span', { class: 'tag tag-red' }, `拆穿 ${broken} 次`) : null,
-        h('span', null, '信任 ', trustMeter(state.trust[c.id]))));
+        h('span', { class: 'trust-label' }, '信任 ', trustMeter(state.trust[c.id]), trustHelpButton())));
   }
 
   function renderStatus() {
@@ -907,6 +970,46 @@
 
   // ---------- 事件绑定 ----------
 
+  document.addEventListener('pointerover', (event) => {
+    const button = event.target.closest('[data-trust-help]');
+    if (button && event.pointerType !== 'touch') openTrustHelp(button);
+  });
+  document.addEventListener('pointerout', (event) => {
+    const button = event.target.closest('[data-trust-help]');
+    if (button && !button.contains(event.relatedTarget) && !el.trustHelp.contains(event.relatedTarget)) scheduleTrustHelpClose();
+  });
+  el.trustHelp.addEventListener('pointerenter', () => clearTimeout(trustHelpTimer));
+  el.trustHelp.addEventListener('pointerleave', scheduleTrustHelpClose);
+  document.addEventListener('focusin', (event) => {
+    const button = event.target.closest('[data-trust-help]');
+    if (button) openTrustHelp(button);
+  });
+  document.addEventListener('focusout', (event) => {
+    if (event.target.closest('[data-trust-help]') && !trustHelpPinned && !el.trustHelp.contains(event.relatedTarget)) closeTrustHelp();
+  });
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-trust-help]');
+    if (!button) return;
+    if (trustHelpAnchor === button && trustHelpPinned) closeTrustHelp();
+    else {
+      openTrustHelp(button);
+      trustHelpPinned = true;
+    }
+  });
+  document.addEventListener('pointerdown', (event) => {
+    if (!event.target.closest('[data-trust-help]') && !el.trustHelp.contains(event.target)) closeTrustHelp();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !el.trustHelp.hidden) {
+      event.preventDefault();
+      closeTrustHelp();
+    }
+  });
+  window.addEventListener('resize', positionTrustHelp);
+  document.addEventListener('scroll', positionTrustHelp, true);
+  window.visualViewport?.addEventListener('resize', positionTrustHelp);
+  window.visualViewport?.addEventListener('scroll', positionTrustHelp);
+
   function autosize() {
     el.say.style.height = 'auto';
     el.say.style.height = `${Math.min(el.say.scrollHeight + 2, 140)}px`;
@@ -959,6 +1062,7 @@
     if (button) button.closest('dialog').close();
   });
   mobile.addEventListener('change', () => {
+    closeTrustHelp();
     markSeen();
     renderBadges();
   });

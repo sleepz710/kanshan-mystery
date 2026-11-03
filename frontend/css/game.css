@@ -82,6 +82,31 @@
 }
 .trust-float.down { background: rgba(210, 69, 59, .95); color: #fff; }
 
+.cast-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.trust-label { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.trust-help {
+  flex: none; display: inline-grid; place-items: center;
+  width: 28px; height: 28px; padding: 0; border: 0; border-radius: 7px;
+  background: transparent; color: var(--muted); touch-action: manipulation;
+  transition: color .2s, background-color .2s;
+}
+.trust-help .icon { width: 16px; height: 16px; }
+.trust-help:hover, .trust-help[aria-expanded="true"] { color: var(--gold); background: rgba(228, 179, 92, .1); }
+.trust-help-popover {
+  position: fixed; z-index: 90;
+  width: min(340px, calc(100vw - 24px)); max-height: calc(100dvh - 24px);
+  padding: 14px 16px; overflow-y: auto; overscroll-behavior: contain;
+  border: 1px solid rgba(228, 179, 92, .4); border-radius: 12px;
+  background: var(--panel); box-shadow: var(--shadow);
+  color: var(--text-2); font-size: 13px; line-height: 1.7; transition: none;
+}
+.trust-help-popover > b { display: block; margin-bottom: 5px; color: var(--gold); font-size: 14px; }
+.trust-help-popover ul { margin: 8px 0; padding-left: 1.3em; list-style: disc; }
+.trust-help-popover li + li { margin-top: 6px; }
+.trust-help-popover .trust-help-note { padding-top: 8px; border-top: 1px solid var(--line); color: var(--text); }
+
+@media (pointer: coarse) { .trust-help { width: 32px; height: 32px; } }
+
 /* ---------- 刘看山 ---------- */
 
 .ks-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px 10px; }
