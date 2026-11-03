@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
 import os
@@ -19,8 +20,16 @@ from backend import llm
 
 
 logger = logging.getLogger(__name__)
+MODEL_CALL_TIMEOUT = 180
 # DeepSeek 的 JSON 模式在输出不合格时会返回一串空白，官方建议重试；重试时补这一句
 _JSON_REPAIR_INSTRUCTION = "只返回合法 JSON 对象，字符串正确转义，不要 Markdown 或解释。"
+
+
+class ModelTimeoutError(llm.LLMError):
+    """完整模型调用耗尽墙钟期限，包含 SDK 和格式重试的等待。"""
+
+    def __init__(self, message: str = "模型响应超时，请稍后重试。") -> None:
+        super().__init__(message, status_code=504)
 
 
 class ReplyFormatError(llm.LLMError):
@@ -359,19 +368,27 @@ async def complete_for(messages: list[dict], *, role: str, mock_response: dict) 
     if urlsplit(base).scheme not in {"http", "https"} or not host:
         raise llm.LLMError("模型接口地址需要使用 HTTP 或 HTTPS。", status_code=503)
     extra = {"extra_body": {"thinking": {"type": "enabled" if writer else "disabled"}}} if host == "api.deepseek.com" else {}
-    async with AsyncOpenAI(base_url=base, api_key=key, timeout=120, max_retries=1) as client:
-        for attempt in (1, 2):
-            try:
-                response = await client.chat.completions.create(model=model, messages=messages, response_format={"type": "json_object"}, **extra)
-            except APIError as exc:
-                raise llm.LLMError("编剧模型服务暂时不可用，请稍后重试。") from exc
-            try:
-                return _decode(response)
-            except ReplyFormatError as exc:
-                logger.warning("%s模型回复格式无效（第 %d 次）：%s", "编剧" if writer else "演员", attempt, exc.detail)
-                if attempt == 2 or not exc.retry:
-                    raise
-                messages = [*messages, {"role": "user", "content": _JSON_REPAIR_INSTRUCTION}]
+    deadline = asyncio.timeout(MODEL_CALL_TIMEOUT)
+    try:
+        async with deadline:
+            async with AsyncOpenAI(base_url=base, api_key=key, timeout=120, max_retries=1) as client:
+                for attempt in (1, 2):
+                    try:
+                        response = await client.chat.completions.create(model=model, messages=messages, response_format={"type": "json_object"}, **extra)
+                    except APIError as exc:
+                        logger.warning("%s模型调用失败：%s status=%s", "编剧" if writer else "演员", type(exc).__name__, getattr(exc, "status_code", None))
+                        raise llm.LLMError("编剧模型服务暂时不可用，请稍后重试。") from exc
+                    try:
+                        return _decode(response)
+                    except ReplyFormatError as exc:
+                        logger.warning("%s模型回复格式无效（第 %d 次）：%s", "编剧" if writer else "演员", attempt, exc.detail)
+                        if attempt == 2 or not exc.retry:
+                            raise
+                        messages = [*messages, {"role": "user", "content": _JSON_REPAIR_INSTRUCTION}]
+    except TimeoutError as exc:
+        if not deadline.expired():
+            raise
+        raise ModelTimeoutError() from exc
 
 
 def _decode(response) -> dict:
