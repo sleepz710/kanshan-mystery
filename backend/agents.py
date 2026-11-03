@@ -101,6 +101,20 @@ def _mock_reply(context: dict) -> dict:
     return {"reply": text, "reveal": [available[0]["id"]] if available else [], "trust_delta": 1}
 
 
+def evasive_reply(context: dict) -> dict:
+    """固定回避句只按语气选取，不引用故事事实或被拒绝的回复。"""
+    persona = context["character"]["persona"]
+    if any(word in persona for word in ("紧张", "内向", "自责", "胆小")):
+        text = "我……想先静一静，等会儿再说吧。"
+    elif any(word in persona for word in ("外向", "嘴硬", "吹牛", "强势")):
+        text = "这会儿我不想多说，你先问别的吧。"
+    elif any(word in persona for word in ("亲切", "温和", "耐心", "友善")):
+        text = "别急，容我想一想，咱们稍后再聊这个。"
+    else:
+        text = "这件事我暂时不想多说。"
+    return {"reply": text, "reveal": [], "trust_delta": 0}
+
+
 def _validated_reply(result: dict, context: dict) -> dict:
     if (
         not isinstance(result, dict) or set(result) != {"reply", "reveal", "trust_delta"}
@@ -205,7 +219,7 @@ async def confront(contexts: list[dict], event: dict) -> list[dict]:
                 candidate = {"reply": rewritten["reply"], "reveal": [], "trust_delta": 0}
                 check = await check_reply(context, candidate)
                 if not check["ok"]:
-                    raise llm.LLMError("对质台词未通过核查，请重试。")
+                    candidate = evasive_reply(context)
                 text = candidate["reply"]
         public_lines.append({"speaker": current_id, "text": text})
     return public_lines

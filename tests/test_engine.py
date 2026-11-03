@@ -221,7 +221,7 @@ async def test_failed_check_rewrites_once_and_commits_only_final_reply(engine, m
 
 
 @pytest.mark.asyncio
-async def test_two_failed_checks_roll_back_shown_trust_clues_and_history(engine, monkeypatch, agent_calls):
+async def test_two_failed_checks_commit_evasion_without_actor_clues_or_trust(engine, monkeypatch, agent_calls):
     game_id = start(engine)
     await engine.talk(game_id, "xiaolin", "材料")
     await engine.talk(game_id, "xiaolin", "回单")
@@ -232,11 +232,16 @@ async def test_two_failed_checks_roll_back_shown_trust_clues_and_history(engine,
 
     monkeypatch.setattr(agents, "check_reply", check)
     count = len(agent_calls["reply"])
-    with pytest.raises(GameError) as error:
-        await engine.show(game_id, "zhou", "c2")
-    assert error.value.status_code == 502
+    result = await engine.show(game_id, "zhou", "c2")
     assert len(agent_calls["reply"]) - count == 2
-    assert engine.games[game_id] == previous
+    state = engine.games[game_id]
+    assert result["reply"] == agents.evasive_reply(agent_calls["reply"][-1][0])["reply"]
+    assert result["new_clues"] == []
+    assert state.trust == previous.trust
+    assert state.acquired_clues == previous.acquired_clues
+    assert state.shown["zhou"] == {"c2"}
+    assert state.turns == previous.turns + 1
+    assert state.histories["zhou"][-1] == {"role": "assistant", "content": result["reply"]}
 
 
 @pytest.mark.parametrize("bad", [None, "{}", {}, {"reply": "", "reveal": [], "trust_delta": 1},
@@ -285,7 +290,7 @@ async def test_model_service_failure_preserves_state(engine, monkeypatch):
     assert engine.games[game_id] == previous
 
 
-@pytest.mark.parametrize("failure", ["exception", "wrong_speaker", "empty", "leak"])
+@pytest.mark.parametrize("failure", ["exception", "wrong_speaker", "empty"])
 @pytest.mark.asyncio
 async def test_failed_confrontation_rolls_back_whole_round(engine, monkeypatch, failure):
     game_id = start(engine)
@@ -300,13 +305,7 @@ async def test_failed_confrontation_rolls_back_whole_round(engine, monkeypatch, 
         return [{"speaker": "outsider" if failure == "wrong_speaker" else "xiaolin", "text": "对质"},
                 {"speaker": "akai", "text": "对质"}]
 
-    async def check(context, candidate):
-        ok = "对质" not in context["player_text"]
-        return {"ok": ok, "leaked": [] if ok else ["f5"]}
-
     monkeypatch.setattr(agents, "confront", confront)
-    if failure == "leak":
-        monkeypatch.setattr(agents, "check_reply", check)
     with pytest.raises(GameError) as error:
         await engine.show(game_id, "xiaolin", "c5")
     assert error.value.status_code == 502
