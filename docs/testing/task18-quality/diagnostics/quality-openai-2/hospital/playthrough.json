@@ -1,0 +1,595 @@
+{
+  "story_id": "generated-c157e033c09f48c0b471c5e54a51155c",
+  "steps": [
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "mengshan",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 8.72,
+      "response": {
+        "reply": "我是7号楼夜班护士。案发那晚我一直在楼里值夜，前后都在忙抢救和护士站的事。你要核查材料，我这边能先给你一份死亡报告摘要。至于你说的旧病理走廊，23点后我没进去过。",
+        "new_clues": [
+          {
+            "id": "c1",
+            "title": "死亡报告摘要",
+            "content": "6月17日00:40法医初检摘要写明：死者邱闻，男，28岁；后脑枕部有一次性钝器打击创，致命伤形成时间为6月16日23:25至23:30；血液中咪达唑仑浓度14mg/L，对应死前40分钟内有额外静脉注射。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        }
+      },
+      "before": {
+        "acquired": [],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        },
+        "permissions": {
+          "mengshan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f8",
+              "f9",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11",
+              "f18"
+            ]
+          },
+          "luoke": {
+            "facts": [
+              "f2",
+              "f5",
+              "f7",
+              "f14"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13"
+            ]
+          },
+          "guwen": {
+            "facts": [
+              "f3",
+              "f9",
+              "f14",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f15",
+              "f16",
+              "f17"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        },
+        "permissions": {
+          "mengshan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f8",
+              "f9",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11",
+              "f18"
+            ]
+          },
+          "luoke": {
+            "facts": [
+              "f2",
+              "f5",
+              "f7",
+              "f14"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13"
+            ]
+          },
+          "guwen": {
+            "facts": [
+              "f3",
+              "f9",
+              "f14",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f15",
+              "f16",
+              "f17"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "luoke",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 6.31,
+      "response": {
+        "reply": "我是罗恪，外科轮转实习医生。那晚我在监护区附近值班，前后都在忙病程和杂事。23:20到23:30这段我一直在值班室写病程，没离开过监护区。你要核查的话，这张楼里的电梯刷卡打印单可以先给你。",
+        "new_clues": [
+          {
+            "id": "c2",
+            "title": "7号楼电梯刷卡记录",
+            "content": "6月16日7号楼服务电梯打印单：23:18:11，护士卡M-17从1F到B1；23:22:16，医生卡L-04从1F到B1；23:31:42，护士卡M-17从B1到1F。登记人分别为孟杉与罗恪。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        },
+        "permissions": {
+          "mengshan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f8",
+              "f9",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11",
+              "f18"
+            ]
+          },
+          "luoke": {
+            "facts": [
+              "f2",
+              "f5",
+              "f7",
+              "f14"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13"
+            ]
+          },
+          "guwen": {
+            "facts": [
+              "f3",
+              "f9",
+              "f14",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f15",
+              "f16",
+              "f17"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        },
+        "permissions": {
+          "mengshan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f8",
+              "f9",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11",
+              "f18"
+            ]
+          },
+          "luoke": {
+            "facts": [
+              "f2",
+              "f5",
+              "f7",
+              "f14"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13"
+            ]
+          },
+          "guwen": {
+            "facts": [
+              "f3",
+              "f9",
+              "f14",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f15",
+              "f16",
+              "f17"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "guwen",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 15.27,
+      "response": {
+        "reply": "我是医院设备维修员，那晚前后我主要在7号楼一带转。具体每一分钟我记不全了，但有个事我能说明：你们说的那个“站着的人影”，我早就看过，不是什么闹鬼。是布草车上罩了白布，又被输液架顶起来，才看着像个人。这张监控定格我可以交给你，你们自己核查。别的行踪，我现在说不出更细。",
+        "new_clues": [
+          {
+            "id": "c3",
+            "title": "冷库门口监控定格",
+            "content": "顾闻手机里保存的监控定格标注时间为6月16日23:32:18：3号冷库门前停着一辆布草车，白布被车把和输液架顶起形成直立人影，白布下方露出病号服裤脚与布草车护栏，画面右下能见一只白色护士鞋尖。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        },
+        "permissions": {
+          "mengshan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f8",
+              "f9",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11",
+              "f18"
+            ]
+          },
+          "luoke": {
+            "facts": [
+              "f2",
+              "f5",
+              "f7",
+              "f14"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13"
+            ]
+          },
+          "guwen": {
+            "facts": [
+              "f3",
+              "f9",
+              "f14",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f15",
+              "f16",
+              "f17"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        },
+        "permissions": {
+          "mengshan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f8",
+              "f9",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11",
+              "f18"
+            ]
+          },
+          "luoke": {
+            "facts": [
+              "f2",
+              "f5",
+              "f7",
+              "f14"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13"
+            ]
+          },
+          "guwen": {
+            "facts": [
+              "f3",
+              "f9",
+              "f14",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f15",
+              "f16",
+              "f17"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "luoke",
+        "text": "请明确回答，你是否无医嘱加量用药，或者把邱闻从监护区转移到B1？"
+      },
+      "status_code": 502,
+      "seconds": 14.07,
+      "response": {
+        "detail": "无法连接模型服务，请检查服务地址和连接。"
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        },
+        "permissions": {
+          "mengshan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f8",
+              "f9",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11",
+              "f18"
+            ]
+          },
+          "luoke": {
+            "facts": [
+              "f2",
+              "f5",
+              "f7",
+              "f14"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13"
+            ]
+          },
+          "guwen": {
+            "facts": [
+              "f3",
+              "f9",
+              "f14",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f15",
+              "f16",
+              "f17"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "mengshan": 0,
+          "luoke": 0,
+          "guwen": 0
+        },
+        "permissions": {
+          "mengshan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f8",
+              "f9",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11",
+              "f18"
+            ]
+          },
+          "luoke": {
+            "facts": [
+              "f2",
+              "f5",
+              "f7",
+              "f14"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13"
+            ]
+          },
+          "guwen": {
+            "facts": [
+              "f3",
+              "f9",
+              "f14",
+              "f19"
+            ],
+            "locked_secrets": [
+              "f15",
+              "f16",
+              "f17"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "complete": false,
+  "initial": {
+    "acquired": [],
+    "exposed": [],
+    "events": [],
+    "trust": {
+      "mengshan": 0,
+      "luoke": 0,
+      "guwen": 0
+    },
+    "permissions": {
+      "mengshan": {
+        "facts": [
+          "f1",
+          "f4",
+          "f5",
+          "f6",
+          "f8",
+          "f9",
+          "f19"
+        ],
+        "locked_secrets": [
+          "f10",
+          "f11",
+          "f18"
+        ]
+      },
+      "luoke": {
+        "facts": [
+          "f2",
+          "f5",
+          "f7",
+          "f14"
+        ],
+        "locked_secrets": [
+          "f12",
+          "f13"
+        ]
+      },
+      "guwen": {
+        "facts": [
+          "f3",
+          "f9",
+          "f14",
+          "f19"
+        ],
+        "locked_secrets": [
+          "f15",
+          "f16",
+          "f17"
+        ]
+      }
+    }
+  }
+}

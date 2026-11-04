@@ -1,0 +1,29 @@
+[
+  {
+    "attempt": 1,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 1566,
+    "status": "failed",
+    "error": "ModelTimeoutError",
+    "seconds": 180.01
+  },
+  {
+    "attempt": 2,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 1601,
+    "status": "failed",
+    "error": "ModelTimeoutError",
+    "seconds": 180.01
+  },
+  {
+    "attempt": 3,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 1638,
+    "status": "failed",
+    "error": "LLMError",
+    "seconds": 104.92
+  }
+]

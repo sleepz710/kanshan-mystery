@@ -1,0 +1,35 @@
+[
+  {
+    "case": "positive",
+    "method": "POST",
+    "path": "/v1/responses",
+    "operation": "create",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "POST",
+    "path": "/v1/responses",
+    "operation": "create",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "missing_identity",
+    "method": "POST",
+    "path": "/v1/responses",
+    "operation": "create",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "positive",
+    "method": "POST",
+    "path": "/v1/responses/resp_0941179c58b38dbd006aeb0dc1c6b487d2aa549a311088cff7/cancel",
+    "operation": "cancel"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "case": "hospital",
+    "method": "POST",
+    "path": "/v1/responses",
+    "operation": "create",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "method": "POST",
+    "path": "/v1/responses",
+    "operation": "create",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "operation": "create",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "operation": "create",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "method": "POST",
+    "path": "/v1/chat/completions",
+    "operation": "create",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "method": "POST",
+    "path": "/v1/responses",
+    "operation": "create",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "method": "POST",
+    "path": "/v1/responses/resp_0856f039fc77cca1006aeb07f064bc87d283206da162ea0ca0/cancel",
+    "operation": "cancel"
+  }
+]

@@ -1,0 +1,5974 @@
+{
+  "story_id": "generated-afcd66cad44f49609c2b66a37865a528",
+  "steps": [
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 6.48,
+      "response": {
+        "reply": "我是霁川医院夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你要核查的话，这份停尸间值班记录先给你，上面写了01:32旧楼那边的情况。",
+        "new_clues": [
+          {
+            "id": "c1",
+            "title": "停尸间值班记录",
+            "content": "《7月14日停尸间值班记录》：2026年7月14日01:32，保洁员叶琴在旧楼1号手术室门口发现值班员罗衡后脑出血昏迷；冷库17号柜门敞开，登记遗体M-17缺失；地面可见从冷库通向旧手术室、再继续朝废物电梯方向延伸的单列推床轮印。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "cheng_kun",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 5.81,
+      "response": {
+        "reply": "我就是这儿的护工，旧楼冷库和值夜一直归我看。那晚我基本都在一层值班室，没碰过M-17。你要核查的话，这份旧楼门禁日志你可以先拿去看。",
+        "new_clues": [
+          {
+            "id": "c2",
+            "title": "旧楼门禁日志",
+            "content": "《旧楼门禁日志导出》：2026年7月14日01:16，卡A-204（登记人：苏芮）刷开主楼至旧楼连廊门；01:18，卡B-017（登记人：程坤）刷开冷库门；01:24，卡C-001（登记人：秦岳）刷开1号旧手术室门；01:29，卡B-017刷开废物电梯门。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "qin_yue",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 5.37,
+      "response": {
+        "reply": "我是霁川医院副院长，也是外科主任。昨晚我一直在主楼会议室处理院内事务，别的地方我不清楚。你要核查材料的话，这份旧手术室的检材单我可以先交给你。",
+        "new_clues": [
+          {
+            "id": "c3",
+            "title": "氧气瓶检材单",
+            "content": "《1号旧手术室检材单》：门口氧气瓶瓶身有新鲜撞击凹痕，瓶口与瓶柄处检出罗衡血迹；检材照片拍摄时间为2026年7月14日02:03。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "你说“昨晚1点后我一直在护士站，没去过旧楼。”，这个说法现在还成立吗？请说明能当场核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 4.89,
+      "response": {
+        "reply": "成立。我昨晚一点后一直在主楼护士站值守，旧楼那边的事也是后来才知道的。现在能核查的，还是停尸间那份值班记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "cheng_kun",
+        "text": "你说“我整夜都在一层值班室，没碰过M-17。”，这个说法现在还成立吗？请说明能当场核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 4.79,
+      "response": {
+        "reply": "我说过的话就是这样。那晚我基本都在一层值班室，至于别的，我现在不想多说。你要核查，就先按门禁记录去对时间。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "qin_yue",
+        "text": "你说“我昨晚只在主楼会议室，从没进过旧手术室。”，这个说法现在还成立吗？请说明能当场核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 12.25,
+      "response": {
+        "reply": "这件事我暂时不想多说。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.26,
+      "response": {
+        "reply": "我能交代的就这些：我是夜班护士，昨晚一点后一直在主楼护士站值守。旧楼那边的情况，我后来是从记录里知道的。你要核对，就先按那份停尸间值班记录查。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.65,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。现在我这边能让你核的，就是停尸间那份值班记录，里面记了01:32旧楼1号手术室门口发现罗衡昏迷、17号冷库柜门敞开、M-17缺失，还有从冷库往旧手术室再朝废物电梯去的单列推床轮印。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 0,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.08,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在能核的，还是那份停尸间值班记录：01:32旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.81,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于能核的材料，还是01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.78,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你要核的话，就按01:32那份记录去查：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 7.95,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在要核对的话，就先查01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 7.62,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你要核对的话，就查01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 11.91,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在要核对的话，就查01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 7.91,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你要核对的话，就查01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.9,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于你要核对的材料，还是01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 10.66,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在能核的，就是01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 17.18,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在能核的，就是01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.75,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你要核对的话，就先查01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 7.72,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在要核对的，我这边还是只能重复01:32那份记录里的情况：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 10.45,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你要核对的话，先按01:32那份记录查：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 9.19,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在要核对的，我这边还是只有01:32那份记录里的情况：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.86,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在能核的，还是01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 12.29,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在能核的，还是01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 11.23,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于你要核对的，我现在能说的还是01:32那份记录里的情况：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 8.42,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于你要核对的，我现在能说的还是01:32那份记录里的情况：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 7.97,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在要核对的，我能重复的也只有01:32那份记录里的情况：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 16.51,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你要核对的话，就按01:32那份记录查：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 7.63,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在要核对的，我能说的还是01:32那份记录里的情况：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 9.56,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。你现在要核对的，我能说的还是01:32那份记录里的情况：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。至于我亲历的，就只有值守护士站。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 8.28,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 8.5,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 8.36,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录：旧楼1号手术室门口发现罗衡昏迷，17号冷库柜门敞开，登记遗体M-17缺失，地上还有从冷库通向旧手术室、再朝废物电梯去的单列推床轮印。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.29,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.75,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.17,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 4.95,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.69,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.3,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.63,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 4.9,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.18,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.96,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.01,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.28,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.88,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 11.0,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 9.83,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.09,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 7.54,
+      "response": {
+        "reply": "我是夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "su_rui",
+        "text": "我会逐一核对证据，请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.28,
+      "response": {
+        "reply": "我是霁川医院夜班护士。昨晚一点后我一直在主楼护士站值守，没去过旧楼。至于我亲历的，就只有值守护士站；你要核对的话，先查01:32那份记录。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和程坤交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "su_rui": 1,
+          "cheng_kun": 0,
+          "qin_yue": 0
+        },
+        "permissions": {
+          "su_rui": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f13",
+              "f15"
+            ]
+          },
+          "cheng_kun": {
+            "facts": [
+              "f2"
+            ],
+            "locked_secrets": [
+              "f11",
+              "f14"
+            ]
+          },
+          "qin_yue": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f12",
+              "f13",
+              "f15"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "complete": false,
+  "initial": {
+    "acquired": [],
+    "exposed": [],
+    "events": [],
+    "trust": {
+      "su_rui": 0,
+      "cheng_kun": 0,
+      "qin_yue": 0
+    },
+    "permissions": {
+      "su_rui": {
+        "facts": [
+          "f1",
+          "f4",
+          "f5",
+          "f6"
+        ],
+        "locked_secrets": [
+          "f10",
+          "f13",
+          "f15"
+        ]
+      },
+      "cheng_kun": {
+        "facts": [
+          "f2"
+        ],
+        "locked_secrets": [
+          "f11",
+          "f14"
+        ]
+      },
+      "qin_yue": {
+        "facts": [
+          "f3"
+        ],
+        "locked_secrets": [
+          "f12",
+          "f13",
+          "f15"
+        ]
+      }
+    }
+  }
+}

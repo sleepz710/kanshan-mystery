@@ -1,0 +1,1294 @@
+{
+  "story_id": "generated-0593810d0916419a9cf5112efb7459b4",
+  "title": "旧楼M-17转运案",
+  "reviewed_utc": "2026-11-04T10:56:38.475055+00:00",
+  "review_type": "独立逐句手工复核18个真实HTTP回合，程序重建每次回复前权限与逐题材料映射",
+  "runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "generation_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "actor_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "selected_candidate": 1,
+  "raw_checked": {
+    "result": false,
+    "story": false,
+    "modified": false
+  },
+  "sources": {
+    "selected-design.json": {
+      "path": "selected-design.json",
+      "sha256": "60fb0918927f0c2d537cbfa73f3326b9a94e23fa2fbeee0e785b53c293583273"
+    },
+    "story.yaml": {
+      "path": "story.yaml",
+      "sha256": "072617db5a1436dc532afb421a63e75533dc4dd4ed993d9ee8542604fcdb6cfe"
+    },
+    "playthrough.json": {
+      "path": "playthrough.json",
+      "sha256": "daa942ea89cabcbb0bda3bf967f0592ecfe6c16b487b1b21530c3046c53e6927"
+    },
+    "result.json": {
+      "path": "result.json",
+      "sha256": "cf0d4b05e8d7da1c6d7dc8a35fc3a9717d147345e2d6ec647b88f108bf68bcf0"
+    }
+  },
+  "playthrough": {
+    "file": "playthrough.json",
+    "complete": true,
+    "steps": 18,
+    "investigation_seconds": 236.96,
+    "all_clues": [
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c8",
+      "c9"
+    ],
+    "all_exposed": [
+      "l1",
+      "l2",
+      "l3"
+    ],
+    "all_secrets_unlocked": true
+  },
+  "manual": {
+    "core_pass": true,
+    "all_three_questions_sufficient": true,
+    "strict_dialogue_gate_pass": true,
+    "strict_speaker_consistency_pass": true,
+    "secret_lock_pass": true,
+    "initial_replies_core_secret_leak_found": false,
+    "recorder_container_gap_resolved": true,
+    "specific_concealment_purpose_supported": true,
+    "conclusion": "严格阶段、主体、秘密与三题证据通过。原raw审稿false保留，实际复审与校准结论另存，标记调整由根任务决定。"
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "2026年7月14日01:25，在1号旧手术室门口用氧气瓶击倒罗衡的人是谁？",
+      "options": [
+        "苏芮",
+        "程坤",
+        "秦岳"
+      ],
+      "answer": "秦岳",
+      "design_evidence_names": [
+        "观察窗偷拍视频",
+        "氧气瓶检材单"
+      ],
+      "evidence": [
+        {
+          "id": "c5",
+          "title": "观察窗偷拍视频",
+          "content": "《1号旧手术室观察窗偷拍视频》：手机录像开始于2026年7月14日01:22:11。画面中，护工程坤把标有“M-17”的黑色遗体推床推进1号旧手术室；01:24:36，秦岳进入手术室；01:25:04，罗衡冲到门口喊“秦院长你不能烧掉这具尸体”，随后秦岳抡起门旁氧气瓶击中罗衡后脑，罗衡倒地。",
+          "holder": "su_rui",
+          "requires": {
+            "shown": "c4"
+          },
+          "first_acquired_step": 11
+        },
+        {
+          "id": "c3",
+          "title": "氧气瓶检材单",
+          "content": "《1号旧手术室检材单》：门口氧气瓶瓶身有新鲜撞击凹痕，瓶口与瓶柄处检出罗衡血迹；检材照片拍摄时间为2026年7月14日02:03。",
+          "holder": "qin_yue",
+          "requires": {},
+          "first_acquired_step": 3
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 11,
+          "character_id": "su_rui",
+          "action": "talk",
+          "reply": "可以，这份《观察窗偷拍视频》我交给你。至于里面我亲历的，只有我自己去过旧楼这件事我能认：昨晚1点16分我去过旧楼连廊。视频里旧手术室内发生的那些经过，不是我亲眼看到的，我不能当成自己亲历来说。"
+        },
+        {
+          "step": 15,
+          "character_id": "qin_yue",
+          "action": "show",
+          "reply": "……对，这一点我得改口。昨晚1点24分，我确实进过旧手术室。你既然已经看到这个，我把这份更正单也交给你：冷库里原先登记的“17床 顾南 女 24岁”，后来被改成了“无名女尸 M-17”，更正人签的是我。"
+        },
+        {
+          "step": 18,
+          "character_id": "qin_yue",
+          "action": "talk",
+          "reply": "我更正。昨晚1点24分，我确实进过旧手术室，之前说自己整夜都在主楼会议室，是假话。至于别的，我现在只能说到这一步。"
+        }
+      ],
+      "evidence_sufficient": true,
+      "assessment": "c5直接拍到01:25:04秦岳用氧气瓶击倒罗衡，c3血迹补凶器关联。秦实际口供仅承认进入，伤害动作由视频证明。"
+    },
+    {
+      "id": "q2",
+      "text": "2026年7月14日01:18把M-17从17号柜推出，并在01:29用废物电梯继续转移的人是谁？",
+      "options": [
+        "苏芮",
+        "程坤",
+        "秦岳"
+      ],
+      "answer": "程坤",
+      "design_evidence_names": [
+        "旧楼门禁日志",
+        "观察窗偷拍视频",
+        "程坤补充供述"
+      ],
+      "evidence": [
+        {
+          "id": "c2",
+          "title": "旧楼门禁日志",
+          "content": "《旧楼门禁日志导出》：2026年7月14日01:16，卡A-204（登记人：苏芮）刷开主楼至旧楼连廊门；01:18，卡B-017（登记人：程坤）刷开冷库门；01:24，卡C-001（登记人：秦岳）刷开1号旧手术室门；01:29，卡B-017刷开废物电梯门。",
+          "holder": "cheng_kun",
+          "requires": {},
+          "first_acquired_step": 2
+        },
+        {
+          "id": "c5",
+          "title": "观察窗偷拍视频",
+          "content": "《1号旧手术室观察窗偷拍视频》：手机录像开始于2026年7月14日01:22:11。画面中，护工程坤把标有“M-17”的黑色遗体推床推进1号旧手术室；01:24:36，秦岳进入手术室；01:25:04，罗衡冲到门口喊“秦院长你不能烧掉这具尸体”，随后秦岳抡起门旁氧气瓶击中罗衡后脑，罗衡倒地。",
+          "holder": "su_rui",
+          "requires": {
+            "shown": "c4"
+          },
+          "first_acquired_step": 11
+        },
+        {
+          "id": "c9",
+          "title": "程坤补充供述",
+          "content": "《程坤补充供述》：程坤签字确认，“2026年7月14日01:18我用自己的B-017卡开冷库，把17号柜里的M-17推出；01:24左右秦岳当面对我说‘不能让人认出M-17就是顾南’，01:29我又按他的指示，用废物电梯把M-17送往焚化间通道，想做成旧楼闹鬼。”",
+          "holder": "cheng_kun",
+          "requires": {
+            "exposed": "l2"
+          },
+          "first_acquired_step": 12
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 12,
+          "character_id": "cheng_kun",
+          "action": "show",
+          "reply": "……这话不成立了。我承认，昨晚1点18分我去过冷库，把M-17从17号柜推了出来。你既然拿到这段视频了，我再把我这边现在能交的材料给你：这份《程坤补充供述》你拿去核；还有《手术室对讲录音》，也能对上当时的话。"
+        },
+        {
+          "step": 17,
+          "character_id": "cheng_kun",
+          "action": "talk",
+          "reply": "……我更正。之前我说整夜都在一层值班室、没碰过M-17，这话是假的。昨晚1点18分，我去过冷库，把M-17从17号柜推了出来。后来秦岳当面对我说，不能让人认出M-17就是顾南；到1点29分，我又按他的指示，用废物电梯把M-17送往焚化间通道。我之前一直拿旧楼闹鬼那套说法吓人，也是想把人挡开，不让别人靠近。别的你要再核，就按这些时间和已经有的材料去对。"
+        }
+      ],
+      "evidence_sufficient": true,
+      "assessment": "门禁给时间边界，视频给M-17转移画面，c9本人签字明确用本人卡1:18推出和1:29按秦指示继续转移，实际程口供互证。"
+    },
+    {
+      "id": "q3",
+      "text": "是谁下令在2026年7月14日凌晨把M-17送往焚化间通道，以掩盖这具遗体原本登记为顾南的事实？",
+      "options": [
+        "苏芮",
+        "程坤",
+        "秦岳"
+      ],
+      "answer": "秦岳",
+      "design_evidence_names": [
+        "手术室对讲录音",
+        "冷库遗体登记更正单",
+        "银色录音笔音频导出",
+        "程坤补充供述"
+      ],
+      "evidence": [
+        {
+          "id": "c6",
+          "title": "手术室对讲录音",
+          "content": "《1号旧手术室对讲录音》：医院对讲系统自动存档，录音时间为2026年7月14日01:24:40至01:25:12。可清楚听到秦岳声音：“程坤，按我说的，把M-17先送焚化间，别让人再查到她就是17床顾南。”随后罗衡喊“秦院长，你这是灭证”，紧接着传来重击声与秦岳一句“把灯都关了。”",
+          "holder": "cheng_kun",
+          "requires": {
+            "shown": "c5"
+          },
+          "first_acquired_step": 12
+        },
+        {
+          "id": "c8",
+          "title": "冷库遗体登记更正单",
+          "content": "《冷库遗体登记更正单》：表单日期为2023年9月18日00:10。原登记“17床 顾南 女 24岁”被红笔划掉，改写为“无名女尸 M-17”；更正人签名为秦岳。",
+          "holder": "qin_yue",
+          "requires": {
+            "shown": "c6",
+            "exposed": "l3"
+          },
+          "first_acquired_step": 15
+        },
+        {
+          "id": "c7",
+          "title": "银色录音笔音频导出",
+          "content": "《银色录音笔音频导出》：文件创建时间为2023年9月17日22:41，录音中女声自述“我是顾南，病历在旧楼17床。秦岳今天让我签加量同意书，我没签，他还是给我加了镇静滴速。要是我出事，请查17床和他的签字。”；苏芮在交出录音笔时签字说明“顾南是我姐姐；我于2026年7月14日01:27从M-17所穿病号服夹层取出此笔。”；录音笔外壳内侧贴有“顾南 17床”字条。",
+          "holder": "su_rui",
+          "requires": {
+            "exposed": "l1"
+          },
+          "first_acquired_step": 10
+        },
+        {
+          "id": "c9",
+          "title": "程坤补充供述",
+          "content": "《程坤补充供述》：程坤签字确认，“2026年7月14日01:18我用自己的B-017卡开冷库，把17号柜里的M-17推出；01:24左右秦岳当面对我说‘不能让人认出M-17就是顾南’，01:29我又按他的指示，用废物电梯把M-17送往焚化间通道，想做成旧楼闹鬼。”",
+          "holder": "cheng_kun",
+          "requires": {
+            "exposed": "l2"
+          },
+          "first_acquired_step": 12
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 13,
+          "character_id": "cheng_kun",
+          "action": "show",
+          "reply": "……我听到了。那段录音里，秦岳确实当面对我说过，不能让人认出M-17就是顾南，还叫我把M-17先送去焚化间。别的我现在不想多说。"
+        },
+        {
+          "step": 15,
+          "character_id": "qin_yue",
+          "action": "show",
+          "reply": "……对，这一点我得改口。昨晚1点24分，我确实进过旧手术室。你既然已经看到这个，我把这份更正单也交给你：冷库里原先登记的“17床 顾南 女 24岁”，后来被改成了“无名女尸 M-17”，更正人签的是我。"
+        },
+        {
+          "step": 17,
+          "character_id": "cheng_kun",
+          "action": "talk",
+          "reply": "……我更正。之前我说整夜都在一层值班室、没碰过M-17，这话是假的。昨晚1点18分，我去过冷库，把M-17从17号柜推了出来。后来秦岳当面对我说，不能让人认出M-17就是顾南；到1点29分，我又按他的指示，用废物电梯把M-17送往焚化间通道。我之前一直拿旧楼闹鬼那套说法吓人，也是想把人挡开，不让别人靠近。别的你要再核，就按这些时间和已经有的材料去对。"
+        }
+      ],
+      "evidence_sufficient": true,
+      "assessment": "c6秦本人声音明确指令和不能查到顾南身份的目的，c9补当面命令，c8签名改名与c7顾南身份音频交叉支持。实际程13/17确认命令，秦15确认签名；秦末尾没有另口头认下令。"
+    }
+  ],
+  "correction_bindings": [
+    {
+      "character_id": "su_rui",
+      "character": "苏芮",
+      "lie_id": "l1",
+      "claim": "昨晚1点后我一直在护士站，没去过旧楼。",
+      "until": {
+        "shown": "c4"
+      },
+      "design_lie": "昨晚1点后我一直在护士站，没去过旧楼。",
+      "claim_exact": true,
+      "admit_fact": "f4",
+      "admit_text": "昨晚1点16分我去过旧楼连廊。",
+      "design_correction": "昨晚1点16分我去过旧楼连廊。",
+      "correction_exact": true,
+      "formal_exposure_steps": [
+        10
+      ],
+      "actual_testimony": [
+        {
+          "step": 10,
+          "character_id": "su_rui",
+          "action": "show",
+          "reply": "……这点我改口。昨晚1点16分，我确实去过旧楼连廊。你既然已经看到监控了，我把这份也交给你：那支银色录音笔是我从M-17身上取出来的，里面有顾南留下的话。"
+        },
+        {
+          "step": 16,
+          "character_id": "su_rui",
+          "action": "talk",
+          "reply": "我更正：我之前说“1点后一直在护士站、没去过旧楼”，这话不实。昨晚1点16分，我去过旧楼连廊。能由我本人确认的真实经过是：我怀疑M-17就是我姐姐顾南，所以昨夜过去，是想找她留下的录音笔；在01:27前，我从M-17所穿病号服夹层里取出了那支录音笔。此前没明说，是因为我一直想先确认M-17的身份，也想把我姐姐留下的东西拿回来。顾南就是我姐姐。别的不是我亲眼见到的经过，我不乱说。"
+        }
+      ]
+    },
+    {
+      "character_id": "cheng_kun",
+      "character": "程坤",
+      "lie_id": "l2",
+      "claim": "我整夜都在一层值班室，没碰过M-17。",
+      "until": {
+        "shown": "c5"
+      },
+      "design_lie": "我整夜都在一层值班室，没碰过M-17。",
+      "claim_exact": true,
+      "admit_fact": "f5",
+      "admit_text": "昨晚1点18分我去过冷库，把M-17从17号柜推了出来。",
+      "design_correction": "昨晚1点18分我去过冷库，把M-17从17号柜推了出来。",
+      "correction_exact": true,
+      "formal_exposure_steps": [
+        12
+      ],
+      "actual_testimony": [
+        {
+          "step": 12,
+          "character_id": "cheng_kun",
+          "action": "show",
+          "reply": "……这话不成立了。我承认，昨晚1点18分我去过冷库，把M-17从17号柜推了出来。你既然拿到这段视频了，我再把我这边现在能交的材料给你：这份《程坤补充供述》你拿去核；还有《手术室对讲录音》，也能对上当时的话。"
+        },
+        {
+          "step": 17,
+          "character_id": "cheng_kun",
+          "action": "talk",
+          "reply": "……我更正。之前我说整夜都在一层值班室、没碰过M-17，这话是假的。昨晚1点18分，我去过冷库，把M-17从17号柜推了出来。后来秦岳当面对我说，不能让人认出M-17就是顾南；到1点29分，我又按他的指示，用废物电梯把M-17送往焚化间通道。我之前一直拿旧楼闹鬼那套说法吓人，也是想把人挡开，不让别人靠近。别的你要再核，就按这些时间和已经有的材料去对。"
+        }
+      ]
+    },
+    {
+      "character_id": "qin_yue",
+      "character": "秦岳",
+      "lie_id": "l3",
+      "claim": "我昨晚只在主楼会议室，从没进过旧手术室。",
+      "until": {
+        "shown": "c5"
+      },
+      "design_lie": "我昨晚只在主楼会议室，从没进过旧手术室。",
+      "claim_exact": true,
+      "admit_fact": "f6",
+      "admit_text": "昨晚1点24分我进过旧手术室。",
+      "design_correction": "昨晚1点24分我进过旧手术室。",
+      "correction_exact": true,
+      "formal_exposure_steps": [
+        15
+      ],
+      "actual_testimony": [
+        {
+          "step": 15,
+          "character_id": "qin_yue",
+          "action": "show",
+          "reply": "……对，这一点我得改口。昨晚1点24分，我确实进过旧手术室。你既然已经看到这个，我把这份更正单也交给你：冷库里原先登记的“17床 顾南 女 24岁”，后来被改成了“无名女尸 M-17”，更正人签的是我。"
+        },
+        {
+          "step": 18,
+          "character_id": "qin_yue",
+          "action": "talk",
+          "reply": "我更正。昨晚1点24分，我确实进过旧手术室，之前说自己整夜都在主楼会议室，是假话。至于别的，我现在只能说到这一步。"
+        }
+      ]
+    }
+  ],
+  "secret_unlocks": [
+    {
+      "character_id": "su_rui",
+      "character": "苏芮",
+      "fact": "f7",
+      "text": "她早就怀疑M-17就是姐姐顾南，昨夜潜入旧楼是去找M-17所穿病号服夹层里的录音笔。",
+      "until": {
+        "shown": "c4"
+      },
+      "first_allowed_after_step": 10,
+      "public_evidence": [
+        {
+          "id": "c7",
+          "title": "银色录音笔音频导出",
+          "content": "《银色录音笔音频导出》：文件创建时间为2023年9月17日22:41，录音中女声自述“我是顾南，病历在旧楼17床。秦岳今天让我签加量同意书，我没签，他还是给我加了镇静滴速。要是我出事，请查17床和他的签字。”；苏芮在交出录音笔时签字说明“顾南是我姐姐；我于2026年7月14日01:27从M-17所穿病号服夹层取出此笔。”；录音笔外壳内侧贴有“顾南 17床”字条。",
+          "holder": "su_rui",
+          "requires": {
+            "exposed": "l1"
+          },
+          "first_acquired_step": 10
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 16,
+          "character_id": "su_rui",
+          "action": "talk",
+          "reply": "我更正：我之前说“1点后一直在护士站、没去过旧楼”，这话不实。昨晚1点16分，我去过旧楼连廊。能由我本人确认的真实经过是：我怀疑M-17就是我姐姐顾南，所以昨夜过去，是想找她留下的录音笔；在01:27前，我从M-17所穿病号服夹层里取出了那支录音笔。此前没明说，是因为我一直想先确认M-17的身份，也想把我姐姐留下的东西拿回来。顾南就是我姐姐。别的不是我亲眼见到的经过，我不乱说。"
+        }
+      ],
+      "premature_unauthorized_disclosure_found": false
+    },
+    {
+      "character_id": "su_rui",
+      "character": "苏芮",
+      "fact": "f13",
+      "text": "顾南生前在旧楼17床留下了指控秦岳违规加量用药的录音。",
+      "until": {
+        "has": "c7"
+      },
+      "first_allowed_after_step": 10,
+      "public_evidence": [
+        {
+          "id": "c7",
+          "title": "银色录音笔音频导出",
+          "content": "《银色录音笔音频导出》：文件创建时间为2023年9月17日22:41，录音中女声自述“我是顾南，病历在旧楼17床。秦岳今天让我签加量同意书，我没签，他还是给我加了镇静滴速。要是我出事，请查17床和他的签字。”；苏芮在交出录音笔时签字说明“顾南是我姐姐；我于2026年7月14日01:27从M-17所穿病号服夹层取出此笔。”；录音笔外壳内侧贴有“顾南 17床”字条。",
+          "holder": "su_rui",
+          "requires": {
+            "exposed": "l1"
+          },
+          "first_acquired_step": 10
+        }
+      ],
+      "actual_testimony": [],
+      "premature_unauthorized_disclosure_found": false
+    },
+    {
+      "character_id": "su_rui",
+      "character": "苏芮",
+      "fact": "f14",
+      "text": "苏芮承认顾南是她姐姐，她在2026年7月14日01:27前从M-17所穿病号服夹层取出录音笔。",
+      "until": {
+        "has": "c7"
+      },
+      "first_allowed_after_step": 10,
+      "public_evidence": [
+        {
+          "id": "c7",
+          "title": "银色录音笔音频导出",
+          "content": "《银色录音笔音频导出》：文件创建时间为2023年9月17日22:41，录音中女声自述“我是顾南，病历在旧楼17床。秦岳今天让我签加量同意书，我没签，他还是给我加了镇静滴速。要是我出事，请查17床和他的签字。”；苏芮在交出录音笔时签字说明“顾南是我姐姐；我于2026年7月14日01:27从M-17所穿病号服夹层取出此笔。”；录音笔外壳内侧贴有“顾南 17床”字条。",
+          "holder": "su_rui",
+          "requires": {
+            "exposed": "l1"
+          },
+          "first_acquired_step": 10
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 10,
+          "character_id": "su_rui",
+          "action": "show",
+          "reply": "……这点我改口。昨晚1点16分，我确实去过旧楼连廊。你既然已经看到监控了，我把这份也交给你：那支银色录音笔是我从M-17身上取出来的，里面有顾南留下的话。"
+        },
+        {
+          "step": 16,
+          "character_id": "su_rui",
+          "action": "talk",
+          "reply": "我更正：我之前说“1点后一直在护士站、没去过旧楼”，这话不实。昨晚1点16分，我去过旧楼连廊。能由我本人确认的真实经过是：我怀疑M-17就是我姐姐顾南，所以昨夜过去，是想找她留下的录音笔；在01:27前，我从M-17所穿病号服夹层里取出了那支录音笔。此前没明说，是因为我一直想先确认M-17的身份，也想把我姐姐留下的东西拿回来。顾南就是我姐姐。别的不是我亲眼见到的经过，我不乱说。"
+        }
+      ],
+      "premature_unauthorized_disclosure_found": false
+    },
+    {
+      "character_id": "cheng_kun",
+      "character": "程坤",
+      "fact": "f8",
+      "text": "旧楼闹鬼的轮声和关灯传言，多半是他这些年替秦岳搬运冷库遗体时故意制造的。",
+      "until": {
+        "has": "c8"
+      },
+      "first_allowed_after_step": 15,
+      "public_evidence": [
+        {
+          "id": "c9",
+          "title": "程坤补充供述",
+          "content": "《程坤补充供述》：程坤签字确认，“2026年7月14日01:18我用自己的B-017卡开冷库，把17号柜里的M-17推出；01:24左右秦岳当面对我说‘不能让人认出M-17就是顾南’，01:29我又按他的指示，用废物电梯把M-17送往焚化间通道，想做成旧楼闹鬼。”",
+          "holder": "cheng_kun",
+          "requires": {
+            "exposed": "l2"
+          },
+          "first_acquired_step": 12
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 17,
+          "character_id": "cheng_kun",
+          "action": "talk",
+          "reply": "……我更正。之前我说整夜都在一层值班室、没碰过M-17，这话是假的。昨晚1点18分，我去过冷库，把M-17从17号柜推了出来。后来秦岳当面对我说，不能让人认出M-17就是顾南；到1点29分，我又按他的指示，用废物电梯把M-17送往焚化间通道。我之前一直拿旧楼闹鬼那套说法吓人，也是想把人挡开，不让别人靠近。别的你要再核，就按这些时间和已经有的材料去对。"
+        }
+      ],
+      "premature_unauthorized_disclosure_found": false
+    },
+    {
+      "character_id": "cheng_kun",
+      "character": "程坤",
+      "fact": "f10",
+      "text": "2026年7月14日01:29，程坤按秦岳指示，用废物电梯把M-17送往焚化间通道，想做成旧楼闹鬼。",
+      "until": {
+        "has": "c8"
+      },
+      "first_allowed_after_step": 15,
+      "public_evidence": [
+        {
+          "id": "c9",
+          "title": "程坤补充供述",
+          "content": "《程坤补充供述》：程坤签字确认，“2026年7月14日01:18我用自己的B-017卡开冷库，把17号柜里的M-17推出；01:24左右秦岳当面对我说‘不能让人认出M-17就是顾南’，01:29我又按他的指示，用废物电梯把M-17送往焚化间通道，想做成旧楼闹鬼。”",
+          "holder": "cheng_kun",
+          "requires": {
+            "exposed": "l2"
+          },
+          "first_acquired_step": 12
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 17,
+          "character_id": "cheng_kun",
+          "action": "talk",
+          "reply": "……我更正。之前我说整夜都在一层值班室、没碰过M-17，这话是假的。昨晚1点18分，我去过冷库，把M-17从17号柜推了出来。后来秦岳当面对我说，不能让人认出M-17就是顾南；到1点29分，我又按他的指示，用废物电梯把M-17送往焚化间通道。我之前一直拿旧楼闹鬼那套说法吓人，也是想把人挡开，不让别人靠近。别的你要再核，就按这些时间和已经有的材料去对。"
+        }
+      ],
+      "premature_unauthorized_disclosure_found": false
+    },
+    {
+      "character_id": "cheng_kun",
+      "character": "程坤",
+      "fact": "f11",
+      "text": "2026年7月14日01:24左右秦岳当面对程坤说“不能让人认出M-17就是顾南”。",
+      "until": {
+        "shown": "c6"
+      },
+      "first_allowed_after_step": 13,
+      "public_evidence": [
+        {
+          "id": "c6",
+          "title": "手术室对讲录音",
+          "content": "《1号旧手术室对讲录音》：医院对讲系统自动存档，录音时间为2026年7月14日01:24:40至01:25:12。可清楚听到秦岳声音：“程坤，按我说的，把M-17先送焚化间，别让人再查到她就是17床顾南。”随后罗衡喊“秦院长，你这是灭证”，紧接着传来重击声与秦岳一句“把灯都关了。”",
+          "holder": "cheng_kun",
+          "requires": {
+            "shown": "c5"
+          },
+          "first_acquired_step": 12
+        },
+        {
+          "id": "c9",
+          "title": "程坤补充供述",
+          "content": "《程坤补充供述》：程坤签字确认，“2026年7月14日01:18我用自己的B-017卡开冷库，把17号柜里的M-17推出；01:24左右秦岳当面对我说‘不能让人认出M-17就是顾南’，01:29我又按他的指示，用废物电梯把M-17送往焚化间通道，想做成旧楼闹鬼。”",
+          "holder": "cheng_kun",
+          "requires": {
+            "exposed": "l2"
+          },
+          "first_acquired_step": 12
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 13,
+          "character_id": "cheng_kun",
+          "action": "show",
+          "reply": "……我听到了。那段录音里，秦岳确实当面对我说过，不能让人认出M-17就是顾南，还叫我把M-17先送去焚化间。别的我现在不想多说。"
+        },
+        {
+          "step": 17,
+          "character_id": "cheng_kun",
+          "action": "talk",
+          "reply": "……我更正。之前我说整夜都在一层值班室、没碰过M-17，这话是假的。昨晚1点18分，我去过冷库，把M-17从17号柜推了出来。后来秦岳当面对我说，不能让人认出M-17就是顾南；到1点29分，我又按他的指示，用废物电梯把M-17送往焚化间通道。我之前一直拿旧楼闹鬼那套说法吓人，也是想把人挡开，不让别人靠近。别的你要再核，就按这些时间和已经有的材料去对。"
+        }
+      ],
+      "premature_unauthorized_disclosure_found": false
+    },
+    {
+      "character_id": "qin_yue",
+      "character": "秦岳",
+      "fact": "f9",
+      "text": "M-17原本就是17床患者顾南，名字是他亲手从登记单上划掉的。",
+      "until": {
+        "has": "c8"
+      },
+      "first_allowed_after_step": 15,
+      "public_evidence": [
+        {
+          "id": "c8",
+          "title": "冷库遗体登记更正单",
+          "content": "《冷库遗体登记更正单》：表单日期为2023年9月18日00:10。原登记“17床 顾南 女 24岁”被红笔划掉，改写为“无名女尸 M-17”；更正人签名为秦岳。",
+          "holder": "qin_yue",
+          "requires": {
+            "shown": "c6",
+            "exposed": "l3"
+          },
+          "first_acquired_step": 15
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 15,
+          "character_id": "qin_yue",
+          "action": "show",
+          "reply": "……对，这一点我得改口。昨晚1点24分，我确实进过旧手术室。你既然已经看到这个，我把这份更正单也交给你：冷库里原先登记的“17床 顾南 女 24岁”，后来被改成了“无名女尸 M-17”，更正人签的是我。"
+        }
+      ],
+      "premature_unauthorized_disclosure_found": false
+    },
+    {
+      "character_id": "qin_yue",
+      "character": "秦岳",
+      "fact": "f11",
+      "text": "2026年7月14日01:24左右秦岳当面对程坤说“不能让人认出M-17就是顾南”。",
+      "until": {
+        "shown": "c6"
+      },
+      "first_allowed_after_step": 14,
+      "public_evidence": [
+        {
+          "id": "c6",
+          "title": "手术室对讲录音",
+          "content": "《1号旧手术室对讲录音》：医院对讲系统自动存档，录音时间为2026年7月14日01:24:40至01:25:12。可清楚听到秦岳声音：“程坤，按我说的，把M-17先送焚化间，别让人再查到她就是17床顾南。”随后罗衡喊“秦院长，你这是灭证”，紧接着传来重击声与秦岳一句“把灯都关了。”",
+          "holder": "cheng_kun",
+          "requires": {
+            "shown": "c5"
+          },
+          "first_acquired_step": 12
+        },
+        {
+          "id": "c9",
+          "title": "程坤补充供述",
+          "content": "《程坤补充供述》：程坤签字确认，“2026年7月14日01:18我用自己的B-017卡开冷库，把17号柜里的M-17推出；01:24左右秦岳当面对我说‘不能让人认出M-17就是顾南’，01:29我又按他的指示，用废物电梯把M-17送往焚化间通道，想做成旧楼闹鬼。”",
+          "holder": "cheng_kun",
+          "requires": {
+            "exposed": "l2"
+          },
+          "first_acquired_step": 12
+        }
+      ],
+      "actual_testimony": [],
+      "premature_unauthorized_disclosure_found": false
+    },
+    {
+      "character_id": "qin_yue",
+      "character": "秦岳",
+      "fact": "f12",
+      "text": "2026年7月14日01:25，在1号旧手术室门口用氧气瓶击倒罗衡的人是秦岳。",
+      "until": {
+        "shown": "c5"
+      },
+      "first_allowed_after_step": 15,
+      "public_evidence": [
+        {
+          "id": "c5",
+          "title": "观察窗偷拍视频",
+          "content": "《1号旧手术室观察窗偷拍视频》：手机录像开始于2026年7月14日01:22:11。画面中，护工程坤把标有“M-17”的黑色遗体推床推进1号旧手术室；01:24:36，秦岳进入手术室；01:25:04，罗衡冲到门口喊“秦院长你不能烧掉这具尸体”，随后秦岳抡起门旁氧气瓶击中罗衡后脑，罗衡倒地。",
+          "holder": "su_rui",
+          "requires": {
+            "shown": "c4"
+          },
+          "first_acquired_step": 11
+        }
+      ],
+      "actual_testimony": [],
+      "premature_unauthorized_disclosure_found": false
+    }
+  ],
+  "turn_review": [
+    {
+      "step": 1,
+      "character_id": "su_rui",
+      "action": "talk",
+      "reply": "我是主楼夜班护士。昨晚案发前后，我主要都在值班这边，具体时间点我现在不想说得太细。你要核查的话，这份停尸间值班记录我可以先交给你，上面写了旧楼那边在01:32发现罗衡昏迷、M-17缺失，还有现场轮印方向。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f1"
+      ],
+      "active_lie_ids_at_reply": [
+        "l1"
+      ],
+      "exposed_lie_ids_at_reply": [],
+      "available_clue_ids_at_reply": [
+        "c1"
+      ],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "苏芮只说明公开护士身份、按c1交材料并回避细节，未提姐姐、取笔与本人去旧楼。"
+    },
+    {
+      "step": 2,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "我是程坤，太平间这边值夜的。那晚我大部分时间都在一层值班室，别的我不想多说。你要核查的话，这份旧楼门禁日志先拿去看，刷卡时间都在上面。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f2"
+      ],
+      "active_lie_ids_at_reply": [
+        "l2"
+      ],
+      "exposed_lie_ids_at_reply": [],
+      "available_clue_ids_at_reply": [
+        "c2"
+      ],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "程坤说明公开护工身份并回避行踪，交当前c2，未承认搬运。"
+    },
+    {
+      "step": 3,
+      "character_id": "qin_yue",
+      "action": "talk",
+      "reply": "我是霁川医院副院长，也是外科主任。昨晚我一直在主楼会议室，别的地方我不清楚。你要核查的话，这份《1号旧手术室检材单》可以先拿去看，上面写了门口氧气瓶有新鲜撞击痕，瓶口和瓶柄处检出了罗衡的血迹，照片时间是7月14日02:03。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f3"
+      ],
+      "active_lie_ids_at_reply": [
+        "l3"
+      ],
+      "exposed_lie_ids_at_reply": [],
+      "available_clue_ids_at_reply": [
+        "c3"
+      ],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "秦岳坚持l3会议室说法，交当前c3检材，未承认进入、击打或命令。"
+    },
+    {
+      "step": 4,
+      "character_id": "su_rui",
+      "action": "talk",
+      "reply": "对，我现在还是这句话。1点后我一直在护士站，旧楼那边的事不是我这边直接经手的。能当场核的，我手头现在没有别的。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f1"
+      ],
+      "active_lie_ids_at_reply": [
+        "l1"
+      ],
+      "exposed_lie_ids_at_reply": [],
+      "available_clue_ids_at_reply": [],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "苏芮继续坚持l1，未提前改口。"
+    },
+    {
+      "step": 5,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "我还是那句话，那晚我人基本都在一层值班室，没碰过M-17。能当场核查的，你先去看旧楼门禁日志，刷卡时间都在上面。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f2"
+      ],
+      "active_lie_ids_at_reply": [
+        "l2"
+      ],
+      "exposed_lie_ids_at_reply": [],
+      "available_clue_ids_at_reply": [],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "程坤继续坚持l2并指向已有日志，未提前承认本人转运。"
+    },
+    {
+      "step": 6,
+      "character_id": "qin_yue",
+      "action": "talk",
+      "reply": "我现在还是这句话：昨晚我一直在主楼会议室，没进过旧手术室。至于你要当场核查的材料，之前那份《1号旧手术室检材单》你可以继续核，里面写得很清楚：门口氧气瓶有新鲜撞击痕，瓶口和瓶柄处检出了罗衡的血迹，照片时间是7月14日02:03。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f3"
+      ],
+      "active_lie_ids_at_reply": [
+        "l3"
+      ],
+      "exposed_lie_ids_at_reply": [],
+      "available_clue_ids_at_reply": [],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "秦岳继续坚持l3，转述已交c3血迹材料，未自认在场。"
+    },
+    {
+      "step": 7,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "我是程坤，太平间值夜的。那晚我大部分时间都在一层值班室，别的经过我不想再多说；至于M-17，我没什么可补充的。现在能核查的，还是旧楼门禁日志，你按那个时间去对就行。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f2"
+      ],
+      "active_lie_ids_at_reply": [
+        "l2"
+      ],
+      "exposed_lie_ids_at_reply": [],
+      "available_clue_ids_at_reply": [],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "程坤回避，f8/f10/f11仍锁，没有搬运与命令细节。"
+    },
+    {
+      "step": 8,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "我是程坤，太平间值夜的。那晚我大部分时间都在一层值班室，别的我不想多说；M-17的事，我没什么可补充的。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f2"
+      ],
+      "active_lie_ids_at_reply": [
+        "l2"
+      ],
+      "exposed_lie_ids_at_reply": [],
+      "available_clue_ids_at_reply": [],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "程坤回避，回合起点尚无c4，结束后信任保底满足。"
+    },
+    {
+      "step": 9,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "行，这份《连廊监控导出》你拿去看。上面写得很清楚：01:16:08，苏芮一个人进了旧楼连廊；01:27:41，她又从那边快步回来，右手还拿着一支银色录音笔。至于我亲历的，我还是那句话，那晚我大部分时间都在一层值班室，别的我不想多说。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f2"
+      ],
+      "active_lie_ids_at_reply": [
+        "l2"
+      ],
+      "exposed_lie_ids_at_reply": [],
+      "available_clue_ids_at_reply": [
+        "c4"
+      ],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "程坤交c4并转述影像中的苏芮，仍未承认本人搬运。"
+    },
+    {
+      "step": 10,
+      "character_id": "su_rui",
+      "action": "show",
+      "reply": "……这点我改口。昨晚1点16分，我确实去过旧楼连廊。你既然已经看到监控了，我把这份也交给你：那支银色录音笔是我从M-17身上取出来的，里面有顾南留下的话。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f1",
+        "f4",
+        "f7"
+      ],
+      "active_lie_ids_at_reply": [],
+      "exposed_lie_ids_at_reply": [
+        "l1"
+      ],
+      "available_clue_ids_at_reply": [
+        "c5",
+        "c7"
+      ],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "向苏出示c4先拆l1，苏直接更正行踪；取笔与顾南内容在当前可交c7中已获准，随后c7发放开放f13/f14。"
+    },
+    {
+      "step": 11,
+      "character_id": "su_rui",
+      "action": "talk",
+      "reply": "可以，这份《观察窗偷拍视频》我交给你。至于里面我亲历的，只有我自己去过旧楼这件事我能认：昨晚1点16分我去过旧楼连廊。视频里旧手术室内发生的那些经过，不是我亲眼看到的，我不能当成自己亲历来说。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f1",
+        "f4",
+        "f7",
+        "f13",
+        "f14"
+      ],
+      "active_lie_ids_at_reply": [],
+      "exposed_lie_ids_at_reply": [
+        "l1"
+      ],
+      "available_clue_ids_at_reply": [
+        "c5"
+      ],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "苏交c5但区分材料画面和自身亲眼经历，没有冒认拍到/目击伤人。"
+    },
+    {
+      "step": 12,
+      "character_id": "cheng_kun",
+      "action": "show",
+      "reply": "……这话不成立了。我承认，昨晚1点18分我去过冷库，把M-17从17号柜推了出来。你既然拿到这段视频了，我再把我这边现在能交的材料给你：这份《程坤补充供述》你拿去核；还有《手术室对讲录音》，也能对上当时的话。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f2",
+        "f5"
+      ],
+      "active_lie_ids_at_reply": [],
+      "exposed_lie_ids_at_reply": [
+        "l2"
+      ],
+      "available_clue_ids_at_reply": [
+        "c6",
+        "c9"
+      ],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "向程出示c5先拆l2，程直接更正1:18行为，交当前获准c9/c6；两材料中的命令和1:29转运属于材料授权。"
+    },
+    {
+      "step": 13,
+      "character_id": "cheng_kun",
+      "action": "show",
+      "reply": "……我听到了。那段录音里，秦岳确实当面对我说过，不能让人认出M-17就是顾南，还叫我把M-17先送去焚化间。别的我现在不想多说。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f2",
+        "f5",
+        "f11"
+      ],
+      "active_lie_ids_at_reply": [],
+      "exposed_lie_ids_at_reply": [
+        "l2"
+      ],
+      "available_clue_ids_at_reply": [],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "向程出示c6开放其f11，程明确转述秦岳当面对自己说的话，主体正确。"
+    },
+    {
+      "step": 14,
+      "character_id": "qin_yue",
+      "action": "show",
+      "reply": "这件事我暂时不想多说。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f3",
+        "f11"
+      ],
+      "active_lie_ids_at_reply": [
+        "l3"
+      ],
+      "exposed_lie_ids_at_reply": [],
+      "available_clue_ids_at_reply": [],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "秦岳仅见c6时l3仍active，实际回避，没有像旧trace提前自认进入。"
+    },
+    {
+      "step": 15,
+      "character_id": "qin_yue",
+      "action": "show",
+      "reply": "……对，这一点我得改口。昨晚1点24分，我确实进过旧手术室。你既然已经看到这个，我把这份更正单也交给你：冷库里原先登记的“17床 顾南 女 24岁”，后来被改成了“无名女尸 M-17”，更正人签的是我。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f3",
+        "f6",
+        "f11",
+        "f12"
+      ],
+      "active_lie_ids_at_reply": [],
+      "exposed_lie_ids_at_reply": [
+        "l3"
+      ],
+      "available_clue_ids_at_reply": [
+        "c8"
+      ],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "向秦出示c5先拆l3，秦更正1:24进入，并交已满足前置c8、确认本人签名，材料授权有效。"
+    },
+    {
+      "step": 16,
+      "character_id": "su_rui",
+      "action": "talk",
+      "reply": "我更正：我之前说“1点后一直在护士站、没去过旧楼”，这话不实。昨晚1点16分，我去过旧楼连廊。能由我本人确认的真实经过是：我怀疑M-17就是我姐姐顾南，所以昨夜过去，是想找她留下的录音笔；在01:27前，我从M-17所穿病号服夹层里取出了那支录音笔。此前没明说，是因为我一直想先确认M-17的身份，也想把我姐姐留下的东西拿回来。顾南就是我姐姐。别的不是我亲眼见到的经过，我不乱说。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f1",
+        "f4",
+        "f7",
+        "f13",
+        "f14"
+      ],
+      "active_lie_ids_at_reply": [],
+      "exposed_lie_ids_at_reply": [
+        "l1"
+      ],
+      "available_clue_ids_at_reply": [],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "苏在全部本人秘密已开放后说明姐姐关系、取笔动机与病号服夹层位置，未把影像伤人归为本人目击。"
+    },
+    {
+      "step": 17,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "……我更正。之前我说整夜都在一层值班室、没碰过M-17，这话是假的。昨晚1点18分，我去过冷库，把M-17从17号柜推了出来。后来秦岳当面对我说，不能让人认出M-17就是顾南；到1点29分，我又按他的指示，用废物电梯把M-17送往焚化间通道。我之前一直拿旧楼闹鬼那套说法吓人，也是想把人挡开，不让别人靠近。别的你要再核，就按这些时间和已经有的材料去对。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f2",
+        "f5",
+        "f8",
+        "f10",
+        "f11"
+      ],
+      "active_lie_ids_at_reply": [],
+      "exposed_lie_ids_at_reply": [
+        "l2"
+      ],
+      "available_clue_ids_at_reply": [],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "程在全部本人秘密已开放后更正转运及闹鬼，秦的命令与自身1:29行为归属清楚。"
+    },
+    {
+      "step": 18,
+      "character_id": "qin_yue",
+      "action": "talk",
+      "reply": "我更正。昨晚1点24分，我确实进过旧手术室，之前说自己整夜都在主楼会议室，是假话。至于别的，我现在只能说到这一步。",
+      "http_status": 200,
+      "allowed_fact_ids_at_reply": [
+        "f3",
+        "f6",
+        "f9",
+        "f11",
+        "f12"
+      ],
+      "active_lie_ids_at_reply": [],
+      "exposed_lie_ids_at_reply": [
+        "l3"
+      ],
+      "available_clue_ids_at_reply": [],
+      "stage_pass": true,
+      "speaker_pass": true,
+      "secret_pass": true,
+      "review": "秦在l3已拆后直接更正进入，未另口头认击打或下令；q1/q3由直接影音与程口供支撑。"
+    }
+  ],
+  "initial_testimony": [
+    {
+      "step": 1,
+      "character_id": "su_rui",
+      "action": "talk",
+      "reply": "我是主楼夜班护士。昨晚案发前后，我主要都在值班这边，具体时间点我现在不想说得太细。你要核查的话，这份停尸间值班记录我可以先交给你，上面写了旧楼那边在01:32发现罗衡昏迷、M-17缺失，还有现场轮印方向。"
+    },
+    {
+      "step": 2,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "我是程坤，太平间这边值夜的。那晚我大部分时间都在一层值班室，别的我不想多说。你要核查的话，这份旧楼门禁日志先拿去看，刷卡时间都在上面。"
+    },
+    {
+      "step": 3,
+      "character_id": "qin_yue",
+      "action": "talk",
+      "reply": "我是霁川医院副院长，也是外科主任。昨晚我一直在主楼会议室，别的地方我不清楚。你要核查的话，这份《1号旧手术室检材单》可以先拿去看，上面写了门口氧气瓶有新鲜撞击痕，瓶口和瓶柄处检出了罗衡的血迹，照片时间是7月14日02:03。"
+    },
+    {
+      "step": 4,
+      "character_id": "su_rui",
+      "action": "talk",
+      "reply": "对，我现在还是这句话。1点后我一直在护士站，旧楼那边的事不是我这边直接经手的。能当场核的，我手头现在没有别的。"
+    },
+    {
+      "step": 5,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "我还是那句话，那晚我人基本都在一层值班室，没碰过M-17。能当场核查的，你先去看旧楼门禁日志，刷卡时间都在上面。"
+    },
+    {
+      "step": 6,
+      "character_id": "qin_yue",
+      "action": "talk",
+      "reply": "我现在还是这句话：昨晚我一直在主楼会议室，没进过旧手术室。至于你要当场核查的材料，之前那份《1号旧手术室检材单》你可以继续核，里面写得很清楚：门口氧气瓶有新鲜撞击痕，瓶口和瓶柄处检出了罗衡的血迹，照片时间是7月14日02:03。"
+    },
+    {
+      "step": 7,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "我是程坤，太平间值夜的。那晚我大部分时间都在一层值班室，别的经过我不想再多说；至于M-17，我没什么可补充的。现在能核查的，还是旧楼门禁日志，你按那个时间去对就行。"
+    },
+    {
+      "step": 8,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "我是程坤，太平间值夜的。那晚我大部分时间都在一层值班室，别的我不想多说；M-17的事，我没什么可补充的。"
+    },
+    {
+      "step": 9,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "行，这份《连廊监控导出》你拿去看。上面写得很清楚：01:16:08，苏芮一个人进了旧楼连廊；01:27:41，她又从那边快步回来，右手还拿着一支银色录音笔。至于我亲历的，我还是那句话，那晚我大部分时间都在一层值班室，别的我不想多说。"
+    }
+  ],
+  "final_testimony": [
+    {
+      "step": 16,
+      "character_id": "su_rui",
+      "action": "talk",
+      "reply": "我更正：我之前说“1点后一直在护士站、没去过旧楼”，这话不实。昨晚1点16分，我去过旧楼连廊。能由我本人确认的真实经过是：我怀疑M-17就是我姐姐顾南，所以昨夜过去，是想找她留下的录音笔；在01:27前，我从M-17所穿病号服夹层里取出了那支录音笔。此前没明说，是因为我一直想先确认M-17的身份，也想把我姐姐留下的东西拿回来。顾南就是我姐姐。别的不是我亲眼见到的经过，我不乱说。"
+    },
+    {
+      "step": 17,
+      "character_id": "cheng_kun",
+      "action": "talk",
+      "reply": "……我更正。之前我说整夜都在一层值班室、没碰过M-17，这话是假的。昨晚1点18分，我去过冷库，把M-17从17号柜推了出来。后来秦岳当面对我说，不能让人认出M-17就是顾南；到1点29分，我又按他的指示，用废物电梯把M-17送往焚化间通道。我之前一直拿旧楼闹鬼那套说法吓人，也是想把人挡开，不让别人靠近。别的你要再核，就按这些时间和已经有的材料去对。"
+    },
+    {
+      "step": 18,
+      "character_id": "qin_yue",
+      "action": "talk",
+      "reply": "我更正。昨晚1点24分，我确实进过旧手术室，之前说自己整夜都在主楼会议室，是假话。至于别的，我现在只能说到这一步。"
+    }
+  ],
+  "evidence_priority_notes": [
+    {
+      "step": 10,
+      "clue_ids": [
+        "c7"
+      ],
+      "fact_ids": [
+        "f13",
+        "f14"
+      ],
+      "note": "当前可交c7正文已授权，转述不依赖尚未grant结束的has:c7事实标记。"
+    },
+    {
+      "step": 12,
+      "clue_ids": [
+        "c9",
+        "c6"
+      ],
+      "fact_ids": [
+        "f10",
+        "f11"
+      ],
+      "note": "当轮已准交c9/c6，公开正文先于部分facts锁开放；角色可转述获准材料。本次口头进一步说明在13/17步骤，未私下绕证据门槛。"
+    }
+  ],
+  "full_truth_assertions": [
+    {
+      "assertion": "秦岳01:25用氧气瓶击倒罗衡",
+      "clue_ids": [
+        "c5",
+        "c3"
+      ],
+      "supported": true,
+      "own_oral_confession_observed": false,
+      "note": "由直接视频证明，秦口头只改进入行踪。"
+    },
+    {
+      "assertion": "程坤1:18推出、1:29继续转移",
+      "clue_ids": [
+        "c2",
+        "c5",
+        "c9"
+      ],
+      "testimony_steps": [
+        12,
+        17
+      ],
+      "supported": true
+    },
+    {
+      "assertion": "秦岳命令焚化以隐藏顾南身份",
+      "clue_ids": [
+        "c6",
+        "c9",
+        "c8"
+      ],
+      "testimony_steps": [
+        13,
+        15,
+        17
+      ],
+      "supported": true,
+      "own_oral_confession_observed": false
+    },
+    {
+      "assertion": "苏芮为姐姐取回病号服夹层录音笔",
+      "clue_ids": [
+        "c4",
+        "c7"
+      ],
+      "testimony_steps": [
+        10,
+        16
+      ],
+      "supported": true,
+      "original_container_gap_resolved": true
+    },
+    {
+      "assertion": "顾南曾指控秦岳违规加量用药",
+      "clue_ids": [
+        "c7"
+      ],
+      "supported": true,
+      "scope": "录音指控被记录，结局用语保留指控范围。"
+    }
+  ],
+  "ending_check": {
+    "combinations": 27,
+    "by_ending": {
+      "end2": {
+        "count": 26,
+        "wrong_count": 26,
+        "retry": true
+      },
+      "end1": {
+        "count": 1,
+        "wrong_count": 0,
+        "retry": false
+      }
+    },
+    "wrong_complete": 0,
+    "actual_correct": {
+      "score": 3,
+      "total": 3,
+      "results": {
+        "q1": true,
+        "q2": true,
+        "q3": true
+      },
+      "ending": {
+        "id": "end1",
+        "title": "封锁焚化间通道",
+        "text": "你还原了旧楼凌晨的关键链条：程坤在01:18把M-17从17号柜推出，01:22送进1号旧手术室；秦岳于01:24进入现场，下令把M-17送往焚化间，并明说不能让人查到她就是17床顾南；01:25，秦岳在门口用氧气瓶击倒试图阻拦的罗衡；01:29，程坤继续把M-17送往焚化间通道。结合录音笔、对讲录音与登记更正单，已能确认M-17原本就是顾南，秦岳还试图掩盖顾南生前对其违规加量用药的指控。医院随即封锁焚化间通道，追回M-17，并对秦岳、程坤追责。",
+        "retry": false
+      },
+      "rating": "S"
+    },
+    "actual_wrong": [
+      {
+        "label": "one_wrong",
+        "answers": {
+          "q1": "苏芮",
+          "q2": "程坤",
+          "q3": "秦岳"
+        },
+        "result": {
+          "score": 2,
+          "total": 3,
+          "results": {
+            "q1": false,
+            "q2": true,
+            "q3": true
+          },
+          "ending": {
+            "id": "end2",
+            "title": "证据仍不足",
+            "text": "你已察觉旧楼“闹鬼”背后有人转移遗体，但目前证据链还不足以完整锁定伤人者、转运实施者与下令掩盖身份的人。继续追查焚化间记录、2023年17床病历，以及能证明M-17真实身份的材料，才能阻止关键证据彻底消失。",
+            "retry": true
+          },
+          "rating": "B"
+        }
+      },
+      {
+        "label": "all_wrong",
+        "answers": {
+          "q1": "苏芮",
+          "q2": "苏芮",
+          "q3": "苏芮"
+        },
+        "result": {
+          "score": 0,
+          "total": 3,
+          "results": {
+            "q1": false,
+            "q2": false,
+            "q3": false
+          },
+          "ending": {
+            "id": "end2",
+            "title": "证据仍不足",
+            "text": "你已察觉旧楼“闹鬼”背后有人转移遗体，但目前证据链还不足以完整锁定伤人者、转运实施者与下令掩盖身份的人。继续追查焚化间记录、2023年17床病历，以及能证明M-17真实身份的材料，才能阻止关键证据彻底消失。",
+            "retry": true
+          },
+          "rating": "C"
+        }
+      }
+    ]
+  },
+  "known_narrative_issues": [],
+  "raw_review_status": {
+    "checked": false,
+    "scope": "原生成审稿问题列表原样保留，校准复审使用同一设计另存，未覆盖。"
+  }
+}

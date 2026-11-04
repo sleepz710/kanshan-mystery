@@ -1,0 +1,285 @@
+{
+  "runtime_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
+  "name": "hospital",
+  "material": "我想玩恐怖一点的，医院题材",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fast",
+  "status": "done",
+  "seconds": 1183.24,
+  "provider_blocked": false,
+  "prelude_seconds": 86.23,
+  "checked": true,
+  "problems": [],
+  "error": null,
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1738,
+      "status": "failed",
+      "error": "ModelTimeoutError",
+      "seconds": 541.15
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1773,
+      "status": "ok",
+      "response_chars": 4358,
+      "seconds": 270.95
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7585,
+      "status": "ok",
+      "response_chars": 5928,
+      "seconds": 80.09
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 14138,
+      "status": "failed",
+      "error": "ModelTimeoutError",
+      "seconds": 180.02
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 14182,
+      "status": "ok",
+      "response_chars": 5925,
+      "seconds": 99.3
+    },
+    {
+      "attempt": 2,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5571,
+      "status": "ok",
+      "response_chars": 16,
+      "seconds": 2.11
+    },
+    {
+      "attempt": 2,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 644,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 6.92
+    },
+    {
+      "attempt": 2,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 2060,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 2.39
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "旧楼M-17",
+      "problems": []
+    },
+    {
+      "title": "旧楼M-17",
+      "problems": []
+    }
+  ],
+  "talks": [],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "秦岳",
+        "q2": "程坤",
+        "q3": "秦岳"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end_truth",
+          "title": "封住焚化间通道",
+          "text": "你拼出了旧楼凌晨的完整链条：程坤在01:18把M-17从17号柜推出，01:22送进1号旧手术室；秦岳01:24进入后，下令把“17号”送往焚化间。罗衡出面阻拦时，秦岳在01:25抡起门口氧气瓶将他击倒。与此同时，苏芮潜入旧楼并非为伤人或搬尸，而是为了从遗体袋夹层取回顾南留下的银色录音笔。录音笔、对讲录音和更正单共同证明：M-17原本就是17床患者顾南，秦岳早在2023年就曾对她违规加量用药，并在她死后将遗体改登记为无名女尸。你据此封锁焚化间通道、追缴M-17，并将秦岳与程坤一并控制。旧楼所谓“闹鬼”，终于被还原成一场持续多年的灭证与搬运。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "苏芮",
+        "q2": "程坤",
+        "q3": "秦岳"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end_retry",
+          "title": "证据链仍有缺口",
+          "text": "你已经摸到旧楼事件的轮廓，但证据链还不足以完整锁定谁在指使、谁在执行、谁又在掩盖更早的病历问题。眼下最要紧的是继续追查焚化间记录与2023年17床病历，把M-17的身份、转移路径和下令者彻底钉死。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "苏芮",
+        "q2": "苏芮",
+        "q3": "苏芮"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "end_retry",
+          "title": "证据链仍有缺口",
+          "text": "你已经摸到旧楼事件的轮廓，但证据链还不足以完整锁定谁在指使、谁在执行、谁又在掩盖更早的病历问题。眼下最要紧的是继续追查焚化间记录与2023年17床病历，把M-17的身份、转移路径和下令者彻底钉死。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/6bb60bd75a884458ab5f3de672caa544/messages",
+      "status": 200,
+      "seconds": 86.2
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/6bb60bd75a884458ab5f3de672caa544/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/6bb60bd75a884458ab5f3de672caa544/messages",
+      "status": 200,
+      "seconds": 1.01
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.06
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/c045379e54cd4f828e56475d24eff018/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/a44fdc82f800479f995229cc8c8630bb/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/03d5e8a7bf03415e9056ab05bd6c09f2/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-afcd66cad44f49609c2b66a37865a528",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-quality-openai-4-20261104\\hospital\\stories\\generated-afcd66cad44f49609c2b66a37865a528.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "endings": {
+    "end_truth": {
+      "title": "封住焚化间通道",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "end_retry": {
+      "title": "证据链仍有缺口",
+      "retry": true,
+      "when": {},
+      "count": 26,
+      "wrong_count": 26,
+      "wrong_example": {
+        "q1": "苏芮",
+        "q2": "苏芮",
+        "q3": "苏芮"
+      }
+    }
+  },
+  "opens": true,
+  "selected_candidate": 2,
+  "design_alignment": []
+}

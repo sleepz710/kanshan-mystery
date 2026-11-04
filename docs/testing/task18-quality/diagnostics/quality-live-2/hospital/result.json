@@ -1,0 +1,361 @@
+{
+  "name": "hospital",
+  "material": "我想玩恐怖一点的，医院题材",
+  "model": "deepseek-flash",
+  "quality": "fast",
+  "status": "done",
+  "seconds": 410.48,
+  "provider_blocked": false,
+  "prelude_seconds": 29.36,
+  "checked": false,
+  "problems": [
+    "角色 林昭（lin）的谎话 l_lin_alibi 使用 1 条拆谎线索（c_monitor），全部由本人持有，请将至少 1 条交给其他角色。",
+    "角色 陈默（chen）的谎话 l_chen_alibi 使用 1 条拆谎线索（c_registry），全部由本人持有，请将至少 1 条交给其他角色。",
+    "第一题称苏芮供述由监控、骨锤、尸温共同触发，但尸温记录须先取得骨锤才由陈默交出；骨锤又须先拆穿陈默谎话才可得，而拆穿陈默依赖监控与登记簿，取得链可通。但苏芮供述把‘三年前周维安指使加快氯化钾泵入、她代签并刮改’作为供述内容，三年前的事实在证据中另有旧病历与聊天记录可证，供述只补‘指使’细节；这不算缺证。真正缺口在：尸温记录证明死亡时间22:15至22:35，监控只拍到苏芮22:05进入、22:31离开，不能直接证明22:20击打；需由供述补动作，而供述取得前置已含尸温与骨锤，可执行。无实质缺陷。",
+    "第二题证据列太平间登记簿、监控、尸温记录，可支持陈默移尸；但‘3号柜’由登记簿与00:20发现共同支持，登记簿备注‘由护工发现于三楼旧手术室’是陈默自述，不是客观确认；不过监控已拍到他推车从三楼到负一楼，足以支持移尸，登记簿与尸温为辅助，冗余不报。无缺陷。",
+    "第三题答案依赖旧病历对照证明篡改与代签、聊天截图证明胁迫、苏芮供述补指使；但旧病历中‘周维安下医嘱’只能由医嘱栏印章支持，印章属于作者确认客观事实，可作依据；聊天记录21:23‘三年前那张纸我留着’只暗示周持有把柄，不直接证明指使加快泵入；苏芮供述可补，但供述取得前置要求已取得骨锤与尸温并出示监控，链可通。无实质缺陷。",
+    "时间线中22:41林昭持万能卡开门，但万能卡开门日志只记录卡号N-07在22:41开启旧手术室门，未记录持卡人；监控备份盘23:12只拍到她离开三楼电梯口，未拍22:41进旧手术室。题目未问林昭是否进门，因此不构成答题缺证；但设计truth称‘林昭持卡进入时人已死’，此断言在证据中缺少22:41林昭本人进门的直接影像或承认，若用于错判结局则需补：监控应拍到22:41林昭本人进入旧手术室，或她供认该次刷卡。当前仅卡记录不能等同实际刷卡者，存在身份与动作缺口，应补监控画面或供述。",
+    "苏芮lie‘22:05以后一直在二楼值班室’被监控22:05进入、22:31离开三楼直接反驳，改口供述纠正同一句，成立。陈默lie‘整晚在负一楼’被本人签名的登记簿备注‘由护工发现于三楼旧手术室’及监控23:31推车进三楼直接反驳，成立。林昭lie‘22点后一直在护士站’被监控23:12离开三楼电梯口及万能卡22:41开门记录反驳；但22:41开门记录只能证明卡被使用，不能证明林昭本人在护士站外，监控23:12拍到她离开三楼电梯口才是直接反驳‘一直在护士站’，成立。无缺陷。",
+    "材料采集时间：太平间登记簿23:52记录，00:20后发现遗体后取得，不早于事件；尸温记录23:50填写，取得在骨锤之后，不早于事件；监控U盘由林昭私下拷贝，未说明拷贝时间，但内容为当晚影像，取得在出示日志后，可执行。无缺陷。"
+  ],
+  "error": "检查未全部通过，试玩可能遇到线索或推理问题。",
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1566,
+      "status": "ok",
+      "response_chars": 5101,
+      "seconds": 98.83
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 8122,
+      "status": "ok",
+      "response_chars": 7581,
+      "seconds": 18.36
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 16705,
+      "status": "ok",
+      "response_chars": 1990,
+      "seconds": 4.23
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 16538,
+      "status": "ok",
+      "response_chars": 3979,
+      "seconds": 6.99
+    },
+    {
+      "attempt": 1,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5951,
+      "status": "ok",
+      "response_chars": 1168,
+      "seconds": 7.57
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 716,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 3.91
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 2106,
+      "status": "ok",
+      "response_chars": 87,
+      "seconds": 2.14
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 7956,
+      "status": "ok",
+      "response_chars": 5361,
+      "seconds": 117.83
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 8382,
+      "status": "ok",
+      "response_chars": 6404,
+      "seconds": 137.56
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 15436,
+      "status": "ok",
+      "response_chars": 1937,
+      "seconds": 5.79
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 15436,
+      "status": "ok",
+      "response_chars": 2320,
+      "seconds": 6.67
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "三号柜里的院长",
+      "problems": [
+        "角色 lin.secrets[0].until.shown 须引用 clues.id，c_badghao 未在剧本中定义。",
+        "角色 lin.secrets[1].until.shown 须引用 clues.id，c_badghao 未在剧本中定义。",
+        "角色 lin.secrets[2].until.shown 须引用 clues.id，c_badghao 未在剧本中定义。",
+        "lin 的秘密 f_lin_identity 不在 knows 中。",
+        "角色 lin.secrets[4].until.shown 须引用 clues.id，f_lin_identity 属于 facts.id。"
+      ]
+    },
+    {
+      "title": "三号柜里的院长",
+      "problems": []
+    },
+    {
+      "title": "三号柜里的院长",
+      "problems": []
+    },
+    {
+      "title": "三楼旧手术室",
+      "problems": []
+    },
+    {
+      "title": "三楼旧手术室",
+      "problems": []
+    },
+    {
+      "title": "三楼旧手术室",
+      "problems": []
+    }
+  ],
+  "talks": [],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "苏芮",
+        "q2": "陈默",
+        "q3": "周维安指使加快氯化钾泵入致林小雨死亡，苏芮代签并共同篡改存档，周维安以此胁迫苏芮"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e_truth",
+          "title": "骨锤上的三项指向",
+          "text": "骨锤接缝处的血迹、尸温记录与走廊监控三者合上，苏芮承认22:20在旧手术室用编号J-3骨锤三次击打周维安后脑，致其死亡。三年前林小雨的死因也因此翻开：周维安指使加快氯化钾泵入，苏芮代签并参与刮改存档，如今又以此胁迫她签销毁单顶罪。苏芮故意杀人成立，篡改病历曝光；陈默私运标本与私自移尸各担其责；林昭私自取得病历副本、未报警，亦须说明。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "林昭",
+        "q2": "陈默",
+        "q3": "周维安指使加快氯化钾泵入致林小雨死亡，苏芮代签并共同篡改存档，周维安以此胁迫苏芮"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e_wrong",
+          "title": "开门卡指向的复仇者",
+          "text": "22:41那张开门卡记录被摆在最上面，复仇动机又最明显的林昭成了被认定的人。苏芮在问询中脱了身，旧手术室的骨锤被当作器械遗落处理，负一楼的“转运”也被看作按班巡查的寻常动作。可骨锤上有别的痕迹，三年前的旧档案始终没有打开过，这桩案子还缺一块最关键的证据。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "林昭",
+        "q2": "林昭",
+        "q3": "林小雨死于术后感染，与本案无关"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "e_wrong",
+          "title": "开门卡指向的复仇者",
+          "text": "22:41那张开门卡记录被摆在最上面，复仇动机又最明显的林昭成了被认定的人。苏芮在问询中脱了身，旧手术室的骨锤被当作器械遗落处理，负一楼的“转运”也被看作按班巡查的寻常动作。可骨锤上有别的痕迹，三年前的旧档案始终没有打开过，这桩案子还缺一块最关键的证据。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/4fef76362bb2495696e9df9c8d5e4489/messages",
+      "status": 200,
+      "seconds": 29.34
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/4fef76362bb2495696e9df9c8d5e4489/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/4fef76362bb2495696e9df9c8d5e4489/messages",
+      "status": 200,
+      "seconds": 1.32
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.1
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.04
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/95881a183c194215b01983966e02e1eb/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.04
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/baf67faa3c5044f5a5dfb28b033ee6f1/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.04
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/5cc585f373e840f2bf23dea793209610/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-b502d7ac9388449eb55ffbb6231274f7",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-quality-live-2-20261104\\hospital\\stories\\generated-b502d7ac9388449eb55ffbb6231274f7.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [
+    "角色 林昭（lin）的谎话 l_lin_alibi 使用 1 条拆谎线索（c_monitor），全部由本人持有，请将至少 1 条交给其他角色。",
+    "角色 陈默（chen）的谎话 l_chen_alibi 使用 1 条拆谎线索（c_registry），全部由本人持有，请将至少 1 条交给其他角色。"
+  ],
+  "endings": {
+    "e_truth": {
+      "title": "骨锤上的三项指向",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "e_wrong": {
+      "title": "开门卡指向的复仇者",
+      "retry": true,
+      "when": {
+        "chose": {
+          "q1": "林昭"
+        }
+      },
+      "count": 16,
+      "wrong_count": 16,
+      "wrong_example": {
+        "q1": "林昭",
+        "q2": "林昭",
+        "q3": "林小雨死于术后感染，与本案无关"
+      }
+    },
+    "e_open": {
+      "title": "证据仍未合上",
+      "retry": true,
+      "when": {},
+      "count": 47,
+      "wrong_count": 47,
+      "wrong_example": {
+        "q1": "陈默",
+        "q2": "林昭",
+        "q3": "林小雨死于术后感染，与本案无关"
+      }
+    }
+  },
+  "opens": true,
+  "selected_candidate": 1,
+  "design_alignment": []
+}

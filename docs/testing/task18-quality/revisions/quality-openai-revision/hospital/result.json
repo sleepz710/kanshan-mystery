@@ -1,0 +1,107 @@
+{
+  "runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "name": "hospital",
+  "material": "我想玩恐怖一点的，医院题材",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fast",
+  "mode": "原最终设计的一轮正常修订",
+  "attempt": 2,
+  "budget_seconds": 1200,
+  "problems_requested": [
+    "2023年时间线称顾南把银色录音笔藏入病号服夹层，2026年时间线、truth与结局却称苏芮从遗体袋夹层取回，中间没有转存说明或证据。请统一藏放与取回位置，或将转存行为落实为可取得证据，消除位置断裂。保持既有3人、9条线索、3句谎话、3道题、2个结局及证据锁和答案依据，不压缩剧情。"
+  ],
+  "parent": {
+    "folder": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-4\\hospital",
+    "runtime_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
+    "selected_candidate": 2,
+    "generation_seconds": 1183.24,
+    "sources_sha256": {
+      "result.json": "ad4cd4b9259ce5a542ddc886d8e9d3c2b251976d0e9131bc0f8743cb9865ef87",
+      "selected-design.json": "4cd8cbbbacb8d3c8bf83169824813b7f871cbbc213f82b6a5c477e5fb51032a1",
+      "story.yaml": "cfe46abd2282ead1bd865d4a5b25f84f1493b2e4cc302e7caa7f6ed8d137d84c"
+    }
+  },
+  "status": "failed",
+  "error": "生成或保存失败，请重试。",
+  "checked": false,
+  "problems": [
+    "第3题答案“秦岳下令把M-17送往焚化间通道，以掩盖这具遗体原本登记为顾南的事实”中，前半句可由《手术室对讲录音》与《程坤补充供述》支持，但“以掩盖……原本登记为顾南的事实”这一主观目的，现有公开证据未直接把当晚下令与2023年改名行为连成因果。《冷库遗体登记更正单》只证秦岳改名，《银色录音笔音频导出》只证顾南曾指控违规用药。缺少秦岳知悉M-17即顾南且因此要求焚化的直接表述。改法：删去目的表述，或补一条秦岳/程坤明确提及“烧掉是为免顾南身份暴露”的可取得录音供述。",
+    "可解性检查尚未完成。",
+    "后续模型调用未完成，保留已经通过程序检查的版本。"
+  ],
+  "draft_problems": [
+    "第3题答案“秦岳下令把M-17送往焚化间通道，以掩盖这具遗体原本登记为顾南的事实”中，前半句可由《手术室对讲录音》与《程坤补充供述》支持，但“以掩盖……原本登记为顾南的事实”这一主观目的，现有公开证据未直接把当晚下令与2023年改名行为连成因果。《冷库遗体登记更正单》只证秦岳改名，《银色录音笔音频导出》只证顾南曾指控违规用药。缺少秦岳知悉M-17即顾南且因此要求焚化的直接表述。改法：删去目的表述，或补一条秦岳/程坤明确提及“烧掉是为免顾南身份暴露”的可取得录音供述。",
+    "可解性检查尚未完成。",
+    "后续模型调用未完成，保留已经通过程序检查的版本。"
+  ],
+  "invalid_problems": [
+    "角色 su_rui 的秘密事实 f8 存在无锁副本，请在本人 secrets 中落实设计的解锁条件。",
+    "谎话 l1 的 admit 事实 f4 与设计 correction 不符，请逐字使用直接纠正原谎的文本，额外秘密单独加锁。",
+    "谎话 l2 的 admit 事实 f5 与设计 correction 不符，请逐字使用直接纠正原谎的文本，额外秘密单独加锁。",
+    "谎话 l3 的 admit 事实 f6 与设计 correction 不符，请逐字使用直接纠正原谎的文本，额外秘密单独加锁。"
+  ],
+  "revision_seconds": 755.55,
+  "steps": [
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 6211,
+      "status": "ok",
+      "response_chars": 4507,
+      "seconds": 117.08
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7734,
+      "status": "ok",
+      "response_chars": 6392,
+      "seconds": 48.54
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 14812,
+      "status": "ok",
+      "response_chars": 6400,
+      "seconds": 38.9
+    },
+    {
+      "attempt": 2,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5720,
+      "status": "ok",
+      "response_chars": 253,
+      "seconds": 9.46
+    },
+    {
+      "attempt": 2,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 644,
+      "status": "failed",
+      "error": "ModelTimeoutError",
+      "cause": "TimeoutError",
+      "http_status": null,
+      "seconds": 541.5
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "旧楼M-17",
+      "problems": []
+    },
+    {
+      "title": "旧楼M-17",
+      "problems": []
+    }
+  ],
+  "provider_blocked": false,
+  "story_id": null,
+  "cumulative_generation_seconds": 1938.79,
+  "parent_sources_unchanged": true
+}

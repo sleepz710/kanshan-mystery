@@ -1,0 +1,327 @@
+{
+  "runtime_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
+  "name": "bookstore",
+  "material": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fine",
+  "status": "done",
+  "seconds": 418.82,
+  "provider_blocked": false,
+  "prelude_seconds": 20.7,
+  "checked": true,
+  "problems": [],
+  "error": null,
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1833,
+      "status": "ok",
+      "response_chars": 4218,
+      "seconds": 305.05
+    },
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1833,
+      "status": "ok",
+      "response_chars": 3945,
+      "seconds": 309.7
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7425,
+      "status": "ok",
+      "response_chars": 5546,
+      "seconds": 36.6
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7152,
+      "status": "ok",
+      "response_chars": 5489,
+      "seconds": 36.17
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13431,
+      "status": "ok",
+      "response_chars": 1981,
+      "seconds": 14.68
+    },
+    {
+      "attempt": 1,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5411,
+      "status": "ok",
+      "response_chars": 16,
+      "seconds": 2.25
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13134,
+      "status": "ok",
+      "response_chars": 5486,
+      "seconds": 27.52
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13182,
+      "status": "ok",
+      "response_chars": 5386,
+      "seconds": 28.78
+    },
+    {
+      "attempt": 1,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5138,
+      "status": "ok",
+      "response_chars": 16,
+      "seconds": 3.03
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 738,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 9.33
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 1844,
+      "status": "ok",
+      "response_chars": 110,
+      "seconds": 2.75
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "B-3里的空白书",
+      "problems": []
+    },
+    {
+      "title": "No.7预约柜调包案",
+      "problems": [
+        "格式 kanshan.ending：Extra inputs are not permitted。",
+        "格式 ending：Field required。"
+      ]
+    },
+    {
+      "title": "B-3里的空白书",
+      "problems": []
+    },
+    {
+      "title": "No.7预约柜调包案",
+      "problems": []
+    },
+    {
+      "title": "No.7预约柜调包案",
+      "problems": []
+    }
+  ],
+  "talks": [],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "赵澄在18:48打开B-3取走了《街字解剖》",
+        "q2": "赵澄16:05领出的陈列空白样书D-14",
+        "q3": "21:12由唐芮寄存在校内快递柜7号，收件人为赵澄"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end1",
+          "title": "追回真书",
+          "text": "你还原了整条调包链：17:54到货的唯一真书S2298先被放入B-3，18:31仍在柜中；18:42林沅把0719员工卡私借给赵澄；18:48赵澄刷卡打开B-3，取走陈添预订的《街字解剖》，塞入自己16:05领出的陈列空白样书D-14；19:01至19:03他在聊天里承认已把预订柜那本拿出，并收下唐芮的200元；21:12唐芮又把条码S2298的真书寄存在校内快递柜7号，收件人为赵澄。凭寄存截图，你们当晚就能追回真书；凭聊天记录、开锁日志和门卡交接视频，也足以追责赵澄与违规借卡的林沅。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "林沅在18:31打开B-3取走了《街字解剖》",
+        "q2": "赵澄16:05领出的陈列空白样书D-14",
+        "q3": "21:12由唐芮寄存在校内快递柜7号，收件人为赵澄"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end2",
+          "title": "证据还差最后一环",
+          "text": "你已经逼近答案，但证据链还不足以同时锁定“0719门卡使用者”和“真书当晚去向”。继续沿“0719门卡使用链”和“7号快递柜里的S2298真书”两个方向补证，才能追回真书并明确责任。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "林沅在18:31打开B-3取走了《街字解剖》",
+        "q2": "林沅另找来的一本库存《街字解剖》",
+        "q3": "一直在赵澄更衣柜里"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "end2",
+          "title": "证据还差最后一环",
+          "text": "你已经逼近答案，但证据链还不足以同时锁定“0719门卡使用者”和“真书当晚去向”。继续沿“0719门卡使用链”和“7号快递柜里的S2298真书”两个方向补证，才能追回真书并明确责任。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/0f7fb262867c430693744dbf2410210a/messages",
+      "status": 200,
+      "seconds": 20.67
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/0f7fb262867c430693744dbf2410210a/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/0f7fb262867c430693744dbf2410210a/messages",
+      "status": 200,
+      "seconds": 1.39
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.06
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/35c47a5edb4b4b1399d2e746a6e77662/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/ce25c2c5692249ce9dc57f218061c1ec/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/cc50c8eaffca4984a6a4e9d1afe52023/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-0f0d971dbeb34a9c9da3f650a80e5a2d",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-quality-openai-fine-1-20261104\\bookstore\\stories\\generated-0f0d971dbeb34a9c9da3f650a80e5a2d.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "endings": {
+    "end1": {
+      "title": "追回真书",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "end2": {
+      "title": "证据还差最后一环",
+      "retry": true,
+      "when": {},
+      "count": 63,
+      "wrong_count": 63,
+      "wrong_example": {
+        "q1": "林沅在18:31打开B-3取走了《街字解剖》",
+        "q2": "林沅另找来的一本库存《街字解剖》",
+        "q3": "一直在赵澄更衣柜里"
+      }
+    }
+  },
+  "opens": true,
+  "selected_candidate": 1,
+  "design_alignment": []
+}

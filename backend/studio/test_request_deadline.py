@@ -111,11 +111,57 @@ async def test_generation_thinking_effort_preserves_roles(monkeypatch, install_h
     if base == "https://api.deepseek.com":
         assert payload["thinking"] == {"type": "enabled" if role == "writer" else "disabled"}
         if role == "writer":
-            assert payload["reasoning_effort"] == "low"
+            assert payload["reasoning_effort"] == "high"
         else:
             assert "reasoning_effort" not in payload
     else:
         assert "thinking" not in payload and "reasoning_effort" not in payload
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("role", ["writer", "actor"])
+@pytest.mark.parametrize("model", ["gpt-5.4", "gpt-5.4-2026-03-05"])
+@pytest.mark.parametrize("entry", ["studio", "game"])
+async def test_official_gpt54_http_parameters_preserve_roles_and_token_limits(
+    monkeypatch, install_http_model, role, model, entry,
+):
+    requests = []
+
+    def handle(request):
+        requests.append(json.loads(request.content))
+        if request.url.path.endswith("/responses"):
+            return httpx.Response(200, json={
+                "id": "resp-completed", "object": "response", "created_at": 0,
+                "status": "completed", "model": model, "output": [{
+                    "type": "message", "id": "msg-completed", "role": "assistant", "status": "completed",
+                    "content": [{"type": "output_text", "text": '{"ok": true}', "annotations": []}],
+                }],
+            })
+        return completion('{"ok": true}')
+
+    install_http_model(handle)
+    monkeypatch.setenv("LLM_BASE_URL", "https://api.openai.com/v1")
+    monkeypatch.setenv("LLM_WRITER_MODEL" if role == "writer" else "LLM_ACTOR_MODEL", model)
+    if entry == "studio":
+        result = await checker.complete_for([], role=role, mock_response={})
+    else:
+        monkeypatch.setattr(llm, "AsyncOpenAI", checker.AsyncOpenAI)
+        result = await llm.complete_json([], purpose=role)
+
+    assert result == {"ok": True}
+    payload = requests[0]
+    assert payload["model"] == model
+    if entry == "studio" and role == "writer":
+        assert payload["reasoning"] == {"effort": "high"}
+        assert payload["background"] is True and payload["store"] is False
+        assert payload["text"] == {"format": {"type": "json_object"}}
+    else:
+        assert payload["reasoning_effort"] == ("high" if role == "writer" else "none")
+    assert "thinking" not in payload and "max_tokens" not in payload
+    if entry == "game":
+        assert payload["max_completion_tokens"] == (8192 if role == "writer" else 1024)
+    else:
+        assert "max_completion_tokens" not in payload
 
 
 @pytest.mark.asyncio

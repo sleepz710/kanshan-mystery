@@ -1,0 +1,303 @@
+{
+  "runtime_commit": "022f9f46e597adcd9baa0a06ff379562abd5b7e8",
+  "name": "hospital",
+  "material": "我想玩恐怖一点的，医院题材",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fast",
+  "status": "done",
+  "seconds": 476.72,
+  "provider_blocked": false,
+  "prelude_seconds": 11.41,
+  "checked": true,
+  "problems": [],
+  "error": null,
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1566,
+      "status": "ok",
+      "response_chars": 4417,
+      "seconds": 215.53
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7534,
+      "status": "ok",
+      "response_chars": 6345,
+      "seconds": 44.6
+    },
+    {
+      "attempt": 1,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5489,
+      "status": "ok",
+      "response_chars": 16,
+      "seconds": 3.43
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 846,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 5.27
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 2193,
+      "status": "ok",
+      "response_chars": 134,
+      "seconds": 2.92
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 6018,
+      "status": "ok",
+      "response_chars": 4517,
+      "seconds": 132.08
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7634,
+      "status": "ok",
+      "response_chars": 6482,
+      "seconds": 54.41
+    },
+    {
+      "attempt": 2,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5589,
+      "status": "ok",
+      "response_chars": 16,
+      "seconds": 3.04
+    },
+    {
+      "attempt": 2,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 846,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 11.84
+    },
+    {
+      "attempt": 2,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 2193,
+      "status": "ok",
+      "response_chars": 134,
+      "seconds": 3.18
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "冷库尸行",
+      "problems": []
+    },
+    {
+      "title": "冷库尸行",
+      "problems": []
+    }
+  ],
+  "talks": [],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "6月16日23:22把邱闻从监护区推到7号楼B1旧病理走廊的人是罗恪",
+        "q2": "6月16日23:26用氧气瓶扳手击打邱闻后脑的人是顾闻",
+        "q3": "6月16日23:31把邱闻抬上布草车并推进3号冷库的人是孟杉"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e1",
+          "title": "连续掩盖下的冷库尸行",
+          "text": "你还原了这场“冷库尸行”的全过程。22:48，罗恪无医嘱多取并给邱闻注射了一支咪达唑仑；23:22，他又把昏睡的邱闻私自推到7号楼B1旧病理走廊，想避开监护记录。23:26，正在B1偷拆停用氧气阀和铜件的顾闻被苏醒的邱闻抓住，为灭口用借来的氧气瓶扳手击打邱闻后脑，造成致命伤。23:31，孟杉回到B1发现人已倒地不动，怕自己先前私用束缚带和进入旧病理层的事暴露，便把邱闻抬上布草车推进3号冷库。23:32，白布、输液架和布草车在监控里叠成了像“尸体直立行走”的影像，于是怪谈代替了真相。所谓闹鬼，其实是三个人一环扣一环的违规、杀人和掩盖。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "6月16日23:22把邱闻从监护区推到7号楼B1旧病理走廊的人是孟杉",
+        "q2": "6月16日23:26用氧气瓶扳手击打邱闻后脑的人是顾闻",
+        "q3": "6月16日23:31把邱闻抬上布草车并推进3号冷库的人是孟杉"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e2",
+          "title": "证据仍有缺口",
+          "text": "你已经看出“尸影”不像灵异现象，但现有证据还不足以完整锁定三人在23:22、23:26、23:31各自实施的关键动作。继续核对B1走廊画面、推床去向、工具借用和三份补充口供，才能把转移、击打和藏尸这三步彻底接上。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "6月16日23:22把邱闻从监护区推到7号楼B1旧病理走廊的人是孟杉",
+        "q2": "6月16日23:26用氧气瓶扳手击打邱闻后脑的人是孟杉",
+        "q3": "6月16日23:31把邱闻抬上布草车并推进3号冷库的人是罗恪"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "e2",
+          "title": "证据仍有缺口",
+          "text": "你已经看出“尸影”不像灵异现象，但现有证据还不足以完整锁定三人在23:22、23:26、23:31各自实施的关键动作。继续核对B1走廊画面、推床去向、工具借用和三份补充口供，才能把转移、击打和藏尸这三步彻底接上。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/4ea7bff176104cd6b986304e83a01715/messages",
+      "status": 200,
+      "seconds": 11.39
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/4ea7bff176104cd6b986304e83a01715/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/4ea7bff176104cd6b986304e83a01715/messages",
+      "status": 200,
+      "seconds": 0.67
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.05
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/1c864e345092457482370bd55ae0a6de/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/0974f6128b8c4e849a0de6fcc90839fb/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/6b64d98f825d426f880ee11a14da72ab/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-c157e033c09f48c0b471c5e54a51155c",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-quality-openai-2-20261104\\hospital\\stories\\generated-c157e033c09f48c0b471c5e54a51155c.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "endings": {
+    "e1": {
+      "title": "连续掩盖下的冷库尸行",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "e2": {
+      "title": "证据仍有缺口",
+      "retry": true,
+      "when": {},
+      "count": 26,
+      "wrong_count": 26,
+      "wrong_example": {
+        "q1": "6月16日23:22把邱闻从监护区推到7号楼B1旧病理走廊的人是孟杉",
+        "q2": "6月16日23:26用氧气瓶扳手击打邱闻后脑的人是孟杉",
+        "q3": "6月16日23:31把邱闻抬上布草车并推进3号冷库的人是孟杉"
+      }
+    }
+  },
+  "opens": true,
+  "selected_candidate": 2,
+  "design_alignment": []
+}

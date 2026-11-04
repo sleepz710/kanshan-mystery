@@ -93,6 +93,13 @@ def _real_settings(purpose: str = "actor") -> tuple[str, str, str]:
     return base_url, api_key, model
 
 
+def _openai_reasoning_options(base_url: str, model: str, purpose: str) -> dict:
+    if (urlsplit(base_url).hostname == "api.openai.com"
+            and model in {"gpt-5.4", "gpt-5.4-2026-03-05"}):
+        return {"reasoning_effort": "none" if purpose == "actor" else "high"}
+    return {}
+
+
 def _reject_non_json_number(value: str) -> None:
     raise ValueError("JSON 不支持的数值：" + value)
 
@@ -130,7 +137,7 @@ async def complete_json(
 
     purpose="actor" 用于角色、核查、对质和汤主问答，默认 1024 tokens；
     purpose="writer" 用于编剧与审稿，默认 8192 tokens。调用方可覆盖 max_tokens。
-    DeepSeek 官方接口分别关闭、开启思考模式；其他兼容接口不带专属参数。
+    DeepSeek 官方接口分别关闭、开启思考模式；官方 GPT-5.4 使用 none/high 和 max_completion_tokens。
     messages 中必须明确要求模型输出 JSON。单次请求超时 30 秒，SDK 最多重试一次。
     格式错误会追加通用 JSON 说明后重发一次，不回灌无效回复；网络与截断错误直接返回。
     模拟模式只返回 mock_response 的副本，不创建模型客户端。
@@ -148,11 +155,14 @@ async def complete_json(
         return deepcopy(mock_response)
 
     base_url, api_key, model = _real_settings(purpose)
+    reasoning_options = _openai_reasoning_options(base_url, model, purpose)
+    token_field = "max_completion_tokens" if reasoning_options else "max_tokens"
     request = {
         "model": model,
         "messages": deepcopy(messages),
         "response_format": {"type": "json_object"},
-        "max_tokens": token_limit,
+        token_field: token_limit,
+        **reasoning_options,
     }
     if _is_deepseek_url(base_url, "LLM_BASE_URL"):
         request["extra_body"] = {

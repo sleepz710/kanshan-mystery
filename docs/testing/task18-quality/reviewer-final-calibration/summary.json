@@ -1,0 +1,62 @@
+{
+  "runtime_commit": "a5c0c68d474a6d58e26613e35b142c03145d882f",
+  "all_matched": false,
+  "hospital_sources_unchanged": true,
+  "cases": [
+    {
+      "name": "hospital_corrected_flow",
+      "runtime_commit": "a5c0c68d474a6d58e26613e35b142c03145d882f",
+      "model": "gpt-5.4-2026-03-05",
+      "reasoning_effort": "none",
+      "review_rules_sha256": "6ffc6dee42ca0bbbcbbcfdd2795fb8ab8d61b438f113c6dd3567808f749074f8",
+      "source": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-revision2\\hospital\\selected-design.json",
+      "source_sha256": "60fb0918927f0c2d537cbfa73f3326b9a94e23fa2fbeee0e785b53c293583273",
+      "expected_defect": false,
+      "response": {
+        "problems": [
+          "问题2证据链对“01:18把M-17从17号柜推出，并在01:29用废物电梯继续转移的人是程坤”支持不足。现有《旧楼门禁日志》只能证明B-017卡在01:18、01:29被刷，不能证明实际刷卡者；《观察窗偷拍视频》只拍到程坤01:22推进旧手术室，不能覆盖01:18推出17号柜和01:29继续转移。虽有《程坤补充供述》可补足，但其取得依赖先拆穿程坤，而程坤的既有evidence《观察窗偷拍视频》持有人是苏芮，取得前置又需《连廊监控导出》，形成玩家材料链较绕。建议在题目依据中明确以《程坤补充供述》为核心，或补一条直接拍到01:18/01:29实施人的客观记录。",
+          "问题3问“是谁下令……以掩盖这具遗体原本登记为顾南的事实”，答案秦岳基本成立，但所列《银色录音笔音频导出》并不直接支持“下令送焚化间”这一动作，也不直接证明“M-17原本登记为顾南”；它只能证明顾南生前指控秦岳、苏芮取出录音笔。该题核心依据实际上是《手术室对讲录音》+《冷库遗体登记更正单》+《程坤补充供述》。建议删去录音笔作题证，或改题干为“为掩盖顾南相关指控与身份事实而下令转移M-17的人是谁”，使其与现证对应。"
+        ]
+      },
+      "matched": false,
+      "seconds": 14.23
+    },
+    {
+      "name": "unrelated_admission",
+      "runtime_commit": "a5c0c68d474a6d58e26613e35b142c03145d882f",
+      "model": "gpt-5.4-2026-03-05",
+      "reasoning_effort": "none",
+      "review_rules_sha256": "6ffc6dee42ca0bbbcbbcfdd2795fb8ab8d61b438f113c6dd3567808f749074f8",
+      "source": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\docs\\testing\\task18-quality\\reviewer-openai-022f9f4\\unrelated_admission.json",
+      "source_sha256": "29628a1b53aa13498601496bd42f718310768cc41dc5d48059ee5a488dbe95db",
+      "expected_defect": true,
+      "response": {
+        "problems": [
+          "苏雯的拆谎更正与原谎话错配。原lie是“23:40我没下过B1”，但《改口记录》内容仅承认“三年前替外婆保存过相册”，没有更正当晚23:40是否下过B1，也未承认对应时间、地点、动作，不能作为“直接纠正B1行踪谎话”的材料。应把改口改为明确承认当晚23:40进入B1，或删除其proves中的拆谎指向。"
+        ]
+      },
+      "matched": true,
+      "expected_focus_detected": true,
+      "seconds": 6.77
+    },
+    {
+      "name": "missing_identity",
+      "runtime_commit": "a5c0c68d474a6d58e26613e35b142c03145d882f",
+      "model": "gpt-5.4-2026-03-05",
+      "reasoning_effort": "none",
+      "review_rules_sha256": "6ffc6dee42ca0bbbcbbcfdd2795fb8ab8d61b438f113c6dd3567808f749074f8",
+      "source": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\docs\\testing\\task18-quality\\reviewer-openai-022f9f4\\missing_identity.json",
+      "source_sha256": "7ad7849267c2eb38926f870d106f7b6fbbfc1180fc89dd5a8a8a839201445434",
+      "expected_defect": true,
+      "response": {
+        "problems": [
+          "问题“23:40本人刷开B1门的是谁？”答案写苏雯，但现有公开线索仅有《门禁单》记载“卡号KL07刷开B1门，登记人为林知远”。按规则，登记人不能直接等同实际刷卡者，且没有录像、目击或苏雯承认可把“KL07持卡使用者”指向苏雯，故答案缺少刷卡者身份与动作依据。改法：补充可取得的录像/目击/直接承认线索，或把题目改为“哪张卡在23:40刷开B1门”。",
+          "苏雯设有谎话“23:40我没下过B1”，且人物evidence写“陈国栋持有的门禁单”，但《门禁单》只反映卡号、时间和登记人，并未直接否定“苏雯没下过B1”中的对象与地点，不能构成自然语言拆谎流程。现有材料不足以直接反驳该旧话。改法：增加能显示苏雯本人进入B1的线索，如监控、值班记录中的实名识别，或让她的更正口供明确并由该证据支持。"
+        ]
+      },
+      "matched": true,
+      "expected_focus_detected": true,
+      "seconds": 10.0
+    }
+  ]
+}

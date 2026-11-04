@@ -1,0 +1,539 @@
+[
+  {
+    "case": "unrelated_admission",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "positive",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "missing_identity",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "missing_identity",
+    "method": "GET",
+    "path": "/v1/responses/resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+    "http_status": 200,
+    "id": "resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "positive",
+    "method": "GET",
+    "path": "/v1/responses/resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+    "http_status": 200,
+    "id": "resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "missing_identity",
+    "method": "GET",
+    "path": "/v1/responses/resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+    "http_status": 200,
+    "id": "resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "positive",
+    "method": "GET",
+    "path": "/v1/responses/resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+    "http_status": 200,
+    "id": "resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "missing_identity",
+    "method": "GET",
+    "path": "/v1/responses/resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+    "http_status": 200,
+    "id": "resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "positive",
+    "method": "GET",
+    "path": "/v1/responses/resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+    "http_status": 200,
+    "id": "resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "missing_identity",
+    "method": "GET",
+    "path": "/v1/responses/resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+    "http_status": 200,
+    "id": "resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 1424,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 176,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1600
+    }
+  },
+  {
+    "case": "positive",
+    "method": "GET",
+    "path": "/v1/responses/resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+    "http_status": 200,
+    "id": "resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 4386,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 12,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 4398
+    }
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "unrelated_admission",
+    "method": "GET",
+    "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "http_status": 200,
+    "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 1603,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 125,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1728
+    }
+  }
+]
