@@ -1,0 +1,76 @@
+2026-11-04 14:12:37,192 INFO HTTP Request: POST http://qa.local/api/studio/chats "HTTP/1.1 201 Created"
+2026-11-04 14:12:37,193 INFO HTTP Request: POST http://qa.local/api/studio/chats "HTTP/1.1 201 Created"
+2026-11-04 14:12:39,291 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:12:39,293 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:12:42,354 INFO HTTP Request: POST http://qa.local/api/studio/chats/562336e9a6c8498cbc3035974b535119/messages "HTTP/1.1 200 OK"
+2026-11-04 14:12:42,355 INFO HTTP Request: POST http://qa.local/api/studio/chats/562336e9a6c8498cbc3035974b535119/messages "HTTP/1.1 200 OK"
+2026-11-04 14:12:42,932 INFO HTTP Request: POST http://qa.local/api/studio/chats/562336e9a6c8498cbc3035974b535119/messages "HTTP/1.1 200 OK"
+2026-11-04 14:12:43,100 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:12:43,155 INFO HTTP Request: POST http://qa.local/api/studio/chats/876c399f391f485ba3770e9adf9adb9b/messages "HTTP/1.1 200 OK"
+2026-11-04 14:12:43,156 INFO HTTP Request: POST http://qa.local/api/studio/chats/876c399f391f485ba3770e9adf9adb9b/messages "HTTP/1.1 200 OK"
+2026-11-04 14:12:43,795 INFO HTTP Request: POST http://qa.local/api/studio/chats/876c399f391f485ba3770e9adf9adb9b/messages "HTTP/1.1 200 OK"
+2026-11-04 14:12:43,972 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:13:49,033 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 1 轮 设计稿 完成 耗时 65.87 秒，输入 1320 字符，输出 3496 字符
+2026-11-04 14:13:49,922 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:01,626 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 1 轮 填表 完成 耗时 12.59 秒，输入 6517 字符，输出 6142 字符
+2026-11-04 14:14:02,521 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:05,060 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 1 轮 填表 完成 耗时 3.42 秒，输入 13345 字符，输出 1013 字符
+2026-11-04 14:14:06,092 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:15,371 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 1 轮 填表 完成 耗时 10.31 秒，输入 13384 字符，输出 6125 字符
+2026-11-04 14:14:16,301 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:18,632 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 1 轮 审稿 完成 耗时 3.26 秒，输入 3888 字符，输出 325 字符
+2026-11-04 14:14:19,764 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:20,472 INFO 生成任务 243029d05e414429b19878ad2561de60 第 1 轮 设计稿 完成 耗时 98.11 秒，输入 1249 字符，输出 4566 字符
+2026-11-04 14:14:21,426 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 1 轮 可解性·只给汤面 完成 耗时 2.79 秒，输入 544 字符，输出 49 字符
+2026-11-04 14:14:22,552 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:22,602 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:23,290 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 1 轮 可解性·全部线索 完成 耗时 1.86 秒，输入 1490 字符，输出 67 字符
+2026-11-04 14:14:24,352 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:36,712 INFO 生成任务 243029d05e414429b19878ad2561de60 第 1 轮 填表 完成 耗时 16.24 秒，输入 7587 字符，输出 6314 字符
+2026-11-04 14:14:37,817 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:40,766 INFO 生成任务 243029d05e414429b19878ad2561de60 第 1 轮 填表 完成 耗时 4.05 秒，输入 14546 字符，输出 1828 字符
+2026-11-04 14:14:41,805 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:44,640 INFO 生成任务 243029d05e414429b19878ad2561de60 第 1 轮 审稿 完成 耗时 3.87 秒，输入 4958 字符，输出 397 字符
+2026-11-04 14:14:45,795 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:47,323 INFO 生成任务 243029d05e414429b19878ad2561de60 第 1 轮 可解性·只给汤面 完成 耗时 2.68 秒，输入 626 字符，输出 49 字符
+2026-11-04 14:14:48,333 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:14:49,071 INFO 生成任务 243029d05e414429b19878ad2561de60 第 1 轮 可解性·全部线索 完成 耗时 1.75 秒，输入 1776 字符，输出 59 字符
+2026-11-04 14:14:50,148 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:15:10,109 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 2 轮 设计稿 完成 耗时 46.81 秒，输入 5109 字符，输出 3780 字符
+2026-11-04 14:15:11,181 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:15:24,870 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 2 轮 填表 完成 耗时 14.76 秒，输入 6801 字符，输出 5662 字符
+2026-11-04 14:15:25,645 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 14:15:27,774 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 2 轮 填表 完成 耗时 2.90 秒，输入 13265 字符，输出 816 字符
+2026-11-04 14:15:28,805 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 402 Payment Required"
+2026-11-04 14:15:28,806 WARNING 演员模型调用失败：APIStatusError status=402
+2026-11-04 14:15:28,807 INFO 生成任务 6b018fe3b72345d1abab86294c14800f 第 2 轮 填表 失败 耗时 1.03 秒，输入 13066 字符，输出 0 字符
+2026-11-04 14:15:28,809 WARNING 生成任务 6b018fe3b72345d1abab86294c14800f 后续步骤未完成，保存已有可运行候选
+2026-11-04 14:15:29,535 INFO HTTP Request: GET http://qa.local/api/stories "HTTP/1.1 200 OK"
+2026-11-04 14:15:29,551 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 14:15:30,778 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 402 Payment Required"
+2026-11-04 14:15:30,782 INFO HTTP Request: POST http://qa.local/api/games/a427ce1937a84735a435a570ebafe894/talk "HTTP/1.1 502 Bad Gateway"
+2026-11-04 14:15:31,869 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 402 Payment Required"
+2026-11-04 14:15:31,873 INFO HTTP Request: POST http://qa.local/api/games/a427ce1937a84735a435a570ebafe894/talk "HTTP/1.1 502 Bad Gateway"
+2026-11-04 14:15:31,893 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 14:15:31,895 INFO HTTP Request: POST http://qa.local/api/games/e030324bba2b48e6adf5b456dd773fa1/accuse "HTTP/1.1 200 OK"
+2026-11-04 14:15:31,912 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 14:15:31,913 INFO HTTP Request: POST http://qa.local/api/games/659002e5359d4f29a7c6085f41ff4348/accuse "HTTP/1.1 200 OK"
+2026-11-04 14:15:31,930 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 14:15:31,931 INFO HTTP Request: POST http://qa.local/api/games/cbd7c526467e4ed38ab9f49a3589e40b/accuse "HTTP/1.1 200 OK"
+2026-11-04 14:15:57,522 INFO 生成任务 243029d05e414429b19878ad2561de60 第 2 轮 设计稿 完成 耗时 68.45 秒，输入 6257 字符，输出 4784 字符
+2026-11-04 14:15:59,231 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 402 Payment Required"
+2026-11-04 14:15:59,232 WARNING 演员模型调用失败：APIStatusError status=402
+2026-11-04 14:15:59,233 INFO 生成任务 243029d05e414429b19878ad2561de60 第 2 轮 填表 失败 耗时 1.71 秒，输入 7805 字符，输出 0 字符
+2026-11-04 14:15:59,234 WARNING 生成任务 243029d05e414429b19878ad2561de60 后续步骤未完成，保存已有可运行候选
+2026-11-04 14:15:59,919 INFO HTTP Request: GET http://qa.local/api/stories "HTTP/1.1 200 OK"
+2026-11-04 14:15:59,954 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 14:16:01,643 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 402 Payment Required"
+2026-11-04 14:16:01,649 INFO HTTP Request: POST http://qa.local/api/games/41523973b3c44d8281678b818b01f474/talk "HTTP/1.1 502 Bad Gateway"
+2026-11-04 14:16:03,052 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 402 Payment Required"
+2026-11-04 14:16:03,054 INFO HTTP Request: POST http://qa.local/api/games/41523973b3c44d8281678b818b01f474/talk "HTTP/1.1 502 Bad Gateway"
+2026-11-04 14:16:03,079 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 14:16:03,081 INFO HTTP Request: POST http://qa.local/api/games/2a9069a5835241afbc2a8eae2c940682/accuse "HTTP/1.1 200 OK"
+2026-11-04 14:16:03,104 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 14:16:03,106 INFO HTTP Request: POST http://qa.local/api/games/4ac8e0598d4848648d5144a96934b93e/accuse "HTTP/1.1 200 OK"
+2026-11-04 14:16:03,126 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 14:16:03,127 INFO HTTP Request: POST http://qa.local/api/games/f5845ed5550d4d63b521806e92eef322/accuse "HTTP/1.1 200 OK"
