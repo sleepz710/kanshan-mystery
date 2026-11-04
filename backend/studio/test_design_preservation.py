@@ -35,6 +35,10 @@ def repaired_bookstore():
             event["when"]["exposed"] = "l_lin_leave"
         if event["id"] == "e_chen_confront":
             event["when"]["exposed"] = "l_chen_sample"
+    story["facts"].append({"id": "f_chen_alibi", "text": "陈砚承认空白本20:55才取到，自己21:20在预订架前放入空白本。"})
+    chen = next(character for character in story["characters"] if character["id"] == "chen")
+    chen["knows"].append("f_chen_alibi")
+    chen["lies"][0]["admit"] = "f_chen_alibi"
     return design, story
 
 
@@ -117,6 +121,31 @@ def test_unknown_design_holder_reports_mapping_problem_without_raising():
     story = checker.Story.model_validate(mock_story()).model_dump()
     problems = StudioService._evidence_problems(design, story)
     assert len(problems) == 1 and "c4" in problems[0] and "持有人" in problems[0]
+
+
+def test_lie_admission_cannot_bypass_a_stronger_lock_on_the_same_fact():
+    # 医院真实坏稿的结构是监控拆穿行踪谎话，admit 却直接公开锁到正式供述的击打事实。
+    design = StudioService._mock_design()
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    character = story["characters"][0]
+    character["secrets"] = [{"fact": "f1", "until": {"shown": "c4"}}]
+    problems = StudioService._evidence_problems(design, story)
+    assert len(problems) == 1 and "l1" in problems[0] and "f1" in problems[0] and "提前公开" in problems[0]
+
+    story["facts"].append({"id": "f_alibi", "text": "林青承认碰过信件。"})
+    character["knows"].append("f_alibi")
+    character["lies"][0]["admit"] = "f_alibi"
+    assert StudioService._evidence_problems(design, story) == []
+
+
+@pytest.mark.parametrize("secret_condition", [{"exposed": "l1"}, {"shown": "c1"}, {"trust": 2}])
+def test_lie_admission_preserves_equivalent_or_weaker_secret_conditions(secret_condition):
+    design = StudioService._mock_design()
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    character = story["characters"][0]
+    character["secrets"] = [{"fact": "f1", "until": secret_condition}]
+    character["lies"][0]["until"]["trust"] = 3
+    assert StudioService._evidence_problems(design, story) == []
 
 
 def test_ambiguous_optional_acquisition_keeps_existing_condition_checks():

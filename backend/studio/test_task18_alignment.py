@@ -498,3 +498,16 @@ async def test_bad_nested_design_preserves_previous_playable_story(studio, monke
     assert story["checked"] is False
     assert any(section in problem and field in problem for problem in calls[-1]["payload"]["problems"])
     assert story["ending"]["truth"] not in json.dumps(job.public(), ensure_ascii=False)
+
+
+@pytest.mark.asyncio
+async def test_wrong_requested_design_size_retains_previous_quality_problems(studio, monkeypatch):
+    capture_model(monkeypatch)
+    job = Job("design-size-feedback", "chat", "play")
+    previous_problems = ["上一轮角色动机缺少可取得证据"]
+    candidate = await studio._make_candidate(
+        job, 2, ["请使用9条线索"], "new", StudioService._mock_design(), previous_problems, "generated-size",
+    )
+    assert candidate.story is None and job.draft is None
+    assert previous_problems[0] in candidate.local
+    assert any("9 条线索" in problem for problem in candidate.local)
