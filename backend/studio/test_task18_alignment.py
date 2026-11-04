@@ -95,6 +95,10 @@ async def test_generation_prompts_keep_evidence_and_supported_conditions(studio,
     assert '"done":{"has":"c1"}' in fill_prompt
     assert '"shown":"c1","has":"c2"' in fill_prompt
     assert "lies.until禁止引用自身的exposed" in fill_prompt
+    assert "物证内容留在线索中" in fill_prompt
+    review_prompt = calls[2]["system"]
+    assert "线索正文是作者确认的客观事实" in review_prompt
+    assert "每条必须指出现有文本的具体冲突或缺口" in review_prompt
 
 
 @pytest.mark.asyncio
