@@ -365,6 +365,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 - 浏览器以 `private_mode=False`、独立 `storage_path` 启动。随机端口之间通过桌面 `PUT /api/desktop/storage` 持久化 `kanshan:*` 字符串键。在每个 HTML 页面原有脚本之前恢复这些键，再同步保存后续 setItem/removeItem/clear。模型 key 从不放 localStorage。桌面按成功游戏请求保存后端局内状态，以便重启续局。
 - `desktop/build.ps1` 使用 PyInstaller onedir 打包为 `dist/看山谜案馆/看山谜案馆.exe`，包含前端、官方剧本、设置页面和图标。Windows 需安装 Edge WebView2 Runtime。
   - 最终交付保留完整目录与 `_internal`，附 `构建来源.json`记录运行时代码提交和指纹，打包验收逐项核对关键模块与源文件。任务19人工修订演示案作为独立文件附在包旁，复制到用户数据目录 `stories/`后加载，沿用各案实测质量标记。
+  - 交付目录单独同步已合并的静态资源时，构建证据的 `source_commit`继续记录Python构建来源，`resource_source_commits`按资源路径记录覆盖来源提交，`hotfixes`记录旧、新SHA256及原因，`resources`更新为实际文件指纹。这些字段用于产物追溯。
 
 ## 8. 正确性评测
 
