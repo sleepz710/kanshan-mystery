@@ -122,5 +122,15 @@
     "exe_sha256_matches": true,
     "all_program_files_byte_equal": true,
     "three_sample_files_byte_equal_to_task19": true
+  },
+  "delivered_exe_menu": {
+    "delivered_exe_started": true,
+    "settings": true,
+    "home": true,
+    "exit": true,
+    "exit_code": 0,
+    "port": 43207,
+    "port_released": true,
+    "sdk_calls": 0
   }
 }
