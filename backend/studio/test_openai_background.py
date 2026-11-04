@@ -39,6 +39,7 @@ def background_model(monkeypatch, tmp_path):
     monkeypatch.setenv("LLM_WRITER_API_KEY", "")
     monkeypatch.setenv("LLM_WRITER_MODEL", MODEL)
     monkeypatch.setattr(checker, "_BACKGROUND_POLL_INTERVAL", 0.001)
+    monkeypatch.setattr(checker, "_BACKGROUND_RETRY_DELAYS", (0.001, 0.002))
     monkeypatch.setattr(checker, "MODEL_CALL_TIMEOUT", 1)
     monkeypatch.setattr(checker, "OPENAI_WRITER_CALL_TIMEOUT", 1)
 
@@ -158,6 +159,106 @@ async def test_background_poll_failure_cancels_known_response_and_hides_provider
         await checker.complete_for([], role="writer", mock_response={})
     assert requests[-1].url.path == "/v1/responses/resp-test/cancel"
     assert "PRIVATE_PROVIDER_ERROR" not in str(error.value) + caplog.text
+
+
+@pytest.mark.asyncio
+async def test_background_poll_connection_and_server_failures_resume_same_response(background_model, caplog):
+    requests = []
+    polls = 0
+
+    def handle(request):
+        nonlocal polls
+        requests.append(request)
+        if request.method == "GET":
+            polls += 1
+            if polls in {1, 4}:
+                raise httpx.ConnectError("PRIVATE_CONNECTION_DETAIL", request=request)
+            if polls in {2, 5}:
+                return httpx.Response(503, json={"error": {"message": "PRIVATE_SERVER_DETAIL"}})
+            return response("completed" if polls == 6 else "in_progress", content='{"ok":true}')
+        return response("in_progress")
+
+    background_model(handle)
+    with caplog.at_level(logging.WARNING):
+        assert await checker.complete_for([], role="writer", mock_response={}) == {"ok": True}
+    assert sum(request.method == "POST" for request in requests) == 1
+    assert polls == 6
+    assert {request.url.path for request in requests if request.method == "GET"} == {"/v1/responses/resp-test"}
+    assert not any(request.url.path.endswith("/cancel") for request in requests)
+    assert "连续失败=2" in caplog.text and "连续失败=3" not in caplog.text
+    assert "PRIVATE_CONNECTION_DETAIL" not in caplog.text and "PRIVATE_SERVER_DETAIL" not in caplog.text
+
+
+@pytest.mark.asyncio
+async def test_background_three_consecutive_poll_failures_cancel_without_recreation(background_model):
+    requests = []
+
+    def handle(request):
+        requests.append(request)
+        if request.method == "GET":
+            raise httpx.ReadTimeout("PRIVATE_TIMEOUT_DETAIL", request=request)
+        return response("cancelled" if request.url.path.endswith("/cancel") else "in_progress")
+
+    background_model(handle)
+    with pytest.raises(llm.LLMError):
+        await checker.complete_for([], role="writer", mock_response={})
+    assert sum(request.method == "GET" for request in requests) == 3
+    assert sum(request.url.path == "/v1/responses" for request in requests) == 1
+    assert requests[-1].url.path == "/v1/responses/resp-test/cancel"
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("status", [400, 401, 402, 403, 429])
+async def test_background_nonretryable_poll_status_cancels_immediately(background_model, status):
+    requests = []
+
+    def handle(request):
+        requests.append(request)
+        if request.method == "GET":
+            return httpx.Response(status, json={"error": {"message": "PRIVATE_PROVIDER_DETAIL"}})
+        return response("cancelled" if request.url.path.endswith("/cancel") else "in_progress")
+
+    background_model(handle)
+    with pytest.raises(llm.LLMError):
+        await checker.complete_for([], role="writer", mock_response={})
+    assert [(request.method, request.url.path) for request in requests] == [
+        ("POST", "/v1/responses"), ("GET", "/v1/responses/resp-test"),
+        ("POST", "/v1/responses/resp-test/cancel"),
+    ]
+
+
+@pytest.mark.asyncio
+async def test_background_create_connection_error_is_not_retried(background_model):
+    requests = []
+
+    def handle(request):
+        requests.append(request)
+        raise httpx.ConnectError("PRIVATE_CONNECTION_DETAIL", request=request)
+
+    background_model(handle)
+    with pytest.raises(llm.LLMError):
+        await checker.complete_for([], role="writer", mock_response={})
+    assert len(requests) == 1 and requests[0].url.path == "/v1/responses"
+
+
+@pytest.mark.asyncio
+async def test_background_retry_backoff_remains_inside_the_total_deadline(background_model, monkeypatch):
+    requests = []
+
+    def handle(request):
+        requests.append(request)
+        if request.method == "GET":
+            return httpx.Response(503, json={"error": {"message": "PRIVATE_SERVER_DETAIL"}})
+        return response("cancelled" if request.url.path.endswith("/cancel") else "in_progress")
+
+    background_model(handle)
+    monkeypatch.setattr(checker, "OPENAI_WRITER_CALL_TIMEOUT", 0.03)
+    monkeypatch.setattr(checker, "_BACKGROUND_RETRY_DELAYS", (0.1, 0.2))
+    with pytest.raises(checker.ModelTimeoutError):
+        await checker.complete_for([], role="writer", mock_response={})
+    assert sum(request.method == "GET" for request in requests) == 1
+    assert sum(request.url.path == "/v1/responses" for request in requests) == 1
+    assert requests[-1].url.path == "/v1/responses/resp-test/cancel"
 
 
 @pytest.mark.asyncio

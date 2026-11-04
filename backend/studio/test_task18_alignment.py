@@ -8,10 +8,12 @@ from tempfile import TemporaryDirectory
 
 import pytest
 import pytest_asyncio
+import httpx
+from openai import APIConnectionError, APIStatusError, APITimeoutError
 import yaml
 
 from backend import llm
-from backend.studio import check as checker
+from backend.studio import check as checker, service as studio_service
 from backend.studio.mock import mock_story
 from backend.studio.service import Job, StudioService
 
@@ -511,3 +513,173 @@ async def test_wrong_requested_design_size_retains_previous_quality_problems(stu
     assert candidate.story is None and job.draft is None
     assert previous_problems[0] in candidate.local
     assert any("9 条线索" in problem for problem in candidate.local)
+
+
+def provider_failure(kind):
+    request = httpx.Request("POST", "https://model.example.test/v1/chat/completions")
+    if kind == "connection":
+        return APIConnectionError(request=request)
+    if kind == "timeout":
+        return APITimeoutError(request=request)
+    return APIStatusError("PRIVATE_PROVIDER_ERROR", response=httpx.Response(kind, request=request), body=None)
+
+
+def raise_model_failure(kind):
+    raise llm.LLMError("模型服务暂时不可用。") from provider_failure(kind)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failure", ["connection", "timeout", 500, 503])
+async def test_transient_fill_failure_retries_the_same_design(studio, monkeypatch, failure):
+    fills = 0
+
+    async def first_fill_fails(kind, payload, response):
+        nonlocal fills
+        if kind == "story":
+            fills += 1
+            if fills == 1:
+                raise_model_failure(failure)
+        return response
+
+    calls = capture_model(monkeypatch, first_fill_fails)
+    job = Job("fill-transport-recovery", "chat", "play")
+    await studio._generate(job, ["技术回归素材"], "new")
+    fill_calls = [call for call in calls if call["kind"] == "story"]
+    assert len([call for call in calls if call["kind"] == "design"]) == 1
+    assert len(fill_calls) == 2
+    assert fill_calls[0]["payload"]["design"] == fill_calls[1]["payload"]["design"]
+    assert job.status == "done" and saved_story(studio, job)["checked"] is True
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failure", [400, 401, 402, 429])
+async def test_nonretryable_fill_failure_stops_without_new_design(studio, monkeypatch, failure):
+    async def fail_fill(kind, payload, response):
+        if kind == "story":
+            raise_model_failure(failure)
+        return response
+
+    calls = capture_model(monkeypatch, fail_fill)
+    job = Job("fill-provider-rejection", "chat", "play")
+    await studio._generate(job, ["技术回归素材"], "new")
+    assert [call["kind"] for call in calls] == ["design", "story"]
+    assert job.status == "failed" and job.story_id is None
+
+
+@pytest.mark.asyncio
+async def test_three_transient_fill_failures_publish_previous_playable_draft(studio, monkeypatch):
+    async def fail_fill(kind, payload, response):
+        if kind == "story":
+            raise_model_failure("connection")
+        return response
+
+    calls = capture_model(monkeypatch, fail_fill)
+    job = Job("fill-keep-draft", "chat", "play")
+    job.draft = checker.Story.model_validate(mock_story()).model_dump()
+    job.draft["title"] = "原可运行稿"
+    job.draft_problems = ["原稿动机待补"]
+    await studio._generate(job, ["技术回归素材"], "new")
+    assert [call["kind"] for call in calls] == ["design", "story", "story", "story"]
+    story = saved_story(studio, job)
+    assert job.status == "done" and story["title"] == "原可运行稿" and story["checked"] is False
+    assert "原稿动机待补" in job.problems
+
+
+@pytest.mark.asyncio
+async def test_fill_transport_failure_preserves_private_invalid_draft(studio, monkeypatch):
+    fills = 0
+
+    async def invalid_then_unavailable(kind, payload, response):
+        nonlocal fills
+        if kind == "story":
+            fills += 1
+            if fills == 1:
+                response["story"]["title"] = "保留私有坏稿"
+                response["story"]["characters"][0]["knows"] = ["unknown_fact"]
+            else:
+                raise_model_failure("connection")
+        return response
+
+    calls = capture_model(monkeypatch, invalid_then_unavailable)
+    job = Job("fill-keep-invalid", "chat", "play")
+    await studio._generate(job, ["技术回归素材"], "new")
+    assert [call["kind"] for call in calls] == ["design", "story", "story", "story"]
+    assert job.status == "failed" and not list(studio.stories_dir.glob("*.yaml"))
+    private = yaml.safe_load((studio.stories_dir.parent / "drafts" / f"{job.id}.yaml").read_text(encoding="utf-8"))
+    assert private["story"]["title"] == "保留私有坏稿" and private["checked"] is False
+    assert any("unknown_fact" in problem for problem in private["problems"])
+
+
+@pytest.mark.asyncio
+async def test_fill_retry_preserves_fields_and_format_problems(studio, monkeypatch):
+    fills = 0
+
+    async def format_then_transport_then_fields(kind, payload, response):
+        nonlocal fills
+        if kind == "story":
+            fills += 1
+            if fills == 1:
+                response["story"].pop("intro")
+            elif fills == 2:
+                raise_model_failure("connection")
+            else:
+                return {"fields": {"intro": mock_story()["intro"]}}
+        return response
+
+    calls = capture_model(monkeypatch, format_then_transport_then_fields)
+    job = Job("fill-keep-fields", "chat", "play")
+    await studio._generate(job, ["技术回归素材"], "new")
+    fill_calls = [call for call in calls if call["kind"] == "story"]
+    assert len(fill_calls) == 3
+    assert "intro" not in fill_calls[-1]["payload"]["previous_story"]
+    assert any("intro" in problem for problem in fill_calls[-1]["payload"]["problems"])
+    assert any("短暂中断" in problem for problem in fill_calls[-1]["payload"]["problems"])
+    assert job.status == "done" and saved_story(studio, job)["checked"] is True
+
+
+@pytest.mark.asyncio
+async def test_fill_transport_retry_remains_inside_original_total_budget(studio, monkeypatch):
+    fills = 0
+
+    async def retry_then_wait(kind, payload, response):
+        nonlocal fills
+        if kind == "story":
+            fills += 1
+            if fills == 1:
+                raise_model_failure("connection")
+            await asyncio.Event().wait()
+        return response
+
+    calls = capture_model(monkeypatch, retry_then_wait)
+    monkeypatch.setattr(studio_service, "GENERATION_TIMEOUT", studio_service.SAVE_RESERVE + 0.03)
+    job = Job("fill-original-budget", "chat", "play")
+    await studio._generate(job, ["技术回归素材"], "new")
+    assert [call["kind"] for call in calls] == ["design", "story", "story"]
+    assert job.status == "failed" and job.error == "生成超时，请重试。"
+
+
+@pytest.mark.asyncio
+async def test_correction_mismatch_retries_fill_without_redesign(studio, monkeypatch):
+    correction = "林青承认自己碰过信件。"
+    fills = 0
+
+    async def bind_correction(kind, payload, response):
+        nonlocal fills
+        if kind == "design":
+            response["design"]["characters"][0]["correction"] = correction
+        elif kind == "story":
+            fills += 1
+            if fills > 1:
+                facts = mock_story()["facts"]
+                facts[0]["text"] = correction
+                return {"fields": {"facts": facts}}
+        return response
+
+    calls = capture_model(monkeypatch, bind_correction)
+    job = Job("fill-correction", "chat", "play")
+    await studio._generate(job, ["技术回归素材"], "new")
+    assert len([call for call in calls if call["kind"] == "design"]) == 1
+    fill_calls = [call for call in calls if call["kind"] == "story"]
+    assert len(fill_calls) == 2
+    assert any("correction" in problem for problem in fill_calls[-1]["payload"]["problems"])
+    assert job.status == "done" and saved_story(studio, job)["facts"][0]["text"] == correction

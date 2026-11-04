@@ -9,7 +9,7 @@ import yaml
 
 from backend.studio import check as checker
 from backend.studio.mock import mock_story
-from backend.studio.service import StudioService
+from backend.studio.service import DesignDraft, StudioService
 
 
 BOOKSTORE_INPUT = (
@@ -200,6 +200,68 @@ def test_unique_content_alias_keeps_acquire_prerequisites():
     story["clues"][3]["requires"] = {}
     assert any("c4" in problem and "shown" in problem
                for problem in StudioService._evidence_problems(design, story))
+
+
+def test_optional_correction_keeps_legacy_design_shape():
+    design = StudioService._mock_design()
+    assert DesignDraft.model_validate(design).model_dump(exclude_none=True) == design
+    design["characters"][0]["correction"] = None
+    normalized = DesignDraft.model_validate(design).model_dump(exclude_none=True)
+    assert "correction" not in normalized["characters"][0]
+
+
+def test_correction_binds_the_exact_admission_and_original_claim():
+    design = StudioService._mock_design()
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    correction = "林青承认自己碰过信件。"
+    design["characters"][0]["correction"] = correction
+    problems = StudioService._evidence_problems(design, story)
+    assert len(problems) == 1 and "l1" in problems[0] and "correction" in problems[0]
+    story["facts"][0]["text"] = correction
+    assert StudioService._evidence_problems(design, story) == []
+    story["characters"][0]["lies"][0]["claim"] = "我不知道信件的事情。"
+    problems = StudioService._evidence_problems(design, story)
+    assert len(problems) == 1 and "l1" in problems[0] and "claim" in problems[0]
+
+
+@pytest.mark.parametrize("count", [0, 2])
+def test_explicit_correction_preserves_one_planned_lie_on_its_original_character(count):
+    design = StudioService._mock_design()
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    design["characters"][0]["correction"] = story["facts"][0]["text"]
+    lie = deepcopy(story["characters"][0]["lies"][0])
+    story["characters"][0]["lies"] = []
+    if count == 0:
+        story["characters"][2]["knows"].append("f1")
+        story["characters"][2]["lies"].append(lie)
+    for index in range(count):
+        story["characters"][0]["lies"].append({**lie, "id": "l1" if index == 0 else f"l_copy_{index}"})
+    assert any("lin" in problem and "谎话数量" in problem
+               for problem in StudioService._evidence_problems(design, story))
+
+
+def test_explicit_correction_does_not_allow_a_new_lie_on_a_truthful_character():
+    design = StudioService._mock_design()
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    design["characters"][2]["correction"] = story["facts"][2]["text"]
+    story["characters"][2]["lies"] = [{"id": "l_new", "claim": "我没见过寄信。", "until": {"shown": "c1"}, "admit": "f3"}]
+    assert any("wang" in problem and "设计 lie 数量 0" in problem
+               for problem in StudioService._evidence_problems(design, story))
+
+
+@pytest.mark.parametrize("with_correction", [False, True])
+def test_identical_secret_text_with_a_different_fact_id_requires_each_character_lock(with_correction):
+    design = StudioService._mock_design()
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    correction = story["facts"][0]["text"]
+    if with_correction:
+        design["characters"][0]["correction"] = correction
+    story["facts"].append({"id": "f_duplicate", "text": correction})
+    story["characters"][2]["knows"].append("f_duplicate")
+    problems = StudioService._evidence_problems(design, story)
+    assert len(problems) == 1 and "wang" in problems[0] and "f_duplicate" in problems[0]
+    story["characters"][2]["secrets"].append({"fact": "f_duplicate", "until": {"shown": "c1"}})
+    assert StudioService._evidence_problems(design, story) == []
 
 
 @pytest.mark.parametrize("text", ["三个人、八条线索、两句谎话、三道结局题、两个结局", BOOKSTORE_INPUT])

@@ -13,7 +13,7 @@ from math import inf
 from typing import Annotated, Literal
 from urllib.parse import urlsplit
 
-from openai import APIError, AsyncOpenAI
+from openai import APIConnectionError, APIError, AsyncOpenAI
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 from typing_extensions import TypedDict
 
@@ -25,6 +25,7 @@ MODEL_CALL_TIMEOUT = 180
 OPENAI_WRITER_CALL_TIMEOUT = 540
 _BACKGROUND_POLL_INTERVAL = 1
 _BACKGROUND_CANCEL_TIMEOUT = 5
+_BACKGROUND_RETRY_DELAYS = (1, 2)
 # DeepSeek 的 JSON 模式在输出不合格时会返回一串空白，官方建议重试；重试时补这一句
 _JSON_REPAIR_INSTRUCTION = "只返回合法 JSON 对象，字符串正确转义，不要 Markdown 或解释。"
 
@@ -498,14 +499,30 @@ async def _cancel_background_response(client, response_id: str) -> None:
 
 
 async def _background_json(client, model: str, messages: list[dict]) -> dict:
-    response = await client.responses.create(
+    background_client = client.with_options(timeout=30, max_retries=0)
+    response = await background_client.responses.create(
         model=model, input=messages, background=True, store=False,
         reasoning={"effort": "high"}, text={"format": {"type": "json_object"}},
     )
+    response_id = response.id
+    failures = 0
+    delay = _BACKGROUND_POLL_INTERVAL
     try:
         while response.status in {"queued", "in_progress"}:
-            await asyncio.sleep(_BACKGROUND_POLL_INTERVAL)
-            response = await client.responses.retrieve(response.id)
+            await asyncio.sleep(delay)
+            try:
+                response = await background_client.responses.retrieve(response_id)
+            except APIError as exc:
+                failures += 1
+                status = getattr(exc, "status_code", None)
+                retryable = isinstance(exc, APIConnectionError) or (status is not None and 500 <= status < 600)
+                if not retryable or failures > len(_BACKGROUND_RETRY_DELAYS):
+                    raise
+                delay = _BACKGROUND_RETRY_DELAYS[failures - 1]
+                logger.warning("编剧后台轮询重试：%s status=%s response=%s 连续失败=%d", type(exc).__name__, status, response_id, failures)
+            else:
+                failures = 0
+                delay = _BACKGROUND_POLL_INTERVAL
         if response.status == "completed":
             return _decode_text(response.output_text)
         if response.status == "incomplete":
@@ -513,7 +530,7 @@ async def _background_json(client, model: str, messages: list[dict]) -> dict:
         raise llm.LLMError("编剧后台任务未完成，请稍后重试。")
     finally:
         if response.status not in {"completed", "failed", "incomplete", "cancelled"}:
-            await _cancel_background_response(client, response.id)
+            await _cancel_background_response(client, response_id)
 
 
 def _decode(response) -> dict:
