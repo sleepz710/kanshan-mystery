@@ -55,7 +55,7 @@
 详见 `SPEC.md` 第 5、7 节。下面的命令在任务 02 完成后可用。
 
 - 后端 Python 3.11+、FastAPI;前端原生 HTML/CSS/JS,由后端直接提供。
-- 目录:`backend/` 后端(`backend/studio/` 生成剧场),`frontend/` 前端,`stories/` 招牌案件,`data/stories/` 生成的剧本(不入库),`tests/` 测试,`eval/` 评测脚本,`deploy/` 部署。
+- 目录:`backend/` 后端(`backend/studio/` 生成剧场),`frontend/` 前端,`stories/` 招牌案件,`data/stories/` 生成的剧本(不入库),`tests/` 测试,`eval/` 评测脚本,`deploy/` 本地启动脚本。
 - 安装:`pip install -r requirements.txt`
 - 运行:`uvicorn backend.app:app --reload`,打开 http://localhost:8000
 - 没有 API key 时在 `.env` 里设 `LLM_MOCK=1`,用模拟回复开发。模型配置见 `SPEC.md` 第 7 节。

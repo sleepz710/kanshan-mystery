@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>新建剧场</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;900&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0b0e16}
+a{color:#e4b35c}a:hover{color:#f0c97e}
+.star{position:absolute;border-radius:50%;background:#f4ead2;animation:twinkle 4s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+.mist{position:absolute;border-radius:50%;background:rgba(196,206,228,.09);filter:blur(38px);animation:drift 34s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translateX(-90px)}to{transform:translateX(90px)}}
+.cloud{position:absolute;border-radius:40px;background:rgba(14,18,28,.82);filter:blur(6px);animation:cloud 48s ease-in-out infinite alternate}
+@keyframes cloud{from{transform:translateX(-160px)}to{transform:translateX(140px)}}
+.lamp{position:absolute;width:5px;height:5px;border-radius:50%;background:#f6c66e;box-shadow:0 0 10px 3px rgba(246,198,110,.55);animation:lamp 3.6s ease-in-out infinite}
+@keyframes lamp{0%,100%{opacity:.2}45%{opacity:1}}
+.window{animation:flicker 5s steps(1) infinite}
+@keyframes flicker{0%,100%{opacity:1}62%{opacity:.75}64%{opacity:1}80%{opacity:.85}82%{opacity:1}}
+.mode{display:flex;align-items:center;gap:16px;width:100%;min-height:62px;padding:0 4px;border:0;border-bottom:1px solid rgba(236,230,218,.08);background:none;font:inherit;text-align:left;cursor:pointer;transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1)}
+.mode:hover,.mode:focus-visible{transform:translateX(6px)}
+.mode:focus-visible{outline:none}
+.mark{flex:none;width:10px;height:10px;transform:rotate(45deg);border:1.5px solid rgba(228,179,92,.5);transition:all .2s}
+.back{display:flex;align-items:center;gap:16px;min-height:52px;text-decoration:none;color:#d9d2c4;transition:color .2s,transform .25s cubic-bezier(.2,.8,.2,1)}
+.back .mark{border-color:rgba(228,179,92,0)}
+.back:hover,.back:focus-visible{color:#f2d08a;transform:translateX(6px)}
+.back:hover .mark,.back:focus-visible .mark{background:#c8372d;border-color:#f2d08a}
+.back:focus-visible{outline:none}
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border-radius:20px;border:1px solid rgba(236,230,218,.18);background:transparent;color:#cfc8bb;font:inherit;font-size:13px;cursor:pointer}
+.chip:hover{border-color:rgba(242,208,138,.6);color:#f2d08a}
+.go{transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s}
+.go:hover{background:#d8463b;transform:translateY(-2px)}
+</style>
+</helmet>
+<div style="position: relative; width: 1600px; height: 900px; overflow: hidden; background: linear-gradient(#0a0d15 0%, #121827 52%, #1b2232 100%); color: #ece6da; font-family: 'Noto Sans SC', sans-serif">
+
+  <sc-for list="{{stars}}" as="s" hint-placeholder-count="40">
+    <i class="star" style="left: {{s.x}}px; top: {{s.y}}px; width: {{s.r}}px; height: {{s.r}}px; animation-delay: {{s.d}}s"></i>
+  </sc-for>
+  <div style="position: absolute; left: 1150px; top: 118px; width: 132px; height: 132px; border-radius: 50%; background: #efdcae; box-shadow: 0 0 80px 18px rgba(239,220,174,.22)"></div>
+  <div class="cloud" style="left: 1080px; top: 176px; width: 300px; height: 30px"></div>
+  <div class="cloud" style="left: 1240px; top: 214px; width: 210px; height: 22px; animation-duration: 62s"></div>
+  <svg viewBox="0 0 1600 900" width="1600" height="900" aria-hidden="true" style="position: absolute; inset: 0">
+    <path d="M0 520 C140 470 240 430 360 450 C470 468 560 380 690 360 C800 344 880 420 990 410 C1110 398 1210 330 1330 352 C1440 372 1520 430 1600 420 V900 H0Z" fill="#232b3c"></path>
+  </svg>
+  <div class="mist" style="left: 120px; top: 430px; width: 980px; height: 120px"></div>
+  <svg viewBox="0 0 1600 900" width="1600" height="900" aria-hidden="true" style="position: absolute; inset: 0">
+    <path d="M0 610 C120 580 220 540 330 560 C430 578 520 520 640 500 C760 480 860 560 960 548 C1010 542 1040 528 1060 524 C1080 528 1120 540 1180 556 C1290 584 1400 540 1490 552 C1540 558 1580 570 1600 574 V900 H0Z" fill="#1a2030"></path>
+    <path d="M1014 526 L1106 526 L1092 516 Q1060 500 1028 516 Z" fill="#0f131d"></path>
+    <rect x="1026" y="526" width="68" height="34" fill="#0f131d"></rect>
+    <path d="M1018 548 L1102 548 L1092 540 L1028 540 Z" fill="#0f131d"></path>
+    <rect x="1036" y="520" width="48" height="6" fill="#0f131d"></rect>
+    <rect class="window" x="1053" y="531" width="14" height="13" fill="#f3c46b"></rect>
+  </svg>
+  <div style="position: absolute; left: 1056px; top: 534px; width: 8px; height: 8px; border-radius: 50%; background: #f3c46b; box-shadow: 0 0 46px 26px rgba(243,196,107,.2)"></div>
+  <sc-for list="{{lamps}}" as="l" hint-placeholder-count="14">
+    <i class="lamp" style="left: {{l.x}}px; top: {{l.y}}px; animation-delay: {{l.d}}s"></i>
+  </sc-for>
+  <div class="mist" style="left: 420px; top: 560px; width: 1200px; height: 150px; animation-duration: 42s"></div>
+  <svg viewBox="0 0 1600 900" width="1600" height="900" aria-hidden="true" style="position: absolute; inset: 0">
+    <path d="M0 740 C160 700 300 720 460 730 C640 742 760 690 920 700 C1080 710 1200 760 1360 744 C1460 734 1540 712 1600 716 V900 H0Z" fill="#11151f"></path>
+    <path d="M1380 744 L1410 660 L1440 744 Z M1420 746 L1456 640 L1492 746 Z M1470 748 L1498 676 L1526 748 Z" fill="#0c0f17"></path>
+    <path d="M0 830 C200 806 420 820 640 826 C900 834 1140 806 1360 812 C1480 816 1560 826 1600 830 V900 H0Z" fill="#090b11"></path>
+  </svg>
+  <div style="position: absolute; inset: 0; box-shadow: inset 0 0 220px 40px rgba(4,5,9,.75); pointer-events: none"></div>
+  <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 900px; background: linear-gradient(90deg, rgba(7,9,14,.9) 0%, rgba(7,9,14,.82) 70%, rgba(7,9,14,0) 100%); pointer-events: none"></div>
+
+  <header style="position: absolute; left: 72px; top: 60px; display: flex; align-items: center; gap: 18px">
+    <svg width="52" height="52" viewBox="0 0 120 120" role="img" aria-label="看山徽标"><path d="M12 9.5Q60 6.5 108.5 10.5Q112 60 109.5 108.5Q60 112.5 11 109.5Q7.5 60 12 9.5Z" fill="#c8372d"></path><g fill="none" stroke="#fbf3e6" stroke-width="7.5"><path d="M50 20L34 26"></path><path d="M25 34H53"></path><path d="M28 44H50"></path><path d="M19 55H58"></path><path d="M39 27C38.5 44 34 60 19 76"></path><path d="M35 63H56V99H35Z"></path><path d="M35 75H56M35 87H56"></path><path d="M84.5 21V97"></path><path d="M69 48V97H100V48"></path></g></svg>
+    <h1 style="margin: 0; font-family: 'Noto Serif SC', serif; font-weight: 900; font-size: 34px; letter-spacing: 8px; color: #f1ebdf">新建剧场</h1>
+  </header>
+
+  <div style="position: absolute; left: 72px; top: 160px; width: 640px; display: flex; flex-direction: column; gap: 22px">
+    <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #bdb6a9">把素材交给编剧，他会改编成一桩有人物、证据和谎话的案子，谜底留给你自己查。</p>
+
+    <div>
+      <label for="material" style="display: block; margin-bottom: 8px; font-family: 'Noto Serif SC', serif; font-weight: 600; font-size: 16px; letter-spacing: 6px; color: #e4b35c">素材</label>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(236,230,218,.16); background: rgba(8,10,16,.6)">
+        <textarea id="material" rows="3" placeholder="一碗海龟汤、一段小说、一个网址，或者一句「我想玩一个发生在……的案子」" style="width: 100%; box-sizing: border-box; resize: none; border: 0; outline: none; background: transparent; color: #ece6da; font: inherit; font-size: 15px; line-height: 1.7"></textarea>
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <button type="button" class="chip" aria-label="上传 txt 或 md 文件">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21.4 11.6l-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"></path></svg>
+            上传 txt / md
+          </button>
+          <span style="font-size: 12px; color: #7f8591">网址会自动读取正文</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 8px">
+      <button type="button" class="chip">贴一碗海龟汤</button>
+      <button type="button" class="chip">说一句想法</button>
+      <button type="button" class="chip">改编网页上的故事</button>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 18px">
+      <a href="#" class="go" style="display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 34px; border-radius: 10px; background: #c8372d; color: #fff7ee; text-decoration: none; font-family: 'Noto Serif SC', serif; font-size: 19px; font-weight: 900; letter-spacing: 4px">交给编剧</a>
+      <span style="font-size: 13px; line-height: 1.7; color: #8b909b">编剧会问你要快速还是精修<br>生成完会出现在「我的剧场」</span>
+    </div>
+  </div>
+
+  <nav style="position: absolute; left: 72px; bottom: 76px; font-family: 'Noto Serif SC', serif" aria-label="返回">
+    <a href="Title.dc.html" class="back">
+      <span class="mark"></span>
+      <span style="font-size: 24px; font-weight: 600; letter-spacing: 4px">返回</span>
+    </a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1600,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const stars = [];
+    for (let i = 0; i < 46; i++) {
+      stars.push({ x: (i * 397 + 53) % 1600, y: 24 + ((i * 151) % 360), r: 1 + (i % 3) * 0.8, d: ((i * 7) % 9) * 0.45 });
+    }
+    const lamps = [];
+    const p0 = [360, 846], p1 = [820, 700], p2 = [1060, 556];
+    const n = 15;
+    for (let i = 0; i < n; i++) {
+      const t = i / (n - 1);
+      const x = (1 - t) * (1 - t) * p0[0] + 2 * (1 - t) * t * p1[0] + t * t * p2[0];
+      const y = (1 - t) * (1 - t) * p0[1] + 2 * (1 - t) * t * p1[1] + t * t * p2[1];
+      lamps.push({ x: Math.round(x), y: Math.round(y), d: (i * 0.24).toFixed(2) });
+    }
+    return { stars, lamps };
+  }
+}
+</script>
+</body>
+</html>
