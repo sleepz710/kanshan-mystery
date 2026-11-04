@@ -1,0 +1,11 @@
+{
+  "source": "Offline fixture seeded with the captured real completed response and saved story",
+  "real_generation_card_click": false,
+  "completed_card_fixture_click": true,
+  "done_card_survives_restart": true,
+  "first_port": 46743,
+  "restart_port": 58270,
+  "game_id": "ef948379c0d54003b8db5b655d79e953",
+  "checked": false,
+  "model_calls": 0
+}

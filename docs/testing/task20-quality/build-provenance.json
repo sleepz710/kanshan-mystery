@@ -1,8 +1,9 @@
 {
-  "source_commit": "35ae0e105be1ee1689f5381a951179a42f0d061b",
+  "source_commit": "848c471f4f2b35b2ac6dad3d6cef33b0d4c630cb",
   "generation_flow": "task18-design-first",
   "task21": "paused",
-  "task18_source_commit": "022f9f46e597adcd9baa0a06ff379562abd5b7e8",
+  "task18_source_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
+  "task19_frontend_commit": "486ca74ba0a4f8da9671347b8fef39b6e34b207f",
   "task20_source_commit": "a08c5f2a5f89fcbe68303d63f14d3a77e4846c12",
   "files": {
     "backend/__init__.py": {
@@ -42,7 +43,7 @@
       "compiled_code_matches": true
     },
     "backend/studio/check.py": {
-      "sha256": "2d6f1a63f7817c30e543b530f66934a6fcf801213c1100fa9b4738a77be32846",
+      "sha256": "af213be8119a1f2023e1d88e68939ae72a2f6b38a65be185b971f57ae6b4a6f7",
       "compiled_code_matches": true
     },
     "backend/studio/ingest.py": {
@@ -54,7 +55,7 @@
       "compiled_code_matches": true
     },
     "backend/studio/service.py": {
-      "sha256": "6aef275ad84e0cd6289c1353d37f1dcfdaf3a7c1aa5abf009a6ca76dbc8363e0",
+      "sha256": "6c6d3041370d05ebffbef3efdb6f0a650e24f67970fced7a4a9d9e1c9e9cbc07",
       "compiled_code_matches": true
     },
     "backend/studio/share.py": {
@@ -100,7 +101,7 @@
     "frontend/studio/chats.js": "7be49626f37f86180a9670d6a09a2b3cb6a0b3d90b5dcbad089dcdd5fc738b71",
     "frontend/studio/index.html": "f17349187b28badafac0211854c3c1022c43405a7cf31401b2853e1d9a5f96ef",
     "frontend/studio/studio.css": "a5304bdd0a6b61f69d4c99d372633687488428a87a2e3594ff4365a97332cbe0",
-    "frontend/studio/studio.js": "03570a728d8a0ff730706b8b8583147ce482ddd59d5f0f014aa3c882e3f4641d",
+    "frontend/studio/studio.js": "2c23d3a23fb6e63e04577148d5df0c13954d0019604bd8df21bd3eb96e841c37",
     "frontend/assets/avatars/akai.png": "eeb609b78791abc7b38a692141768571a8d6b81dce7c0a036cdcfd3a70246721",
     "frontend/assets/avatars/chenmo.png": "67982d5bee26690f5a5f5347402bf481dcb6e386e2c7af27e33605f301110679",
     "frontend/assets/avatars/xiaolin.png": "aad1297329171ed1762ffc81d4845513e277d5b37bed073e9ccc4f50dddf3c0c",
@@ -113,15 +114,15 @@
     "stories/lost-tuition.yaml": "9353e1f469e116535cd746c0ad18e749cec3f655d241365976ff9d6aec3c65d5",
     "desktop/ui/index.html": "22e43084d4911c95e61c7c331c49bba8b9d236f50865e50314aa1ff7bc0bde90"
   },
-  "exe_sha256": "4959017eb3143ade70149d2a06e01850a50b85a72a8e2ec261a9207a8d23cd8c",
-  "exe_bytes": 14411580,
+  "exe_sha256": "e0caf041111ad9469d94ad4a399b02cfac66546427ebe5a9e61602ab33c1604f",
+  "exe_bytes": 14414334,
   "artifact": {
-    "directory": "D:\\阅读周比赛\\看山谜案馆-OpenAI后台设计验收版-20261104",
-    "zip": "D:\\阅读周比赛\\看山谜案馆-OpenAI后台设计验收版-20261104.zip",
-    "zip_sha256": "e611cbede65a1478059f78d27f1b48d54e7f719ee2436063f17334fc746b144e",
-    "zip_bytes": 47005870,
+    "directory": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104",
+    "zip": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104.zip",
+    "zip_sha256": "c7c2c2650bfe5b26f3e2eced1b7029551c0f161d99df62ca6e7d4c6d88d8cdef",
+    "zip_bytes": 46978968,
     "file_count": 2580,
-    "payload_bytes": 96096473,
+    "payload_bytes": 96099301,
     "no_private_key": true,
     "no_env_or_user_settings": true
   },
@@ -129,6 +130,21 @@
     "zip_crc_passed": true,
     "all_program_files_byte_equal": true,
     "source_code_objects_match": true,
-    "resources_match": true
+    "resources_match": true,
+    "post_executable_runs_unchanged": true,
+    "zip_all_files_match_delivery": true,
+    "three_samples_match_task19": true,
+    "private_keys_absent_from_pr_files": true
+  },
+  "automated_tests": {
+    "independent_branch": {
+      "passed": 646,
+      "seconds": 22.01
+    },
+    "integrated_release": {
+      "passed": 743,
+      "seconds": 32.8
+    },
+    "warnings": 1
   }
 }

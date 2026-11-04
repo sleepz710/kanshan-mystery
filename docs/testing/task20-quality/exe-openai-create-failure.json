@@ -1,0 +1,104 @@
+{
+  "connection_test": {
+    "ok": true,
+    "provider": "openai",
+    "actor_model": "gpt-5.4-2026-03-05",
+    "writer_model": "gpt-5.4-2026-03-05",
+    "actor_reasoning_effort": "none",
+    "writer_reasoning_effort": "high"
+  },
+  "native_menu_settings_home": true,
+  "signature": {
+    "game_id": "2e5d60e4251148bd9a5d191779a76fbe",
+    "turns": 2,
+    "clues": 2,
+    "threads": {
+      "xiaolin": [
+        {
+          "k": "me",
+          "text": "先说说你今天遇到了什么，有什么材料可以让我核对？"
+        },
+        {
+          "k": "them",
+          "text": "我被兼职刷单骗了，学费两万块转出去之后，对方又说账户冻结，还要我再交三万，我没再转。现在群都解散了，人也联系不上。这个聊天记录你可以先看，还有转账回单也在。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "刷单群聊天记录"
+            },
+            {
+              "id": "c2",
+              "title": "两万元转账回单"
+            }
+          ]
+        },
+        {
+          "k": "me",
+          "text": "你最后一次联系对方是什么时候？请把能核对的记录给我看看。"
+        },
+        {
+          "k": "them",
+          "text": "最后一次是在 8 月 29 日。那天群里还在催我继续交钱解冻，后来群就散了，客服也不回了。能核对的就是这个群聊记录和转账回单，你看时间都在上面。"
+        }
+      ],
+      "akai": [],
+      "zhouming": [],
+      "chenmo": []
+    }
+  },
+  "first_port": 35126,
+  "signature_restart": {
+    "port": 50162,
+    "front_and_backend_same_game": true,
+    "turns": 2,
+    "clues": 2,
+    "model_config_restored": true,
+    "additional_model_calls": 0
+  },
+  "source_commit": "f93a36bfe39538e14ca22c491bcc3cb7b3a3d8e4",
+  "generation": {
+    "completed": false,
+    "job": {
+      "id": "46fd8eda0f4444858bee574a956cd2da",
+      "quality": "fast",
+      "mode": "play",
+      "after": 7,
+      "status": "failed",
+      "progress": "本次生成未完成",
+      "steps": [
+        "编剧正在设计真相与证据链"
+      ],
+      "startedAt": 1793781043706,
+      "offline": false,
+      "storyId": null,
+      "error": "编剧模型服务暂时不可用，请稍后重试。",
+      "endedAt": 1793781045687
+    },
+    "model_steps": [
+      {
+        "job_id": "46fd8eda0f4444858bee574a956cd2da",
+        "round": 1,
+        "step": "设计稿",
+        "outcome": "失败",
+        "seconds": 2.91,
+        "request_characters": 1624,
+        "response_characters": 0
+      }
+    ],
+    "failure": "APIConnectionError during background response create before response ID allocation",
+    "no_response_reissue": true,
+    "published_stories": 0,
+    "temporary_stories": 0
+  },
+  "close_while_generating": {
+    "completed": false,
+    "reason": "Stopped paid calls after final create connection failure"
+  },
+  "independent_windows_without_python": {
+    "completed": false,
+    "next": "User acceptance on another Windows computer"
+  }
+}
