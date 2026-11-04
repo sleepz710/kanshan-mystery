@@ -217,7 +217,7 @@ def test_evidence_reference_accepts_a_renamed_title_with_identical_content():
 
 
 @pytest.mark.asyncio
-async def test_fine_first_round_uses_eight_calls_and_blind_tests_only_selected_story(studio, monkeypatch):
+async def test_fine_first_round_verifies_only_reported_issues_and_blind_tests_selected_story(studio, monkeypatch):
     both_designs_started = asyncio.Event()
     designs_started = 0
 
@@ -243,16 +243,17 @@ async def test_fine_first_round_uses_eight_calls_and_blind_tests_only_selected_s
     job = Job("fine-alignment", "chat", "play", quality="fine")
     await studio._generate(job, ["技术素材"], "new")
 
-    assert len(calls) == 8
-    assert [call["kind"] for call in calls[:6]].count("design") == 2
-    assert [call["kind"] for call in calls[:6]].count("story") == 2
-    assert [call["kind"] for call in calls[:6]].count("problems") == 2
+    assert len(calls) == 9
+    assert [call["kind"] for call in calls].count("design") == 2
+    assert [call["kind"] for call in calls].count("story") == 2
+    assert [call["kind"] for call in calls].count("problems") == 2
+    assert [call["kind"] for call in calls].count("keep_indices") == 1
     assert [call["kind"] for call in calls[:2]] == ["design", "design"]
     assert [(call["kind"], call["role"]) for call in calls[-2:]] == [
         ("answers", "writer"), ("answers", "actor"),
     ]
     assert all(call["role"] == "writer" for call in calls if call["kind"] == "design")
-    assert all(call["role"] == "actor" for call in calls if call["kind"] in {"story", "problems"})
+    assert all(call["role"] == "actor" for call in calls if call["kind"] in {"story", "problems", "keep_indices"})
     assert all(call["payload"]["intro"] == "独立技术方案2" for call in calls[-2:])
     assert "独立技术方案2" in calls[-1]["payload"]["clues"][0]["content"]
     assert job.status == "done" and saved_story(studio, job)["title"] == "独立技术方案2"

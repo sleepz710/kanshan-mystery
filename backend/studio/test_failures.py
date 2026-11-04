@@ -64,15 +64,15 @@ async def test_review_advice_repeats_design_and_checks_with_private_feedback(tmp
     monkeypatch.setattr(checker, "complete_for", model)
     with caplog.at_level(logging.INFO):
         await studio._generate(job, ["SECRET_MATERIAL"], "new")
-    assert calls == ["writer", "actor", "actor", "writer", "actor"] * 3
+    assert calls == ["writer", "actor", "actor", "actor", "writer", "actor"] * 3
     assert len(designs) == 3 and designs[1]["problems"] == ["SECRET_REVIEW_ADVICE"]
     assert designs[1]["previous_design"] == StudioService._mock_design()
     assert job.status == "done" and not saved(studio, job)["checked"]
     assert job.problems == ["SECRET_REVIEW_ADVICE"]
     assert "SECRET_REVIEW_ADVICE" not in json.dumps(job.public())
     logs = [r.message for r in caplog.records if "耗时" in r.message]
-    assert len(logs) == 15
-    for step, message in zip(("设计稿", "填表", "审稿", "可解性·只给汤面", "可解性·全部线索"), logs[:5]):
+    assert len(logs) == 18
+    for step, message in zip(("设计稿", "填表", "审稿", "审稿复核", "可解性·只给汤面", "可解性·全部线索"), logs[:6]):
         assert job.id in message and "第 1 轮" in message and step in message and "秒" in message
     assert "SECRET_MATERIAL" not in caplog.text and "SECRET_REVIEW_ADVICE" not in caplog.text
 
