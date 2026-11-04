@@ -129,6 +129,14 @@ async def test_official_gpt54_http_parameters_preserve_roles_and_token_limits(
 
     def handle(request):
         requests.append(json.loads(request.content))
+        if request.url.path.endswith("/responses"):
+            return httpx.Response(200, json={
+                "id": "resp-completed", "object": "response", "created_at": 0,
+                "status": "completed", "model": model, "output": [{
+                    "type": "message", "id": "msg-completed", "role": "assistant", "status": "completed",
+                    "content": [{"type": "output_text", "text": '{"ok": true}', "annotations": []}],
+                }],
+            })
         return completion('{"ok": true}')
 
     install_http_model(handle)
@@ -143,7 +151,12 @@ async def test_official_gpt54_http_parameters_preserve_roles_and_token_limits(
     assert result == {"ok": True}
     payload = requests[0]
     assert payload["model"] == model
-    assert payload["reasoning_effort"] == ("high" if role == "writer" else "none")
+    if entry == "studio" and role == "writer":
+        assert payload["reasoning"] == {"effort": "high"}
+        assert payload["background"] is True and payload["store"] is False
+        assert payload["text"] == {"format": {"type": "json_object"}}
+    else:
+        assert payload["reasoning_effort"] == ("high" if role == "writer" else "none")
     assert "thinking" not in payload and "max_tokens" not in payload
     if entry == "game":
         assert payload["max_completion_tokens"] == (8192 if role == "writer" else 1024)

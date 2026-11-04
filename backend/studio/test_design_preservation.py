@@ -115,6 +115,26 @@ def test_explicit_trust_and_exposure_requirements_are_preserved():
     assert StudioService._evidence_problems(design, story) == []
 
 
+def test_shown_condition_that_automatically_exposes_the_lie_keeps_acquire_gate():
+    design = StudioService._mock_design()
+    design["clues"][3]["acquire"] = "向林青出示监控记录并拆穿林青谎话后交出寄件单"
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    story["clues"][3]["requires"] = {"shown": "c1"}
+    assert StudioService._evidence_problems(design, story) == []
+
+
+def test_automatic_exposure_still_requires_every_lie_until_prerequisite():
+    design = StudioService._mock_design()
+    design["clues"][3]["acquire"] = "向林青出示监控记录并拆穿林青谎话后交出寄件单"
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    story["characters"][0]["lies"][0]["until"]["has"] = "c3"
+    story["clues"][3]["requires"] = {"shown": "c1"}
+    problems = StudioService._evidence_problems(design, story)
+    assert len(problems) == 1 and "c4" in problems[0] and "l1" in problems[0]
+    story["clues"][3]["requires"]["has"] = "c3"
+    assert StudioService._evidence_problems(design, story) == []
+
+
 def test_unknown_design_holder_reports_mapping_problem_without_raising():
     design = StudioService._mock_design()
     design["clues"][3].update(holder="缺失人物", acquire="拆穿其谎话后交出寄件单")
