@@ -358,7 +358,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 
 ### 桌面版
 
-- `python -m desktop.main` 启动 1600×900 的 Edge WebView2 窗口，最小 1280×720。同一进程内后台运行一个 uvicorn，预绑定 `127.0.0.1:0` 获得随机空闲端口。关闭窗口等待后端按 6.9 收尾。
+- `python -m desktop.main` 启动 1600×900 的 Edge WebView2 窗口，最小 1280×720。同一进程内后台运行一个 uvicorn，从49152至65535随机选择候选端口并预绑定127.0.0.1，同一个已绑定socket传入uvicorn。候选被占用或绑定失败时关闭该socket并重试，最多32次，耗尽则给出明确启动错误。候选范围避开Chromium受限端口，已绑定socket一直由后端持有。关闭窗口等待后端按 6.9 收尾。[Chromium端口规则](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/net/base/port_util.cc)
 - `KANSHAN_DESKTOP=1` 由桌面入口设置。数据根目录取 `KANSHAN_DATA_DIR`，默认 `%APPDATA%/KanshanMystery`，包含 `stories/`、`drafts/`、模型 `config.json`、`browser-storage.json`、`games.json`、`webview/` 和日志。资源目录只读。网页版未设置环境变量时仍用项目 `data/`。
   - 首次启动先创建数据目录，再解析实际路径并传入 `KANSHAN_DATA_DIR`。Windows 应用数据重定向可能在目录创建后才解析到物理位置，设置与存档的临时文件和目标文件均使用该实际目录完成原子替换。
 - 桌面专用 `GET /api/settings` 返回 `{provider,actor_model,writer_model,has_key,key_suffix,configured}`。`PUT /api/settings` 接收 `{provider,api_key?,actor_model,writer_model}`，provider 为 `deepseek` 或 `openai`，同服务省略/留空 key 保留原值，切换服务必须填写新 key。返回同 GET，不返回完整 key。保存后环境变量和本地配置同时更新，后续模型调用立即生效。
