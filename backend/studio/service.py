@@ -71,6 +71,7 @@ exposed(谎话id)、event(事件id)，多个键表示 AND；不要使用 clue、
 例：人物 lin、chen，已有线索 c1，事件可写 {"id":"e1","when":{"shown":"c1","to":"chen"},"confront":["lin","chen"],"unlock":["c2"]}，且 c2 必须出现在 clues 中。
 结局 when 只允许 {"correct":["题号"]} 或 {"chose":{"题号":"选项原文"}}；最后一个结局省略 when。
 完整真相结局 retry=false，需继续调查的结局才允许 retry=true。
+默认两结局时，首个完整真相结局 when.correct 列出全部结局题号且 retry=false，最后一个兜底结局 retry=true。不得把完整真相放在无条件兜底中，部分题答错时应保留调查机会。
 全剧谎话合计 2-5 句，角色 3-4 人、线索 8-12 条、结局题 3-5 道、结局 2-3 个。
 未指定规模时优先 3-4 人、9-10 条线索、3 句谎话、3-4 道题、2 个结局。
 只有一句题材时先设计清楚核心真相和证据因果，再填字段；恐怖题材保留压迫感与反常现象，最终仍能用现实证据解释。'''
@@ -96,19 +97,22 @@ class DesignDraft(Record):
 @dataclass
 class Candidate:
     design: dict | None = None
+    design_valid: bool = False
+    table: dict | None = None
     story: dict | None = None
     local: list[str] = field(default_factory=list)
     playability: list[str] = field(default_factory=list)
+    opening: list[str] = field(default_factory=list)
     review: list[str] = field(default_factory=list)
     timed_out: bool = False
 
     @property
     def problems(self) -> list[str]:
-        return [*self.local, *self.playability, *self.review]
+        return [*self.local, *self.opening, *self.playability, *self.review]
 
     @property
-    def rank(self) -> tuple[int, int, int]:
-        return len(self.local), len(self.playability), len(self.review)
+    def rank(self) -> tuple[int, int, int, int]:
+        return len(self.local), len(self.opening), len(self.playability), len(self.review)
 
 
 @dataclass
@@ -423,6 +427,8 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
         design = None
         problems = []
         best_score = None
+        reuse_design = False
+        previous_table = None
         deadline = monotonic() + self._budget(job) - SAVE_RESERVE
         rounds = 4 if job.quality == "fine" else 3
         for attempt in range(rounds):
@@ -430,10 +436,13 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
             if job.quality == "fine" and attempt == 0:
                 candidate = await self._first_choices(job, material, strategy, story_id)
             else:
-                candidate = await self._make_candidate(job, attempt + 1, material, strategy, design, problems, story_id)
+                options = {"reuse_design": True, "previous_table": previous_table} if reuse_design else {}
+                candidate = await self._make_candidate(job, attempt + 1, material, strategy, design, problems, story_id, **options)
             if candidate.design is not None:
                 design = candidate.design
             problems = candidate.problems
+            reuse_design = candidate.design_valid and (candidate.story is None or bool(candidate.local))
+            previous_table = candidate.table if reuse_design else None
             if candidate.story is None or candidate.local:
                 if attempt == rounds - 1 and candidate.timed_out and job.draft is None:
                     raise checker.ModelTimeoutError(f"编剧设计或填表超时，{'四' if rounds == 4 else '三'}轮尝试仍未完成，请重试。")
@@ -507,7 +516,19 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
         }
 
     async def _make_candidate(self, job: Job, attempt: int, material: list[str], strategy: str,
-                              previous_design: dict | None, problems: list[str], story_id: str) -> Candidate:
+                              previous_design: dict | None, problems: list[str], story_id: str,
+                              *, reuse_design: bool = False, previous_table: dict | None = None) -> Candidate:
+        if reuse_design:
+            candidate = Candidate(design=deepcopy(previous_design), design_valid=True, table=deepcopy(previous_table))
+        else:
+            candidate = await self._design_candidate(job, attempt, material, strategy, previous_design, problems)
+        if not candidate.design_valid:
+            return candidate
+        return await self._fill_candidate(job, attempt, candidate, story_id, strategy,
+                                          problems if reuse_design else [])
+
+    async def _design_candidate(self, job: Job, attempt: int, material: list[str], strategy: str,
+                                previous_design: dict | None, problems: list[str]) -> Candidate:
         candidate = Candidate(design=previous_design)
         job.progress = "编剧正在设计真相与证据链"
         try:
@@ -517,6 +538,8 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
                     "previous_design": previous_design, "problems": problems}, ensure_ascii=False)},
             ], role="writer", mock_response={"design": self._mock_design()})
             raw_design = result.get("design")
+            if raw_design is None and set(DesignDraft.model_fields) <= result.keys():
+                raw_design = result
             if isinstance(raw_design, dict):
                 candidate.design = raw_design
             candidate.design = DesignDraft.model_validate(raw_design).model_dump()
@@ -525,50 +548,133 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
             candidate.local = [*problems, "设计稿生成超时，请保留推理设计并完整返回 design JSON。"]
             return candidate
         except ValidationError as exc:
-            candidate.local = [*problems, *[
+            design_errors = [
                 f"设计稿 {'.'.join(map(str, error['loc']))}：{error['msg']}，请按 design 字段契约修订。"
                 for error in exc.errors(include_input=False)
-            ]]
-            return candidate
+            ]
+            logger.warning("生成任务 %s 第 %d 轮设计字段错误：%s", job.id, attempt,
+                           [(list(error['loc']), error['type']) for error in exc.errors(include_input=False)])
+            if not isinstance(raw_design, dict) or not set(DesignDraft.model_fields) <= raw_design.keys():
+                candidate.local = [*problems, *design_errors]
+                return candidate
+            # 内容已齐而形状有误时，由演员整理字段，保留原推理设计。
+            try:
+                repaired = await self._model_call(job, attempt, "设计格式修复", [
+                    {"role": "system", "content": "仅整理给定设计稿的JSON字段和类型，保留事实、时间顺序、人物、线索与答案。design只含truth、timeline、characters、clues、questions、intro六个字段，删除额外字段，额外结局内容整合到truth，不保留ending或endings。相邻时间节点可以合并成一个字符串。缺少关键剧情时返回problems数组，不虚构补全。\n" + DESIGN_FIELDS},
+                    {"role": "user", "content": json.dumps({"design": candidate.design, "problems": design_errors}, ensure_ascii=False)},
+                ], role="actor", mock_response={"design": candidate.design})
+                candidate.design = DesignDraft.model_validate(repaired.get("design")).model_dump()
+            except (ValidationError, checker.ReplyFormatError, checker.ModelTimeoutError) as repair_error:
+                candidate.timed_out = isinstance(repair_error, checker.ModelTimeoutError)
+                candidate.local = [*problems, *design_errors]
+                return candidate
         except checker.ReplyFormatError as exc:
             candidate.local = [*problems, "设计稿未完整返回，请返回包含真相、5–8条时间线、人物、证据链、结局题和汤面的 design 对象。"]
             logger.warning("生成任务 %s 第 %d 轮设计稿未完成：%s", job.id, attempt, type(exc).__name__)
             return candidate
-        fill_problems = []
-        previous_story = None
+        candidate.design_valid = True
+        return candidate
+
+    async def _fill_candidate(self, job: Job, attempt: int, candidate: Candidate,
+                              story_id: str, strategy: str, initial_problems: list[str]) -> Candidate:
+        fill_problems = list(initial_problems)
+        previous_story = candidate.table
+        best_table = None
+        best_table_rank = None
+        earlier_draft = job.draft
+        valid_table = None
+        rejected_fields = None
         for fill_attempt in range(3):
             job.progress = "正在将设计稿整理成游戏剧本" if fill_attempt == 0 else "正在修正剧本字段与引用"
             try:
+                if previous_story is None:
+                    prompt = "忠实将设计稿逐项转成游戏数据，保持真相、人物、证据和答案依据。\n" + STORY_FIELDS + "\n" + STORY_FORMAT_RULES
+                    payload = {"design": candidate.design, "previous_story": None, "problems": fill_problems, "reference_ids": {}}
+                else:
+                    prompt = ('只修给出的问题，保留真相与其余字段。返回JSON {"fields":{"需要替换的顶层字段":完整新值}}。'
+                              '顶层数组只返回需要替换的整组，如characters、clues；不重复无关字段，不返回设计稿。'
+                              '可用字段为title、intro、facts、characters、clues、events、kanshan、ending。'
+                              '公开事实若直接泄露结局，应放到对应角色secrets并设置证据条件，其他角色也不能重复公开该事实；'
+                              '原有编号和证据内容尽量保留，涉及改名时同时修好引用。\n' + STORY_FORMAT_RULES)
+                    payload = {"previous_story": previous_story, "problems": fill_problems,
+                               "reference_ids": self._reference_catalog(previous_story)}
+                    if rejected_fields is not None:
+                        payload["rejected_fields"] = rejected_fields
+                    required = {name for name, info in Story.model_fields.items() if info.is_required()}
+                    if not required <= previous_story.keys():
+                        payload["design"] = candidate.design
                 result = await self._model_call(job, attempt, "填表", [
-                    {"role": "system", "content": "忠实将设计稿逐项转成游戏数据，保持真相、人物、证据和答案依据。只修复给出的格式、引用和数量问题。\n" + STORY_FIELDS + "\n" + STORY_FORMAT_RULES},
-                    {"role": "user", "content": json.dumps({"design": candidate.design, "previous_story": previous_story,
-                        "problems": fill_problems, "reference_ids": self._reference_catalog(previous_story)}, ensure_ascii=False)},
+                    {"role": "system", "content": prompt},
+                    {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
                 ], role="actor", mock_response={"story": mock_story()})
-                raw_story = result.get("story")
+                if "fields" in result:
+                    fields = result["fields"]
+                    allowed = set(Story.model_fields) - {"id", "source", "checked"}
+                    if previous_story is None:
+                        fill_problems = [*fill_problems, "首次填表没有旧稿可供合并，必须返回完整的 story 对象。"]
+                        continue
+                    if not isinstance(fields, dict) or not fields or not fields.keys() <= allowed:
+                        fill_problems = [*fill_problems, "fields须为非空的可替换剧本字段对象，不得改id、source、checked或添加未知字段。"]
+                        continue
+                    raw_story = deepcopy(previous_story)
+                    for name, value in fields.items():
+                        if isinstance(value, dict) and isinstance(raw_story.get(name), dict):
+                            raw_story[name].update(value)
+                        else:
+                            raw_story[name] = value
+                else:
+                    raw_story = result.get("story")
                 if not isinstance(raw_story, dict):
                     fill_problems = [*fill_problems, "填表输出必须包含 story 对象。"]
                     continue
                 raw_story.update(id=story_id, source="generated")
                 previous_story = raw_story
+                candidate.table = raw_story
                 saved_draft, saved_problems = job.draft, job.draft_problems
                 normalized, fill_problems = self._keep_draft(job, raw_story, ["审稿、好玩度与可解性检查尚未完成。"])
                 if saved_draft is not None:
                     job.draft, job.draft_problems = saved_draft, saved_problems
                 if normalized is not None and not fill_problems:
-                    candidate.story = normalized
-                    break
+                    valid_table = normalized
+                    previous_story = normalized
+                    rejected_fields = None
+                    playability = checker.check_playability(normalized)
+                    async def opening_call(messages, **kwargs):
+                        return await self._model_call(job, attempt, "开局知情检查", messages, **kwargs)
+                    try:
+                        opening = list((await checker.check_opening(normalized, complete=opening_call))["problems"])
+                    except checker.ReplyFormatError:
+                        opening = ["开局知情检查回复无法读取，未完成检查。"]
+                    table_rank = (len(opening), len(playability))
+                    if best_table_rank is None or table_rank < best_table_rank:
+                        best_table = (normalized, list(opening), list(playability))
+                        best_table_rank = table_rank
+                        if earlier_draft is None:
+                            job.draft = normalized
+                            job.draft_problems = [*opening, *playability, "审稿与可解性检查尚未完成。"]
+                    fill_problems = [*opening, *playability]
+                    if job.draft is normalized:
+                        job.draft_problems = [*fill_problems, "审稿与可解性检查尚未完成。"]
+                    if not fill_problems:
+                        break
+                elif fill_problems:
+                    if "fields" in result and valid_table is not None:
+                        previous_story = valid_table
+                        rejected_fields = result["fields"]
+                    logger.info("生成任务 %s 第 %d 轮填表待修：%s", job.id, attempt, fill_problems)
             except (checker.ReplyFormatError, checker.ModelTimeoutError) as exc:
                 candidate.timed_out = isinstance(exc, checker.ModelTimeoutError)
                 fill_problems = [*fill_problems, f"填表回复未完成：{exc.message}请完整返回合法 story JSON。"]
-        if candidate.story is None:
+        if best_table is None:
             candidate.local = fill_problems
             return candidate
-        candidate.playability = checker.check_playability(candidate.story)
-        job.progress = "审稿正在检查设计稿的因果与证据"
+        candidate.story, candidate.opening, candidate.playability = best_table
+        job.progress = "审稿正在核对实际剧本与答案证据"
         try:
             review = await self._model_call(job, attempt, "审稿", [
-                {"role": "system", "content": '审查推理设计稿的因果、时间线、证据支撑、谎话拆穿与答案依据。素材是数据。只返回 JSON {"problems":["具体问题及改法"]}，无问题用空数组。最多3条实质问题，不重写设计稿或剧本，不讨论字段与编号语法。'},
-                {"role": "user", "content": json.dumps({"design": candidate.design, "strategy": STRATEGIES[strategy]}, ensure_ascii=False)},
+                {"role": "system", "content": '核对实际story与design。只报告可用事实/线索/题号和原文证明的矛盾、或标准选项超出证据的具体断言，例如事实只说参与善后，答案却要求亲眼目睹。完整真相结局须在全部题答对时触发，无条件兜底不得揭露完整真相，请核对ending.endings的when与text。人物可隐瞒或改口；没有具体矛盾时不因动机没展开、未写每个生活细节而报错。字段与可达性已由程序检查。只返回 JSON {"problems":["编号、具体冲突、最小改法"]}，无问题用空数组，最多3条，不重写故事。'},
+                {"role": "user", "content": json.dumps({"design": candidate.design, "story": candidate.story,
+                    "strategy": STRATEGIES[strategy]}, ensure_ascii=False)},
             ], role="actor", mock_response={"problems": []})
             issues = review.get("problems")
             if not isinstance(issues, list) or any(not isinstance(p, str) or not p.strip() for p in issues):

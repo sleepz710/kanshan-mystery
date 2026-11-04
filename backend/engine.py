@@ -78,14 +78,21 @@ class GameEngine:
                 result.append({"id": story["id"], "title": story["title"], "intro": story["intro"], "source": story["source"], "characters": len(story["characters"]), **quality})
         return result
 
+    @staticmethod
+    def initial_state(story: dict) -> GameState:
+        """为已加载的剧本创建独立初始状态，供开局和质量检查共用。"""
+        story = deepcopy(story)
+        characters = story["characters"]
+        return GameState(story=story,
+            trust={c["id"]: c["trust_start"] for c in characters},
+            histories={c["id"]: [] for c in characters}, shown={c["id"]: set() for c in characters},
+            talk_counts={c["id"]: 0 for c in characters})
+
     def new_game(self, story_id: str) -> dict:
         story = self._load_story(story_id)
         game_id = uuid4().hex
         characters = story["characters"]
-        self.games[game_id] = GameState(story=story,
-            trust={c["id"]: c["trust_start"] for c in characters},
-            histories={c["id"]: [] for c in characters}, shown={c["id"]: set() for c in characters},
-            talk_counts={c["id"]: 0 for c in characters})
+        self.games[game_id] = self.initial_state(story)
         self._locks[game_id] = asyncio.Lock()
         quality = {"checked": story["checked"]} if type(story.get("checked")) is bool else {}
         return {"game_id": game_id, "title": story["title"], "intro": story["intro"], **quality,

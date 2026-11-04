@@ -2,10 +2,12 @@
 
 from copy import deepcopy
 import json
+from pathlib import Path
 
 import pytest
 
 from backend import agents, llm
+from backend.engine import GameEngine
 
 
 @pytest.fixture(autouse=True)
@@ -180,11 +182,120 @@ async def test_actor_and_checker_rules_allow_evasion_but_reject_invented_origin(
     for rules in (actor_rules, checker_rules):
         assert "同义" in rules and "不清楚" in rules
         assert "profile" in rules and "persona" in rules
+        assert "人物描述本身不增加" in rules or "人设描述本身不增加" in rules
         assert "一个老同学拉我" in rules
         assert "不方便说" in rules and "具体来历记不清了" in rules
     assert "必须判矛盾" in checker_rules
     assert "allowed_fact_ids" in checker_rules and "forbidden_fact_ids" in checker_rules
     assert "授权优先" in checker_rules
+
+
+@pytest.fixture
+def private_identity_context(context):
+    current = deepcopy(context)
+    current["character"] = {
+        "id": "lin", "name": "林棠", "profile": "受邀摄影师",
+        "persona": "温和，话少。她是林澜的妹妹，来找失踪的姐姐，暂时隐瞒真实目的。",
+    }
+    current["facts"] = [{"id": "f_public", "text": "林棠受邀到旅馆拍摄展览照片。"}]
+    current["forbidden_facts"] = [{"id": "f_missing", "text": "林棠是林澜的妹妹，来找失踪的姐姐。"}]
+    current["active_lies"] = []
+    current["exposed_lies"] = []
+    current["available_clues"] = []
+    current["history"] = []
+    current["shown_clue"] = None
+    current["player_text"] = "你和失踪的林澜有什么关系？"
+    return current
+
+
+@pytest.mark.asyncio
+async def test_persona_repeated_locked_identity_stays_private(monkeypatch, private_identity_context):
+    calls = fake_model(monkeypatch, [
+        valid_reply(reply="我这次受邀来拍展览照片。", reveal=[]),
+        {"ok": False, "leaked": ["f_missing"], "contradiction": ""},
+    ])
+    previous = deepcopy(private_identity_context)
+    await agents.reply(private_identity_context)
+    result = await agents.check_reply(private_identity_context, valid_reply(reply="我是林澜的妹妹，来找失踪的姐姐。", reveal=[]))
+    actor = json.loads(calls[0]["messages"][-1]["content"])
+    checker = json.loads(calls[1]["messages"][-1]["content"])
+    assert actor["character"]["persona"] == previous["character"]["persona"]
+    assert "forbidden_facts" not in actor
+    assert all(fact["id"] != "f_missing" for fact in actor["facts"])
+    assert checker["allowed_fact_ids"] == ["f_public"]
+    assert checker["forbidden_fact_ids"] == ["f_missing"]
+    assert result == {"ok": False, "leaked": ["f_missing"], "contradiction": ""}
+    assert "仅用于语气、性格和隐瞒倾向" in calls[0]["messages"][0]["content"]
+    assert "不能因 persona 写过而放行" in calls[1]["messages"][0]["content"]
+    assert private_identity_context == previous
+
+
+@pytest.mark.asyncio
+async def test_public_profile_identity_is_allowed_without_a_duplicate_fact(monkeypatch, private_identity_context):
+    calls = fake_model(monkeypatch, [{"ok": True, "leaked": [], "contradiction": ""}])
+    result = await agents.check_reply(private_identity_context, valid_reply(reply="我是受邀摄影师。", reveal=[]))
+    payload = json.loads(calls[0]["messages"][-1]["content"])
+    assert result["ok"] is True
+    assert payload["character"]["profile"] == "受邀摄影师"
+    assert payload["allowed_fact_ids"] == ["f_public"]
+    assert payload["forbidden_fact_ids"] == ["f_missing"]
+    assert "character.profile 中合法公开的身份可以说明" in calls[0]["messages"][0]["content"]
+
+
+@pytest.mark.asyncio
+async def test_normal_talk_rewrites_persona_secret_until_engine_unlocks_it(monkeypatch, private_identity_context, tmp_path):
+    engine = GameEngine(Path(__file__).parent / "fixtures" / "v1", tmp_path / "generated")
+    game_id = engine.new_game("lost-tuition")["game_id"]
+    state = engine.games[game_id]
+    character = state.story["characters"][0]
+    character.update({key: private_identity_context["character"][key] for key in ("name", "profile", "persona")})
+    state.story["facts"].extend(deepcopy(private_identity_context["forbidden_facts"]))
+    character["knows"].append("f_missing")
+    character["secrets"].append({"fact": "f_missing", "until": {"trust": 1}})
+    hidden_reply = "我是林澜的妹妹，来找失踪的姐姐。"
+    calls = fake_model(monkeypatch, [
+        valid_reply(reply=hidden_reply, reveal=[], trust_delta=1),
+        {"ok": False, "leaked": ["f_missing"], "contradiction": ""},
+        valid_reply(reply="我是受邀摄影师，来拍展览照片。", reveal=[], trust_delta=1),
+        {"ok": True, "leaked": [], "contradiction": ""},
+        valid_reply(reply=hidden_reply, reveal=[], trust_delta=0),
+        {"ok": True, "leaked": [], "contradiction": ""},
+    ])
+    first = await engine.talk(game_id, "xiaolin", "你和林澜有什么关系？")
+    assert hidden_reply not in first["reply"]
+    assert "受邀摄影师" in first["reply"]
+    assert all(hidden_reply not in message["content"] for message in engine.games[game_id].histories["xiaolin"])
+    first_check = json.loads(calls[1]["messages"][-1]["content"])
+    rewrite = json.loads(calls[2]["messages"][-1]["content"])
+    assert "f_missing" in first_check["forbidden_fact_ids"]
+    assert "f_missing" not in first_check["allowed_fact_ids"]
+    assert rewrite["rewrite"]["leaked_fact_ids"] == ["f_missing"]
+    assert rewrite["character"]["persona"] == private_identity_context["character"]["persona"]
+    second = await engine.talk(game_id, "xiaolin", "现在愿意说明亲属关系吗？")
+    assert hidden_reply in second["reply"]
+    second_check = json.loads(calls[5]["messages"][-1]["content"])
+    assert "f_missing" in second_check["allowed_fact_ids"]
+    assert "f_missing" not in second_check["forbidden_fact_ids"]
+
+
+@pytest.mark.asyncio
+async def test_confrontation_does_not_publish_identity_from_private_persona(monkeypatch, private_identity_context):
+    second = deepcopy(private_identity_context)
+    second["character"] = {"id": "visitor", "name": "访客", "profile": "旅馆住客", "persona": "亲切，耐心"}
+    hidden_reply = "我是林澜的妹妹，来找失踪的姐姐。"
+    calls = fake_model(monkeypatch, [
+        {"lines": [{"speaker": "lin", "text": hidden_reply}]},
+        {"ok": False, "leaked": ["f_missing"], "contradiction": ""},
+        valid_reply(reply="我是受邀摄影师，这次来拍展览。", reveal=[]),
+        {"ok": True, "leaked": [], "contradiction": ""},
+        {"lines": [{"speaker": "visitor", "text": "我会配合你核对公开记录。"}]},
+    ])
+    lines = await agents.confront([private_identity_context, second], {"id": "e_intro"})
+    assert "林澜的妹妹" not in json.dumps(lines, ensure_ascii=False)
+    assert "仅用于语气、性格和隐瞒倾向" in calls[0]["messages"][0]["content"]
+    last_actor = json.loads(calls[-1]["messages"][-1]["content"])
+    assert last_actor["scene"]["public_lines"] == [lines[0]]
+    assert "林澜的妹妹" not in json.dumps(last_actor, ensure_ascii=False)
 
 
 @pytest.mark.asyncio

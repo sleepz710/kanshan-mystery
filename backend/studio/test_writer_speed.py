@@ -7,6 +7,8 @@ from copy import deepcopy
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
+from unittest.mock import AsyncMock
+
 import pytest
 import yaml
 
@@ -26,6 +28,7 @@ def runtime_root():
 @pytest.fixture(autouse=True)
 def offline_models(monkeypatch, runtime_root):
     monkeypatch.setattr(checker, "check_playability", lambda story: [])
+    monkeypatch.setattr(checker, "check_opening", AsyncMock(return_value={"ok": True, "problems": []}))
     monkeypatch.setattr(llm, "_ENV_FILE", runtime_root / "missing.env")
     monkeypatch.setenv("LLM_MOCK", "1")
     for name in (

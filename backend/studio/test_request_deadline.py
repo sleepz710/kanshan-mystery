@@ -24,6 +24,7 @@ from backend.studio.service import Job, StudioService
 @pytest.fixture(autouse=True)
 def isolated_models(monkeypatch, tmp_path):
     monkeypatch.setattr(checker, "check_playability", lambda story: [])
+    monkeypatch.setattr(checker, "check_opening", AsyncMock(return_value={"ok": True, "problems": []}))
     monkeypatch.setattr(llm, "_ENV_FILE", tmp_path / "missing.env")
     for name in (
         "LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL", "LLM_ACTOR_MODEL",

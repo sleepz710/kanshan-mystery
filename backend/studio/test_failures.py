@@ -21,6 +21,7 @@ from backend.studio.share import owned_story
 @pytest.fixture(autouse=True)
 def offline(monkeypatch, tmp_path):
     monkeypatch.setattr(checker, "check_playability", lambda story: [])
+    monkeypatch.setattr(checker, "check_opening", AsyncMock(return_value={"ok": True, "problems": []}))
     monkeypatch.setenv("LLM_MOCK", "1")
     monkeypatch.setattr(llm, "_ENV_FILE", tmp_path / "missing.env")
 
@@ -165,19 +166,22 @@ async def test_deadline_saves_latest_valid_draft(tmp_path, monkeypatch, mode, bl
 async def test_bad_later_rounds_do_not_overwrite_valid_draft(tmp_path, monkeypatch):
     studio, job = StudioService(tmp_path), Job("keep-draft", "chat", "play")
     rounds = 0
+    fills = 0
 
     async def model(messages, **kwargs):
-        nonlocal rounds
+        nonlocal rounds, fills
         if "materials" in json.loads(messages[-1]["content"]):
             rounds += 1
-        if "story" in kwargs["mock_response"] and rounds > 1:
-            return {"story": {"title": "损坏的后续版本"}}
+        if "story" in kwargs["mock_response"]:
+            fills += 1
+            if rounds > 1:
+                return {"story": {"title": "损坏的后续版本"}}
         return deepcopy(kwargs["mock_response"])
 
     monkeypatch.setattr(checker, "complete_for", model)
     monkeypatch.setattr(checker, "check", AsyncMock(return_value={"ok": False, "problems": ["缺少证据"]}))
     await studio._generate(job, [], "new")
-    assert rounds == 3 and job.status == "done"
+    assert rounds == 2 and fills == 7 and job.status == "done"
     assert saved(studio, job)["title"] == mock_story()["title"]
     assert not saved(studio, job)["checked"] and job.problems == ["缺少证据"]
 
@@ -193,7 +197,9 @@ async def test_no_valid_draft_after_three_rounds_fails_without_publishing(tmp_pa
     model = AsyncMock(side_effect=incomplete_story)
     monkeypatch.setattr(checker, "complete_for", model)
     await studio._generate(job, [], "new")
-    assert model.await_count == 12 and job.status == "failed"
+    steps = [step_of(call.kwargs) for call in model.await_args_list]
+    assert steps == ["设计稿", *(["填表"] * 9)]
+    assert job.status == "failed"
     assert "格式" in job.error and list(tmp_path.glob("*.yaml")) == []
 
 

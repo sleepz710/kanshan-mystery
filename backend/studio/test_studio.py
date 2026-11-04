@@ -24,6 +24,7 @@ from backend.studio.service import StudioService
 @pytest.fixture(autouse=True)
 def mock_mode(monkeypatch, tmp_path):
     monkeypatch.setattr(checker, "check_playability", lambda story: [])
+    monkeypatch.setattr(checker, "check_opening", AsyncMock(return_value={"ok": True, "problems": []}))
     monkeypatch.setenv("LLM_MOCK", "1")
     monkeypatch.setattr(llm, "_ENV_FILE", tmp_path / "missing.env")
 

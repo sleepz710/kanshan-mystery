@@ -5,6 +5,8 @@ import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
+from unittest.mock import AsyncMock
+
 import pytest
 
 from backend import llm
@@ -18,6 +20,7 @@ def runtime(monkeypatch):
         monkeypatch.setenv("LLM_MOCK", "1")
         monkeypatch.setattr(llm, "_ENV_FILE", Path(folder) / "missing.env")
         monkeypatch.setattr(checker, "check_playability", lambda story: [])
+        monkeypatch.setattr(checker, "check_opening", AsyncMock(return_value={"ok": True, "problems": []}))
         yield StudioService(Path(folder) / "stories")
 
 
@@ -38,14 +41,17 @@ async def generate(studio, monkeypatch, transform=None):
 
 
 @pytest.mark.asyncio
-async def test_design_then_actor_fill_then_design_review_and_blind_checks(runtime, monkeypatch):
+async def test_design_then_actor_fill_then_actual_story_review_and_blind_checks(runtime, monkeypatch):
     job, calls = await generate(runtime, monkeypatch)
     assert job.status == "done" and job.draft["checked"] is True
     assert [(kind, role) for kind, role, _ in calls] == [
         ("design", "writer"), ("story", "actor"), ("problems", "actor"),
         ("answers", "writer"), ("answers", "actor")]
     assert calls[1][2]["design"] == calls[2][2]["design"]
-    assert "story" not in calls[2][2]
+    reviewed_story = calls[2][2]["story"]
+    assert reviewed_story["id"] == job.story_id
+    assert reviewed_story["facts"] == job.draft["facts"]
+    assert reviewed_story["ending"] == job.draft["ending"]
 
 
 @pytest.mark.asyncio
@@ -63,7 +69,11 @@ async def test_format_repairs_keep_one_design_and_allow_two_retries(runtime, mon
     designs = [payload for kind, _, payload in calls if kind == "design"]
     fills = [payload for kind, _, payload in calls if kind == "story"]
     assert len(designs) == 1 and len(fills) == 3
-    assert fills[0]["design"] == fills[1]["design"] == fills[2]["design"]
+    assert fills[0]["design"] == StudioService._mock_design()
+    for repair in fills[1:]:
+        assert "design" not in repair
+        assert repair["previous_story"]["characters"][0]["knows"] == ["unknown_fact"]
+        assert repair["reference_ids"]["facts"]
     assert any("unknown_fact" in problem for problem in fills[1]["problems"])
 
 

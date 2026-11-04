@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
+from unittest.mock import AsyncMock
+
 import pytest
 import yaml
 
@@ -26,6 +28,7 @@ def runtime_root():
 @pytest.fixture(autouse=True)
 def offline_models(monkeypatch, runtime_root):
     monkeypatch.setattr(checker, "check_playability", lambda story: [])
+    monkeypatch.setattr(checker, "check_opening", AsyncMock(return_value={"ok": True, "problems": []}))
     monkeypatch.setenv("LLM_MOCK", "1")
     monkeypatch.setattr(llm, "_ENV_FILE", runtime_root / "missing.env")
     for name in (
@@ -194,10 +197,11 @@ async def test_bad_later_generation_cannot_replace_playable_initial_draft(
     studio = StudioService(runtime_root / "stories")
     job = Job("keep-initial", "chat", "play")
     generations = 0
+    fills = 0
     blocked = asyncio.Event()
 
     async def model(messages, **kwargs):
-        nonlocal generations
+        nonlocal generations, fills
         if "design" in kwargs["mock_response"]:
             generations += 1
             if generations > 1 and stop == "deadline":
@@ -205,6 +209,7 @@ async def test_bad_later_generation_cannot_replace_playable_initial_draft(
                 await asyncio.Event().wait()
             return deepcopy(kwargs["mock_response"])
         if "story" in kwargs["mock_response"]:
+            fills += 1
             return {"story": valid_story() if generations == 1 else damaged_story("INVALID_LATER_DRAFT", damage)}
         if "problems" in kwargs["mock_response"]:
             return {"problems": []}
@@ -221,7 +226,7 @@ async def test_bad_later_generation_cannot_replace_playable_initial_draft(
     if stop == "deadline":
         assert blocked.is_set()
     else:
-        assert generations == 3
+        assert generations == 2 and fills == 7
     saved = assert_published_game_opens(studio, job, runtime_root)
     assert saved["title"] == "PLAYABLE_INITIAL"
 
