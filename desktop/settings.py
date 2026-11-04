@@ -94,6 +94,9 @@ def settings_router(settings: ModelSettings) -> APIRouter:
         request = {"model": value["actor_model"], "messages": [{"role": "user", "content": "Reply OK."}], "max_tokens": 8}
         if value["provider"] == "deepseek":
             request["extra_body"] = {"thinking": {"type": "disabled"}}
+        elif value["actor_model"] in {"gpt-5.4", "gpt-5.4-2026-03-05"}:
+            request["max_completion_tokens"] = request.pop("max_tokens")
+            request["reasoning_effort"] = "none"
         try:
             async with AsyncOpenAI(api_key=value["api_key"], base_url=settings.base_url(value), timeout=15, max_retries=0) as client:
                 result = await client.chat.completions.create(**request)

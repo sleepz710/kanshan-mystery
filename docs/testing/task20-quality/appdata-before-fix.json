@@ -1,0 +1,32 @@
+{
+  "directory": "C:\\Users\\HW\\AppData\\Roaming\\KanshanMystery-quality-qa-diagnostics",
+  "resolved": "E:\\WpSystem\\S-1-5-21-2935892461-107176757-2270317220-1002\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Roaming\\KanshanMystery-quality-qa-diagnostics",
+  "directory_device": 5382017663247876165,
+  "directory_attributes": 16432,
+  "cases": [
+    {
+      "source": "C:\\Users\\HW\\AppData\\Roaming\\KanshanMystery-quality-qa-diagnostics\\source.tmp",
+      "target": "C:\\Users\\HW\\AppData\\Roaming\\KanshanMystery-quality-qa-diagnostics\\renamed.tmp",
+      "source_device": 5382017663247876165,
+      "ok": false,
+      "winerror": 17,
+      "errno": 18
+    },
+    {
+      "source": "C:\\Users\\HW\\AppData\\Roaming\\KanshanMystery-quality-qa-diagnostics\\source2.json",
+      "target": "C:\\Users\\HW\\AppData\\Roaming\\KanshanMystery-quality-qa-diagnostics\\renamed2.json",
+      "source_device": 5382017663247876165,
+      "ok": false,
+      "winerror": 17,
+      "errno": 18
+    },
+    {
+      "source": "C:\\Users\\HW\\AppData\\Roaming\\KanshanMystery-quality-qa-diagnostics\\source3.tmp",
+      "target": "C:\\Users\\HW\\AppData\\Roaming\\KanshanMystery-quality-qa-diagnostics\\target3.json",
+      "source_device": 5382017663247876165,
+      "ok": false,
+      "winerror": 17,
+      "errno": 18
+    }
+  ]
+}

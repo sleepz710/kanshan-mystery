@@ -1,0 +1,359 @@
+{
+  "connection_test": {
+    "ok": true,
+    "provider": "openai",
+    "actor_model": "gpt-5.4-2026-03-05",
+    "writer_model": "gpt-5.4-2026-03-05",
+    "actor_reasoning_effort": "none",
+    "writer_reasoning_effort": "high"
+  },
+  "native_menu_settings_home": true,
+  "signature": {
+    "game_id": "d84c7033bb02497ab3fa7d5eb84ee7b2",
+    "turns": 2,
+    "clues": 2,
+    "threads": {
+      "xiaolin": [
+        {
+          "k": "me",
+          "text": "先说说你今天遇到了什么，有什么材料可以让我核对？"
+        },
+        {
+          "k": "them",
+          "text": "我被骗了。想找兼职，后来被拉进刷单群，对方先让我做小单，后面又让我垫资做连单。我把学费两万块转过去以后，他们又说账户冻结了，还要我再交钱，我没再转。第二天群就散了，人也联系不上了。这两份你可以先看，一个是群聊天记录，一个是我的转账回单。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "刷单群聊天记录"
+            },
+            {
+              "id": "c2",
+              "title": "两万元转账回单"
+            }
+          ]
+        },
+        {
+          "k": "me",
+          "text": "你最后一次联系对方是什么时候？请把能核对的记录给我看看。"
+        },
+        {
+          "k": "them",
+          "text": "最后一次就是我转完两万以后。对方马上又说账户冻结，要我再交三万解冻，我没再转。到第二天群就解散了，人也联系不上。能核对的就是群里的聊天和那张转账回单。"
+        }
+      ],
+      "akai": [],
+      "zhouming": [],
+      "chenmo": []
+    }
+  },
+  "first_port": 10907,
+  "signature_restart": {
+    "port": 53429,
+    "front_and_backend_same_game": true,
+    "turns": 2
+  },
+  "generation": {
+    "seconds_after_job_observed": 773.33,
+    "job": {
+      "status": "done",
+      "progress": "剧场已保存，检查未全部通过，请决定是否试玩",
+      "story_id": "generated-b51cbe2d0ab243d4aed2cc42ff77d202",
+      "owner_token": null,
+      "error": "检查未全部通过，试玩可能遇到线索或推理问题。",
+      "quality": "fast"
+    },
+    "stages": [
+      {
+        "seconds": 0.02,
+        "value": {
+          "status": "running",
+          "progress": "编剧正在设计真相与证据链",
+          "error": null
+        }
+      },
+      {
+        "seconds": 208.74,
+        "value": {
+          "status": "running",
+          "progress": "正在将设计稿整理成游戏剧本",
+          "error": null
+        }
+      },
+      {
+        "seconds": 245.78,
+        "value": {
+          "status": "running",
+          "progress": "正在修正剧本字段与引用",
+          "error": null
+        }
+      },
+      {
+        "seconds": 297.35,
+        "value": {
+          "status": "running",
+          "progress": "审稿正在检查设计稿的因果与证据",
+          "error": null
+        }
+      },
+      {
+        "seconds": 306.43,
+        "value": {
+          "status": "running",
+          "progress": "正在检查线索能否串起来",
+          "error": null
+        }
+      },
+      {
+        "seconds": 318.85,
+        "value": {
+          "status": "running",
+          "progress": "编剧正在设计真相与证据链",
+          "error": null
+        }
+      },
+      {
+        "seconds": 450.12,
+        "value": {
+          "status": "running",
+          "progress": "正在将设计稿整理成游戏剧本",
+          "error": null
+        }
+      },
+      {
+        "seconds": 630.38,
+        "value": {
+          "status": "running",
+          "progress": "正在修正剧本字段与引用",
+          "error": null
+        }
+      },
+      {
+        "seconds": 683.71,
+        "value": {
+          "status": "running",
+          "progress": "审稿正在检查设计稿的因果与证据",
+          "error": null
+        }
+      },
+      {
+        "seconds": 730.89,
+        "value": {
+          "status": "running",
+          "progress": "正在检查线索能否串起来",
+          "error": null
+        }
+      },
+      {
+        "seconds": 773.29,
+        "value": {
+          "status": "done",
+          "progress": "剧场已保存，检查未全部通过，请决定是否试玩",
+          "error": "检查未全部通过，试玩可能遇到线索或推理问题。"
+        }
+      }
+    ],
+    "model_steps": [
+      {
+        "round": 1,
+        "step": "设计稿",
+        "outcome": "完成",
+        "seconds": 211.79,
+        "request_characters": 1738,
+        "response_characters": 4016
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 37.29,
+        "request_characters": 7243,
+        "response_characters": 5823
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 17.82,
+        "request_characters": 13778,
+        "response_characters": 2810
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 33.42,
+        "request_characters": 13969,
+        "response_characters": 6235
+      },
+      {
+        "round": 1,
+        "step": "审稿",
+        "outcome": "完成",
+        "seconds": 9.17,
+        "request_characters": 5229,
+        "response_characters": 16
+      },
+      {
+        "round": 1,
+        "step": "可解性·只给汤面",
+        "outcome": "完成",
+        "seconds": 8.87,
+        "request_characters": 607,
+        "response_characters": 49
+      },
+      {
+        "round": 1,
+        "step": "可解性·全部线索",
+        "outcome": "完成",
+        "seconds": 3.54,
+        "request_characters": 1869,
+        "response_characters": 78
+      },
+      {
+        "round": 2,
+        "step": "设计稿",
+        "outcome": "完成",
+        "seconds": 131.41,
+        "request_characters": 5812,
+        "response_characters": 4342
+      },
+      {
+        "round": 2,
+        "step": "填表",
+        "outcome": "超时",
+        "seconds": 180.01,
+        "request_characters": 7569,
+        "response_characters": 0
+      },
+      {
+        "round": 2,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 42.36,
+        "request_characters": 7611,
+        "response_characters": 6675
+      },
+      {
+        "round": 2,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 10.93,
+        "request_characters": 14784,
+        "response_characters": 1544
+      },
+      {
+        "round": 2,
+        "step": "审稿",
+        "outcome": "完成",
+        "seconds": 47.38,
+        "request_characters": 5555,
+        "response_characters": 201
+      },
+      {
+        "round": 2,
+        "step": "可解性·只给汤面",
+        "outcome": "完成",
+        "seconds": 40.16,
+        "request_characters": 605,
+        "response_characters": 49
+      },
+      {
+        "round": 2,
+        "step": "可解性·全部线索",
+        "outcome": "完成",
+        "seconds": 3.5,
+        "request_characters": 2005,
+        "response_characters": 78
+      }
+    ]
+  },
+  "generated_game": {
+    "id": "44e30c63949d4febb8331bd92798b3ca",
+    "title": "307病房的消音键",
+    "checked": false
+  },
+  "second_port": 53429,
+  "generated_dialogue": [
+    {
+      "character": {
+        "id": "tangsheng",
+        "name": "唐晟"
+      },
+      "seconds": 63.6,
+      "thread": [
+        {
+          "k": "me",
+          "text": "请从你的身份说起，案发前后你亲眼见到或能提供核对的材料有哪些？"
+        },
+        {
+          "k": "them",
+          "text": "我是夜间会诊的主治医师，夜里主要负责病房处置和相关记录。22点后我一直在护士站补病历，能给你先核对的是这份死亡记录单：307床邵闻的宣告死亡时间是22:31，宣告医师写的是我，死因记录为“突发室性心律失常”，填写时间22:36。其他我现在先说这些。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "死亡记录单"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "character": {
+        "id": "linruowei",
+        "name": "林若薇"
+      },
+      "seconds": 24.47,
+      "thread": [
+        {
+          "k": "me",
+          "text": "请从你的身份说起，案发前后你亲眼见到或能提供核对的材料有哪些？"
+        },
+        {
+          "k": "them",
+          "text": "我是夜班护士，西翼病房这一段是我在巡查和做记录。能给你先核对的是夜班交接本：21:40我记了307床邵闻监护稳定、呼吸机是A/C模式；22:05我又补记了一条，内容是按唐晟电话指示，继续单人观察，不转ICU。别的我得一点点回忆。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "夜班交接本"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generated_restart": {
+    "port": 34827,
+    "same_game": true,
+    "checked_preserved": true,
+    "turns": 2,
+    "clues": 2,
+    "chat_count": 1,
+    "model_config_restored": true
+  },
+  "native_menu_exit": true,
+  "close_while_generating": {
+    "job_id": "725ae64ac154473e89469c5d2ff969d6",
+    "status_before": "running",
+    "progress_before": "编剧正在设计真相与证据链",
+    "seconds": 10.19,
+    "clean_exit": true,
+    "port_released": true,
+    "provider_response_id": "resp_049f4bfb522df672006aeaf619e80087d09a47fc6ecaefdef9",
+    "provider_cancel_http_status": 200,
+    "no_partial_publication_after_restart": true
+  },
+  "source_commit": "848c471f4f2b35b2ac6dad3d6cef33b0d4c630cb",
+  "independent_windows_without_python": {
+    "completed": false,
+    "next": "User acceptance on another Windows computer"
+  }
+}
