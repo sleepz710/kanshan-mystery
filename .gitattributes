@@ -6,3 +6,5 @@
 *.pdf binary
 *.docx binary
 *.xlsx binary
+docs/testing/task19-demo/originals/*.yaml -text
+docs/testing/task19-demo/revised/*.yaml -text
