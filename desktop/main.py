@@ -65,6 +65,21 @@ def main():
             MenuAction("返回首页", lambda: window.load_url(f"http://127.0.0.1:{port}/")),
             MenuAction("退出", window.destroy),
         ])]
+
+        def show_native_menu():
+            from System import Action
+            from System.Windows.Forms import MenuStrip
+
+            def arrange():
+                for control in window.native.Controls:
+                    if isinstance(control, MenuStrip):
+                        window.native.MainMenuStrip = control
+                        control.SendToBack()
+                window.native.PerformLayout()
+
+            window.native.Invoke(Action(arrange))
+
+        window.events.shown += show_native_menu
         webview.start(gui="edgechromium", private_mode=False, storage_path=str(directory / "webview"),
                       icon=str(Path(__file__).resolve().parent / "kanshan.ico"), menu=menu)
     finally:
