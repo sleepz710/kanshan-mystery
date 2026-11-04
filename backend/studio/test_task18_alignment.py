@@ -178,6 +178,32 @@ async def test_three_mismatched_evidence_fills_preserve_existing_draft(studio, m
     assert job.invalid_draft is not None
 
 
+def test_cross_character_secret_copy_requires_its_own_lock():
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    story["characters"][2]["knows"].append("f1")
+    problems = StudioService._evidence_problems(StudioService._mock_design(), story)
+    assert len(problems) == 1 and "wang" in problems[0] and "f1" in problems[0]
+
+
+def test_show_requirement_cannot_be_replaced_by_plain_possession():
+    design = StudioService._mock_design()
+    design["clues"][3]["acquire"] = "向林青出示监控记录后交出寄件单"
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    story["clues"][3]["requires"] = {"has": "c1"}
+    problems = StudioService._evidence_problems(design, story)
+    assert len(problems) == 1 and "c4" in problems[0] and "shown" in problems[0]
+    story["clues"][3]["requires"] = {"event": "e1"}
+    assert StudioService._evidence_problems(design, story) == []
+
+
+def test_evidence_reference_accepts_a_renamed_title_with_identical_content():
+    design = StudioService._mock_design()
+    design["characters"][0]["evidence"] = "王平持有的监控记录"
+    story = checker.Story.model_validate(mock_story()).model_dump()
+    story["clues"][0]["title"] = "监控记录副本"
+    assert StudioService._evidence_problems(design, story) == []
+
+
 @pytest.mark.asyncio
 async def test_fine_first_round_uses_eight_calls_and_blind_tests_only_selected_story(studio, monkeypatch):
     both_designs_started = asyncio.Event()

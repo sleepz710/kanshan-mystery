@@ -425,7 +425,23 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
     @staticmethod
     def _evidence_problems(design: dict, story: dict) -> list[str]:
         problems = []
+        clue_ids = {}
+        for source in design["clues"]:
+            name = source.get("name")
+            matches = [clue["id"] for clue in story["clues"]
+                       if clue["title"] == name or clue["content"] == source.get("content")]
+            if isinstance(name, str) and len(matches) == 1:
+                clue_ids[name] = matches[0]
+        protected_by_character = {
+            character["id"]: {secret["fact"] for secret in character["secrets"]}
+            | {lie["admit"] for lie in character["lies"]}
+            for character in story["characters"]
+        }
+        protected = set().union(*protected_by_character.values())
         for character in story["characters"]:
+            unlocked_copies = (set(character["knows"]) & protected) - protected_by_character[character["id"]]
+            for fact in sorted(unlocked_copies):
+                problems.append(f"角色 {character['id']} 的秘密事实 {fact} 存在无锁副本，请在本人 secrets 中落实设计的解锁条件。")
             source = next((item for item in design["characters"] if item.get("name") == character["name"]), None)
             if source is None or not isinstance(source.get("evidence"), str):
                 continue
@@ -433,7 +449,9 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
                               if isinstance(item.get("name"), str) and item["name"] in source["evidence"]]
             if not named_evidence:
                 continue
-            expected = {clue["id"] for clue in story["clues"] if clue["title"] in named_evidence}
+            if any(name not in clue_ids for name in named_evidence):
+                continue
+            expected = {clue_ids[name] for name in named_evidence}
             for lie in character["lies"]:
                 actual = {value for key, value in lie["until"].items() if key in {"shown", "has"}}
                 if actual - expected:
@@ -441,6 +459,19 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
                         f"谎话 {lie['id']} 的拆谎引用 {sorted(actual)} 与设计证据 {named_evidence} 不符，"
                         "请保持设计不变，按对应线索编号修正 until。"
                     )
+        for clue in story["clues"]:
+            source = next((item for item in design["clues"] if item.get("name") == clue["title"]), None)
+            acquire = source.get("acquire", "") if source else ""
+            if not isinstance(acquire, str) or "出示" not in acquire:
+                continue
+            named_evidence = [item["name"] for item in design["clues"]
+                              if isinstance(item.get("name"), str) and item["name"] in acquire]
+            if len(named_evidence) == 1:
+                expected = clue_ids.get(named_evidence[0])
+                if (expected and clue["requires"].get("has") == expected
+                        and clue["requires"].get("shown") != expected
+                        and not {"event", "exposed"} & clue["requires"].keys()):
+                    problems.append(f"线索 {clue['id']} 的设计要求出示 {expected}，请使用 shown 条件，不能用 has 代替出示。")
         return problems
 
     async def _archive_invalid(self, job: Job):
