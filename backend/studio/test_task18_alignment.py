@@ -80,6 +80,51 @@ async def test_fast_confirmation_runs_five_steps_and_reviews_only_design(studio,
 
 
 @pytest.mark.asyncio
+async def test_generation_prompts_keep_evidence_and_supported_conditions(studio, monkeypatch):
+    calls = capture_model(monkeypatch)
+    await studio._generate(Job("evidence-contract", "chat", "play"), ["技术素材"], "new")
+
+    design_prompt = calls[0]["system"]
+    fill_prompt = calls[1]["system"]
+    assert "时间区间给出上下界证据" in design_prompt
+    assert "口供是答案必要依据时" in design_prompt
+    assert "拆谎证据必须先于该谎的承认可取得" in design_prompt
+    assert "每个人都加锁" in fill_prompt
+    assert "线索content逐字保留设计稿content" in fill_prompt
+    assert "问题text/options/answer逐字保留" in fill_prompt
+    assert '"done":{"has":"c1"}' in fill_prompt
+    assert '"shown":"c1","has":"c2"' in fill_prompt
+    assert "lies.until禁止引用自身的exposed" in fill_prompt
+
+
+@pytest.mark.asyncio
+async def test_format_retry_requests_fields_without_rewriting_evidence(studio, monkeypatch):
+    fills = 0
+
+    async def repair(kind, payload, response):
+        nonlocal fills
+        if kind == "story":
+            fills += 1
+            if fills == 1:
+                response["story"]["kanshan"]["hints"][0]["done"] = {"shown": "c1"}
+            else:
+                return {"fields": {"kanshan": {"hints": mock_story()["kanshan"]["hints"]}}}
+        return response
+
+    calls = capture_model(monkeypatch, repair)
+    job = Job("condition-repair", "chat", "play")
+    await studio._generate(job, ["技术素材"], "new")
+
+    requests = [call for call in calls if call["kind"] == "story"]
+    assert len(requests) == 2
+    assert requests[0]["payload"]["design"] == requests[1]["payload"]["design"]
+    assert "优先只返回JSON" in requests[1]["system"]
+    assert "只改报错处，保留其他条件、线索内容和证据对应" in requests[1]["system"]
+    assert saved_story(studio, job)["clues"] == checker.Story.model_validate(mock_story()).model_dump()["clues"]
+    assert job.status == "done" and saved_story(studio, job)["checked"] is True
+
+
+@pytest.mark.asyncio
 async def test_fine_first_round_uses_eight_calls_and_blind_tests_only_selected_story(studio, monkeypatch):
     both_designs_started = asyncio.Event()
     designs_started = 0

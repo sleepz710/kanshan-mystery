@@ -93,6 +93,32 @@ def completion(content):
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("role", ["writer", "actor"])
+@pytest.mark.parametrize("base", ["https://api.deepseek.com", "https://model.example.test/v1"])
+async def test_generation_thinking_effort_preserves_roles(monkeypatch, install_http_model, role, base):
+    requests = []
+
+    def handle(request):
+        requests.append(json.loads(request.content))
+        return completion('{"problems": []}')
+
+    install_http_model(handle)
+    monkeypatch.setenv("LLM_BASE_URL", base)
+    result = await checker.complete_for([], role=role, mock_response={})
+
+    assert result == {"problems": []}
+    payload = requests[0]
+    if base == "https://api.deepseek.com":
+        assert payload["thinking"] == {"type": "enabled" if role == "writer" else "disabled"}
+        if role == "writer":
+            assert payload["reasoning_effort"] == "low"
+        else:
+            assert "reasoning_effort" not in payload
+    else:
+        assert "thinking" not in payload and "reasoning_effort" not in payload
+
+
+@pytest.mark.asyncio
 async def test_inner_timeout_is_not_a_request_deadline(monkeypatch):
     create = AsyncMock(side_effect=TimeoutError("inner timeout"))
 
