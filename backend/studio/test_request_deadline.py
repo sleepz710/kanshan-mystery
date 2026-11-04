@@ -119,6 +119,39 @@ async def test_generation_thinking_effort_preserves_roles(monkeypatch, install_h
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("role", ["writer", "actor"])
+@pytest.mark.parametrize("model", ["gpt-5.4", "gpt-5.4-2026-03-05"])
+@pytest.mark.parametrize("entry", ["studio", "game"])
+async def test_official_gpt54_http_parameters_preserve_roles_and_token_limits(
+    monkeypatch, install_http_model, role, model, entry,
+):
+    requests = []
+
+    def handle(request):
+        requests.append(json.loads(request.content))
+        return completion('{"ok": true}')
+
+    install_http_model(handle)
+    monkeypatch.setenv("LLM_BASE_URL", "https://api.openai.com/v1")
+    monkeypatch.setenv("LLM_WRITER_MODEL" if role == "writer" else "LLM_ACTOR_MODEL", model)
+    if entry == "studio":
+        result = await checker.complete_for([], role=role, mock_response={})
+    else:
+        monkeypatch.setattr(llm, "AsyncOpenAI", checker.AsyncOpenAI)
+        result = await llm.complete_json([], purpose=role)
+
+    assert result == {"ok": True}
+    payload = requests[0]
+    assert payload["model"] == model
+    assert payload["reasoning_effort"] == ("high" if role == "writer" else "none")
+    assert "thinking" not in payload and "max_tokens" not in payload
+    if entry == "game":
+        assert payload["max_completion_tokens"] == (8192 if role == "writer" else 1024)
+    else:
+        assert "max_completion_tokens" not in payload
+
+
+@pytest.mark.asyncio
 async def test_inner_timeout_is_not_a_request_deadline(monkeypatch):
     create = AsyncMock(side_effect=TimeoutError("inner timeout"))
 

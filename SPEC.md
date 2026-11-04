@@ -343,6 +343,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
   ```
 
 - 生成流水线的 DeepSeek 编剧调用显式使用 `reasoning_effort=high` 并保持 `thinking=enabled`，作为质量对照基线，实际质量与耗时按完整轮次记录；快速600秒和精修900秒预算继续保留。编剧对话沿用原模型调用设置。依据见 [DeepSeek思考模式](https://api-docs.deepseek.com/guides/thinking_mode/)。DeepSeek 默认开思考模式。演员的请求要加 `extra_body={"thinking": {"type": "disabled"}}`;思考模式下 `temperature` 不生效。OpenAI 不认这个参数,`llm.py` 按接口地址决定加不加。细节以 [DeepSeek 文档](https://api-docs.deepseek.com/guides/thinking_mode/) 为准。旧模型名 `deepseek-chat`、`deepseek-reasoner` 按官方公告 2026-07-24 下线,不要再用。
+- 2026-11-04按用户指定OpenAI接口追加质量对照，使用账户实际可用的`gpt-5.4-2026-03-05`，编剧high、演员none。对官方OpenAI的GPT-5.4调用显式设置reasoning_effort，带输出上限的调用采用max_completion_tokens。接口参数适配纳入任务18的backend/llm.py及check.py回归，模型配置和密钥仅在本机隔离环境使用。固定相同素材、正式流程和检查，耗时单列，按实际证据判定模型差异。模型参数依据[OpenAI GPT-5.4文档](https://developers.openai.com/api/docs/models/gpt-5.4)。
 - DeepSeek 演员请求使用 `temperature=0`,优先保证事实与结构稳定;编剧思考模式和其他服务不附加这个参数。
 - 运行:`pip install -r requirements.txt`,`uvicorn backend.app:app --reload`,打开 http://localhost:8000。
 - 运行:本地 `uvicorn` 或桌面版(任务 20),不部署公网。每个玩家用自己的 key:网页版写在 `.env`,桌面版在「模型设置」里填。`deploy/` 保留本地启动和局域网口令保护脚本。

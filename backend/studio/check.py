@@ -448,6 +448,7 @@ async def complete_for(messages: list[dict], *, role: str, mock_response: dict) 
     extra = {"extra_body": {"thinking": {"type": "enabled" if writer else "disabled"}}} if host == "api.deepseek.com" else {}
     if host == "api.deepseek.com" and writer:
         extra["reasoning_effort"] = "high"
+    extra.update(llm._openai_reasoning_options(base, model, role))
     deadline = asyncio.timeout(MODEL_CALL_TIMEOUT)
     try:
         async with deadline:
