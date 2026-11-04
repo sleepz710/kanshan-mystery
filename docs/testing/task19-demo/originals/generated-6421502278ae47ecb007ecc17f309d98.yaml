@@ -1,0 +1,418 @@
+id: generated-6421502278ae47ecb007ecc17f309d98
+title: 汐潮馆的第七位住客
+source: generated
+intro: 海边旅馆“汐潮馆”的大堂里，挂着五年前的住客合照，前台玻璃柜里锁着当年的住客登记簿，墙上贴着一张消防疏散图。五年后的夏天，老板娘林晚、维修工陈砚、自称摄影师的周叙和平台审核员苏禾又聚在这里。有人问起五年前台风夜旅馆到底住了多少人，也有人想知道那张合照为什么一直被装框挂在原处。答案藏在彼此保管的旧物和说法里。请从大堂里这三样看得见的东西开始，逐层核对。
+facts:
+- id: f_hall_photo
+  text: 大堂墙上挂着五年前台风夜的住客合照，画面里六个人，最右侧边缘有一截被裁掉的手臂和半只系红绳的手腕，相框背板有重新装订的痕迹。
+- id: f_register
+  text: 五年前台风夜那页住客登记簿上，七间房全部登记为“已住”；前六行墨色发暗、笔压均匀，第七行墨色偏新，房号处有涂改，隐约能看出“储物间”三字。
+- id: f_fire_map
+  text: 大堂墙上的消防疏散图把“七号房”标在储物间的位置，只有一扇朝海的窗，没有独立卫浴，改造批文一栏空白。
+- id: f_seven_guests
+  text: 五年前台风夜，汐潮旅馆实际有七位住客，第七位没有预订，被林晚安排进由储物间改造的“七号房”。
+- id: f_photo_original
+  text: 周叙相机里的原始照片显示，被裁处站着一个扎马尾的女子，手腕系红绳，身后储物间的窗户亮着灯，玻璃上有一道裂痕。
+- id: f_zhouning_identity
+  text: 被裁掉的女子是周宁，周叙是她的弟弟，周叙化名住进旅馆查访姐姐失踪的真相。
+- id: f_guestbook
+  text: 五年前那本旅客留言簿中一页被撕走后又夹回，页上写着：“半夜两点，有人一直在敲储物间的门，喊一个名字，没人应。”
+- id: f_orders
+  text: 五年前台风夜当天，该旅馆在平台上只有六笔有效订单，第七间房没有任何预订记录，却显示“已入住”。
+- id: f_email
+  text: 五年前发给平台的举报邮件写道“汐潮旅馆台风夜有人被留在储物间，如果我不在了，请找我弟弟”，落款只有一个“周”字。
+- id: f_missing
+  text: 一张保存五年的寻人启事，照片上的女子扎马尾、手腕系红绳，失踪时间正是台风夜次日，联系人是“弟弟周叙”。
+- id: f_duty_log
+  text: 旅馆五年前台风夜的应急值班表上有陈砚的签字，时间为凌晨一点四十，备注“七号房窗户加固”；“七号房”三字后来被划掉改成“储物间”，末尾一行写着“03:10
+    东侧礁石边拾到一只女式凉鞋，未上报”。
+- id: f_window
+  text: 陈砚工具箱里断掉的窗扣和一张维修工单，工单时间与值班记录吻合，背面用铅笔写着“窗扣断，风太大，明早换”，字迹被海水洇过。
+- id: f_chen_at_hotel
+  text: 台风夜陈砚其实在旅馆修储物间的窗户，是最后一个见到周宁的人，他并未一直在码头值班。
+- id: f_zhouning_lost
+  text: 台风夜陈砚离开后，周宁为关被风掀开的窗被浪卷入海中；凌晨三点十分，东侧礁石边拾到一只女式凉鞋，未上报。
+- id: f_lin_coverup
+  text: 林晚发现周宁不见后，与陈砚商量处理掉她的行李，对外称她“清晨已离店”；林晚裁掉合照右缘、涂改登记簿房号，陈砚把留言簿那页和断窗扣、维修工单收进工具房。
+- id: f_zhouning_case
+  text: 周宁五年前在汐潮旅馆的台风夜落海失踪，旅馆伪造了她清晨离店的记录，并非清晨自行离开，也非从未到过旅馆或欠房费逃走。
+- id: f_su_grief
+  text: 五年前苏禾收到举报邮件却没有上报，一直保存着邮件，心怀愧疚。
+- id: f_chen_typhoon_motive
+  text: 陈砚怕被当成最后见到周宁的人，也怕无证维修和违规改造牵连自己，所以谎称一直在码头值班。
+- id: f_lin_motive
+  text: 林晚想保住父亲留下的旅馆，不让违规改造和无证留宿曝光，所以隐瞒周宁留宿与落海的事。
+- id: f_zhou_xu_motive
+  text: 周叙以自由摄影师身份作掩护，实际是要查清姐姐周宁五年前失踪的真相。
+characters:
+- id: lin
+  name: 林晚
+  avatar: lin.png
+  profile: 汐潮旅馆现任老板娘，父亲过世后接手旅馆，平日里话不多，对旅馆旧物看得很紧。
+  persona: 谨慎、护短、习惯把话说得滴水不漏；面对质疑时先反问对方凭什么翻旧账。她真心舍不得旅馆，也因此容易在压力下把责任往外推。
+  knows:
+  - f_hall_photo
+  - f_register
+  - f_fire_map
+  - f_seven_guests
+  - f_zhouning_lost
+  - f_lin_coverup
+  - f_duty_log
+  - f_lin_motive
+  - f_zhouning_case
+  secrets:
+  - fact: f_seven_guests
+    until:
+      exposed: l_lin_no_extra
+  - fact: f_zhouning_lost
+    until:
+      shown: c_orders
+      has: c_guestbook
+  - fact: f_lin_coverup
+    until:
+      shown: c_duty_log
+  - fact: f_lin_motive
+    until:
+      exposed: l_lin_no_extra
+  - fact: f_duty_log
+    until:
+      shown: c_orders
+      has: c_guestbook
+  - fact: f_zhouning_case
+    until:
+      shown: c_duty_log
+      has: c_window
+  - fact: f_hall_photo
+    until:
+      shown: c_photo_cropped
+  - fact: f_register
+    until:
+      shown: c_photo_cropped
+  - fact: f_fire_map
+    until:
+      shown: c_photo_cropped
+  lies:
+  - id: l_lin_no_extra
+    claim: 那晚所有客人都登记在册，没有人额外留宿。
+    until:
+      shown: c_orders
+      has: c_guestbook
+    admit: f_seven_guests
+  trust_start: 0
+- id: chen
+  name: 陈砚
+  avatar: chen.png
+  profile: 旅馆维修工，平日在码头打零工，手上总有洗不净的机油印，旅馆有修修补补的活都找他。
+  persona: 沉默寡言，怕担事，一被追问细节就回避；说话爱用“记不清了”搪塞，被逼到墙角时会用零碎证据替自己开脱。
+  knows:
+  - f_hall_photo
+  - f_fire_map
+  - f_window
+  - f_chen_at_hotel
+  - f_zhouning_lost
+  - f_lin_coverup
+  - f_guestbook
+  - f_duty_log
+  - f_chen_typhoon_motive
+  - f_zhouning_case
+  - f_register
+  secrets:
+  - fact: f_chen_at_hotel
+    until:
+      shown: c_duty_log
+  - fact: f_window
+    until:
+      shown: c_photo
+  - fact: f_guestbook
+    until:
+      shown: c_photo
+  - fact: f_chen_typhoon_motive
+    until:
+      exposed: l_chen_pier
+  - fact: f_duty_log
+    until:
+      shown: c_orders
+      has: c_guestbook
+  - fact: f_zhouning_lost
+    until:
+      shown: c_duty_log
+      has: c_window
+  - fact: f_lin_coverup
+    until:
+      shown: c_duty_log
+      has: c_window
+  - fact: f_zhouning_case
+    until:
+      shown: c_duty_log
+      has: c_window
+  - fact: f_hall_photo
+    until:
+      shown: c_photo
+  - fact: f_fire_map
+    until:
+      shown: c_photo
+  - fact: f_register
+    until:
+      shown: c_photo
+  lies:
+  - id: l_chen_pier
+    claim: 台风夜我一直在码头值班，没回过旅馆。
+    until:
+      shown: c_duty_log
+    admit: f_chen_at_hotel
+  trust_start: 0
+- id: zhouxu
+  name: 周叙
+  avatar: zhouxu.png
+  profile: 自称自由摄影师，近日入住汐潮旅馆，总背着相机，在海边一拍就是一下午。
+  persona: 外热内冷，爱用摄影话题岔开问题；对旧照片和旅馆的过去格外上心，被问到家人时明显停顿。
+  knows:
+  - f_photo_original
+  - f_zhouning_identity
+  - f_missing
+  - f_zhou_xu_motive
+  - f_zhouning_case
+  - f_hall_photo
+  secrets:
+  - fact: f_photo_original
+    until:
+      shown: c_register
+      has: c_photo_cropped
+  - fact: f_zhouning_identity
+    until:
+      exposed: l_zhou_photographer
+  - fact: f_missing
+    until:
+      exposed: l_zhou_photographer
+  - fact: f_zhou_xu_motive
+    until:
+      exposed: l_zhou_photographer
+  - fact: f_zhouning_case
+    until:
+      exposed: l_zhou_photographer
+  - fact: f_hall_photo
+    until:
+      shown: c_photo_cropped
+  lies:
+  - id: l_zhou_photographer
+    claim: 我只是来拍海景的摄影爱好者。
+    until:
+      shown: c_email
+    admit: f_zhouning_identity
+  trust_start: 0
+- id: su
+  name: 苏禾
+  avatar: su.png
+  profile: 旅游平台安全审核员，以住客身份入住旅馆，随身带着平板，说是来做例行的住宿安全走访。
+  persona: 条理清楚，讲话客气但步步紧逼；不愿轻易亮出平台内部数据，对“当年有人举报过”这类话反应很大。
+  knows:
+  - f_orders
+  - f_email
+  - f_su_grief
+  - f_zhouning_case
+  - f_fire_map
+  secrets:
+  - fact: f_orders
+    until:
+      shown: c_register
+  - fact: f_email
+    until:
+      shown: c_photo
+  - fact: f_su_grief
+    until:
+      shown: c_email
+  - fact: f_zhouning_case
+    until:
+      shown: c_duty_log
+      has: c_window
+  - fact: f_fire_map
+    until:
+      shown: c_photo_cropped
+  lies: []
+  trust_start: 0
+clues:
+- id: c_photo_cropped
+  title: 合照（裁剪版）
+  content: 大堂墙上装框的五年前台风夜住客合照，画面里六个人，最右侧边缘有一截被裁掉的手臂和半只系红绳的手腕，相框背板有重新装订的痕迹。
+  holder: lin
+  requires: {}
+- id: c_register
+  title: 住客登记簿
+  content: 五年前台风夜那页，七间房全部登记为“已住”；前六行墨色发暗、笔压均匀，第七行墨色偏新，房号处有涂改，隐约能看出“储物间”三字。
+  holder: lin
+  requires: {}
+- id: c_fire_map
+  title: 消防疏散图
+  content: 大堂墙上的消防疏散图标着“七号房”的位置其实是储物间，只有一扇朝海的窗，没有独立卫浴，改造批文一栏空白。
+  holder: lin
+  requires: {}
+- id: c_guestbook
+  title: 旧留言簿
+  content: 五年前那本旅客留言簿，其中一页被撕走后又夹回，页上写着：“半夜两点，有人一直在敲储物间的门，喊一个名字，没人应。”
+  holder: chen
+  requires:
+    shown: c_photo
+- id: c_photo
+  title: 相机原片
+  content: 周叙相机里的原始照片：被裁处站着一个扎马尾的女子，手腕系红绳，身后储物间的窗户亮着灯，玻璃上有一道裂痕。
+  holder: zhouxu
+  requires:
+    shown: c_photo_cropped
+    has: c_register
+- id: c_orders
+  title: 平台订单记录
+  content: 苏禾调出的五年前后台数据：台风夜当天该旅馆只有六笔有效订单，第七间房没有任何预订记录，却显示“已入住”。
+  holder: su
+  requires:
+    shown: c_register
+- id: c_email
+  title: 匿名举报邮件
+  content: 五年前发给平台的举报邮件，写道“汐潮旅馆台风夜有人被留在储物间，如果我不在了，请找我弟弟”，落款只有一个“周”字。
+  holder: su
+  requires:
+    shown: c_photo
+    has: c_orders
+- id: c_missing
+  title: 寻人启事
+  content: 一张保存五年的寻人启事，照片上的女子扎马尾、手腕系红绳，失踪时间正是台风夜次日，联系人是“弟弟周叙”。
+  holder: zhouxu
+  requires:
+    exposed: l_zhou_photographer
+- id: c_duty_log
+  title: 应急值班记录
+  content: 旅馆五年前台风夜的应急值班表，上面有陈砚的签字，时间为凌晨一点四十，备注“七号房窗户加固”；“七号房”三字后来被划掉改成“储物间”，末尾一行写着“03:10
+    东侧礁石边拾到一只女式凉鞋，未上报”。
+  holder: lin
+  requires:
+    shown: c_orders
+    has: c_guestbook
+- id: c_window
+  title: 断窗扣与维修工单
+  content: 陈砚工具箱里断掉的窗扣和一张维修工单，工单时间与值班记录吻合，背面用铅笔写着“窗扣断，风太大，明早换”，字迹被海水洇过。
+  holder: chen
+  requires:
+    shown: c_duty_log
+    has: c_photo
+events:
+- id: e_guestbook
+  when:
+    shown: c_photo
+    to: chen
+  confront:
+  - chen
+  - zhouxu
+  unlock:
+  - c_guestbook
+- id: e_orders
+  when:
+    shown: c_register
+    to: su
+  confront:
+  - lin
+  - su
+  unlock:
+  - c_orders
+- id: e_email
+  when:
+    shown: c_photo
+    has: c_orders
+    to: su
+  confront:
+  - su
+  - zhouxu
+  unlock:
+  - c_email
+- id: e_duty
+  when:
+    shown: c_orders
+    has: c_guestbook
+    to: lin
+  confront:
+  - lin
+  - chen
+  unlock:
+  - c_duty_log
+- id: e_window
+  when:
+    shown: c_duty_log
+    has: c_photo
+    to: chen
+  confront:
+  - chen
+  - lin
+  unlock:
+  - c_window
+kanshan:
+  greeting: 我是坎山，专替人看那些没人愿意再看第二眼的东西。大堂里那三样旧物，你打算先翻哪一样？
+  hints:
+  - done: {}
+    vague: 墙上的合照、前台的登记簿、门边的疏散图，先凑齐这三样，别急着问人。
+    direct: 先把挂在墙上的裁剪合照、前台玻璃柜里的登记簿和门边的消防疏散图都看过一遍，再决定找谁问话。
+  - done:
+      has: c_photo
+    vague: 老板娘的登记簿能补出人数，摄影师的相机能补出被裁掉的人，两边一对就漏风。
+    direct: 把登记簿第七行的涂改指给周叙看，再用被裁处的手腕换他的相机原片，他会交出存储卡。
+  - done:
+      has: c_orders
+    vague: 陈砚听见你提到破窗就会心慌；林晚听见订单数目被点破，才肯把值班的事摆上桌。
+    direct: 先拿相机原片向陈砚问修窗的事，他会取出旧留言簿；把登记簿的补写给苏禾看，换平台六笔订单，再拿这两样逼林晚交出应急值班记录。
+  - done:
+      has: c_duty_log
+    vague: 签了字的人说没回旅馆，那最后一环就在他的工具箱里。
+    direct: 拿值班表上的签字时间和原片里的破窗去问陈砚，他会交出断窗扣和维修工单，这时四道题都能答。
+ending:
+  questions:
+  - id: q1
+    text: 五年前台风夜，汐潮旅馆里实际住着几位客人？
+    options:
+    - 六位
+    - 七位
+    - 八位
+    - 无法确定
+    answer: 七位
+  - id: q2
+    text: 合照里被裁掉的那个人是谁？
+    options:
+    - 一位没有登记的旅客
+    - 旅馆的前任员工
+    - 周叙的姐姐周宁
+    - 当晚拍照的摄影师
+    answer: 周叙的姐姐周宁
+  - id: q3
+    text: 陈砚在台风夜的真实行踪是什么？
+    options:
+    - 在码头值夜班
+    - 在旅馆修理储物间的窗户
+    - 在家休息
+    - 在派出所做笔录
+    answer: 在旅馆修理储物间的窗户
+  - id: q4
+    text: 旅馆真正隐瞒的核心事实是什么？
+    options:
+    - 周宁清晨自行离开
+    - 周宁从未到过旅馆
+    - 周宁在台风夜落海失踪，旅馆伪造了她离店的记录
+    - 周宁欠下房费连夜逃走
+    answer: 周宁在台风夜落海失踪，旅馆伪造了她离店的记录
+  endings:
+  - id: e_light
+    title: 第七只凉鞋
+    text: 合影、登记簿、订单与值班表终于对上了：台风夜旅馆私留了没有预订的周宁，窗被风浪打坏，陈砚签字修窗后离开，周宁为关窗落海。林晚裁掉合照、涂改房号，陈砚收起旧物，周叙找回姐姐的名字，苏禾补上当年没发出的那封举报。海风还在吹，旅馆的灯一盏一盏亮起来。
+    when:
+      correct:
+      - q1
+      - q2
+      - q3
+      - q4
+    retry: false
+  - id: e_fog
+    title: 留在风里的半句
+    text: 旧物还散在各人手里，各人的说法互相绞着，不能互相印证。五年前那一夜还在雾里，周宁的名字和那只凉鞋都没能被摆到众人面前，你听到的仍只是每个人想让你听见的那半句。
+    when: {}
+    retry: true
+  truth: 五年前台风夜，林晚违规把没有预订的周宁留宿在由储物间改成的“七号房”；周宁去关被风浪打碎的窗户时落海失踪。林晚与陈砚为掩盖违规改造和无证留宿，裁掉合照中的她、补写住客记录，并谎称她清晨已离店。真正的证据链是：裁剪合照与登记簿第七行说明账面满房可疑；相机原片补出戴红绳的周宁；平台六笔订单与匿名举报邮件指出第七位住客没有预订，且举报人姓周；应急值班记录证明陈砚当晚在旅馆修储物间窗户，还记录凌晨三点十分拾到一只女式凉鞋未上报；断窗扣与维修工单印证窗是台风夜被打断的。周叙是周宁的弟弟，苏禾是当年压下举报的平台审核员，四人当场核对出周宁落海失踪而被伪造离店记录的真相。
+  lessons:
+  - 账目与照片一旦被人为修过，缺口本身比补上的部分更诚实。
+  - 别把沉默的人当成没有故事的人，也别把最先开口的人当成最无辜的人。
+  - 承担责任不是替人遮掩，而是让失踪者重新拥有名字。
+checked: false

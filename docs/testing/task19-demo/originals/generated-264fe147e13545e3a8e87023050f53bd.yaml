@@ -1,0 +1,275 @@
+id: generated-264fe147e13545e3a8e87023050f53bd
+title: 潮汐第七人
+source: generated
+intro: 海边的潮汐旅馆要重拍一张十年前的开业合照。摄影师林棠带来了那张老照片：六个人站成一排，右侧却留着一小截被剪掉的手臂阴影。可旅馆的住客登记显示，那一晚七间房全部住满。现任老板沈砚舟说那晚他整夜在厨房，前台陆敏说旧登记簿被海水泡坏了，赶来帮忙的救援队员周砚说那夜下着大雨什么也看不见。潮水退了又涨，照片里空出来的那个位置，十年来一直空着。
+facts:
+- id: f_photo
+  text: 十年前的开业合照原有七个人，右侧边缘被裁掉，残留一小截手臂阴影和剪刀修过的白边。
+- id: f_negative
+  text: 沈崇遗物中的原版玻璃底片显示，被裁掉的第七人是穿服务员围裙的年轻女子林澜。
+- id: f_register
+  text: 十年前8月14日的住宿登记簿有七行登记，七间房全部住满，其中一行被涂改液盖住；涂改液下的压痕是“林澜 员工房 8/14”。
+- id: f_drawer
+  text: 前台抽屉锁具维修单证明登记簿一直锁在抽屉内，锁芯锈死前从未进水，涂改是人为。
+- id: f_rail
+  text: 十年前8月15日凌晨，潮汐洞栈道断裂木栏被更换，签收人一栏写着沈砚舟的名字。
+- id: f_weather
+  text: 十年前8月15日报纸气象栏写明：14日夜间晴，风力三级，无降水。
+- id: f_wharf
+  text: 十年前8月24日码头值夜记录：一个外地女孩反复询问旅馆有没有一个叫林澜的服务员。
+- id: f_missing
+  text: 林棠十年前9月报案寻找失踪的姐姐林澜，报案回执上姐妹关系清楚在列。
+- id: f_ledger
+  text: 沈崇的账本记录十年前8月起分三次支出“周家医药费”，末尾有沈崇签名。
+- id: f_core
+  text: 十年前林澜发现旅馆账目问题，在潮汐洞栈道与沈崇争执，木栏断裂坠海；沈崇带沈砚舟与周砚处理现场，并让陆敏涂改登记簿，三人用沉默把她变成了从没来过的人。
+characters:
+- id: shen
+  name: 沈砚舟
+  avatar: shen.png
+  profile: 潮汐旅馆现任老板，十年前是旅馆的年轻帮工。他冷静、寡言，对旅馆的旧物和旧报纸了如指掌。
+  persona: 你极力保住父亲留下的旅馆和自己的名声。你习惯用“那晚我整夜在厨房准备早餐”来挡住一切追问。你清楚父亲做过什么，也清楚自己在凌晨签过什么字、在暗房里剪掉过什么。你说话慢，字斟句酌，只有被签名和底片这类实物逼到墙角时才肯松口。
+  knows:
+  - f_photo
+  - f_negative
+  - f_register
+  - f_rail
+  - f_weather
+  - f_ledger
+  - f_core
+  secrets:
+  - fact: f_negative
+    until:
+      shown: c_negative
+  - fact: f_rail
+    until:
+      shown: c_rail
+  - fact: f_core
+    until:
+      event: e_end
+  lies:
+  - id: l_shen
+    claim: 那晚我整夜在厨房准备第二天的早餐，外面的事什么都不知道。
+    until:
+      shown: c_rail
+    admit: f_rail
+  trust_start: 0
+- id: lu
+  name: 陆敏
+  avatar: lu.png
+  profile: 潮汐旅馆前台管家，任职二十年。她记性好，对登记簿和钥匙归置得一丝不苟，对旧账本绝口不提。
+  persona: 你怕当年的事牵出自己，更怕失去这份工作和养老钱。你总说旧登记簿被海水泡坏了，字是自己化开的。你说话客气，爱打岔，用“锁在抽屉里”来暗示登记簿安全，却不肯解释涂改液。只有抽屉维修单摆到面前，你才会从前台抽屉取出登记簿，并最终交出沈崇的账本。
+  knows:
+  - f_photo
+  - f_register
+  - f_drawer
+  - f_ledger
+  - f_core
+  secrets:
+  - fact: f_register
+    until:
+      shown: c_drawer
+  - fact: f_ledger
+    until:
+      shown: c_register
+  - fact: f_core
+    until:
+      event: e_end
+  lies:
+  - id: l_lu
+    claim: 登记簿那页是被海水泡坏的，字自己化开了。
+    until:
+      shown: c_drawer
+    admit: f_drawer
+  trust_start: 0
+- id: zhou
+  name: 周砚
+  avatar: zhou.png
+  profile: 当地海上救援队队员，十年前在潮汐旅馆打杂。他常年在海边跑，熟悉潮汐洞的每一块礁石，也熟悉那年的旧事。
+  persona: 你隐瞒自己收钱封口、帮忙抬人的往事。你习惯说那晚下着大雨，什么也看不见，用天气来遮挡视线。你敬重救援队的活人，却躲着十年前那个失踪的名字。除非有人拿气象栏和维修单当面拆穿你，否则你只会含糊其辞。
+  knows:
+  - f_rail
+  - f_weather
+  - f_ledger
+  - f_wharf
+  - f_core
+  secrets:
+  - fact: f_rail
+    until:
+      shown: c_weather
+  - fact: f_ledger
+    until:
+      shown: c_ledger
+  - fact: f_wharf
+    until:
+      shown: c_weather
+  - fact: f_core
+    until:
+      event: e_end
+  lies:
+  - id: l_zhou
+    claim: 那晚下着大雨，我什么也看不见。
+    until:
+      shown: c_weather
+    admit: f_weather
+  trust_start: 0
+- id: lin
+  name: 林棠
+  avatar: lin.png
+  profile: 自由摄影师，包下整栋旅馆办“潮汐十年”摄影展。她带着一张老合照和一堆摄影器材，说话直接，对老照片的每个细节都盯得很紧。
+  persona: 你此行的真正目的是找失踪十年的姐姐林澜，逼出真相。你热情地谈展览和重拍合照，却暂时不提自己十年前就来过。你手握合照和灯，看到证据才会交出报案回执。你耐心、尖锐，不会被“办展”这种借口糊弄过去。
+  knows:
+  - f_photo
+  - f_register
+  - f_missing
+  - f_wharf
+  - f_core
+  secrets:
+  - fact: f_missing
+    until:
+      shown: c_wharf
+  - fact: f_core
+    until:
+      event: e_end
+  lies: []
+  trust_start: 0
+clues:
+- id: c_photo
+  title: 六人合照
+  content: 十年前的开业合照，六个人站成一排，右侧边缘有一小截被裁掉的手臂阴影和剪刀修过的白边。
+  holder: lin
+  requires: {}
+- id: c_weather
+  title: 旧报纸气象栏
+  content: 十年前8月15日报纸的气象栏：14日夜间晴，风力三级，无降水。
+  holder: zhou
+  requires: {}
+- id: c_rail
+  title: 栈道护栏维修单
+  content: 十年前8月15日凌晨更换潮汐洞栈道断裂木栏的单据，签收人一栏写着沈砚舟。
+  holder: zhou
+  requires:
+    exposed: l_zhou
+- id: c_drawer
+  title: 前台抽屉锁具维修单
+  content: 记载前台抽屉锁的更换与检修，登记簿锁在抽屉内，锁芯锈死前从未进水。
+  holder: zhou
+  requires:
+    exposed: l_zhou
+- id: c_register
+  title: 住宿登记簿
+  content: 十年前8月14日那页有七行登记，七间房全部住满；其中一行被涂改液盖住。
+  holder: lu
+  requires:
+    exposed: l_lu
+- id: c_ledger
+  title: 沈崇的账本
+  content: 十年前8月起分三次支出“周家医药费”的记录，末尾有沈崇的签名。
+  holder: lu
+  requires:
+    shown: c_register
+- id: c_negative
+  title: 玻璃底片
+  content: 沈崇遗物中的原版玻璃底片，右侧清楚站着第七个人——穿服务员围裙的年轻女子，正对着镜头。
+  holder: shen
+  requires:
+    exposed: l_shen
+- id: c_modify
+  title: 涂改层翻拍
+  content: 借林棠的摄影师侧光灯斜照登记簿那一页，涂改液下的压痕显出“林澜 员工房 8/14”。
+  holder: lin
+  requires:
+    shown: c_register
+- id: c_wharf
+  title: 码头值夜记录
+  content: 十年前8月24日的码头值夜簿：一个外地女孩反复询问“旅馆有没有一个叫林澜的服务员”。
+  holder: zhou
+  requires:
+    exposed: l_zhou
+- id: c_missing
+  title: 失踪报案回执
+  content: 十年前9月的报案回执，报案人林棠，失踪人林澜，关系一栏写着“姐妹”。
+  holder: lin
+  requires:
+    shown: c_wharf
+events:
+- id: e_end
+  when:
+    shown: c_missing
+    to: lin
+  confront:
+  - shen
+  - lu
+  unlock:
+  - c_ledger
+kanshan:
+  greeting: 潮水退了，旅馆门前那块湿漉漉的空地上要重拍一张十年前的合照。林棠把老照片摊在桌上，右边空出的一小块，被剪得干干净净。
+  hints:
+  - done:
+      has: c_photo
+    vague: 照片被剪过，先问清楚是谁裁的、为什么只留下六个人。
+    direct: 把合照给沈砚舟看，逼他说出底片的下落。
+  - done:
+      has: c_register
+    vague: 登记簿的涂改不是海水泡的，锁具维修单已经说明它是人为。
+    direct: 当面指出陆敏说谎，让她交出抽屉里的登记簿。
+  - done:
+      event: e_end
+    vague: 林澜失踪与栈道、账本、封口费都连在一起，该让三个人当面对质。
+    direct: 向林棠出示码头值夜记录与报案回执，触发沈砚舟、陆敏与周砚的当面对质。
+ending:
+  questions:
+  - id: q1
+    text: 十年前那张合照里，被裁掉的第七个人是谁？
+    options:
+    - 旅馆老板沈崇
+    - 临时服务员林澜
+    - 前台陆敏的女儿
+    - 当时还是客人的林棠
+    answer: 临时服务员林澜
+  - id: q2
+    text: 登记簿上被涂改液抹掉的那一行，是谁动的手？
+    options:
+    - 沈砚舟
+    - 陆敏
+    - 周砚
+    - 林棠
+    answer: 陆敏
+  - id: q3
+    text: 周砚说那晚下着大雨什么也看不见，他真正隐瞒的是什么？
+    options:
+    - 他整夜在码头接客
+    - 他目睹林澜坠海并收了沈崇的封口钱
+    - 他在厨房帮工到天亮
+    - 他喝醉睡着了
+    answer: 他目睹林澜坠海并收了沈崇的封口钱
+  - id: q4
+    text: 林棠为什么执意要按老照片重拍这张合照？
+    options:
+    - 为了办摄影展卖照片
+    - 为了找失踪十年的姐姐林澜
+    - 为了低价收购旅馆
+    - 为了采访老住客
+    answer: 为了找失踪十年的姐姐林澜
+  endings:
+  - id: end_true
+    title: 第七个人回来了
+    text: 你把底片、登记簿、维修单和账本一一摆开，沈砚舟、陆敏、周砚在潮汐洞栈道前说出了十年前的凌晨。林棠把侧光灯对准合照右侧，那个穿服务员围裙的身影终于重新站在六个人旁边。她按下快门，十年来空着的位置第一次被填满。
+    when:
+      correct:
+      - q1
+      - q2
+      - q3
+      - q4
+    retry: false
+  - id: end_miss
+    title: 潮水退去又涨
+    text: 线索还没拼齐，合照右侧的空白仍在。有人说那晚只有六个人，有人坚持是海水泡坏了登记簿。你放走了能对质的人，也放走了唯一一次把第七个人叫回照片里的机会。
+    when: {}
+    retry: true
+  truth: 十年前被从合照里裁掉、被从登记簿上抹掉的第七个人，是临时服务员林澜。她发现旅馆账目问题后，在潮汐洞栈道与老板沈崇争执，木栏断裂坠海。沈崇叫来儿子沈砚舟与杂工周砚处理现场，换取周砚母亲医药费，并让前台陆敏涂改登记簿。三人用沉默把她变成了“从没来过的人”。
+  lessons:
+  - 沉默和涂改不能让人真正消失，证据会替失踪者说话。
+  - 以金钱换取沉默只会让事态更沉重，最终仍要面对。
+  - 照片里被剪掉的空白，提醒我们看见被隐去的人。
+checked: false

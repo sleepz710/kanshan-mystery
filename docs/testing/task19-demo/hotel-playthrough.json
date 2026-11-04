@@ -1,0 +1,954 @@
+{
+  "name": "hotel",
+  "started_utc": "2026-11-04T05:56:36.154164+00:00",
+  "story_sha256": "644ea25b41546f92ad17e47d531c011ee84683328bcebee1e58f6e8373f45f96",
+  "mode": "scripted public investigation, real actors and checkers, blind final answers",
+  "checked": true,
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "turns": [
+    {
+      "action": "talk",
+      "character_id": "lin",
+      "text": "请介绍公开身份，并把目前能交给我的材料给我。涉及隐瞒的事请按你现在能说的回答。",
+      "http_status": 200,
+      "seconds": 6.198,
+      "result": {
+        "reply": "我是林晚，汐潮旅馆现在的老板娘。父亲过世后，这摊子就落到我手上。旅馆里的旧东西我看得紧，不是不给人看，是怕翻乱了说不清。你要材料，这几样先拿去——大堂那张合照，还有登记簿和墙上的疏散图。至于别的，我一时也说不清。",
+        "new_clues": [
+          {
+            "id": "c_photo_cropped",
+            "title": "合照（裁剪版）",
+            "content": "大堂墙上装框的五年前台风夜住客合照，画面里六个人，最右侧边缘有一截被裁掉的手臂和半只系红绳的手腕，相框背板有重新装订的痕迹。"
+          },
+          {
+            "id": "c_register",
+            "title": "住客登记簿",
+            "content": "五年前台风夜那页，七间房全部登记为“已住”；前六行墨色发暗、笔压均匀，第七行墨色偏新，房号处有涂改，隐约能看出“储物间”三字。"
+          },
+          {
+            "id": "c_fire_map",
+            "title": "消防疏散图",
+            "content": "大堂墙上的消防疏散图标着“七号房”的位置其实是储物间，只有一扇朝海的窗，没有独立卫浴，改造批文一栏空白。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "chen": 0,
+          "zhouxu": 0,
+          "su": 0
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "chen",
+      "text": "请介绍公开身份，并把目前能交给我的材料给我。涉及隐瞒的事请按你现在能说的回答。",
+      "http_status": 200,
+      "seconds": 6.549,
+      "result": {
+        "reply": "我叫陈砚，旅馆的维修工，平时也在码头打零工，旅馆有什么修修补补的活都找我。材料……我手上现在没什么能给你的。台风那晚我一直在码头值班，没回过旅馆。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "chen": 0,
+          "zhouxu": 0,
+          "su": 0
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "zhouxu",
+      "text": "请介绍公开身份，并把目前能交给我的材料给我。涉及隐瞒的事请按你现在能说的回答。",
+      "http_status": 200,
+      "seconds": 5.768,
+      "result": {
+        "reply": "我叫周叙，自由摄影师，最近住在汐潮旅馆。海边的光线一天里变好几回，值得慢慢等。至于材料，我手头暂时没有能交给你的东西。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "chen": 0,
+          "zhouxu": 0,
+          "su": 0
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "su",
+      "text": "请介绍公开身份，并把目前能交给我的材料给我。涉及隐瞒的事请按你现在能说的回答。",
+      "http_status": 200,
+      "seconds": 5.594,
+      "result": {
+        "reply": "我是旅游平台的安全审核员，这次以住客身份入住，做例行的住宿安全走访。目前手头没有可以交给你的材料，走访记录还在整理。",
+        "new_clues": [],
+        "events": [],
+        "hint": "把已获得的《合照（裁剪版）》出示给周叙，再听听对方的说明。",
+        "trust": {
+          "lin": 0,
+          "chen": 0,
+          "zhouxu": 0,
+          "su": 0
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "zhouxu",
+      "clue_id": "c_photo_cropped",
+      "http_status": 200,
+      "seconds": 13.289,
+      "result": {
+        "reply": "这份《相机原片》可以交给你，请收好。",
+        "new_clues": [
+          {
+            "id": "c_photo",
+            "title": "相机原片",
+            "content": "周叙相机里的原始照片：被裁处站着一个扎马尾的女子，手腕系红绳，身后储物间的窗户亮着灯，玻璃上有一道裂痕。原片完整拍下七位住客，照片背面的当晚点名清单逐人注明姓名和房间，其中第七位为周宁；六笔平台订单的入住人也各只有一人。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "chen": 0,
+          "zhouxu": 0,
+          "su": 0
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "su",
+      "clue_id": "c_register",
+      "http_status": 200,
+      "seconds": 18.66,
+      "result": {
+        "reply": "这本登记簿……第七行确实不对劲。墨色偏新，房号还有涂改，底下隐约是“储物间”。我这边能对上的情况是：五年前台风夜当天，平台上只有六笔有效订单，各登记一位入住人；第七间房没有任何预订记录，却显示“已入住”。登记簿和平台记录对不上，这一点我可以明确告诉你。",
+        "new_clues": [
+          {
+            "id": "c_orders",
+            "title": "平台订单记录",
+            "content": "苏禾调出的五年前后台数据：台风夜当天该旅馆只有六笔有效订单，第七间房没有任何预订记录，却显示“已入住”。六笔订单各登记一位入住人。"
+          }
+        ],
+        "events": [
+          {
+            "type": "confront",
+            "text": "林晚和苏禾围绕证据展开对质。",
+            "lines": [
+              {
+                "speaker": "lin",
+                "text": "你要我回应什么？那晚的客人都在登记簿上，我先前就是这么说的。至于第七行为什么墨色不一样、房号为什么有涂改，我一时说不清——簿子放在大堂这么多年，谁翻过、谁动过笔，我没法一一盯着。"
+              },
+              {
+                "speaker": "su",
+                "text": "林老板，我不是要你解释簿子被谁翻过。我要说的是：那晚平台上只有六笔有效订单，各登记一位入住人；第七间房没有任何预订记录，却显示“已入住”。登记簿上第七行又恰好墨色偏新、房号涂改，底下隐约是“储物间”。这两边对不上，不是一句“说不清”就能带过去的。"
+              }
+            ]
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "chen": 0,
+          "zhouxu": 0,
+          "su": 1
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "chen",
+      "clue_id": "c_photo",
+      "http_status": 200,
+      "seconds": 26.78,
+      "result": {
+        "reply": "这照片……我没见过原片，墙上那张合照倒是天天见。你说的第七位、储物间，我记不清了。台风那晚我在码头值班，旅馆里的事我不清楚。",
+        "new_clues": [
+          {
+            "id": "c_guestbook",
+            "title": "旧留言簿",
+            "content": "五年前那本旅客留言簿，其中一页被撕走后又夹回，页上写着：“半夜两点，有人一直在敲储物间的门，喊一个名字，没人应。”"
+          }
+        ],
+        "events": [
+          {
+            "type": "confront",
+            "text": "陈砚和周叙围绕证据展开对质。",
+            "lines": [
+              {
+                "speaker": "chen",
+                "text": "原片我没见过，墙上那张合照我倒是天天见。第七位、储物间……这些我记不清了。台风那晚我在码头值班，旅馆里的事我不清楚。"
+              },
+              {
+                "speaker": "zhouxu",
+                "text": "这件事我暂时不想多说。"
+              }
+            ]
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "chen": 0,
+          "zhouxu": 0,
+          "su": 1
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "su",
+      "clue_id": "c_photo",
+      "http_status": 200,
+      "seconds": 26.234,
+      "result": {
+        "reply": "这张原片……被裁掉的那个人，扎马尾、手腕系红绳，身后就是储物间，窗户还亮着灯。照片背面点名清单第七位写的是周宁。这和我手上的平台记录能对上：六笔有效订单各只有一位入住人，第七间房没有预订记录，却显示“已入住”。也就是说，那晚确实有第七个人被留在了储物间里，而平台订单里根本没有她。这一点我不再回避。",
+        "new_clues": [
+          {
+            "id": "c_email",
+            "title": "匿名举报邮件",
+            "content": "五年前发给平台的举报邮件，写道“汐潮旅馆台风夜有人被留在储物间，如果我不在了，请找我弟弟”，落款只有一个“周”字。"
+          }
+        ],
+        "events": [
+          {
+            "type": "confront",
+            "text": "苏禾和周叙围绕证据展开对质。",
+            "lines": [
+              {
+                "speaker": "su",
+                "text": "周先生，这张原片我认。被裁掉的那个人扎马尾、手腕系红绳，身后就是储物间，窗户还亮着灯；照片背面点名清单第七位写的是周宁。平台这边六笔有效订单各只有一位入住人，第七间房没有预订记录却显示“已入住”。那晚确实有第七个人被留在储物间里，而订单里根本没有她——这一点我不再回避。"
+              },
+              {
+                "speaker": "zhouxu",
+                "text": "墙上那张合照我确实看过，边缘裁掉了一截，相框背板也有重新装订的痕迹。至于原片里还有什么，我现在不方便展开说。"
+              }
+            ]
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "chen": 0,
+          "zhouxu": 0,
+          "su": 2
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "zhouxu",
+      "clue_id": "c_email",
+      "http_status": 200,
+      "seconds": 6.264,
+      "result": {
+        "reply": "这封邮件……落款那个“周”字，我认得。我不再拿摄影当借口了——被裁掉的那个人是周宁，她是我姐姐。我化名住进这里，就是为了查清她五年前失踪的真相。这张寻人启事我保存了五年，现在交给你。",
+        "new_clues": [
+          {
+            "id": "c_missing",
+            "title": "寻人启事",
+            "content": "一张保存五年的寻人启事，照片上的女子扎马尾、手腕系红绳，失踪时间正是台风夜次日，联系人是“弟弟周叙”。"
+          }
+        ],
+        "events": [
+          {
+            "type": "exposed",
+            "character": "zhouxu",
+            "lie": "l_zhou_photographer",
+            "text": "周叙的说法被拆穿了。已确认：被裁掉的女子是周宁，周叙是她的弟弟，周叙化名住进旅馆查访姐姐失踪的真相。"
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "chen": 0,
+          "zhouxu": 2,
+          "su": 2
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "lin",
+      "clue_id": "c_orders",
+      "http_status": 200,
+      "seconds": 28.21,
+      "result": {
+        "reply": "平台订单……你既然都调出来了，我也没法再拿登记簿搪塞。那晚确实不止六位客人，第七位没有预订，是我安排进储物间改的七号房的。这事我先前说“都登记在册、没人额外留宿”，是我没说实话。",
+        "new_clues": [
+          {
+            "id": "c_duty_log",
+            "title": "应急值班记录",
+            "content": "旅馆五年前台风夜的应急值班表，上面有陈砚的签字，时间为凌晨一点四十，备注“七号房窗户加固”；“七号房”三字后来被划掉改成“储物间”，末尾一行写着“03:10 东侧礁石边拾到一只女式凉鞋，未上报”。"
+          }
+        ],
+        "events": [
+          {
+            "type": "exposed",
+            "character": "lin",
+            "lie": "l_lin_no_extra",
+            "text": "林晚的说法被拆穿了。已确认：五年前台风夜，汐潮旅馆实际有七位住客，第七位没有预订，被林晚安排进由储物间改造的“七号房”。"
+          },
+          {
+            "type": "confront",
+            "text": "林晚和陈砚围绕证据展开对质。",
+            "lines": [
+              {
+                "speaker": "lin",
+                "text": "订单记录你已经看过了，我不再绕。那晚确实有第七位住客，没有预订，是我把人安排进储物间改的七号房。我先前说“都登记在册、没人额外留宿”，那是假话。至于值班表上那些字是谁写的、为什么划改，我不清楚，别把没影的事往我头上安。"
+              },
+              {
+                "speaker": "chen",
+                "text": "照片的事我确实说不清楚，墙上那张合照我天天见，可原片我没碰过。别的……我记不清了。"
+              }
+            ]
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "lin": 1,
+          "chen": 0,
+          "zhouxu": 2,
+          "su": 2
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "chen",
+      "clue_id": "c_duty_log",
+      "http_status": 200,
+      "seconds": 20.489,
+      "result": {
+        "reply": "这……是我的签字。行，我先前说一直在码头值班，那是假话。台风那晚我其实在旅馆，一点四十去修七号房——就是储物间那扇窗，风太大，窗扣断了。我是最后一个见到周宁的人。可那只凉鞋的事，我记不清了，别逼我。",
+        "new_clues": [
+          {
+            "id": "c_window",
+            "title": "断窗扣与维修工单",
+            "content": "陈砚工具箱里断掉的窗扣和一张维修工单，工单时间与值班记录吻合，背面用铅笔写着“窗扣断，风太大，明早换”，字迹被海水洇过。工单背面夹着林晚、陈砚当年的共同签字说明：“周宁在台风夜落海失踪；我们处理了行李，把她写成清晨离店。”工单注明窗扣为台风折断。"
+          }
+        ],
+        "events": [
+          {
+            "type": "exposed",
+            "character": "chen",
+            "lie": "l_chen_pier",
+            "text": "陈砚的说法被拆穿了。已确认：台风夜陈砚其实在旅馆修储物间的窗户，是最后一个见到周宁的人，他并未一直在码头值班。"
+          },
+          {
+            "type": "confront",
+            "text": "陈砚和林晚围绕证据展开对质。",
+            "lines": [
+              {
+                "speaker": "chen",
+                "text": "值班表上确实是我的签字，我认。先前说一直在码头，那是假话——台风那晚我在旅馆，一点四十去修七号房那扇窗，窗扣被风折断了。我是最后一个见到周宁的人。末尾那行凉鞋的事……我记不清了，别逼我。"
+              },
+              {
+                "speaker": "lin",
+                "text": "照片的事我不推给别人，但原片我没碰过，墙上那张我天天见，谁裁的、什么时候换的背板，我记不清了。那晚确实有第七位住客，没有预订，是我安排进储物间改的七号房——这话我认。别的，你问到我头上我也只能说不清楚。"
+              }
+            ]
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "lin": 1,
+          "chen": 1,
+          "zhouxu": 2,
+          "su": 2
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "lin",
+      "text": "请明确说明那晚实际有几位住客，周宁失踪后你怎样处理行李和离店登记。",
+      "http_status": 200,
+      "seconds": 3.186,
+      "result": {
+        "reply": "那晚实际有七位住客，第七位没有预订，是我安排进储物间改的七号房——这个我认。周宁不见以后……行李和离店登记的事，我跟陈砚商量过怎么对外说，具体怎么处理的，我现在不想再往下讲。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 1,
+          "chen": 1,
+          "zhouxu": 2,
+          "su": 2
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "chen",
+      "text": "请核对你当夜在旅馆的行踪，以及周宁失踪后你和林晚怎样处理旧物、伪造离店记录。",
+      "http_status": 200,
+      "seconds": 3.596,
+      "result": {
+        "reply": "行，我认。台风那晚我没在码头，我在旅馆修储物间那扇窗，窗扣被风折断了，我是最后一个见到周宁的人。后来……她不见了，林晚跟我商量，把她的行李处理掉，对外说她清晨已经离店。合照右边裁掉、登记簿上房号涂改，都是那之后的事。留言簿撕下的那页和断窗扣、工单，我收进了工具房。别的我记不清了。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 1,
+          "chen": 1,
+          "zhouxu": 2,
+          "su": 2
+        }
+      }
+    }
+  ],
+  "blind_calls": [
+    {
+      "role": "writer",
+      "seconds": 4.509,
+      "answer": {
+        "answers": {
+          "q1": null,
+          "q2": null,
+          "q3": null,
+          "q4": null
+        }
+      }
+    },
+    {
+      "role": "actor",
+      "seconds": 2.179,
+      "answer": {
+        "answers": {
+          "q1": "七位",
+          "q2": "周叙的姐姐周宁",
+          "q3": "在旅馆修理储物间的窗户",
+          "q4": "周宁在台风夜落海失踪，旅馆伪造了她离店的记录"
+        }
+      }
+    }
+  ],
+  "requests": [
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "enabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "hotel",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    }
+  ],
+  "solvability": {
+    "ok": true,
+    "problems": []
+  },
+  "new_game": {
+    "game_id": "3e3abd1953154b48805c2d030adf280a",
+    "title": "汐潮馆的第七位住客",
+    "intro": "海边旅馆“汐潮馆”的大堂里，挂着五年前的住客合照，前台玻璃柜里锁着当年的住客登记簿，墙上贴着一张消防疏散图。五年后的夏天，老板娘林晚、维修工陈砚、自称摄影师的周叙和平台审核员苏禾又聚在这里。有人问起五年前台风夜旅馆到底住了多少人，也有人想知道那张合照为什么一直被装框挂在原处。答案藏在彼此保管的旧物和说法里。请从大堂里这三样看得见的东西开始，逐层核对。",
+    "checked": false,
+    "characters": [
+      {
+        "id": "lin",
+        "name": "林晚",
+        "avatar": "lin.png",
+        "profile": "汐潮旅馆现任老板娘，父亲过世后接手旅馆，平日里话不多，对旅馆旧物看得很紧。"
+      },
+      {
+        "id": "chen",
+        "name": "陈砚",
+        "avatar": "chen.png",
+        "profile": "旅馆维修工，平日在码头打零工，手上总有洗不净的机油印，旅馆有修修补补的活都找他。"
+      },
+      {
+        "id": "zhouxu",
+        "name": "周叙",
+        "avatar": "zhouxu.png",
+        "profile": "自称自由摄影师，近日入住汐潮旅馆，总背着相机，在海边一拍就是一下午。"
+      },
+      {
+        "id": "su",
+        "name": "苏禾",
+        "avatar": "su.png",
+        "profile": "旅游平台安全审核员，以住客身份入住旅馆，随身带着平板，说是来做例行的住宿安全走访。"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "text": "五年前台风夜，汐潮旅馆里实际住着几位客人？",
+        "options": [
+          "六位",
+          "七位",
+          "八位",
+          "无法确定"
+        ]
+      },
+      {
+        "id": "q2",
+        "text": "合照里被裁掉的那个人是谁？",
+        "options": [
+          "一位没有登记的旅客",
+          "旅馆的前任员工",
+          "周叙的姐姐周宁",
+          "当晚拍照的摄影师"
+        ]
+      },
+      {
+        "id": "q3",
+        "text": "陈砚在台风夜的真实行踪是什么？",
+        "options": [
+          "在码头值夜班",
+          "在旅馆修理储物间的窗户",
+          "在家休息",
+          "在派出所做笔录"
+        ]
+      },
+      {
+        "id": "q4",
+        "text": "旅馆真正隐瞒的核心事实是什么？",
+        "options": [
+          "周宁清晨自行离开",
+          "周宁从未到过旅馆",
+          "周宁在台风夜落海失踪，旅馆伪造了她离店的记录",
+          "周宁欠下房费连夜逃走"
+        ]
+      }
+    ],
+    "kanshan": {
+      "greeting": "我是看山，专替人看那些没人愿意再看第二眼的东西。大堂里那三样旧物，你打算先翻哪一样？",
+      "asks_left": 5
+    }
+  },
+  "initial_permissions": {
+    "lin": [],
+    "chen": [],
+    "zhouxu": [],
+    "su": []
+  },
+  "acquired_clues": [
+    "c_duty_log",
+    "c_email",
+    "c_fire_map",
+    "c_guestbook",
+    "c_missing",
+    "c_orders",
+    "c_photo",
+    "c_photo_cropped",
+    "c_register",
+    "c_window"
+  ],
+  "exposed_lies": [
+    "l_chen_pier",
+    "l_lin_no_extra",
+    "l_zhou_photographer"
+  ],
+  "triggered_events": [
+    "e_duty",
+    "e_email",
+    "e_guestbook",
+    "e_orders",
+    "e_window"
+  ],
+  "public_transcript_answers": {
+    "seconds": 1.232,
+    "answers": {
+      "q1": "七位",
+      "q2": "周叙的姐姐周宁",
+      "q3": "在旅馆修理储物间的窗户",
+      "q4": "周宁在台风夜落海失踪，旅馆伪造了她离店的记录"
+    }
+  },
+  "actual_accusation": {
+    "http_status": 200,
+    "result": {
+      "score": 4,
+      "total": 4,
+      "results": {
+        "q1": true,
+        "q2": true,
+        "q3": true,
+        "q4": true
+      },
+      "ending": {
+        "id": "e_light",
+        "title": "第七只凉鞋",
+        "text": "合影、登记簿、订单与值班表终于对上了：台风夜旅馆私留了没有预订的周宁，窗被风浪打坏，陈砚签字修窗后离开，周宁为关窗落海。林晚裁掉合照、涂改房号，陈砚收起旧物，周叙找回姐姐的名字，苏禾补上当年没发出的那封举报。海风还在吹，旅馆的灯一盏一盏亮起来。",
+        "retry": false
+      },
+      "rating": "S"
+    }
+  },
+  "ending_enumeration": {
+    "combinations": 256,
+    "wrong_complete": 0
+  },
+  "actual_wrong_accusation": {
+    "http_status": 200,
+    "result": {
+      "score": 3,
+      "total": 4,
+      "results": {
+        "q1": false,
+        "q2": true,
+        "q3": true,
+        "q4": true
+      },
+      "ending": {
+        "id": "e_fog",
+        "title": "留在风里的半句",
+        "text": "旧物还散在各人手里，各人的说法互相绞着，不能互相印证。五年前那一夜还在雾里，周宁的名字和那只凉鞋都没能被摆到众人面前，你听到的仍只是每个人想让你听见的那半句。",
+        "retry": true
+      },
+      "rating": "B"
+    }
+  },
+  "accepted": true,
+  "actual_all_wrong_accusation": {
+    "http_status": 200,
+    "result": {
+      "score": 0,
+      "total": 4,
+      "results": {
+        "q1": false,
+        "q2": false,
+        "q3": false,
+        "q4": false
+      },
+      "ending": {
+        "id": "e_fog",
+        "title": "留在风里的半句",
+        "text": "旧物还散在各人手里，各人的说法互相绞着，不能互相印证。五年前那一夜还在雾里，周宁的名字和那只凉鞋都没能被摆到众人面前，你听到的仍只是每个人想让你听见的那半句。",
+        "retry": true
+      },
+      "rating": "C"
+    }
+  },
+  "tested_story_sha256": "af0b5cae0b5d4c4db4c5f6141a9c09e77110eb6a89551cbf194e36ac31c5fa27",
+  "quality_update": {
+    "from": false,
+    "to": true,
+    "scope": "checked metadata only after complete acceptance"
+  },
+  "investigation_seconds": 170.817
+}
