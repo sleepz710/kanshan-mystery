@@ -104,6 +104,13 @@ async def test_generation_prompts_keep_evidence_and_supported_conditions(studio,
     assert "错误选项用于排除，可以与证据冲突" in review_prompt
     assert "不能凭truth、proves、常识或人物私有secret补齐玩家证据" in review_prompt
     assert "改口须直接纠正同一句谎话" in review_prompt
+    assert "直接反驳characters.lie的旧话" in review_prompt
+    assert "characters.correction是拆穿后承认的更正" in review_prompt
+    assert "不能把correction当作需要反驳的对象" in review_prompt
+    assert "人物evidence写明持有人及直接材料，且该材料acquire可达" in review_prompt
+    assert "不要求另加口供、编号或引擎条件语法" in review_prompt
+    assert "卡号的登记人不能直接等同实际刷卡者" in review_prompt
+    assert "关联的早年隐情无法替代当晚行踪的纠正" in review_prompt
 
 
 @pytest.mark.asyncio
