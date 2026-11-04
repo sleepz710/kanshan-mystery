@@ -46,6 +46,8 @@
 
 ## 记录
 
+- 2026-11-04:Claude Code 按用户要求接着做任务 21(分支 `task/21-title-screen`):首页改成标题画面，编剧页和结局页去掉出题给朋友的入口，`/api/stories` 加 `created_at`(SPEC 6.2 已同步)。任务表之外改了两处:`frontend/js/store.js` 加 `list()` 供案件行显示调查到第几回合;`backend/app.py` 的 `StoryInfo` 加 `created_at` 字段。编剧接口、附件限制和快捷素材从 `studio.js` 挪进 `frontend/studio/chats.js`，首页「新建剧场」和编剧页共用。背景音乐文件 `frontend/assets/audio/bgm.mp3` 待队员放入。
+
 - 2026-11-04，任务17–20实现已合并。用户恢复额度后补齐精修样本6/6，六案可开局并恢复同局，主分支607项测试通过。全部样本仍带质量警告，文本审阅发现开局知情范围、证据与答案、时间线仍需修订，演示用案待打磨与实际试玩。追加结果见 `docs/testing/2026-11-04-pregen-resumed.md`，任务21继续暂停。
 
 

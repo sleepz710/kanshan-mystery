@@ -202,7 +202,7 @@ def test_story_listing_is_public_only(client):
     response = client.get("/api/stories")
     assert response.status_code == 200
     story = next(s for s in response.json() if s["id"] == "lost-tuition")
-    assert set(story) == {"id", "title", "intro", "source", "characters"}
+    assert set(story) == {"id", "title", "intro", "source", "characters", "created_at"}
     assert story["source"] == "official"
     assert story["characters"] == 3
 

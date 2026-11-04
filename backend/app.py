@@ -53,6 +53,7 @@ class StoryInfo(BaseModel):
     intro: str
     source: Literal["official", "generated"]
     characters: int
+    created_at: str
     checked: bool | None = None
 
 

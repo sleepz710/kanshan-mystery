@@ -108,6 +108,10 @@
       const id = read(LAST);
       return id ? load(id) : null;
     },
+    // 本地留着的所有对局，首页用来显示每个案件调查到第几回合
+    list() {
+      return savedKeys().map((key) => load(key.slice(PREFIX.length))).filter(Boolean);
+    },
     forget(gameId) {
       remove(PREFIX + gameId);
       if (read(LAST) === gameId) remove(LAST);

@@ -163,7 +163,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 
 | 方法 | 路径 | 请求 | 返回 |
 |---|---|---|---|
-| GET | `/api/stories` | | `[{id, title, intro, source, characters, checked?}]`,`characters` 是人数 |
+| GET | `/api/stories` | | `[{id, title, intro, source, characters, created_at, checked?}]`,`characters` 是人数,`created_at` 是剧本文件的修改时间(ISO 8601,带时区),首页「我的剧场」按它从新到旧排 |
 | POST | `/api/games` | `{"story_id": "lost-tuition"}` | `{game_id, title, intro, checked?, characters: [{id, name, avatar, profile}], questions: [{id, text, options}], kanshan: {greeting, asks_left}}` |
 | POST | `/api/games/{game_id}/talk` | `{"character_id": "xiaolin", "text": "……"}` | 回合结果 |
 | POST | `/api/games/{game_id}/show` | `{"character_id": "zhouming", "clue_id": "c4"}` | 回合结果 |

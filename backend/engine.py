@@ -4,6 +4,7 @@ from __future__ import annotations
 import asyncio
 from copy import deepcopy
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 import logging
 from pathlib import Path
 import re
@@ -75,7 +76,10 @@ class GameEngine:
                     logging.getLogger(__name__).warning("跳过无法加载的剧本：%s", path.name)
                     continue
                 quality = {"checked": story["checked"]} if type(story.get("checked")) is bool else {}
-                result.append({"id": story["id"], "title": story["title"], "intro": story["intro"], "source": story["source"], "characters": len(story["characters"]), **quality})
+                # 首页「我的剧场」按生成时间排序，生成的剧本写完后不再改，修改时间就是生成时间。
+                created_at = datetime.fromtimestamp(path.stat().st_mtime, timezone.utc).isoformat(timespec="seconds")
+                result.append({"id": story["id"], "title": story["title"], "intro": story["intro"], "source": story["source"],
+                               "characters": len(story["characters"]), "created_at": created_at, **quality})
         return result
 
     def new_game(self, story_id: str) -> dict:

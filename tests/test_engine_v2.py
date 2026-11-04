@@ -2,7 +2,9 @@
 
 import asyncio
 from copy import deepcopy
+from datetime import datetime
 import json
+import os
 
 import pytest
 import yaml
@@ -379,6 +381,21 @@ async def test_evasion_defers_four_turn_trust_floor(setup_game, monkeypatch):
     assert (await engine.talk(game_id, "a", "继续"))["trust"]["a"] == 1
 
 
+def test_listing_created_at_is_story_file_mtime(tmp_path):
+    official, generated = tmp_path / "official", tmp_path / "generated"
+    write_story(official, technical_story())
+    older, newer = technical_story("older"), technical_story("newer")
+    for story in (older, newer):
+        story["source"] = "generated"
+        write_story(generated, story)
+    os.utime(generated / "older.yaml", (1762200000, 1762200000))
+    os.utime(generated / "newer.yaml", (1762250000, 1762250000))
+    listing = {story["id"]: story["created_at"] for story in GameEngine(official, generated).list_stories()}
+    assert listing["older"] == "2025-11-03T20:00:00+00:00"
+    assert listing["newer"] == "2025-11-04T09:53:20+00:00"
+    assert datetime.fromisoformat(listing["protocol"]).tzinfo is not None
+
+
 def test_generated_listing_is_public_and_can_start(tmp_path, controlled_agents):
     official, generated = tmp_path / "official", tmp_path / "generated"
     write_story(official, technical_story())
@@ -390,7 +407,7 @@ def test_generated_listing_is_public_and_can_start(tmp_path, controlled_agents):
     engine = GameEngine(official, generated)
     listing = engine.list_stories()
     assert [story["id"] for story in listing] == ["protocol", "created"]
-    assert all(set(story) == {"id", "title", "intro", "source", "characters"} for story in listing)
+    assert all(set(story) == {"id", "title", "intro", "source", "characters", "created_at"} for story in listing)
     assert listing[1]["source"] == "generated" and listing[1]["characters"] == 2
     public = engine.new_game("created")
     assert public["kanshan"] == {"greeting": "公开开场白", "asks_left": 5}

@@ -44,8 +44,6 @@
 .chat-item.active { border-color: rgba(228, 179, 92, .35); background: rgba(228, 179, 92, .09); }
 .chat-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14.5px; font-weight: 600; }
 .chat-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; color: var(--muted); font-size: 12px; }
-.chat-mode.play { color: var(--gold); }
-.chat-mode.share { color: var(--blue-2); }
 .chat-state { display: inline-flex; align-items: center; gap: 4px; }
 .chat-state .icon { width: 13px; height: 13px; }
 .chat-state .spinner { width: 11px; height: 11px; border-width: 2px; }
@@ -87,21 +85,6 @@
 }
 .welcome h1 { font: 700 clamp(28px, 5vw, 36px)/1.2 var(--font-display); letter-spacing: .14em; margin-right: -.14em; }
 .welcome-text { max-width: 34em; color: var(--text-2); }
-
-.modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: min(100%, 560px); margin-top: 6px; }
-.modes button {
-  display: grid; gap: 3px; padding: 12px 14px; text-align: left;
-  border-radius: 14px; border: 1px solid var(--line-2); background: rgba(255, 255, 255, .03);
-  transition: border-color .2s, background-color .2s, box-shadow .2s, opacity .2s;
-}
-.modes button:hover:not(:disabled) { border-color: rgba(228, 179, 92, .45); }
-.modes b { display: flex; align-items: center; gap: 7px; font-size: 15px; }
-.modes b .icon { width: 16px; height: 16px; color: var(--gold); }
-.modes small { color: var(--muted); font-size: 12.5px; line-height: 1.5; }
-.modes button[aria-checked="true"] { border-color: var(--gold); background: rgba(228, 179, 92, .1); box-shadow: 0 0 0 3px rgba(228, 179, 92, .12); }
-.modes button:disabled { cursor: default; }
-.modes button:disabled[aria-checked="false"] { opacity: .4; }
-.modes-lock { color: var(--muted); font-size: 12.5px; }
 
 /* ---------- 对话 ---------- */
 
@@ -183,16 +166,6 @@
 .job-warn .icon { width: 16px; height: 16px; margin-top: 3px; color: var(--orange); }
 .job-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 4px; }
 
-.share-box { display: grid; gap: 8px; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(116, 173, 224, .35); background: rgba(116, 173, 224, .08); }
-.share-label { color: var(--blue-2); font-size: 13px; font-weight: 600; }
-.share-row { display: flex; gap: 8px; }
-.share-row input {
-  flex: 1; width: 0; min-width: 0; height: 40px; padding: 0 12px;
-  border-radius: 10px; border: 1px solid var(--line-2); background: rgba(0, 0, 0, .28);
-  color: var(--text); font-size: 14px;
-}
-.share-box p { color: var(--muted); font-size: 12.5px; line-height: 1.6; }
-
 .job.failed { border: 1px solid rgba(210, 69, 59, .5); background: rgba(210, 69, 59, .08); }
 .job.failed .job-head .writer-seal { filter: grayscale(.6); }
 .job.failed .job-tip { color: var(--text-2); font-size: 14px; }
@@ -245,12 +218,11 @@
   .page-name strong { font-size: 17px; }
   .thread .column { padding-top: 20px; }
   .welcome { padding-bottom: 20px; }
-  .modes { grid-template-columns: 1fr; }
   .msg { max-width: 96%; }
   .job.done h3 { padding-right: 70px; }
   .case-stamp { top: 16px; right: 16px; font-size: 18px; }
   .job-actions .btn { flex: 1; }
-  .composer textarea, .share-row input { font-size: 16px; }
+  .composer textarea { font-size: 16px; }
 }
 
 @media (max-width: 380px) {

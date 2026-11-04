@@ -1,17 +1,26 @@
-/* 编剧对话记录：浏览器里存多段对话和各自的生成任务。编剧页的侧边栏和首页的生成进度都读这里。 */
+/* 编剧对话记录：浏览器里存多段对话和各自的生成任务。编剧页的侧边栏和首页的生成进度都读这里。
+   编剧接口、附件限制和快捷素材也放在这里，首页「新建剧场」和编剧页共用。 */
 (() => {
   const KS = (window.KS = window.KS || {});
   const { api, ApiError, toast } = KS;
 
-  // { chatId, mode, createdAt, updatedAt, messages: [{ role: 'me' | 'writer', text, files }],
-  //   jobs: [{ id, mode, after, status, progress, steps, storyId, error, story, startedAt, endedAt, lost }] }
-  // 列表按 updatedAt 从新到旧排
+  // { chatId, createdAt, updatedAt, messages: [{ role: 'me' | 'writer', text, files }],
+  //   jobs: [{ id, quality, after, status, progress, steps, storyId, error, story, startedAt, endedAt, lost }] }
+  // 列表按 updatedAt 从新到旧排。出题给朋友取消前的记录还带 mode 字段，已不再读取
   const LIST_KEY = 'kanshan:studio:chats';
   const CURRENT_KEY = 'kanshan:studio:current';
   // 旧版只记一段对话，第一次读取时搬进列表
   const LEGACY_KEY = 'kanshan:studio';
-  const OWNER_PREFIX = 'kanshan:owner:';
   const KEEP = 30;
+
+  // 与 backend/studio 的限制一致，发送前先提示
+  const LIMITS = { files: 5, fileBytes: 256 * 1024, urls: 3 };
+  const URL_PATTERN = /https?:\/\/[^\s<>"'，。；）)]+/g;
+  const STARTERS = [
+    { label: '贴一碗海龟汤', text: '汤面：小周每天准时给楼下的流浪猫喂食。一天夜里他报了警，说是那只猫救了他。\n汤底：那晚猫没有出现，小周绕到楼后去找，看见有人正在撬他家一楼的窗户。' },
+    { label: '说一句想法', text: '我想玩一个发生在大雪封山的民宿里的案子，老板的账本不见了。' },
+    { label: '改编网页上的故事', text: '请改编这个网页里的故事：https://' },
+  ];
   // 隐私模式等禁用本地存储时退回内存，当前页面照常能用
   const memory = new Map();
 
@@ -96,13 +105,80 @@
 
   const runningJob = (chat) => chat.jobs.find((j) => j.status === 'running');
 
-  function keepOwnerToken(storyId, token) {
-    try {
-      localStorage.setItem(OWNER_PREFIX + storyId, token);
-    } catch {
-      toast('浏览器禁用了本地存储，出题人页面需要的访问令牌没能保存。', 'error', 8000);
+  // 编剧开始生成时记下的任务；after 是任务开始时的消息条数，编剧页把任务卡片画在这条消息后面
+  const newJob = (job, after) => ({
+    id: job.id, quality: job.quality || 'fast', after, status: 'running', progress: '', steps: [], startedAt: Date.now(),
+  });
+
+  // 首页「新建剧场」交给编剧后，把开场白、第一条消息和编剧的回复存成一段对话，编剧页打开就能接着聊
+  function begin(chat, msg, result) {
+    const now = Date.now();
+    const record = {
+      chatId: chat.chat_id, createdAt: now, updatedAt: now,
+      messages: [{ role: 'writer', text: chat.reply }, msg, { role: 'writer', text: result.reply }], jobs: [],
+    };
+    if (result.job) record.jobs.push(newJob(result.job, record.messages.length));
+    put(record);
+    setCurrent(record.chatId);
+  }
+
+  // 按限制把选中的文件加进附件列表，不合要求的弹提示
+  function addFiles(list, attached) {
+    for (const file of list) {
+      const ext = (file.name.match(/\.[^.]+$/) || [''])[0].toLowerCase();
+      if (ext !== '.txt' && ext !== '.md') toast(`「${file.name}」不是 txt 或 md 文件，其他格式请把文字复制进输入框。`, 'error', 6000);
+      else if (file.size > LIMITS.fileBytes) toast(`「${file.name}」超过 256 KB，请只上传要改编的部分。`, 'error', 6000);
+      else if (!file.size) toast(`「${file.name}」是空文件。`, 'error');
+      else if (attached.some((f) => f.name === file.name)) toast(`「${file.name}」已经在附件里了。`);
+      else if (attached.length >= LIMITS.files) {
+        toast(`每次最多附 ${LIMITS.files} 个文件。`, 'error');
+        break;
+      } else attached.push(file);
     }
   }
+
+  // ---------- 编剧接口（SPEC 6.2 生成剧场） ----------
+
+  function errorMessage(status, data) {
+    const detail = data && data.detail;
+    if (typeof detail === 'string' && detail) return detail;
+    if (Array.isArray(detail)) return '提交的内容格式不对，请修改后再试。';
+    if (status === 401) return '需要体验账号和口令，请刷新页面后输入。';
+    if (status === 413) return '附件太大了，请只上传要改编的部分。';
+    if (status >= 500) return '服务暂时不可用，请稍后重试。';
+    return `请求失败（${status}），请重试。`;
+  }
+
+  // 和 js/api.js 的 request 一样，多支持 multipart 上传
+  async function request(method, path, body) {
+    const json = body !== undefined && !(body instanceof FormData);
+    let response;
+    try {
+      response = await fetch(path, {
+        method,
+        headers: json ? { 'Content-Type': 'application/json' } : undefined,
+        body: json ? JSON.stringify(body) : body,
+      });
+    } catch {
+      throw new ApiError(0, '网络连接失败，请检查网络后重试。');
+    }
+    let data = null;
+    if ((response.headers.get('content-type') || '').includes('application/json')) {
+      try {
+        data = await response.json();
+      } catch {
+        throw new ApiError(response.status, '服务返回的内容无法读取，请重试。');
+      }
+    }
+    if (!response.ok) throw new ApiError(response.status, errorMessage(response.status, data));
+    if (data === null) throw new ApiError(response.status, '服务返回的内容无法读取，请重试。');
+    return data;
+  }
+
+  const writer = {
+    newChat: () => request('POST', '/api/studio/chats', { mode: 'play' }),
+    send: (chatId, form) => request('POST', `/api/studio/chats/${encodeURIComponent(chatId)}/messages`, form),
+  };
 
   async function storyInfo(storyId) {
     let stories;
@@ -141,10 +217,7 @@
       return true;
     }
     Object.assign(job, { status: data.status, progress: data.progress, storyId: data.story_id, error: data.error, endedAt: Date.now() });
-    if (data.status === 'done') {
-      if (data.owner_token) keepOwnerToken(data.story_id, data.owner_token);
-      job.story = await storyInfo(data.story_id);
-    }
+    if (data.status === 'done') job.story = await storyInfo(data.story_id);
     return true;
   }
 
@@ -162,5 +235,8 @@
     return `${date.getMonth() + 1} 月 ${date.getDate()} 日`;
   }
 
-  KS.chats = { list, get, put, current, setCurrent, title, hasTalk, runningJob, checkJob, clock, ago };
+  KS.chats = {
+    list, get, put, current, setCurrent, title, hasTalk, runningJob, newJob, begin, checkJob, clock, ago,
+    LIMITS, URL_PATTERN, STARTERS, addFiles, writer,
+  };
 })();
