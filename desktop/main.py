@@ -5,7 +5,6 @@ import os
 from pathlib import Path
 import secrets
 import socket
-import sys
 import threading
 import time
 
@@ -36,7 +35,6 @@ def main():
     import msvcrt
     import uvicorn
     import webview
-    from webview.menu import Menu, MenuAction
 
     instance = (directory / "instance.lock").open("a+b")
     instance.seek(0)
@@ -72,31 +70,45 @@ def main():
             def quit(self):
                 window.destroy()
 
+            def minimize(self):
+                window.minimize()
+
+            def toggle_maximize(self):
+                if frame.is_maximized():
+                    window.restore()
+                else:
+                    window.maximize()
+                return frame.is_maximized()
+
+            def is_maximized(self):
+                return frame.is_maximized()
+
+            def start_drag(self):
+                frame.start_drag()
+
         target = "/" if app.state.desktop_settings.public()["configured"] else "/settings/"
         window = webview.create_window("看山谜案馆", f"http://127.0.0.1:{port}{target}", js_api=WindowApi(),
-                                       width=1600, height=900, min_size=(1280, 720), background_color="#101614")
-        menu = [Menu("应用", [
-            MenuAction("模型设置", lambda: window.load_url(f"http://127.0.0.1:{port}/settings/")),
-            MenuAction("返回首页", lambda: window.load_url(f"http://127.0.0.1:{port}/")),
-            MenuAction("退出", window.destroy),
-        ])]
+                                       width=1600, height=900, min_size=(1280, 720), background_color="#101614",
+                                       frameless=True, easy_drag=False, shadow=True)
+        frame = None
 
-        def show_native_menu():
-            from System import Action
-            from System.Windows.Forms import MenuStrip
+        def install_frame():
+            nonlocal frame
+            from desktop.window_frame import WindowFrame
 
-            def arrange():
-                for control in window.native.Controls:
-                    if isinstance(control, MenuStrip):
-                        window.native.MainMenuStrip = control
-                        control.SendToBack()
-                window.native.PerformLayout()
+            frame = WindowFrame(window.native)
 
-            window.native.Invoke(Action(arrange))
+        def publish_window_state():
+            if window.events.loaded.is_set():
+                maximized = "true" if frame.is_maximized() else "false"
+                window.evaluate_js("window.dispatchEvent(new CustomEvent('kanshan:window-state', "
+                                   "{detail: {maximized: " + maximized + "}}));")
 
-        window.events.shown += show_native_menu
+        window.events.before_show += install_frame
+        window.events.maximized += publish_window_state
+        window.events.restored += publish_window_state
         webview.start(gui="edgechromium", private_mode=False, storage_path=str(directory / "webview"),
-                      icon=str(Path(__file__).resolve().parent / "kanshan.ico"), menu=menu)
+                      icon=str(Path(__file__).resolve().parent / "kanshan.ico"))
     finally:
         server.should_exit = True
         worker.join()
