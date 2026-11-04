@@ -1,0 +1,42 @@
+{
+  "source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "main_source_commit": "a0422579be71169a43fa4f73f01acb9044b9bec3",
+  "started_at_utc": "2026-11-04T15:17:00.250038+00:00",
+  "purpose": "only generation-in-progress public close and restart cleanup",
+  "complete_new_generation_requested": false,
+  "v4_completed_case_source": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "forced_kill": false,
+  "copied_only_existing_game_browser_storage_and_stories": true,
+  "before": {
+    "port": 62963,
+    "game_id": "ff29a55210644290b580191e40d6ce44",
+    "turns": 2,
+    "clues": 2,
+    "checked": true,
+    "story_ids": [
+      "generated-e11fedc144684d5dac61abf7c6b046ea",
+      "lost-tuition"
+    ]
+  },
+  "status": "failed",
+  "cause_type": "AssertionError",
+  "finally_close": {
+    "pid": 28980,
+    "port": 62963,
+    "debug_port": 41814,
+    "environment": {
+      "PATH": "C:\\Windows;C:\\Windows\\System32",
+      "APPDATA": "C:\\Users\\HW\\AppData\\Roaming",
+      "KANSHAN_DATA_DIR_supplied": true,
+      "default_appdata": false,
+      "offline": false
+    },
+    "exit_code": 0,
+    "natural_exit_seconds": 38.71,
+    "port_released": true,
+    "request_audit": [],
+    "blocked_model_route_attempts": 0
+  },
+  "qa_key_cleared": true,
+  "ended_at_utc": "2026-11-04T15:18:31.381824+00:00"
+}

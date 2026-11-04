@@ -1,0 +1,551 @@
+{
+  "audit_kind": "independent_readonly_final_v5_artifact_source_hash_audit",
+  "checked_at_utc": "2026-11-04T15:17:36.893929+00:00",
+  "integrated_source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "main_source_commit": "a0422579be71169a43fa4f73f01acb9044b9bec3",
+  "package_directory": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v5-7890182\\看山谜案馆",
+  "provenance": {
+    "cache_path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache\\music-build-provenance.json",
+    "cache_sha256": "e03703be362421370864b3ca66c0b29dd7580cf41677daab6604e5aa9190b731",
+    "package_path": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v5-7890182\\看山谜案馆\\构建来源.json",
+    "package_sha256": "bca98bcf733e5f46eb575158026c966999d9ee1a76e5c8304f30537180213cd0",
+    "package_source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+    "both_source_commit_match": true
+  },
+  "modules": {
+    "count": 19,
+    "all_git_hashes_match": true,
+    "compiled_code_verification": "复用打包器已经完成的CArchive code object逐项对比，不启动EXE。",
+    "compiled_code_pass_count": 19,
+    "items": [
+      {
+        "path": "backend/__init__.py",
+        "git_source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "provenance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "package_provenance_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/agents.py",
+        "git_source_sha256": "24f5d69002895dacd75abcb81224a44777268762b9542b92ed999463c5f2a45a",
+        "provenance_sha256": "24f5d69002895dacd75abcb81224a44777268762b9542b92ed999463c5f2a45a",
+        "package_provenance_sha256": "24f5d69002895dacd75abcb81224a44777268762b9542b92ed999463c5f2a45a",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/app.py",
+        "git_source_sha256": "ebd2f3499a9eacc671cfa0886e7dc1135e33a9f4be2881103a80431cd8aba53a",
+        "provenance_sha256": "ebd2f3499a9eacc671cfa0886e7dc1135e33a9f4be2881103a80431cd8aba53a",
+        "package_provenance_sha256": "ebd2f3499a9eacc671cfa0886e7dc1135e33a9f4be2881103a80431cd8aba53a",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/engine.py",
+        "git_source_sha256": "2ae71170f7f8bcdca4ae805930042ef3ea7d3feb4247d28a9f238f53fdeb3b43",
+        "provenance_sha256": "2ae71170f7f8bcdca4ae805930042ef3ea7d3feb4247d28a9f238f53fdeb3b43",
+        "package_provenance_sha256": "2ae71170f7f8bcdca4ae805930042ef3ea7d3feb4247d28a9f238f53fdeb3b43",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/kanshan.py",
+        "git_source_sha256": "5a5a94d908b32462f809e38258eaffd89705697d5cdb5977ba60d20e3463df12",
+        "provenance_sha256": "5a5a94d908b32462f809e38258eaffd89705697d5cdb5977ba60d20e3463df12",
+        "package_provenance_sha256": "5a5a94d908b32462f809e38258eaffd89705697d5cdb5977ba60d20e3463df12",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/llm.py",
+        "git_source_sha256": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+        "provenance_sha256": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+        "package_provenance_sha256": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/paths.py",
+        "git_source_sha256": "e13208f13c639f97440fdbbc2de17023d3ee05e9e40920fba2e0d5a9dacd9c9c",
+        "provenance_sha256": "e13208f13c639f97440fdbbc2de17023d3ee05e9e40920fba2e0d5a9dacd9c9c",
+        "package_provenance_sha256": "e13208f13c639f97440fdbbc2de17023d3ee05e9e40920fba2e0d5a9dacd9c9c",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/studio/__init__.py",
+        "git_source_sha256": "38de8aacecae01185944868ed0ef33e0a4af731a766c3a63352abc4a36de32cb",
+        "provenance_sha256": "38de8aacecae01185944868ed0ef33e0a4af731a766c3a63352abc4a36de32cb",
+        "package_provenance_sha256": "38de8aacecae01185944868ed0ef33e0a4af731a766c3a63352abc4a36de32cb",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/studio/api.py",
+        "git_source_sha256": "6b986f47258f324ee799c97bd5236190bfa2b2c2720b4d9b0640270f6a43642a",
+        "provenance_sha256": "6b986f47258f324ee799c97bd5236190bfa2b2c2720b4d9b0640270f6a43642a",
+        "package_provenance_sha256": "6b986f47258f324ee799c97bd5236190bfa2b2c2720b4d9b0640270f6a43642a",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/studio/check.py",
+        "git_source_sha256": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7",
+        "provenance_sha256": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7",
+        "package_provenance_sha256": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/studio/ingest.py",
+        "git_source_sha256": "f76adbe9fd36aaaf1248fdaab7ca074fddb13e53fe97d3922ce306e8dcc5510b",
+        "provenance_sha256": "f76adbe9fd36aaaf1248fdaab7ca074fddb13e53fe97d3922ce306e8dcc5510b",
+        "package_provenance_sha256": "f76adbe9fd36aaaf1248fdaab7ca074fddb13e53fe97d3922ce306e8dcc5510b",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/studio/mock.py",
+        "git_source_sha256": "2b247c590ecbf4910bfc3247a6c3640144e606903f61cea7c9b58700a53e37fc",
+        "provenance_sha256": "2b247c590ecbf4910bfc3247a6c3640144e606903f61cea7c9b58700a53e37fc",
+        "package_provenance_sha256": "2b247c590ecbf4910bfc3247a6c3640144e606903f61cea7c9b58700a53e37fc",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/studio/service.py",
+        "git_source_sha256": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+        "provenance_sha256": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+        "package_provenance_sha256": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "backend/studio/share.py",
+        "git_source_sha256": "ddee26d770218cd6de495e406888669cf70fc958a4f8e953889c2838991ec6a9",
+        "provenance_sha256": "ddee26d770218cd6de495e406888669cf70fc958a4f8e953889c2838991ec6a9",
+        "package_provenance_sha256": "ddee26d770218cd6de495e406888669cf70fc958a4f8e953889c2838991ec6a9",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "desktop/__init__.py",
+        "git_source_sha256": "fc444c1a3f5d97a4856c1f17e90ae9b9b484ffe063584197ca27dafb2d8fb315",
+        "provenance_sha256": "fc444c1a3f5d97a4856c1f17e90ae9b9b484ffe063584197ca27dafb2d8fb315",
+        "package_provenance_sha256": "fc444c1a3f5d97a4856c1f17e90ae9b9b484ffe063584197ca27dafb2d8fb315",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "desktop/runtime.py",
+        "git_source_sha256": "4ec6e86e5c6d4503ea926403239ae39655eba8e522b3cbae4cac7caac5bf0263",
+        "provenance_sha256": "4ec6e86e5c6d4503ea926403239ae39655eba8e522b3cbae4cac7caac5bf0263",
+        "package_provenance_sha256": "4ec6e86e5c6d4503ea926403239ae39655eba8e522b3cbae4cac7caac5bf0263",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "desktop/settings.py",
+        "git_source_sha256": "17bdefc99de61eb56562fc0c71bee29fb372df22b44599fdb2668a284bf02f29",
+        "provenance_sha256": "17bdefc99de61eb56562fc0c71bee29fb372df22b44599fdb2668a284bf02f29",
+        "package_provenance_sha256": "17bdefc99de61eb56562fc0c71bee29fb372df22b44599fdb2668a284bf02f29",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "desktop/window_frame.py",
+        "git_source_sha256": "dcb0d6fbba6c7dffaef1c118e338c312614df25698dc482238131f030b9d0d8b",
+        "provenance_sha256": "dcb0d6fbba6c7dffaef1c118e338c312614df25698dc482238131f030b9d0d8b",
+        "package_provenance_sha256": "dcb0d6fbba6c7dffaef1c118e338c312614df25698dc482238131f030b9d0d8b",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      },
+      {
+        "path": "desktop/main.py",
+        "git_source_sha256": "554a5884c0b38704b5b491b515a5131cfbda66acfa2a6d30791102351ba99a65",
+        "provenance_sha256": "554a5884c0b38704b5b491b515a5131cfbda66acfa2a6d30791102351ba99a65",
+        "package_provenance_sha256": "554a5884c0b38704b5b491b515a5131cfbda66acfa2a6d30791102351ba99a65",
+        "git_source_hash_matches_both_provenance": true,
+        "packager_code_object_matches": true
+      }
+    ]
+  },
+  "resources": {
+    "count": 37,
+    "all_hashes_match_git_and_both_provenance": true,
+    "items": [
+      {
+        "path": "frontend/ending.html",
+        "bytes": 2622,
+        "git_sha256": "c3210672f027889b97069f063316952fe6ad0ccf7d635ef13e63b51ce802cd0d",
+        "packaged_sha256": "c3210672f027889b97069f063316952fe6ad0ccf7d635ef13e63b51ce802cd0d",
+        "provenance_sha256": "c3210672f027889b97069f063316952fe6ad0ccf7d635ef13e63b51ce802cd0d",
+        "package_provenance_sha256": "c3210672f027889b97069f063316952fe6ad0ccf7d635ef13e63b51ce802cd0d",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/game.html",
+        "bytes": 8748,
+        "git_sha256": "f403015362128d96b1ca298dcd3f93e0b200f33af9c2b51afc8143a30f60ca7d",
+        "packaged_sha256": "f403015362128d96b1ca298dcd3f93e0b200f33af9c2b51afc8143a30f60ca7d",
+        "provenance_sha256": "f403015362128d96b1ca298dcd3f93e0b200f33af9c2b51afc8143a30f60ca7d",
+        "package_provenance_sha256": "f403015362128d96b1ca298dcd3f93e0b200f33af9c2b51afc8143a30f60ca7d",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/index.html",
+        "bytes": 8761,
+        "git_sha256": "e990d16c6f74636532ad8c0c8d507f7e0989562c8b58b9ec00397d1a6f21f7fb",
+        "packaged_sha256": "e990d16c6f74636532ad8c0c8d507f7e0989562c8b58b9ec00397d1a6f21f7fb",
+        "provenance_sha256": "e990d16c6f74636532ad8c0c8d507f7e0989562c8b58b9ec00397d1a6f21f7fb",
+        "package_provenance_sha256": "e990d16c6f74636532ad8c0c8d507f7e0989562c8b58b9ec00397d1a6f21f7fb",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/icon-180.png",
+        "bytes": 3227,
+        "git_sha256": "e584b812f3d8f363e32bbf428474da6d9e1bb9cb8488fefcded0311a790b0412",
+        "packaged_sha256": "e584b812f3d8f363e32bbf428474da6d9e1bb9cb8488fefcded0311a790b0412",
+        "provenance_sha256": "e584b812f3d8f363e32bbf428474da6d9e1bb9cb8488fefcded0311a790b0412",
+        "package_provenance_sha256": "e584b812f3d8f363e32bbf428474da6d9e1bb9cb8488fefcded0311a790b0412",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/logo.svg",
+        "bytes": 677,
+        "git_sha256": "4a7f81bfc6b3b0a1ee2cbf2e062bf97470e03c11f1f03b2376d0ad0deb5e21b3",
+        "packaged_sha256": "4a7f81bfc6b3b0a1ee2cbf2e062bf97470e03c11f1f03b2376d0ad0deb5e21b3",
+        "provenance_sha256": "4a7f81bfc6b3b0a1ee2cbf2e062bf97470e03c11f1f03b2376d0ad0deb5e21b3",
+        "package_provenance_sha256": "4a7f81bfc6b3b0a1ee2cbf2e062bf97470e03c11f1f03b2376d0ad0deb5e21b3",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/css/base.css",
+        "bytes": 12097,
+        "git_sha256": "7287f117d96ec6b291849f7f2ffd4ff53ba7e5bd5de8a22aea7e64cefe864f71",
+        "packaged_sha256": "7287f117d96ec6b291849f7f2ffd4ff53ba7e5bd5de8a22aea7e64cefe864f71",
+        "provenance_sha256": "7287f117d96ec6b291849f7f2ffd4ff53ba7e5bd5de8a22aea7e64cefe864f71",
+        "package_provenance_sha256": "7287f117d96ec6b291849f7f2ffd4ff53ba7e5bd5de8a22aea7e64cefe864f71",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/css/ending.css",
+        "bytes": 6022,
+        "git_sha256": "8d766ea9e9b4b3dc216a8f355e9d47847256e6b76ea83cbbdda724c649b1c414",
+        "packaged_sha256": "8d766ea9e9b4b3dc216a8f355e9d47847256e6b76ea83cbbdda724c649b1c414",
+        "provenance_sha256": "8d766ea9e9b4b3dc216a8f355e9d47847256e6b76ea83cbbdda724c649b1c414",
+        "package_provenance_sha256": "8d766ea9e9b4b3dc216a8f355e9d47847256e6b76ea83cbbdda724c649b1c414",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/css/game.css",
+        "bytes": 34750,
+        "git_sha256": "e88a3af41338fba10c85da49a01f1401c77a85dfeffb2d59fa19ce4a612c68ca",
+        "packaged_sha256": "e88a3af41338fba10c85da49a01f1401c77a85dfeffb2d59fa19ce4a612c68ca",
+        "provenance_sha256": "e88a3af41338fba10c85da49a01f1401c77a85dfeffb2d59fa19ce4a612c68ca",
+        "package_provenance_sha256": "e88a3af41338fba10c85da49a01f1401c77a85dfeffb2d59fa19ce4a612c68ca",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/css/home.css",
+        "bytes": 12404,
+        "git_sha256": "198c11cf0350eab979443bd1f7539f649dcd8ef197e4066baee8ad476c50d93a",
+        "packaged_sha256": "198c11cf0350eab979443bd1f7539f649dcd8ef197e4066baee8ad476c50d93a",
+        "provenance_sha256": "198c11cf0350eab979443bd1f7539f649dcd8ef197e4066baee8ad476c50d93a",
+        "package_provenance_sha256": "198c11cf0350eab979443bd1f7539f649dcd8ef197e4066baee8ad476c50d93a",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/css/window.css",
+        "bytes": 2463,
+        "git_sha256": "e0a24fb87c2c876377b6d7cb478f5c2f499bc88394fe0cf544513f419d3dcdc0",
+        "packaged_sha256": "e0a24fb87c2c876377b6d7cb478f5c2f499bc88394fe0cf544513f419d3dcdc0",
+        "provenance_sha256": "e0a24fb87c2c876377b6d7cb478f5c2f499bc88394fe0cf544513f419d3dcdc0",
+        "package_provenance_sha256": "e0a24fb87c2c876377b6d7cb478f5c2f499bc88394fe0cf544513f419d3dcdc0",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/js/api.js",
+        "bytes": 2496,
+        "git_sha256": "735c3a54733385a45ed5062d1b5dc80d46dd552b5dac4232171e5c28d7d35abc",
+        "packaged_sha256": "735c3a54733385a45ed5062d1b5dc80d46dd552b5dac4232171e5c28d7d35abc",
+        "provenance_sha256": "735c3a54733385a45ed5062d1b5dc80d46dd552b5dac4232171e5c28d7d35abc",
+        "package_provenance_sha256": "735c3a54733385a45ed5062d1b5dc80d46dd552b5dac4232171e5c28d7d35abc",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/js/ending.js",
+        "bytes": 5378,
+        "git_sha256": "959c29aaad0cec6339a947aea44a89ea52d80421fa1bf0fd42ac81de57c17109",
+        "packaged_sha256": "959c29aaad0cec6339a947aea44a89ea52d80421fa1bf0fd42ac81de57c17109",
+        "provenance_sha256": "959c29aaad0cec6339a947aea44a89ea52d80421fa1bf0fd42ac81de57c17109",
+        "package_provenance_sha256": "959c29aaad0cec6339a947aea44a89ea52d80421fa1bf0fd42ac81de57c17109",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/js/game.js",
+        "bytes": 45935,
+        "git_sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+        "packaged_sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+        "provenance_sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+        "package_provenance_sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/js/home.js",
+        "bytes": 20876,
+        "git_sha256": "19fb516e34de078878663d0ec2aec55cff9539f559fcd8743b125b1c762963ce",
+        "packaged_sha256": "19fb516e34de078878663d0ec2aec55cff9539f559fcd8743b125b1c762963ce",
+        "provenance_sha256": "19fb516e34de078878663d0ec2aec55cff9539f559fcd8743b125b1c762963ce",
+        "package_provenance_sha256": "19fb516e34de078878663d0ec2aec55cff9539f559fcd8743b125b1c762963ce",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/js/music.js",
+        "bytes": 5018,
+        "git_sha256": "bc705deb2b84f12499602776fc77324f8dd56372760b8bcd132a5a7778a3c9d9",
+        "packaged_sha256": "bc705deb2b84f12499602776fc77324f8dd56372760b8bcd132a5a7778a3c9d9",
+        "provenance_sha256": "bc705deb2b84f12499602776fc77324f8dd56372760b8bcd132a5a7778a3c9d9",
+        "package_provenance_sha256": "bc705deb2b84f12499602776fc77324f8dd56372760b8bcd132a5a7778a3c9d9",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/js/store.js",
+        "bytes": 3238,
+        "git_sha256": "5edecddec244b96b3c4dc6aacd0b486ca52e4a3bf3f47a7e53dc0a9e9ede3e1e",
+        "packaged_sha256": "5edecddec244b96b3c4dc6aacd0b486ca52e4a3bf3f47a7e53dc0a9e9ede3e1e",
+        "provenance_sha256": "5edecddec244b96b3c4dc6aacd0b486ca52e4a3bf3f47a7e53dc0a9e9ede3e1e",
+        "package_provenance_sha256": "5edecddec244b96b3c4dc6aacd0b486ca52e4a3bf3f47a7e53dc0a9e9ede3e1e",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/js/ui.js",
+        "bytes": 10143,
+        "git_sha256": "2b39a3ac847ecc95d1e315fb9ca5edbf5408e13230c10d616fd6b54703e75752",
+        "packaged_sha256": "2b39a3ac847ecc95d1e315fb9ca5edbf5408e13230c10d616fd6b54703e75752",
+        "provenance_sha256": "2b39a3ac847ecc95d1e315fb9ca5edbf5408e13230c10d616fd6b54703e75752",
+        "package_provenance_sha256": "2b39a3ac847ecc95d1e315fb9ca5edbf5408e13230c10d616fd6b54703e75752",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/js/window.js",
+        "bytes": 3698,
+        "git_sha256": "a3fab19f5ac4da71aee71e2be49ea49da2ba2585d429913e826c2b223cf326db",
+        "packaged_sha256": "a3fab19f5ac4da71aee71e2be49ea49da2ba2585d429913e826c2b223cf326db",
+        "provenance_sha256": "a3fab19f5ac4da71aee71e2be49ea49da2ba2585d429913e826c2b223cf326db",
+        "package_provenance_sha256": "a3fab19f5ac4da71aee71e2be49ea49da2ba2585d429913e826c2b223cf326db",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/share/index.html",
+        "bytes": 1288,
+        "git_sha256": "a14dfee81e9699ba1f40fdcb3464e66a760f4bee58cd06181cab65ef6947fa68",
+        "packaged_sha256": "a14dfee81e9699ba1f40fdcb3464e66a760f4bee58cd06181cab65ef6947fa68",
+        "provenance_sha256": "a14dfee81e9699ba1f40fdcb3464e66a760f4bee58cd06181cab65ef6947fa68",
+        "package_provenance_sha256": "a14dfee81e9699ba1f40fdcb3464e66a760f4bee58cd06181cab65ef6947fa68",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/share/share.css",
+        "bytes": 10189,
+        "git_sha256": "8d44ed2a0c7269391894d6ec187654d1e30801c45cb05bda3ace332337b0c8e0",
+        "packaged_sha256": "8d44ed2a0c7269391894d6ec187654d1e30801c45cb05bda3ace332337b0c8e0",
+        "provenance_sha256": "8d44ed2a0c7269391894d6ec187654d1e30801c45cb05bda3ace332337b0c8e0",
+        "package_provenance_sha256": "8d44ed2a0c7269391894d6ec187654d1e30801c45cb05bda3ace332337b0c8e0",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/share/share.js",
+        "bytes": 21332,
+        "git_sha256": "1558d57b73ce2da98becc8046869213636cdc9323415f2a247cec2b57ad43544",
+        "packaged_sha256": "1558d57b73ce2da98becc8046869213636cdc9323415f2a247cec2b57ad43544",
+        "provenance_sha256": "1558d57b73ce2da98becc8046869213636cdc9323415f2a247cec2b57ad43544",
+        "package_provenance_sha256": "1558d57b73ce2da98becc8046869213636cdc9323415f2a247cec2b57ad43544",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/studio/chats.js",
+        "bytes": 10262,
+        "git_sha256": "8a5e149dbea92f32d48ea5a420db1c528d01ead84efb2b1c0e349a4970c52a57",
+        "packaged_sha256": "8a5e149dbea92f32d48ea5a420db1c528d01ead84efb2b1c0e349a4970c52a57",
+        "provenance_sha256": "8a5e149dbea92f32d48ea5a420db1c528d01ead84efb2b1c0e349a4970c52a57",
+        "package_provenance_sha256": "8a5e149dbea92f32d48ea5a420db1c528d01ead84efb2b1c0e349a4970c52a57",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/studio/index.html",
+        "bytes": 4228,
+        "git_sha256": "cdd9bcd0468c181fdd884bf6657b331efe72d1796dba7bbec71b7ee4ed8260d9",
+        "packaged_sha256": "cdd9bcd0468c181fdd884bf6657b331efe72d1796dba7bbec71b7ee4ed8260d9",
+        "provenance_sha256": "cdd9bcd0468c181fdd884bf6657b331efe72d1796dba7bbec71b7ee4ed8260d9",
+        "package_provenance_sha256": "cdd9bcd0468c181fdd884bf6657b331efe72d1796dba7bbec71b7ee4ed8260d9",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/studio/studio.css",
+        "bytes": 13249,
+        "git_sha256": "92efb481b14d43f3e98e38f6397b8bfd1af3d3a0f0503d4526f85b751210a61e",
+        "packaged_sha256": "92efb481b14d43f3e98e38f6397b8bfd1af3d3a0f0503d4526f85b751210a61e",
+        "provenance_sha256": "92efb481b14d43f3e98e38f6397b8bfd1af3d3a0f0503d4526f85b751210a61e",
+        "package_provenance_sha256": "92efb481b14d43f3e98e38f6397b8bfd1af3d3a0f0503d4526f85b751210a61e",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/studio/studio.js",
+        "bytes": 22229,
+        "git_sha256": "d8e8f0313b2515c8012b5b281f70b1517c4b696ec0cdd504e0de60434bb2680b",
+        "packaged_sha256": "d8e8f0313b2515c8012b5b281f70b1517c4b696ec0cdd504e0de60434bb2680b",
+        "provenance_sha256": "d8e8f0313b2515c8012b5b281f70b1517c4b696ec0cdd504e0de60434bb2680b",
+        "package_provenance_sha256": "d8e8f0313b2515c8012b5b281f70b1517c4b696ec0cdd504e0de60434bb2680b",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/audio/bgm.mp3",
+        "bytes": 3607159,
+        "git_sha256": "d11aec5433749b8783ba7a29621f3814d1c84214052877d16ba5ca7dc19e07b0",
+        "packaged_sha256": "d11aec5433749b8783ba7a29621f3814d1c84214052877d16ba5ca7dc19e07b0",
+        "provenance_sha256": "d11aec5433749b8783ba7a29621f3814d1c84214052877d16ba5ca7dc19e07b0",
+        "package_provenance_sha256": "d11aec5433749b8783ba7a29621f3814d1c84214052877d16ba5ca7dc19e07b0",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/avatars/akai.png",
+        "bytes": 25558,
+        "git_sha256": "eeb609b78791abc7b38a692141768571a8d6b81dce7c0a036cdcfd3a70246721",
+        "packaged_sha256": "eeb609b78791abc7b38a692141768571a8d6b81dce7c0a036cdcfd3a70246721",
+        "provenance_sha256": "eeb609b78791abc7b38a692141768571a8d6b81dce7c0a036cdcfd3a70246721",
+        "package_provenance_sha256": "eeb609b78791abc7b38a692141768571a8d6b81dce7c0a036cdcfd3a70246721",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/avatars/chenmo.png",
+        "bytes": 32219,
+        "git_sha256": "67982d5bee26690f5a5f5347402bf481dcb6e386e2c7af27e33605f301110679",
+        "packaged_sha256": "67982d5bee26690f5a5f5347402bf481dcb6e386e2c7af27e33605f301110679",
+        "provenance_sha256": "67982d5bee26690f5a5f5347402bf481dcb6e386e2c7af27e33605f301110679",
+        "package_provenance_sha256": "67982d5bee26690f5a5f5347402bf481dcb6e386e2c7af27e33605f301110679",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/avatars/xiaolin.png",
+        "bytes": 31676,
+        "git_sha256": "aad1297329171ed1762ffc81d4845513e277d5b37bed073e9ccc4f50dddf3c0c",
+        "packaged_sha256": "aad1297329171ed1762ffc81d4845513e277d5b37bed073e9ccc4f50dddf3c0c",
+        "provenance_sha256": "aad1297329171ed1762ffc81d4845513e277d5b37bed073e9ccc4f50dddf3c0c",
+        "package_provenance_sha256": "aad1297329171ed1762ffc81d4845513e277d5b37bed073e9ccc4f50dddf3c0c",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/avatars/zhouming.png",
+        "bytes": 27727,
+        "git_sha256": "8284a513addd55aa979dee14c35cbb46af77807f66fd99686a77a465bfeeb7dd",
+        "packaged_sha256": "8284a513addd55aa979dee14c35cbb46af77807f66fd99686a77a465bfeeb7dd",
+        "provenance_sha256": "8284a513addd55aa979dee14c35cbb46af77807f66fd99686a77a465bfeeb7dd",
+        "package_provenance_sha256": "8284a513addd55aa979dee14c35cbb46af77807f66fd99686a77a465bfeeb7dd",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/akai.svg",
+        "bytes": 2587,
+        "git_sha256": "a88cc4617131a7d519489e301d20b6ec85bd4a31cb037b94af29a92a0f24c204",
+        "packaged_sha256": "a88cc4617131a7d519489e301d20b6ec85bd4a31cb037b94af29a92a0f24c204",
+        "provenance_sha256": "a88cc4617131a7d519489e301d20b6ec85bd4a31cb037b94af29a92a0f24c204",
+        "package_provenance_sha256": "a88cc4617131a7d519489e301d20b6ec85bd4a31cb037b94af29a92a0f24c204",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/chenmo.svg",
+        "bytes": 2473,
+        "git_sha256": "5101c0ae2986d3310a57200b569042e450b75c21ab960c3e881b6642b6c28e6b",
+        "packaged_sha256": "5101c0ae2986d3310a57200b569042e450b75c21ab960c3e881b6642b6c28e6b",
+        "provenance_sha256": "5101c0ae2986d3310a57200b569042e450b75c21ab960c3e881b6642b6c28e6b",
+        "package_provenance_sha256": "5101c0ae2986d3310a57200b569042e450b75c21ab960c3e881b6642b6c28e6b",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/xiaolin.svg",
+        "bytes": 2324,
+        "git_sha256": "792f7051c785c8cbf9b71f9ee8ffdc1cba8d848b69fdbf804aa84690afc476a2",
+        "packaged_sha256": "792f7051c785c8cbf9b71f9ee8ffdc1cba8d848b69fdbf804aa84690afc476a2",
+        "provenance_sha256": "792f7051c785c8cbf9b71f9ee8ffdc1cba8d848b69fdbf804aa84690afc476a2",
+        "package_provenance_sha256": "792f7051c785c8cbf9b71f9ee8ffdc1cba8d848b69fdbf804aa84690afc476a2",
+        "all_hashes_match": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/zhouming.svg",
+        "bytes": 1898,
+        "git_sha256": "0d3ee951767eebdec2e9abf6863ebf3d549e3d1fe4710453110722007f94e9ae",
+        "packaged_sha256": "0d3ee951767eebdec2e9abf6863ebf3d549e3d1fe4710453110722007f94e9ae",
+        "provenance_sha256": "0d3ee951767eebdec2e9abf6863ebf3d549e3d1fe4710453110722007f94e9ae",
+        "package_provenance_sha256": "0d3ee951767eebdec2e9abf6863ebf3d549e3d1fe4710453110722007f94e9ae",
+        "all_hashes_match": true
+      },
+      {
+        "path": "stories/lost-tuition-walkthrough.md",
+        "bytes": 5706,
+        "git_sha256": "497e1d0e48c4ccece67197eb51ab055d8fbb703dd6eef21d0743b5709c0558bf",
+        "packaged_sha256": "497e1d0e48c4ccece67197eb51ab055d8fbb703dd6eef21d0743b5709c0558bf",
+        "provenance_sha256": "497e1d0e48c4ccece67197eb51ab055d8fbb703dd6eef21d0743b5709c0558bf",
+        "package_provenance_sha256": "497e1d0e48c4ccece67197eb51ab055d8fbb703dd6eef21d0743b5709c0558bf",
+        "all_hashes_match": true
+      },
+      {
+        "path": "stories/lost-tuition.yaml",
+        "bytes": 17803,
+        "git_sha256": "9353e1f469e116535cd746c0ad18e749cec3f655d241365976ff9d6aec3c65d5",
+        "packaged_sha256": "9353e1f469e116535cd746c0ad18e749cec3f655d241365976ff9d6aec3c65d5",
+        "provenance_sha256": "9353e1f469e116535cd746c0ad18e749cec3f655d241365976ff9d6aec3c65d5",
+        "package_provenance_sha256": "9353e1f469e116535cd746c0ad18e749cec3f655d241365976ff9d6aec3c65d5",
+        "all_hashes_match": true
+      },
+      {
+        "path": "desktop/ui/index.html",
+        "bytes": 4411,
+        "git_sha256": "22e43084d4911c95e61c7c331c49bba8b9d236f50865e50314aa1ff7bc0bde90",
+        "packaged_sha256": "22e43084d4911c95e61c7c331c49bba8b9d236f50865e50314aa1ff7bc0bde90",
+        "provenance_sha256": "22e43084d4911c95e61c7c331c49bba8b9d236f50865e50314aa1ff7bc0bde90",
+        "package_provenance_sha256": "22e43084d4911c95e61c7c331c49bba8b9d236f50865e50314aa1ff7bc0bde90",
+        "all_hashes_match": true
+      }
+    ]
+  },
+  "exe": {
+    "path": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v5-7890182\\看山谜案馆\\看山谜案馆.exe",
+    "sha256": "b9f97b9a273a64b0572ee07cb4387a0e238bb372b3336697f9e90fe3d17d52ae",
+    "bytes": 14424641,
+    "matches_provenance": true
+  },
+  "zip": {
+    "path": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v5-7890182.zip",
+    "sha256": "b8b44f224e1fabbbbfd3a6adba5bc5b04cd955f91e388bc6329d616c154efdcc",
+    "bytes": 50638510,
+    "entries": 2584,
+    "matches_reported_sha256": true,
+    "matches_reported_bytes": true,
+    "matches_reported_entry_count": true,
+    "crc_pass": true,
+    "private_configuration_filenames_found": []
+  },
+  "scope": {
+    "model_calls": 0,
+    "sdk_clients_created": 0,
+    "exe_starts": 0,
+    "configuration_or_keys_read": false,
+    "production_files_written": false,
+    "package_or_zip_written": false,
+    "build_provenance_unchanged_after_audit": true
+  },
+  "evidence_boundary": {
+    "existing_v4_real_generation_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+    "v5_backend_byte_equal_to_v4": "source-audit.json verifies all 29 tracked backend files",
+    "new_v5_model_generation_or_complete_human_play_performed_by_this_audit": false,
+    "task18_wip_integrated": false,
+    "existing_new_hospital_raw_checked": true,
+    "existing_new_hospital_manual_core_pass": false,
+    "existing_new_hospital_actual_questions": 2,
+    "narrative_review": "../task20-frameless-quality/narrative-review-v4.json"
+  },
+  "passed": true
+}

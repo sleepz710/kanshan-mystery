@@ -1,0 +1,179 @@
+{
+  "source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "main_source_commit": "a0422579be71169a43fa4f73f01acb9044b9bec3",
+  "generation_flow": "task18-design-first",
+  "task21": "paused",
+  "task18_source_commit": "38e91999c50b2ee02251148e38d270a42b337b43",
+  "role_validation_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "role_context_commit": "5c2a7ceaf04e059067ffbaaee313c9dfa5a036eb",
+  "base_main_commit": "aee60ba5d35a4c710a79c7bf96029504d0c2d2bf",
+  "task19_frontend_commit": "486ca74ba0a4f8da9671347b8fef39b6e34b207f",
+  "task20_source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "desktop_listener_commit": "469048869ba451c0fcb38a574e96682fd881b2e3",
+  "frameless_source_commit": "c945eb00acec69e9f9a63f3eb30c1f54f07e1d9e",
+  "global_music_source_commit": "a0422579be71169a43fa4f73f01acb9044b9bec3",
+  "task18_wip_integrated": false,
+  "intent_source_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+  "material_cleanup_commit": "75279d7b49ac13313fb4ad207d6170f9ee96f1e0",
+  "desktop_settings_source_commit": "a08c5f2a5f89fcbe68303d63f14d3a77e4846c12",
+  "files": {
+    "backend/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_code_matches": true
+    },
+    "backend/agents.py": {
+      "sha256": "24f5d69002895dacd75abcb81224a44777268762b9542b92ed999463c5f2a45a",
+      "compiled_code_matches": true
+    },
+    "backend/app.py": {
+      "sha256": "ebd2f3499a9eacc671cfa0886e7dc1135e33a9f4be2881103a80431cd8aba53a",
+      "compiled_code_matches": true
+    },
+    "backend/engine.py": {
+      "sha256": "2ae71170f7f8bcdca4ae805930042ef3ea7d3feb4247d28a9f238f53fdeb3b43",
+      "compiled_code_matches": true
+    },
+    "backend/kanshan.py": {
+      "sha256": "5a5a94d908b32462f809e38258eaffd89705697d5cdb5977ba60d20e3463df12",
+      "compiled_code_matches": true
+    },
+    "backend/llm.py": {
+      "sha256": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+      "compiled_code_matches": true
+    },
+    "backend/paths.py": {
+      "sha256": "e13208f13c639f97440fdbbc2de17023d3ee05e9e40920fba2e0d5a9dacd9c9c",
+      "compiled_code_matches": true
+    },
+    "backend/studio/__init__.py": {
+      "sha256": "38de8aacecae01185944868ed0ef33e0a4af731a766c3a63352abc4a36de32cb",
+      "compiled_code_matches": true
+    },
+    "backend/studio/api.py": {
+      "sha256": "6b986f47258f324ee799c97bd5236190bfa2b2c2720b4d9b0640270f6a43642a",
+      "compiled_code_matches": true
+    },
+    "backend/studio/check.py": {
+      "sha256": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7",
+      "compiled_code_matches": true
+    },
+    "backend/studio/ingest.py": {
+      "sha256": "f76adbe9fd36aaaf1248fdaab7ca074fddb13e53fe97d3922ce306e8dcc5510b",
+      "compiled_code_matches": true
+    },
+    "backend/studio/mock.py": {
+      "sha256": "2b247c590ecbf4910bfc3247a6c3640144e606903f61cea7c9b58700a53e37fc",
+      "compiled_code_matches": true
+    },
+    "backend/studio/service.py": {
+      "sha256": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+      "compiled_code_matches": true
+    },
+    "backend/studio/share.py": {
+      "sha256": "ddee26d770218cd6de495e406888669cf70fc958a4f8e953889c2838991ec6a9",
+      "compiled_code_matches": true
+    },
+    "desktop/__init__.py": {
+      "sha256": "fc444c1a3f5d97a4856c1f17e90ae9b9b484ffe063584197ca27dafb2d8fb315",
+      "compiled_code_matches": true
+    },
+    "desktop/runtime.py": {
+      "sha256": "4ec6e86e5c6d4503ea926403239ae39655eba8e522b3cbae4cac7caac5bf0263",
+      "compiled_code_matches": true
+    },
+    "desktop/settings.py": {
+      "sha256": "17bdefc99de61eb56562fc0c71bee29fb372df22b44599fdb2668a284bf02f29",
+      "compiled_code_matches": true
+    },
+    "desktop/window_frame.py": {
+      "sha256": "dcb0d6fbba6c7dffaef1c118e338c312614df25698dc482238131f030b9d0d8b",
+      "compiled_code_matches": true
+    },
+    "desktop/main.py": {
+      "sha256": "554a5884c0b38704b5b491b515a5131cfbda66acfa2a6d30791102351ba99a65",
+      "compiled_code_matches": true
+    }
+  },
+  "resources": {
+    "frontend/ending.html": "c3210672f027889b97069f063316952fe6ad0ccf7d635ef13e63b51ce802cd0d",
+    "frontend/game.html": "f403015362128d96b1ca298dcd3f93e0b200f33af9c2b51afc8143a30f60ca7d",
+    "frontend/index.html": "e990d16c6f74636532ad8c0c8d507f7e0989562c8b58b9ec00397d1a6f21f7fb",
+    "frontend/assets/icon-180.png": "e584b812f3d8f363e32bbf428474da6d9e1bb9cb8488fefcded0311a790b0412",
+    "frontend/assets/logo.svg": "4a7f81bfc6b3b0a1ee2cbf2e062bf97470e03c11f1f03b2376d0ad0deb5e21b3",
+    "frontend/css/base.css": "7287f117d96ec6b291849f7f2ffd4ff53ba7e5bd5de8a22aea7e64cefe864f71",
+    "frontend/css/ending.css": "8d766ea9e9b4b3dc216a8f355e9d47847256e6b76ea83cbbdda724c649b1c414",
+    "frontend/css/game.css": "e88a3af41338fba10c85da49a01f1401c77a85dfeffb2d59fa19ce4a612c68ca",
+    "frontend/css/home.css": "198c11cf0350eab979443bd1f7539f649dcd8ef197e4066baee8ad476c50d93a",
+    "frontend/css/window.css": "e0a24fb87c2c876377b6d7cb478f5c2f499bc88394fe0cf544513f419d3dcdc0",
+    "frontend/js/api.js": "735c3a54733385a45ed5062d1b5dc80d46dd552b5dac4232171e5c28d7d35abc",
+    "frontend/js/ending.js": "959c29aaad0cec6339a947aea44a89ea52d80421fa1bf0fd42ac81de57c17109",
+    "frontend/js/game.js": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+    "frontend/js/home.js": "19fb516e34de078878663d0ec2aec55cff9539f559fcd8743b125b1c762963ce",
+    "frontend/js/music.js": "bc705deb2b84f12499602776fc77324f8dd56372760b8bcd132a5a7778a3c9d9",
+    "frontend/js/store.js": "5edecddec244b96b3c4dc6aacd0b486ca52e4a3bf3f47a7e53dc0a9e9ede3e1e",
+    "frontend/js/ui.js": "2b39a3ac847ecc95d1e315fb9ca5edbf5408e13230c10d616fd6b54703e75752",
+    "frontend/js/window.js": "a3fab19f5ac4da71aee71e2be49ea49da2ba2585d429913e826c2b223cf326db",
+    "frontend/share/index.html": "a14dfee81e9699ba1f40fdcb3464e66a760f4bee58cd06181cab65ef6947fa68",
+    "frontend/share/share.css": "8d44ed2a0c7269391894d6ec187654d1e30801c45cb05bda3ace332337b0c8e0",
+    "frontend/share/share.js": "1558d57b73ce2da98becc8046869213636cdc9323415f2a247cec2b57ad43544",
+    "frontend/studio/chats.js": "8a5e149dbea92f32d48ea5a420db1c528d01ead84efb2b1c0e349a4970c52a57",
+    "frontend/studio/index.html": "cdd9bcd0468c181fdd884bf6657b331efe72d1796dba7bbec71b7ee4ed8260d9",
+    "frontend/studio/studio.css": "92efb481b14d43f3e98e38f6397b8bfd1af3d3a0f0503d4526f85b751210a61e",
+    "frontend/studio/studio.js": "d8e8f0313b2515c8012b5b281f70b1517c4b696ec0cdd504e0de60434bb2680b",
+    "frontend/assets/audio/bgm.mp3": "d11aec5433749b8783ba7a29621f3814d1c84214052877d16ba5ca7dc19e07b0",
+    "frontend/assets/avatars/akai.png": "eeb609b78791abc7b38a692141768571a8d6b81dce7c0a036cdcfd3a70246721",
+    "frontend/assets/avatars/chenmo.png": "67982d5bee26690f5a5f5347402bf481dcb6e386e2c7af27e33605f301110679",
+    "frontend/assets/avatars/xiaolin.png": "aad1297329171ed1762ffc81d4845513e277d5b37bed073e9ccc4f50dddf3c0c",
+    "frontend/assets/avatars/zhouming.png": "8284a513addd55aa979dee14c35cbb46af77807f66fd99686a77a465bfeeb7dd",
+    "frontend/assets/avatars/src/akai.svg": "a88cc4617131a7d519489e301d20b6ec85bd4a31cb037b94af29a92a0f24c204",
+    "frontend/assets/avatars/src/chenmo.svg": "5101c0ae2986d3310a57200b569042e450b75c21ab960c3e881b6642b6c28e6b",
+    "frontend/assets/avatars/src/xiaolin.svg": "792f7051c785c8cbf9b71f9ee8ffdc1cba8d848b69fdbf804aa84690afc476a2",
+    "frontend/assets/avatars/src/zhouming.svg": "0d3ee951767eebdec2e9abf6863ebf3d549e3d1fe4710453110722007f94e9ae",
+    "stories/lost-tuition-walkthrough.md": "497e1d0e48c4ccece67197eb51ab055d8fbb703dd6eef21d0743b5709c0558bf",
+    "stories/lost-tuition.yaml": "9353e1f469e116535cd746c0ad18e749cec3f655d241365976ff9d6aec3c65d5",
+    "desktop/ui/index.html": "22e43084d4911c95e61c7c331c49bba8b9d236f50865e50314aa1ff7bc0bde90"
+  },
+  "exe_sha256": "b9f97b9a273a64b0572ee07cb4387a0e238bb372b3336697f9e90fe3d17d52ae",
+  "exe_bytes": 14424641,
+  "previous_artifact": {
+    "zip": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104.zip",
+    "zip_sha256": "c7c2c2650bfe5b26f3e2eced1b7029551c0f161d99df62ca6e7d4c6d88d8cdef",
+    "source_commit": "848c471f4f2b35b2ac6dad3d6cef33b0d4c630cb",
+    "preserved": true
+  },
+  "v2_acceptance_backup": {
+    "zip": "D:\\阅读周比赛\\kanshan-task20-intro-null-20261104\\.cache\\v2-before-intro-null-fix.zip",
+    "zip_sha256": "8854a4561555bca867dbfeb908d2557d1ca232186e0f6c252c438772d40eee9f",
+    "source_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c"
+  },
+  "v3_acceptance_snapshot": {
+    "zip": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v3-4690488.zip",
+    "zip_sha256": "2b0255b1f946fc30660e5ba4c3fb97040d378507cd93d2eb843e7da9ddd695c6",
+    "source_commit": "469048869ba451c0fcb38a574e96682fd881b2e3"
+  },
+  "model_module_and_game_flow_match_469": true,
+  "v4_acceptance_snapshot": {
+    "zip": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v4-63c27ce.zip",
+    "zip_sha256": "1a409d77b073842abcef78eae0f5b00afe6e755314396f7bbaf32a866656c246",
+    "source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+    "real_generation_and_two_questions": true,
+    "human_narrative_core_passed": false
+  },
+  "backend_byte_equal_to_v4": true,
+  "artifact": {
+    "directory": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v5-7890182",
+    "zip": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v5-7890182.zip",
+    "zip_sha256": "b8b44f224e1fabbbbfd3a6adba5bc5b04cd955f91e388bc6329d616c154efdcc",
+    "zip_bytes": 50638510,
+    "file_count": 2584,
+    "payload_bytes": 99747841,
+    "no_private_key": true,
+    "no_env_or_user_settings": true
+  },
+  "delivery_integrity": {
+    "zip_crc_passed": true,
+    "all_program_files_byte_equal": true,
+    "source_code_objects_match": true,
+    "resources_match": true
+  }
+}
