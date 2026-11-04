@@ -466,7 +466,7 @@ async def complete_for(messages: list[dict], *, role: str, mock_response: dict) 
                         response = await client.chat.completions.create(model=model, messages=messages, response_format={"type": "json_object"}, **extra)
                         return _decode(response)
                     except APIError as exc:
-                        logger.warning("%s模型调用失败：%s status=%s", "编剧" if writer else "演员", type(exc).__name__, getattr(exc, "status_code", None))
+                        logger.warning("%s模型调用失败：%s status=%s cause=%s", "编剧" if writer else "演员", type(exc).__name__, getattr(exc, "status_code", None), type(exc.__cause__).__name__ if exc.__cause__ else None)
                         raise llm.LLMError("编剧模型服务暂时不可用，请稍后重试。") from exc
                     except ReplyFormatError as exc:
                         logger.warning("%s模型回复格式无效（第 %d 次）：%s", "编剧" if writer else "演员", attempt, exc.detail)

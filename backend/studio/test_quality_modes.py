@@ -7,7 +7,7 @@ from tempfile import TemporaryDirectory
 import pytest
 
 from backend import llm
-from backend.studio import check as checker
+from backend.studio import check as checker, service
 from backend.studio.mock import mock_story
 from backend.studio.service import Candidate, Job, QUALITY_PROMPT, StudioService
 
@@ -134,3 +134,55 @@ async def test_cancelling_fine_generation_cancels_both_unpublished_branches(stud
 def test_quality_budgets(studio):
     assert studio._budget(Job("fast", "chat", "play")) == 600
     assert studio._budget(Job("fine", "chat", "play", quality="fine")) == 900
+
+
+@pytest.mark.parametrize("mock,base,writer_base,model,multiplier", [
+    ("0", "https://api.openai.com/v1", "", "gpt-5.4", 2),
+    ("0", "https://api.deepseek.com", "https://api.openai.com/v1", "gpt-5.4-2026-03-05", 2),
+    ("1", "https://api.openai.com/v1", "", "gpt-5.4", 1),
+    ("0", "https://api.deepseek.com", "", "deepseek-flash", 1),
+    ("0", "https://model.example.test/v1", "", "gpt-5.4", 1),
+    ("0", "https://api.openai.com/v1", "https://writer.example.test/v1", "gpt-5.4", 1),
+    ("0", "https://api.openai.com/v1", "", "gpt-5.4-mini", 1),
+    ("0", "https://api.openai.com/v1", "", "gpt-4o", 1),
+])
+def test_budget_profiles_follow_only_the_verified_real_writer(studio, monkeypatch, mock, base, writer_base, model, multiplier):
+    monkeypatch.setenv("LLM_MOCK", mock)
+    monkeypatch.setenv("LLM_BASE_URL", base)
+    monkeypatch.setenv("LLM_WRITER_BASE_URL", writer_base)
+    monkeypatch.setenv("LLM_WRITER_MODEL", model)
+    assert studio._budget(Job("fast", "chat", "play")) == 600 * multiplier
+    assert studio._budget(Job("fine", "chat", "play", quality="fine")) == 900 * multiplier
+
+
+def test_openai_budget_profile_keeps_small_monkeypatched_budgets(studio, monkeypatch):
+    monkeypatch.setenv("LLM_MOCK", "0")
+    monkeypatch.setenv("LLM_BASE_URL", "https://api.openai.com/v1")
+    monkeypatch.setenv("LLM_WRITER_BASE_URL", "")
+    monkeypatch.setenv("LLM_WRITER_MODEL", "gpt-5.4")
+    monkeypatch.setattr(service, "GENERATION_TIMEOUT", 0.04)
+    monkeypatch.setattr(service, "FINE_TIMEOUT", 0.06)
+    assert studio._budget(Job("fast", "chat", "play")) == 0.08
+    assert studio._budget(Job("fine", "chat", "play", quality="fine")) == 0.12
+
+
+@pytest.mark.asyncio
+async def test_openai_profile_enforces_a_monkeypatched_total_deadline(studio, monkeypatch):
+    monkeypatch.setenv("LLM_MOCK", "0")
+    monkeypatch.setenv("LLM_BASE_URL", "https://api.openai.com/v1")
+    monkeypatch.setenv("LLM_WRITER_BASE_URL", "")
+    monkeypatch.setenv("LLM_WRITER_MODEL", "gpt-5.4")
+    monkeypatch.setattr(service, "GENERATION_TIMEOUT", 0.04)
+    monkeypatch.setattr(service, "SAVE_RESERVE", 0.005)
+
+    async def wait_forever(*args):
+        await asyncio.Event().wait()
+
+    monkeypatch.setattr(studio, "_pipeline", wait_forever)
+    job = Job("profile-deadline", "chat", "play")
+    await asyncio.wait_for(studio._generate(job, ["技术素材"], "new"), 0.5)
+    assert job.status == "failed" and job.error == "生成超时，请重试。"
+
+
+def test_quality_prompt_describes_process_without_unmeasured_minutes():
+    assert QUALITY_PROMPT == "快速还是精修？精修会比较两份设计，并增加修订轮次。实际耗时取决于素材和模型。"
