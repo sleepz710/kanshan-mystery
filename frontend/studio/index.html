@@ -23,7 +23,6 @@
       <a class="brand" href="/" title="回到首页"><img src="/assets/logo.svg" alt="看山谜案馆"><b>看山谜案馆</b></a>
       <div class="page-name">
         <strong>新建剧场</strong>
-        <span class="tag" id="mode-tag" hidden></span>
       </div>
       <button class="btn btn-ghost btn-sm" type="button" id="btn-new"><i data-icon="plus"></i><span>新对话</span></button>
     </header>
@@ -46,17 +45,6 @@
             <span class="writer-seal" aria-hidden="true">编</span>
             <h1>新建剧场</h1>
             <p class="welcome-text">把一碗海龟汤、一段小说、一个网址，或者一句「我想玩一个发生在……的案子」交给编剧。编剧会安排人物、证据和谎话，几分钟后开一局新的。</p>
-            <div class="modes" id="modes" role="radiogroup" aria-label="玩法">
-              <button type="button" role="radio" data-mode="play" aria-checked="true">
-                <b><i data-icon="eye"></i>自己玩</b>
-                <small>编剧保留谜底，生成完直接开局</small>
-              </button>
-              <button type="button" role="radio" data-mode="share" aria-checked="false">
-                <b><i data-icon="share"></i>出题给朋友</b>
-                <small>可以和编剧讨论剧情，生成后拿到分享链接</small>
-              </button>
-            </div>
-            <p class="modes-lock" id="modes-lock" hidden>对话开始后玩法不能再换，要换请点「新对话」。</p>
           </section>
           <div class="messages" id="messages" role="log" aria-live="polite"></div>
         </div>

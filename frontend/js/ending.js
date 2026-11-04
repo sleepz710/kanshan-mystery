@@ -69,8 +69,7 @@
     $('lessons-box').hidden = !lessons.length;
     $('after-actions').replaceChildren(
       h('button', { class: 'btn btn-primary btn-lg', type: 'button', onclick: playAgain }, icon('retry'), '再玩一局'),
-      h('button', { class: 'btn btn-gold btn-lg', type: 'button', onclick: share }, icon('share'), '把这个案子发给朋友'),
-      h('a', { class: 'btn btn-ghost btn-lg', href: '/' }, icon('home'), '回到首页'));
+      h('a',{ class: 'btn btn-ghost btn-lg', href: '/' }, icon('home'), '回到首页'));
     $('truth').hidden = false;
     if (animate) $('truth').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -121,17 +120,6 @@
     const fresh = store.create(game, state.storyId);
     store.save(fresh);
     location.href = `/game.html?g=${encodeURIComponent(fresh.gameId)}`;
-  }
-
-  // 非 https 页面没有剪贴板接口，退回到弹框让玩家手动复制
-  async function share() {
-    const url = `${location.origin}/?story=${encodeURIComponent(state.storyId)}`;
-    try {
-      await navigator.clipboard.writeText(url);
-      toast('链接已复制，朋友打开就能直接开局。', 'success');
-    } catch {
-      window.prompt('复制这个链接发给朋友：', url);
-    }
   }
 
   hydrateIcons();
