@@ -26,6 +26,7 @@ def runtime_root():
 
 @pytest.fixture(autouse=True)
 def offline_models(monkeypatch, runtime_root):
+    monkeypatch.setattr(checker, "check_playability", lambda story: [])
     monkeypatch.setattr(llm, "_ENV_FILE", runtime_root / "missing.env")
     monkeypatch.setenv("LLM_MOCK", "1")
     for name in (
@@ -42,7 +43,7 @@ def offline_models(monkeypatch, runtime_root):
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize("bad_round", ["format_error", "missing_story"])
+@pytest.mark.parametrize("bad_round", ["format_error", "missing_design"])
 async def test_unreadable_revision_keeps_the_existing_story_repair_feedback(
     runtime_root, monkeypatch, bad_round
 ):
@@ -54,14 +55,14 @@ async def test_unreadable_revision_keeps_the_existing_story_repair_feedback(
     async def model(messages, **kwargs):
         nonlocal round_no
         response = deepcopy(kwargs["mock_response"])
-        if "story" in response:
+        if "design" in response:
             round_no += 1
             generation_inputs.append(deepcopy(json.loads(messages[-1]["content"])))
             if round_no == 2:
                 if bad_round == "format_error":
                     raise checker.ReplyFormatError("模拟 JSON 无法读取。", "模拟空白回复")
-                return {"unexpected": "没有生成新的 story"}
-            response["story"]["title"] = f"TECHNICAL_ROUND_{round_no}"
+                return {"unexpected": "没有生成新的 design"}
+            response["design"]["intro"] = f"TECHNICAL_ROUND_{round_no}"
         elif "answers" in response and kwargs["role"] == "actor" and round_no == 1:
             # 第一次稿件已有具体的 q3 证据问题，后续输出失败并未替换这份稿。
             response["answers"]["q3"] = None
@@ -72,13 +73,13 @@ async def test_unreadable_revision_keeps_the_existing_story_repair_feedback(
 
     assert len(generation_inputs) == 3
     before_failure, after_failure = generation_inputs[1:]
-    assert before_failure["previous_story"]["title"] == "TECHNICAL_ROUND_1"
-    assert after_failure["previous_story"] == before_failure["previous_story"]
+    assert before_failure["previous_design"]["intro"] == "TECHNICAL_ROUND_1"
+    assert after_failure["previous_design"] == before_failure["previous_design"]
     assert any("q3" in problem for problem in before_failure["problems"])
     assert any("q3" in problem for problem in after_failure["problems"]), (
         "修订回复未产生新稿时，旧稿的具体证据问题仍应交给下一轮，不能只剩格式错误。"
     )
-    assert any("JSON" in problem or "story" in problem for problem in after_failure["problems"])
+    assert any("JSON" in problem or "design" in problem for problem in after_failure["problems"])
 
 
 @pytest.mark.asyncio
@@ -133,6 +134,9 @@ async def test_substantive_text_or_attachments_still_use_the_normal_flow(
     monkeypatch.setattr(studio, "_generate", record_generation)
     try:
         response = await studio.message(chat_id, text, files)
+        if response["job"] is None:
+            assert "快速" in response["reply"] and "精修" in response["reply"]
+            response = await studio.message(chat_id, "快速", {})
         await asyncio.gather(*list(studio.tasks))
         assert response["job"] is not None and len(requests) == len(generated) == 1
         assert any("校园图书馆" in material for material in generated[0])
@@ -167,6 +171,9 @@ async def test_shutdown_during_publication_does_not_leave_a_failed_visible_story
     chat_id = studio.create_chat(mode)["chat_id"]
     try:
         response = await studio.message(chat_id, "生成一份纯技术测试案件。", {})
+        if response["job"] is None:
+            assert "快速" in response["reply"]
+            response = await studio.message(chat_id, "快速", {})
         job = studio.jobs[response["job"]["id"]]
         assert await asyncio.to_thread(entered.wait, 2), "应先进入后台发布步骤。"
         closing = asyncio.create_task(studio.close())

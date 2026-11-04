@@ -9,6 +9,7 @@ import os
 import re
 from copy import deepcopy
 from collections.abc import Awaitable, Callable
+from math import inf
 from typing import Annotated, Literal
 from urllib.parse import urlsplit
 
@@ -352,6 +353,83 @@ def check_structure(story: dict) -> dict:
         problems.extend(_reachability(normalized))
         problems.extend(_endings(normalized))
     return {"ok": not problems, "problems": problems}
+
+
+def _unlock_layers(story: dict) -> dict[str, int | float]:
+    """以未知层数为起点向下收敛，保留事件的替代解锁路径。"""
+    conditions = {clue["id"]: clue.get("requires", {}) for clue in story["clues"]}
+    conditions.update({lie["id"]: lie["until"] for char in story["characters"] for lie in char.get("lies", [])})
+    conditions.update({event["id"]: event["when"] for event in story["events"]})
+    layers = dict.fromkeys(conditions, inf)
+    granted_by = {}
+    for event in story["events"]:
+        for clue_id in event["unlock"]:
+            granted_by.setdefault(clue_id, []).append(event["id"])
+
+    def condition_layer(condition):
+        values = [0]
+        for key, target in condition.items():
+            if key == "trust":
+                values.append(1)
+            elif key in {"shown", "has"}:
+                values.append(layers[target] + 1)
+            elif key in {"exposed", "event"}:
+                values.append(layers[target])
+        return max(values)
+
+    changed = True
+    while changed:
+        changed = False
+        for record_id, condition in conditions.items():
+            layer = condition_layer(condition)
+            for event_id in granted_by.get(record_id, []):
+                layer = min(layer, layers[event_id])
+            if layer < layers[record_id]:
+                layers[record_id] = layer
+                changed = True
+    return layers
+
+
+def check_playability(story: dict) -> list[str]:
+    """检查 SPEC 6.8 的五条好玩度规则，调用前须通过 check_structure。"""
+    problems = []
+    clues = story["clues"]
+    holders = {clue["id"]: clue["holder"] for clue in clues}
+    total = len(clues)
+    for character in story["characters"]:
+        character_id = character["id"]
+        label = f"角色 {character['name']}（{character_id}）"
+        held = [clue["id"] for clue in clues if clue["holder"] == character_id]
+        if len(held) * 2 > total:
+            transfer = len(held) - total // 2
+            problems.append(f"{label}持有 {len(held)}/{total} 条线索（{', '.join(held)}），超过一半，请至少将 {transfer} 条线索分配给其他角色。")
+        if not held:
+            problems.append(f"{label}持有 0 条线索，请为该角色分配至少 1 条可提供的线索。")
+        if not character.get("secrets") and not character.get("lies"):
+            problems.append(f"{label}有 0 个秘密、0 句谎话，请增加至少 1 个可解锁的秘密或可拆穿的谎话。")
+        for lie in character.get("lies", []):
+            until = lie["until"]
+            evidence = sorted({target for key, target in until.items() if key in {"shown", "has"}})
+            if evidence and all(holders[clue_id] == character_id for clue_id in evidence):
+                problems.append(f"{label}的谎话 {lie['id']} 使用 {len(evidence)} 条拆谎线索（{', '.join(evidence)}），全部由本人持有，请将至少 1 条交给其他角色。")
+            elif not evidence and not ({"exposed", "event"} & set(until)):
+                problems.append(f"{label}的谎话 {lie['id']} 有 0 条拆谎证据，请增加其他角色持有线索的 shown/has 条件，或使用 exposed/event 的间接证据条件。")
+
+    event_rewards = {clue_id for event in story["events"] for clue_id in event["unlock"]}
+    initial = [clue["id"] for clue in clues if not clue.get("requires") and clue["id"] not in event_rewards]
+    if len(initial) > 3:
+        problems.append(f"开局直接能拿 {len(initial)} 条线索（{', '.join(initial)}），超过 3 条，请为其中至少 {len(initial) - 3} 条增加信任、出示或拆谎条件。")
+
+    layers = _unlock_layers(story)
+    unresolved = [clue["id"] for clue in clues if layers[clue["id"]] == inf]
+    if unresolved:
+        problems.append(f"有 {len(unresolved)} 条线索的解锁层数无法计算（{', '.join(unresolved)}），请解除循环依赖或补齐可达的解锁路径。")
+    else:
+        deepest = max((layers[clue["id"]] for clue in clues), default=0)
+        if deepest < 3:
+            deepest_clues = [clue["id"] for clue in clues if layers[clue["id"]] == deepest]
+            problems.append(f"最深线索仅在第 {deepest} 层（{', '.join(deepest_clues)}），不足第 3 层，请增加跨角色出示、拆谎后的解锁链。")
+    return problems
 
 
 async def complete_for(messages: list[dict], *, role: str, mock_response: dict) -> dict:

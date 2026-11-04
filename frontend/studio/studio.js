@@ -133,7 +133,7 @@
 
   // ---------- 生成任务卡片 ----------
 
-  const elapsedText = (job) => `已用 ${clock(Date.now() - job.startedAt)} · 通常要几分钟`;
+  const elapsedText = (job) => `${job.quality === 'fine' ? '精修中' : '快速生成中'} · ${clock(Date.now() - job.startedAt)}`;
 
   function stepsNode(job) {
     return h('ol', { class: 'job-steps' }, job.steps.map((step, i) => {
@@ -193,7 +193,7 @@
     if (job === session.jobs.at(-1)) {
       action = job.lost
         ? h('button', { class: 'btn btn-primary', type: 'button', onclick: () => newChat(session.mode) }, icon('plus'), '新建对话')
-        : h('button', { class: 'btn btn-primary', type: 'button', onclick: () => send('开始生成') }, icon('retry'), '重新生成');
+        : h('button', { class: 'btn btn-primary', type: 'button', onclick: () => send(job.quality === 'fine' ? '精修' : '快速') }, icon('retry'), '重新生成');
     }
     return h('article', { class: cls, dataset: { job: job.id } },
       h('div', { class: 'job-head' }, seal(),
@@ -289,7 +289,11 @@
       const lastJob = session.jobs.at(-1);
       const endsWithReply = session.messages.at(-1).role === 'writer' && !(lastJob && lastJob.after === session.messages.length);
       if (!userCount()) chips = STARTERS.map((s) => chip(s.label, () => fill(s.text), false));
-      else if (endsWithReply) chips = (session.mode === 'play' ? STRATEGY_REPLIES : ['开始生成']).map((t) => chip(t, () => send(t), true));
+      else if (endsWithReply) {
+        const qualityQuestion = session.messages.at(-1).text.includes('快速（约 3 分钟）还是精修');
+        const replies = qualityQuestion ? ['快速', '精修'] : (session.mode === 'play' ? STRATEGY_REPLIES : ['开始生成']);
+        chips = replies.map((t) => chip(t, () => send(t), true));
+      }
     }
     el.suggest.replaceChildren(...chips);
   }
@@ -433,7 +437,7 @@
     session.messages.push(msg, { role: 'writer', text: result.reply });
     let job = null;
     if (result.job && !session.jobs.some((j) => j.id === result.job.id)) {
-      job = { id: result.job.id, mode: session.mode, after: session.messages.length, status: 'running', progress: '', steps: [], startedAt: Date.now() };
+      job = { id: result.job.id, quality: result.job.quality || 'fast', mode: session.mode, after: session.messages.length, status: 'running', progress: '', steps: [], startedAt: Date.now() };
       session.jobs.push(job);
       for (const actions of el.messages.querySelectorAll('.job.failed .job-actions')) actions.remove();
     }
@@ -449,6 +453,7 @@
     busy = false;
     renderSuggest();
     syncControls();
+    keepBottom();
     if (!job) el.say.focus({ preventScroll: true });
   }
 

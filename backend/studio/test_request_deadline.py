@@ -23,6 +23,7 @@ from backend.studio.service import Job, StudioService
 
 @pytest.fixture(autouse=True)
 def isolated_models(monkeypatch, tmp_path):
+    monkeypatch.setattr(checker, "check_playability", lambda story: [])
     monkeypatch.setattr(llm, "_ENV_FILE", tmp_path / "missing.env")
     for name in (
         "LLM_BASE_URL", "LLM_API_KEY", "LLM_MODEL", "LLM_ACTOR_MODEL",
@@ -212,7 +213,7 @@ async def test_generation_timeout_can_succeed_next_round(tmp_path, monkeypatch, 
     assert any("超时" in problem for problem in generations[1]["problems"])
     assert job.status == "done" and job.error is None
     assert GameEngine(tmp_path / "official", studio.stories_dir).new_game(job.story_id)
-    assert any("第 1 轮 生成 超时" in record.message for record in caplog.records)
+    assert any("第 1 轮 设计稿 超时" in record.message for record in caplog.records)
     assert "PRIVATE_MATERIAL" not in caplog.text
 
 
@@ -231,7 +232,8 @@ async def test_three_generation_timeouts_fail_without_publishing(tmp_path, monke
     await studio._generate(job, ["technical fixture"], "new")
 
     assert calls == 3 and job.status == "failed"
-    assert "写稿超时" in job.error and "三轮" in job.error
+    assert "超时" in job.error and "三轮" in job.error
+    assert "设计" in job.error or "填表" in job.error
     assert job.story_id is None and job.owner_token is None
     assert list(tmp_path.rglob("*.yaml")) == []
     assert list(tmp_path.rglob("*.json")) == []
@@ -294,10 +296,12 @@ async def test_step_deadline_preserves_playable_draft(tmp_path, monkeypatch, fai
     async def model(messages, **kwargs):
         nonlocal generations
         incoming = json.loads(messages[-1]["content"])
-        if "materials" in incoming:
+        if "design" in kwargs["mock_response"]:
             generations += 1
             if generations > 1 and failure_step == "later_generation":
                 raise checker.ModelTimeoutError()
+            return deepcopy(kwargs["mock_response"])
+        if "story" in kwargs["mock_response"]:
             return {"story": mock_story()}
         if "problems" in kwargs["mock_response"]:
             step = "review"

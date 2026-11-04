@@ -20,6 +20,7 @@ from backend.studio.share import owned_story
 
 @pytest.fixture(autouse=True)
 def offline(monkeypatch, tmp_path):
+    monkeypatch.setattr(checker, "check_playability", lambda story: [])
     monkeypatch.setenv("LLM_MOCK", "1")
     monkeypatch.setattr(llm, "_ENV_FILE", tmp_path / "missing.env")
 
@@ -36,19 +37,26 @@ def saved(studio, job):
 
 def step_of(kwargs):
     mock = kwargs["mock_response"]
+    if "design" in mock:
+        return "设计稿"
+    if "story" in mock:
+        return "填表"
     if "answers" in mock:
         return "可解性"
-    return "审稿" if "problems" in mock else "生成"
+    return "审稿"
 
 
 @pytest.mark.asyncio
-async def test_review_advice_does_not_repeat_hard_checks(tmp_path, monkeypatch, caplog):
+async def test_review_advice_repeats_design_and_checks_with_private_feedback(tmp_path, monkeypatch, caplog):
     studio, job = StudioService(tmp_path), Job("review-advice", "chat", "play")
     calls = []
+    designs = []
 
     async def model(messages, **kwargs):
         calls.append(kwargs["role"])
         result = deepcopy(kwargs["mock_response"])
+        if "design" in result:
+            designs.append(json.loads(messages[-1]["content"]))
         if "problems" in result:
             result["problems"] = ["SECRET_REVIEW_ADVICE"]
         return result
@@ -56,13 +64,15 @@ async def test_review_advice_does_not_repeat_hard_checks(tmp_path, monkeypatch, 
     monkeypatch.setattr(checker, "complete_for", model)
     with caplog.at_level(logging.INFO):
         await studio._generate(job, ["SECRET_MATERIAL"], "new")
-    assert calls == ["writer", "actor", "writer", "actor"]
+    assert calls == ["writer", "actor", "actor", "writer", "actor"] * 3
+    assert len(designs) == 3 and designs[1]["problems"] == ["SECRET_REVIEW_ADVICE"]
+    assert designs[1]["previous_design"] == StudioService._mock_design()
     assert job.status == "done" and not saved(studio, job)["checked"]
     assert job.problems == ["SECRET_REVIEW_ADVICE"]
     assert "SECRET_REVIEW_ADVICE" not in json.dumps(job.public())
     logs = [r.message for r in caplog.records if "耗时" in r.message]
-    assert len(logs) == 4
-    for step, message in zip(("生成", "审稿", "可解性·只给汤面", "可解性·全部线索"), logs):
+    assert len(logs) == 15
+    for step, message in zip(("设计稿", "填表", "审稿", "可解性·只给汤面", "可解性·全部线索"), logs[:5]):
         assert job.id in message and "第 1 轮" in message and step in message and "秒" in message
     assert "SECRET_MATERIAL" not in caplog.text and "SECRET_REVIEW_ADVICE" not in caplog.text
 
@@ -72,15 +82,18 @@ async def test_review_advice_does_not_repeat_hard_checks(tmp_path, monkeypatch, 
 async def test_hard_failures_start_another_round(tmp_path, monkeypatch, failure):
     studio, job = StudioService(tmp_path), Job("hard-check", "chat", "play")
     rounds = 0
+    fills = 0
     calls = []
 
     async def model(messages, **kwargs):
-        nonlocal rounds
+        nonlocal rounds, fills
         calls.append(step_of(kwargs))
         result = deepcopy(kwargs["mock_response"])
-        if "materials" in json.loads(messages[-1]["content"]):
+        if "design" in result:
             rounds += 1
-            if rounds == 1:
+        if "story" in result:
+            fills += 1
+            if fills == 1:
                 if failure == "format":
                     result["story"].pop("intro")
                 elif failure == "structure":
@@ -99,15 +112,16 @@ async def test_hard_failures_start_another_round(tmp_path, monkeypatch, failure)
 
     monkeypatch.setattr(checker, "complete_for", model)
     await studio._generate(job, [], "new")
-    assert rounds == 2 and job.status == "done"
+    local_failure = failure in {"format", "structure", "count"}
+    assert rounds == (1 if local_failure else 2) and fills == 2 and job.status == "done"
     assert saved(studio, job)["checked"] is True
-    good_round = ["生成", "审稿", "可解性", "可解性"]
-    assert calls == (["生成", *good_round] if failure in {"format", "structure", "count"} else good_round * 2)
+    good_round = ["设计稿", "填表", "审稿", "可解性", "可解性"]
+    assert calls == (["设计稿", "填表", *good_round[1:]] if local_failure else good_round * 2)
 
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("mode", ["play", "share"])
-@pytest.mark.parametrize("blocked_step", ["生成", "审稿", "可解性·只给汤面", "可解性·全部线索", "下一轮"])
+@pytest.mark.parametrize("blocked_step", ["设计稿", "填表", "审稿", "可解性·只给汤面", "可解性·全部线索", "下一轮"])
 async def test_deadline_saves_latest_valid_draft(tmp_path, monkeypatch, mode, blocked_step, caplog):
     studio, job = StudioService(tmp_path), Job("deadline", "chat", mode)
     original = studio._model_call
@@ -115,7 +129,7 @@ async def test_deadline_saves_latest_valid_draft(tmp_path, monkeypatch, mode, bl
 
     async def model(job, attempt, step, messages, **kwargs):
         nonlocal generation_calls
-        if step == "生成":
+        if step == "设计稿":
             generation_calls += 1
         if step == blocked_step or (blocked_step == "下一轮" and generation_calls == 2):
             await asyncio.Event().wait()
@@ -130,7 +144,7 @@ async def test_deadline_saves_latest_valid_draft(tmp_path, monkeypatch, mode, bl
         monkeypatch.setattr(checker, "check", AsyncMock(return_value={"ok": False, "problems": ["缺少证据"]}))
     with caplog.at_level(logging.INFO):
         await studio._generate(job, [], "new")
-    if blocked_step == "生成":
+    if blocked_step in {"设计稿", "填表"}:
         assert job.status == "failed" and job.error == "生成超时，请重试。"
         assert list(tmp_path.glob("*.yaml")) == []
         assert job.id in caplog.text and "失败" in caplog.text
@@ -156,8 +170,8 @@ async def test_bad_later_rounds_do_not_overwrite_valid_draft(tmp_path, monkeypat
         nonlocal rounds
         if "materials" in json.loads(messages[-1]["content"]):
             rounds += 1
-            if rounds > 1:
-                return {"story": {"title": "损坏的后续版本"}}
+        if "story" in kwargs["mock_response"] and rounds > 1:
+            return {"story": {"title": "损坏的后续版本"}}
         return deepcopy(kwargs["mock_response"])
 
     monkeypatch.setattr(checker, "complete_for", model)
@@ -171,10 +185,15 @@ async def test_bad_later_rounds_do_not_overwrite_valid_draft(tmp_path, monkeypat
 @pytest.mark.asyncio
 async def test_no_valid_draft_after_three_rounds_fails_without_publishing(tmp_path, monkeypatch):
     studio, job = StudioService(tmp_path), Job("no-draft", "chat", "play")
-    model = AsyncMock(return_value={"story": {"title": "格式损坏"}, "problems": []})
+    async def incomplete_story(messages, **kwargs):
+        if "story" in kwargs["mock_response"]:
+            return {"story": {"title": "格式损坏"}}
+        return deepcopy(kwargs["mock_response"])
+
+    model = AsyncMock(side_effect=incomplete_story)
     monkeypatch.setattr(checker, "complete_for", model)
     await studio._generate(job, [], "new")
-    assert model.await_count == 3 and job.status == "failed"
+    assert model.await_count == 12 and job.status == "failed"
     assert "格式" in job.error and list(tmp_path.glob("*.yaml")) == []
 
 
@@ -237,7 +256,7 @@ async def test_model_and_save_failures_are_logged(tmp_path, monkeypatch, caplog)
     with caplog.at_level(logging.INFO):
         await studio._generate(job, [], "new")
     assert job.status == "failed"
-    assert "outage" in caplog.text and "模型离线" in caplog.text and "生成 失败 耗时" in caplog.text
+    assert "outage" in caplog.text and "模型离线" in caplog.text and "设计稿 失败 耗时" in caplog.text
     monkeypatch.setattr(checker, "complete_for", original)
 
     def no_disk(story):
@@ -301,9 +320,10 @@ async def test_twice_unreadable_or_truncated_reply_raises_format_error(monkeypat
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("failing, expected_calls, checked, problem", [
-    ("生成", ["生成", "生成", "审稿", "可解性", "可解性"], True, None),
-    ("审稿", ["生成", "审稿", "可解性", "可解性"], False, "审稿回复无法读取，本次未经审稿。"),
-    ("可解性", ["生成", "审稿", "可解性"], False, "可解性检查回复无法读取，未完成检查。"),
+    ("设计稿", ["设计稿", "设计稿", "填表", "审稿", "可解性", "可解性"], True, None),
+    ("填表", ["设计稿", "填表", "填表", "审稿", "可解性", "可解性"], True, None),
+    ("审稿", ["设计稿", "填表", "审稿", "可解性", "可解性"] * 2, True, None),
+    ("可解性", ["设计稿", "填表", "审稿", "可解性", "设计稿", "填表", "审稿", "可解性", "可解性"], True, None),
 ])
 async def test_unreadable_step_does_not_fail_the_job(tmp_path, monkeypatch, failing, expected_calls, checked, problem):
     studio, job = StudioService(tmp_path), Job("unreadable", "chat", "play")
@@ -326,7 +346,7 @@ async def test_unreadable_step_does_not_fail_the_job(tmp_path, monkeypatch, fail
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("bad_review", [{}, {"problems": "BAD_REVIEW"}, {"problems": [1]}, {"problems": None}, {"problems": [""]}])
-async def test_malformed_review_keeps_the_candidate_without_regenerating(tmp_path, monkeypatch, bad_review):
+async def test_malformed_review_retries_and_keeps_the_candidate_unchecked(tmp_path, monkeypatch, bad_review):
     studio, job = StudioService(tmp_path), Job("malformed-review", "chat", "play")
     calls = []
 
@@ -340,7 +360,7 @@ async def test_malformed_review_keeps_the_candidate_without_regenerating(tmp_pat
     monkeypatch.setattr(checker, "complete_for", model)
     await studio._generate(job, ["技术测试素材"], "new")
 
-    assert calls == ["生成", "审稿", "可解性", "可解性"]
+    assert calls == ["设计稿", "填表", "审稿", "可解性", "可解性"] * 3
     assert job.status == "done" and saved(studio, job)["checked"] is False
     assert any("审稿" in problem for problem in job.problems)
     assert checker.check_structure(saved(studio, job))["ok"]
