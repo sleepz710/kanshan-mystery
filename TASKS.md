@@ -189,6 +189,9 @@
 - 完成标准:作品基本信息、海报、B 站视频(按 SPEC 第 3 节录)、GitHub 仓库;README 写清怎么运行、怎么配 `.env`。
 - 依赖:09。
 - 进展:
+  - 2026-11-04，按用户提供的模板重写 README，加入无剧透开场、四角色介绍、玩法亮点、实机画面、快速开始、配置、智能体职责、路线图和常见问题。复用现有标题与新建剧场截图，新增 `docs/images/investigation.png`，由隔离模拟模式通过正常网页入口开局问话拍摄，图下注明模拟模式。许可证按当前决定写为待定，贡献入口链接现有 AGENTS.md。
+  - 本轮核对当前代码，修正桌面设置入口、设置页目录、结局返回条件与 OpenAI 生成预算。Markdown 渲染、三张图片、四枚徽章、12 个本地链接及 6 个页内跳转检查通过，模拟开局 201、问话 200，浏览器错误 0。两次全量测试均为 806 通过、1 失败，失败用例 `backend/studio/test_quality_modes.py::test_fine_compares_two_concurrent_candidates_before_one_solvability_check` 预期分支数 2、实际 5，从原 HEAD 导出代码后单独运行同样失败。测试日志和预览保存在外部 QA 目录。
+  - 下一步继续队员试玩、正式视频与许可证确定，交接以 docs/STATUS.md 最新状态为准。
   - 2026-11-02:Codex 完成提交材料第一版，位于 `docs/submission/`：作品基本信息、1024×1536 PNG 海报、180 秒视频分镜与口播、36 条 SRT 字幕、B 站标题/简介/分章和提交交接。用户确认视频约 3 分钟、中文讲解配字幕，队名/成员/学校暂留待补。
   - README 已补 Windows 与 macOS/Linux 的虚拟环境、依赖安装、模拟启动、真实模型配置入口、测试方法和智能体职责，保留任务 12 的部署说明。海报使用内置 imagegen 生成，提示词和校对记录一并提交。
   - 验证:合入 `11a8160` 最新评测后完整 pytest 329 项通过；正式招牌案件 `check_structure` 返回通过。海报尺寸、中文文案与金额已核对；字幕按 180 秒分配，录屏剪辑后需对齐实录。作品信息与视频稿已接入任务 10 的真实招牌案对照数据，保留 0/117 与 3 条阻止显示的口径及人工复核状态。
@@ -462,6 +465,17 @@
     - 还没放 `bgm.mp3`，控制台有一条 404。
     - 没装 Noto Serif SC / Noto Sans SC 的电脑退回宋体和微软雅黑，字重和参考图不同。
     - 桌面版没填 key 时 `desktop/main.py` 仍直接打开设置页(任务 20 的过渡逻辑，未改)。
+
+### 22 全局背景音乐
+
+- 进展:
+  - 2026-11-04:Codex 从最新 `origin/main`（`2f5d717`）建立 `task/22-global-music`。首页音乐及菜单音效抽到 `frontend/js/music.js`，首页、游戏页、结局页和编剧页统一引入；三个内页增加同款图标开关，继续共用 `kanshan:sound`，音乐和音效默认开启。
+  - `pagehide` 把播放位置写入 sessionStorage `kanshan:music:position`，下页加载音频元数据后从该位置继续；历史返回和其他标签页修改开关时同步设置。音频未加载成功时隐藏音乐按钮，菜单音效仍可用。
+  - 桌面入口在加载 WebView2 前向 `WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS` 追加 `--autoplay-policy=no-user-gesture-required`，保留原参数；网页版被拦截时仍等首次点击或按键。补充参数为空及已有参数两种启动回归。
+  - 验证:完整 `pytest -q --ignore=data -o cache_dir=data/.pytest_cache-task22-final --basetemp=data/pytest-task22-final` 808 项通过；`node --check` 两个声音相关脚本、`git diff --check` 通过。data 是运行数据与旧缓存，未纳入测试收集。
+  - Chrome 模拟模式实际走完首页 → 招牌案件 → 问话一轮 → 结局 → 首页，播放位置分别以 52.39→53.30、85.47→85.79、129.63→129.84 秒接续；静音后历史返回结局、进入编剧页均保持关闭，编剧页重新开启后回首页继续播放。首页菜单音效和首次点击后播放正常。用独立测试服务令音频返回 404，首页隐藏音乐按钮且菜单正常。
+  - 实际运行修改后的 `desktop.main`，使用独立测试配置且模型调用为零；未对桌面窗口点击或按键，播放器从 2.86 秒推进到 4.86 秒，音量 0.3、未静音，WebView2 `IsDocumentPlayingAudio=true`，窗口无障碍状态同时显示「音频正在播放」。原浏览器参数保留。证据在本地 `data/task22-qa/desktop-result.json`，不入库。
+  - 下一步:用户试玩并在 GitHub 合并 PR。其他人的 `docs/STATUS.md`、`docs/story-*.md`、`stories/touqi*` 及同期新增剧本未修改、未暂存。
 
 <!-- 新任务模板
 ### NN 任务名

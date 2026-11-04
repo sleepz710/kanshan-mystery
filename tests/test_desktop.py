@@ -145,7 +145,8 @@ def test_foreign_origin_cannot_update_desktop_settings(desktop):
     assert client.put("/api/settings", json=config(), headers={"Origin": "https://example.com"}).status_code == 403
 
 
-def test_first_launch_resolves_data_directory_after_creation(monkeypatch, tmp_path):
+@pytest.mark.parametrize("browser_args", [None, "--disable-features=ElasticOverscroll"])
+def test_first_launch_resolves_directory_and_enables_autoplay(monkeypatch, tmp_path, browser_args):
     from desktop import main as desktop_main
 
     physical = tmp_path / "physical-profile" / "KanshanMystery"
@@ -164,11 +165,17 @@ def test_first_launch_resolves_data_directory_after_creation(monkeypatch, tmp_pa
     def verify_startup(**kwargs):
         assert os.environ["KANSHAN_DATA_DIR"] == str(physical)
         assert kwargs["filename"] == physical / "logs" / "desktop.log"
+        expected = ((browser_args + " ") if browser_args else "") + "--autoplay-policy=no-user-gesture-required"
+        assert os.environ["WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS"] == expected
         raise StartupReached
 
     monkeypatch.setenv("KANSHAN_DATA_DIR", str(tmp_path / "virtual-profile"))
     monkeypatch.setenv("KANSHAN_DESKTOP", "")
     monkeypatch.setenv("LLM_MOCK", "1")
+    if browser_args is None:
+        monkeypatch.delenv("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", raising=False)
+    else:
+        monkeypatch.setenv("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", browser_args)
     monkeypatch.setattr(desktop_main, "Path", lambda value: RedirectedDirectory())
     monkeypatch.setattr(desktop_main.logging, "basicConfig", verify_startup)
     with pytest.raises(StartupReached):
