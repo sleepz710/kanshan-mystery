@@ -813,14 +813,16 @@
   // ---------- 弹窗 ----------
 
   function openIntro() {
-    el.introBody.replaceChildren(
+    // 检查都通过时 qualityNote() 是 null，replaceChildren 会把它写成文字「null」，先滤掉
+    el.introBody.replaceChildren(...[
       h('h2', { class: 'intro-title' }, state.title),
       qualityNote(),
       h('blockquote', { class: 'soup paper' }, state.intro),
       h('p', { class: 'intro-section' }, '相关人员'),
       h('div', { class: 'intro-cast' }, ...state.characters.map((c) => h('div', { class: 'intro-person' },
         avatar(c, 46), h('div', null, h('b', null, c.name), h('small', null, c.profile))))),
-      h('div', { class: 'greeting' }, avatar('kanshan', 40), h('div', null, h('b', null, '刘看山'), h('p', null, state.greeting))));
+      h('div', { class: 'greeting' }, avatar('kanshan', 40), h('div', null, h('b', null, '刘看山'), h('p', null, state.greeting))),
+    ].filter(Boolean));
     el.introGo.textContent = state.introSeen ? '继续调查' : '开始调查';
     el.dlgIntro.showModal();
   }

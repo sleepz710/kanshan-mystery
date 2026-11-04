@@ -7,30 +7,16 @@
 
   const $ = (id) => document.getElementById(id);
   const el = {
-    studio: $('studio'), thread: $('thread'), messages: $('messages'),
-    modes: $('modes'), modesLock: $('modes-lock'), modeTag: $('mode-tag'), newChat: $('btn-new'),
+    studio: $('studio'), thread: $('thread'), messages: $('messages'), newChat: $('btn-new'),
     suggest: $('suggest'), composer: $('composer'), attachments: $('attachments'), fileInput: $('file-input'),
     say: $('say'), send: $('btn-send'), note: $('composer-note'),
     sidebar: $('sidebar'), chatList: $('chat-list'), history: $('btn-history'), scrim: $('scrim'), sideNew: $('btn-side-new'),
   };
 
-  // 与 backend/studio 的限制一致，发送前先提示
-  const MAX_FILES = 5;
-  const MAX_FILE_BYTES = 256 * 1024;
-  const MAX_URLS = 3;
-  const URL_PATTERN = /https?:\/\/[^\s<>"'，。；）)]+/g;
+  const { LIMITS, URL_PATTERN, STARTERS, writer } = chats;
   const POLL_MS = 1500;
   const PLACEHOLDER = '海龟汤、小说、网址或一句想法';
-  const MODES = {
-    play: { label: '自己玩', tag: 'tag-gold' },
-    share: { label: '出题给朋友', tag: 'tag-blue' },
-  };
-  const STARTERS = [
-    { label: '贴一碗海龟汤', text: '汤面：小周每天准时给楼下的流浪猫喂食。一天夜里他报了警，说是那只猫救了他。\n汤底：那晚猫没有出现，小周绕到楼后去找，看见有人正在撬他家一楼的窗户。' },
-    { label: '说一句想法', text: '我想玩一个发生在大雪封山的民宿里的案子，老板的账本不见了。' },
-    { label: '改编网页上的故事', text: '请改编这个网页里的故事：https://' },
-  ];
-  // 自己玩模式下编剧只问一次改编方式，这几句是他给的选项
+  // 编剧只问一次改编方式，这几句是他给的选项
   const STRATEGY_REPLIES = ['没看过答案', '看过答案', '全新', '直接开始'];
 
   // 当前打开的对话，结构见 chats.js；job.after 是任务开始时的消息条数，卡片画在这条消息后面
@@ -45,56 +31,12 @@
     renderSidebar();
   }
 
-  // ---------- 接口（SPEC 6.2 生成剧场） ----------
-
-  function errorMessage(status, data) {
-    const detail = data && data.detail;
-    if (typeof detail === 'string' && detail) return detail;
-    if (Array.isArray(detail)) return '提交的内容格式不对，请修改后再试。';
-    if (status === 401) return '需要体验账号和口令，请刷新页面后输入。';
-    if (status === 413) return '附件太大了，请只上传要改编的部分。';
-    if (status >= 500) return '服务暂时不可用，请稍后重试。';
-    return `请求失败（${status}），请重试。`;
-  }
-
-  // 和 js/api.js 的 request 一样，多支持 multipart 上传
-  async function request(method, path, body) {
-    const json = body !== undefined && !(body instanceof FormData);
-    let response;
-    try {
-      response = await fetch(path, {
-        method,
-        headers: json ? { 'Content-Type': 'application/json' } : undefined,
-        body: json ? JSON.stringify(body) : body,
-      });
-    } catch {
-      throw new ApiError(0, '网络连接失败，请检查网络后重试。');
-    }
-    let data = null;
-    if ((response.headers.get('content-type') || '').includes('application/json')) {
-      try {
-        data = await response.json();
-      } catch {
-        throw new ApiError(response.status, '服务返回的内容无法读取，请重试。');
-      }
-    }
-    if (!response.ok) throw new ApiError(response.status, errorMessage(response.status, data));
-    if (data === null) throw new ApiError(response.status, '服务返回的内容无法读取，请重试。');
-    return data;
-  }
-
-  const studio = {
-    newChat: (mode) => request('POST', '/api/studio/chats', { mode }),
-    send: (chatId, form) => request('POST', `/api/studio/chats/${encodeURIComponent(chatId)}/messages`, form),
-  };
-
   // ---------- 小工具 ----------
 
   const userCount = () => (session ? session.messages.filter((m) => m.role === 'me').length : 0);
   const runningJob = () => (session ? chats.runningJob(session) : undefined);
   const keepBottom = () => { el.thread.scrollTop = el.thread.scrollHeight; };
   const sizeText = (bytes) => (bytes < 1024 ? `${bytes} B` : `${Math.ceil(bytes / 1024)} KB`);
-  const ownerUrl = (storyId) => `/share/?story=${encodeURIComponent(storyId)}`;
   const seal = () => h('span', { class: 'writer-seal', 'aria-hidden': 'true' }, '编');
   const { clock } = chats;
 
@@ -156,20 +98,9 @@
       tipNode(job));
   }
 
-  function shareBox(url) {
-    const input = h('input', { readonly: true, value: url, 'aria-label': '分享链接', onfocus: (event) => event.target.select() });
-    return h('div', { class: 'share-box' },
-      h('span', { class: 'share-label' }, '分享链接'),
-      h('div', { class: 'share-row' }, input,
-        h('button', { class: 'btn btn-blue', type: 'button', onclick: () => copy(url, input) }, '复制')),
-      h('p', null, '朋友打开链接就直接开局。出题人页面能看完整剧本和朋友们查到哪一步，只能在这个浏览器里打开。'));
-  }
-
   function doneNode(job, cls) {
     const story = job.story || {};
-    const share = job.mode === 'share';
-    const start = h('button', { class: `btn btn-lg ${share ? 'btn-ghost' : 'btn-primary'}`, type: 'button' },
-      share ? '自己先试玩' : '开始调查');
+    const start = h('button', { class: 'btn btn-lg btn-primary', type: 'button' }, '开始调查');
     start.addEventListener('click', () => startGame(job.storyId, start));
     return h('article', { class: cls, dataset: { job: job.id } },
       h('div', { class: 'case-stamp', 'aria-hidden': 'true' }, '新案'),
@@ -181,10 +112,7 @@
       h('h3', null, story.title || '新案件'),
       story.intro ? h('blockquote', { class: 'soup paper' }, tidy(story.intro)) : null,
       job.error ? h('p', { class: 'job-warn' }, icon('alert'), h('span', null, job.error)) : null,
-      share ? shareBox(`${location.origin}/?story=${encodeURIComponent(job.storyId)}`) : null,
-      h('div', { class: 'job-actions' },
-        share ? h('a', { class: 'btn btn-gold btn-lg', href: ownerUrl(job.storyId) }, icon('eye'), '出题人页面') : null,
-        start));
+      h('div', { class: 'job-actions' }, start));
   }
 
   // 只有最近一次生成的失败卡片带按钮，之后又生成过就不再提供重试
@@ -192,7 +120,7 @@
     let action = null;
     if (job === session.jobs.at(-1)) {
       action = job.lost
-        ? h('button', { class: 'btn btn-primary', type: 'button', onclick: () => newChat(session.mode) }, icon('plus'), '新建对话')
+        ? h('button', { class: 'btn btn-primary', type: 'button', onclick: () => newChat() }, icon('plus'), '新建对话')
         : h('button', { class: 'btn btn-primary', type: 'button', onclick: () => send(job.quality === 'fine' ? '精修' : '快速') }, icon('retry'), '重新生成');
     }
     return h('article', { class: cls, dataset: { job: job.id } },
@@ -265,20 +193,6 @@
     el.messages.replaceChildren(...nodes);
   }
 
-  function renderModes() {
-    const started = userCount() > 0;
-    for (const button of el.modes.querySelectorAll('button')) {
-      button.setAttribute('aria-checked', String(button.dataset.mode === (session ? session.mode : 'play')));
-      button.disabled = !session || busy || started;
-    }
-    el.modesLock.hidden = !started;
-    el.modeTag.hidden = !session;
-    if (session) {
-      el.modeTag.className = `tag ${MODES[session.mode].tag}`;
-      el.modeTag.textContent = MODES[session.mode].label;
-    }
-  }
-
   function chip(label, onclick, sends) {
     return h('button', { class: sends ? 'send' : null, type: 'button', onclick }, sends ? null : icon('plus'), label);
   }
@@ -291,7 +205,7 @@
       if (!userCount()) chips = STARTERS.map((s) => chip(s.label, () => fill(s.text), false));
       else if (endsWithReply) {
         const qualityQuestion = /快速(?:（约 3 分钟）)?还是精修/.test(session.messages.at(-1).text);
-        const replies = qualityQuestion ? ['快速', '精修'] : (session.mode === 'play' ? STRATEGY_REPLIES : ['开始生成']);
+        const replies = qualityQuestion ? ['快速', '精修'] : STRATEGY_REPLIES;
         chips = replies.map((t) => chip(t, () => send(t), true));
       }
     }
@@ -314,8 +228,8 @@
 
   function renderNote() {
     const urls = el.say.value.match(URL_PATTERN) || [];
-    el.note.classList.toggle('warn', urls.length > MAX_URLS);
-    if (urls.length > MAX_URLS) el.note.textContent = `每次最多读取 ${MAX_URLS} 个网址，请分几次发。`;
+    el.note.classList.toggle('warn', urls.length > LIMITS.urls);
+    if (urls.length > LIMITS.urls) el.note.textContent = `每次最多读取 ${LIMITS.urls} 个网址，请分几次发。`;
     else if (urls.length) el.note.replaceChildren('发送后编剧会读取网页正文：', h('b', null, urls.map(hostOf).join('、')));
     else el.note.textContent = '可上传 txt、md 文件（每个 256 KB 内），网址会自动读取正文。';
   }
@@ -328,7 +242,6 @@
     el.composer.classList.toggle('locked', !session || running);
     el.send.disabled = !session || busy || running || (!el.say.value.trim() && !attachments.length);
     el.newChat.disabled = busy;
-    renderModes();
   }
 
   function renderAll() {
@@ -358,17 +271,7 @@
 
   function addFiles(list) {
     if (!session || runningJob()) return;
-    for (const file of list) {
-      const ext = (file.name.match(/\.[^.]+$/) || [''])[0].toLowerCase();
-      if (ext !== '.txt' && ext !== '.md') toast(`「${file.name}」不是 txt 或 md 文件，其他格式请把文字复制进输入框。`, 'error', 6000);
-      else if (file.size > MAX_FILE_BYTES) toast(`「${file.name}」超过 256 KB，请只上传要改编的部分。`, 'error', 6000);
-      else if (!file.size) toast(`「${file.name}」是空文件。`, 'error');
-      else if (attachments.some((f) => f.name === file.name)) toast(`「${file.name}」已经在附件里了。`);
-      else if (attachments.length >= MAX_FILES) {
-        toast(`每次最多附 ${MAX_FILES} 个文件。`, 'error');
-        break;
-      } else attachments.push(file);
-    }
+    chats.addFiles(list, attachments);
     renderAttachments();
     syncControls();
   }
@@ -380,8 +283,8 @@
     const text = (fromComposer ? el.say.value : preset).trim();
     const files = fromComposer ? [...attachments] : [];
     if (!session || busy || runningJob() || (!text && !files.length)) return;
-    if ((text.match(URL_PATTERN) || []).length > MAX_URLS) {
-      toast(`每次最多读取 ${MAX_URLS} 个网址，请分几次发。`, 'error');
+    if ((text.match(URL_PATTERN) || []).length > LIMITS.urls) {
+      toast(`每次最多读取 ${LIMITS.urls} 个网址，请分几次发。`, 'error');
       return;
     }
     const form = new FormData();
@@ -412,7 +315,7 @@
 
     let result;
     try {
-      result = await studio.send(session.chatId, form);
+      result = await writer.send(session.chatId, form);
     } catch (error) {
       timers.forEach(clearTimeout);
       mine.remove();
@@ -437,7 +340,7 @@
     session.messages.push(msg, { role: 'writer', text: result.reply });
     let job = null;
     if (result.job && !session.jobs.some((j) => j.id === result.job.id)) {
-      job = { id: result.job.id, quality: result.job.quality || 'fast', mode: session.mode, after: session.messages.length, status: 'running', progress: '', steps: [], startedAt: Date.now() };
+      job = chats.newJob(result.job, session.messages.length);
       session.jobs.push(job);
       for (const actions of el.messages.querySelectorAll('.job.failed .job-actions')) actions.remove();
     }
@@ -457,12 +360,12 @@
     if (!job) el.say.focus({ preventScroll: true });
   }
 
-  async function newChat(mode) {
+  async function newChat() {
     busy = true;
     syncControls();
     let chat;
     try {
-      chat = await studio.newChat(mode);
+      chat = await writer.newChat();
     } catch (error) {
       busy = false;
       if (!(error instanceof ApiError)) throw error;
@@ -470,13 +373,13 @@
       else {
         el.messages.replaceChildren(h('div', { class: 'thread-error' },
           h('span', null, `编剧暂时联系不上：${error.message}`),
-          h('button', { class: 'btn btn-ghost btn-sm', type: 'button', onclick: () => newChat(mode) }, icon('retry'), '重试')));
+          h('button', { class: 'btn btn-ghost btn-sm', type: 'button', onclick: () => newChat() }, icon('retry'), '重试')));
       }
       syncControls();
       return false;
     }
     const now = Date.now();
-    session = { chatId: chat.chat_id, mode, createdAt: now, updatedAt: now, messages: [{ role: 'writer', text: chat.reply }], jobs: [] };
+    session = { chatId: chat.chat_id, createdAt: now, updatedAt: now, messages: [{ role: 'writer', text: chat.reply }], jobs: [] };
     chats.setCurrent(session.chatId);
     busy = false;
     save();
@@ -492,7 +395,7 @@
       el.say.focus();
       return;
     }
-    if (await newChat(session ? session.mode : 'play')) el.say.focus();
+    if (await newChat()) el.say.focus();
   }
 
   function openChat(chatId) {
@@ -532,7 +435,6 @@
       },
       h('span', { class: 'chat-title' }, chats.title(chat)),
       h('span', { class: 'chat-meta' },
-        h('span', { class: `chat-mode ${chat.mode}` }, MODES[chat.mode].label),
         chatStatus(chat),
         h('span', { class: 'chat-time' }, chats.ago(chat.updatedAt)))));
     }));
@@ -559,7 +461,7 @@
         ok: '新建对话',
         cancel: '回到首页',
       });
-      if (again) await newChat(session.mode);
+      if (again) await newChat();
       else location.href = '/';
       return;
     }
@@ -583,18 +485,6 @@
     const state = store.create(game, storyId);
     store.save(state);
     location.assign(`/game.html?g=${encodeURIComponent(state.gameId)}`);
-  }
-
-  // 非 https 页面没有剪贴板接口，退回到选中链接让玩家手动复制
-  async function copy(url, input) {
-    try {
-      await navigator.clipboard.writeText(url);
-      toast('链接已复制，发给朋友就能开局。', 'success');
-    } catch {
-      input.focus();
-      input.select();
-      toast('浏览器不让直接复制，链接已经选中，请手动复制。');
-    }
   }
 
   // ---------- 事件 ----------
@@ -641,11 +531,6 @@
     addFiles([...event.dataTransfer.files]);
   });
 
-  el.modes.addEventListener('click', (event) => {
-    const button = event.target.closest('button[data-mode]');
-    if (!button || button.disabled || button.dataset.mode === session.mode) return;
-    newChat(button.dataset.mode);
-  });
   el.newChat.addEventListener('click', () => resetChat());
   el.sideNew.addEventListener('click', () => resetChat());
   el.history.addEventListener('click', () => (el.sidebar.classList.contains('open') ? closeSidebar() : openSidebar()));
@@ -685,14 +570,10 @@
   hydrateIcons();
   renderNote();
   syncControls();
-  const params = new URLSearchParams(location.search);
-  const wanted = params.get('mode');
-  // 首页的生成卡片带 ?chat=<id> 打开对应对话
-  const saved = chats.get(params.get('chat')) || chats.get(chats.current());
-  if (params.has('chat') || params.has('mode')) history.replaceState(null, '', location.pathname);
-  // 带 ?mode= 打开时新开一段该玩法的对话，除非当前对话就是这个玩法且还没聊过
-  const fresh = !saved || (!params.has('chat') && wanted in MODES && !(wanted === saved.mode && !chats.hasTalk(saved)));
-  if (fresh) newChat(wanted in MODES ? wanted : 'play');
+  // 首页的生成中行和「新建剧场」都带 ?chat=<id> 打开对应对话；出题页留下的旧链接还带 ?mode=，一并去掉
+  const saved = chats.get(new URLSearchParams(location.search).get('chat')) || chats.get(chats.current());
+  if (location.search) history.replaceState(null, '', location.pathname);
+  if (!saved) newChat();
   else {
     session = saved;
     chats.setCurrent(saved.chatId);
