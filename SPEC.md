@@ -287,6 +287,8 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 - `eval/pregen.py` 支持按素材数组用精修档批量生成 6–8 个案件，默认模拟，显式 `--live` 才调用真实模型；JSON/CSV 保存耗时、各项检查和具体失败，产物进入生成案件目录。
 - 演示样本的原稿、人工修订稿与验收记录保存在 `docs/testing/task19-demo/`，用 `manifest.json` 的原稿和修订稿 SHA256 关联。原始生成稿保留当时的质量标记，人工修订稿完成程序、好玩度、真实双盲答及真实角色整局验收后，按当前结果记录 `checked`。复制修订 YAML 到生成案件目录后使用正常开局接口游玩。
 - 验收样本目录下的原稿和修订稿 YAML 通过 `.gitattributes` 禁用换行转换，使入库字节与验收指纹一致。
+- 生成流程修改后，对已有演示案复核结构、好玩度、开局和秘密开放权限、完整取证拆谎路线与结局隔离，记录所用源码版本及指纹。使用既有真实输出做离线兼容回放时，记录该方式及模型调用数，真实口供与双盲结果继续对应原验收记录。
+- 档位问句兼容新「快速还是精修」及历史对话中带预计分钟数的旧问句，恢复对话后继续显示「快速」「精修」按钮。普通改编策略问句沿用原快捷回复；新问句和历史恢复通过实际前端函数的离线回归核对。
 
 ### 6.8 剧本检查
 
@@ -354,8 +356,10 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 
 - `python -m desktop.main` 启动 1600×900 的 Edge WebView2 窗口，最小 1280×720。同一进程内后台运行一个 uvicorn，预绑定 `127.0.0.1:0` 获得随机空闲端口。关闭窗口等待后端按 6.9 收尾。
 - `KANSHAN_DESKTOP=1` 由桌面入口设置。数据根目录取 `KANSHAN_DATA_DIR`，默认 `%APPDATA%/KanshanMystery`，包含 `stories/`、`drafts/`、模型 `config.json`、`browser-storage.json`、`games.json`、`webview/` 和日志。资源目录只读。网页版未设置环境变量时仍用项目 `data/`。
+  - 首次启动先创建数据目录，再解析实际路径并传入 `KANSHAN_DATA_DIR`。Windows 应用数据重定向可能在目录创建后才解析到物理位置，设置与存档的临时文件和目标文件均使用该实际目录完成原子替换。
 - 桌面专用 `GET /api/settings` 返回 `{provider,actor_model,writer_model,has_key,key_suffix,configured}`。`PUT /api/settings` 接收 `{provider,api_key?,actor_model,writer_model}`，provider 为 `deepseek` 或 `openai`，同服务省略/留空 key 保留原值，切换服务必须填写新 key。返回同 GET，不返回完整 key。保存后环境变量和本地配置同时更新，后续模型调用立即生效。
 - `POST /api/settings/test` 接收同样的候选配置，使用演员模型发一次最小连接请求，返回 `{ok,message}`，不自动保存。错误只显示固定文案。OpenAI 需明确填写两组模型名称。未配置时创建对局及发送编剧消息返回 503，提示打开 `/settings/`。
+  - OpenAI 的 `gpt-5.4` 和 `gpt-5.4-2026-03-05` 连接测试使用 `max_completion_tokens=8` 及 `reasoning_effort=none`，沿用演员的无思考设置。
 - `/settings/` 提供模型设置界面。`window.pywebview.api.quit()` 关闭桌面窗口。首次未配置时桌面直接打开设置页。
 - 浏览器以 `private_mode=False`、独立 `storage_path` 启动。随机端口之间通过桌面 `PUT /api/desktop/storage` 持久化 `kanshan:*` 字符串键。在每个 HTML 页面原有脚本之前恢复这些键，再同步保存后续 setItem/removeItem/clear。模型 key 从不放 localStorage。桌面按成功游戏请求保存后端局内状态，以便重启续局。
 - `desktop/build.ps1` 使用 PyInstaller onedir 打包为 `dist/看山谜案馆/看山谜案馆.exe`，包含前端、官方剧本、设置页面和图标。Windows 需安装 Edge WebView2 Runtime。

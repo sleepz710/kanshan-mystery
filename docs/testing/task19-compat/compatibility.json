@@ -1,0 +1,1370 @@
+{
+  "generated_utc": "2026-11-04T08:48:55.582491+00:00",
+  "mode": "offline HTTP replay of previously accepted actor and confrontation outputs",
+  "real_model_calls": 0,
+  "source_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
+  "source_runtime_dirty": false,
+  "source_sha256": {
+    "backend/engine.py": "cec23ba807933c8feffedc2350d4f561d458137009280b552853aa3580332fd8",
+    "backend/agents.py": "b950f79a906eb1d5a65200481c40c6a7e0f9d02c1a9e69f648396302d5b2d0a8",
+    "backend/app.py": "b28b20ba39f946570f0340a37324e6a53d46cacf52a6becdcfbd05248a87c579",
+    "backend/llm.py": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+    "backend/studio/check.py": "7f2fe6a2fb167dc8d19ceea926124a3f652049ad68c15f084c2c40da220e9d8a",
+    "backend/studio/service.py": "d5e4da8c4b7a320f138a579213fcb640e56142871a62cc4f1d0cd8b241612e7c"
+  },
+  "cases": [
+    {
+      "name": "hotel",
+      "title": "汐潮馆的第七位住客",
+      "checked": true,
+      "original_sha256": "4dba4aca8bb3a057d69cf1d1b269cee76892bb454ad6a985dd9e981e442bb2bb",
+      "revised_sha256": "644ea25b41546f92ad17e47d531c011ee84683328bcebee1e58f6e8373f45f96",
+      "prior_real_acceptance_sha256": "1455e15f03c750f3ab619e02066866fa75211a67b9beb4128d99d45cbd625d0c",
+      "structure": {
+        "ok": true,
+        "problems": []
+      },
+      "playability": [],
+      "prior_tested_story_sha256": "af0b5cae0b5d4c4db4c5f6141a9c09e77110eb6a89551cbf194e36ac31c5fa27",
+      "initial_permissions": {
+        "lin": [],
+        "chen": [],
+        "zhouxu": [],
+        "su": []
+      },
+      "final_permissions": {
+        "lin": [
+          "f_seven_guests",
+          "f_duty_log",
+          "f_zhouning_lost",
+          "f_lin_coverup",
+          "f_zhouning_case",
+          "f_lin_motive"
+        ],
+        "chen": [
+          "f_hall_photo",
+          "f_register",
+          "f_fire_map",
+          "f_guestbook",
+          "f_duty_log",
+          "f_window",
+          "f_chen_at_hotel",
+          "f_zhouning_lost",
+          "f_lin_coverup",
+          "f_zhouning_case",
+          "f_chen_typhoon_motive"
+        ],
+        "zhouxu": [
+          "f_hall_photo",
+          "f_zhouning_identity",
+          "f_missing",
+          "f_zhouning_case",
+          "f_zhou_xu_motive"
+        ],
+        "su": [
+          "f_orders",
+          "f_email",
+          "f_zhouning_case"
+        ]
+      },
+      "turns": [
+        {
+          "index": 1,
+          "action": "talk",
+          "character_id": "lin",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_photo_cropped",
+            "c_register",
+            "c_fire_map"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 2,
+          "action": "talk",
+          "character_id": "chen",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 3,
+          "action": "talk",
+          "character_id": "zhouxu",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 4,
+          "action": "talk",
+          "character_id": "su",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 5,
+          "action": "show",
+          "character_id": "zhouxu",
+          "clue_id": "c_photo_cropped",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_hall_photo"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_photo"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 6,
+          "action": "show",
+          "character_id": "su",
+          "clue_id": "c_register",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_orders"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_orders"
+          ],
+          "event_types": [
+            "confront"
+          ]
+        },
+        {
+          "index": 7,
+          "action": "show",
+          "character_id": "chen",
+          "clue_id": "c_photo",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_hall_photo",
+            "f_register",
+            "f_fire_map",
+            "f_guestbook"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_guestbook"
+          ],
+          "event_types": [
+            "confront"
+          ]
+        },
+        {
+          "index": 8,
+          "action": "show",
+          "character_id": "su",
+          "clue_id": "c_photo",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_orders",
+            "f_email"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_email"
+          ],
+          "event_types": [
+            "confront"
+          ]
+        },
+        {
+          "index": 9,
+          "action": "show",
+          "character_id": "zhouxu",
+          "clue_id": "c_email",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_hall_photo",
+            "f_zhouning_identity",
+            "f_missing",
+            "f_zhou_xu_motive"
+          ],
+          "exposed_lie_ids": [
+            "l_zhou_photographer"
+          ],
+          "new_clue_ids": [
+            "c_missing"
+          ],
+          "event_types": [
+            "exposed"
+          ]
+        },
+        {
+          "index": 10,
+          "action": "show",
+          "character_id": "lin",
+          "clue_id": "c_orders",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_seven_guests",
+            "f_duty_log",
+            "f_lin_motive"
+          ],
+          "exposed_lie_ids": [
+            "l_lin_no_extra"
+          ],
+          "new_clue_ids": [
+            "c_duty_log"
+          ],
+          "event_types": [
+            "exposed",
+            "confront"
+          ]
+        },
+        {
+          "index": 11,
+          "action": "show",
+          "character_id": "chen",
+          "clue_id": "c_duty_log",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_hall_photo",
+            "f_register",
+            "f_fire_map",
+            "f_guestbook",
+            "f_duty_log",
+            "f_window",
+            "f_chen_at_hotel",
+            "f_chen_typhoon_motive"
+          ],
+          "exposed_lie_ids": [
+            "l_chen_pier"
+          ],
+          "new_clue_ids": [
+            "c_window"
+          ],
+          "event_types": [
+            "exposed",
+            "confront"
+          ]
+        },
+        {
+          "index": 12,
+          "action": "talk",
+          "character_id": "lin",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_seven_guests",
+            "f_duty_log",
+            "f_zhouning_lost",
+            "f_lin_coverup",
+            "f_zhouning_case",
+            "f_lin_motive"
+          ],
+          "exposed_lie_ids": [
+            "l_lin_no_extra"
+          ],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 13,
+          "action": "talk",
+          "character_id": "chen",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_hall_photo",
+            "f_register",
+            "f_fire_map",
+            "f_guestbook",
+            "f_duty_log",
+            "f_window",
+            "f_chen_at_hotel",
+            "f_zhouning_lost",
+            "f_lin_coverup",
+            "f_zhouning_case",
+            "f_chen_typhoon_motive"
+          ],
+          "exposed_lie_ids": [
+            "l_chen_pier"
+          ],
+          "new_clue_ids": [],
+          "event_types": []
+        }
+      ],
+      "acquired_clues": [
+        "c_duty_log",
+        "c_email",
+        "c_fire_map",
+        "c_guestbook",
+        "c_missing",
+        "c_orders",
+        "c_photo",
+        "c_photo_cropped",
+        "c_register",
+        "c_window"
+      ],
+      "exposed_lies": [
+        "l_chen_pier",
+        "l_lin_no_extra",
+        "l_zhou_photographer"
+      ],
+      "triggered_events": [
+        "e_duty",
+        "e_email",
+        "e_guestbook",
+        "e_orders",
+        "e_window"
+      ],
+      "accusation": {
+        "score": 4,
+        "total": 4,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true,
+          "q4": true
+        },
+        "ending": {
+          "id": "e_light",
+          "title": "第七只凉鞋",
+          "text": "合影、登记簿、订单与值班表终于对上了：台风夜旅馆私留了没有预订的周宁，窗被风浪打坏，陈砚签字修窗后离开，周宁为关窗落海。林晚裁掉合照、涂改房号，陈砚收起旧物，周叙找回姐姐的名字，苏禾补上当年没发出的那封举报。海风还在吹，旅馆的灯一盏一盏亮起来。",
+          "retry": false
+        },
+        "rating": "S"
+      },
+      "wrong_accusations": [
+        {
+          "score": 3,
+          "total": 4,
+          "results": {
+            "q1": false,
+            "q2": true,
+            "q3": true,
+            "q4": true
+          },
+          "ending": {
+            "id": "e_fog",
+            "title": "留在风里的半句",
+            "text": "旧物还散在各人手里，各人的说法互相绞着，不能互相印证。五年前那一夜还在雾里，周宁的名字和那只凉鞋都没能被摆到众人面前，你听到的仍只是每个人想让你听见的那半句。",
+            "retry": true
+          },
+          "rating": "B"
+        },
+        {
+          "score": 0,
+          "total": 4,
+          "results": {
+            "q1": false,
+            "q2": false,
+            "q3": false,
+            "q4": false
+          },
+          "ending": {
+            "id": "e_fog",
+            "title": "留在风里的半句",
+            "text": "旧物还散在各人手里，各人的说法互相绞着，不能互相印证。五年前那一夜还在雾里，周宁的名字和那只凉鞋都没能被摆到众人面前，你听到的仍只是每个人想让你听见的那半句。",
+            "retry": true
+          },
+          "rating": "C"
+        }
+      ],
+      "ending_enumeration": {
+        "combinations": 256,
+        "complete_combinations": 1,
+        "wrong_complete": 0
+      },
+      "compatible": true
+    },
+    {
+      "name": "tide",
+      "title": "潮汐第七人",
+      "checked": true,
+      "original_sha256": "5ac0314eb2d2661a99d0e35ad81c7df3e1e835c7ecbf5981ecd7a8e668533386",
+      "revised_sha256": "1c45853478591e4258062335c667b193429f10452a94e66438e4d23c270b926a",
+      "prior_real_acceptance_sha256": "3d22dde4f1ab160a2123f7607f346c02fc7a018842975327a45dc70dcba6e133",
+      "structure": {
+        "ok": true,
+        "problems": []
+      },
+      "playability": [],
+      "prior_tested_story_sha256": "c79129011d68f29ad5cbaee7eb8bd72ddb45d43a83b431cb8c825297e0fa354c",
+      "initial_permissions": {
+        "shen": [
+          "f_photo",
+          "f_weather",
+          "f_ledger"
+        ],
+        "lu": [
+          "f_photo"
+        ],
+        "zhou": [],
+        "lin": [
+          "f_photo",
+          "f_wharf"
+        ]
+      },
+      "final_permissions": {
+        "shen": [
+          "f_photo",
+          "f_register",
+          "f_rail",
+          "f_weather",
+          "f_ledger",
+          "f_core"
+        ],
+        "lu": [
+          "f_photo",
+          "f_register",
+          "f_drawer",
+          "f_ledger",
+          "f_core"
+        ],
+        "zhou": [
+          "f_rail",
+          "f_weather",
+          "f_wharf",
+          "f_ledger",
+          "f_core"
+        ],
+        "lin": [
+          "f_photo",
+          "f_register",
+          "f_wharf",
+          "f_missing",
+          "f_core"
+        ]
+      },
+      "turns": [
+        {
+          "index": 1,
+          "action": "talk",
+          "character_id": "shen",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo",
+            "f_weather",
+            "f_ledger"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_weather"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 2,
+          "action": "talk",
+          "character_id": "lu",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 3,
+          "action": "talk",
+          "character_id": "zhou",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 4,
+          "action": "talk",
+          "character_id": "lin",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo",
+            "f_wharf"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_photo"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 5,
+          "action": "show",
+          "character_id": "zhou",
+          "clue_id": "c_weather",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_rail",
+            "f_weather",
+            "f_wharf"
+          ],
+          "exposed_lie_ids": [
+            "l_zhou"
+          ],
+          "new_clue_ids": [
+            "c_rail"
+          ],
+          "event_types": [
+            "exposed"
+          ]
+        },
+        {
+          "index": 6,
+          "action": "talk",
+          "character_id": "zhou",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_rail",
+            "f_weather",
+            "f_wharf"
+          ],
+          "exposed_lie_ids": [
+            "l_zhou"
+          ],
+          "new_clue_ids": [
+            "c_drawer"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 7,
+          "action": "talk",
+          "character_id": "zhou",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_rail",
+            "f_weather",
+            "f_wharf"
+          ],
+          "exposed_lie_ids": [
+            "l_zhou"
+          ],
+          "new_clue_ids": [
+            "c_wharf"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 8,
+          "action": "show",
+          "character_id": "lu",
+          "clue_id": "c_drawer",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo",
+            "f_drawer"
+          ],
+          "exposed_lie_ids": [
+            "l_lu"
+          ],
+          "new_clue_ids": [
+            "c_register"
+          ],
+          "event_types": [
+            "exposed"
+          ]
+        },
+        {
+          "index": 9,
+          "action": "show",
+          "character_id": "shen",
+          "clue_id": "c_rail",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo",
+            "f_rail",
+            "f_weather",
+            "f_ledger"
+          ],
+          "exposed_lie_ids": [
+            "l_shen"
+          ],
+          "new_clue_ids": [
+            "c_negative"
+          ],
+          "event_types": [
+            "exposed"
+          ]
+        },
+        {
+          "index": 10,
+          "action": "show",
+          "character_id": "lu",
+          "clue_id": "c_register",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo",
+            "f_drawer",
+            "f_ledger"
+          ],
+          "exposed_lie_ids": [
+            "l_lu"
+          ],
+          "new_clue_ids": [
+            "c_ledger"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 11,
+          "action": "show",
+          "character_id": "lin",
+          "clue_id": "c_register",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo",
+            "f_wharf"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_modify"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 12,
+          "action": "show",
+          "character_id": "lin",
+          "clue_id": "c_negative",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo",
+            "f_register",
+            "f_wharf"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": [
+            "confront"
+          ]
+        },
+        {
+          "index": 13,
+          "action": "show",
+          "character_id": "lin",
+          "clue_id": "c_wharf",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo",
+            "f_register",
+            "f_wharf",
+            "f_missing"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_missing"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 14,
+          "action": "show",
+          "character_id": "lin",
+          "clue_id": "c_missing",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo",
+            "f_register",
+            "f_wharf",
+            "f_missing"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": [
+            "confront"
+          ]
+        },
+        {
+          "index": 15,
+          "action": "show",
+          "character_id": "zhou",
+          "clue_id": "c_ledger",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_rail",
+            "f_weather",
+            "f_wharf",
+            "f_ledger",
+            "f_core"
+          ],
+          "exposed_lie_ids": [
+            "l_zhou"
+          ],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 16,
+          "action": "talk",
+          "character_id": "lu",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_photo",
+            "f_register",
+            "f_drawer",
+            "f_ledger",
+            "f_core"
+          ],
+          "exposed_lie_ids": [
+            "l_lu"
+          ],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 17,
+          "action": "talk",
+          "character_id": "zhou",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_rail",
+            "f_weather",
+            "f_wharf",
+            "f_ledger",
+            "f_core"
+          ],
+          "exposed_lie_ids": [
+            "l_zhou"
+          ],
+          "new_clue_ids": [],
+          "event_types": []
+        }
+      ],
+      "acquired_clues": [
+        "c_drawer",
+        "c_ledger",
+        "c_missing",
+        "c_modify",
+        "c_negative",
+        "c_photo",
+        "c_rail",
+        "c_register",
+        "c_weather",
+        "c_wharf"
+      ],
+      "exposed_lies": [
+        "l_lu",
+        "l_shen",
+        "l_zhou"
+      ],
+      "triggered_events": [
+        "e_end",
+        "e_identity"
+      ],
+      "accusation": {
+        "score": 4,
+        "total": 4,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true,
+          "q4": true
+        },
+        "ending": {
+          "id": "end_true",
+          "title": "第七个人回来了",
+          "text": "你把底片、登记簿、维修单和账本一一摆开，沈砚舟、陆敏、周砚在潮汐洞栈道前说出了十年前的凌晨。林棠把侧光灯对准合照右侧，那个穿服务员围裙的身影终于重新站在六个人旁边。她按下快门，十年来空着的位置第一次被填满。",
+          "retry": false
+        },
+        "rating": "S"
+      },
+      "wrong_accusations": [
+        {
+          "score": 3,
+          "total": 4,
+          "results": {
+            "q1": false,
+            "q2": true,
+            "q3": true,
+            "q4": true
+          },
+          "ending": {
+            "id": "end_miss",
+            "title": "潮水退去又涨",
+            "text": "线索还没拼齐，合照右侧的空白仍在。有人说那晚只有六个人，有人坚持是海水泡坏了登记簿。你放走了能对质的人，也放走了唯一一次把第七个人叫回照片里的机会。",
+            "retry": true
+          },
+          "rating": "B"
+        },
+        {
+          "score": 0,
+          "total": 4,
+          "results": {
+            "q1": false,
+            "q2": false,
+            "q3": false,
+            "q4": false
+          },
+          "ending": {
+            "id": "end_miss",
+            "title": "潮水退去又涨",
+            "text": "线索还没拼齐，合照右侧的空白仍在。有人说那晚只有六个人，有人坚持是海水泡坏了登记簿。你放走了能对质的人，也放走了唯一一次把第七个人叫回照片里的机会。",
+            "retry": true
+          },
+          "rating": "C"
+        }
+      ],
+      "ending_enumeration": {
+        "combinations": 256,
+        "complete_combinations": 1,
+        "wrong_complete": 0
+      },
+      "compatible": true
+    },
+    {
+      "name": "bus",
+      "title": "末班车的干伞",
+      "checked": true,
+      "original_sha256": "c50714dcfc3852eccb2fcf9973d93783b0288b4ac1fe7a966df99682ea243548",
+      "revised_sha256": "bb2b897be67c16ba44aa2e70e3fceab5ef78bf476eaa5eca07e759ca73fb7d4c",
+      "prior_real_acceptance_sha256": "929ca44377fe9dd031d7d68ad7667f62dc0201c10881464ad69535fd1951ccb5",
+      "structure": {
+        "ok": true,
+        "problems": []
+      },
+      "playability": [],
+      "prior_tested_story_sha256": "a88b394f4e4642307fcb6b9fe467b7dc7d3bacb79bb913dacb3c4c5c431d34cd",
+      "initial_permissions": {
+        "liang": [
+          "f_yu",
+          "f_jiupiao"
+        ],
+        "su": [
+          "f_yu",
+          "f_jiupiao"
+        ],
+        "lin": [
+          "f_yu",
+          "f_yuhen"
+        ],
+        "zhou": [
+          "f_yu"
+        ]
+      },
+      "final_permissions": {
+        "liang": [
+          "f_yu",
+          "f_jiupiao",
+          "f_liangsu",
+          "f_liang_chat",
+          "f_liangyao",
+          "f_douban"
+        ],
+        "su": [
+          "f_yu",
+          "f_jiupiao",
+          "f_liangsu",
+          "f_surui_money",
+          "f_liang_chat",
+          "f_douban",
+          "f_su_open"
+        ],
+        "lin": [
+          "f_yu",
+          "f_jiupiao",
+          "f_linyao",
+          "f_yuhen"
+        ],
+        "zhou": [
+          "f_yu",
+          "f_zhou_tou",
+          "f_zhou_report"
+        ]
+      },
+      "turns": [
+        {
+          "index": 1,
+          "action": "talk",
+          "character_id": "liang",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 2,
+          "action": "talk",
+          "character_id": "su",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_jiupiao",
+            "c_ganshan"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 3,
+          "action": "talk",
+          "character_id": "lin",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_yuhen"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_linwet"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 4,
+          "action": "talk",
+          "character_id": "zhou",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 5,
+          "action": "show",
+          "character_id": "lin",
+          "clue_id": "c_jiupiao",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_yuhen"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_linpiao"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 6,
+          "action": "show",
+          "character_id": "lin",
+          "clue_id": "c_ganshan",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_yuhen"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [
+            "c_linphoto"
+          ],
+          "event_types": []
+        },
+        {
+          "index": 7,
+          "action": "show",
+          "character_id": "zhou",
+          "clue_id": "c_linphoto",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_zhou_tou",
+            "f_zhou_report"
+          ],
+          "exposed_lie_ids": [
+            "l_p4"
+          ],
+          "new_clue_ids": [
+            "c_zhouvideo",
+            "c_yuhen"
+          ],
+          "event_types": [
+            "exposed",
+            "confront"
+          ]
+        },
+        {
+          "index": 8,
+          "action": "show",
+          "character_id": "liang",
+          "clue_id": "c_zhouvideo",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao",
+            "f_liang_chat",
+            "f_liangyao"
+          ],
+          "exposed_lie_ids": [
+            "l_p2",
+            "l_p3"
+          ],
+          "new_clue_ids": [
+            "c_liangchat",
+            "c_yaohe"
+          ],
+          "event_types": [
+            "exposed",
+            "exposed",
+            "confront"
+          ]
+        },
+        {
+          "index": 9,
+          "action": "show",
+          "character_id": "su",
+          "clue_id": "c_zhouvideo",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": true,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao",
+            "f_su_open"
+          ],
+          "exposed_lie_ids": [
+            "l_p1"
+          ],
+          "new_clue_ids": [
+            "c_sutransfer"
+          ],
+          "event_types": [
+            "exposed"
+          ]
+        },
+        {
+          "index": 10,
+          "action": "show",
+          "character_id": "su",
+          "clue_id": "c_sutransfer",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao",
+            "f_liangsu",
+            "f_surui_money",
+            "f_liang_chat",
+            "f_su_open"
+          ],
+          "exposed_lie_ids": [
+            "l_p1"
+          ],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 11,
+          "action": "show",
+          "character_id": "liang",
+          "clue_id": "c_liangchat",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao",
+            "f_liangsu",
+            "f_liang_chat",
+            "f_liangyao",
+            "f_douban"
+          ],
+          "exposed_lie_ids": [
+            "l_p2",
+            "l_p3"
+          ],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 12,
+          "action": "show",
+          "character_id": "su",
+          "clue_id": "c_liangchat",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao",
+            "f_liangsu",
+            "f_surui_money",
+            "f_liang_chat",
+            "f_douban",
+            "f_su_open"
+          ],
+          "exposed_lie_ids": [
+            "l_p1"
+          ],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 13,
+          "action": "talk",
+          "character_id": "su",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao",
+            "f_liangsu",
+            "f_surui_money",
+            "f_liang_chat",
+            "f_douban",
+            "f_su_open"
+          ],
+          "exposed_lie_ids": [
+            "l_p1"
+          ],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 14,
+          "action": "talk",
+          "character_id": "su",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao",
+            "f_liangsu",
+            "f_surui_money",
+            "f_liang_chat",
+            "f_douban",
+            "f_su_open"
+          ],
+          "exposed_lie_ids": [
+            "l_p1"
+          ],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 15,
+          "action": "show",
+          "character_id": "lin",
+          "clue_id": "c_linpiao",
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao",
+            "f_linyao",
+            "f_yuhen"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": []
+        },
+        {
+          "index": 16,
+          "action": "talk",
+          "character_id": "lin",
+          "clue_id": null,
+          "http_status": 200,
+          "matches_recorded_result": true,
+          "replayed_fallback": false,
+          "allowed_fact_ids": [
+            "f_yu",
+            "f_jiupiao",
+            "f_linyao",
+            "f_yuhen"
+          ],
+          "exposed_lie_ids": [],
+          "new_clue_ids": [],
+          "event_types": []
+        }
+      ],
+      "acquired_clues": [
+        "c_ganshan",
+        "c_jiupiao",
+        "c_liangchat",
+        "c_linphoto",
+        "c_linpiao",
+        "c_linwet",
+        "c_sutransfer",
+        "c_yaohe",
+        "c_yuhen",
+        "c_zhouvideo"
+      ],
+      "exposed_lies": [
+        "l_p1",
+        "l_p2",
+        "l_p3",
+        "l_p4"
+      ],
+      "triggered_events": [
+        "e_baoan",
+        "e_hecha"
+      ],
+      "accusation": {
+        "score": 4,
+        "total": 4,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true,
+          "q4": true
+        },
+        "ending": {
+          "id": "e_true",
+          "title": "完整真相",
+          "text": "干伞是苏芮提前交给梁志远放进失物箱的道具，旧票则来自林蔓母亲旧月票夹中的副券。梁志远把林蔓落在后排座位下的试验药盒藏进驾驶室工具包，苏芮用假失物登记和转账定金配合掩护。周启明拍到全过程却删除片段，想借举报勒索。证据链闭合，四人各自隐瞒的真相都被摊开。",
+          "retry": false
+        },
+        "rating": "S"
+      },
+      "wrong_accusations": [
+        {
+          "score": 3,
+          "total": 4,
+          "results": {
+            "q1": false,
+            "q2": true,
+            "q3": true,
+            "q4": true
+          },
+          "ending": {
+            "id": "e_part",
+            "title": "仍有疑点",
+            "text": "你已指出部分矛盾，但干伞如何进入失物箱、旧票来自谁、药盒被谁取走之间还缺关键证据。先别下结论，继续核对人证和物证。",
+            "retry": true
+          },
+          "rating": "B"
+        },
+        {
+          "score": 0,
+          "total": 4,
+          "results": {
+            "q1": false,
+            "q2": false,
+            "q3": false,
+            "q4": false
+          },
+          "ending": {
+            "id": "e_part",
+            "title": "仍有疑点",
+            "text": "你已指出部分矛盾，但干伞如何进入失物箱、旧票来自谁、药盒被谁取走之间还缺关键证据。先别下结论，继续核对人证和物证。",
+            "retry": true
+          },
+          "rating": "C"
+        }
+      ],
+      "ending_enumeration": {
+        "combinations": 256,
+        "complete_combinations": 1,
+        "wrong_complete": 0
+      },
+      "compatible": true
+    }
+  ]
+}

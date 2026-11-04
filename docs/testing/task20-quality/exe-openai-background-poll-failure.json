@@ -1,0 +1,112 @@
+{
+  "connection_test": {
+    "ok": true,
+    "provider": "openai",
+    "actor_model": "gpt-5.4-2026-03-05",
+    "writer_model": "gpt-5.4-2026-03-05",
+    "actor_reasoning_effort": "none",
+    "writer_reasoning_effort": "high"
+  },
+  "native_menu_settings_home": true,
+  "signature": {
+    "game_id": "da2900d8e87a46078b4ab1e184baf2e4",
+    "turns": 2,
+    "clues": 2,
+    "threads": {
+      "xiaolin": [
+        {
+          "k": "me",
+          "text": "先说说你今天遇到了什么，有什么材料可以让我核对？"
+        },
+        {
+          "k": "them",
+          "text": "我……是来报案的。学费被骗了，两万块。对方一开始在群里发小任务，后面又让我垫大额连单，我把钱转过去以后，他们就说账户冻结，还要我继续交钱。我没再转。这个群聊记录你可以先看。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "刷单群聊天记录"
+            }
+          ]
+        },
+        {
+          "k": "me",
+          "text": "你最后一次联系对方是什么时候？请把能核对的记录给我看看。"
+        },
+        {
+          "k": "them",
+          "text": "最后一次就是 8 月 28 日晚上。我把两万转过去后，对方马上又说账户冻结，要我再交三万解冻，我没继续转。第二天群就散了，人也联系不上了。这张回单你可以核对。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "两万元转账回单"
+            }
+          ]
+        }
+      ],
+      "akai": [],
+      "zhouming": [],
+      "chenmo": []
+    }
+  },
+  "first_port": 52666,
+  "signature_restart": {
+    "port": 14718,
+    "front_and_backend_same_game": true,
+    "turns": 2
+  },
+  "generation": {
+    "seconds_after_job_observed": 155.73,
+    "job": {
+      "status": "failed",
+      "progress": "本次生成未完成",
+      "story_id": null,
+      "owner_token": null,
+      "error": "编剧模型服务暂时不可用，请稍后重试。",
+      "quality": "fast"
+    },
+    "stages": [
+      {
+        "seconds": 0.01,
+        "value": {
+          "status": "running",
+          "progress": "编剧正在设计真相与证据链",
+          "error": null
+        }
+      },
+      {
+        "seconds": 155.73,
+        "value": {
+          "status": "failed",
+          "progress": "本次生成未完成",
+          "error": "编剧模型服务暂时不可用，请稍后重试。"
+        }
+      }
+    ],
+    "model_steps": [
+      {
+        "job_id": "a2f16db230ef4bcd98d3e43a58b6bd15",
+        "round": 1,
+        "step": "设计稿",
+        "outcome": "失败",
+        "seconds": 159.34,
+        "request_characters": 1566,
+        "response_characters": 0
+      }
+    ]
+  },
+  "source_commit": "35ae0e105be1ee1689f5381a951179a42f0d061b",
+  "provider_protocol": {
+    "response_id": "resp_0fa95f46b94060e6006aeae543b19087d2bff34bf610d5411e",
+    "successful_polls": 64,
+    "cancel_response_id": "resp_0fa95f46b94060e6006aeae543b19087d2bff34bf610d5411e",
+    "cancel_http_status": 200,
+    "termination": "APIConnectionError while retrieving existing response",
+    "process_shutdown_complete": true
+  }
+}

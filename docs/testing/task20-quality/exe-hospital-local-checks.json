@@ -1,0 +1,12 @@
+{
+  "title": "307病房的消音键",
+  "checked": false,
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [
+    "角色 周启明（zhouqiming）持有 5/9 条线索（c3, c4, c7, c8, c9），超过一半，请至少将 1 条线索分配给其他角色。"
+  ],
+  "model_calls": 0
+}

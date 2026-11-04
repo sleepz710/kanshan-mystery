@@ -10,8 +10,9 @@ import time
 
 
 def main():
-    directory = Path(os.environ.get("KANSHAN_DATA_DIR") or Path(os.environ.get("APPDATA", Path.home())) / "KanshanMystery").resolve()
+    directory = Path(os.environ.get("KANSHAN_DATA_DIR") or Path(os.environ.get("APPDATA", Path.home())) / "KanshanMystery")
     directory.mkdir(parents=True, exist_ok=True)
+    directory = directory.resolve()
     os.environ.update(KANSHAN_DATA_DIR=str(directory), KANSHAN_DESKTOP="1", LLM_MOCK="0")
     (directory / "logs").mkdir(exist_ok=True)
     logging.basicConfig(filename=directory / "logs" / "desktop.log", encoding="utf-8", level=logging.INFO,
