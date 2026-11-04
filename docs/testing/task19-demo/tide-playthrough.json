@@ -1,0 +1,940 @@
+{
+  "name": "tide",
+  "started_utc": "2026-11-04T05:56:37.495025+00:00",
+  "story_sha256": "1c45853478591e4258062335c667b193429f10452a94e66438e4d23c270b926a",
+  "mode": "scripted public investigation, real actors and checkers, blind final answers",
+  "checked": true,
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "turns": [
+    {
+      "action": "talk",
+      "character_id": "shen",
+      "text": "请介绍公开身份，并把目前能交给我的材料给我。涉及隐瞒的事请按你现在能说的回答。",
+      "http_status": 200,
+      "seconds": 5.309,
+      "result": {
+        "reply": "我是沈砚舟，潮汐旅馆现在的老板。十年前，我还只是这里的年轻帮工。这份旧报纸你先拿着，上面有当年的气象栏。至于那晚的事，我整夜在厨房准备第二天的早餐，外面的事什么都不知道。",
+        "new_clues": [
+          {
+            "id": "c_weather",
+            "title": "旧报纸气象栏",
+            "content": "十年前8月15日报纸的气象栏：14日夜间晴，风力三级，无降水。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 0,
+          "lu": 0,
+          "zhou": 0,
+          "lin": 0
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "lu",
+      "text": "请介绍公开身份，并把目前能交给我的材料给我。涉及隐瞒的事请按你现在能说的回答。",
+      "http_status": 200,
+      "seconds": 6.547,
+      "result": {
+        "reply": "我是陆敏，潮汐旅馆的前台管家，在这儿干了二十年。登记簿一直锁在前台抽屉里，规规矩矩的。至于那页字迹——真是被海水泡坏的，字自己化开了，我也说不清原来写的是什么。眼下我手头没有能交给你的东西。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 0,
+          "lu": 0,
+          "zhou": 0,
+          "lin": 0
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "zhou",
+      "text": "请介绍公开身份，并把目前能交给我的材料给我。涉及隐瞒的事请按你现在能说的回答。",
+      "http_status": 200,
+      "seconds": 5.77,
+      "result": {
+        "reply": "我叫周砚，在海上救援队跑腿，常年在海边转，潮汐洞那片礁石我熟。十年前我在潮汐旅馆打过杂。那晚下着大雨，我什么也看不见，别的记不清了。眼下我手上没有能交给你的材料。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 0,
+          "lu": 0,
+          "zhou": 0,
+          "lin": 0
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "lin",
+      "text": "请介绍公开身份，并把目前能交给我的材料给我。涉及隐瞒的事请按你现在能说的回答。",
+      "http_status": 200,
+      "seconds": 4.995,
+      "result": {
+        "reply": "我是林棠，自由摄影师，这次包下整栋旅馆办“潮汐十年”摄影展。手头这张十年前的开业合照可以先给你看——六个人站成一排，右侧边缘有一小截被裁掉的手臂阴影，白边是剪刀修过的。至于别的，我现在能说的就这些。",
+        "new_clues": [
+          {
+            "id": "c_photo",
+            "title": "六人合照",
+            "content": "十年前的开业合照，六个人站成一排，右侧边缘有一小截被裁掉的手臂阴影和剪刀修过的白边。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 0,
+          "lu": 0,
+          "zhou": 0,
+          "lin": 0
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "zhou",
+      "clue_id": "c_weather",
+      "http_status": 200,
+      "seconds": 6.205,
+      "result": {
+        "reply": "气象栏……行，我不能再拿那场雨挡着了。那晚其实没下雨，天是晴的，我先前说下着大雨、什么都看不见，是我把话往天气上推。既然说到潮汐洞的栈道，这份维修单你拿去看吧。",
+        "new_clues": [
+          {
+            "id": "c_rail",
+            "title": "栈道护栏维修单",
+            "content": "十年前8月15日凌晨更换潮汐洞栈道断裂木栏的单据，签收人一栏写着沈砚舟。"
+          }
+        ],
+        "events": [
+          {
+            "type": "exposed",
+            "character": "zhou",
+            "lie": "l_zhou",
+            "text": "周砚的说法被拆穿了。已确认：十年前8月15日报纸气象栏写明：14日夜间晴，风力三级，无降水。"
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "shen": 0,
+          "lu": 0,
+          "zhou": 2,
+          "lin": 0
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "zhou",
+      "text": "还有哪些已经答应可以给我核对的材料？请继续交给我。",
+      "http_status": 200,
+      "seconds": 7.679,
+      "result": {
+        "reply": "我手上还有一份前台抽屉锁具的维修单，登记簿一直锁在抽屉里，锁芯锈死前没进过水。这个你拿去核对。",
+        "new_clues": [
+          {
+            "id": "c_drawer",
+            "title": "前台抽屉锁具维修单",
+            "content": "记载前台抽屉锁的更换与检修，登记簿锁在抽屉内，锁芯锈死前从未进水。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 0,
+          "lu": 0,
+          "zhou": 2,
+          "lin": 0
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "zhou",
+      "text": "还有哪些已经答应可以给我核对的材料？请继续交给我。",
+      "http_status": 200,
+      "seconds": 6.866,
+      "result": {
+        "reply": "码头那边还有一份值夜记录，我留着没动。上面记着一个外地女孩反复打听旅馆里叫林澜的服务员。这个你拿去核对。",
+        "new_clues": [
+          {
+            "id": "c_wharf",
+            "title": "码头值夜记录",
+            "content": "十年前8月24日的码头值夜簿：一个外地女孩反复询问“旅馆有没有一个叫林澜的服务员”。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 0,
+          "lu": 0,
+          "zhou": 2,
+          "lin": 0
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "lu",
+      "clue_id": "c_drawer",
+      "http_status": 200,
+      "seconds": 5.43,
+      "result": {
+        "reply": "这……维修单都摆到面前了，我再嘴硬也没意思。登记簿一直锁在抽屉里，锁芯锈死前没进过水，那页上的涂改是人为的，不是海水泡的。既然话说到这份上，那本登记簿你拿去看吧，十年前8月14日那页七间房全住满，其中一行被涂改液盖住了。",
+        "new_clues": [
+          {
+            "id": "c_register",
+            "title": "住宿登记簿",
+            "content": "十年前8月14日那页有七行登记，七间房全部住满；其中一行被涂改液盖住。"
+          }
+        ],
+        "events": [
+          {
+            "type": "exposed",
+            "character": "lu",
+            "lie": "l_lu",
+            "text": "陆敏的说法被拆穿了。已确认：前台抽屉锁具维修单证明登记簿一直锁在抽屉内，锁芯锈死前从未进水，涂改是人为。"
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "shen": 0,
+          "lu": 2,
+          "zhou": 2,
+          "lin": 0
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "shen",
+      "clue_id": "c_rail",
+      "http_status": 200,
+      "seconds": 5.244,
+      "result": {
+        "reply": "……这张单子，我认得。签收人确实是我。那晚我并不是一直待在厨房，凌晨我去处理过栈道断裂的木栏，签了字。之前说整夜在厨房，是我把话收窄了。",
+        "new_clues": [
+          {
+            "id": "c_negative",
+            "title": "玻璃底片",
+            "content": "沈崇遗物中的原版玻璃底片，右侧清楚站着第七个人——穿服务员围裙的年轻女子，正对着镜头。"
+          }
+        ],
+        "events": [
+          {
+            "type": "exposed",
+            "character": "shen",
+            "lie": "l_shen",
+            "text": "沈砚舟的说法被拆穿了。已确认：十年前8月15日凌晨，潮汐洞栈道断裂木栏被更换，签收人一栏写着沈砚舟的名字。"
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "shen": 1,
+          "lu": 2,
+          "zhou": 2,
+          "lin": 0
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "lu",
+      "clue_id": "c_register",
+      "http_status": 200,
+      "seconds": 3.942,
+      "result": {
+        "reply": "登记簿你已经看过了，那行被涂改液盖住的字，我确实按沈崇的意思涂掉了。事到如今我也不瞒了，这本账本你拿去吧，上面记着十年前8月起分三次支出的“周家医药费”，末尾有沈崇的签名，夹页里还有我写的说明。",
+        "new_clues": [
+          {
+            "id": "c_ledger",
+            "title": "沈崇的账本",
+            "content": "十年前8月起分三次支出“周家医药费”的记录，末尾有沈崇的签名。末页夹着陆敏的签字说明：“我按沈崇要求涂掉林澜那行；周砚坠海后被叫来帮忙善后，三笔医药费是封口钱。”"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 1,
+          "lu": 3,
+          "zhou": 2,
+          "lin": 0
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "lin",
+      "clue_id": "c_register",
+      "http_status": 200,
+      "seconds": 10.497,
+      "result": {
+        "reply": "七行登记……那一行被涂改液盖住的，我也一直在意。既然你拿到了登记簿，我用侧光灯斜照翻拍过那一页，涂改层下面的压痕能看清几个字。这张翻拍给你，你自己对着看。",
+        "new_clues": [
+          {
+            "id": "c_modify",
+            "title": "涂改层翻拍",
+            "content": "借林棠的摄影师侧光灯斜照登记簿那一页，涂改液下的压痕显出“林澜 员工房 8/14”。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 1,
+          "lu": 3,
+          "zhou": 2,
+          "lin": 1
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "lin",
+      "clue_id": "c_negative",
+      "http_status": 200,
+      "seconds": 31.039,
+      "result": {
+        "reply": "原版底片……原来沈崇还留着这个。右侧那个人，穿服务员围裙的年轻女子，就是登记簿压痕里的林澜。合照被裁掉的那一截手臂，也是她。我一直在找能证实她确实站在这张照片里的东西，这张底片算数。",
+        "new_clues": [],
+        "events": [
+          {
+            "type": "confront",
+            "text": "沈砚舟和林棠围绕证据展开对质。",
+            "lines": [
+              {
+                "speaker": "shen",
+                "text": "那张维修单我认，签收人是我。凌晨我去换过栈道断裂的木栏，所以之前说整夜在厨房，是我把话收窄了。别的，我现在不想多说。"
+              },
+              {
+                "speaker": "lin",
+                "text": "原版底片我认。右侧那个穿服务员围裙的年轻女子，就是登记簿压痕里的林澜，合照被裁掉的那截手臂也是她。我一直在找能证实她确实站在这张照片里的东西，这张底片算数。"
+              }
+            ]
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "shen": 1,
+          "lu": 3,
+          "zhou": 2,
+          "lin": 2
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "lin",
+      "clue_id": "c_wharf",
+      "http_status": 200,
+      "seconds": 5.561,
+      "result": {
+        "reply": "8月24日，码头……那个反复问林澜的外地女孩，我猜是来找她的。既然你查到了值夜记录，我也不再绕：林澜是我姐姐。这是十年前9月我去报失踪的回执，报案人是我，关系一栏写着“姐妹”。",
+        "new_clues": [
+          {
+            "id": "c_missing",
+            "title": "失踪报案回执",
+            "content": "十年前9月的报案回执，报案人林棠，失踪人林澜，关系一栏写着“姐妹”。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 1,
+          "lu": 3,
+          "zhou": 2,
+          "lin": 3
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "lin",
+      "clue_id": "c_missing",
+      "http_status": 200,
+      "seconds": 24.083,
+      "result": {
+        "reply": "这份回执你已经拿到了，我也不再绕。林澜是我姐姐，十年前9月是我去报的失踪，关系一栏写得清清楚楚。码头那个反复问她的外地女孩，我猜是来找她的——但具体是谁、后来怎样，我手里没有能核实的记录。",
+        "new_clues": [],
+        "events": [
+          {
+            "type": "confront",
+            "text": "沈砚舟和陆敏围绕证据展开对质。",
+            "lines": [
+              {
+                "speaker": "shen",
+                "text": "底片你既然认了，我也不绕。照片右边那个人是林澜，登记簿上被涂掉的那行也是她。栈道木栏的签收是我，这点我早认了。至于她后来怎么没的，我现在不想再多说。"
+              },
+              {
+                "speaker": "lu",
+                "text": "沈先生，照片和登记簿的事我都认了，那行字是我按你父亲的意思涂掉的。可林澜后来到底怎么没的，你不想多说，我也只知道当年那点事，别的我说不清楚。"
+              }
+            ]
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "shen": 1,
+          "lu": 3,
+          "zhou": 2,
+          "lin": 3
+        }
+      }
+    },
+    {
+      "action": "show",
+      "character_id": "zhou",
+      "clue_id": "c_ledger",
+      "http_status": 200,
+      "seconds": 6.611,
+      "result": {
+        "reply": "账本和陆敏的签字都摆到眼前了，我不能再绕。那三笔“周家医药费”是沈崇给我的封口钱，我母亲当时确实等着钱治病。林澜坠海之后我才被叫去帮忙处理现场，不是一开始就在场。登记簿怎么涂的，是陆敏按沈崇的要求动的手。这件事我瞒了十年，今天认了。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 1,
+          "lu": 3,
+          "zhou": 3,
+          "lin": 3
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "lu",
+      "text": "请当面确认登记簿涂改是谁动手、受谁指使。",
+      "http_status": 200,
+      "seconds": 4.59,
+      "result": {
+        "reply": "登记簿上那行涂改液，是我亲手涂的，按沈崇的意思。他让我把林澜那行盖掉，我就照做了。这事我认，别的我不多说。",
+        "new_clues": [],
+        "events": [],
+        "hint": "线索已经收齐，可以整理证据并提交推理。",
+        "trust": {
+          "shen": 1,
+          "lu": 3,
+          "zhou": 3,
+          "lin": 3
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "character_id": "zhou",
+      "text": "你是在坠海前还是之后被叫来？三笔医药费与处理现场、封口有什么关系？",
+      "http_status": 200,
+      "seconds": 5.104,
+      "result": {
+        "reply": "我是林澜坠海之后才被叫过去的，不是一开始就在场。那三笔“周家医药费”，是沈崇事后分三次给我的封口钱——我母亲当时等着钱治病，我收了，也就把嘴闭上了。这事我瞒了十年，现在没什么好再绕的。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "shen": 1,
+          "lu": 3,
+          "zhou": 3,
+          "lin": 3
+        }
+      }
+    }
+  ],
+  "blind_calls": [
+    {
+      "role": "writer",
+      "seconds": 4.508,
+      "answer": {
+        "answers": {
+          "q1": null,
+          "q2": null,
+          "q3": null,
+          "q4": null
+        }
+      }
+    },
+    {
+      "role": "actor",
+      "seconds": 1.726,
+      "answer": {
+        "answers": {
+          "q1": "临时服务员林澜",
+          "q2": "陆敏",
+          "q3": "他参与林澜坠海后的现场处理，并收了沈崇的封口钱",
+          "q4": "为了找失踪十年的姐姐林澜"
+        }
+      }
+    }
+  ],
+  "requests": [
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "enabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    },
+    {
+      "case": "tide",
+      "model": "deepseek-flash",
+      "thinking": "disabled"
+    }
+  ],
+  "solvability": {
+    "ok": true,
+    "problems": []
+  },
+  "new_game": {
+    "game_id": "2c211f11f3a3443d9fa29948b1324764",
+    "title": "潮汐第七人",
+    "intro": "海边的潮汐旅馆要重拍一张十年前的开业合照。摄影师林棠带来了那张老照片：六个人站成一排，右侧却留着一小截被剪掉的手臂阴影。可旅馆的住客登记显示，那一晚七间房全部住满。现任老板沈砚舟说那晚他整夜在厨房，前台陆敏说旧登记簿被海水泡坏了，赶来帮忙的救援队员周砚说那夜下着大雨什么也看不见。潮水退了又涨，照片里空出来的那个位置，十年来一直空着。",
+    "checked": false,
+    "characters": [
+      {
+        "id": "shen",
+        "name": "沈砚舟",
+        "avatar": "shen.png",
+        "profile": "潮汐旅馆现任老板，十年前是旅馆的年轻帮工。他冷静、寡言，对旅馆的旧物和旧报纸了如指掌。"
+      },
+      {
+        "id": "lu",
+        "name": "陆敏",
+        "avatar": "lu.png",
+        "profile": "潮汐旅馆前台管家，任职二十年。她记性好，对登记簿和钥匙归置得一丝不苟，对旧账本绝口不提。"
+      },
+      {
+        "id": "zhou",
+        "name": "周砚",
+        "avatar": "zhou.png",
+        "profile": "当地海上救援队队员，十年前在潮汐旅馆打杂。他常年在海边跑，熟悉潮汐洞的每一块礁石，也熟悉那年的旧事。"
+      },
+      {
+        "id": "lin",
+        "name": "林棠",
+        "avatar": "lin.png",
+        "profile": "自由摄影师，包下整栋旅馆办“潮汐十年”摄影展。她带着一张老合照和一堆摄影器材，说话直接，对老照片的每个细节都盯得很紧。"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "text": "十年前那张合照里，被裁掉的第七个人是谁？",
+        "options": [
+          "旅馆老板沈崇",
+          "临时服务员林澜",
+          "前台陆敏的女儿",
+          "当时还是客人的林棠"
+        ]
+      },
+      {
+        "id": "q2",
+        "text": "登记簿上被涂改液抹掉的那一行，是谁动的手？",
+        "options": [
+          "沈砚舟",
+          "陆敏",
+          "周砚",
+          "林棠"
+        ]
+      },
+      {
+        "id": "q3",
+        "text": "周砚说那晚下着大雨什么也看不见，他真正隐瞒的是什么？",
+        "options": [
+          "他整夜在码头接客",
+          "他参与林澜坠海后的现场处理，并收了沈崇的封口钱",
+          "他在厨房帮工到天亮",
+          "他喝醉睡着了"
+        ]
+      },
+      {
+        "id": "q4",
+        "text": "林棠为什么执意要按老照片重拍这张合照？",
+        "options": [
+          "为了办摄影展卖照片",
+          "为了找失踪十年的姐姐林澜",
+          "为了低价收购旅馆",
+          "为了采访老住客"
+        ]
+      }
+    ],
+    "kanshan": {
+      "greeting": "潮水退了，旅馆门前那块湿漉漉的空地上要重拍一张十年前的合照。林棠把老照片摊在桌上，右边空出的一小块，被剪得干干净净。",
+      "asks_left": 5
+    }
+  },
+  "initial_permissions": {
+    "shen": [
+      "f_photo",
+      "f_weather",
+      "f_ledger"
+    ],
+    "lu": [
+      "f_photo"
+    ],
+    "zhou": [],
+    "lin": [
+      "f_photo",
+      "f_wharf"
+    ]
+  },
+  "acquired_clues": [
+    "c_drawer",
+    "c_ledger",
+    "c_missing",
+    "c_modify",
+    "c_negative",
+    "c_photo",
+    "c_rail",
+    "c_register",
+    "c_weather",
+    "c_wharf"
+  ],
+  "exposed_lies": [
+    "l_lu",
+    "l_shen",
+    "l_zhou"
+  ],
+  "triggered_events": [
+    "e_end",
+    "e_identity"
+  ],
+  "public_transcript_answers": {
+    "seconds": 3.005,
+    "answers": {
+      "q1": "临时服务员林澜",
+      "q2": "陆敏",
+      "q3": "他参与林澜坠海后的现场处理，并收了沈崇的封口钱",
+      "q4": "为了找失踪十年的姐姐林澜"
+    }
+  },
+  "actual_accusation": {
+    "http_status": 200,
+    "result": {
+      "score": 4,
+      "total": 4,
+      "results": {
+        "q1": true,
+        "q2": true,
+        "q3": true,
+        "q4": true
+      },
+      "ending": {
+        "id": "end_true",
+        "title": "第七个人回来了",
+        "text": "你把底片、登记簿、维修单和账本一一摆开，沈砚舟、陆敏、周砚在潮汐洞栈道前说出了十年前的凌晨。林棠把侧光灯对准合照右侧，那个穿服务员围裙的身影终于重新站在六个人旁边。她按下快门，十年来空着的位置第一次被填满。",
+        "retry": false
+      },
+      "rating": "S"
+    }
+  },
+  "ending_enumeration": {
+    "combinations": 256,
+    "wrong_complete": 0
+  },
+  "actual_wrong_accusation": {
+    "http_status": 200,
+    "result": {
+      "score": 3,
+      "total": 4,
+      "results": {
+        "q1": false,
+        "q2": true,
+        "q3": true,
+        "q4": true
+      },
+      "ending": {
+        "id": "end_miss",
+        "title": "潮水退去又涨",
+        "text": "线索还没拼齐，合照右侧的空白仍在。有人说那晚只有六个人，有人坚持是海水泡坏了登记簿。你放走了能对质的人，也放走了唯一一次把第七个人叫回照片里的机会。",
+        "retry": true
+      },
+      "rating": "B"
+    }
+  },
+  "accepted": true,
+  "actual_all_wrong_accusation": {
+    "http_status": 200,
+    "result": {
+      "score": 0,
+      "total": 4,
+      "results": {
+        "q1": false,
+        "q2": false,
+        "q3": false,
+        "q4": false
+      },
+      "ending": {
+        "id": "end_miss",
+        "title": "潮水退去又涨",
+        "text": "线索还没拼齐，合照右侧的空白仍在。有人说那晚只有六个人，有人坚持是海水泡坏了登记簿。你放走了能对质的人，也放走了唯一一次把第七个人叫回照片里的机会。",
+        "retry": true
+      },
+      "rating": "C"
+    }
+  },
+  "tested_story_sha256": "c79129011d68f29ad5cbaee7eb8bd72ddb45d43a83b431cb8c825297e0fa354c",
+  "quality_update": {
+    "from": false,
+    "to": true,
+    "scope": "checked metadata only after complete acceptance"
+  },
+  "investigation_seconds": 145.472
+}
