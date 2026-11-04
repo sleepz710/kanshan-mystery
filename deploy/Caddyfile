@@ -1,5 +1,0 @@
-# 用实际域名替换 mystery.example.com，先把 DNS 指向服务器。
-mystery.example.com {
-    encode gzip
-    reverse_proxy 127.0.0.1:8000
-}
