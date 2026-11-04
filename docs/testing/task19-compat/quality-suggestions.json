@@ -1,0 +1,127 @@
+{
+  "tested_utc": "2026-11-04T08:41:03.615Z",
+  "mode": "offline execution of actual renderSuggest with lightweight DOM and send stubs",
+  "node_version": "v24.15.0",
+  "source_sha256": "2c23d3a23fb6e63e04577148d5df0c13954d0019604bd8df21bd3eb96e841c37",
+  "real_model_calls": 0,
+  "cases": [
+    {
+      "name": "old prompt",
+      "restored": false,
+      "labels": [
+        "快速",
+        "精修"
+      ],
+      "sent": [
+        "快速",
+        "精修"
+      ],
+      "passed": true
+    },
+    {
+      "name": "old prompt restored from history",
+      "restored": true,
+      "labels": [
+        "快速",
+        "精修"
+      ],
+      "sent": [
+        "快速",
+        "精修"
+      ],
+      "passed": true
+    },
+    {
+      "name": "new prompt",
+      "restored": false,
+      "labels": [
+        "快速",
+        "精修"
+      ],
+      "sent": [
+        "快速",
+        "精修"
+      ],
+      "passed": true
+    },
+    {
+      "name": "new prompt restored from history",
+      "restored": true,
+      "labels": [
+        "快速",
+        "精修"
+      ],
+      "sent": [
+        "快速",
+        "精修"
+      ],
+      "passed": true
+    },
+    {
+      "name": "ordinary strategy question",
+      "restored": false,
+      "labels": [
+        "没看过答案",
+        "看过答案",
+        "全新",
+        "直接开始"
+      ],
+      "sent": [
+        "没看过答案",
+        "看过答案",
+        "全新",
+        "直接开始"
+      ],
+      "passed": true
+    },
+    {
+      "name": "ordinary reply mentioning speed",
+      "restored": false,
+      "labels": [
+        "没看过答案",
+        "看过答案",
+        "全新",
+        "直接开始"
+      ],
+      "sent": [
+        "没看过答案",
+        "看过答案",
+        "全新",
+        "直接开始"
+      ],
+      "passed": true
+    },
+    {
+      "name": "retained share conversation",
+      "restored": false,
+      "labels": [
+        "开始生成"
+      ],
+      "sent": [
+        "开始生成"
+      ],
+      "passed": true
+    },
+    {
+      "name": "latest message from user",
+      "restored": false,
+      "labels": [],
+      "sent": [],
+      "passed": true
+    },
+    {
+      "name": "busy conversation",
+      "restored": false,
+      "labels": [],
+      "sent": [],
+      "passed": true
+    },
+    {
+      "name": "generation already running",
+      "restored": false,
+      "labels": [],
+      "sent": [],
+      "passed": true
+    }
+  ]
+}

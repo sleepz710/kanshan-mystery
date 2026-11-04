@@ -6,7 +6,7 @@
 
 复核三份人工修订演示案《汐潮馆的第七位住客》《潮汐第七人》《末班车的干伞》。三个原始生成稿和三个修订稿的 SHA256 均与 `task19-demo/manifest.json` 一致。原稿保留 `checked:false`，人工修订稿按已完成验收保留 `checked:true`。
 
-逐题证据与实际口供、真实双盲、完整真实角色路线，继续对应 [原验收报告](2026-11-04-task19-demo-acceptance.md) 与 [样本映射](task19-demo/manifest.json)。本轮发现的兼容缺陷为0项。
+逐题证据与实际口供、真实双盲、完整真实角色路线，继续对应 [原验收报告](2026-11-04-task19-demo-acceptance.md) 与 [样本映射](task19-demo/manifest.json)。三份演示案的兼容缺陷为0项。
 
 将当前三个修订稿的 `checked:true` 回置为 `checked:false` 后，字节 SHA256 均精确等于旧真实记录中的 `tested_story_sha256`。实际试玩稿与交付稿的质量元数据映射验证通过。
 
@@ -43,9 +43,15 @@
 
 任务18收敛源码固定为 `d2813a53686ef1472eb58e22c45a7f071104a380`，运行模块无未提交修改。相同脚本的最终结果见 [compatibility.json](task19-compat/compatibility.json)，包含六个运行模块的 SHA256。生成流程与模型请求涉及的 `backend/studio/service.py`、`backend/studio/check.py` 和 `backend/llm.py` 与主线基线有改动。
 
-独立任务19分支最终全量pytest复跑为642项通过，26.36秒，保留同一项现有弃用提示。
+独立任务19分支最终全量pytest复跑为642项通过，29.98秒，保留同一项现有弃用提示。
 
 三案全部兼容，46步完整公开结果、开局及最终事实权限、线索/拆谎/事件集合、正确结案及错答隔离，与主线基线逐项一致。逐题证据和实际口供继续对应相同的原验收文件指纹。
+
+## 档位问句按钮修复
+
+任务18将档位问句调整为“快速还是精修？精修会比较两份设计，并增加修订轮次。实际耗时取决于素材和模型。”。原前端仅匹配带“快速（约3分钟）还是精修”的旧问句，新问句会显示普通改编策略按钮。本轮修改实际renderSuggest中的一行匹配表达式，覆盖新旧问句。
+
+离线Node脚本从实际前端源码提取renderSuggest执行，10项断言通过。覆盖新旧问句、JSON历史恢复、快速/精修按钮的发送值、普通改编策略对话、保留的share对话，以及用户末条消息、busy和生成中状态。`node --check frontend/studio/studio.js`通过。脚本与结果见 [quality-suggestions.cjs](task19-compat/quality-suggestions.cjs) 和 [quality-suggestions.json](task19-compat/quality-suggestions.json)。本次按钮回归使用轻量DOM与发送替身，模型调用0次。
 
 ## 待完成
 
