@@ -1,0 +1,92 @@
+{
+  "connection_test": {
+    "ok": true,
+    "provider": "openai",
+    "actor_model": "gpt-5.4-2026-03-05",
+    "writer_model": "gpt-5.4-2026-03-05",
+    "actor_reasoning_effort": "none",
+    "writer_reasoning_effort": "high"
+  },
+  "native_menu_settings_home": true,
+  "signature": {
+    "game_id": "ee09800d5cb44c8290ac4b2dab53e9fa",
+    "turns": 2,
+    "clues": 2,
+    "threads": {
+      "xiaolin": [
+        {
+          "k": "me",
+          "text": "先说说你今天遇到了什么，有什么材料可以让我核对？"
+        },
+        {
+          "k": "them",
+          "text": "我……是来报案的。我想找兼职减轻家里负担，结果进了刷单群，对方先让我做小单，后面又让我垫大额连单。我把学费两万转过去以后，他们又说账户冻结了，还要我再交钱，我没再转。第二天群就散了，人也联系不上了。这份群聊天记录你可以先看。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "刷单群聊天记录"
+            }
+          ]
+        },
+        {
+          "k": "me",
+          "text": "你最后一次联系对方是什么时候？请把能核对的记录给我看看。"
+        },
+        {
+          "k": "them",
+          "text": "最后一次是在我转完两万那天晚上。对方先说做完能提现吗，后来又改口说账户冻结，要我再交三万解冻。我没再转，之后到第二天群就散了，人也联系不上了。这个转账回单你可以核对。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "两万元转账回单"
+            }
+          ]
+        }
+      ],
+      "akai": [],
+      "zhouming": [],
+      "chenmo": []
+    }
+  },
+  "first_port": 45912,
+  "signature_restart": {
+    "port": 17636,
+    "front_and_backend_same_game": true,
+    "turns": 2
+  },
+  "generation": {
+    "seconds_after_job_observed": 537.32,
+    "job": {
+      "status": "failed",
+      "progress": "本次生成未完成",
+      "story_id": null,
+      "owner_token": null,
+      "error": "编剧设计或填表超时，三轮尝试仍未完成，请重试。",
+      "quality": "fast"
+    },
+    "stages": [
+      {
+        "seconds": 0.03,
+        "value": {
+          "status": "running",
+          "progress": "编剧正在设计真相与证据链",
+          "error": null
+        }
+      },
+      {
+        "seconds": 537.32,
+        "value": {
+          "status": "failed",
+          "progress": "本次生成未完成",
+          "error": "编剧设计或填表超时，三轮尝试仍未完成，请重试。"
+        }
+      }
+    ]
+  }
+}

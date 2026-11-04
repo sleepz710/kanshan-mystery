@@ -1,0 +1,58 @@
+{
+  "connection_test": {
+    "ok": true,
+    "actor_model": "deepseek-flash",
+    "thinking": "disabled"
+  },
+  "native_menu_settings_home": true,
+  "signature": {
+    "game_id": "048b0e6098cc4044bb76cbfe79ff3ff0",
+    "turns": 2,
+    "clues": 2,
+    "threads": {
+      "xiaolin": [
+        {
+          "k": "me",
+          "text": "先说说你今天遇到了什么，有什么材料可以让我核对？"
+        },
+        {
+          "k": "them",
+          "text": "我……我是来报案的。前几天在群里接了个刷单的活，一开始说做小单能返利，后来让我垫两万做连单，我把学费转过去之后，客服又说账户冻结，要我再交三万才能解冻。我没敢再转，第二天群就散了，人也联系不上了。这是群里的聊天记录和转账回单，你看看。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "刷单群聊天记录"
+            },
+            {
+              "id": "c2",
+              "title": "两万元转账回单"
+            }
+          ]
+        },
+        {
+          "k": "me",
+          "text": "你最后一次联系对方是什么时候？请把能核对的记录给我看看。"
+        },
+        {
+          "k": "them",
+          "text": "最后一次就是 8 月 28 日晚上，我转完钱申请提现，客服说账户冻结、要再交三万，我没再转。第二天群就解散了，客服也联系不上。聊天记录和转账回单我前面都给你看过了，就这些。"
+        }
+      ],
+      "akai": [],
+      "zhouming": [],
+      "chenmo": []
+    }
+  },
+  "first_port": 19761,
+  "signature_restart": {
+    "port": 21381,
+    "front_and_backend_same_game": true,
+    "turns": 2,
+    "clues": 2,
+    "model_config_restored": true,
+    "additional_model_calls": 0
+  }
+}
