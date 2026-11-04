@@ -66,7 +66,13 @@ def test_keep_key_and_change_provider_validation(desktop):
     assert os.environ["LLM_ACTOR_MODEL"] == "test-actor"
 
 
-def test_connection_is_one_minimal_call_and_does_not_save(desktop, monkeypatch):
+@pytest.mark.parametrize("candidate,token_field,reasoning", [
+    (config(), "max_tokens", None),
+    (config(provider="openai", actor_model="test-actor", writer_model="test-writer"), "max_tokens", None),
+    (config(provider="openai", actor_model="gpt-5.4", writer_model="gpt-5.4"), "max_completion_tokens", "none"),
+    (config(provider="openai", actor_model="gpt-5.4-2026-03-05", writer_model="gpt-5.4-2026-03-05"), "max_completion_tokens", "none"),
+])
+def test_connection_is_one_minimal_call_and_does_not_save(desktop, monkeypatch, candidate, token_field, reasoning):
     root, client = desktop
     complete = AsyncMock(return_value=SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content="OK"))]))
     class FakeClient:
@@ -80,10 +86,13 @@ def test_connection_is_one_minimal_call_and_does_not_save(desktop, monkeypatch):
         received.append(kwargs)
         return FakeClient()
     monkeypatch.setattr(desktop_settings, "AsyncOpenAI", fake_client)
-    response = client.post("/api/settings/test", json=config())
+    response = client.post("/api/settings/test", json=candidate)
     assert response.json()["ok"] and complete.await_count == 1
     assert received[0]["max_retries"] == 0
-    assert complete.call_args.kwargs["max_tokens"] == 8
+    assert complete.call_args.kwargs[token_field] == 8
+    assert complete.call_args.kwargs.get("reasoning_effort") == reasoning
+    if reasoning:
+        assert "max_tokens" not in complete.call_args.kwargs
     assert not (root / "config.json").exists()
 
 
@@ -122,3 +131,33 @@ def test_games_recover_after_desktop_restart(desktop):
 def test_foreign_origin_cannot_update_desktop_settings(desktop):
     _, client = desktop
     assert client.put("/api/settings", json=config(), headers={"Origin": "https://example.com"}).status_code == 403
+
+
+def test_first_launch_resolves_data_directory_after_creation(monkeypatch, tmp_path):
+    from desktop import main as desktop_main
+
+    physical = tmp_path / "physical-profile" / "KanshanMystery"
+
+    class RedirectedDirectory:
+        def mkdir(self, **kwargs):
+            physical.mkdir(**kwargs)
+
+        def resolve(self):
+            assert physical.exists(), "创建目录后才能解析 Windows 重定向的实际路径"
+            return physical
+
+    class StartupReached(Exception):
+        pass
+
+    def verify_startup(**kwargs):
+        assert os.environ["KANSHAN_DATA_DIR"] == str(physical)
+        assert kwargs["filename"] == physical / "logs" / "desktop.log"
+        raise StartupReached
+
+    monkeypatch.setenv("KANSHAN_DATA_DIR", str(tmp_path / "virtual-profile"))
+    monkeypatch.setenv("KANSHAN_DESKTOP", "")
+    monkeypatch.setenv("LLM_MOCK", "1")
+    monkeypatch.setattr(desktop_main, "Path", lambda value: RedirectedDirectory())
+    monkeypatch.setattr(desktop_main.logging, "basicConfig", verify_startup)
+    with pytest.raises(StartupReached):
+        desktop_main.main()

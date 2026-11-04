@@ -1,0 +1,74 @@
+[
+  {
+    "attempt": 1,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 1738,
+    "status": "failed",
+    "error": "ModelTimeoutError",
+    "seconds": 541.15
+  },
+  {
+    "attempt": 2,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 1773,
+    "status": "ok",
+    "response_chars": 4358,
+    "seconds": 270.95
+  },
+  {
+    "attempt": 2,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 7585,
+    "status": "ok",
+    "response_chars": 5928,
+    "seconds": 80.09
+  },
+  {
+    "attempt": 2,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 14138,
+    "status": "failed",
+    "error": "ModelTimeoutError",
+    "seconds": 180.02
+  },
+  {
+    "attempt": 2,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 14182,
+    "status": "ok",
+    "response_chars": 5925,
+    "seconds": 99.3
+  },
+  {
+    "attempt": 2,
+    "step": "审稿",
+    "role": "actor",
+    "request_chars": 5571,
+    "status": "ok",
+    "response_chars": 16,
+    "seconds": 2.11
+  },
+  {
+    "attempt": 2,
+    "step": "可解性·只给汤面",
+    "role": "writer",
+    "request_chars": 644,
+    "status": "ok",
+    "response_chars": 49,
+    "seconds": 6.92
+  },
+  {
+    "attempt": 2,
+    "step": "可解性·全部线索",
+    "role": "actor",
+    "request_chars": 2060,
+    "status": "ok",
+    "response_chars": 49,
+    "seconds": 2.39
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "source_commit": "df344149dba248ced9fb74ea7da387db06497c5e",
+  "source_tree": "d2d65bfbadcdeca6ba35a3f1f9ba404d0355950b",
+  "task18_runtime_commit": "38e91999c50b2ee02251148e38d270a42b337b43",
+  "task20_runtime_commit": "75279d7b49ac13313fb4ad207d6170f9ee96f1e0",
+  "command": "python -m pytest -q",
+  "exit_code": 0,
+  "passed": 803,
+  "warnings": 1,
+  "seconds": 66.58,
+  "log_sha256": "dc654e009b5adb15876e073a27f71300e57ce63dc0b5618d0a4102347f2722a4"
+}

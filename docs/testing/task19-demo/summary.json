@@ -1,0 +1,116 @@
+[
+  {
+    "name": "hotel",
+    "title": "汐潮馆的第七位住客",
+    "checked": true,
+    "turns": 13,
+    "investigation_seconds": 170.817,
+    "clues": 10,
+    "lies": 3,
+    "requests": 64,
+    "solvability": {
+      "ok": true,
+      "problems": []
+    },
+    "accusation": {
+      "http_status": 200,
+      "result": {
+        "score": 4,
+        "total": 4,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true,
+          "q4": true
+        },
+        "ending": {
+          "id": "e_light",
+          "title": "第七只凉鞋",
+          "text": "合影、登记簿、订单与值班表终于对上了：台风夜旅馆私留了没有预订的周宁，窗被风浪打坏，陈砚签字修窗后离开，周宁为关窗落海。林晚裁掉合照、涂改房号，陈砚收起旧物，周叙找回姐姐的名字，苏禾补上当年没发出的那封举报。海风还在吹，旅馆的灯一盏一盏亮起来。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    "ending_enumeration": {
+      "combinations": 256,
+      "wrong_complete": 0
+    }
+  },
+  {
+    "name": "tide",
+    "title": "潮汐第七人",
+    "checked": true,
+    "turns": 17,
+    "investigation_seconds": 145.472,
+    "clues": 10,
+    "lies": 3,
+    "requests": 53,
+    "solvability": {
+      "ok": true,
+      "problems": []
+    },
+    "accusation": {
+      "http_status": 200,
+      "result": {
+        "score": 4,
+        "total": 4,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true,
+          "q4": true
+        },
+        "ending": {
+          "id": "end_true",
+          "title": "第七个人回来了",
+          "text": "你把底片、登记簿、维修单和账本一一摆开，沈砚舟、陆敏、周砚在潮汐洞栈道前说出了十年前的凌晨。林棠把侧光灯对准合照右侧，那个穿服务员围裙的身影终于重新站在六个人旁边。她按下快门，十年来空着的位置第一次被填满。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    "ending_enumeration": {
+      "combinations": 256,
+      "wrong_complete": 0
+    }
+  },
+  {
+    "name": "bus",
+    "title": "末班车的干伞",
+    "checked": true,
+    "turns": 16,
+    "investigation_seconds": 97.558,
+    "clues": 10,
+    "lies": 4,
+    "requests": 51,
+    "solvability": {
+      "ok": true,
+      "problems": []
+    },
+    "accusation": {
+      "http_status": 200,
+      "result": {
+        "score": 4,
+        "total": 4,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true,
+          "q4": true
+        },
+        "ending": {
+          "id": "e_true",
+          "title": "完整真相",
+          "text": "干伞是苏芮提前交给梁志远放进失物箱的道具，旧票则来自林蔓母亲旧月票夹中的副券。梁志远把林蔓落在后排座位下的试验药盒藏进驾驶室工具包，苏芮用假失物登记和转账定金配合掩护。周启明拍到全过程却删除片段，想借举报勒索。证据链闭合，四人各自隐瞒的真相都被摊开。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    "ending_enumeration": {
+      "combinations": 256,
+      "wrong_complete": 0
+    }
+  }
+]

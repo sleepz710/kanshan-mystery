@@ -1,0 +1,92 @@
+2026-11-04 15:17:29,130 INFO HTTP Request: POST http://qa.local/api/studio/chats "HTTP/1.1 201 Created"
+2026-11-04 15:17:31,366 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:17:34,230 INFO HTTP Request: POST http://qa.local/api/studio/chats/58e96931a2e649f99f8a0a3b4e3e5cd0/messages "HTTP/1.1 200 OK"
+2026-11-04 15:17:34,232 INFO HTTP Request: POST http://qa.local/api/studio/chats/58e96931a2e649f99f8a0a3b4e3e5cd0/messages "HTTP/1.1 200 OK"
+2026-11-04 15:17:35,297 INFO HTTP Request: POST http://qa.local/api/studio/chats/58e96931a2e649f99f8a0a3b4e3e5cd0/messages "HTTP/1.1 200 OK"
+2026-11-04 15:17:35,449 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:19:06,815 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 1 轮 设计稿 完成 耗时 92.58 秒，输入 1566 字符，输出 4783 字符
+2026-11-04 15:19:08,048 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:19:23,905 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 1 轮 填表 完成 耗时 17.08 秒，输入 7900 字符，输出 6664 字符
+2026-11-04 15:19:25,451 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:19:28,441 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 1 轮 填表 完成 耗时 4.52 秒，输入 15185 字符，输出 1029 字符
+2026-11-04 15:19:29,819 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:19:34,192 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 1 轮 填表 完成 耗时 5.75 秒，输入 15270 字符，输出 2128 字符
+2026-11-04 15:19:35,668 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:19:38,605 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 1 轮 审稿 完成 耗时 4.41 秒，输入 5738 字符，输出 487 字符
+2026-11-04 15:19:40,411 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:19:42,312 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 1 轮 可解性·只给汤面 完成 耗时 3.70 秒，输入 696 字符，输出 49 字符
+2026-11-04 15:19:43,538 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:19:44,241 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 1 轮 可解性·全部线索 完成 耗时 1.93 秒，输入 2276 字符，输出 50 字符
+2026-11-04 15:19:45,171 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:21:04,389 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 2 轮 设计稿 完成 耗时 80.15 秒，输入 6781 字符，输出 5576 字符
+2026-11-04 15:21:05,936 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:21:25,318 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 2 轮 填表 完成 耗时 20.93 秒，输入 8693 字符，输出 8597 字符
+2026-11-04 15:21:26,471 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:21:41,763 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 2 轮 填表 完成 耗时 16.44 秒，输入 18218 字符，输出 8660 字符
+2026-11-04 15:21:42,697 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:21:57,783 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 2 轮 填表 完成 耗时 16.02 秒，输入 18220 字符，输出 8660 字符
+2026-11-04 15:21:59,097 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:22:49,660 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 3 轮 设计稿 完成 耗时 51.84 秒，输入 7324 字符，输出 5797 字符
+2026-11-04 15:22:50,864 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:23:12,824 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 3 轮 填表 完成 耗时 23.16 秒，输入 8914 字符，输出 9100 字符
+2026-11-04 15:23:14,002 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:23:17,857 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 3 轮 填表 完成 耗时 5.03 秒，输入 18724 字符，输出 2220 字符
+2026-11-04 15:23:18,991 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:23:35,302 INFO 生成任务 2345800fb5ed43368fce6369496c0c8f 第 3 轮 填表 完成 耗时 17.44 秒，输入 18935 字符，输出 9134 字符
+2026-11-04 15:23:35,932 INFO HTTP Request: GET http://qa.local/api/stories "HTTP/1.1 200 OK"
+2026-11-04 15:23:35,967 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 15:23:36,015 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 15:23:36,018 INFO HTTP Request: POST http://qa.local/api/games/0367219124b74d1ba0ca3d79c1bde41e/accuse "HTTP/1.1 200 OK"
+2026-11-04 15:23:36,043 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 15:23:36,046 INFO HTTP Request: POST http://qa.local/api/games/dfb642530aea45c1bb389b89fe9bb888/accuse "HTTP/1.1 200 OK"
+2026-11-04 15:23:36,069 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 15:23:36,071 INFO HTTP Request: POST http://qa.local/api/games/b481dff90f154f418ed12067d95fade1/accuse "HTTP/1.1 200 OK"
+2026-11-04 15:23:36,087 INFO HTTP Request: POST http://qa.local/api/studio/chats "HTTP/1.1 201 Created"
+2026-11-04 15:23:37,203 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:23:41,748 INFO HTTP Request: POST http://qa.local/api/studio/chats/66f4eadec7274538a67c25a1dd925175/messages "HTTP/1.1 200 OK"
+2026-11-04 15:23:41,750 INFO HTTP Request: POST http://qa.local/api/studio/chats/66f4eadec7274538a67c25a1dd925175/messages "HTTP/1.1 200 OK"
+2026-11-04 15:23:42,576 INFO HTTP Request: POST http://qa.local/api/studio/chats/66f4eadec7274538a67c25a1dd925175/messages "HTTP/1.1 200 OK"
+2026-11-04 15:23:42,718 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:25:31,575 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 1 轮 设计稿 完成 耗时 109.82 秒，输入 1637 字符，输出 3746 字符
+2026-11-04 15:25:32,307 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:25:48,226 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 1 轮 填表 完成 耗时 16.65 秒，输入 6863 字符，输出 7094 字符
+2026-11-04 15:25:48,977 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:25:52,633 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 1 轮 填表 完成 耗时 4.40 秒，输入 14719 字符，输出 2218 字符
+2026-11-04 15:25:53,411 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:25:55,423 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 1 轮 审稿 完成 耗时 2.79 秒，输入 4701 字符，输出 228 字符
+2026-11-04 15:25:56,127 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:25:58,252 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 1 轮 可解性·只给汤面 完成 耗时 2.83 秒，输入 609 字符，输出 49 字符
+2026-11-04 15:25:58,959 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:25:59,588 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 1 轮 可解性·全部线索 完成 耗时 1.33 秒，输入 1585 字符，输出 65 字符
+2026-11-04 15:26:00,284 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:27:16,591 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 2 轮 设计稿 完成 耗时 77.00 秒，输入 5647 字符，输出 4076 字符
+2026-11-04 15:27:17,339 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:27:29,422 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 2 轮 填表 完成 耗时 12.83 秒，输入 7193 字符，输出 5601 字符
+2026-11-04 15:27:30,191 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:27:33,526 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 2 轮 填表 完成 耗时 4.10 秒，输入 13378 字符，输出 1140 字符
+2026-11-04 15:27:34,216 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:27:37,801 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 2 轮 审稿 完成 耗时 4.27 秒，输入 5031 字符，输出 567 字符
+2026-11-04 15:27:38,541 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:27:40,042 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 2 轮 可解性·只给汤面 完成 耗时 2.24 秒，输入 624 字符，输出 49 字符
+2026-11-04 15:27:40,744 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:27:41,319 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 2 轮 可解性·全部线索 完成 耗时 1.28 秒，输入 1685 字符，输出 65 字符
+2026-11-04 15:27:42,013 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:28:40,485 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 3 轮 设计稿 完成 耗时 59.16 秒，输入 6248 字符，输出 4336 字符
+2026-11-04 15:28:41,242 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:28:52,263 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 3 轮 填表 完成 耗时 11.78 秒，输入 7453 字符，输出 4622 字符
+2026-11-04 15:28:53,010 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:28:56,390 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 3 轮 填表 完成 耗时 4.12 秒，输入 12729 字符，输出 1598 字符
+2026-11-04 15:28:57,293 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:28:58,315 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 3 轮 审稿 完成 耗时 1.92 秒，输入 5291 字符，输出 16 字符
+2026-11-04 15:28:59,031 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:29:01,081 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 3 轮 可解性·只给汤面 完成 耗时 2.76 秒，输入 624 字符，输出 49 字符
+2026-11-04 15:29:01,800 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:29:02,383 INFO 生成任务 33abf8f86e11464cb7b9bdbb39161c61 第 3 轮 可解性·全部线索 完成 耗时 1.30 秒，输入 1851 字符，输出 65 字符
+2026-11-04 15:29:03,052 INFO HTTP Request: GET http://qa.local/api/stories "HTTP/1.1 200 OK"
+2026-11-04 15:29:03,064 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 15:29:03,084 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 15:29:03,086 INFO HTTP Request: POST http://qa.local/api/games/34a87ce152754707a65e3eed1d209bc3/accuse "HTTP/1.1 200 OK"
+2026-11-04 15:29:03,098 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 15:29:03,099 INFO HTTP Request: POST http://qa.local/api/games/22bd3a4dbfa540cdb8063f294c7a2132/accuse "HTTP/1.1 200 OK"
+2026-11-04 15:29:03,111 INFO HTTP Request: POST http://qa.local/api/games "HTTP/1.1 201 Created"
+2026-11-04 15:29:03,112 INFO HTTP Request: POST http://qa.local/api/games/e4717035c9f24c38a6dbaf793911815b/accuse "HTTP/1.1 200 OK"

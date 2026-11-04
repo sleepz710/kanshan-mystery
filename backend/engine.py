@@ -316,7 +316,17 @@ class GameEngine:
         blocked.update(l["admit"] for l in character["lies"] if l["id"] not in state.exposed_lies)
         admitted = {l["admit"] for l in character["lies"] if l["id"] in state.exposed_lies}
         allowed = (set(character["knows"]) - blocked) | admitted
-        facts = {f["id"]: f for f in state.story["facts"]}
+        facts = {f["id"]: deepcopy(f) for f in state.story["facts"]}
+        admit_owners = {}
+        for owner in state.story["characters"]:
+            for lie in owner["lies"]:
+                admit_owners.setdefault(lie["admit"], {})[owner["id"]] = {
+                    "id": owner["id"], "name": owner["name"],
+                }
+        for fact_id, fact in facts.items():
+            owners = admit_owners.get(fact_id, {})
+            if "我" in fact["text"] and len(owners) == 1 and not any(mark in fact["text"] for mark in "“”‘’\"'"):
+                fact["first_person_subject"] = deepcopy(next(iter(owners.values())))
         active, exposed, future = [], [], []
         for lie in character["lies"]:
             public = {k: lie[k] for k in ("id", "claim")}
@@ -328,8 +338,8 @@ class GameEngine:
                 active.append(public)
         event_rewards = {cid for event in state.story["events"] for cid in event["unlock"]}
         return {"character": {k: character[k] for k in ("id", "name", "profile", "persona")},
-            "facts": [deepcopy(f) for f in state.story["facts"] if f["id"] in allowed],
-            "forbidden_facts": [deepcopy(f) for f in state.story["facts"] if f["id"] not in allowed],
+            "facts": [deepcopy(f) for f in facts.values() if f["id"] in allowed],
+            "forbidden_facts": [deepcopy(f) for f in facts.values() if f["id"] not in allowed],
             "available_clues": [self._public_clue(c) for c in state.story["clues"] if c["holder"] == character_id and c["id"] not in state.acquired_clues and c["id"] not in event_rewards and self._condition(state, character_id, c.get("requires"))],
             "active_lies": active, "exposed_lies": exposed, "future_lies": future,
             "history": deepcopy(state.histories[character_id]), "trust": state.trust[character_id],

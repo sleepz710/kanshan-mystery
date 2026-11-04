@@ -1,0 +1,311 @@
+id: demo-bus-revised
+title: 末班车的干伞
+source: generated
+intro: 雨夜末班公交驶回终点站，值班室里留下了一张早已停用的旧车票、一把完全干燥的伞和一份药盒寻物登记。梁志远、苏芮、林蔓和周启明被请来核对经过。物品的来路、手机记录的先后与各人的说法之间存在出入，需要你逐一取证。
+facts:
+- id: f_yu
+  text: 当晚暴雨从傍晚持续到末班车到站后，在室外撑过的伞会留下水渍，未使用的备用伞可以保持干燥。
+- id: f_jiupiao
+  text: 失物箱中登记的旧车票票面日期为三年前，票种早已停用，背面有圆珠笔写的“林”字痕，与林蔓母亲旧月票夹里的缺页副券同日期、同笔迹。
+- id: f_liangsu
+  text: 梁志远与苏芮合谋：苏芮提前准备干伞交给梁放入失物箱，二人用停用的旧票和干伞登记假失物，以掩饰梁志远私藏林蔓落在车上的试验药盒。
+- id: f_surui_money
+  text: 苏芮在23:03向梁志远转账一笔“定金”，备注“伞”，约定事后分钱。
+- id: f_liang_chat
+  text: 23:00梁志远发消息给苏芮：“林蔓来电说药盒落在后排，我停车看见了，先别登记”；23:02苏芮回复：“干伞放箱，票台旧票我处理，药盒明天出”，梁回复“好”。
+- id: f_liangyao
+  text: 梁志远从后排座位下取出林蔓落下的试验药盒，藏进驾驶室工具包，打算私卖还赌债。
+- id: f_linyao
+  text: 林蔓携带的药盒是医院临床试验药，无正式处方，她因怕追责不敢明说药源与旧票来源。
+- id: f_zhou_tou
+  text: 周启明22:54至23:10在车厢内偷拍，拍到梁志远放伞藏药盒、苏芮开箱，但删除部分片段，准备用来勒索，谎称自己整路睡着。
+- id: f_zhou_report
+  text: 周启明23:35匿名向公交公司安保举报失物造假，想借查处逼梁苏给钱。
+- id: f_yuhen
+  text: 后排座位下的灰尘有方形压痕和一滴滴药液，尺寸与林蔓药盒吻合，证明药盒曾落在后排座位下。
+- id: f_douban
+  text: 梁志远与苏芮的手机中留有旧票照片与失物登记讨论记录，二人曾计划用旧票补成“伞内夹票”。
+- id: f_su_open
+  text: 末班车到站后苏芮亲自打开失物箱，配合梁志远把干伞登记为乘客失物；失物箱没有一直锁着。
+characters:
+- id: liang
+  name: 梁志远
+  avatar: liang.png
+  profile: 末班公交司机，驾车十年，今晚因琐事被队长留下配合安保调查。面对追问，他显得不耐烦但尽量配合。
+  persona: 四十七岁，寡言、急躁，欠下赌债后总想走捷径；被揭穿时先抵赖，后减责。
+  knows:
+  - f_yu
+  - f_jiupiao
+  - f_liangsu
+  - f_liang_chat
+  - f_liangyao
+  - f_douban
+  - f_surui_money
+  secrets:
+  - fact: f_liangsu
+    until:
+      shown: c_liangchat
+  - fact: f_liangyao
+    until:
+      shown: c_zhouvideo
+  - fact: f_liang_chat
+    until:
+      shown: c_zhouvideo
+  - fact: f_surui_money
+    until:
+      shown: c_sutransfer
+  - fact: f_douban
+    until:
+      shown: c_liangchat
+  lies:
+  - id: l_p2
+    claim: 失物箱里的干伞和旧票是同一名女乘客下车时交给我的。
+    until:
+      shown: c_zhouvideo
+    admit: f_liang_chat
+  - id: l_p3
+    claim: 药盒是我从后排座位下拾到后主动准备交失物处的。
+    until:
+      shown: c_zhouvideo
+    admit: f_liangyao
+  trust_start: 0
+- id: su
+  name: 苏芮
+  avatar: su.png
+  profile: 公交失物招领处管理员，负责今晚核对末班车失物登记，言辞谨慎，强调失物箱一直锁着。
+  persona: 三十九岁，干练、精明，习惯把话说得滴水不漏；被证据逼到墙角才松口。
+  knows:
+  - f_yu
+  - f_jiupiao
+  - f_liangsu
+  - f_surui_money
+  - f_liang_chat
+  - f_douban
+  - f_su_open
+  secrets:
+  - fact: f_liangsu
+    until:
+      shown: c_sutransfer
+  - fact: f_surui_money
+    until:
+      shown: c_sutransfer
+  - fact: f_liang_chat
+    until:
+      shown: c_sutransfer
+  - fact: f_douban
+    until:
+      shown: c_liangchat
+  - fact: f_su_open
+    until:
+      shown: c_zhouvideo
+  lies:
+  - id: l_p1
+    claim: 失物箱从末班车到站后一直锁着，我没打开过。
+    until:
+      shown: c_zhouvideo
+    admit: f_su_open
+  trust_start: 0
+- id: lin
+  name: 林蔓
+  avatar: lin.png
+  profile: 夜班护士，声称今晚乘末班车时落下一只药盒，但不愿说明药盒来源，只反复请求找回。
+  persona: 三十一岁，疲惫、警惕，担心药源和旧票来源牵连母亲；被触及药盒编号时才肯多说。
+  knows:
+  - f_yu
+  - f_jiupiao
+  - f_linyao
+  - f_yuhen
+  secrets:
+  - fact: f_linyao
+    until:
+      shown: c_linpiao
+  - fact: f_jiupiao
+    until:
+      shown: c_linpiao
+  lies: []
+  trust_start: 0
+- id: zhou
+  name: 周启明
+  avatar: zhou.png
+  profile: 退休会计，末班车常客，自称今晚在车上睡觉，什么也没看见；对公交公司安保流程格外热心。
+  persona: 六十三岁，精于算计，嘴上说怕事，实际想借把柄索钱；被照片揭穿才交出手机。
+  knows:
+  - f_yu
+  - f_zhou_tou
+  - f_zhou_report
+  secrets:
+  - fact: f_zhou_tou
+    until:
+      shown: c_linphoto
+  - fact: f_zhou_report
+    until:
+      exposed: l_p4
+  lies:
+  - id: l_p4
+    claim: 我整路睡着，什么也没看见。
+    until:
+      shown: c_linphoto
+    admit: f_zhou_tou
+  trust_start: 0
+clues:
+- id: c_jiupiao
+  title: 停用旧票
+  content: 票面日期为三年前，票种早已停用，背面有圆珠笔写的“林”字痕；苏芮称从失物箱取出，但箱内干伞并未夹票。
+  holder: su
+  requires: {}
+- id: c_ganshan
+  title: 干燥的失物伞
+  content: 伞面完全干燥，伞柄没有夹票，但当晚暴雨持续到末班车到站后。
+  holder: su
+  requires: {}
+- id: c_linwet
+  title: 林蔓的湿伞
+  content: 伞面水渍与雨夜吻合，伞架有公交座椅蓝漆擦痕。
+  holder: lin
+  requires: {}
+- id: c_linpiao
+  title: 药房小票
+  content: 进口试验药领取记录，药盒编号与林蔓所述丢失药盒一致，时间22:10；小票夹在她母亲旧月票夹内，月票夹缺一张与停用旧票同日期、同“林”字痕的副券。
+  holder: lin
+  requires:
+    shown: c_jiupiao
+    has: c_linwet
+- id: c_yuhen
+  title: 座位下的药盒压痕
+  content: 后排座位下灰尘有方形压痕，旁边一滴药液，尺寸与林蔓药盒吻合。
+  holder: liang
+  requires:
+    shown: c_zhouvideo
+    event: e_baoan
+- id: c_yaohe
+  title: 工具包里的药盒
+  content: 药盒编号与林蔓小票一致，藏在驾驶室工具包底层。
+  holder: liang
+  requires:
+    shown: c_zhouvideo
+    exposed: l_p3
+- id: c_zhouvideo
+  title: 周启明手机视频
+  content: 23:05至23:10梁志远把干伞放入失物箱，苏芮打开失物箱；随后梁从后排取药盒藏进驾驶室工具包，视频中没有女乘客。
+  holder: zhou
+  requires:
+    shown: c_linphoto
+    exposed: l_p4
+- id: c_linphoto
+  title: 林蔓手机照片
+  content: 22:54车厢内周启明举手机朝驾驶室方向，照片角落有林蔓的湿伞和空座位，没有干伞。
+  holder: lin
+  requires:
+    shown: c_ganshan
+    has: c_jiupiao
+- id: c_liangchat
+  title: 梁苏聊天记录
+  content: 23:00梁志远发消息给苏芮：“林蔓来电说药盒落在后排，我停车看见了，先别登记”；23:02苏芮回复：“干伞放箱，票台旧票我处理，药盒明天出”，梁回复“好”。
+  holder: liang
+  requires:
+    shown: c_zhouvideo
+    exposed: l_p2
+- id: c_sutransfer
+  title: 苏芮转账记录
+  content: 23:03苏芮向梁志远转账一笔“定金”，备注“伞”。
+  holder: su
+  requires:
+    shown: c_zhouvideo
+    has: c_liangchat
+    exposed: l_p1
+events:
+- id: e_baoan
+  when:
+    shown: c_linphoto
+    exposed: l_p4
+    to: zhou
+  confront:
+  - zhou
+  - liang
+  unlock:
+  - c_yuhen
+- id: e_hecha
+  when:
+    shown: c_zhouvideo
+    to: liang
+  confront:
+  - liang
+  - su
+  unlock:
+  - c_yaohe
+kanshan:
+  greeting: 雨还没停，末班车已经回场。司机说交了一把伞和一张旧票，管理员说失物箱一直锁着，护士说丢了药盒，常客说整路睡着。先别急着相信任何一句话——从干伞和旧票对不上的地方问起。
+  hints:
+  - done:
+      has: c_ganshan
+    vague: 伞是干的，可雨现在还没停，这把伞真的上过车吗？
+    direct: 先向苏芮索取旧票和干伞，再向林蔓核对伞与旧票；干燥本身还需结合手机照片、视频和聊天判断。
+  - done:
+      has: c_linphoto
+    vague: 护士的照片里有人举着手机，方向好像对着驾驶室。
+    direct: 林蔓手机照片拍下周启明偷拍，他所谓整路睡着是谎话，可以拿照片去问他。
+  - done:
+      exposed: l_p4
+    vague: 周启明改口后，他手机里的东西可能比他说的重要。
+    direct: 拆穿周启明后，他交出的视频能拍到梁放伞藏药盒、苏芮开箱。
+  - done:
+      has: c_zhouvideo
+    vague: 视频里梁志远从后排拿过东西，他的聊天和转账也该看了。
+    direct: 用视频分别问梁志远和苏芮，可取得梁苏聊天记录和苏芮转账记录，合谋就完整了。
+ending:
+  questions:
+  - id: q1
+    text: 干伞是谁准备、由谁放入失物箱的？
+    options:
+    - 苏芮准备、梁志远放入
+    - 林蔓准备、周启明放入
+    - 梁志远准备、林蔓放入
+    - 周启明准备、苏芮放入
+    answer: 苏芮准备、梁志远放入
+  - id: q2
+    text: 旧票最可能来自谁？
+    options:
+    - 林蔓母亲旧月票夹中的副券
+    - 苏芮伪造的空白票
+    - 梁志远收藏的旧票
+    - 周启明遗落的旧票
+    answer: 林蔓母亲旧月票夹中的副券
+  - id: q3
+    text: 谁把药盒藏进驾驶室工具包？
+    options:
+    - 梁志远
+    - 林蔓
+    - 周启明
+    - 苏芮
+    answer: 梁志远
+  - id: q4
+    text: 梁苏手机记录中，首次提到发现药盒、商定干伞旧票方案和支付定金的时间依次是？
+    options:
+    - 23:00、23:02、23:03
+    - 22:28、22:35、23:05
+    - 23:05、23:10、23:35
+    - 22:54、23:03、23:10
+    answer: 23:00、23:02、23:03
+  endings:
+  - id: e_true
+    title: 完整真相
+    text: 干伞是苏芮提前交给梁志远放进失物箱的道具，旧票则来自林蔓母亲旧月票夹中的副券。梁志远把林蔓落在后排座位下的试验药盒藏进驾驶室工具包，苏芮用假失物登记和转账定金配合掩护。周启明拍到全过程却删除片段，想借举报勒索。证据链闭合，四人各自隐瞒的真相都被摊开。
+    when:
+      correct:
+      - q1
+      - q2
+      - q3
+      - q4
+    retry: false
+  - id: e_part
+    title: 仍有疑点
+    text: 你已指出部分矛盾，但干伞如何进入失物箱、旧票来自谁、药盒被谁取走之间还缺关键证据。先别下结论，继续核对人证和物证。
+    when: {}
+    retry: true
+  truth: 梁志远与苏芮合谋用干伞和停用旧票伪造女乘客遗落物，以掩盖梁私藏林蔓落在车上的试验药盒；周启明偷拍后谎称睡着，想借视频勒索。
+  lessons:
+  - 干伞引出疑点，视频、事前聊天与转账共同证明失物被提前布置。
+  - 旧票来自林蔓母亲的月票，不能单凭票面归属就认定遗落者。
+  - 药盒压痕和工具包里的药盒比口供更能锁定藏匿者。
+  - 周启明“睡着”与偷拍视频冲突，谎言一旦推翻，证据链才完整。
+checked: true

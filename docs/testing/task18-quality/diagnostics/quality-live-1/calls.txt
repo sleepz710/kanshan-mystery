@@ -1,0 +1,58 @@
+2026-11-04 15:01:24,366 INFO HTTP Request: POST http://qa.local/api/studio/chats "HTTP/1.1 201 Created"
+2026-11-04 15:01:26,091 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:01:29,800 INFO HTTP Request: POST http://qa.local/api/studio/chats/bbd0778fe0d14333aeca3ec84e16404c/messages "HTTP/1.1 200 OK"
+2026-11-04 15:01:29,805 INFO HTTP Request: POST http://qa.local/api/studio/chats/bbd0778fe0d14333aeca3ec84e16404c/messages "HTTP/1.1 200 OK"
+2026-11-04 15:01:31,173 INFO HTTP Request: POST http://qa.local/api/studio/chats/bbd0778fe0d14333aeca3ec84e16404c/messages "HTTP/1.1 200 OK"
+2026-11-04 15:01:31,305 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:03:35,991 INFO 生成任务 1abf0b989fb444f5adb83fdf78bf48f7 第 1 轮 设计稿 完成 耗时 126.18 秒，输入 1426 字符，输出 4396 字符
+2026-11-04 15:03:37,567 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:03:53,428 WARNING 演员模型回复格式无效（第 1 次）：JSON 语法错误，出错位置第 6861 字，共 6861 字
+2026-11-04 15:03:53,563 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:04:07,341 INFO 生成任务 1abf0b989fb444f5adb83fdf78bf48f7 第 1 轮 填表 完成 耗时 31.34 秒，输入 7417 字符，输出 6049 字符
+2026-11-04 15:04:09,129 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:04:12,208 INFO 生成任务 1abf0b989fb444f5adb83fdf78bf48f7 第 1 轮 填表 完成 耗时 4.85 秒，输入 14224 字符，输出 1513 字符
+2026-11-04 15:04:13,734 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:04:16,457 INFO 生成任务 1abf0b989fb444f5adb83fdf78bf48f7 第 1 轮 填表 完成 耗时 4.24 秒，输入 14142 字符，输出 1512 字符
+2026-11-04 15:04:17,664 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:05:32,180 INFO 生成任务 1abf0b989fb444f5adb83fdf78bf48f7 第 2 轮 设计稿 完成 耗时 75.71 秒，输入 5882 字符，输出 4455 字符
+2026-11-04 15:05:33,508 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:06:27,476 INFO 生成任务 1abf0b989fb444f5adb83fdf78bf48f7 第 3 轮 设计稿 完成 耗时 55.29 秒，输入 6035 字符，输出 5018 字符
+2026-11-04 15:06:28,985 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:06:46,012 INFO 生成任务 1abf0b989fb444f5adb83fdf78bf48f7 第 3 轮 填表 完成 耗时 18.53 秒，输入 8039 字符，输出 7577 字符
+2026-11-04 15:06:47,597 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:06:55,085 INFO 生成任务 1abf0b989fb444f5adb83fdf78bf48f7 第 3 轮 填表 完成 耗时 9.07 秒，输入 16797 字符，输出 4684 字符
+2026-11-04 15:06:56,366 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:07:03,292 INFO 生成任务 1abf0b989fb444f5adb83fdf78bf48f7 第 3 轮 填表 完成 耗时 8.20 秒，输入 16571 字符，输出 4317 字符
+2026-11-04 15:07:03,337 ERROR 生成任务 1abf0b989fb444f5adb83fdf78bf48f7 失败：剧本格式或结构仍有问题，草稿已保留，请重新生成。
+2026-11-04 15:07:04,311 INFO HTTP Request: POST http://qa.local/api/studio/chats "HTTP/1.1 201 Created"
+2026-11-04 15:07:05,841 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:07:30,594 INFO HTTP Request: POST http://qa.local/api/studio/chats/5f3d102727ff4f69a8ab441f4cbff45f/messages "HTTP/1.1 200 OK"
+2026-11-04 15:07:30,600 INFO HTTP Request: POST http://qa.local/api/studio/chats/5f3d102727ff4f69a8ab441f4cbff45f/messages "HTTP/1.1 200 OK"
+2026-11-04 15:07:31,993 INFO HTTP Request: POST http://qa.local/api/studio/chats/5f3d102727ff4f69a8ab441f4cbff45f/messages "HTTP/1.1 200 OK"
+2026-11-04 15:07:32,390 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:09:17,764 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 1 轮 设计稿 完成 耗时 107.16 秒，输入 1497 字符，输出 3793 字符
+2026-11-04 15:09:19,488 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:09:30,616 WARNING 演员模型回复格式无效（第 1 次）：JSON 语法错误，出错位置第 886 字，共 4549 字
+2026-11-04 15:09:30,739 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:09:44,215 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 1 轮 填表 完成 耗时 26.45 秒，输入 6814 字符，输出 5812 字符
+2026-11-04 15:09:45,324 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:09:47,775 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 1 轮 填表 完成 耗时 3.55 秒，输入 13373 字符，输出 1500 字符
+2026-11-04 15:09:49,130 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:09:51,480 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 1 轮 填表 完成 耗时 3.69 秒，输入 13375 字符，输出 1473 字符
+2026-11-04 15:09:52,628 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:10:56,676 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 2 轮 设计稿 完成 耗时 65.19 秒，输入 5641 字符，输出 4140 字符
+2026-11-04 15:10:57,498 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:11:11,503 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 2 轮 填表 完成 耗时 14.83 秒，输入 7161 字符，输出 6380 字符
+2026-11-04 15:11:12,261 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:11:23,676 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 2 轮 填表 完成 耗时 12.17 秒，输入 14307 字符，输出 6372 字符
+2026-11-04 15:11:24,987 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:11:30,622 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 2 轮 填表 完成 耗时 6.94 秒，输入 14492 字符，输出 3077 字符
+2026-11-04 15:11:31,814 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:12:54,103 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 3 轮 设计稿 完成 耗时 83.45 秒，输入 5905 字符，输出 4433 字符
+2026-11-04 15:12:54,858 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:13:08,354 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 3 轮 填表 完成 耗时 14.25 秒，输入 7454 字符，输出 5474 字符
+2026-11-04 15:13:09,175 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:13:13,017 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 3 轮 填表 完成 耗时 4.66 秒，输入 13368 字符，输出 1590 字符
+2026-11-04 15:13:13,926 INFO HTTP Request: POST https://api.deepseek.com/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:13:21,214 INFO 生成任务 40ee070bad4c49518720b60449fb0008 第 3 轮 填表 完成 耗时 8.19 秒，输入 13632 字符，输出 3788 字符
+2026-11-04 15:13:21,228 ERROR 生成任务 40ee070bad4c49518720b60449fb0008 失败：剧本格式或结构仍有问题，草稿已保留，请重新生成。

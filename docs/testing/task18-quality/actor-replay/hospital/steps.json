@@ -1,0 +1,47 @@
+[
+  {
+    "attempt": 3,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 6482,
+    "status": "ok",
+    "response_chars": 4654,
+    "seconds": 162.58
+  },
+  {
+    "attempt": 3,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 7881,
+    "status": "ok",
+    "response_chars": 6145,
+    "seconds": 47.13
+  },
+  {
+    "attempt": 3,
+    "step": "审稿",
+    "role": "actor",
+    "request_chars": 5867,
+    "status": "ok",
+    "response_chars": 234,
+    "seconds": 7.84
+  },
+  {
+    "attempt": 3,
+    "step": "可解性·只给汤面",
+    "role": "writer",
+    "request_chars": 648,
+    "status": "ok",
+    "response_chars": 49,
+    "seconds": 107.42
+  },
+  {
+    "attempt": 3,
+    "step": "可解性·全部线索",
+    "role": "actor",
+    "request_chars": 2168,
+    "status": "ok",
+    "response_chars": 49,
+    "seconds": 4.71
+  }
+]

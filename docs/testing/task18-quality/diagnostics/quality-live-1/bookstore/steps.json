@@ -1,0 +1,110 @@
+[
+  {
+    "attempt": 1,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 1497,
+    "status": "ok",
+    "response_chars": 3793,
+    "seconds": 107.16
+  },
+  {
+    "attempt": 1,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 6814,
+    "status": "ok",
+    "response_chars": 5812,
+    "seconds": 26.45
+  },
+  {
+    "attempt": 1,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 13373,
+    "status": "ok",
+    "response_chars": 1500,
+    "seconds": 3.56
+  },
+  {
+    "attempt": 1,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 13375,
+    "status": "ok",
+    "response_chars": 1473,
+    "seconds": 3.7
+  },
+  {
+    "attempt": 2,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 5641,
+    "status": "ok",
+    "response_chars": 4140,
+    "seconds": 65.19
+  },
+  {
+    "attempt": 2,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 7161,
+    "status": "ok",
+    "response_chars": 6380,
+    "seconds": 14.83
+  },
+  {
+    "attempt": 2,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 14307,
+    "status": "ok",
+    "response_chars": 6372,
+    "seconds": 12.17
+  },
+  {
+    "attempt": 2,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 14492,
+    "status": "ok",
+    "response_chars": 3077,
+    "seconds": 6.94
+  },
+  {
+    "attempt": 3,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 5905,
+    "status": "ok",
+    "response_chars": 4433,
+    "seconds": 83.45
+  },
+  {
+    "attempt": 3,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 7454,
+    "status": "ok",
+    "response_chars": 5474,
+    "seconds": 14.25
+  },
+  {
+    "attempt": 3,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 13368,
+    "status": "ok",
+    "response_chars": 1590,
+    "seconds": 4.66
+  },
+  {
+    "attempt": 3,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 13632,
+    "status": "ok",
+    "response_chars": 3788,
+    "seconds": 8.2
+  }
+]

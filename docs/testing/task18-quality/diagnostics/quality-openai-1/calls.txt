@@ -1,0 +1,18 @@
+2026-11-04 15:33:17,829 INFO HTTP Request: POST http://qa.local/api/studio/chats "HTTP/1.1 201 Created"
+2026-11-04 15:33:26,873 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:33:26,880 INFO HTTP Request: POST http://qa.local/api/studio/chats/15704710c4ed41f69b8ef53fe4e9706f/messages "HTTP/1.1 200 OK"
+2026-11-04 15:33:26,882 INFO HTTP Request: POST http://qa.local/api/studio/chats/15704710c4ed41f69b8ef53fe4e9706f/messages "HTTP/1.1 200 OK"
+2026-11-04 15:33:27,493 INFO HTTP Request: POST http://qa.local/api/studio/chats/15704710c4ed41f69b8ef53fe4e9706f/messages "HTTP/1.1 200 OK"
+2026-11-04 15:35:07,728 INFO Retrying request to /chat/completions in 0.471412 seconds
+2026-11-04 15:36:26,896 INFO 生成任务 10ca211080d4404bbb797c5393a4c008 第 1 轮 设计稿 超时 耗时 180.01 秒，输入 1566 字符，输出 0 字符
+2026-11-04 15:38:08,769 INFO Retrying request to /chat/completions in 0.439387 seconds
+2026-11-04 15:39:26,906 INFO 生成任务 10ca211080d4404bbb797c5393a4c008 第 2 轮 设计稿 超时 耗时 180.01 秒，输入 1601 字符，输出 0 字符
+2026-11-04 15:41:09,538 INFO Retrying request to /chat/completions in 0.465265 seconds
+2026-11-04 15:41:11,827 WARNING 编剧模型调用失败：APIConnectionError status=None
+2026-11-04 15:41:11,828 INFO 生成任务 10ca211080d4404bbb797c5393a4c008 第 3 轮 设计稿 失败 耗时 104.92 秒，输入 1638 字符，输出 0 字符
+2026-11-04 15:41:11,830 ERROR 生成任务 10ca211080d4404bbb797c5393a4c008 失败：编剧模型服务暂时不可用，请稍后重试。
+2026-11-04 15:41:11,933 INFO HTTP Request: POST http://qa.local/api/studio/chats "HTTP/1.1 201 Created"
+2026-11-04 15:41:23,567 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-04 15:41:23,572 INFO HTTP Request: POST http://qa.local/api/studio/chats/5c498d56eea241358eba804b66c2491c/messages "HTTP/1.1 200 OK"
+2026-11-04 15:41:23,577 INFO HTTP Request: POST http://qa.local/api/studio/chats/5c498d56eea241358eba804b66c2491c/messages "HTTP/1.1 200 OK"
+2026-11-04 15:41:24,332 INFO HTTP Request: POST http://qa.local/api/studio/chats/5c498d56eea241358eba804b66c2491c/messages "HTTP/1.1 200 OK"

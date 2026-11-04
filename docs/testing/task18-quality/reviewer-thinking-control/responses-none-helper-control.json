@@ -1,0 +1,9 @@
+{
+  "source_sha256": "901dc6f3bf2347f7b58ea9a11937bc1d9db32b586b78d5fe4c3e153aff23dfbf",
+  "only_replacement": {
+    "from": "reasoning={\"effort\": \"high\"}",
+    "to": "reasoning={\"effort\": control_effort}"
+  },
+  "control_effort": "none",
+  "production_source_modified": false
+}

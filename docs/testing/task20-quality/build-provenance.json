@@ -1,0 +1,150 @@
+{
+  "source_commit": "848c471f4f2b35b2ac6dad3d6cef33b0d4c630cb",
+  "generation_flow": "task18-design-first",
+  "task21": "paused",
+  "task18_source_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
+  "task19_frontend_commit": "486ca74ba0a4f8da9671347b8fef39b6e34b207f",
+  "task20_source_commit": "a08c5f2a5f89fcbe68303d63f14d3a77e4846c12",
+  "files": {
+    "backend/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compiled_code_matches": true
+    },
+    "backend/agents.py": {
+      "sha256": "b950f79a906eb1d5a65200481c40c6a7e0f9d02c1a9e69f648396302d5b2d0a8",
+      "compiled_code_matches": true
+    },
+    "backend/app.py": {
+      "sha256": "b28b20ba39f946570f0340a37324e6a53d46cacf52a6becdcfbd05248a87c579",
+      "compiled_code_matches": true
+    },
+    "backend/engine.py": {
+      "sha256": "cec23ba807933c8feffedc2350d4f561d458137009280b552853aa3580332fd8",
+      "compiled_code_matches": true
+    },
+    "backend/kanshan.py": {
+      "sha256": "5a5a94d908b32462f809e38258eaffd89705697d5cdb5977ba60d20e3463df12",
+      "compiled_code_matches": true
+    },
+    "backend/llm.py": {
+      "sha256": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+      "compiled_code_matches": true
+    },
+    "backend/paths.py": {
+      "sha256": "e13208f13c639f97440fdbbc2de17023d3ee05e9e40920fba2e0d5a9dacd9c9c",
+      "compiled_code_matches": true
+    },
+    "backend/studio/__init__.py": {
+      "sha256": "38de8aacecae01185944868ed0ef33e0a4af731a766c3a63352abc4a36de32cb",
+      "compiled_code_matches": true
+    },
+    "backend/studio/api.py": {
+      "sha256": "6b986f47258f324ee799c97bd5236190bfa2b2c2720b4d9b0640270f6a43642a",
+      "compiled_code_matches": true
+    },
+    "backend/studio/check.py": {
+      "sha256": "af213be8119a1f2023e1d88e68939ae72a2f6b38a65be185b971f57ae6b4a6f7",
+      "compiled_code_matches": true
+    },
+    "backend/studio/ingest.py": {
+      "sha256": "f76adbe9fd36aaaf1248fdaab7ca074fddb13e53fe97d3922ce306e8dcc5510b",
+      "compiled_code_matches": true
+    },
+    "backend/studio/mock.py": {
+      "sha256": "2b247c590ecbf4910bfc3247a6c3640144e606903f61cea7c9b58700a53e37fc",
+      "compiled_code_matches": true
+    },
+    "backend/studio/service.py": {
+      "sha256": "6c6d3041370d05ebffbef3efdb6f0a650e24f67970fced7a4a9d9e1c9e9cbc07",
+      "compiled_code_matches": true
+    },
+    "backend/studio/share.py": {
+      "sha256": "ddee26d770218cd6de495e406888669cf70fc958a4f8e953889c2838991ec6a9",
+      "compiled_code_matches": true
+    },
+    "desktop/__init__.py": {
+      "sha256": "fc444c1a3f5d97a4856c1f17e90ae9b9b484ffe063584197ca27dafb2d8fb315",
+      "compiled_code_matches": true
+    },
+    "desktop/runtime.py": {
+      "sha256": "0736702d9d3c93cc76b2603a7959690526cc0ee646aeaedaf1408b34ccdb7d30",
+      "compiled_code_matches": true
+    },
+    "desktop/settings.py": {
+      "sha256": "17bdefc99de61eb56562fc0c71bee29fb372df22b44599fdb2668a284bf02f29",
+      "compiled_code_matches": true
+    },
+    "desktop/main.py": {
+      "sha256": "d769666ffc6b3e1f32fcc95080b46b13057f3f5f2dd73caf1911d57e813f09ed",
+      "compiled_code_matches": true
+    }
+  },
+  "resources": {
+    "frontend/ending.html": "0a6dfdd53eea28792dfa9ed1b5f9eaf9908ea66849bbbddfaf8e0dc0d2cf9f71",
+    "frontend/game.html": "57bc6dd37e5b678cb810770f4f97bbf63c8fca32c731fad2de7d485e1c977572",
+    "frontend/index.html": "4ddfac065c730687be767b0a07765fe9d88025bba41eedbaa4cac2c37c95d527",
+    "frontend/assets/icon-180.png": "e584b812f3d8f363e32bbf428474da6d9e1bb9cb8488fefcded0311a790b0412",
+    "frontend/assets/logo.svg": "4a7f81bfc6b3b0a1ee2cbf2e062bf97470e03c11f1f03b2376d0ad0deb5e21b3",
+    "frontend/css/base.css": "7287f117d96ec6b291849f7f2ffd4ff53ba7e5bd5de8a22aea7e64cefe864f71",
+    "frontend/css/ending.css": "1d9df9e5f2d138b4220373b4bc8241e9240aa5f9f28822aa17d088d4b9770f5a",
+    "frontend/css/game.css": "e88a3af41338fba10c85da49a01f1401c77a85dfeffb2d59fa19ce4a612c68ca",
+    "frontend/css/home.css": "9260e450b642d7f63da33a7ca5d82097c7a5f56d57bd672b8769d9ea9be39545",
+    "frontend/js/api.js": "735c3a54733385a45ed5062d1b5dc80d46dd552b5dac4232171e5c28d7d35abc",
+    "frontend/js/ending.js": "bef15b683121e7c159b6300b15d1066dbfc4efa44fd2e0a424535de3ba63a4fa",
+    "frontend/js/game.js": "d3395a275a97309bfddca9bba20c20cef171e61040a9f9c931c51fe5d4ba6fae",
+    "frontend/js/home.js": "c6ac5101f44e9054fc6aca301f2df1ab549cf998b5726a016bc0c930aa5c9872",
+    "frontend/js/store.js": "85e263cb8eb1328fa4e47896c37dce7f4e77ed86dcf7eddf7a59db1c300c524f",
+    "frontend/js/ui.js": "2b39a3ac847ecc95d1e315fb9ca5edbf5408e13230c10d616fd6b54703e75752",
+    "frontend/share/index.html": "a14dfee81e9699ba1f40fdcb3464e66a760f4bee58cd06181cab65ef6947fa68",
+    "frontend/share/share.css": "8d44ed2a0c7269391894d6ec187654d1e30801c45cb05bda3ace332337b0c8e0",
+    "frontend/share/share.js": "1558d57b73ce2da98becc8046869213636cdc9323415f2a247cec2b57ad43544",
+    "frontend/studio/chats.js": "7be49626f37f86180a9670d6a09a2b3cb6a0b3d90b5dcbad089dcdd5fc738b71",
+    "frontend/studio/index.html": "f17349187b28badafac0211854c3c1022c43405a7cf31401b2853e1d9a5f96ef",
+    "frontend/studio/studio.css": "a5304bdd0a6b61f69d4c99d372633687488428a87a2e3594ff4365a97332cbe0",
+    "frontend/studio/studio.js": "2c23d3a23fb6e63e04577148d5df0c13954d0019604bd8df21bd3eb96e841c37",
+    "frontend/assets/avatars/akai.png": "eeb609b78791abc7b38a692141768571a8d6b81dce7c0a036cdcfd3a70246721",
+    "frontend/assets/avatars/chenmo.png": "67982d5bee26690f5a5f5347402bf481dcb6e386e2c7af27e33605f301110679",
+    "frontend/assets/avatars/xiaolin.png": "aad1297329171ed1762ffc81d4845513e277d5b37bed073e9ccc4f50dddf3c0c",
+    "frontend/assets/avatars/zhouming.png": "8284a513addd55aa979dee14c35cbb46af77807f66fd99686a77a465bfeeb7dd",
+    "frontend/assets/avatars/src/akai.svg": "a88cc4617131a7d519489e301d20b6ec85bd4a31cb037b94af29a92a0f24c204",
+    "frontend/assets/avatars/src/chenmo.svg": "5101c0ae2986d3310a57200b569042e450b75c21ab960c3e881b6642b6c28e6b",
+    "frontend/assets/avatars/src/xiaolin.svg": "792f7051c785c8cbf9b71f9ee8ffdc1cba8d848b69fdbf804aa84690afc476a2",
+    "frontend/assets/avatars/src/zhouming.svg": "0d3ee951767eebdec2e9abf6863ebf3d549e3d1fe4710453110722007f94e9ae",
+    "stories/lost-tuition-walkthrough.md": "497e1d0e48c4ccece67197eb51ab055d8fbb703dd6eef21d0743b5709c0558bf",
+    "stories/lost-tuition.yaml": "9353e1f469e116535cd746c0ad18e749cec3f655d241365976ff9d6aec3c65d5",
+    "desktop/ui/index.html": "22e43084d4911c95e61c7c331c49bba8b9d236f50865e50314aa1ff7bc0bde90"
+  },
+  "exe_sha256": "e0caf041111ad9469d94ad4a399b02cfac66546427ebe5a9e61602ab33c1604f",
+  "exe_bytes": 14414334,
+  "artifact": {
+    "directory": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104",
+    "zip": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104.zip",
+    "zip_sha256": "c7c2c2650bfe5b26f3e2eced1b7029551c0f161d99df62ca6e7d4c6d88d8cdef",
+    "zip_bytes": 46978968,
+    "file_count": 2580,
+    "payload_bytes": 96099301,
+    "no_private_key": true,
+    "no_env_or_user_settings": true
+  },
+  "delivery_integrity": {
+    "zip_crc_passed": true,
+    "all_program_files_byte_equal": true,
+    "source_code_objects_match": true,
+    "resources_match": true,
+    "post_executable_runs_unchanged": true,
+    "zip_all_files_match_delivery": true,
+    "three_samples_match_task19": true,
+    "private_keys_absent_from_pr_files": true
+  },
+  "automated_tests": {
+    "independent_branch": {
+      "passed": 646,
+      "seconds": 22.01
+    },
+    "integrated_release": {
+      "passed": 743,
+      "seconds": 32.8
+    },
+    "warnings": 1
+  }
+}

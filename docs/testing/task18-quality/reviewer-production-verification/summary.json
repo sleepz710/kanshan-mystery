@@ -1,0 +1,123 @@
+{
+  "runtime_commit": "38e91999c50b2ee02251148e38d270a42b337b43",
+  "all_schema_and_indices_passed": true,
+  "provider_blocked": false,
+  "hospital_sources_unchanged": true,
+  "results": [
+    {
+      "name": "hospital_false_positives",
+      "runtime_commit": "38e91999c50b2ee02251148e38d270a42b337b43",
+      "model": "gpt-5.4-2026-03-05",
+      "endpoint": "/v1/chat/completions",
+      "effort": "none",
+      "production_function": "StudioService._verify_review",
+      "source": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\docs\\testing\\task18-quality\\reviewer-final-calibration\\hospital_corrected_flow.json",
+      "source_sha256": "6e278504d27ff611f0b98389a5067a782dbc0576c378f88d79cc9d8f92466a80",
+      "prompt_sha256": "8e8ef34bed4a095d1fc7a60a2961f5da9634c00fa2459bc82ec27dd9cac622de",
+      "original_problems": [
+        "问题2证据链对“01:18把M-17从17号柜推出，并在01:29用废物电梯继续转移的人是程坤”支持不足。现有《旧楼门禁日志》只能证明B-017卡在01:18、01:29被刷，不能证明实际刷卡者；《观察窗偷拍视频》只拍到程坤01:22推进旧手术室，不能覆盖01:18推出17号柜和01:29继续转移。虽有《程坤补充供述》可补足，但其取得依赖先拆穿程坤，而程坤的既有evidence《观察窗偷拍视频》持有人是苏芮，取得前置又需《连廊监控导出》，形成玩家材料链较绕。建议在题目依据中明确以《程坤补充供述》为核心，或补一条直接拍到01:18/01:29实施人的客观记录。",
+        "问题3问“是谁下令……以掩盖这具遗体原本登记为顾南的事实”，答案秦岳基本成立，但所列《银色录音笔音频导出》并不直接支持“下令送焚化间”这一动作，也不直接证明“M-17原本登记为顾南”；它只能证明顾南生前指控秦岳、苏芮取出录音笔。该题核心依据实际上是《手术室对讲录音》+《冷库遗体登记更正单》+《程坤补充供述》。建议删去录音笔作题证，或改题干为“为掩盖顾南相关指控与身份事实而下令转移M-17的人是谁”，使其与现证对应。"
+      ],
+      "expected_keep_indices": [],
+      "response": {
+        "keep_indices": []
+      },
+      "retained_original_problems": [],
+      "schema_valid": true,
+      "matched": true,
+      "seconds": 18.97,
+      "input_sha256": "bff96e90c17302dc978225b0ac39b04ed96fdd17ef1ae781fed16e0848a1980a"
+    },
+    {
+      "name": "missing_identity",
+      "runtime_commit": "38e91999c50b2ee02251148e38d270a42b337b43",
+      "model": "gpt-5.4-2026-03-05",
+      "endpoint": "/v1/chat/completions",
+      "effort": "none",
+      "production_function": "StudioService._verify_review",
+      "source": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\docs\\testing\\task18-quality\\reviewer-final-calibration\\missing_identity.json",
+      "source_sha256": "f053b4ffb60ac7be94b7e491b51917895d0c4cfcfa6859b74e61070b17ad2a5f",
+      "prompt_sha256": "8e8ef34bed4a095d1fc7a60a2961f5da9634c00fa2459bc82ec27dd9cac622de",
+      "original_problems": [
+        "问题“23:40本人刷开B1门的是谁？”答案写苏雯，但现有公开线索仅有《门禁单》记载“卡号KL07刷开B1门，登记人为林知远”。按规则，登记人不能直接等同实际刷卡者，且没有录像、目击或苏雯承认可把“KL07持卡使用者”指向苏雯，故答案缺少刷卡者身份与动作依据。改法：补充可取得的录像/目击/直接承认线索，或把题目改为“哪张卡在23:40刷开B1门”。",
+        "苏雯设有谎话“23:40我没下过B1”，且人物evidence写“陈国栋持有的门禁单”，但《门禁单》只反映卡号、时间和登记人，并未直接否定“苏雯没下过B1”中的对象与地点，不能构成自然语言拆谎流程。现有材料不足以直接反驳该旧话。改法：增加能显示苏雯本人进入B1的线索，如监控、值班记录中的实名识别，或让她的更正口供明确并由该证据支持。"
+      ],
+      "expected_keep_indices": [
+        0,
+        1
+      ],
+      "response": {
+        "keep_indices": [
+          0,
+          1
+        ]
+      },
+      "retained_original_problems": [
+        "问题“23:40本人刷开B1门的是谁？”答案写苏雯，但现有公开线索仅有《门禁单》记载“卡号KL07刷开B1门，登记人为林知远”。按规则，登记人不能直接等同实际刷卡者，且没有录像、目击或苏雯承认可把“KL07持卡使用者”指向苏雯，故答案缺少刷卡者身份与动作依据。改法：补充可取得的录像/目击/直接承认线索，或把题目改为“哪张卡在23:40刷开B1门”。",
+        "苏雯设有谎话“23:40我没下过B1”，且人物evidence写“陈国栋持有的门禁单”，但《门禁单》只反映卡号、时间和登记人，并未直接否定“苏雯没下过B1”中的对象与地点，不能构成自然语言拆谎流程。现有材料不足以直接反驳该旧话。改法：增加能显示苏雯本人进入B1的线索，如监控、值班记录中的实名识别，或让她的更正口供明确并由该证据支持。"
+      ],
+      "schema_valid": true,
+      "matched": true,
+      "seconds": 2.83,
+      "input_sha256": "7652ddb02d6042634b3f6c2908fe322c725eebab1fecfb43ee1aeb40bb0a234e"
+    },
+    {
+      "name": "unrelated_admission",
+      "runtime_commit": "38e91999c50b2ee02251148e38d270a42b337b43",
+      "model": "gpt-5.4-2026-03-05",
+      "endpoint": "/v1/chat/completions",
+      "effort": "none",
+      "production_function": "StudioService._verify_review",
+      "source": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\docs\\testing\\task18-quality\\reviewer-final-calibration\\unrelated_admission.json",
+      "source_sha256": "e55b5fa1cdaefb6e5faf60b108cffbcd12c8bd84f01a8c342d2e84e1416bbe03",
+      "prompt_sha256": "8e8ef34bed4a095d1fc7a60a2961f5da9634c00fa2459bc82ec27dd9cac622de",
+      "original_problems": [
+        "苏雯的拆谎更正与原谎话错配。原lie是“23:40我没下过B1”，但《改口记录》内容仅承认“三年前替外婆保存过相册”，没有更正当晚23:40是否下过B1，也未承认对应时间、地点、动作，不能作为“直接纠正B1行踪谎话”的材料。应把改口改为明确承认当晚23:40进入B1，或删除其proves中的拆谎指向。"
+      ],
+      "expected_keep_indices": [
+        0
+      ],
+      "response": {
+        "keep_indices": [
+          0
+        ]
+      },
+      "retained_original_problems": [
+        "苏雯的拆谎更正与原谎话错配。原lie是“23:40我没下过B1”，但《改口记录》内容仅承认“三年前替外婆保存过相册”，没有更正当晚23:40是否下过B1，也未承认对应时间、地点、动作，不能作为“直接纠正B1行踪谎话”的材料。应把改口改为明确承认当晚23:40进入B1，或删除其proves中的拆谎指向。"
+      ],
+      "schema_valid": true,
+      "matched": true,
+      "seconds": 4.97,
+      "input_sha256": "f9226e20c64ebda8105b3285bfb771ba1e3b0bb9729efca93cf5ec5de61f0323"
+    },
+    {
+      "name": "hospital_missing_purpose",
+      "runtime_commit": "38e91999c50b2ee02251148e38d270a42b337b43",
+      "model": "gpt-5.4-2026-03-05",
+      "endpoint": "/v1/chat/completions",
+      "effort": "none",
+      "production_function": "StudioService._verify_review",
+      "source": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-revision\\hospital\\003-审稿.json",
+      "source_sha256": "deb4c39f0c18c3daa2a6ba85a3c39b02a1843346a9d17b386ffa05ae032d14f5",
+      "prompt_sha256": "8e8ef34bed4a095d1fc7a60a2961f5da9634c00fa2459bc82ec27dd9cac622de",
+      "original_problems": [
+        "第3题答案“秦岳下令把M-17送往焚化间通道，以掩盖这具遗体原本登记为顾南的事实”中，前半句可由《手术室对讲录音》与《程坤补充供述》支持，但“以掩盖……原本登记为顾南的事实”这一主观目的，现有公开证据未直接把当晚下令与2023年改名行为连成因果。《冷库遗体登记更正单》只证秦岳改名，《银色录音笔音频导出》只证顾南曾指控违规用药。缺少秦岳知悉M-17即顾南且因此要求焚化的直接表述。改法：删去目的表述，或补一条秦岳/程坤明确提及“烧掉是为免顾南身份暴露”的可取得录音供述。"
+      ],
+      "expected_keep_indices": [
+        0
+      ],
+      "response": {
+        "keep_indices": [
+          0
+        ]
+      },
+      "retained_original_problems": [
+        "第3题答案“秦岳下令把M-17送往焚化间通道，以掩盖这具遗体原本登记为顾南的事实”中，前半句可由《手术室对讲录音》与《程坤补充供述》支持，但“以掩盖……原本登记为顾南的事实”这一主观目的，现有公开证据未直接把当晚下令与2023年改名行为连成因果。《冷库遗体登记更正单》只证秦岳改名，《银色录音笔音频导出》只证顾南曾指控违规用药。缺少秦岳知悉M-17即顾南且因此要求焚化的直接表述。改法：删去目的表述，或补一条秦岳/程坤明确提及“烧掉是为免顾南身份暴露”的可取得录音供述。"
+      ],
+      "schema_valid": true,
+      "matched": true,
+      "seconds": 6.67,
+      "input_sha256": "c7c0616b6e9f50843189119061902f7c632fe0b04a27b8116b69b69a5d60ea66"
+    }
+  ]
+}

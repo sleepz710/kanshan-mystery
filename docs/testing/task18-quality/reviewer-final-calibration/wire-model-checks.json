@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "none"
+  },
+  {
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "none"
+  },
+  {
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "reasoning_effort": "none"
+  }
+]

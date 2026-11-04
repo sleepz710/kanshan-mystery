@@ -1,0 +1,69 @@
+{
+  "created_utc": "2026-11-04T11:09:58.823931+00:00",
+  "story_id": "generated-0593810d0916419a9cf5112efb7459b4",
+  "generation_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "actor_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "reassessment_runtime_commit": "38e91999c50b2ee02251148e38d270a42b337b43",
+  "sources": {
+    "story.yaml": {
+      "file": ".cache\\quality-openai-revision2\\hospital\\story.yaml",
+      "sha256": "072617db5a1436dc532afb421a63e75533dc4dd4ed993d9ee8542604fcdb6cfe",
+      "bytes": 11175
+    },
+    "selected-design.json": {
+      "file": ".cache\\quality-openai-revision2\\hospital\\selected-design.json",
+      "sha256": "60fb0918927f0c2d537cbfa73f3326b9a94e23fa2fbeee0e785b53c293583273",
+      "bytes": 10885
+    },
+    "result.json": {
+      "file": ".cache\\quality-openai-revision2\\hospital\\result.json",
+      "sha256": "cf0d4b05e8d7da1c6d7dc8a35fc3a9717d147345e2d6ec647b88f108bf68bcf0",
+      "bytes": 6252
+    },
+    "playthrough.json": {
+      "file": ".cache\\quality-openai-revision2\\hospital\\playthrough.json",
+      "sha256": "daa942ea89cabcbb0bda3bf967f0592ecfe6c16b487b1b21530c3046c53e6927",
+      "bytes": 58770
+    },
+    "question-evidence.json": {
+      "file": ".cache\\quality-openai-revision2\\hospital\\question-evidence.json",
+      "sha256": "36a8fadc11650507a4d79bcaef595f6a39bd3392add8b81ef9c48097f6309dae",
+      "bytes": 57373
+    }
+  },
+  "tested_story": {
+    "file": ".cache\\quality-openai-revision2\\hospital\\tested-story.yaml",
+    "sha256": "42f3f81ab769570b0355cea2b91974cd6f9b6504145fa6cc9cf0ed35edf16808",
+    "bytes": 11174
+  },
+  "raw_checked": false,
+  "tested_checked": true,
+  "only_changed_field": "checked",
+  "all_other_parsed_fields_equal": true,
+  "byte_transformation": "single line checked: false changed to checked: true, all other bytes preserved",
+  "raw_story_modified": false,
+  "raw_result_modified": false,
+  "original_review_retained": true,
+  "reassessment": {
+    "file": "docs\\testing\\task18-quality\\reviewer-production-verification\\reassessment.json",
+    "sha256": "680cad9dc11688b710df1680900f6fe0ae81674aa75bb748992853f5dfbbb141",
+    "bytes": 1650
+  },
+  "production_review_controls": {
+    "file": "docs\\testing\\task18-quality\\reviewer-production-verification\\summary.json",
+    "sha256": "1a88018c200d7f3757cb57f5e5b3fb7a84dc9744970e409194fb86920ed111a7",
+    "bytes": 9704
+  },
+  "acceptance": {
+    "structure": "passed",
+    "playability": "passed",
+    "design_alignment": "passed",
+    "solvability": "passed",
+    "production_review_fixed_cases": "4/4 strict schema and indices",
+    "real_full_playthrough_steps": 18,
+    "correct_answers": "3/3",
+    "strict_stage_subject_secret_audit": "passed",
+    "ending_combinations": 27,
+    "wrong_complete_combinations": 0
+  }
+}

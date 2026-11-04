@@ -6,3 +6,10 @@
 *.pdf binary
 *.docx binary
 *.xlsx binary
+
+# 保持任务18验收记录的原始字节
+docs/testing/task18-final/** -text whitespace=cr-at-eol
+docs/testing/task18-quality/** -text whitespace=cr-at-eol
+
+docs/testing/task19-demo/originals/*.yaml -text
+docs/testing/task19-demo/revised/*.yaml -text

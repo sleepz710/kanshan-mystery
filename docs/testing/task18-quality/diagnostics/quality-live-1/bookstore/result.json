@@ -1,0 +1,205 @@
+{
+  "name": "bookstore",
+  "material": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+  "model": "deepseek-flash",
+  "quality": "fast",
+  "status": "failed",
+  "seconds": 351.41,
+  "provider_blocked": false,
+  "prelude_seconds": 26.3,
+  "checked": null,
+  "problems": [
+    "审稿、好玩度与可解性检查尚未完成。"
+  ],
+  "error": "剧本格式或结构仍有问题，草稿已保留，请重新生成。",
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1497,
+      "status": "ok",
+      "response_chars": 3793,
+      "seconds": 107.16
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 6814,
+      "status": "ok",
+      "response_chars": 5812,
+      "seconds": 26.45
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13373,
+      "status": "ok",
+      "response_chars": 1500,
+      "seconds": 3.56
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13375,
+      "status": "ok",
+      "response_chars": 1473,
+      "seconds": 3.7
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 5641,
+      "status": "ok",
+      "response_chars": 4140,
+      "seconds": 65.19
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7161,
+      "status": "ok",
+      "response_chars": 6380,
+      "seconds": 14.83
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 14307,
+      "status": "ok",
+      "response_chars": 6372,
+      "seconds": 12.17
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 14492,
+      "status": "ok",
+      "response_chars": 3077,
+      "seconds": 6.94
+    },
+    {
+      "attempt": 3,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 5905,
+      "status": "ok",
+      "response_chars": 4433,
+      "seconds": 83.45
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7454,
+      "status": "ok",
+      "response_chars": 5474,
+      "seconds": 14.25
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13368,
+      "status": "ok",
+      "response_chars": 1590,
+      "seconds": 4.66
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13632,
+      "status": "ok",
+      "response_chars": 3788,
+      "seconds": 8.2
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "3号格里的空白本",
+      "problems": []
+    },
+    {
+      "title": "3号格里的空白本",
+      "problems": []
+    },
+    {
+      "title": "3号格里的空白本",
+      "problems": [
+        "c_storebox 拿不到：条件 {'shown': 'c_monitor', 'has': 'c_cheng_photo', 'exposed': 'l_lin_alibi'} 无法从开局满足，检查依赖环。",
+        "c_storebook 拿不到：条件 {'shown': 'c_seal', 'has': 'c_storebox'} 无法从开局满足，检查依赖环。",
+        "l_lin_alibi 拆不穿：条件 {'shown': 'c_storebox'} 无法满足。",
+        "lin 的秘密 f_lin_damage 无法解锁。",
+        "l_zhou_seal 拆不穿：条件 {'shown': 'c_seal', 'has': 'c_storebook'} 无法满足。",
+        "zhou 的秘密 f_zhou_open 无法解锁。"
+      ]
+    },
+    {
+      "title": "空白预订格",
+      "problems": [
+        "格式 clues.6.requires.shown：Input should be a valid string。",
+        "格式 events.1.when.shown：Input should be a valid string。"
+      ]
+    },
+    {
+      "title": "空白预订格",
+      "problems": []
+    },
+    {
+      "title": "空白预订格",
+      "problems": []
+    },
+    {
+      "title": "空白本调包案",
+      "problems": [
+        "格式 clues.7.requires.shown_2：Extra inputs are not permitted。"
+      ]
+    },
+    {
+      "title": "空白本调包案",
+      "problems": []
+    },
+    {
+      "title": "空白本调包案",
+      "problems": [
+        "格式 clues.7.requires.has2：Extra inputs are not permitted。"
+      ]
+    }
+  ],
+  "talks": [],
+  "accusations": [],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/5f3d102727ff4f69a8ab441f4cbff45f/messages",
+      "status": 200,
+      "seconds": 26.28
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/5f3d102727ff4f69a8ab441f4cbff45f/messages",
+      "status": 200,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/5f3d102727ff4f69a8ab441f4cbff45f/messages",
+      "status": 200,
+      "seconds": 1.39
+    }
+  ]
+}

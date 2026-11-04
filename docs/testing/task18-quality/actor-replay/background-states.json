@@ -1,0 +1,2422 @@
+[
+  {
+    "case": "hospital",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "http_status": 200,
+    "id": "resp_09b1e9c34948ae9d006aeb0a44cbdc87d2a39b62ce16b5769d",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 4452,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 3577,
+      "output_tokens_details": {
+        "reasoning_tokens": 320
+      },
+      "total_tokens": 8029
+    }
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "http_status": 200,
+    "id": "resp_0210167de7c472e4006aeb0a3d95e887d190d4e73633e137d2",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 4656,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 19553,
+      "output_tokens_details": {
+        "reasoning_tokens": 19553
+      },
+      "total_tokens": 24209
+    }
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "http_status": 200,
+    "id": "resp_0a4ea95763b111ac006aeb0a91de8887d2867b86876f8489b0",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 538,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 163,
+      "output_tokens_details": {
+        "reasoning_tokens": 68
+      },
+      "total_tokens": 701
+    }
+  },
+  {
+    "case": "hospital",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "http_status": 200,
+    "id": "resp_052a4b92a77fca0d006aeb0b18f5f487d2942ede40c5db07f3",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 456,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 479,
+      "output_tokens_details": {
+        "reasoning_tokens": 226
+      },
+      "total_tokens": 935
+    }
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "name": "hotel",
+    "title": "汐潮馆的第七位住客",
+    "original_id": "generated-6421502278ae47ecb007ecc17f309d98",
+    "original_file": "originals/generated-6421502278ae47ecb007ecc17f309d98.yaml",
+    "original_sha256": "4dba4aca8bb3a057d69cf1d1b269cee76892bb454ad6a985dd9e981e442bb2bb",
+    "revised_id": "demo-hotel-revised",
+    "revised_file": "revised/demo-hotel-revised.yaml",
+    "revised_sha256": "644ea25b41546f92ad17e47d531c011ee84683328bcebee1e58f6e8373f45f96",
+    "checked": true,
+    "original_checked": false,
+    "manual_revision": true
+  },
+  {
+    "name": "tide",
+    "title": "潮汐第七人",
+    "original_id": "generated-264fe147e13545e3a8e87023050f53bd",
+    "original_file": "originals/generated-264fe147e13545e3a8e87023050f53bd.yaml",
+    "original_sha256": "5ac0314eb2d2661a99d0e35ad81c7df3e1e835c7ecbf5981ecd7a8e668533386",
+    "revised_id": "demo-tide-revised",
+    "revised_file": "revised/demo-tide-revised.yaml",
+    "revised_sha256": "1c45853478591e4258062335c667b193429f10452a94e66438e4d23c270b926a",
+    "checked": true,
+    "original_checked": false,
+    "manual_revision": true
+  },
+  {
+    "name": "bus",
+    "title": "末班车的干伞",
+    "original_id": "generated-7c1f72156b8346198da47cd2a17e0772",
+    "original_file": "originals/generated-7c1f72156b8346198da47cd2a17e0772.yaml",
+    "original_sha256": "c50714dcfc3852eccb2fcf9973d93783b0288b4ac1fe7a966df99682ea243548",
+    "revised_id": "demo-bus-revised",
+    "revised_file": "revised/demo-bus-revised.yaml",
+    "revised_sha256": "bb2b897be67c16ba44aa2e70e3fceab5ef78bf476eaa5eca07e759ca73fb7d4c",
+    "checked": true,
+    "original_checked": false,
+    "manual_revision": true
+  }
+]

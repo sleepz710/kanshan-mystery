@@ -204,7 +204,7 @@
       const endsWithReply = session.messages.at(-1).role === 'writer' && !(lastJob && lastJob.after === session.messages.length);
       if (!userCount()) chips = STARTERS.map((s) => chip(s.label, () => fill(s.text), false));
       else if (endsWithReply) {
-        const qualityQuestion = session.messages.at(-1).text.includes('快速（约 3 分钟）还是精修');
+        const qualityQuestion = /快速(?:（约 3 分钟）)?还是精修/.test(session.messages.at(-1).text);
         const replies = qualityQuestion ? ['快速', '精修'] : STRATEGY_REPLIES;
         chips = replies.map((t) => chip(t, () => send(t), true));
       }

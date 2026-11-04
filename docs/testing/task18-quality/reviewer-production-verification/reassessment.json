@@ -1,0 +1,50 @@
+{
+  "runtime_commit": "38e91999c50b2ee02251148e38d270a42b337b43",
+  "generation_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "story_id": "generated-0593810d0916419a9cf5112efb7459b4",
+  "source_sha256": {
+    "story.yaml": "072617db5a1436dc532afb421a63e75533dc4dd4ed993d9ee8542604fcdb6cfe",
+    "selected-design.json": "60fb0918927f0c2d537cbfa73f3326b9a94e23fa2fbeee0e785b53c293583273",
+    "result.json": "cf0d4b05e8d7da1c6d7dc8a35fc3a9717d147345e2d6ec647b88f108bf68bcf0"
+  },
+  "raw_checked": false,
+  "raw_flags_modified": false,
+  "review_bug_corrected": true,
+  "current_review_calibration_passed": true,
+  "current_review_problems": [],
+  "production_function": "StudioService._verify_review",
+  "fixed_cases_passed": 4,
+  "offline_tests": {
+    "command": "pytest -q",
+    "passed": 800
+  },
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "design_alignment": [],
+  "solvability": {
+    "ok": true,
+    "problems": []
+  },
+  "real_full_playthrough": {
+    "file": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-revision2\\hospital\\playthrough.json",
+    "complete": true,
+    "score": 3,
+    "steps": 18
+  },
+  "limitations": [
+    "此前带解释与引文的QA，索引4/4正确，引文仅2/4逐字合规。",
+    "本次正式函数四例均只返回严格keep_indices。"
+  ],
+  "current_policy_verified": true,
+  "current_quality_supported": true,
+  "calibration": {
+    "case_count": 4,
+    "strict_schema_passed": 4,
+    "indices_passed": 4,
+    "http_calls": 4,
+    "summary_file": "summary.json"
+  }
+}

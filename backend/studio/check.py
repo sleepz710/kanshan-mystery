@@ -13,7 +13,7 @@ from math import inf
 from typing import Annotated, Literal
 from urllib.parse import urlsplit
 
-from openai import APIError, AsyncOpenAI
+from openai import APIConnectionError, APIError, AsyncOpenAI
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 from typing_extensions import TypedDict
 
@@ -22,6 +22,10 @@ from backend import llm
 
 logger = logging.getLogger(__name__)
 MODEL_CALL_TIMEOUT = 180
+OPENAI_WRITER_CALL_TIMEOUT = 540
+_BACKGROUND_POLL_INTERVAL = 1
+_BACKGROUND_CANCEL_TIMEOUT = 5
+_BACKGROUND_RETRY_DELAYS = (1, 2)
 # DeepSeek 的 JSON 模式在输出不合格时会返回一串空白，官方建议重试；重试时补这一句
 _JSON_REPAIR_INSTRUCTION = "只返回合法 JSON 对象，字符串正确转义，不要 Markdown 或解释。"
 
@@ -446,18 +450,24 @@ async def complete_for(messages: list[dict], *, role: str, mock_response: dict) 
     if urlsplit(base).scheme not in {"http", "https"} or not host:
         raise llm.LLMError("模型接口地址需要使用 HTTP 或 HTTPS。", status_code=503)
     extra = {"extra_body": {"thinking": {"type": "enabled" if writer else "disabled"}}} if host == "api.deepseek.com" else {}
-    deadline = asyncio.timeout(MODEL_CALL_TIMEOUT)
+    if host == "api.deepseek.com" and writer:
+        extra["reasoning_effort"] = "high"
+    openai_reasoning = llm._openai_reasoning_options(base, model, role)
+    extra.update(openai_reasoning)
+    timeout = OPENAI_WRITER_CALL_TIMEOUT if writer and openai_reasoning else MODEL_CALL_TIMEOUT
+    deadline = asyncio.timeout(timeout)
     try:
         async with deadline:
             async with AsyncOpenAI(base_url=base, api_key=key, timeout=120, max_retries=1) as client:
                 for attempt in (1, 2):
                     try:
+                        if writer and openai_reasoning:
+                            return await _background_json(client, model, messages)
                         response = await client.chat.completions.create(model=model, messages=messages, response_format={"type": "json_object"}, **extra)
-                    except APIError as exc:
-                        logger.warning("%s模型调用失败：%s status=%s", "编剧" if writer else "演员", type(exc).__name__, getattr(exc, "status_code", None))
-                        raise llm.LLMError("编剧模型服务暂时不可用，请稍后重试。") from exc
-                    try:
                         return _decode(response)
+                    except APIError as exc:
+                        logger.warning("%s模型调用失败：%s status=%s cause=%s", "编剧" if writer else "演员", type(exc).__name__, getattr(exc, "status_code", None), type(exc.__cause__).__name__ if exc.__cause__ else None)
+                        raise llm.LLMError("编剧模型服务暂时不可用，请稍后重试。") from exc
                     except ReplyFormatError as exc:
                         logger.warning("%s模型回复格式无效（第 %d 次）：%s", "编剧" if writer else "演员", attempt, exc.detail)
                         if attempt == 2 or not exc.retry:
@@ -469,6 +479,60 @@ async def complete_for(messages: list[dict], *, role: str, mock_response: dict) 
         raise ModelTimeoutError() from exc
 
 
+async def _cancel_background_response(client, response_id: str) -> None:
+    async def cancel():
+        try:
+            async with asyncio.timeout(_BACKGROUND_CANCEL_TIMEOUT):
+                cancel_client = client.with_options(timeout=_BACKGROUND_CANCEL_TIMEOUT, max_retries=0)
+                await cancel_client.responses.cancel(response_id)
+        except (APIError, TimeoutError) as exc:
+            logger.warning("编剧后台任务取消失败：%s status=%s", type(exc).__name__, getattr(exc, "status_code", None))
+
+    cancelling = asyncio.create_task(cancel())
+    while True:
+        try:
+            await asyncio.shield(cancelling)
+            return
+        except asyncio.CancelledError:
+            if cancelling.cancelled():
+                raise
+
+
+async def _background_json(client, model: str, messages: list[dict]) -> dict:
+    background_client = client.with_options(timeout=30, max_retries=0)
+    response = await background_client.responses.create(
+        model=model, input=messages, background=True, store=False,
+        reasoning={"effort": "high"}, text={"format": {"type": "json_object"}},
+    )
+    response_id = response.id
+    failures = 0
+    delay = _BACKGROUND_POLL_INTERVAL
+    try:
+        while response.status in {"queued", "in_progress"}:
+            await asyncio.sleep(delay)
+            try:
+                response = await background_client.responses.retrieve(response_id)
+            except APIError as exc:
+                failures += 1
+                status = getattr(exc, "status_code", None)
+                retryable = isinstance(exc, APIConnectionError) or (status is not None and 500 <= status < 600)
+                if not retryable or failures > len(_BACKGROUND_RETRY_DELAYS):
+                    raise
+                delay = _BACKGROUND_RETRY_DELAYS[failures - 1]
+                logger.warning("编剧后台轮询重试：%s status=%s response=%s 连续失败=%d", type(exc).__name__, status, response_id, failures)
+            else:
+                failures = 0
+                delay = _BACKGROUND_POLL_INTERVAL
+        if response.status == "completed":
+            return _decode_text(response.output_text)
+        if response.status == "incomplete":
+            raise ReplyFormatError("模型回复未完整生成，请重试。", "后台终态 incomplete", retry=False)
+        raise llm.LLMError("编剧后台任务未完成，请稍后重试。")
+    finally:
+        if response.status not in {"completed", "failed", "incomplete", "cancelled"}:
+            await _cancel_background_response(client, response_id)
+
+
 def _decode(response) -> dict:
     if not response.choices:
         raise ReplyFormatError("模型没有返回回复内容，请重试。", "没有 choices")
@@ -477,6 +541,10 @@ def _decode(response) -> dict:
     if choice.finish_reason == "length":
         # 同样的请求再发一次多半还是超长，交给生成流程按「这一轮没过」处理
         raise ReplyFormatError("模型回复超过长度上限，请重试。", f"达到长度上限，已输出 {len(content)} 字", retry=False)
+    return _decode_text(content)
+
+
+def _decode_text(content: str) -> dict:
     if not content.strip():
         raise ReplyFormatError("模型返回了空内容，请重试。", f"空白回复（{len(content)} 个空白字符）")
     try:

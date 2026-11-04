@@ -1,0 +1,84 @@
+{
+  "reviewed_utc": "2026-11-04T10:16:00.052872+00:00",
+  "method": "independent read-only comparison of original design, timeline, facts and endings",
+  "raw_story_files_modified": false,
+  "issues": [
+    {
+      "case": "hospital",
+      "title": "录音笔的容器转移缺少交代",
+      "severity": "P2",
+      "status": "open_narrative_continuity_gap",
+      "evidence": [
+        {
+          "source": "hospital/selected-design.json",
+          "field": "timeline[1]",
+          "quote": "2023年9月17日22:41，顾南录下银色录音笔并把它藏进病号服夹层；2023年9月18日00:10，秦岳在冷库登记单上把“17床 顾南”改成“无名女尸M-17”。"
+        },
+        {
+          "source": "hospital/selected-design.json",
+          "field": "timeline[5]",
+          "quote": "2026年7月14日01:27，苏芮带着从遗体袋夹层取出的银色录音笔离开旧楼；01:29，程坤继续把M-17送往焚化间通道；01:32，罗衡被发现昏迷，17号柜已空。"
+        },
+        {
+          "source": "hospital/selected-design.json",
+          "field": "truth",
+          "quote": "顾南藏在遗体袋夹层里的录音笔"
+        },
+        {
+          "source": "hospital/story.yaml",
+          "field": "facts[f10].text",
+          "quote": "苏芮早就怀疑M-17就是姐姐顾南，昨夜潜入旧楼是去找遗体袋里的录音笔。"
+        }
+      ],
+      "assessment": "病号服夹层与遗体袋夹层是两个不同的容器位置。原稿未写转存者、时间或动作。两者并未被原稿约束成不可能先后出现，因此现有文字证明叙事链缺项，尚不足断言互相排斥的物理矛盾。不能直接把衣物夹层视为袋体夹层。",
+      "impact": "三道核心人物与动作题已有对应材料，录音笔音频身份与内容也有现成文本。取回录音笔的物品流转解释仍未完成，应作为独立叙事验收未达项保留。",
+      "minimal_revision_option": "交付修订副本可统一为遗体袋内病号服夹层，或补一条有依据的转存说明。原生成稿保持原值。",
+      "source_directory": ".cache\\quality-openai-4\\hospital",
+      "source_sha256": {
+        "story.yaml": "cfe46abd2282ead1bd865d4a5b25f84f1493b2e4cc302e7caa7f6ed8d137d84c",
+        "selected-design.json": "4cd8cbbbacb8d3c8bf83169824813b7f871cbbc213f82b6a5c477e5fb51032a1"
+      }
+    },
+    {
+      "case": "bookstore",
+      "title": "次日上午才发现异常与当晚追回的时间指代冲突",
+      "severity": "P2",
+      "status": "open_ending_time_reference_gap",
+      "evidence": [
+        {
+          "source": "bookstore/selected-design.json",
+          "field": "timeline[7]",
+          "quote": "2026-04-18 09:10，陈添到店取书时，B-3里只剩下空白样书，事件暴露。"
+        },
+        {
+          "source": "bookstore/story.yaml",
+          "field": "intro",
+          "quote": "校内书店的电子预订柜B-3里，原本替学生陈添保留的一本售罄书，过了一夜竟变成了外表相近的空白本。值晚班的店长林沅、负责陈列的勤工店员赵澄，以及闭店前曾在店外停留的设计学院研究生唐芮，都给得出看似合理的说法。你要查清这本书是在闭店后被谁、何时、用什么办法换走的，以及真书现在去了哪里。"
+        },
+        {
+          "source": "bookstore/selected-design.json",
+          "field": "clues[5].content",
+          "quote": "林沅于2026-04-18 09:34从值班机导出的日志显示：员工卡0719登记人为林沅；2026-04-17 18:48:12，0719打开预订柜B-3；18:49:03，B-3关门；18:52:11，0719刷开员工后门离店。"
+        },
+        {
+          "source": "bookstore/story.yaml",
+          "field": "ending.endings[end1].text",
+          "quote": "凭寄存截图，你们当晚就能追回真书"
+        },
+        {
+          "source": "bookstore/selected-design.json",
+          "field": "truth",
+          "quote": "核心真相是赵澄为赚唐芮出的200元，在2026年4月17日18:48用林沅私借给他的0719员工卡打开预订柜B-3，拿走陈添预订的《街字解剖》并换入自己16:05领出的空白样书D-14，再把真书借给唐芮拍参考页并于21:12由唐芮寄存在校内快递柜7号等他次日换回；若三道结局题全对，则可凭寄存截图当晚追回真书并据聊天记录与开锁日志追责赵澄、林沅，若证据不足，则继续沿“0719门卡使用链”和“7号快递柜里的S2298真书”两个方向补证。"
+        }
+      ],
+      "assessment": "调查开局在2026-04-18 09:10异常暴露之后，关键开锁记录还到09:34才导出。结局紧接4月17日21:12寄存叙述写你们当晚追回，按案发当晚解读会早于调查发现，时间顺序不成立。也可补明为4月18日调查当晚，但原稿没有给出该日期，不能靠默认解释消除歧义。",
+      "impact": "三道回溯题仍各有材料支持，结案叙事的追回时点与当前可追回状态仍需明确，时间叙事验收未完全通过。",
+      "minimal_revision_option": "交付修订副本可将当晚追回改为发现后凭寄存信息追回，若保留具体日期则同时明确4月18日的调查和取回。原生成稿保持原值。",
+      "source_directory": ".cache\\quality-openai-fine-1\\bookstore",
+      "source_sha256": {
+        "story.yaml": "17f2d87167e833874f9ab53511fbcf515cccd52f73fc91c02e201763a3f6c8b6",
+        "selected-design.json": "c6f89fe184b84a0066f052d433574a8f47be1e401e1ec1b721bc39e836c1d0f6"
+      }
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+[
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled"
+  }
+]

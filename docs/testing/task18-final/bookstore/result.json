@@ -1,0 +1,358 @@
+{
+  "name": "bookstore",
+  "material": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+  "model": "deepseek-flash",
+  "quality": "fast",
+  "status": "done",
+  "seconds": 166.31,
+  "prelude_seconds": 5.97,
+  "checked": false,
+  "problems": [
+    "《后门监控导出记录》只证明21:20陈砚把空白本推入书套，未显示其从书套抽出原书或原书已不在书套，无法单独支持“调包完成”；需补拍原书被取出的画面或陈砚供述、书商收货记录。",
+    "三题答案均依赖“陈砚承认记录”，但该记录取得条件包含“书商转账聊天截图”，而聊天截图取得又依赖“打印店取件通知”，取件通知取得依赖“预订登记单”和“后门监控”；登记单仅证明20:42改登记，监控未显示原书去向，链条在证明售卖前存在缺口。",
+    "苏禾手机照片仅显示21:20:48陈砚持空白本站在已打开书套前，不能证明“将空白本放入”，与监控合并也只见推入动作；需照片连续帧或时间戳紧接的监控画面显示空白本入套前书套内为空或原书被取走。",
+    "后续模型调用未完成，保留已经通过程序检查的版本。"
+  ],
+  "error": "检查未全部通过，试玩可能遇到线索或推理问题。",
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1320,
+      "status": "ok",
+      "response_chars": 3496,
+      "seconds": 65.87
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 6517,
+      "status": "ok",
+      "response_chars": 6142,
+      "seconds": 12.59
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13345,
+      "status": "ok",
+      "response_chars": 1013,
+      "seconds": 3.43
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13384,
+      "status": "ok",
+      "response_chars": 6125,
+      "seconds": 10.31
+    },
+    {
+      "attempt": 1,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 3888,
+      "status": "ok",
+      "response_chars": 325,
+      "seconds": 3.26
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 544,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 2.79
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 1490,
+      "status": "ok",
+      "response_chars": 67,
+      "seconds": 1.86
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 5109,
+      "status": "ok",
+      "response_chars": 3780,
+      "seconds": 46.82
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 6801,
+      "status": "ok",
+      "response_chars": 5662,
+      "seconds": 14.76
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13265,
+      "status": "ok",
+      "response_chars": 816,
+      "seconds": 2.9
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13066,
+      "status": "failed",
+      "error": "LLMError",
+      "seconds": 1.03
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "拾页书店调包案",
+      "problems": [
+        "最后一个结局必须是不带 when 的兜底结局。"
+      ]
+    },
+    {
+      "title": "拾页书店调包案",
+      "problems": []
+    },
+    {
+      "title": "拾页书店调包案",
+      "problems": []
+    },
+    {
+      "title": "拾页书店的空白本",
+      "problems": [
+        "格式 ending.endings.1.when.CorrectEndingWhen：Input should be a valid dictionary。",
+        "格式 ending.endings.1.when.ChoseEndingWhen：Input should be a valid dictionary。",
+        "格式 ending.endings.1.when.FallbackEndingWhen：Input should be a valid dictionary。"
+      ]
+    },
+    {
+      "title": "拾页书店的空白本",
+      "problems": [
+        "最后一个结局必须是不带 when 的兜底结局。"
+      ]
+    }
+  ],
+  "talks": [
+    {
+      "character": "lin",
+      "status": "failed",
+      "status_code": 502,
+      "seconds": 1.23
+    },
+    {
+      "character": "chen",
+      "status": "failed",
+      "status_code": 502,
+      "seconds": 1.09
+    }
+  ],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "陈砚",
+        "q2": "21:20",
+        "q3": "以800元卖给校外书商“周记旧书”"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end_truth",
+          "title": "真相复原",
+          "text": "陈砚为填补挪用社团经费的亏空，20:42私改预订登记，20:55取走空白本，21:06将《城市雨图》以800元卖给校外书商“周记旧书”，21:20用空白本调包。林晚晴离岗留钥匙的谎言与苏禾未当场声张的顾虑都被核实。书店据此向“周记旧书”追索原书。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "林晚晴",
+        "q2": "21:20",
+        "q3": "以800元卖给校外书商“周记旧书”"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end_fallback",
+          "title": "证据不足",
+          "text": "现有证据还不足以还原完整经过，原书去向未能确认，仍需继续调查。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "林晚晴",
+        "q2": "20:55",
+        "q3": "归还给周老师"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "end_fallback",
+          "title": "证据不足",
+          "text": "现有证据还不足以还原完整经过，原书去向未能确认，仍需继续调查。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/876c399f391f485ba3770e9adf9adb9b/messages",
+      "status": 200,
+      "seconds": 5.96
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/876c399f391f485ba3770e9adf9adb9b/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/876c399f391f485ba3770e9adf9adb9b/messages",
+      "status": 200,
+      "seconds": 0.64
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.06
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/a427ce1937a84735a435a570ebafe894/talk",
+      "status": 502,
+      "seconds": 1.23
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/a427ce1937a84735a435a570ebafe894/talk",
+      "status": 502,
+      "seconds": 1.09
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/e030324bba2b48e6adf5b456dd773fa1/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/659002e5359d4f29a7c6085f41ff4348/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/cbd7c526467e4ed38ab9f49a3589e40b/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-ace7f9c4c9bb4112a1b44f255d8a4f3a",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-converged-live-8-20261104\\bookstore\\stories\\generated-ace7f9c4c9bb4112a1b44f255d8a4f3a.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "endings": {
+    "end_truth": {
+      "title": "真相复原",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "end_fallback": {
+      "title": "证据不足",
+      "retry": true,
+      "when": {},
+      "count": 63,
+      "wrong_count": 63,
+      "wrong_example": {
+        "q1": "林晚晴",
+        "q2": "20:55",
+        "q3": "归还给周老师"
+      }
+    }
+  },
+  "opens": true
+}

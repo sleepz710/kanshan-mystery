@@ -1,0 +1,2801 @@
+{
+  "story_id": "generated-0f0d971dbeb34a9c9da3f650a80e5a2d",
+  "steps": [
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "linyuan",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 6.53,
+      "response": {
+        "reply": "我是书店晚班店长。4月17日傍晚我在店里值班，17:54我和赵澄一起登记过那本《街字解剖》，放进了电子预订柜B-3。18:31闭店前，我按流程做了盘点并拍照，当时柜里还是那本书和陈添的预约卡。到第二天早上陈添来取书，才发现B-3里不对了。你先看这两份能核查的材料。",
+        "new_clues": [
+          {
+            "id": "c1",
+            "title": "预订登记表",
+            "content": "2026-04-17 17:54的到货登记写明：《街字解剖》1册，预订人陈添，联系电话尾号4417，书背条码S2298；经手人签名为赵澄、林沅。当天该书到货仅此一册。"
+          },
+          {
+            "id": "c2",
+            "title": "闭店盘点照片",
+            "content": "林沅发在店务群的照片拍摄于2026-04-17 18:31，画面中电子预订柜B-3内可见《街字解剖》封面、预约卡“陈添/4417”与书背条码S2298。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        }
+      },
+      "before": {
+        "acquired": [],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "zhaocheng",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 5.82,
+      "response": {
+        "reply": "我叫赵澄，在店里做勤工助学，平时管陈列，也参与了当天到货登记。案发前我登记过那本《街字解剖》，和林沅一起把唯一一册、条码S2298的书放进了电子预订柜B-3。别的我现在说不清，但闭店后我没开过B-3，也没碰过那本预订书。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "tangrui",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 4.83,
+      "response": {
+        "reply": "我是设计学院的研究生。那天我是以学生顾客的身份来店里找参考书，闭店前后我在店外停留过一阵子。别的我现在不想多说，次日要交作品集，我当时确实很着急。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "linyuan",
+        "text": "你说“闭店后0719员工卡一直在我身上，没人借过。”，这个说法现在还成立吗？请说明能当场核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 6.46,
+      "response": {
+        "reply": "这话我现在还是这么说。闭店后0719员工卡一直在我身上，没人借过。至于你要核查的，当场能看的还有这个：从B-3里拿出来的那本替代品其实不是正常书，内封资产贴写着“陈列样书D-14，无内页”，背面还记了“4/17 16:05 赵澄领用”。你先拿去看。",
+        "new_clues": [
+          {
+            "id": "c3",
+            "title": "空白样书内封标签",
+            "content": "次日从B-3取出的替代品第一页全空白，内封资产贴写有“陈列样书D-14，无内页”，背面铅笔备注“4/17 16:05 赵澄领用”。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "zhaocheng",
+        "text": "你说“我闭店后没开过预订柜B-3，也没碰过陈添那本预订书。”，这个说法现在还成立吗？请说明能当场核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 5.82,
+      "response": {
+        "reply": "这话现在还是一样。能当场核查的，就是到货登记：2026-04-17 17:54，我和林沅登记过唯一一册《街字解剖》，条码S2298，后来放进电子预订柜B-3。除此之外，我这边没有别的能马上说清的。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "tangrui",
+        "text": "我愿意按证据核查，不作无端指控。请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 4.85,
+      "response": {
+        "reply": "我能说的就这些：我是设计学院的研究生，那天是以学生顾客的身份来店里找参考书。闭店前后，我确实在店外停留过一阵子，因为次日要交作品集，人很着急。至于更多经过，我现在不想多说。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "tangrui",
+        "text": "我愿意按证据核查，不作无端指控。请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 4.71,
+      "response": {
+        "reply": "我是设计学院的研究生，那天就是以学生顾客的身份来店里找参考书。闭店前后我在店外停留过一阵子，这点我承认。次日要交作品集，我当时很着急。至于更多细节，我现在不想多说。",
+        "new_clues": [],
+        "events": [],
+        "hint": "继续和唐芮交流，建立信任后再询问可公开的材料。",
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "tangrui",
+        "text": "我愿意按证据核查，不作无端指控。请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.91,
+      "response": {
+        "reply": "我是设计学院的研究生，那天是来店里找参考书的学生顾客。闭店前后我确实在店外停留过一阵子，因为次日要交作品集，我当时很着急。别的经过，我现在不想多说。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 1
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 0
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3"
+            ],
+            "locked_secrets": [
+              "f7",
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 1
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "tangrui",
+        "text": "请交给我《外卖柜自拍短视频》，并说明这份材料中你亲历的事实。"
+      },
+      "status_code": 200,
+      "seconds": 5.19,
+      "response": {
+        "reply": "可以，这段《外卖柜自拍短视频》我交给你。是我在2026-04-17 18:42用手机前镜头拍的，属于我亲自拍到的内容；视频后方玻璃反光里，能看见林沅把挂着0719的绿色员工卡递给赵澄，赵澄左臂夹着一本白色厚本。",
+        "new_clues": [
+          {
+            "id": "c4",
+            "title": "外卖柜自拍短视频",
+            "content": "唐芮手机原视频拍摄于2026-04-17 18:42，前镜头自拍，后方玻璃反光中可见林沅把挂着号码0719的绿色员工卡递给赵澄；赵澄左臂夹着一本白色厚本。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 2
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 1
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "show",
+      "input": {
+        "character_id": "linyuan",
+        "clue_id": "c4"
+      },
+      "status_code": 200,
+      "seconds": 5.4,
+      "response": {
+        "reply": "……不成立了。那张0719员工卡我确实在4月17日18:42借给了赵澄，18:52前都不在我手里。你要当场核查的话，这份电子柜开锁记录我可以交给你，上面能对上0719之后开过B-3，也刷开过员工后门。",
+        "new_clues": [
+          {
+            "id": "c6",
+            "title": "电子柜开锁记录",
+            "content": "林沅于2026-04-18 09:34从值班机导出的日志显示：员工卡0719登记人为林沅；2026-04-17 18:48:12，0719打开预订柜B-3；18:49:03，B-3关门；18:52:11，0719刷开员工后门离店。"
+          }
+        ],
+        "events": [
+          {
+            "type": "exposed",
+            "character": "linyuan",
+            "lie": "l1",
+            "text": "林沅的说法被拆穿了。已确认：4月17日18:42我把0719员工卡借给了赵澄，18:52前都不在我手里。"
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 0,
+          "tangrui": 2
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "linyuan": 0,
+          "zhaocheng": 0,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 0,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "show",
+      "input": {
+        "character_id": "tangrui",
+        "clue_id": "c6"
+      },
+      "status_code": 200,
+      "seconds": 4.91,
+      "response": {
+        "reply": "我看到这条记录了。它至少能对上我知道的一点：4月17日18:42，0719员工卡被借给了赵澄，18:52前都不在我手里。别的经过，我不清楚。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 0,
+          "tangrui": 2
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 0,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 0,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "zhaocheng",
+        "text": "我愿意按证据核查，不作无端指控。请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 6.91,
+      "response": {
+        "reply": "我叫赵澄，在店里做勤工助学，平时管陈列，也参与了当天到货登记。当天我亲手经办过那本《街字解剖》的到货登记：2026-04-17 17:54，我和林沅登记了唯一一册，条码是S2298，之后放进了电子预订柜B-3。闭店后的事，我还是那句话，我没开过B-3，也没碰过那本预订书。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 0,
+          "tangrui": 2
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 0,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 0,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "zhaocheng",
+        "text": "我愿意按证据核查，不作无端指控。请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "status_code": 200,
+      "seconds": 5.13,
+      "response": {
+        "reply": "我能说的还是这些：我叫赵澄，在店里做勤工助学，平时管陈列，也参与了当天到货登记。那本《街字解剖》是我亲手经办过的，2026-04-17 17:54，我和林沅登记了唯一一册，条码S2298，随后放进电子预订柜B-3。闭店后的事，我还是那句话，我没开过B-3，也没碰过那本预订书。",
+        "new_clues": [],
+        "events": [],
+        "hint": "向赵澄询问《展示样书领用单》，这份材料现在可以交给你。",
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 1,
+          "tangrui": 2
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 0,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4"
+            ],
+            "locked_secrets": [
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 1,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "zhaocheng",
+        "text": "请交给我《展示样书领用单》，并说明这份材料中你亲历的事实。"
+      },
+      "status_code": 200,
+      "seconds": 21.72,
+      "response": {
+        "reply": "可以，这张《展示样书领用单》我交给你。上面记的是2026-04-17 16:05，我从样书架领出过1册“陈列样书D-14”，去向写的是“前窗排面”，签名也是我本人。这个部分是我亲手经办的。",
+        "new_clues": [
+          {
+            "id": "c5",
+            "title": "展示样书领用单",
+            "content": "仓库纸质领用单记载：2026-04-17 16:05，赵澄从样书架领出“陈列样书D-14”1册，去向“前窗排面”，赵澄签名在栏内。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 2,
+          "tangrui": 2
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 1,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 2,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "tangrui",
+        "text": "请交给我《借书与转账聊天记录》，并说明这份材料中你亲历的事实。"
+      },
+      "status_code": 200,
+      "seconds": 5.53,
+      "response": {
+        "reply": "可以，这份《借书与转账聊天记录》我交给你。这里面能确认的，是我在4月17日18:20主动跟赵澄说想把《街字解剖》借一晚，愿意付200元，拍完作品集参考页就还；19:03那笔200元转账也是我本人付的，备注是“借书”。",
+        "new_clues": [
+          {
+            "id": "c7",
+            "title": "借书与转账聊天记录",
+            "content": "唐芮与赵澄的微信截图显示：2026-04-17 18:20唐芮发“《街字解剖》借我一晚，我给你200，拍完就还”；19:01赵澄回“行，我把预订柜那本拿出来了，柜里先塞个空白样书，明早开门前换回”；19:03唐芮向赵澄转账200元，备注“借书”。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 2,
+          "tangrui": 3
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 2,
+          "tangrui": 2
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 2,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "show",
+      "input": {
+        "character_id": "zhaocheng",
+        "clue_id": "c7"
+      },
+      "status_code": 200,
+      "seconds": 5.28,
+      "response": {
+        "reply": "……对，这件事我得认。我之前那句不成立了。唐芮确实提过给我200元，借《街字解剖》一晚去拍参考页；我也确实在18:48开了B-3，把陈添预订的那本拿出来，先塞了空白样书。",
+        "new_clues": [],
+        "events": [
+          {
+            "type": "exposed",
+            "character": "zhaocheng",
+            "lie": "l2",
+            "text": "赵澄的说法被拆穿了。已确认：我18:48开了B-3，把陈添预订的《街字解剖》拿出来，先塞了空白样书。"
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 3,
+          "tangrui": 3
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "exposed": [
+          "l1"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 2,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "tangrui",
+        "text": "请交给我《快递柜寄存截图》，并说明这份材料中你亲历的事实。"
+      },
+      "status_code": 200,
+      "seconds": 6.1,
+      "response": {
+        "reply": "可以，这张《快递柜寄存截图》我交给你。这里面能确认的，是我在2026-04-17 21:12把那本《街字解剖》寄存在校内快递柜7号，收件人填的是赵澄；寄存照片里能看见书背条码S2298，还有那张预约卡。",
+        "new_clues": [
+          {
+            "id": "c8",
+            "title": "快递柜寄存截图",
+            "content": "唐芮手机里的校内快递柜界面显示：2026-04-17 21:12，她向7号柜寄存一本书，收件人手机号尾号5632（赵澄）；寄存照片里能看见《街字解剖》预约卡“陈添/4417”和书背条码S2298。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 3,
+          "tangrui": 3
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "show",
+      "input": {
+        "character_id": "zhaocheng",
+        "clue_id": "c8"
+      },
+      "status_code": 200,
+      "seconds": 5.05,
+      "response": {
+        "reply": "我看见了。那本真书后来确实被唐芮寄存在校内快递柜7号，收件人是我，时间是21:12，条码也是S2298。这个我认。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 3,
+          "tangrui": 3
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "linyuan",
+        "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+      },
+      "status_code": 200,
+      "seconds": 7.26,
+      "response": {
+        "reply": "我更正：我之前说“0719员工卡一直在我身上，没人借过”是不实的。实际是4月17日18:42，我把0719员工卡借给了赵澄，18:52前都不在我手里。至于我亲历的经过，我能确定的就是这些：17:54我和赵澄登记了那本《街字解剖》，放进B-3；18:31我拍盘点照片时，B-3里还是条码S2298的真书和陈添的预约卡；第二天9:10陈添来取书，才发现里面只剩空白样书。此前我不肯承认借卡，是因为这本身就违规，我在意门店考核，也怕影响自己的勤工补助。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 2,
+          "zhaocheng": 3,
+          "tangrui": 3
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 1,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 2,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "zhaocheng",
+        "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+      },
+      "status_code": 200,
+      "seconds": 9.19,
+      "response": {
+        "reply": "我更正：我之前说自己没开过B-3、没碰过那本预订书，这话是假的。真实情况是，17:54我和林沅登记到货的唯一一册《街字解剖》，条码S2298，放进了电子预订柜B-3。后来唐芮主动提要付我200元，借这本书一晚拍作品集参考页。我动了这个心思，就在18:48开了B-3，把陈添预订的真书拿出来，先塞了一本空白样书进去。再往后，那本条码S2298的真书在21:12被唐芮寄存在校内快递柜7号，收件人是我。之前我没说实话，就是想把这事遮过去。",
+        "new_clues": [],
+        "events": [],
+        "hint": "线索已经收齐，可以整理证据并提交推理。",
+        "trust": {
+          "linyuan": 2,
+          "zhaocheng": 3,
+          "tangrui": 3
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 2,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 2,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "tangrui",
+        "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+      },
+      "status_code": 200,
+      "seconds": 8.2,
+      "response": {
+        "reply": "我更正一下：我不只是来“找参考书”。实际是我次日要交作品集，急着连夜拍《街字解剖》的参考页，所以主动提出花200元向赵澄借这本书一晚。之后我在21:12把这本真书寄存在校内快递柜7号，收件人写的是赵澄。别的经过里，超出我亲历的部分我不乱说。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "linyuan": 2,
+          "zhaocheng": 3,
+          "tangrui": 3
+        }
+      },
+      "before": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 2,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "exposed": [
+          "l1",
+          "l2"
+        ],
+        "events": [],
+        "trust": {
+          "linyuan": 2,
+          "zhaocheng": 3,
+          "tangrui": 3
+        },
+        "permissions": {
+          "linyuan": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "zhaocheng": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "tangrui": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    }
+  ],
+  "complete": true,
+  "initial": {
+    "acquired": [],
+    "exposed": [],
+    "events": [],
+    "trust": {
+      "linyuan": 0,
+      "zhaocheng": 0,
+      "tangrui": 0
+    },
+    "permissions": {
+      "linyuan": {
+        "facts": [
+          "f1",
+          "f4",
+          "f5",
+          "f6"
+        ],
+        "locked_secrets": [
+          "f7"
+        ]
+      },
+      "zhaocheng": {
+        "facts": [
+          "f2",
+          "f4"
+        ],
+        "locked_secrets": [
+          "f8",
+          "f9",
+          "f10",
+          "f11"
+        ]
+      },
+      "tangrui": {
+        "facts": [
+          "f3"
+        ],
+        "locked_secrets": [
+          "f7",
+          "f10",
+          "f11"
+        ]
+      }
+    }
+  },
+  "final": {
+    "acquired": [
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c8"
+    ],
+    "exposed": [
+      "l1",
+      "l2"
+    ],
+    "events": [],
+    "trust": {
+      "linyuan": 2,
+      "zhaocheng": 3,
+      "tangrui": 3
+    },
+    "permissions": {
+      "linyuan": {
+        "facts": [
+          "f1",
+          "f4",
+          "f5",
+          "f6",
+          "f7"
+        ],
+        "locked_secrets": []
+      },
+      "zhaocheng": {
+        "facts": [
+          "f2",
+          "f4",
+          "f8",
+          "f9",
+          "f10",
+          "f11"
+        ],
+        "locked_secrets": []
+      },
+      "tangrui": {
+        "facts": [
+          "f3",
+          "f7",
+          "f10",
+          "f11"
+        ],
+        "locked_secrets": []
+      }
+    }
+  },
+  "accusation": {
+    "score": 3,
+    "total": 3,
+    "results": {
+      "q1": true,
+      "q2": true,
+      "q3": true
+    },
+    "ending": {
+      "id": "end1",
+      "title": "追回真书",
+      "text": "你还原了整条调包链：17:54到货的唯一真书S2298先被放入B-3，18:31仍在柜中；18:42林沅把0719员工卡私借给赵澄；18:48赵澄刷卡打开B-3，取走陈添预订的《街字解剖》，塞入自己16:05领出的陈列空白样书D-14；19:01至19:03他在聊天里承认已把预订柜那本拿出，并收下唐芮的200元；21:12唐芮又把条码S2298的真书寄存在校内快递柜7号，收件人为赵澄。凭寄存截图，你们当晚就能追回真书；凭聊天记录、开锁日志和门卡交接视频，也足以追责赵澄与违规借卡的林沅。",
+      "retry": false
+    },
+    "rating": "A"
+  },
+  "wrong_answers": [
+    {
+      "label": "one_wrong",
+      "answers": {
+        "q1": "林沅在18:31打开B-3取走了《街字解剖》",
+        "q2": "赵澄16:05领出的陈列空白样书D-14",
+        "q3": "21:12由唐芮寄存在校内快递柜7号，收件人为赵澄"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end2",
+          "title": "证据还差最后一环",
+          "text": "你已经逼近答案，但证据链还不足以同时锁定“0719门卡使用者”和“真书当晚去向”。继续沿“0719门卡使用链”和“7号快递柜里的S2298真书”两个方向补证，才能追回真书并明确责任。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "label": "all_wrong",
+      "answers": {
+        "q1": "林沅在18:31打开B-3取走了《街字解剖》",
+        "q2": "林沅另找来的一本库存《街字解剖》",
+        "q3": "一直在赵澄更衣柜里"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "end2",
+          "title": "证据还差最后一环",
+          "text": "你已经逼近答案，但证据链还不足以同时锁定“0719门卡使用者”和“真书当晚去向”。继续沿“0719门卡使用链”和“7号快递柜里的S2298真书”两个方向补证，才能追回真书并明确责任。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ]
+}

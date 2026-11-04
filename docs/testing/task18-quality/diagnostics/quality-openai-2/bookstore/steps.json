@@ -1,0 +1,20 @@
+[
+  {
+    "attempt": 1,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 1637,
+    "status": "ok",
+    "response_chars": 3886,
+    "seconds": 247.78
+  },
+  {
+    "attempt": 1,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 7003,
+    "status": "failed",
+    "error": "LLMError",
+    "seconds": 7.51
+  }
+]

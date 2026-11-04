@@ -1,0 +1,149 @@
+{
+  "runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "name": "hospital",
+  "material": "我想玩恐怖一点的，医院题材",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fine",
+  "mode": "人工审稿后的精修续修",
+  "attempt": 3,
+  "budget_seconds": 1800,
+  "problems_requested": [
+    "上一轮已将录音笔藏放与取回位置统一到M-17所穿病号服夹层并补苏芮签字说明，请保留该修复。原第3题明确问秦岳下令焚化是为了掩盖M-17原登记为顾南的事实。现有更正单已证明秦岳知道顾南=M-17，但当晚焚化指令与隐藏顾南身份这一目的尚缺直接因果关联。请定向在既有《手术室对讲录音》或《程坤补充供述》正文中加入可取得、明确提及焚化为免顾南身份暴露的指令或供述，不要求秦岳本人认罪。不要简单删去题目目的表述。保留完整剧情、3人9线索3谎3题2结局、原线索取得门槛、已修正录音笔位置、原问题选项答案及其他没有问题的设计，其他检查照常。"
+  ],
+  "parent": {
+    "folder": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-revision\\hospital",
+    "runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+    "selected_candidate": null,
+    "generation_seconds": 1938.79,
+    "sources_sha256": {
+      "result.json": "d30afb37fc4e2f164edb85949b4ad025139dee6317536c540b77cd9cde14d517",
+      "000-设计稿.json": "34c4311148177be85bb287adbaa9620a1c7a1cfbda88050653be099ccb20e29f",
+      "candidate.json": "5c305bd643a86710430c004c2b74a86c94915b487d38080ffe19a022230dec31"
+    },
+    "earlier_parent": {
+      "folder": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-4\\hospital",
+      "runtime_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
+      "selected_candidate": 2,
+      "generation_seconds": 1183.24,
+      "sources_sha256": {
+        "result.json": "ad4cd4b9259ce5a542ddc886d8e9d3c2b251976d0e9131bc0f8743cb9865ef87",
+        "selected-design.json": "4cd8cbbbacb8d3c8bf83169824813b7f871cbbc213f82b6a5c477e5fb51032a1",
+        "story.yaml": "cfe46abd2282ead1bd865d4a5b25f84f1493b2e4cc302e7caa7f6ed8d137d84c"
+      }
+    }
+  },
+  "status": "done",
+  "error": "检查未全部通过，试玩可能遇到线索或推理问题。",
+  "checked": false,
+  "problems": [
+    "秦岳的谎话拆穿链有实质缺口。其lie是否认“昨晚只在主楼会议室，从没进过旧手术室”，correction仅说“1点24分我进过旧手术室”，这一句本身可由《观察窗偷拍视频》直接反驳；但《冷库遗体登记更正单》的取得前置要求“向秦岳出示《手术室对讲录音》并拆穿秦岳已有谎话”，设计中未给出可取得的秦岳口供文本或可执行的拆穿触发流程，导致更正单前置不明。改法：把秦岳口供列为可取得材料并明确出示偷拍视频即可拆穿，或删除“拆穿已有谎话”前置。"
+  ],
+  "draft_problems": [
+    "秦岳的谎话拆穿链有实质缺口。其lie是否认“昨晚只在主楼会议室，从没进过旧手术室”，correction仅说“1点24分我进过旧手术室”，这一句本身可由《观察窗偷拍视频》直接反驳；但《冷库遗体登记更正单》的取得前置要求“向秦岳出示《手术室对讲录音》并拆穿秦岳已有谎话”，设计中未给出可取得的秦岳口供文本或可执行的拆穿触发流程，导致更正单前置不明。改法：把秦岳口供列为可取得材料并明确出示偷拍视频即可拆穿，或删除“拆穿已有谎话”前置。"
+  ],
+  "invalid_problems": [],
+  "revision_seconds": 329.76,
+  "steps": [
+    {
+      "attempt": 3,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 6482,
+      "status": "ok",
+      "response_chars": 4654,
+      "seconds": 162.58
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7881,
+      "status": "ok",
+      "response_chars": 6145,
+      "seconds": 47.13
+    },
+    {
+      "attempt": 3,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5867,
+      "status": "ok",
+      "response_chars": 234,
+      "seconds": 7.84
+    },
+    {
+      "attempt": 3,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 648,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 107.42
+    },
+    {
+      "attempt": 3,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 2168,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 4.71
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "旧楼M-17转运案",
+      "problems": []
+    }
+  ],
+  "provider_blocked": false,
+  "story_id": "generated-0593810d0916419a9cf5112efb7459b4",
+  "cumulative_generation_seconds": 2268.55,
+  "timing_lineage": [
+    {
+      "stage": "原始生成",
+      "quality": "fast",
+      "seconds": 1183.24
+    },
+    {
+      "stage": "录音笔连续性修订",
+      "quality": "fast",
+      "seconds": 755.55
+    },
+    {
+      "stage": "人工审稿后的精修续修",
+      "quality": "fine",
+      "seconds": 329.76
+    }
+  ],
+  "parent_sources_unchanged": true,
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-quality-openai-revision2-20261104\\hospital\\stories\\generated-0593810d0916419a9cf5112efb7459b4.yaml",
+  "selected_candidate": 1,
+  "design_alignment": [],
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "endings": {
+    "end1": {
+      "title": "封锁焚化间通道",
+      "retry": false,
+      "count": 1,
+      "wrong_count": 0
+    },
+    "end2": {
+      "title": "证据仍不足",
+      "retry": true,
+      "count": 26,
+      "wrong_count": 26
+    }
+  },
+  "selected_mapping": {
+    "candidate": 1,
+    "attempt": 3,
+    "story_sha256": "072617db5a1436dc532afb421a63e75533dc4dd4ed993d9ee8542604fcdb6cfe",
+    "design_sha256": "60fb0918927f0c2d537cbfa73f3326b9a94e23fa2fbeee0e785b53c293583273"
+  },
+  "opens": true
+}

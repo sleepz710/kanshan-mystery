@@ -1,0 +1,13 @@
+{
+  "model": "gpt-5.4-2026-03-05",
+  "reasoning_effort": "high",
+  "stream": false,
+  "chunks": 0,
+  "background": true,
+  "response_id": "resp_0777d409fe64e5df006aeae21648e087d2af7a13411788f448",
+  "headers_seconds": 4.17,
+  "status": "completed",
+  "seconds": 329.47,
+  "followup_seconds": 53.68,
+  "provider_elapsed_seconds": 405.59
+}
