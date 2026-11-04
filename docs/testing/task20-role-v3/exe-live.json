@@ -1,0 +1,346 @@
+{
+  "connection_test": {
+    "ok": true,
+    "provider": "openai",
+    "actor_model": "gpt-5.4-2026-03-05",
+    "writer_model": "gpt-5.4-2026-03-05",
+    "actor_reasoning_effort": "none",
+    "writer_reasoning_effort": "high"
+  },
+  "native_menu_settings_home": true,
+  "signature": {
+    "game_id": "1b97aa28b4dd45c585f7dcb46b27a3d3",
+    "turns": 2,
+    "clues": 2,
+    "threads": {
+      "xiaolin": [
+        {
+          "k": "me",
+          "text": "先说说你今天遇到了什么，有什么材料可以让我核对？"
+        },
+        {
+          "k": "them",
+          "text": "我……是来报案的。有人把我拉进刷单群，先让我做小单，后面又说要垫大额连单。我昨晚转了两万进去，结果他们又说账户冻结，还要我再交钱，我就觉得不对了。这个群里的聊天记录你可以先看。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "刷单群聊天记录"
+            }
+          ]
+        },
+        {
+          "k": "me",
+          "text": "你最后一次联系对方是什么时候？请把能核对的记录给我看看。"
+        },
+        {
+          "k": "them",
+          "text": "最后一次应该就是他们还在催我继续交钱的时候，后来群很快就散了，人也联系不上了。这个转账回单你拿去核对吧，是我8月28日晚上转出去的，两万，之后他们还让我再交三万解冻，我没再转。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "两万元转账回单"
+            }
+          ]
+        }
+      ],
+      "akai": [],
+      "zhouming": [],
+      "chenmo": []
+    }
+  },
+  "first_port": 51588,
+  "signature_restart": {
+    "port": 50366,
+    "front_and_backend_same_game": true,
+    "turns": 2
+  },
+  "preparation": [
+    {
+      "input": "我想玩恐怖一点的，医院题材",
+      "seconds_including_display": 13.96,
+      "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+      "entry": "title page new form"
+    },
+    {
+      "input": "全新",
+      "seconds_including_display": 4.1,
+      "reply": "快速还是精修？精修会比较两份设计，并增加修订轮次。实际耗时取决于素材和模型。"
+    },
+    {
+      "input": "快速",
+      "seconds_including_display": 5.05,
+      "reply": "编剧正在布置现场，完成后就能开始调查。"
+    }
+  ],
+  "generation": {
+    "seconds_after_job_observed": 347.49,
+    "job": {
+      "status": "done",
+      "progress": "剧场已准备好",
+      "story_id": "generated-e89e568a2d8249ea8f17adf9e338ce1b",
+      "owner_token": null,
+      "error": null,
+      "quality": "fast"
+    },
+    "stages": [
+      {
+        "seconds": 0.0,
+        "value": {
+          "status": "running",
+          "progress": "编剧正在设计真相与证据链",
+          "error": null
+        }
+      },
+      {
+        "seconds": 257.82,
+        "value": {
+          "status": "running",
+          "progress": "正在将设计稿整理成游戏剧本",
+          "error": null
+        }
+      },
+      {
+        "seconds": 300.84,
+        "value": {
+          "status": "running",
+          "progress": "正在修正剧本字段与引用",
+          "error": null
+        }
+      },
+      {
+        "seconds": 319.7,
+        "value": {
+          "status": "running",
+          "progress": "审稿正在检查设计稿的因果与证据",
+          "error": null
+        }
+      },
+      {
+        "seconds": 333.26,
+        "value": {
+          "status": "running",
+          "progress": "正在检查线索能否串起来",
+          "error": null
+        }
+      },
+      {
+        "seconds": 347.46,
+        "value": {
+          "status": "done",
+          "progress": "剧场已准备好",
+          "error": null
+        }
+      }
+    ],
+    "model_steps": [
+      {
+        "round": 1,
+        "step": "设计稿",
+        "outcome": "完成",
+        "seconds": 260.94,
+        "request_characters": 1738,
+        "response_characters": 4549
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 42.95,
+        "request_characters": 7776,
+        "response_characters": 6458
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 18.47,
+        "request_characters": 14932,
+        "response_characters": 2613
+      },
+      {
+        "round": 1,
+        "step": "审稿",
+        "outcome": "完成",
+        "seconds": 13.31,
+        "request_characters": 5973,
+        "response_characters": 16
+      },
+      {
+        "round": 1,
+        "step": "可解性·只给汤面",
+        "outcome": "完成",
+        "seconds": 10.95,
+        "request_characters": 823,
+        "response_characters": 49
+      },
+      {
+        "round": 1,
+        "step": "可解性·全部线索",
+        "outcome": "完成",
+        "seconds": 5.3,
+        "request_characters": 2116,
+        "response_characters": 113
+      }
+    ],
+    "frontend_clock_seconds": 350.963,
+    "frontend_clock": {
+      "started_at": 1793798092451,
+      "ended_at": 1793798443414
+    }
+  },
+  "generation_shape": {
+    "characters": 3,
+    "clues": 9,
+    "lies": 3,
+    "questions": 3,
+    "endings": 2
+  },
+  "actual_generated_card_click": true,
+  "generated_game": {
+    "id": "4b4c62c562c14d6483ee34e8ee6cdb60",
+    "title": "鬼铃失声",
+    "checked": true
+  },
+  "second_port": 50366,
+  "generated_dialogue": [
+    {
+      "character": {
+        "id": "linyue",
+        "name": "林月"
+      },
+      "seconds": 15.5,
+      "thread": [
+        {
+          "k": "me",
+          "text": "请从你的身份说起，案发前后你亲眼见到或能提供核对的材料有哪些？"
+        },
+        {
+          "k": "them",
+          "text": "我是旧住院楼B区的夜班护士，罗闻那晚在B-17的护理记录和巡视是我负责的。能给你先核对一份护理记录截屏：23:26录过一次“罗闻已睡，无语言反应”，23:45又补了“巡视时发现心跳骤停，立即呼叫医生”。别的我这会儿先按记录说。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c3",
+              "title": "护理记录截屏"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "character": {
+        "id": "qiaoming",
+        "name": "乔鸣"
+      },
+      "seconds": 14.47,
+      "thread": [
+        {
+          "k": "me",
+          "text": "请从你的身份说起，案发前后你亲眼见到或能提供核对的材料有哪些？"
+        },
+        {
+          "k": "them",
+          "text": "我叫乔鸣，夜班保安，平时守一层门岗，也负责旧楼夜里巡查。你要核对材料的话，我这边能先给你一份门禁后台导出的名单。至于案发前后我亲眼见到的，我现在只能说我当时主要在门岗这边，别的情况不敢乱讲。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "B区门禁名单"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generated_restart": {
+    "port": 55056,
+    "same_game": true,
+    "checked_preserved": true,
+    "turns": 2,
+    "clues": 2,
+    "chat_count": 1,
+    "model_config_restored": true,
+    "original_card_done_preserved": true
+  },
+  "native_menu_exit": true,
+  "directory_open": {
+    "actual_title_directory_row_click": true,
+    "port": 61922,
+    "same_game_id": "4b4c62c562c14d6483ee34e8ee6cdb60",
+    "checked": true,
+    "turns": 2,
+    "model_calls": 0,
+    "original_game_restored": true
+  },
+  "close_while_generating": {
+    "job_id": "d27710c3e2214536be5c90d9ef7802d5",
+    "status_before": "running",
+    "progress_before": "编剧正在设计真相与证据链",
+    "seconds": 11.93,
+    "clean_exit": true,
+    "port_released": true,
+    "provider_response_id": "resp_0955c233a8272835006aeb32be51bc87d18085acf8062459ec",
+    "provider_cancel_http_status": 200,
+    "no_partial_publication_after_restart": true
+  },
+  "material_close": {
+    "stage": "material dialogue before generation job",
+    "provider_response_id": "resp_0c916c44a5b9c9cc006aeb32e9234887d19564490774064ea2",
+    "active_before_close": false,
+    "seconds": 12.31,
+    "clean_exit": true,
+    "port_released": true,
+    "provider_cancel_http_status": null,
+    "provider_status_after_exit": "completed",
+    "published_stories_unchanged": true
+  },
+  "material_close_early": {
+    "stage": "original hospital material from title form",
+    "close_trigger": "POST responses 200 acknowledgement",
+    "close_requested_at_utc": "2026-11-04T13:37:51.971338+00:00",
+    "public_request_pending_before_close": true,
+    "new_generation_jobs": 0,
+    "post_close_probes": [
+      {
+        "response_id": "resp_03158e589ca5ed17006aeb352ea4b087d2b9d1b14f6408ecfe",
+        "observed_at_utc": "2026-11-04T13:37:54.115002+00:00",
+        "status": "in_progress",
+        "output_text_characters": 0
+      }
+    ],
+    "cancel_results": [],
+    "in_flight_proven_after_close": true,
+    "seconds": 12.75,
+    "clean_exit": true,
+    "published_stories_unchanged": true,
+    "qa_key_cleared": true,
+    "terminal_probe_after_exit": {
+      "response_id": "resp_03158e589ca5ed17006aeb352ea4b087d2b9d1b14f6408ecfe",
+      "observed_at_utc": "2026-11-04T13:39:13.795310+00:00",
+      "status": "completed",
+      "output_text_characters": 75,
+      "usage": {
+        "input_tokens": 332,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 27,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 359
+      }
+    }
+  }
+}

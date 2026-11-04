@@ -1,0 +1,29 @@
+{
+  "demo_samples": {
+    "opened": [
+      {
+        "story_id": "demo-bus-revised",
+        "id": "e3f634ad86a542548fa6862cba9e7621",
+        "title": "末班车的干伞",
+        "checked": true
+      },
+      {
+        "story_id": "demo-hotel-revised",
+        "id": "2be4ceae2667473e8f542b2cd597d16d",
+        "title": "汐潮馆的第七位住客",
+        "checked": true
+      },
+      {
+        "story_id": "demo-tide-revised",
+        "id": "1b4f67e3cd8046dc8b1f49f447533b99",
+        "title": "潮汐第七人",
+        "checked": true
+      }
+    ],
+    "port": 55594,
+    "model_calls": 0,
+    "restart_port": 52279,
+    "same_games_restored": true,
+    "checked_preserved": true
+  }
+}

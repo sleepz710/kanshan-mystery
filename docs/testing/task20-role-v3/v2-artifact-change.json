@@ -1,0 +1,224 @@
+{
+  "investigation": "只读v2交付资源与构建元数据变动诊断",
+  "generated_at_utc": "2026-11-04T13:12:35.434854+00:00",
+  "worktree_commit": "469048869ba451c0fcb38a574e96682fd881b2e3",
+  "reference_source_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+  "provenance_source": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\docs\\testing\\task20-role-v2\\build-provenance.json",
+  "provenance_sha256": "be41de517828a19cb0215fb249d8f5769a9fa3801a0900b9d88b5da9ea54e724",
+  "accepted_archive": {
+    "directory": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v2",
+    "zip": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v2.zip",
+    "zip_sha256": "8854a4561555bca867dbfeb908d2557d1ca232186e0f6c252c438772d40eee9f",
+    "zip_bytes": 46998487,
+    "file_count": 2580,
+    "payload_bytes": 96104899,
+    "no_private_key": true,
+    "no_env_or_user_settings": true
+  },
+  "current_archive": {
+    "path": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v2.zip",
+    "sha256": "9cb3a41d78bc0b0b902792afc6359d5e5b9ac267a2e7937fa13cc42b7b1e5032",
+    "bytes": 46998762,
+    "mtime_local": "2026-11-04T21:00:06.486315",
+    "file_count": 2580,
+    "payload_bytes": 96105565,
+    "crc_passed": true
+  },
+  "archive_deltas": {
+    "archive_bytes": 275,
+    "file_count": 0,
+    "payload_bytes": 666
+  },
+  "exe": {
+    "entry": "看山谜案馆-质量收敛交付版-20261104-v2/看山谜案馆/看山谜案馆.exe",
+    "bytes": 14419006,
+    "sha256": "03228edbe1a5816689030fd3a9c20fd9cbdcbd312b029b8dc4ff5ccf82731b39",
+    "accepted_sha256": "03228edbe1a5816689030fd3a9c20fd9cbdcbd312b029b8dc4ff5ccf82731b39",
+    "matches_accepted": true
+  },
+  "resource_check": {
+    "registered_resources": 33,
+    "changed_count": 1,
+    "changes": [
+      {
+        "path": "frontend/js/game.js",
+        "zip_entry": "看山谜案馆-质量收敛交付版-20261104-v2/看山谜案馆/_internal/frontend/js/game.js",
+        "zip_timestamp": [
+          2026,
+          11,
+          4,
+          20,
+          54,
+          48
+        ],
+        "accepted_sha256": "d3395a275a97309bfddca9bba20c20cef171e61040a9f9c931c51fe5d4ba6fae",
+        "current_sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+        "accepted_source_bytes": 45797,
+        "current_bytes": 45935,
+        "bytes_delta": 138,
+        "source_2a8_sha256": "d3395a275a97309bfddca9bba20c20cef171e61040a9f9c931c51fe5d4ba6fae",
+        "head_source_sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+        "matches_current_head": true,
+        "upstream_commit": "8f9c097d86fcd73d793b6187db8f26ed978b2be4",
+        "matches_upstream_blob": true,
+        "change_summary": "openIntro把replaceChildren参数改为过滤空值后的数组，避免qualityNote()返回null时显示字面量null。",
+        "source_diff": "--- 2a8a463144ce62d2ffd18bb67418ec7f99ccea1c/frontend/js/game.js\n+++ current-v2-zip/frontend/js/game.js\n@@ -813,14 +813,16 @@\n   // ---------- 弹窗 ----------\n \n   function openIntro() {\n-    el.introBody.replaceChildren(\n+    // 检查都通过时 qualityNote() 是 null，replaceChildren 会把它写成文字「null」，先滤掉\n+    el.introBody.replaceChildren(...[\n       h('h2', { class: 'intro-title' }, state.title),\n       qualityNote(),\n       h('blockquote', { class: 'soup paper' }, state.intro),\n       h('p', { class: 'intro-section' }, '相关人员'),\n       h('div', { class: 'intro-cast' }, ...state.characters.map((c) => h('div', { class: 'intro-person' },\n         avatar(c, 46), h('div', null, h('b', null, c.name), h('small', null, c.profile))))),\n-      h('div', { class: 'greeting' }, avatar('kanshan', 40), h('div', null, h('b', null, '刘看山'), h('p', null, state.greeting))));\n+      h('div', { class: 'greeting' }, avatar('kanshan', 40), h('div', null, h('b', null, '刘看山'), h('p', null, state.greeting))),\n+    ].filter(Boolean));\n     el.introGo.textContent = state.introSeen ? '继续调查' : '开始调查';\n     el.dlgIntro.showModal();\n   }\n"
+      }
+    ]
+  },
+  "program_payload_reference": {
+    "directory": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-role-v2-intent-final-build-20261104\\dist\\看山谜案馆",
+    "matched_file_count": 2573,
+    "mismatches": [
+      {
+        "path": "_internal/frontend/js/game.js",
+        "current_sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+        "known_build_sha256": "d3395a275a97309bfddca9bba20c20cef171e61040a9f9c931c51fe5d4ba6fae"
+      }
+    ],
+    "missing_in_build_directory": [
+      "构建来源.json"
+    ],
+    "missing_metadata_explanation": "构建来源.json由打包脚本在复制dist后写入交付目录，dist本身没有此文件。"
+  },
+  "outside_program_checks": [
+    {
+      "entry": "看山谜案馆-质量收敛交付版-20261104-v2/精修演示案/demo-bus-revised.yaml",
+      "bytes": 11905,
+      "sha256": "bb2b897be67c16ba44aa2e70e3fceab5ef78bf476eaa5eca07e759ca73fb7d4c",
+      "reference": "docs/testing/task19-demo/revised/demo-bus-revised.yaml",
+      "matches_reference": true
+    },
+    {
+      "entry": "看山谜案馆-质量收敛交付版-20261104-v2/精修演示案/demo-hotel-revised.yaml",
+      "bytes": 17675,
+      "sha256": "644ea25b41546f92ad17e47d531c011ee84683328bcebee1e58f6e8373f45f96",
+      "reference": "docs/testing/task19-demo/revised/demo-hotel-revised.yaml",
+      "matches_reference": true
+    },
+    {
+      "entry": "看山谜案馆-质量收敛交付版-20261104-v2/精修演示案/demo-tide-revised.yaml",
+      "bytes": 12116,
+      "sha256": "1c45853478591e4258062335c667b193429f10452a94e66438e4d23c270b926a",
+      "reference": "docs/testing/task19-demo/revised/demo-tide-revised.yaml",
+      "matches_reference": true
+    },
+    {
+      "entry": "看山谜案馆-质量收敛交付版-20261104-v2/精修演示案/manifest.json",
+      "bytes": 1704,
+      "sha256": "9805cbd280e52097d58fa3a39ab204ad7a1f74d88cd730e0a5c55b94572a4e73",
+      "reference": "docs/testing/task19-demo/manifest.json",
+      "matches_reference": true
+    },
+    {
+      "entry": "看山谜案馆-质量收敛交付版-20261104-v2/验收说明.txt",
+      "bytes": 1549,
+      "sha256": "ffd2ee9a34c87750df968d23f592e20d16f3f28eba20713be6034653e23c1698",
+      "reference": ".cache/role_package.py instructions literal with Windows CRLF",
+      "matches_reference": true
+    }
+  ],
+  "metadata": {
+    "entry": "看山谜案馆-质量收敛交付版-20261104-v2/看山谜案馆/构建来源.json",
+    "current_bytes": 7975,
+    "current_sha256": "f92f8f5bfc998774ac8ccc64ca8c9a7a04a2eb52ef478b29a0174eab1eb3bacc",
+    "zip_timestamp": [
+      2026,
+      11,
+      4,
+      20,
+      56,
+      16
+    ],
+    "source_commit_before": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+    "source_commit_after": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+    "new_fields": {
+      "resource_source_commits": {
+        "frontend/js/game.js": "8f9c097d86fcd73d793b6187db8f26ed978b2be4"
+      },
+      "hotfixes": [
+        {
+          "id": "intro-null-render",
+          "file": "frontend/js/game.js",
+          "upstream_commit": "8f9c097d86fcd73d793b6187db8f26ed978b2be4",
+          "previous_sha256": "d3395a275a97309bfddca9bba20c20cef171e61040a9f9c931c51fe5d4ba6fae",
+          "sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+          "reason": "Apply merged intro dialog null-filter fix"
+        }
+      ]
+    },
+    "updated_resource_hashes": {
+      "frontend/js/game.js": {
+        "before": "d3395a275a97309bfddca9bba20c20cef171e61040a9f9c931c51fe5d4ba6fae",
+        "after": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775"
+      }
+    },
+    "other_pre_package_fields_equal": true,
+    "reconstructed_accepted_metadata": {
+      "method": "Git验收provenance删除打包后字段artifact/delivery_integrity，按原打包脚本UTF-8、2空格缩进、CRLF、末尾换行重建，仅在内存中处理。",
+      "bytes": 7447,
+      "sha256": "5c45439ecd904f789190ae068abc1ca8ff5f6be49283ee25993f89724a857afd",
+      "is_backup": false
+    },
+    "bytes_delta_from_reconstruction": 528,
+    "post_zip_report_fields_not_expected_inside_zip": [
+      "artifact",
+      "delivery_integrity"
+    ]
+  },
+  "payload_delta_explained": true,
+  "backup_search": {
+    "allowed_roots": [
+      "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache",
+      "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-role-v2-intent-final-build-20261104"
+    ],
+    "candidates": [
+      {
+        "path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache\\role-v2-candidate-084b67e.zip",
+        "bytes": 46996894,
+        "sha256": "979c52a9da7e6b2a1e858b471d3806545fdc5aa2df9f62a0b591f220ec32744c",
+        "matches_accepted_archive": false
+      },
+      {
+        "path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache\\role-v2-candidate-df344149.zip",
+        "bytes": 46998661,
+        "sha256": "241011dec83a4acbc023a0df46b2bfa861a3bf7bd22a2bf0691893d9f68a1329",
+        "matches_accepted_archive": false
+      },
+      {
+        "path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache\\role-v2-external-change-210006.zip",
+        "bytes": 46998762,
+        "sha256": "9cb3a41d78bc0b0b902792afc6359d5e5b9ac267a2e7937fa13cc42b7b1e5032",
+        "matches_accepted_archive": false
+      },
+      {
+        "path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache\\role-v3-candidate-8ec8ba7.zip",
+        "bytes": 47005866,
+        "sha256": "e2343bd0d43ccc157abd2bb04459f96bdd9cd905631701fcd5af0bf84aede8a7",
+        "matches_accepted_archive": false
+      },
+      {
+        "path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-role-v2-intent-final-build-20261104\\dist\\看山谜案馆\\_internal\\base_library.zip",
+        "bytes": 1401781,
+        "sha256": "9ff48077b30930a3f4b4cb0b12ea6b66d7ae0bea9a0110e1183b878179a6e2c2",
+        "matches_accepted_archive": false
+      }
+    ],
+    "accepted_8854_backup_found": false,
+    "scope": "仅已知TEMP构建目录和本分支.cache，无全盘搜索。"
+  },
+  "read_only_guards": {
+    "models_called": 0,
+    "archive_start_sha256": "9cb3a41d78bc0b0b902792afc6359d5e5b9ac267a2e7937fa13cc42b7b1e5032",
+    "archive_finish_sha256": "9cb3a41d78bc0b0b902792afc6359d5e5b9ac267a2e7937fa13cc42b7b1e5032",
+    "archive_unchanged_during_diagnosis": true,
+    "user_archive_or_delivery_files_written": false,
+    "private_configuration_contents_output": false
+  },
+  "conclusion": "当前v2内容相对验收来源只定位到game.js空值渲染修复及其构建来源元数据更新。EXE与2573份已核对程序文件相同，3份演示案、manifest和验收说明均对应原打包输入。当前ZIP指纹已变化，原8854验收指纹不再描述该ZIP。",
+  "limitations": [
+    "限定范围内未找到原8854 ZIP备份，旧ZIP容器头、压缩记录和原始条目时间不能逐字比较。",
+    "原metadata字节由验收记录和原打包脚本在内存重建，不能称为找到原ZIP备份。",
+    "此记录不推断修改主体，也不覆盖当前v2或独立v3交付。"
+  ]
+}

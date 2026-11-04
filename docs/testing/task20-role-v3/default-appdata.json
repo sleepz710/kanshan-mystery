@@ -1,0 +1,23 @@
+{
+  "offline_exe": {
+    "first_port": 63098,
+    "restart_port": 56411,
+    "game": {
+      "id": "690006132e874d8b9f1dfa34e8a9185e",
+      "title": "一笔消失的学费"
+    },
+    "first_run_settings": true,
+    "native_menu_settings_home_exit": true,
+    "config_restored": true,
+    "browser_and_backend_game_restored": true,
+    "studio_record_restored": true,
+    "process_exit_code": 0,
+    "port_released": true,
+    "sdk_calls": 0,
+    "path_contains_python": false,
+    "default_appdata": true,
+    "data_dir_override": false,
+    "initial_virtual_path": "C:\\Users\\HW\\AppData\\Roaming\\KanshanMystery-role-v3-port-final-default-20261104\\KanshanMystery",
+    "resolved_physical_path": "E:\\WpSystem\\S-1-5-21-2935892461-107176757-2270317220-1002\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Roaming\\KanshanMystery-role-v3-port-final-default-20261104\\KanshanMystery"
+  }
+}

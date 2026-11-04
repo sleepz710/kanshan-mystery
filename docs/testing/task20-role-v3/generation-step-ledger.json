@@ -1,0 +1,72 @@
+{
+  "source_commit": "469048869ba451c0fcb38a574e96682fd881b2e3",
+  "steps": [
+    {
+      "job_id": "70def650b50f4c6d9e4eb4480d9fc452",
+      "round": 1,
+      "step": "设计稿",
+      "outcome": "完成",
+      "seconds": 260.94,
+      "input_characters": 1738,
+      "output_characters": 4549
+    },
+    {
+      "job_id": "70def650b50f4c6d9e4eb4480d9fc452",
+      "round": 1,
+      "step": "填表",
+      "outcome": "完成",
+      "seconds": 42.95,
+      "input_characters": 7776,
+      "output_characters": 6458
+    },
+    {
+      "job_id": "70def650b50f4c6d9e4eb4480d9fc452",
+      "round": 1,
+      "step": "填表",
+      "outcome": "完成",
+      "seconds": 18.47,
+      "input_characters": 14932,
+      "output_characters": 2613
+    },
+    {
+      "job_id": "70def650b50f4c6d9e4eb4480d9fc452",
+      "round": 1,
+      "step": "审稿",
+      "outcome": "完成",
+      "seconds": 13.31,
+      "input_characters": 5973,
+      "output_characters": 16
+    },
+    {
+      "job_id": "70def650b50f4c6d9e4eb4480d9fc452",
+      "round": 1,
+      "step": "可解性·只给汤面",
+      "outcome": "完成",
+      "seconds": 10.95,
+      "input_characters": 823,
+      "output_characters": 49
+    },
+    {
+      "job_id": "70def650b50f4c6d9e4eb4480d9fc452",
+      "round": 1,
+      "step": "可解性·全部线索",
+      "outcome": "完成",
+      "seconds": 5.3,
+      "input_characters": 2116,
+      "output_characters": 113
+    },
+    {
+      "job_id": "d27710c3e2214536be5c90d9ef7802d5",
+      "round": 1,
+      "step": "设计稿",
+      "outcome": "中止",
+      "seconds": 6.32,
+      "input_characters": 1738,
+      "output_characters": 0
+    }
+  ],
+  "frontend_clock_seconds": 350.963,
+  "story_id": "generated-e89e568a2d8249ea8f17adf9e338ce1b",
+  "story_sha256": "152ce50947ceee7c8d9c6703963e7132d62a10c3beef60e2ca4d84e7e709128d",
+  "checked_raw": true
+}
