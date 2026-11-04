@@ -41,7 +41,7 @@
 
 ## 任务18收敛源码复核
 
-任务18收敛源码固定为 `30180444163ea3df16ce4014dde5fd4bbbd9d32b`，运行模块无未提交修改。相同脚本的最终结果见 [compatibility.json](task19-compat/compatibility.json)，包含六个运行模块的 SHA256。生成流程涉及的 `backend/studio/service.py` 和 `backend/studio/check.py` 与主线基线有改动。
+任务18收敛源码固定为 `1d48752e1845acb77db3fbdd537a5057c2fd7ddb`，运行模块无未提交修改。相同脚本的最终结果见 [compatibility.json](task19-compat/compatibility.json)，包含六个运行模块的 SHA256。生成流程与模型请求涉及的 `backend/studio/service.py`、`backend/studio/check.py` 和 `backend/llm.py` 与主线基线有改动。
 
 独立任务19分支最终全量pytest复跑为642项通过，26.36秒，保留同一项现有弃用提示。
 
