@@ -1,0 +1,74 @@
+{
+  "read_only_retrievals": [
+    {
+      "response_id": "resp_0ee13c4022683813006aeb1fb6a43487d2a6c4cafbfa7f5b2b",
+      "observed_at": "2026-11-04T12:14:26.503873+00:00",
+      "status": "in_progress",
+      "created_at": 1793793974.0,
+      "age_seconds": 492.5,
+      "output_text_characters": 0,
+      "output_blocks": 0,
+      "usage": null,
+      "new_generation_requests": 0
+    },
+    {
+      "response_id": "resp_03171b90082c09fe006aeb1fb69dfc87d294af9be403b9301a",
+      "observed_at": "2026-11-04T12:14:30.220280+00:00",
+      "status": "in_progress",
+      "created_at": 1793793974.0,
+      "age_seconds": 496.22,
+      "output_text_characters": 0,
+      "output_blocks": 0,
+      "usage": null,
+      "new_generation_requests": 0
+    }
+  ],
+  "after_single_request_timeout": [
+    {
+      "response_id": "resp_0ee13c4022683813006aeb1fb6a43487d2a6c4cafbfa7f5b2b",
+      "observed_at": "2026-11-04T12:17:00.465836+00:00",
+      "status": "cancelled",
+      "created_at": 1793793974.0,
+      "age_seconds": 646.47,
+      "output_text_characters": 0,
+      "output_blocks": 0,
+      "usage": {
+        "input_tokens": 1282,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 5696,
+        "output_tokens_details": {
+          "reasoning_tokens": 5696
+        },
+        "total_tokens": 6978
+      },
+      "new_generation_requests": 0,
+      "pipeline_cancel_http_status": 200
+    },
+    {
+      "response_id": "resp_03171b90082c09fe006aeb1fb69dfc87d294af9be403b9301a",
+      "observed_at": "2026-11-04T12:17:05.549475+00:00",
+      "status": "cancelled",
+      "created_at": 1793793974.0,
+      "age_seconds": 651.55,
+      "output_text_characters": 0,
+      "output_blocks": 0,
+      "usage": {
+        "input_tokens": 1282,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 4660,
+        "output_tokens_details": {
+          "reasoning_tokens": 4660
+        },
+        "total_tokens": 5942
+      },
+      "new_generation_requests": 0,
+      "pipeline_cancel_http_status": 200
+    }
+  ]
+}

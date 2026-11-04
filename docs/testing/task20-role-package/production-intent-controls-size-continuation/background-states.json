@@ -1,0 +1,40 @@
+[
+  {
+    "case": "correct_previous_size",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_0c5c4389fe07c5b2006aeb1eb9abfc87d1a608a3ff4607e765",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_0c5c4389fe07c5b2006aeb1eb9abfc87d1a608a3ff4607e765",
+    "http_status": 200,
+    "id": "resp_0c5c4389fe07c5b2006aeb1eb9abfc87d1a608a3ff4607e765",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_0c5c4389fe07c5b2006aeb1eb9abfc87d1a608a3ff4607e765",
+    "http_status": 200,
+    "id": "resp_0c5c4389fe07c5b2006aeb1eb9abfc87d1a608a3ff4607e765",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 670,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 136,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 806
+    }
+  }
+]

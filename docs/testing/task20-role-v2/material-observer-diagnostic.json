@@ -1,0 +1,16 @@
+{
+  "response_id": "resp_0212bbe41a0bce89006aeb0821fcb887d291945a65167cbac9",
+  "stage": "material dialogue before generation job creation",
+  "qa_wait_seconds": 180,
+  "future_qa_wait_seconds": 1860,
+  "provider_status": "completed",
+  "output_characters": 164,
+  "provider_created_at": 1793787938.0,
+  "provider_completed_at": 1793788240.0,
+  "observed_process_exit_code": 0,
+  "observer_wait_after_close_seconds": 45,
+  "observer_force_kill": false,
+  "server_shutdown_local": "2026-11-04 18:29:01.922",
+  "provider_completed_local": "2026-11-04 18:30:40",
+  "provider_cancel_seen": false
+}

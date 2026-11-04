@@ -1,0 +1,18 @@
+{
+  "source_commit": "df344149dba248ced9fb74ea7da387db06497c5e",
+  "source": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-role-v2-final-build-20261104",
+  "task18_component": "38e91999c50b2ee02251148e38d270a42b337b43",
+  "task20_component": "75279d7b49ac13313fb4ad207d6170f9ee96f1e0",
+  "model": "gpt-5.4-2026-03-05",
+  "source_worktree_commit": "75279d7b49ac13313fb4ad207d6170f9ee96f1e0",
+  "helper_source_sha256": "901dc6f3bf2347f7b58ea9a11937bc1d9db32b586b78d5fe4c3e153aff23dfbf",
+  "only_helper_replacement": {
+    "from": "reasoning={\"effort\": \"high\"}",
+    "to": "reasoning={\"effort\": qa_intent_effort}"
+  },
+  "chat_prompt_sha256": "636eaff97b7a45ebabe7c8350c4ad25d724b7ab52e4a05e95b43530896b06894",
+  "effort": "none",
+  "endpoint": "/v1/responses",
+  "normal_call_role": "writer",
+  "call_deadline_seconds": 540
+}

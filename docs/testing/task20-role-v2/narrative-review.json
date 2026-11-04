@@ -1,0 +1,124 @@
+{
+  "review_scope": "桌面额外新生成《空白本》的19:41至19:42分钟疑点定向静态复核",
+  "story_id": "generated-aa265696b355482193dc7bcb09aa7550",
+  "real_model_calls": 0,
+  "story_modified": false,
+  "source_modified": false,
+  "raw_checked": true,
+  "raw_checked_preserved": true,
+  "manual_full_quality_status": "全文质量验收未通过，局部分钟问题保留，真实角色整局尚未验收",
+  "sources": {
+    "generated-bookstore.yaml": {
+      "sha256": "6abafc319f6627eb8f61d9dc81938b0ffb918dd0f740ba7b5c772b61c6acec67",
+      "bytes": 12361
+    },
+    "generation-design-round2.json": {
+      "sha256": "2e2ad1a3105f451ef62b2e1d98559d9f12a5894c4e90d8f9a677755f2d6866c9",
+      "bytes": 11094
+    }
+  },
+  "finding": {
+    "severity": "P3",
+    "classification": "局部分钟精度及证据断言不一致",
+    "exact_minute_inconsistency_confirmed": true,
+    "overall_event_order_can_fit_design_interval": true,
+    "summary": "设计把取书和两次发送照片放在19:41至19:42区间，先发阿楚、再发沈宁的顺序可成立。李岚correction及编译f8/f9又把从R3取到柜台写为精确19:42，而c8写同一张柜台照片已于19:41发出，精确分钟语义下出现先有照片、后搬书的局部冲突。",
+    "evidence_scope": "19:42的c4截图证明当时书已经在柜台并曾被李岚拿出，单独不足以把搬运发生时刻确定为19:42。c8还把同一照片的存在时间提前至19:41。",
+    "narrative_boundary": "原文未给时间取整、时钟偏差或更早拍摄后再次搬书的说明。19:41至19:42作为整个取书及发送过程的区间可容纳两次发送，局部精确时刻仍需正文统一。",
+    "quotes": [
+      {
+        "file": "generation-design-round2.json",
+        "line": 24,
+        "field": "response.design.timeline[0]",
+        "text": "2025年9月17日19:41至19:42，李岚把沈宁预订的《城市影像志》从R3预订架拿到收银台，先后把封面照发给校外买家“阿楚”和沈宁。"
+      },
+      {
+        "file": "generation-design-round2.json",
+        "line": 39,
+        "field": "response.design.characters[0].correction",
+        "text": "我19:42确实把沈宁那本书从R3拿到收银台拍过照，还暂时留在了柜台。"
+      },
+      {
+        "file": "generation-design-round2.json",
+        "line": 86,
+        "field": "response.design.clues[3].proves",
+        "text": "李岚在19:42亲手把沈宁的预订书从R3拿到了收银台。"
+      },
+      {
+        "file": "generated-bookstore.yaml",
+        "line": 21,
+        "field": "facts[id=f8].text",
+        "text": "我19:42确实把沈宁那本书从R3拿到收银台拍过照，还暂时留在了柜台。"
+      },
+      {
+        "file": "generated-bookstore.yaml",
+        "line": 23,
+        "field": "facts[id=f9].text",
+        "text": "2025年9月17日19:42，李岚把沈宁那本《城市影像志》从R3预订架拿到收银台。"
+      },
+      {
+        "file": "generated-bookstore.yaml",
+        "line": 179,
+        "field": "clues[id=c4].content",
+        "text": "2025年9月17日19:42，沈宁与李岚私聊截图中，李岚发来一张拍于收银台的《城市影像志》封面照，消息写着“我先拿到柜台给你拍一下，明早报SN-47来取”。照片左下角能看到沈宁的预约单压在书下。"
+      },
+      {
+        "file": "generated-bookstore.yaml",
+        "line": 203,
+        "field": "clues[id=c8].content",
+        "text": "周竞保存的截图显示，2025年9月17日20:12李岚把与校外买家“阿楚”的聊天转发给他问“900出不出”，其中19:41李岚已发送与‘预订私聊截图’中相同的封面照片；20:12她又对买家发“书已到手，校门口见”；20:13微信收款300元，付款备注“《城市影像志》定金”。"
+      }
+    ]
+  },
+  "question_dependencies": [
+    {
+      "id": "q1",
+      "yaml_line": 234,
+      "question": "9月17日20:02至20:04，哪一项描述与证据一致？",
+      "selected_design_evidence": [
+        "收银台监控导出"
+      ],
+      "compiled_clues": [
+        "c7"
+      ],
+      "requires_exact_19_42": false,
+      "assessment": "c7直接记录20:02:11至20:04:36李岚取出真书、塞入空白本、封膜并放回R3。19:41至19:42的前置搬书分钟不参与该题标准答案。"
+    },
+    {
+      "id": "q2",
+      "yaml_line": 241,
+      "question": "9月17日19:57进入书店后场并交付调包材料的人是谁？",
+      "selected_design_evidence": [
+        "打印中心裁切工单",
+        "后门门禁与走廊监控",
+        "封膜辛苦费转账与聊天"
+      ],
+      "compiled_clues": [
+        "c3",
+        "c5",
+        "c6"
+      ],
+      "compiled_confession": "l2.admit=f10，出示c5后开放，明确承认19:57交空白本和热缩膜",
+      "requires_exact_19_42": false,
+      "assessment": "制作、19:57本人进入及交付供述共同支持周竞交材料。c4用于前一道l1拆谎以取得c5，相关门槛检查出示与拆谎状态，取书的精确分钟没有成为题目条件。本次未调用角色验证实际供述。"
+    },
+    {
+      "id": "q3",
+      "yaml_line": 248,
+      "question": "李岚当晚调包这本预订书的直接目的，证据能够确认的是哪一项？",
+      "selected_design_evidence": [
+        "封膜辛苦费转账与聊天",
+        "收银台监控导出",
+        "校外转卖定金截图"
+      ],
+      "compiled_clues": [
+        "c6",
+        "c7",
+        "c8"
+      ],
+      "requires_exact_19_42": false,
+      "assessment": "c6的19:49原话明确下周网贷及校外900元买家，c7证明实施调包，c8的20:12交易对话与20:13收300元定金对应答案。c8的19:41同图补充事先联系买家的顺序，精确分钟不构成900元、300元与网贷动机成立的必要条件。"
+    }
+  ],
+  "acceptance_conclusion": "三题核心证据和答案均不依赖19:42这个精确搬运分钟。正文保留一处局部分钟标注与证据断言不一致，原自动checked:true保留，人工全文质量验收未通过。"
+}

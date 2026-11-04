@@ -1,0 +1,462 @@
+[
+  {
+    "case": "original_bookstore",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_0d43d6363e82cf0e006aeb1916e8d487d1bcb288b66f1a8352",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0d43d6363e82cf0e006aeb1916e8d487d1bcb288b66f1a8352",
+    "http_status": 200,
+    "id": "resp_0d43d6363e82cf0e006aeb1916e8d487d1bcb288b66f1a8352",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0d43d6363e82cf0e006aeb1916e8d487d1bcb288b66f1a8352",
+    "http_status": 200,
+    "id": "resp_0d43d6363e82cf0e006aeb1916e8d487d1bcb288b66f1a8352",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_0d43d6363e82cf0e006aeb1916e8d487d1bcb288b66f1a8352",
+    "http_status": 200,
+    "id": "resp_0d43d6363e82cf0e006aeb1916e8d487d1bcb288b66f1a8352",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 442,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 129,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 571
+    }
+  },
+  {
+    "case": "original_hospital",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_02cc83477654f56f006aeb1920211087d1b0e44da30dad53d0",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_02cc83477654f56f006aeb1920211087d1b0e44da30dad53d0",
+    "http_status": 200,
+    "id": "resp_02cc83477654f56f006aeb1920211087d1b0e44da30dad53d0",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_02cc83477654f56f006aeb1920211087d1b0e44da30dad53d0",
+    "http_status": 200,
+    "id": "resp_02cc83477654f56f006aeb1920211087d1b0e44da30dad53d0",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 310,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 79,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 389
+    }
+  },
+  {
+    "case": "discuss_without_start",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_0dfa0bd02b8226dd006aeb1927a43487d1bf5e85d5f4390e8a",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "discuss_without_start",
+    "method": "GET",
+    "path": "/v1/responses/resp_0dfa0bd02b8226dd006aeb1927a43487d1bf5e85d5f4390e8a",
+    "http_status": 200,
+    "id": "resp_0dfa0bd02b8226dd006aeb1927a43487d1bf5e85d5f4390e8a",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "discuss_without_start",
+    "method": "GET",
+    "path": "/v1/responses/resp_0dfa0bd02b8226dd006aeb1927a43487d1bf5e85d5f4390e8a",
+    "http_status": 200,
+    "id": "resp_0dfa0bd02b8226dd006aeb1927a43487d1bf5e85d5f4390e8a",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "discuss_without_start",
+    "method": "GET",
+    "path": "/v1/responses/resp_0dfa0bd02b8226dd006aeb1927a43487d1bf5e85d5f4390e8a",
+    "http_status": 200,
+    "id": "resp_0dfa0bd02b8226dd006aeb1927a43487d1bf5e85d5f4390e8a",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "discuss_without_start",
+    "method": "GET",
+    "path": "/v1/responses/resp_0dfa0bd02b8226dd006aeb1927a43487d1bf5e85d5f4390e8a",
+    "http_status": 200,
+    "id": "resp_0dfa0bd02b8226dd006aeb1927a43487d1bf5e85d5f4390e8a",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 350,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 164,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 514
+    }
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_0218ce27b0fd351d006aeb1931d13887d1b0433c17d0efcec9",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0218ce27b0fd351d006aeb1931d13887d1b0433c17d0efcec9",
+    "http_status": 200,
+    "id": "resp_0218ce27b0fd351d006aeb1931d13887d1b0433c17d0efcec9",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0218ce27b0fd351d006aeb1931d13887d1b0433c17d0efcec9",
+    "http_status": 200,
+    "id": "resp_0218ce27b0fd351d006aeb1931d13887d1b0433c17d0efcec9",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0218ce27b0fd351d006aeb1931d13887d1b0433c17d0efcec9",
+    "http_status": 200,
+    "id": "resp_0218ce27b0fd351d006aeb1931d13887d1b0433c17d0efcec9",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 366,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 85,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 451
+    }
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "http_status": 200,
+    "id": "resp_01fcfaef938d3c94006aeb193aa35c87d1af3968fba6f36a03",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 605,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1458,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2063
+    }
+  }
+]

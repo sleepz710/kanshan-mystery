@@ -1,0 +1,52 @@
+[
+  {
+    "case": "original_bookstore",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "intent": true,
+    "writer_authorization_matched": true,
+    "input_sha256": "2ac37f3eeec4660242354ff74fed1daae7a475bd29479aeb83a698e966095944"
+  },
+  {
+    "case": "original_hospital",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "intent": true,
+    "writer_authorization_matched": true,
+    "input_sha256": "e50111e14101fd558cc0b4341c78b087b8b301911c658ba9044acf35cdbfc300"
+  },
+  {
+    "case": "discuss_without_start",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "intent": true,
+    "writer_authorization_matched": true,
+    "input_sha256": "65d33fd609d99b0ba1c92ae99dc35060d4b230441312b397ca65a327828c956b"
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "intent": true,
+    "writer_authorization_matched": true,
+    "input_sha256": "a2d132fde48d25769eb934cf04343d1e081d1319463f761d30a35afecc78e038"
+  },
+  {
+    "case": "correct_previous_size",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "intent": true,
+    "writer_authorization_matched": true,
+    "input_sha256": "0b4f5014d3feb9aab30631ab209eb937d8720da2aaf84ea308de9477468571ab"
+  }
+]

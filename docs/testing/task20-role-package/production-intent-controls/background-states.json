@@ -1,0 +1,930 @@
+[
+  {
+    "case": "original_bookstore",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_bookstore",
+    "method": "GET",
+    "path": "/v1/responses/resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "http_status": 200,
+    "id": "resp_04f374d22b223376006aeb1d6d444887d2a454d5366019618e",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 464,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 27,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 491
+    }
+  },
+  {
+    "case": "original_hospital",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "http_status": 200,
+    "id": "resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "http_status": 200,
+    "id": "resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "http_status": 200,
+    "id": "resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "http_status": 200,
+    "id": "resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "http_status": 200,
+    "id": "resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "http_status": 200,
+    "id": "resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "http_status": 200,
+    "id": "resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "http_status": 200,
+    "id": "resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "original_hospital",
+    "method": "GET",
+    "path": "/v1/responses/resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "http_status": 200,
+    "id": "resp_062b67236828734d006aeb1da3827c87d287fdfa3f48d85c33",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 332,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 27,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 359
+    }
+  },
+  {
+    "case": "discuss_without_start",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_09c06fb211d3d51f006aeb1db5695487d1baf1add44be58ffc",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "discuss_without_start",
+    "method": "GET",
+    "path": "/v1/responses/resp_09c06fb211d3d51f006aeb1db5695487d1baf1add44be58ffc",
+    "http_status": 200,
+    "id": "resp_09c06fb211d3d51f006aeb1db5695487d1baf1add44be58ffc",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "discuss_without_start",
+    "method": "GET",
+    "path": "/v1/responses/resp_09c06fb211d3d51f006aeb1db5695487d1baf1add44be58ffc",
+    "http_status": 200,
+    "id": "resp_09c06fb211d3d51f006aeb1db5695487d1baf1add44be58ffc",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 372,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 27,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 399
+    }
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "method": "GET",
+    "path": "/v1/responses/resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "http_status": 200,
+    "id": "resp_0525076a1943b950006aeb1dbb289c87d2aeec4a9c3fba7b10",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 388,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 27,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 415
+    }
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "POST",
+    "path": "/v1/responses",
+    "http_status": 200,
+    "id": "resp_09cc5df311676a99006aeb1e08ccfc87d284335f3aa8c5349c",
+    "status": "queued",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_09cc5df311676a99006aeb1e08ccfc87d284335f3aa8c5349c",
+    "http_status": 200,
+    "id": "resp_09cc5df311676a99006aeb1e08ccfc87d284335f3aa8c5349c",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_09cc5df311676a99006aeb1e08ccfc87d284335f3aa8c5349c",
+    "http_status": 200,
+    "id": "resp_09cc5df311676a99006aeb1e08ccfc87d284335f3aa8c5349c",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_09cc5df311676a99006aeb1e08ccfc87d284335f3aa8c5349c",
+    "http_status": 200,
+    "id": "resp_09cc5df311676a99006aeb1e08ccfc87d284335f3aa8c5349c",
+    "status": "in_progress",
+    "usage": null
+  },
+  {
+    "case": "correct_previous_size",
+    "method": "GET",
+    "path": "/v1/responses/resp_09cc5df311676a99006aeb1e08ccfc87d284335f3aa8c5349c",
+    "http_status": 200,
+    "id": "resp_09cc5df311676a99006aeb1e08ccfc87d284335f3aa8c5349c",
+    "status": "completed",
+    "usage": {
+      "input_tokens": 627,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 255,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 882
+    }
+  }
+]
