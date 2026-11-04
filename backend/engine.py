@@ -321,7 +321,7 @@ class GameEngine:
                 }
         for fact_id, fact in facts.items():
             owners = admit_owners.get(fact_id, {})
-            if "我" in fact["text"] and len(owners) == 1:
+            if "我" in fact["text"] and len(owners) == 1 and not any(mark in fact["text"] for mark in "“”‘’\"'"):
                 fact["first_person_subject"] = deepcopy(next(iter(owners.values())))
         active, exposed, future = [], [], []
         for lie in character["lies"]:

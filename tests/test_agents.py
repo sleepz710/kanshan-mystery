@@ -223,9 +223,8 @@ async def test_actor_and_checker_requests_preserve_personal_lie_stage(monkeypatc
     assert ("f_enter" in checker_payload["allowed_fact_ids"]) is exposed
 
 
-@pytest.mark.parametrize("attributed", [False, True])
 @pytest.mark.asyncio
-async def test_actor_and_checker_requests_keep_original_first_person_speaker(monkeypatch, context, attributed):
+async def test_actor_and_checker_requests_keep_original_first_person_speaker(monkeypatch, context):
     context["character"].update(id="tang", name="唐芮")
     context["facts"] = [{
         "id": "f_card", "text": "4月17日18:42我把0719员工卡借给了赵澄，18:52前都不在我手里。",
@@ -236,12 +235,9 @@ async def test_actor_and_checker_requests_keep_original_first_person_speaker(mon
     context["exposed_lies"] = []
     context["available_clues"] = []
     context["shown_clue"] = {"id": "c_log", "title": "门卡记录", "content": "0719员工卡登记人为林沅。"}
-    candidate = valid_reply(
-        reply="林沅说卡在18:52前都不在她手里。" if attributed else "18:52前都不在我手里。",
-        reveal=[],
-    )
+    candidate = valid_reply(reply="林沅说卡在18:52前都不在她手里。", reveal=[])
     actor_reply = valid_reply(reply="林沅说卡在18:52前都不在她手里。", reveal=[])
-    verdict = {"ok": attributed, "leaked": [], "contradiction": "" if attributed else "将林沅的经历误当成唐芮本人经历。"}
+    verdict = {"ok": True, "leaked": [], "contradiction": ""}
     calls = fake_model(monkeypatch, [actor_reply, verdict])
 
     assert await agents.reply(context) == actor_reply
@@ -261,6 +257,75 @@ async def test_actor_and_checker_requests_keep_original_first_person_speaker(mon
     assert "即使事件事实本身已公开" in checker_rules
     assert checker_payload["allowed_fact_ids"] == ["f_card"]
     assert checker_payload["forbidden_fact_ids"] == []
+
+
+@pytest.mark.parametrize("case, blocked", [
+    ("original_bad", True),
+    ("named_source", False),
+    ("double_quote", False),
+    ("single_quote", False),
+    ("ascii_double_quote", False),
+    ("ascii_single_quote", False),
+    ("unrelated_quote", True),
+    ("own_subject", False),
+    ("short_clause", False),
+    ("unknown_subject", False),
+    ("same_own_fact", False),
+    ("same_unassigned_fact", False),
+    ("same_other_fact", True),
+    ("same_forbidden_fact", True),
+    ("no_first_person", False),
+    ("paraphrase", False),
+])
+@pytest.mark.asyncio
+async def test_exact_first_person_source_guard_is_narrow(monkeypatch, context, case, blocked):
+    clause = "18:52前都不在我手里"
+    context["character"].update(id="tang", name="唐芮")
+    fact = {
+        "id": "f_card", "text": f"4月17日18:42我把0719员工卡借给了赵澄，{clause}。",
+        "first_person_subject": {"id": "lin", "name": "林沅"},
+    }
+    context["facts"] = [fact]
+    context["forbidden_facts"] = []
+    context["exposed_lies"] = []
+    reply_text = f"我看到这条记录了。4月17日18:42，0719员工卡被借给了赵澄，{clause}。别的经过，我不清楚。"
+    if case == "named_source":
+        reply_text = f"林沅说，{clause}。"
+    if case in {"double_quote", "single_quote", "ascii_double_quote", "ascii_single_quote"}:
+        quotes = {"double_quote": ("“", "”"), "single_quote": ("‘", "’"), "ascii_double_quote": ('"', '"'), "ascii_single_quote": ("'", "'")}
+        opening, closing = quotes[case]
+        reply_text = f"材料里写了{opening}{clause}{closing}。"
+    if case == "unrelated_quote":
+        reply_text = f"材料名叫“门卡记录”，{clause}。"
+    if case == "own_subject":
+        fact["first_person_subject"] = {"id": "tang", "name": "唐芮"}
+    if case == "short_clause":
+        fact["text"], reply_text = "我借过卡。", "我借过卡。"
+    if case == "unknown_subject":
+        fact.pop("first_person_subject")
+    if case in {"same_own_fact", "same_unassigned_fact", "same_other_fact", "same_forbidden_fact"}:
+        duplicate = {"id": "f_duplicate", "text": f"{clause}。"}
+        if case == "same_own_fact":
+            duplicate["first_person_subject"] = {"id": "tang", "name": "唐芮"}
+        if case == "same_other_fact":
+            duplicate["first_person_subject"] = {"id": "zhao", "name": "赵澄"}
+        target = context["forbidden_facts"] if case == "same_forbidden_fact" else context["facts"]
+        target.append(duplicate)
+    if case == "no_first_person":
+        fact["text"], reply_text = "卡在18:52前都在赵澄手里。", "卡在18:52前都在赵澄手里。"
+    if case == "paraphrase":
+        reply_text = "卡在18:52前都没有在我身上。"
+    calls = fake_model(monkeypatch, [{"ok": True, "leaked": [], "contradiction": ""}])
+    before = deepcopy(context)
+
+    checked = await agents.check_reply(context, valid_reply(reply=reply_text))
+
+    assert checked == {
+        "ok": not blocked, "leaked": [],
+        "contradiction": "第三方第一人称转述未标来源/主体不清" if blocked else "",
+    }
+    assert len(calls) == (0 if blocked else 1)
+    assert context == before
 
 
 @pytest.mark.asyncio

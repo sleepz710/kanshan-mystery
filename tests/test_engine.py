@@ -265,6 +265,32 @@ def test_first_person_subject_only_marks_unique_admission_owner(engine, case):
     assert state.story == original_story
 
 
+@pytest.mark.parametrize("text", [
+    '梁说“我去了现场”，苏说“我处理过那份记录”。',
+    '梁说‘我去了现场’，苏说‘我处理过那份记录’。',
+    '梁说"我去了现场"，苏说"我处理过那份记录"。',
+    "梁说'我去了现场'，苏说'我处理过那份记录'。",
+])
+def test_quoted_multi_speaker_admission_has_no_whole_fact_subject(engine, text):
+    game_id = start(engine)
+    state = engine.games[game_id]
+    owner, listener = state.story["characters"][:2]
+    fact = {"id": "f_chat", "text": text}
+    state.story["facts"].append(fact)
+    owner["lies"] = [{"id": "l_chat", "claim": "没有这段聊天。", "admit": fact["id"], "until": {"shown": "c1"}}]
+    owner["knows"].append(fact["id"])
+    listener["knows"].append(fact["id"])
+    state.exposed_lies.add("l_chat")
+    original_story = deepcopy(state.story)
+
+    listener_context = engine._context(state, listener["id"], "给我看看聊天。")
+    owner_context = engine._context(state, owner["id"], "请说明聊天。")
+
+    assert next(f for f in listener_context["facts"] if f["id"] == fact["id"]) == fact
+    assert owner_context["exposed_lies"][0]["admit"] == fact
+    assert state.story == original_story
+
+
 @pytest.mark.asyncio
 async def test_failed_check_rewrites_once_and_commits_only_final_reply(engine, monkeypatch, agent_calls):
     checks = iter([False, True])

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 
 from backend import llm
 
@@ -179,7 +180,31 @@ async def reply(context: dict, *, retry_leaked: list[str] | None = None) -> dict
     return _validated_reply(result, context)
 
 
+def _unattributed_first_person(context: dict, reply_text: str) -> bool:
+    character_id = context["character"]["id"]
+    allowed = context["facts"] + [lie["admit"] for lie in context.get("exposed_lies", [])]
+    own_or_unassigned = [
+        fact["text"] for fact in allowed
+        if not fact.get("first_person_subject") or fact["first_person_subject"]["id"] == character_id
+    ]
+    unquoted_reply = re.sub(r"“[^”]*”|‘[^’]*’|\"[^\"]*\"|'[^']*'", "", reply_text)
+    for fact in allowed:
+        subject = fact.get("first_person_subject")
+        if not subject or subject["id"] == character_id or subject["name"] in reply_text:
+            continue
+        for clause in re.split(r"[，,。.;；!?！？\n]+", fact["text"]):
+            clause = clause.strip()
+            if (
+                "我" in clause and len(clause) >= 8 and clause in unquoted_reply
+                and not any(clause in text for text in own_or_unassigned)
+            ):
+                return True
+    return False
+
+
 async def check_reply(context: dict, candidate: dict) -> dict:
+    if _unattributed_first_person(context, candidate["reply"]):
+        return {"ok": False, "leaked": [], "contradiction": "第三方第一人称转述未标来源/主体不清"}
     payload = _actor_material(context)
     payload["forbidden_facts"] = [_fact_material(f) for f in context["forbidden_facts"]]
     payload["allowed_fact_ids"] = list(dict.fromkeys(
