@@ -51,7 +51,8 @@ Storage.prototype.setItem=function(k,v){set.call(this,k,v);if(this===localStorag
 Storage.prototype.removeItem=function(k){remove.call(this,k);if(this===localStorage&&String(k).startsWith('kanshan:'))persist();};
 Storage.prototype.clear=function(){clear.call(this);if(this===localStorage)persist();};
 window.KANSHAN_DESKTOP=true;
-})();</script>'''.replace("INITIAL", initial)
+document.documentElement.classList.add('desktop-window');
+})();</script><link rel="stylesheet" href="/css/window.css"><script src="/js/window.js" defer></script>'''.replace("INITIAL", initial)
 
 
 def game_snapshot(engine):

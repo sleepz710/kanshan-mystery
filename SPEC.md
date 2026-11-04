@@ -361,7 +361,9 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 - 桌面专用 `GET /api/settings` 返回 `{provider,actor_model,writer_model,has_key,key_suffix,configured}`。`PUT /api/settings` 接收 `{provider,api_key?,actor_model,writer_model}`，provider 为 `deepseek` 或 `openai`，同服务省略/留空 key 保留原值，切换服务必须填写新 key。返回同 GET，不返回完整 key。保存后环境变量和本地配置同时更新，后续模型调用立即生效。
 - `POST /api/settings/test` 接收同样的候选配置，使用演员模型发一次最小连接请求，返回 `{ok,message}`，不自动保存。错误只显示固定文案。OpenAI 需明确填写两组模型名称。未配置时创建对局及发送编剧消息返回 503，提示打开 `/settings/`。
   - OpenAI 的 `gpt-5.4` 和 `gpt-5.4-2026-03-05` 连接测试使用 `max_completion_tokens=8` 及 `reasoning_effort=none`，沿用演员的无思考设置。
-- `/settings/` 提供模型设置界面。`window.pywebview.api.quit()` 关闭桌面窗口。首次未配置时桌面直接打开设置页。
+- `/settings/` 提供模型设置界面。首次未配置时桌面直接打开设置页。
+- 桌面窗口使用无边框模式，关闭全窗拖动。各页面复用桌面顶栏，提供独立拖动区、返回首页、最小化、最大化/还原和关闭按钮。首页顶栏透明叠在背景上，其余页面预留顶栏高度。原生应用菜单由页面入口接替。
+- `window.pywebview.api` 提供 `quit()`、`minimize()`、`toggle_maximize()`、`is_maximized()` 和 `start_drag()`。最大化与还原通过 `kanshan:window-state` 事件同步顶栏按钮状态，双击拖动区切换最大化。拖动进入 Windows 原生窗口移动流程，窗口边缘缩放和最大化范围在 Windows 实机验证。
 - 浏览器以 `private_mode=False`、独立 `storage_path` 启动。随机端口之间通过桌面 `PUT /api/desktop/storage` 持久化 `kanshan:*` 字符串键。在每个 HTML 页面原有脚本之前恢复这些键，再同步保存后续 setItem/removeItem/clear。模型 key 从不放 localStorage。桌面按成功游戏请求保存后端局内状态，以便重启续局。
 - `desktop/build.ps1` 使用 PyInstaller onedir 打包为 `dist/看山谜案馆/看山谜案馆.exe`，包含前端、官方剧本、设置页面和图标。Windows 需安装 Edge WebView2 Runtime。
   - 最终交付保留完整目录与 `_internal`，附 `构建来源.json`记录运行时代码提交和指纹，打包验收逐项核对关键模块与源文件。任务19人工修订演示案作为独立文件附在包旁，复制到用户数据目录 `stories/`后加载，沿用各案实测质量标记。

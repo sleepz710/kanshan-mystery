@@ -36,6 +36,18 @@ def test_web_mode_has_no_settings(monkeypatch):
     with TestClient(create_app()) as client:
         assert client.get("/api/settings").status_code == 404
         assert client.put("/api/settings", json=config()).status_code == 404
+        assert '/js/window.js' not in client.get('/').text
+
+
+@pytest.mark.parametrize("path", ["/", "/game.html", "/ending.html", "/studio/", "/share/", "/settings/"])
+def test_desktop_window_controls_are_injected_on_every_page(desktop, path):
+    _, client = desktop
+    page = client.get(path)
+    assert page.status_code == 200
+    assert page.text.count('src="/js/window.js"') == 1
+    assert page.text.count('href="/css/window.css"') == 1
+    assert "document.documentElement.classList.add('desktop-window')" in page.text
+    assert page.text.index('/js/window.js') < page.text.index('</head>')
 
 
 def test_first_start_requires_settings_and_keeps_secrets_private(desktop):

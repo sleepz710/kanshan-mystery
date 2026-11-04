@@ -1,0 +1,41 @@
+/* 首页在画面上叠放窗口按钮，其他页面为工具栏留出高度。 */
+html.desktop-window { --window-bar-height: 40px; }
+.desktop-window body:not(.page-home) { padding-top: var(--window-bar-height); }
+.desktop-window body:not(.page-home) > .app {
+  height: calc(100vh - var(--window-bar-height));
+  height: calc(100dvh - var(--window-bar-height));
+}
+.desktop-window .toc { top: var(--window-bar-height); }
+
+.window-bar {
+  position: fixed; inset: 0 0 auto; z-index: 1000;
+  display: flex; width: 100%; height: var(--window-bar-height); margin: 0; padding: 5px 6px 0; border: 0;
+  background: #101217; color: #8b909b;
+  user-select: none; font: 12px/1 "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+.page-home .window-bar { background: transparent; }
+.window-bar[popover] { max-width: none; max-height: none; overflow: visible; }
+.window-home {
+  display: inline-flex; align-items: center; gap: 6px; padding: 0 12px;
+  color: #bdb6a9; text-decoration: none; border-radius: 4px;
+}
+.window-home svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.window-home:hover { color: #f2d08a; background: rgba(236, 230, 218, .06); }
+.page-home .window-home { display: none; }
+.window-drag { flex: 1; min-width: 0; display: flex; align-items: center; padding-left: 12px; }
+.window-caption { pointer-events: none; letter-spacing: .16em; opacity: .65; }
+.page-home .window-caption { visibility: hidden; }
+.window-controls { display: flex; align-self: stretch; }
+.window-bar .window-button {
+  display: grid; place-items: center; width: 44px; min-height: 0; margin: 0; padding: 0;
+  border: 0; border-radius: 3px; background: transparent; color: #bdb6a9;
+  font: inherit; cursor: pointer; transition: background-color .15s, color .15s;
+}
+.window-bar .window-button:hover { background: rgba(236, 230, 218, .1); color: #fff; }
+.window-bar .window-close:hover { background: #b83e36; color: #fff; }
+.window-bar .window-button:disabled { opacity: .35; cursor: default; }
+.window-bar .window-button:focus-visible, .window-home:focus-visible { outline: 1px solid #e4b35c; outline-offset: -3px; }
+.window-button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1; pointer-events: none; }
+.window-restore, .is-maximized .window-maximize { display: none; }
+.is-maximized .window-restore { display: block; }
+.window-error { position: absolute; right: 150px; top: 14px; color: #f5b2a1; pointer-events: none; }
