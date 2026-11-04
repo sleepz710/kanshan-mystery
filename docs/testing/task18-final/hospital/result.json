@@ -1,0 +1,314 @@
+{
+  "name": "hospital",
+  "material": "我想玩恐怖一点的，医院题材",
+  "model": "deepseek-flash",
+  "quality": "fast",
+  "status": "done",
+  "seconds": 197.45,
+  "prelude_seconds": 5.19,
+  "checked": false,
+  "problems": [
+    "角色 陈国栋（chen）的谎话 l_chen_floor 使用 1 条拆谎线索（c_patrol），全部由本人持有，请将至少 1 条交给其他角色。",
+    "第二问答案“苏雯”缺少身份归属依据：门禁记录只显示KL-07卡被使用，相册与交接本仅证明苏雯23:40至23:50在B1活动，未证明刷卡动作由她本人完成；钥匙23:15被取走、23:55归还也只是时间重合。需补证如苏雯自认持卡刷开或陈国栋/监控目击其刷卡。",
+    "第三问答案“林知远”的直接动作依据不足：现场照片仅显示凶器与死亡区间，周明录音喊“林医生”只证明林在场受威胁，00:52刷卡与手机藏匿也只指向其掩盖。缺失“林持灭火器底座击打”的目击、指纹、血迹归属或认罪，需补其一才能锁定。",
+    "第一问选项D“01:20—01:47”与线索冲突：死亡区间定为00:50—01:10，而林知远01:20藏手机、陈国栋01:47报警均在区间外；若周明在01:20后仍存活，藏手机行为不成立。应删该选项或将其改为“00:31—00:50”等不与现场照片矛盾的区间。",
+    "后续模型调用未完成，保留已经通过程序检查的版本。"
+  ],
+  "error": "检查未全部通过，试玩可能遇到线索或推理问题。",
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1249,
+      "status": "ok",
+      "response_chars": 4566,
+      "seconds": 98.11
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7587,
+      "status": "ok",
+      "response_chars": 6314,
+      "seconds": 16.24
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 14546,
+      "status": "ok",
+      "response_chars": 1828,
+      "seconds": 4.05
+    },
+    {
+      "attempt": 1,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 4958,
+      "status": "ok",
+      "response_chars": 397,
+      "seconds": 3.87
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 626,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 2.68
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 1776,
+      "status": "ok",
+      "response_chars": 59,
+      "seconds": 1.75
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 6257,
+      "status": "ok",
+      "response_chars": 4784,
+      "seconds": 68.45
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7805,
+      "status": "failed",
+      "error": "LLMError",
+      "seconds": 1.71
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "B1层的第二次刷卡",
+      "problems": []
+    },
+    {
+      "title": "B1层的第二次刷卡",
+      "problems": []
+    }
+  ],
+  "talks": [
+    {
+      "character": "lin",
+      "status": "failed",
+      "status_code": 502,
+      "seconds": 1.69
+    },
+    {
+      "character": "su",
+      "status": "failed",
+      "status_code": 502,
+      "seconds": 1.41
+    }
+  ],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "00:50—01:10",
+        "q2": "苏雯",
+        "q3": "林知远"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e_truth",
+          "title": "完整真相",
+          "text": "周明00:31在B1旧冷柜发现赵淑芬遗体，00:56录音里喊出'林医生'；00:52:36林知远刷开B1楼梯门，用旧手术室门口的灭火器底座击打周明后脑致死，取走手机藏进三层医生值班室药品柜。三年前林知远在赵淑芬死亡证明上签'心源性猝死'，伙同陈国栋把遗体藏进B1旧冷柜并长期维持供电；苏雯私取钥匙下B1拍照，是为查外婆死因，但她不是凶手。林知远承担故意杀人、伪造证明文件与非法处置尸体的责任；陈国栋承担帮助毁灭证据、包庇与收受两万元的责任；苏雯私取他人物品、隐瞒下B1的事实，但不是凶手。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "22:40—23:10",
+        "q2": "苏雯",
+        "q3": "林知远"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e_more",
+          "title": "证据仍不足",
+          "text": "现有的记录、照片和证词还不足以把三年前的藏尸、今夜的两次刷卡与周明的死亡串成完整证据链。继续核对门禁记录、现场照片、交接本与周明手机里的内容，再作判断。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "22:40—23:10",
+        "q2": "林知远",
+        "q3": "苏雯"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "e_more",
+          "title": "证据仍不足",
+          "text": "现有的记录、照片和证词还不足以把三年前的藏尸、今夜的两次刷卡与周明的死亡串成完整证据链。继续核对门禁记录、现场照片、交接本与周明手机里的内容，再作判断。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/562336e9a6c8498cbc3035974b535119/messages",
+      "status": 200,
+      "seconds": 5.16
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/562336e9a6c8498cbc3035974b535119/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/562336e9a6c8498cbc3035974b535119/messages",
+      "status": 200,
+      "seconds": 0.58
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.11
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/41523973b3c44d8281678b818b01f474/talk",
+      "status": 502,
+      "seconds": 1.69
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/41523973b3c44d8281678b818b01f474/talk",
+      "status": 502,
+      "seconds": 1.41
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/2a9069a5835241afbc2a8eae2c940682/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/4ac8e0598d4848648d5144a96934b93e/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/f5845ed5550d4d63b521806e92eef322/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-d3b2cec8ba9e4e4295e71973874305a1",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-converged-live-8-20261104\\hospital\\stories\\generated-d3b2cec8ba9e4e4295e71973874305a1.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [
+    "角色 陈国栋（chen）的谎话 l_chen_floor 使用 1 条拆谎线索（c_patrol），全部由本人持有，请将至少 1 条交给其他角色。"
+  ],
+  "endings": {
+    "e_truth": {
+      "title": "完整真相",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "e_more": {
+      "title": "证据仍不足",
+      "retry": true,
+      "when": {},
+      "count": 63,
+      "wrong_count": 63,
+      "wrong_example": {
+        "q1": "22:40—23:10",
+        "q2": "林知远",
+        "q3": "林知远"
+      }
+    }
+  },
+  "opens": true
+}

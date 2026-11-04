@@ -1,0 +1,136 @@
+{
+  "source_commit": "83715fa707a938ac77e39e7fbeff7a3f3888bf32",
+  "generation_flow": "task18-design-first",
+  "task21": "paused",
+  "files": {
+    "backend/studio/service.py": {
+      "sha256": "a0d6ef596b3272fdc4e7f190a8cc4672d9b702ffab0b6d10a6e59971669e8fa3",
+      "compiled_code_matches": true
+    },
+    "backend/studio/check.py": {
+      "sha256": "c86347067b862902aaa5f80ff1718434d968cfc8edfbc1ffd43f524a2f535dd9",
+      "compiled_code_matches": true
+    },
+    "backend/llm.py": {
+      "sha256": "8590b2359b9b5c94405aa6ccbaaf5e0efab9bfa4be57b96503615fff7221c6d6",
+      "compiled_code_matches": true
+    },
+    "backend/engine.py": {
+      "sha256": "cec23ba807933c8feffedc2350d4f561d458137009280b552853aa3580332fd8",
+      "compiled_code_matches": true
+    },
+    "desktop/main.py": {
+      "sha256": "35a2e4ab0620dabd9baba6096191ec3eb10f98b88dec89a6f1b3004ee474bfa9",
+      "compiled_code_matches": true
+    },
+    "desktop/runtime.py": {
+      "sha256": "0736702d9d3c93cc76b2603a7959690526cc0ee646aeaedaf1408b34ccdb7d30",
+      "compiled_code_matches": true
+    },
+    "desktop/settings.py": {
+      "sha256": "8a05dca887032c12f0947b5318f21e00a5c5eae8eabbaac5a71a1e43e8411e7f",
+      "compiled_code_matches": true
+    }
+  },
+  "exe_sha256": "4e43fc7ffb489d8ab21ff6c0437dcdbe687a2f55f2475186f1938e782166f6d2",
+  "exe_bytes": 14401841,
+  "artifact": {
+    "directory": "D:\\阅读周比赛\\看山谜案馆-任务18收敛版-20261104",
+    "zip": "D:\\阅读周比赛\\看山谜案馆-任务18收敛版-20261104.zip",
+    "zip_bytes": 46942984,
+    "zip_sha256": "1215423f1096c5c3ff81f5564b8defdd6caf420374299b45aa2542d05da9d509",
+    "file_count": 2581,
+    "payload_bytes": 96082444,
+    "source_commit": "83715fa707a938ac77e39e7fbeff7a3f3888bf32",
+    "exe_sha256": "4e43fc7ffb489d8ab21ff6c0437dcdbe687a2f55f2475186f1938e782166f6d2",
+    "no_private_key": true,
+    "no_env_or_user_settings": true
+  },
+  "automated_tests": {
+    "passed": 633,
+    "seconds": 16.91,
+    "warnings": 1
+  },
+  "samples": {
+    "demo_samples": {
+      "opened": [
+        {
+          "story_id": "demo-bus-revised",
+          "id": "bb6e7f38d39c46de96c040236ee0e906",
+          "title": "末班车的干伞",
+          "checked": true
+        },
+        {
+          "story_id": "demo-hotel-revised",
+          "id": "5b0d840566384b8f880d052b05876386",
+          "title": "汐潮馆的第七位住客",
+          "checked": true
+        },
+        {
+          "story_id": "demo-tide-revised",
+          "id": "1a4da641bd9b478286e141be84e31906",
+          "title": "潮汐第七人",
+          "checked": true
+        }
+      ],
+      "port": 27576,
+      "model_calls": 0,
+      "restart_port": 2017,
+      "same_games_restored": true,
+      "checked_preserved": true
+    }
+  },
+  "source_shutdown": [
+    {
+      "case": "cancel",
+      "directory": "D:\\阅读周比赛\\kanshan-task20-final-20261104\\.cache\\shutdown-latest\\cancel-1793773058273097400",
+      "pid": 20892,
+      "port": 5389,
+      "close_seconds": 5.181,
+      "published": 0,
+      "job_status": "failed",
+      "pending_after": 0,
+      "backend_thread_finished": true,
+      "port_released": true,
+      "sdk_calls": 0
+    },
+    {
+      "case": "save",
+      "directory": "D:\\阅读周比赛\\kanshan-task20-final-20261104\\.cache\\shutdown-latest\\save-1793773071021915400",
+      "pid": 6884,
+      "port": 7430,
+      "close_seconds": 6.289,
+      "published": 1,
+      "job_status": "done",
+      "pending_after": 0,
+      "backend_thread_finished": true,
+      "port_released": true,
+      "sdk_calls": 0
+    }
+  ],
+  "final_exe_new_generation": {
+    "completed": false,
+    "reason": "DeepSeek HTTP402 at material dialogue before job creation",
+    "time": "2026-11-04 14:16:20 Asia/Shanghai"
+  },
+  "independent_windows_without_python": {
+    "completed": false,
+    "next": "User acceptance on another computer"
+  },
+  "delivery_integrity": {
+    "zip_crc_passed": true,
+    "exe_sha256_matches": true,
+    "all_program_files_byte_equal": true,
+    "three_sample_files_byte_equal_to_task19": true
+  },
+  "delivered_exe_menu": {
+    "delivered_exe_started": true,
+    "settings": true,
+    "home": true,
+    "exit": true,
+    "exit_code": 0,
+    "port": 43207,
+    "port_released": true,
+    "sdk_calls": 0
+  }
+}
