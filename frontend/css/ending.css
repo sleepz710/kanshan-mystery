@@ -5,6 +5,7 @@
   max-width: 900px; margin: 0 auto;
   padding: max(16px, env(safe-area-inset-top)) clamp(16px, 4vw, 32px) 8px;
 }
+.ending-top .brand { margin-right: auto; }
 
 .ending {
   max-width: 820px; margin: 0 auto;

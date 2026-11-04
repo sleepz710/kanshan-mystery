@@ -1,13 +1,12 @@
 /* 首页：16:9 游戏标题画面。标题、从已有剧场游玩、新建剧场三个视图共用一幅夜山画面，后两个记在 hash 上
    （#cases、#new），浏览器后退回上一个视图。带 ?story=<id> 时直接开局。 */
 (() => {
-  const { h, icon, api, store, chats, toast, ApiError } = window.KS;
+  const { h, icon, api, store, chats, toast, ApiError, sound } = window.KS;
   const DESIGN_W = 1600;
   const DESIGN_H = 900;
   const POLL_MS = 3000;
   // 失败的生成在「我的剧场」留半天，之后只在编剧页的对话记录里看得到
   const FAILED_KEEP_MS = 12 * 3600 * 1000;
-  const SOUND_KEY = 'kanshan:sound';
   const PROVIDERS = { deepseek: 'DeepSeek', openai: 'OpenAI' };
   const VIEWS = { '#cases': 'cases', '#new': 'new' };
 
@@ -58,95 +57,6 @@
     }
     $('lamps').replaceChildren(...lamps);
   }
-
-  // ---------- 声音 ----------
-
-  const sound = (() => {
-    let prefs = { music: true, sfx: true };
-    try {
-      prefs = { ...prefs, ...JSON.parse(localStorage.getItem(SOUND_KEY)) };
-    } catch {
-      // 读不到本地存储（隐私模式）或记录坏了，用默认的全开
-    }
-    const bgm = new Audio('/assets/audio/bgm.mp3');
-    bgm.loop = true;
-    bgm.volume = 0.3;
-    let ctx = null;
-
-    // 浏览器要等玩家先点一下或按个键才肯出声
-    function afterGesture(fn) {
-      const once = () => {
-        removeEventListener('pointerdown', once, true);
-        removeEventListener('keydown', once, true);
-        fn();
-      };
-      addEventListener('pointerdown', once, true);
-      addEventListener('keydown', once, true);
-    }
-
-    function playMusic() {
-      if (!prefs.music) return;
-      bgm.play().catch((error) => {
-        if (error.name === 'NotAllowedError') afterGesture(playMusic);
-        // 曲子还没放进 frontend/assets/audio/ 时不显示音乐开关
-        else if (error.name === 'NotSupportedError') $('toggle-music').hidden = true;
-        // 关音乐打断了还没开始的播放
-        else if (error.name !== 'AbortError') throw error;
-      });
-    }
-
-    // 菜单音效用 Web Audio 现合成：[频率, 起点, 时长, 音量]。移动一声轻响，确认两声上行，返回两声下行
-    const TONES = {
-      move: [[880, 0, 0.07, 0.025]],
-      confirm: [[660, 0, 0.12, 0.05], [990, 0.07, 0.2, 0.05]],
-      back: [[660, 0, 0.1, 0.045], [440, 0.06, 0.18, 0.045]],
-    };
-
-    function sfx(name) {
-      if (!prefs.sfx || !navigator.userActivation.hasBeenActive) return;
-      ctx = ctx || new AudioContext();
-      if (ctx.state === 'suspended') ctx.resume();
-      const now = ctx.currentTime;
-      for (const [freq, delay, length, peak] of TONES[name]) {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0.0001, now + delay);
-        gain.gain.exponentialRampToValueAtTime(peak, now + delay + 0.01);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + length);
-        osc.connect(gain).connect(ctx.destination);
-        osc.start(now + delay);
-        osc.stop(now + delay + length + 0.02);
-      }
-    }
-
-    function render() {
-      for (const [key, id] of [['music', 'toggle-music'], ['sfx', 'toggle-sfx']]) {
-        $(id).setAttribute('aria-pressed', String(prefs[key]));
-        $(id).querySelector('b').textContent = prefs[key] ? '开' : '关';
-      }
-    }
-
-    function toggle(key) {
-      prefs[key] = !prefs[key];
-      try {
-        localStorage.setItem(SOUND_KEY, JSON.stringify(prefs));
-      } catch {
-        // 存不下时开关只在这一页有效
-      }
-      render();
-      if (key === 'music') {
-        if (prefs.music) playMusic();
-        else bgm.pause();
-      } else sfx('confirm');
-    }
-
-    $('toggle-music').addEventListener('click', () => toggle('music'));
-    $('toggle-sfx').addEventListener('click', () => toggle('sfx'));
-    render();
-    return { sfx, playMusic };
-  })();
 
   // ---------- 视图与菜单 ----------
 
@@ -602,7 +512,6 @@
     launch.hidden = true;
     setSending(false);
     render();
-    sound.playMusic();
     loadStories();
     if (!pollTimer && chats.list().some(chats.runningJob)) pollPending();
   });
@@ -617,7 +526,6 @@
   shelves.replaceChildren(h('div', { class: 'shelf-state' }, '正在打开档案柜……'));
   render();
   showQuit();
-  sound.playMusic();
   loadSettings();
   const storyId = new URLSearchParams(location.search).get('story');
   if (storyId) startGame(storyId, { replace: true });

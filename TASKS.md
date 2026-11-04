@@ -461,6 +461,17 @@
     - 没装 Noto Serif SC / Noto Sans SC 的电脑退回宋体和微软雅黑，字重和参考图不同。
     - 桌面版没填 key 时 `desktop/main.py` 仍直接打开设置页(任务 20 的过渡逻辑，未改)。
 
+### 22 全局背景音乐
+
+- 进展:
+  - 2026-11-04:Codex 从最新 `origin/main`（`2f5d717`）建立 `task/22-global-music`。首页音乐及菜单音效抽到 `frontend/js/music.js`，首页、游戏页、结局页和编剧页统一引入；三个内页增加同款图标开关，继续共用 `kanshan:sound`，音乐和音效默认开启。
+  - `pagehide` 把播放位置写入 sessionStorage `kanshan:music:position`，下页加载音频元数据后从该位置继续；历史返回和其他标签页修改开关时同步设置。音频未加载成功时隐藏音乐按钮，菜单音效仍可用。
+  - 桌面入口在加载 WebView2 前向 `WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS` 追加 `--autoplay-policy=no-user-gesture-required`，保留原参数；网页版被拦截时仍等首次点击或按键。补充参数为空及已有参数两种启动回归。
+  - 验证:完整 `pytest -q --ignore=data -o cache_dir=data/.pytest_cache-task22-final --basetemp=data/pytest-task22-final` 808 项通过；`node --check` 两个声音相关脚本、`git diff --check` 通过。data 是运行数据与旧缓存，未纳入测试收集。
+  - Chrome 模拟模式实际走完首页 → 招牌案件 → 问话一轮 → 结局 → 首页，播放位置分别以 52.39→53.30、85.47→85.79、129.63→129.84 秒接续；静音后历史返回结局、进入编剧页均保持关闭，编剧页重新开启后回首页继续播放。首页菜单音效和首次点击后播放正常。用独立测试服务令音频返回 404，首页隐藏音乐按钮且菜单正常。
+  - 实际运行修改后的 `desktop.main`，使用独立测试配置且模型调用为零；未对桌面窗口点击或按键，播放器从 2.86 秒推进到 4.86 秒，音量 0.3、未静音，WebView2 `IsDocumentPlayingAudio=true`，窗口无障碍状态同时显示「音频正在播放」。原浏览器参数保留。证据在本地 `data/task22-qa/desktop-result.json`，不入库。
+  - 下一步:用户试玩并在 GitHub 合并 PR。其他人的 `docs/STATUS.md`、`docs/story-*.md`、`stories/touqi*` 及同期新增剧本未修改、未暂存。
+
 <!-- 新任务模板
 ### NN 任务名
 
