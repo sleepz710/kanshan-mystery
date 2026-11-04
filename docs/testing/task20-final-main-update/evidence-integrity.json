@@ -1,0 +1,363 @@
+{
+  "checked_at_utc": "2026-11-04T15:31:17.439351+00:00",
+  "runtime_compilation_source": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "resource_source": "6a2b0b0ce45e3d76d4a92d0e50730f5b1cff79d7",
+  "private_key_matches": 0,
+  "json_syntax_files_checked": 84,
+  "v4_raw_design_yaml_review_sha_bindings": true,
+  "manifest_self_excluded": true,
+  "files": {
+    "docs/testing/task20-role-package/intent-controls/background-states.json": {
+      "bytes": 14556,
+      "sha256": "44d664ddaf36202041cf64726e3130b0a53c7c997dcc6ee70eed6b87583e4903"
+    },
+    "docs/testing/task20-role-package/intent-controls/contract-corrected-assessment.json": {
+      "bytes": 11594,
+      "sha256": "8ccc13442894d3fab786c17dd840e0884b471c26aa08b6fdaa9e7b916dc52351"
+    },
+    "docs/testing/task20-role-package/intent-controls/correct_previous_size.json": {
+      "bytes": 18608,
+      "sha256": "c5a9520f48bdf3195d7251781cba41ed7e6a377b906a5d4ded8bf8f943a3cd9c"
+    },
+    "docs/testing/task20-role-package/intent-controls/discuss_without_start.json": {
+      "bytes": 6422,
+      "sha256": "309ae1257fef03dfef243c257927a3245d2487dbd9d6524dd8e1f7b7c22eba48"
+    },
+    "docs/testing/task20-role-package/intent-controls/original_bookstore.json": {
+      "bytes": 7128,
+      "sha256": "be52b58a2f25b96828af9856a60c706f95d289149853c8c8d95f23e419bb886d"
+    },
+    "docs/testing/task20-role-package/intent-controls/original_hospital.json": {
+      "bytes": 5188,
+      "sha256": "0ac50456f30a3d797000399bd2c49131f189d7cecd0087159611181936feaec1"
+    },
+    "docs/testing/task20-role-package/intent-controls/seen_answer_wants_new.json": {
+      "bytes": 6200,
+      "sha256": "12b553fceacf27126e214d3407d9eaf2a5c7a4bc587fe64fe9d73356d8283faf"
+    },
+    "docs/testing/task20-role-package/intent-controls/setup.json": {
+      "bytes": 848,
+      "sha256": "7991c1eaae99e895849c8bba731b70b1003564099ffff47e091666e47ee6cad3"
+    },
+    "docs/testing/task20-role-package/intent-controls/summary.json": {
+      "bytes": 13648,
+      "sha256": "f99f1cccfdec81b956b7348d18b17c25b9bd2cd4e1794e7dd53c7361736e47af"
+    },
+    "docs/testing/task20-role-package/intent-controls/wire-model-checks.json": {
+      "bytes": 1263,
+      "sha256": "928a04c41abe3695ddec8a509785885bf0d9fc76fd8ca46d29533f9cf7ef6472"
+    },
+    "docs/testing/task20-role-package/production-intent-controls/background-states.json": {
+      "bytes": 30021,
+      "sha256": "6dfa4c1f268310e029f70905dcb6773fa52c68c58f1105feb578eac1a4eaa739"
+    },
+    "docs/testing/task20-role-package/production-intent-controls/correct_previous_size.json": {
+      "bytes": 8147,
+      "sha256": "c2a298bf0c37a7278867b056210cd6b12673f26a7b43eb38c130dfe12f06acfa"
+    },
+    "docs/testing/task20-role-package/production-intent-controls/discuss_without_start.json": {
+      "bytes": 5974,
+      "sha256": "f801b89d3ab1dc89a7cb124435b7b913823bce1f0ca4424d31d30894a61dedcf"
+    },
+    "docs/testing/task20-role-package/production-intent-controls/expected-plan.json": {
+      "bytes": 1870,
+      "sha256": "7adb37016156562f8bf40a4561384ac9da2ee1f59d625b79a72fb76d906f9b4d"
+    },
+    "docs/testing/task20-role-package/production-intent-controls/original_bookstore.json": {
+      "bytes": 6974,
+      "sha256": "9bf1e4e3ef7c4d7b63946d1bdbf17ebd3923753b52561f8b335b58d92b6dda49"
+    },
+    "docs/testing/task20-role-package/production-intent-controls/original_hospital.json": {
+      "bytes": 5349,
+      "sha256": "5d80ef82ea12f5d01bb56247b4db40d0c8f548a7cc88cccce9f4c6a45de85227"
+    },
+    "docs/testing/task20-role-package/production-intent-controls/pipeline-assessment.json": {
+      "bytes": 14536,
+      "sha256": "65703e375d3ac2900e31f804b9fa5b85feb39056bc82915c4c1b978b66e1f69a"
+    },
+    "docs/testing/task20-role-package/production-intent-controls/seen_answer_wants_new.json": {
+      "bytes": 6289,
+      "sha256": "adb16036751870abf6314f4132ead649d748a6c66945320d06b06e498ec678a3"
+    },
+    "docs/testing/task20-role-package/production-intent-controls/summary.json": {
+      "bytes": 9281,
+      "sha256": "f2cfe1bc9769a3538d184692d223014a95a2053780a7b46382efe4f0403234c2"
+    },
+    "docs/testing/task20-role-package/production-intent-controls/wire-model-checks.json": {
+      "bytes": 1563,
+      "sha256": "d24aa9b674be8a08c6e2e1251f4bf758aa9d32699df44cc928ff6da0fed6ffd1"
+    },
+    "docs/testing/task20-role-package/production-intent-controls-size-continuation/background-states.json": {
+      "bytes": 1114,
+      "sha256": "e5e8f0aacf53234655152a8c4193a33d9abf19ec8c9a4e64b1ac4d20ec4d9679"
+    },
+    "docs/testing/task20-role-package/production-intent-controls-size-continuation/correct_previous_size.json": {
+      "bytes": 15172,
+      "sha256": "1aadb195d367e33b4d7d0ba2ccafb92c1738dbb4401353dbd49aa38585ee556b"
+    },
+    "docs/testing/task20-role-package/production-intent-controls-size-continuation/expected-plan.json": {
+      "bytes": 962,
+      "sha256": "ed53998255e4715591b0f5c7e6bbe8a4db60fa696ae21dffb4611c4c8b8c61fa"
+    },
+    "docs/testing/task20-role-package/production-intent-controls-size-continuation/summary.json": {
+      "bytes": 4379,
+      "sha256": "28af9f19bed44f47eaf38ccc783252e13d98696e59242a260736a5a5bbe843ae"
+    },
+    "docs/testing/task20-role-package/production-intent-controls-size-continuation/wire-model-checks.json": {
+      "bytes": 318,
+      "sha256": "a4fe51fbb105b95d15ee27d9e234a01f92352ed0a5803f7b115bdaeb5662811f"
+    },
+    "docs/testing/task20-role-v2/asgi-after.json": {
+      "bytes": 333,
+      "sha256": "780174cff711f6949fd5c2146fe9dac12b58d9e668907ca1944139418737b20e"
+    },
+    "docs/testing/task20-role-v2/asgi-before.json": {
+      "bytes": 330,
+      "sha256": "a510ade155e93e3f7d410b90344ccd9051bb863aaea93dbabba281350fb3cb34"
+    },
+    "docs/testing/task20-role-v2/automated-tests.json": {
+      "bytes": 358,
+      "sha256": "97c279c6fbe0b49e5ca3362bd7b5f6eb4be458e97d9d73d8ce07b733d00e3e29"
+    },
+    "docs/testing/task20-role-v2/build-provenance.json": {
+      "bytes": 8241,
+      "sha256": "be41de517828a19cb0215fb249d8f5769a9fa3801a0900b9d88b5da9ea54e724"
+    },
+    "docs/testing/task20-role-v2/default-appdata.json": {
+      "bytes": 937,
+      "sha256": "9de2c4a338cba350783d914937df4f614d2baa194cb1ccb6ce088359969a9790"
+    },
+    "docs/testing/task20-role-v2/exe-live.json": {
+      "bytes": 9404,
+      "sha256": "c3b667b571ba3a025ae8b4357d44ae51ae0e3353cff4a7894536cbe2b7f56469"
+    },
+    "docs/testing/task20-role-v2/exe-samples.json": {
+      "bytes": 727,
+      "sha256": "7df5adebb687717b57351f27505e71a3e32257da8dfad72fa4900475f464a74b"
+    },
+    "docs/testing/task20-role-v2/final-material-timeout.json": {
+      "bytes": 3625,
+      "sha256": "fa3b8f14ab27a0b54952e8729b3f670950251cc5c5fcb112da7ab0283a59aee4"
+    },
+    "docs/testing/task20-role-v2/generated-bookstore.yaml": {
+      "bytes": 12361,
+      "sha256": "6abafc319f6627eb8f61d9dc81938b0ffb918dd0f740ba7b5c772b61c6acec67"
+    },
+    "docs/testing/task20-role-v2/generated-case-checks.json": {
+      "bytes": 11787,
+      "sha256": "db6a261ed023e6e7966ab91c03858b7d1e984f10505e125495b9b895b21949c7"
+    },
+    "docs/testing/task20-role-v2/generation-design-round2.json": {
+      "bytes": 11094,
+      "sha256": "2e2ad1a3105f451ef62b2e1d98559d9f12a5894c4e90d8f9a677755f2d6866c9"
+    },
+    "docs/testing/task20-role-v2/generation-step-ledger.json": {
+      "bytes": 2179,
+      "sha256": "f1ae60f443ce5a676fdb186ee6e03feba779bd51e351329937b5332ababd4a7e"
+    },
+    "docs/testing/task20-role-v2/intermediate-job.json": {
+      "bytes": 169,
+      "sha256": "25cc8898fd56acf9bf656bb17d57ec8f4f752dbb2512544b342ea5509d6f3b5d"
+    },
+    "docs/testing/task20-role-v2/material-observer-diagnostic.json": {
+      "bytes": 610,
+      "sha256": "4d49f7e2bd186d31a86896930f43c34a494b05e7d8cc13c04b8f90e7e2095334"
+    },
+    "docs/testing/task20-role-v2/narrative-review.json": {
+      "bytes": 6269,
+      "sha256": "1c15f08839b284eab11ce09e573ce575716882a1960047c39279e813f2226753"
+    },
+    "docs/testing/task20-role-v2/provider-design-status.json": {
+      "bytes": 2242,
+      "sha256": "16dd0f0b3fb4931c9b3200a30b30124ad7c0a1ced0141d5530f4ed23e05bb858"
+    },
+    "docs/testing/task20-role-v2/shutdown-events.json": {
+      "bytes": 3590,
+      "sha256": "ef11518de576f17ccb64915446f3cff0e20f4ae84e44fc42112ab4440f46f69f"
+    },
+    "docs/testing/task20-role-v3/automated-tests.json": {
+      "bytes": 447,
+      "sha256": "f7bb65cd40d5e1aefff5f399ccef00d44515569ad060db78727a2ba5fe693b35"
+    },
+    "docs/testing/task20-role-v3/build-provenance.json": {
+      "bytes": 9143,
+      "sha256": "587f17cf661b10d0faa8bf1fd87070dd28b04631312e91e94ade61c7856be95b"
+    },
+    "docs/testing/task20-role-v3/default-appdata.json": {
+      "bytes": 933,
+      "sha256": "53a207c01e30e2cc9c32852a0b202669b6c74cb3d87ba035dae47053d169b676"
+    },
+    "docs/testing/task20-role-v3/exe-live.json": {
+      "bytes": 10051,
+      "sha256": "720d72ff4edbd377c6720992496bccb4d6f6b3cca93a5706643acb42c2426e90"
+    },
+    "docs/testing/task20-role-v3/exe-samples.json": {
+      "bytes": 727,
+      "sha256": "164ba3b11154fb34655e6d58dfcbe984e8af19b41d523206c1afcbb54643c7bc"
+    },
+    "docs/testing/task20-role-v3/first-start-before-fix.json": {
+      "bytes": 929,
+      "sha256": "a67ab454c776167470ef7275078038aaa83e6206d99b823ddf15e83b7b2932ca"
+    },
+    "docs/testing/task20-role-v3/generated-case-checks.json": {
+      "bytes": 22249,
+      "sha256": "c02a0600f39b069db2af3022074c38dfb523aa806a6c7303f1a37fc2d954bfe9"
+    },
+    "docs/testing/task20-role-v3/generated-hospital.yaml": {
+      "bytes": 12052,
+      "sha256": "152ce50947ceee7c8d9c6703963e7132d62a10c3beef60e2ca4d84e7e709128d"
+    },
+    "docs/testing/task20-role-v3/generation-design.json": {
+      "bytes": 11589,
+      "sha256": "7d2071cea32a92e71fcaac7496e451a6e543361c5b624bb8fb676c14e774aa6b"
+    },
+    "docs/testing/task20-role-v3/generation-step-ledger.json": {
+      "bytes": 1873,
+      "sha256": "dfff057c10fdef722dde2b7c1bf4bcded770fc1c0807572864eea71a075bda31"
+    },
+    "docs/testing/task20-role-v3/narrative-review.json": {
+      "bytes": 24683,
+      "sha256": "38f243fb950f6148d830977fe3c4154a966dfd98c9d53d23e4c5e67d15326902"
+    },
+    "docs/testing/task20-role-v3/provider-design-status.json": {
+      "bytes": 648,
+      "sha256": "c75e998ba3fd9a4f5df10dbf5ef62d95cd313d432de6b42cc787c351816915ac"
+    },
+    "docs/testing/task20-role-v3/shutdown-events.json": {
+      "bytes": 3447,
+      "sha256": "4bee982edda5fe447586ede5dcfd18583bf3fadc088ec337c3a72f0aa8054f26"
+    },
+    "docs/testing/task20-role-v3/unsafe-port-before.json": {
+      "bytes": 708,
+      "sha256": "aaebe66a93e9d413087ef3cb27b3b7ec9070ca3bdd63b8ea682d2bddf1a97cfd"
+    },
+    "docs/testing/task20-role-v3/v2-artifact-change.json": {
+      "bytes": 16737,
+      "sha256": "1e0f5fc6ef318840b6448790737b4ebcf31cdd18643056ef1ffadd4636733552"
+    },
+    "docs/testing/task20-frameless-quality/artifact-source-audit.json": {
+      "bytes": 32842,
+      "sha256": "d098b8b1f458644090b3027f5efb7f71908c686132b1708a9434582a6344a677"
+    },
+    "docs/testing/task20-frameless-quality/automated-tests.json": {
+      "bytes": 182,
+      "sha256": "5c154619e422486796d768f521a702b88c97c39af67979c4a2ed53629389fd07"
+    },
+    "docs/testing/task20-frameless-quality/build-provenance.json": {
+      "bytes": 9468,
+      "sha256": "75e28b9fcb68fbda9b650e3e00011b96b17d5470b31380f610b7db4d4e821139"
+    },
+    "docs/testing/task20-frameless-quality/exe-live-v4.json": {
+      "bytes": 11007,
+      "sha256": "b30fe0b59ecea4c0a0705c5977ad252964b52a61166d92ba31a79b0774f770d8"
+    },
+    "docs/testing/task20-frameless-quality/game-1280x720.png": {
+      "bytes": 277969,
+      "sha256": "d8637145d5a73b11a0a4f263e80116a4256ccf2f2ab78164832011f06e754e40"
+    },
+    "docs/testing/task20-frameless-quality/generated-case-checks-v4.json": {
+      "bytes": 671,
+      "sha256": "e46297567c6b22fde8b8fbea162687098398e65a56d8a93df43c9f8dce04c4f4"
+    },
+    "docs/testing/task20-frameless-quality/generated-hospital-v4.yaml": {
+      "bytes": 12482,
+      "sha256": "af489c54f4ba53266d51fd867f156a38b55b3a09e8a446ece665f0468432e53d"
+    },
+    "docs/testing/task20-frameless-quality/generation-fill-rejection-context.json": {
+      "bytes": 24759,
+      "sha256": "8471957039852cb82d4efc4304dfa8549527a5b3b5c85c1aaafc0cc354a3a8d0"
+    },
+    "docs/testing/task20-frameless-quality/generation-initial-fill-rejections.json": {
+      "bytes": 234,
+      "sha256": "a71c879f5ad21758718cf795929f903e24b39a993fa09ab6e2afa91b2e670223"
+    },
+    "docs/testing/task20-frameless-quality/generation-selected-design.json": {
+      "bytes": 19115,
+      "sha256": "a2bfee4eedd35083603a8c4bd1aff10dec6150b7375e049478b537738d6a182c"
+    },
+    "docs/testing/task20-frameless-quality/generation-step-ledger-v4.json": {
+      "bytes": 2320,
+      "sha256": "f016db0499a036afaadba0f7a6bca255f7bd6397f9e55f65ce010423db40ba90"
+    },
+    "docs/testing/task20-frameless-quality/live-close-driver-observation.json": {
+      "bytes": 745,
+      "sha256": "cd1e02b0bb305d7c8339f22a714e6d8ddb71cbf815ab4b1530e63478b5ab0456"
+    },
+    "docs/testing/task20-frameless-quality/narrative-review-v4.json": {
+      "bytes": 23162,
+      "sha256": "087f3791ee258725b55ecae1388c3175beea32c04b7c963b09acfe4c8453d4e0"
+    },
+    "docs/testing/task20-frameless-quality/offline-ui-compatibility-driver-trial1.json": {
+      "bytes": 2283,
+      "sha256": "d97a5ada35b21e581ed3d30c76f87eb85d36cb37ef1c665264dc9989cd1ca0dc"
+    },
+    "docs/testing/task20-frameless-quality/offline-ui-compatibility-driver-trial2.json": {
+      "bytes": 2137,
+      "sha256": "1dc9734b11ee4e7213b45c73b54c06b3ff5dc61aedf860aeda7aa89ac0b0ffeb"
+    },
+    "docs/testing/task20-frameless-quality/offline-ui-compatibility-driver-trial3.json": {
+      "bytes": 6154,
+      "sha256": "9f6d0ca71a564023a1290fb16fe605b09fd1e52c520529c14ca06be29b94d1c8"
+    },
+    "docs/testing/task20-frameless-quality/offline-ui-compatibility.json": {
+      "bytes": 13577,
+      "sha256": "d81f96a1c510ce3601a05ee657c0d6711439310e933f8986daefaf726618746c"
+    },
+    "docs/testing/task20-frameless-quality/root-artifact-verification.json": {
+      "bytes": 485,
+      "sha256": "50e323dda2e9d87f69331503dce36835f7f83494de388eb8fefa40b8cfbda8ee"
+    },
+    "docs/testing/task20-frameless-quality/source-audit.json": {
+      "bytes": 1113,
+      "sha256": "982db33b50b345a404b5fa148f611e5573f115e281e51a1c2e134867cba12b50"
+    },
+    "docs/testing/task20-frameless-quality/v4-close-recovery-events.json": {
+      "bytes": 1855,
+      "sha256": "57ae42bd24981272af13f3f01300477ab3da75fdcc0a45c1c2125ebfc95fb185"
+    },
+    "docs/testing/task20-final-main-update/artifact-source-audit.json": {
+      "bytes": 30286,
+      "sha256": "1dbeb86f0b00b9fd3e599a8907c845cacf09d88cf80b957bfc0f83d1b572843e"
+    },
+    "docs/testing/task20-final-main-update/automated-tests.json": {
+      "bytes": 385,
+      "sha256": "d6f00522f15ceeb4f60bd8b12a5c5895db201696d306e4e222088a9845547535"
+    },
+    "docs/testing/task20-final-main-update/build-provenance.json": {
+      "bytes": 10092,
+      "sha256": "e03703be362421370864b3ca66c0b29dd7580cf41677daab6604e5aa9190b731"
+    },
+    "docs/testing/task20-final-main-update/generation-close-driver-trial1.json": {
+      "bytes": 1354,
+      "sha256": "a826461de15cd471d3d6765ac2efa75beea6f786f563ba22fac5de5512334db4"
+    },
+    "docs/testing/task20-final-main-update/generation-close-recovery.json": {
+      "bytes": 2889,
+      "sha256": "88e94a1551ba568d2a4b3de8ba3f1bd797c9228397cae33e196cd84193b832ba"
+    },
+    "docs/testing/task20-final-main-update/offline-main-update.json": {
+      "bytes": 5428,
+      "sha256": "31e2133f4da1d4574b943c507aea91267028b4c3d325c9f47bdee77dfddabe9f"
+    },
+    "docs/testing/task20-final-main-update/resource-refresh-audit.json": {
+      "bytes": 49728,
+      "sha256": "6a0551e43c11785fc968fa20e4ae603c2eabc72d959d2c7f31e08341fde72773"
+    },
+    "docs/testing/task20-final-main-update/resources-build-provenance.json": {
+      "bytes": 11172,
+      "sha256": "94a9035064443a97ab61ac728c55e8e0d823d36351874b49088a03324b6a03ea"
+    },
+    "docs/testing/task20-final-main-update/root-artifact-verification.json": {
+      "bytes": 1108,
+      "sha256": "c386c11cf8ab775bba5a1df5ce465cd0de67e667ae78b32c36ba6e3d94a79838"
+    },
+    "docs/testing/task20-final-main-update/root-resources-artifact-verification.json": {
+      "bytes": 858,
+      "sha256": "3817931da99e95808d4f3aceba58fa2eabf89e4641680b24adf308514c5dac57"
+    },
+    "docs/testing/task20-final-main-update/source-audit.json": {
+      "bytes": 25727,
+      "sha256": "5b4dfa72802d6d270d51399dd0d351b4aedc4a98dc5f7cea0e3bfbc942349149"
+    }
+  }
+}
