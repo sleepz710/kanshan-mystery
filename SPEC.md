@@ -332,6 +332,16 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 - 运行:`pip install -r requirements.txt`,`uvicorn backend.app:app --reload`,打开 http://localhost:8000。
 - 运行:本地 `uvicorn` 或桌面版(任务 20),不部署公网。每个玩家用自己的 key:网页版写在 `.env`,桌面版在「模型设置」里填。`deploy/` 保留本地启动和局域网口令保护脚本。
 
+### 桌面版
+
+- `python -m desktop.main` 启动 1600×900 的 Edge WebView2 窗口，最小 1280×720。同一进程内后台运行一个 uvicorn，预绑定 `127.0.0.1:0` 获得随机空闲端口。关闭窗口等待后端按 6.9 收尾。
+- `KANSHAN_DESKTOP=1` 由桌面入口设置。数据根目录取 `KANSHAN_DATA_DIR`，默认 `%APPDATA%/KanshanMystery`，包含 `stories/`、`drafts/`、模型 `config.json`、`browser-storage.json`、`games.json`、`webview/` 和日志。资源目录只读。网页版未设置环境变量时仍用项目 `data/`。
+- 桌面专用 `GET /api/settings` 返回 `{provider,actor_model,writer_model,has_key,key_suffix,configured}`。`PUT /api/settings` 接收 `{provider,api_key?,actor_model,writer_model}`，provider 为 `deepseek` 或 `openai`，同服务省略/留空 key 保留原值，切换服务必须填写新 key。返回同 GET，不返回完整 key。保存后环境变量和本地配置同时更新，后续模型调用立即生效。
+- `POST /api/settings/test` 接收同样的候选配置，使用演员模型发一次最小连接请求，返回 `{ok,message}`，不自动保存。错误只显示固定文案。OpenAI 需明确填写两组模型名称。未配置时创建对局及发送编剧消息返回 503，提示打开 `/settings/`。
+- `/settings/` 提供模型设置界面。`window.pywebview.api.quit()` 关闭桌面窗口。首次未配置时桌面直接打开设置页。
+- 浏览器以 `private_mode=False`、独立 `storage_path` 启动。随机端口之间通过桌面 `PUT /api/desktop/storage` 持久化 `kanshan:*` 字符串键。在每个 HTML 页面原有脚本之前恢复这些键，再同步保存后续 setItem/removeItem/clear。模型 key 从不放 localStorage。桌面按成功游戏请求保存后端局内状态，以便重启续局。
+- `desktop/build.ps1` 使用 PyInstaller onedir 打包为 `dist/看山谜案馆/看山谜案馆.exe`，包含前端、官方剧本、设置页面和图标。Windows 需安装 Edge WebView2 Runtime。
+
 ## 8. 正确性评测
 
 - 引擎:单元测试覆盖各种条件、拆穿、保底、提示阶段、结局匹配。

@@ -12,6 +12,24 @@
 
 ## 快速运行
 
+### Windows 桌面版
+
+下载并解压完整的 `看山谜案馆` 文件夹，双击 `看山谜案馆.exe`。首次打开进入「模型设置」，选择 DeepSeek 或 OpenAI，填写自己的 API key 和模型名称，点击「测试连接」，保存后开始探案。OpenAI 的演员和编剧模型名称需按账号可用模型填写。电脑需有 Microsoft Edge WebView2 Runtime。
+
+窗口顶部的「应用」菜单可打开模型设置、返回首页或退出。程序数据默认写入 `%APPDATA%\KanshanMystery\`，包含模型配置、生成剧本、草稿、对局与编剧记录、浏览器存储和日志。`KANSHAN_DATA_DIR` 可指定独立的数据目录。设置里的 key 保存在用户目录的 `config.json`，请妥善保管该文件。更新时替换程序文件夹即可保留用户数据。
+
+从源码运行与打包：
+
+```powershell
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r desktop/requirements.txt
+.venv\Scripts\python.exe -m desktop.main
+# 关闭程序后构建可分发的文件夹
+powershell -ExecutionPolicy Bypass -File desktop/build.ps1 -Python .venv\Scripts\python.exe
+```
+
+产物在 `dist\看山谜案馆\看山谜案馆.exe`，分发整个目录。应用使用随机本机端口和独立窗口，窗口关闭时等待后端完成正在进行的原子保存。再次打开时会恢复本机对局和编剧记录。Web 版开发运行方式如下。
+
 需要 Python 3.11+。首次获取代码：
 
 ```bash

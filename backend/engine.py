@@ -13,6 +13,7 @@ from uuid import uuid4
 import yaml
 from backend import agents, kanshan
 from backend.llm import LLMError
+from backend.paths import data_root
 
 
 class GameError(Exception):
@@ -56,7 +57,7 @@ class GameEngine:
     def __init__(self, stories_dir: Path | None = None, generated_stories_dir: Path | None = None):
         root = Path(__file__).resolve().parents[1]
         self.stories_dir = (Path(stories_dir) if stories_dir is not None else root / "stories").resolve()
-        self.generated_stories_dir = (Path(generated_stories_dir) if generated_stories_dir is not None else root / "data" / "stories").resolve()
+        self.generated_stories_dir = (Path(generated_stories_dir) if generated_stories_dir is not None else data_root() / "stories").resolve()
         self.games: dict[str, GameState] = {}
         self._locks: dict[str, asyncio.Lock] = {}
 

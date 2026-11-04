@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>模型设置 · 看山谜案馆</title>
+<link rel="icon" href="/assets/logo.svg"><link rel="stylesheet" href="/css/base.css">
+<style>
+body{margin:0;min-height:100vh;background:#101614;color:#e8e4d8;font-family:system-ui,"Microsoft YaHei",sans-serif}main{max-width:720px;margin:7vh auto;padding:36px;background:#19211e;border:1px solid #415048;border-radius:18px}h1{font-size:30px;margin:8px 0}p{color:#aebaaf;line-height:1.8}label{display:block;margin-top:20px;font-size:15px}input,select{box-sizing:border-box;width:100%;padding:13px;margin-top:8px;border-radius:7px;border:1px solid #536354;background:#101614;color:#f1f0e8;font:inherit}small{color:#afbdaf}button,a.button{display:inline-block;padding:12px 22px;border:1px solid #b7c685;border-radius:7px;background:#d0d6a8;color:#182019;font:inherit;text-decoration:none;cursor:pointer}button.secondary,a.button{background:transparent;color:#dce3cd}button:disabled{opacity:.5;cursor:wait}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}#message{min-height:28px;margin-top:18px;white-space:pre-line}#message.error{color:#f5b2a1}.models{display:grid;grid-template-columns:1fr 1fr;gap:20px}@media(max-width:760px){main{margin:20px;padding:24px}.models{grid-template-columns:1fr}}
+</style></head><body><main>
+<small>看山谜案馆</small><h1>模型设置</h1><p>连接你自己的模型服务，开始与案件中的人物对话。密钥保存在这台电脑的用户数据目录里。</p>
+<form id="settings"><label>模型服务<select id="provider"><option value="deepseek">DeepSeek</option><option value="openai">OpenAI</option></select></label>
+<label>API key<input id="key" type="password" autocomplete="off" placeholder="填写 API key"><small id="saved-key"></small></label>
+<div class="models"><label>演员模型<input id="actor" required value="deepseek-flash"></label><label>编剧模型<input id="writer" required value="deepseek-flash"></label></div>
+<p>演员负责人物对话和核查，编剧负责生成案件。OpenAI 的模型名称请按你的账号可用模型填写。</p>
+<div class="actions"><button id="save" type="submit">保存并开始</button><button id="test" class="secondary" type="button">测试连接</button><a class="button" href="/">返回首页</a></div>
+<p id="message" role="status" aria-live="polite"></p></form>
+</main><script>
+const $=id=>document.getElementById(id); let savedProvider='deepseek';
+function message(text,error=false){$('message').textContent=text;$('message').className=error?'error':'';}
+function input(){return {provider:$('provider').value,api_key:$('key').value||null,actor_model:$('actor').value,writer_model:$('writer').value};}
+async function call(method,path,body){const response=await fetch(path,{method,headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});const data=await response.json();if(!response.ok)throw Error(typeof data.detail==='string'?data.detail:'设置内容不完整，请检查后重试。');return data;}
+function show(data){savedProvider=data.provider;$('provider').value=data.provider;$('actor').value=data.actor_model;$('writer').value=data.writer_model;$('key').value='';$('saved-key').textContent=data.has_key?'已保存末四位 '+data.key_suffix+'，留空可保留。':'尚未配置密钥。';}
+$('provider').onchange=()=>{const deep=$('provider').value==='deepseek';$('actor').value=deep?'deepseek-flash':'';$('writer').value=deep?'deepseek-flash':'';$('key').value='';$('saved-key').textContent=$('provider').value===savedProvider?'留空可保留已保存的密钥。':'切换服务需要填写新的 API key。';};
+async function perform(test){$('save').disabled=$('test').disabled=true;message(test?'正在测试连接……':'正在保存……');try{const data=await call(test?'POST':'PUT',test?'/api/settings/test':'/api/settings',input());if(test)message(data.message,!data.ok);else{show(data);message('保存成功，正在进入谜案馆。');location.assign('/');}}catch(error){message(error.message,true);}finally{$('save').disabled=$('test').disabled=false;}}
+$('settings').onsubmit=e=>{e.preventDefault();perform(false);};$('test').onclick=()=>perform(true);
+call('GET','/api/settings').then(show).catch(error=>message(error.message,true));
+</script></body></html>

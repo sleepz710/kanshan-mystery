@@ -1,6 +1,7 @@
 """任务 02：游戏接口与前端静态文件入口。"""
 
 from pathlib import Path
+import os
 from typing import Annotated, Literal
 
 from fastapi import FastAPI, Request
@@ -12,6 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from backend.engine import GameEngine, GameError
 from backend.llm import LLMError
 from backend.studio import mount_studio
+from backend.paths import data_root
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -154,7 +156,7 @@ def create_app(
     )
     engine = GameEngine(
         stories_dir=stories_dir or PROJECT_ROOT / "stories",
-        generated_stories_dir=generated_stories_dir or PROJECT_ROOT / "data" / "stories",
+        generated_stories_dir=generated_stories_dir or data_root() / "stories",
     )
     application.state.engine = engine
 
@@ -224,6 +226,10 @@ def create_app(
             })
         return response
 
+    if os.environ.get("KANSHAN_DESKTOP") == "1":
+        from desktop.runtime import mount_desktop
+
+        mount_desktop(application)
     return application
 
 

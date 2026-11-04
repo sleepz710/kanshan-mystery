@@ -31,7 +31,8 @@ class LLMError(RuntimeError):
 def is_mock_mode() -> bool:
     """读取固定项目目录的 .env，进程环境变量优先；默认模拟模式。"""
 
-    load_dotenv(_ENV_FILE, override=False, encoding="utf-8")
+    if os.environ.get("KANSHAN_DESKTOP") != "1":
+        load_dotenv(_ENV_FILE, override=False, encoding="utf-8")
     mode = os.environ.get("LLM_MOCK", "1").strip()
     if mode not in {"0", "1"}:
         raise LLMError("LLM_MOCK 需要填写 0 或 1。", status_code=503)
