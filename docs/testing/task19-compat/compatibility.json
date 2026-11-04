@@ -1,8 +1,8 @@
 {
-  "generated_utc": "2026-11-04T07:10:09.535704+00:00",
+  "generated_utc": "2026-11-04T07:18:27.796602+00:00",
   "mode": "offline HTTP replay of previously accepted actor and confrontation outputs",
   "real_model_calls": 0,
-  "source_commit": "e471cb6a53ee9f59e4448282d8e8613b7439bc50",
+  "source_commit": "30180444163ea3df16ce4014dde5fd4bbbd9d32b",
   "source_runtime_dirty": false,
   "source_sha256": {
     "backend/engine.py": "cec23ba807933c8feffedc2350d4f561d458137009280b552853aa3580332fd8",
@@ -10,7 +10,7 @@
     "backend/app.py": "b28b20ba39f946570f0340a37324e6a53d46cacf52a6becdcfbd05248a87c579",
     "backend/llm.py": "8590b2359b9b5c94405aa6ccbaaf5e0efab9bfa4be57b96503615fff7221c6d6",
     "backend/studio/check.py": "2eaa99b5713d7e30b1c17e7fbfd9b4b3f2d0a1c96689529ab9de62e123fdaeab",
-    "backend/studio/service.py": "8ea709c42c6d899b4ca9c5b118a677351b2138a4665665e90395118ebd83ada2"
+    "backend/studio/service.py": "eb51a65e65b8ce7e075cf2f0c516bad315c1b8d7710ebcd49d9c0f2948a1a4dd"
   },
   "cases": [
     {
