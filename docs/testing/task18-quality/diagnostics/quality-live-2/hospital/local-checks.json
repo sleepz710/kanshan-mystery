@@ -1,0 +1,32 @@
+[
+  {
+    "title": "三号柜里的院长",
+    "problems": [
+      "角色 lin.secrets[0].until.shown 须引用 clues.id，c_badghao 未在剧本中定义。",
+      "角色 lin.secrets[1].until.shown 须引用 clues.id，c_badghao 未在剧本中定义。",
+      "角色 lin.secrets[2].until.shown 须引用 clues.id，c_badghao 未在剧本中定义。",
+      "lin 的秘密 f_lin_identity 不在 knows 中。",
+      "角色 lin.secrets[4].until.shown 须引用 clues.id，f_lin_identity 属于 facts.id。"
+    ]
+  },
+  {
+    "title": "三号柜里的院长",
+    "problems": []
+  },
+  {
+    "title": "三号柜里的院长",
+    "problems": []
+  },
+  {
+    "title": "三楼旧手术室",
+    "problems": []
+  },
+  {
+    "title": "三楼旧手术室",
+    "problems": []
+  },
+  {
+    "title": "三楼旧手术室",
+    "problems": []
+  }
+]

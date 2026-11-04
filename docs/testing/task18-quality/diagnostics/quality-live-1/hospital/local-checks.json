@@ -1,0 +1,38 @@
+[
+  {
+    "title": "暴雨夜的旧手术室",
+    "problems": []
+  },
+  {
+    "title": "暴雨夜的旧手术室",
+    "problems": []
+  },
+  {
+    "title": "暴雨夜的旧手术室",
+    "problems": []
+  },
+  {
+    "title": "雨夜旧楼：四楼手术室的监控缺口",
+    "problems": [
+      "格式 characters.0.secrets.0.until.has2：Extra inputs are not permitted。",
+      "格式 clues.7.requires.shown2：Extra inputs are not permitted。",
+      "格式 clues.8.requires.has2：Extra inputs are not permitted。",
+      "格式 kanshan.hints.1.done.shown：Extra inputs are not permitted。",
+      "格式 kanshan.hints.2.done.shown：Extra inputs are not permitted。",
+      "格式 kanshan.hints.3.done.shown：Extra inputs are not permitted。",
+      "格式 kanshan.hints.4.done.shown：Extra inputs are not permitted。",
+      "格式 kanshan.hints.5.done.shown：Extra inputs are not permitted。"
+    ]
+  },
+  {
+    "title": "雨夜旧楼：四楼手术室的监控缺口",
+    "problems": []
+  },
+  {
+    "title": "雨夜旧楼：四楼手术室的监控缺口",
+    "problems": [
+      "格式 clues.7.requires.shown_2：Extra inputs are not permitted。",
+      "格式 clues.8.requires.shown_2：Extra inputs are not permitted。"
+    ]
+  }
+]

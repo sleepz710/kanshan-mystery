@@ -1,0 +1,393 @@
+{
+  "runtime_commit": "30180444163ea3df16ce4014dde5fd4bbbd9d32b",
+  "name": "bookstore",
+  "material": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+  "model": "deepseek-flash",
+  "quality": "fast",
+  "status": "done",
+  "seconds": 321.25,
+  "provider_blocked": false,
+  "prelude_seconds": 5.67,
+  "checked": true,
+  "problems": [],
+  "error": null,
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1637,
+      "status": "ok",
+      "response_chars": 3746,
+      "seconds": 109.82
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 6863,
+      "status": "ok",
+      "response_chars": 7094,
+      "seconds": 16.65
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 14719,
+      "status": "ok",
+      "response_chars": 2218,
+      "seconds": 4.4
+    },
+    {
+      "attempt": 1,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 4701,
+      "status": "ok",
+      "response_chars": 228,
+      "seconds": 2.79
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 609,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 2.83
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 1585,
+      "status": "ok",
+      "response_chars": 65,
+      "seconds": 1.34
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 5647,
+      "status": "ok",
+      "response_chars": 4076,
+      "seconds": 77.0
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7193,
+      "status": "ok",
+      "response_chars": 5601,
+      "seconds": 12.83
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13378,
+      "status": "ok",
+      "response_chars": 1140,
+      "seconds": 4.1
+    },
+    {
+      "attempt": 2,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5031,
+      "status": "ok",
+      "response_chars": 567,
+      "seconds": 4.27
+    },
+    {
+      "attempt": 2,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 624,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 2.24
+    },
+    {
+      "attempt": 2,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 1685,
+      "status": "ok",
+      "response_chars": 65,
+      "seconds": 1.28
+    },
+    {
+      "attempt": 3,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 6248,
+      "status": "ok",
+      "response_chars": 4336,
+      "seconds": 59.16
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7453,
+      "status": "ok",
+      "response_chars": 4622,
+      "seconds": 11.78
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 12729,
+      "status": "ok",
+      "response_chars": 1598,
+      "seconds": 4.13
+    },
+    {
+      "attempt": 3,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5291,
+      "status": "ok",
+      "response_chars": 16,
+      "seconds": 1.92
+    },
+    {
+      "attempt": 3,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 624,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 2.76
+    },
+    {
+      "attempt": 3,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 1851,
+      "status": "ok",
+      "response_chars": 65,
+      "seconds": 1.3
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "群山回声调包案",
+      "problems": []
+    },
+    {
+      "title": "群山回声调包案",
+      "problems": []
+    },
+    {
+      "title": "群山回声调包案",
+      "problems": [
+        "最后一个结局必须是不带 when 的兜底结局。"
+      ]
+    },
+    {
+      "title": "群山回声调包案",
+      "problems": []
+    },
+    {
+      "title": "群山回声的空白本",
+      "problems": []
+    },
+    {
+      "title": "群山回声的空白本",
+      "problems": []
+    }
+  ],
+  "talks": [],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "周岚的员工卡和本人",
+        "q2": "21:16—21:18",
+        "q3": "林澄"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end_true",
+          "title": "真相大白",
+          "text": "真书追回，周岚承担调包与赔偿责任，林澄承担指使藏匿和校纪管理责任，许知遥取消代订并受批评。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "林澄的员工卡和本人",
+        "q2": "21:16—21:18",
+        "q3": "林澄"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end_fallback",
+          "title": "证据不足",
+          "text": "现有证据仍不足以完整还原调包经过，部分责任无法落实，需要继续调查。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "林澄的员工卡和本人",
+        "q2": "20:55—20:58",
+        "q3": "周岚"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "end_fallback",
+          "title": "证据不足",
+          "text": "现有证据仍不足以完整还原调包经过，部分责任无法落实，需要继续调查。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/66f4eadec7274538a67c25a1dd925175/messages",
+      "status": 200,
+      "seconds": 5.66
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/66f4eadec7274538a67c25a1dd925175/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/66f4eadec7274538a67c25a1dd925175/messages",
+      "status": 200,
+      "seconds": 0.83
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.05
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/34a87ce152754707a65e3eed1d209bc3/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/22bd3a4dbfa540cdb8063f294c7a2132/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/e4717035c9f24c38a6dbaf793911815b/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-c861632295254772a872f894e82a4a3b",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-quality-live-3-20261104\\bookstore\\stories\\generated-c861632295254772a872f894e82a4a3b.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "endings": {
+    "end_true": {
+      "title": "真相大白",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "end_fallback": {
+      "title": "证据不足",
+      "retry": true,
+      "when": {},
+      "count": 26,
+      "wrong_count": 26,
+      "wrong_example": {
+        "q1": "林澄的员工卡和本人",
+        "q2": "20:55—20:58",
+        "q3": "林澄"
+      }
+    }
+  },
+  "opens": true,
+  "selected_candidate": 3,
+  "design_alignment": []
+}

@@ -1,0 +1,72 @@
+{
+  "runtime_commit": "1d48752e1845acb77db3fbdd537a5057c2fd7ddb",
+  "name": "hospital",
+  "material": "我想玩恐怖一点的，医院题材",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fast",
+  "status": "failed",
+  "seconds": 465.02,
+  "provider_blocked": false,
+  "prelude_seconds": 9.08,
+  "checked": null,
+  "problems": [],
+  "error": "编剧模型服务暂时不可用，请稍后重试。",
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1566,
+      "status": "failed",
+      "error": "ModelTimeoutError",
+      "seconds": 180.01
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1601,
+      "status": "failed",
+      "error": "ModelTimeoutError",
+      "seconds": 180.01
+    },
+    {
+      "attempt": 3,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1638,
+      "status": "failed",
+      "error": "LLMError",
+      "seconds": 104.92
+    }
+  ],
+  "local_checks": [],
+  "talks": [],
+  "accusations": [],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/15704710c4ed41f69b8ef53fe4e9706f/messages",
+      "status": 200,
+      "seconds": 9.05
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/15704710c4ed41f69b8ef53fe4e9706f/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/15704710c4ed41f69b8ef53fe4e9706f/messages",
+      "status": 200,
+      "seconds": 0.61
+    }
+  ]
+}

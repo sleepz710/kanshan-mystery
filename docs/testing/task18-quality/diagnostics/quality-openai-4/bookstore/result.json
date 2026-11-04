@@ -1,0 +1,341 @@
+{
+  "runtime_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
+  "name": "bookstore",
+  "material": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fast",
+  "status": "done",
+  "seconds": 940.89,
+  "provider_blocked": false,
+  "prelude_seconds": 16.15,
+  "checked": false,
+  "problems": [
+    "最深线索仅在第 2 层（c8），不足第 3 层，请增加跨角色出示、拆谎后的解锁链。"
+  ],
+  "error": "检查未全部通过，试玩可能遇到线索或推理问题。",
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1809,
+      "status": "ok",
+      "response_chars": 4119,
+      "seconds": 293.19
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7326,
+      "status": "ok",
+      "response_chars": 5973,
+      "seconds": 38.13
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13834,
+      "status": "ok",
+      "response_chars": 1256,
+      "seconds": 7.63
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13854,
+      "status": "ok",
+      "response_chars": 5848,
+      "seconds": 29.54
+    },
+    {
+      "attempt": 1,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5312,
+      "status": "ok",
+      "response_chars": 16,
+      "seconds": 2.23
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 649,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 5.23
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 1922,
+      "status": "ok",
+      "response_chars": 77,
+      "seconds": 20.25
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 5935,
+      "status": "ok",
+      "response_chars": 4164,
+      "seconds": 402.28
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7371,
+      "status": "ok",
+      "response_chars": 5603,
+      "seconds": 60.77
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13568,
+      "status": "ok",
+      "response_chars": 3766,
+      "seconds": 23.51
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 11686,
+      "status": "ok",
+      "response_chars": 1856,
+      "seconds": 57.08
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "空白本替换案",
+      "problems": [
+        "l1 承认的事实 f15 不在 su_man 的 knows 中。",
+        "l2 承认的事实 f16 不在 lin_che 的 knows 中。"
+      ]
+    },
+    {
+      "title": "空白本替换案",
+      "problems": []
+    },
+    {
+      "title": "空白本替换案",
+      "problems": []
+    },
+    {
+      "title": "3号自提柜里的空白本",
+      "problems": []
+    },
+    {
+      "title": null,
+      "problems": [
+        "格式 title：Field required。",
+        "格式 intro：Field required。",
+        "格式 events：Field required。",
+        "格式 kanshan：Field required。",
+        "格式 ending：Field required。"
+      ]
+    },
+    {
+      "title": "空白本替书",
+      "problems": []
+    }
+  ],
+  "talks": [],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "林澈",
+        "q2": "收银台下退货箱右侧夹层",
+        "q3": "拖到何景错过23:59的城市更新挑战赛提交"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e1",
+          "title": "当场取回原书",
+          "text": "你已拼出完整链条：林澈为拖到何景错过23:59截稿，在21:14把3号柜里的《旧城步行数据手册》换成店内空白素描本，并于21:18把原书藏进收银台下退货箱右侧夹层。凭《收银台平板连续视频》《晚取短信》《林澈的承认录音》与《退货箱夹层取回照片》，何景可以当场取回原书，并以视频、短信和录音追责。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "苏蔓",
+        "q2": "收银台下退货箱右侧夹层",
+        "q3": "拖到何景错过23:59的城市更新挑战赛提交"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e2",
+          "title": "证据仍不足",
+          "text": "你还没把调包者、藏书处与直接目的全部锁定。现有材料不足以完成当场追责，只能继续沿“苏蔓为何隐瞒21:12返店”和“林澈当晚的比赛截稿压力是否属实”两个方向调查。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "苏蔓",
+        "q2": "员工休息室储物柜上层",
+        "q3": "替苏蔓掩盖少记了一本库存"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "e2",
+          "title": "证据仍不足",
+          "text": "你还没把调包者、藏书处与直接目的全部锁定。现有材料不足以完成当场追责，只能继续沿“苏蔓为何隐瞒21:12返店”和“林澈当晚的比赛截稿压力是否属实”两个方向调查。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/a406723f9cd24039aeb0a0f96f287e15/messages",
+      "status": 200,
+      "seconds": 16.14
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/a406723f9cd24039aeb0a0f96f287e15/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/a406723f9cd24039aeb0a0f96f287e15/messages",
+      "status": 200,
+      "seconds": 0.96
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.05
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.01
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/8d352b69235e4cd2b478e119dac6bc97/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/7443b2505b9147d8a83a24e8f417def3/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/e1b1bc8ab3d54d0cb13eec77e52ebc51/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-62069c8631b8465cb8d0539f02f27529",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-quality-openai-4-20261104\\bookstore\\stories\\generated-62069c8631b8465cb8d0539f02f27529.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [
+    "最深线索仅在第 2 层（c8），不足第 3 层，请增加跨角色出示、拆谎后的解锁链。"
+  ],
+  "endings": {
+    "e1": {
+      "title": "当场取回原书",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "e2": {
+      "title": "证据仍不足",
+      "retry": true,
+      "when": {},
+      "count": 26,
+      "wrong_count": 26,
+      "wrong_example": {
+        "q1": "苏蔓",
+        "q2": "收银台下退货箱右侧夹层",
+        "q3": "拖到何景错过23:59的城市更新挑战赛提交"
+      }
+    }
+  },
+  "opens": true,
+  "selected_candidate": 1,
+  "design_alignment": []
+}

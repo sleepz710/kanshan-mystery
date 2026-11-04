@@ -1,0 +1,52 @@
+[
+  {
+    "title": "3号格里的空白本",
+    "problems": []
+  },
+  {
+    "title": "3号格里的空白本",
+    "problems": []
+  },
+  {
+    "title": "3号格里的空白本",
+    "problems": [
+      "c_storebox 拿不到：条件 {'shown': 'c_monitor', 'has': 'c_cheng_photo', 'exposed': 'l_lin_alibi'} 无法从开局满足，检查依赖环。",
+      "c_storebook 拿不到：条件 {'shown': 'c_seal', 'has': 'c_storebox'} 无法从开局满足，检查依赖环。",
+      "l_lin_alibi 拆不穿：条件 {'shown': 'c_storebox'} 无法满足。",
+      "lin 的秘密 f_lin_damage 无法解锁。",
+      "l_zhou_seal 拆不穿：条件 {'shown': 'c_seal', 'has': 'c_storebook'} 无法满足。",
+      "zhou 的秘密 f_zhou_open 无法解锁。"
+    ]
+  },
+  {
+    "title": "空白预订格",
+    "problems": [
+      "格式 clues.6.requires.shown：Input should be a valid string。",
+      "格式 events.1.when.shown：Input should be a valid string。"
+    ]
+  },
+  {
+    "title": "空白预订格",
+    "problems": []
+  },
+  {
+    "title": "空白预订格",
+    "problems": []
+  },
+  {
+    "title": "空白本调包案",
+    "problems": [
+      "格式 clues.7.requires.shown_2：Extra inputs are not permitted。"
+    ]
+  },
+  {
+    "title": "空白本调包案",
+    "problems": []
+  },
+  {
+    "title": "空白本调包案",
+    "problems": [
+      "格式 clues.7.requires.has2：Extra inputs are not permitted。"
+    ]
+  }
+]

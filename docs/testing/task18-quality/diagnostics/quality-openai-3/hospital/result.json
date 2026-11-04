@@ -1,0 +1,270 @@
+{
+  "runtime_commit": "d2813a53686ef1472eb58e22c45a7f071104a380",
+  "name": "hospital",
+  "material": "我想玩恐怖一点的，医院题材",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fast",
+  "status": "done",
+  "seconds": 370.13,
+  "provider_blocked": false,
+  "prelude_seconds": 24.64,
+  "checked": false,
+  "problems": [
+    "第2题答案依据把《患者腕带》列入，但该题断言仅是“赵成在01:34报告了什么发现”。这句话已被《护士站对讲录音》直接完整记录；《患者腕带》只能补证腕带物证存在，不能证明赵成当时就是这样报告。若坚持双证，应把题干改为“该发现后来被什么物证印证”，否则删除《患者腕带》避免证据与断言错位。",
+    "只看汤面就答对超过一半结局题，汤面透露过多答案。"
+  ],
+  "error": "检查未全部通过，试玩可能遇到线索或推理问题。",
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1624,
+      "status": "ok",
+      "response_chars": 4327,
+      "seconds": 170.7
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7554,
+      "status": "ok",
+      "response_chars": 6426,
+      "seconds": 43.47
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 14634,
+      "status": "ok",
+      "response_chars": 6813,
+      "seconds": 35.86
+    },
+    {
+      "attempt": 1,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5471,
+      "status": "ok",
+      "response_chars": 160,
+      "seconds": 4.7
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 743,
+      "status": "ok",
+      "response_chars": 125,
+      "seconds": 109.24
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 2070,
+      "status": "ok",
+      "response_chars": 125,
+      "seconds": 5.97
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "停尸间拍门声",
+      "problems": []
+    },
+    {
+      "title": "停尸间拍门声",
+      "problems": []
+    }
+  ],
+  "talks": [],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "许闻用绿色氧气瓶击打赵成",
+        "q2": "停尸间里有人拍门，而那人手上还戴着17床王建民的腕带",
+        "q3": "王建民01:11仍有心电波形，许闻却已把他按死亡患者接收入停尸间，并在01:44撤销登记"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end1",
+          "title": "拍门声的源头",
+          "text": "你还原了关键链条：01:34赵成报告停尸间里有人拍门，且拍门者戴着17床王建民的腕带；这说明王建民当时并未作为真正的死者安置，而是被活着送进了地下二层。01:42病理取材室监控拍下许闻提起绿色氧气瓶击打赵成。再结合17床心电监护截图与死亡登记更改单，可以确定王建民在01:11仍有心电波形，许闻却已在01:12把他按死亡患者接收入停尸间A，并在01:44撤销登记。许闻为掩盖自己00:48私自加用丙泊酚及错误送入停尸间的违规行为，在赵成发现异常后杀人灭口；林芷01:46下楼拿走腕带，何敬则在01:34得知异常后延迟上报。所谓“停尸间拍门声”，正是仍然活着的王建民在求救。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "何敬用警棍击打赵成",
+        "q2": "停尸间里有人拍门，而那人手上还戴着17床王建民的腕带",
+        "q3": "王建民01:11仍有心电波形，许闻却已把他按死亡患者接收入停尸间，并在01:44撤销登记"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end2",
+          "title": "证据链仍有缺口",
+          "text": "你已经摸到异常的轮廓，但还没把“谁在取材室动手”“停尸间里是谁在拍门”“许闻究竟想掩盖什么”三件事同时钉死。继续补齐门禁、对讲、监护、登记更改与取材室监控之间的对应关系，才能让凶手无从抵赖。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "何敬用警棍击打赵成",
+        "q2": "林芷把绿色氧气瓶搬进了停尸间",
+        "q3": "王建民在00:48已经死亡，何敬私自把遗体送进了取材室"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "end2",
+          "title": "证据链仍有缺口",
+          "text": "你已经摸到异常的轮廓，但还没把“谁在取材室动手”“停尸间里是谁在拍门”“许闻究竟想掩盖什么”三件事同时钉死。继续补齐门禁、对讲、监护、登记更改与取材室监控之间的对应关系，才能让凶手无从抵赖。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/308eed0c26f949b198c5dbcd7d3f8a09/messages",
+      "status": 200,
+      "seconds": 24.6
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/308eed0c26f949b198c5dbcd7d3f8a09/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/308eed0c26f949b198c5dbcd7d3f8a09/messages",
+      "status": 200,
+      "seconds": 0.62
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.09
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/93dd120a0f9b45e5a6462de9deee95dd/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.07
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/223689cd0c6343968f258b76a8e7f852/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.05
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/e751ceb652a04e6e912a0c748be96e87/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-0bf101b8bc6449808259d3e5d007d26f",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-quality-openai-3-20261104\\hospital\\stories\\generated-0bf101b8bc6449808259d3e5d007d26f.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "endings": {
+    "end1": {
+      "title": "拍门声的源头",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "end2": {
+      "title": "证据链仍有缺口",
+      "retry": true,
+      "when": {},
+      "count": 26,
+      "wrong_count": 26,
+      "wrong_example": {
+        "q1": "许闻用绿色氧气瓶击打赵成",
+        "q2": "停尸间里有人拍门，而那人手上还戴着17床王建民的腕带",
+        "q3": "王建民在00:48已经死亡，何敬私自把遗体送进了取材室"
+      }
+    }
+  },
+  "opens": true,
+  "selected_candidate": 1,
+  "design_alignment": []
+}

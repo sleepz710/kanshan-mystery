@@ -1,0 +1,1521 @@
+{
+  "story_id": "generated-0f0d971dbeb34a9c9da3f650a80e5a2d",
+  "title": "B-3里的空白书",
+  "review_type": "独立人工核对设计、编译稿与真实完整角色试玩",
+  "runtime_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
+  "selected_candidate": 1,
+  "raw_checked": {
+    "result": true,
+    "story": true,
+    "modified": false
+  },
+  "sources": {
+    "selected-design.json": {
+      "path": "selected-design.json",
+      "sha256": "c6f89fe184b84a0066f052d433574a8f47be1e401e1ec1b721bc39e836c1d0f6"
+    },
+    "story.yaml": {
+      "path": "story.yaml",
+      "sha256": "17f2d87167e833874f9ab53511fbcf515cccd52f73fc91c02e201763a3f6c8b6"
+    },
+    "playthrough.json": {
+      "path": "playthrough.json",
+      "sha256": "c561fbf39ef26457e03ecca1b38596b5684c8937991e0552c64a3274783502f0"
+    },
+    "result.json": {
+      "path": "result.json",
+      "sha256": "e6ca9131df6198b41d07db75fe2b495212e8df857d26346a30210d9e386d2cd7"
+    }
+  },
+  "playthrough": {
+    "file": "playthrough.json",
+    "complete": true,
+    "steps": 21,
+    "all_clues": [
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c8"
+    ],
+    "all_exposed": [
+      "l1",
+      "l2"
+    ],
+    "all_secrets_unlocked": true,
+    "note": "精修首轮双候选，使用result.selected_candidate=1及selected-design.json对应稿，其他候选未混入本验收。"
+  },
+  "manual": {
+    "core_pass": true,
+    "all_three_questions_sufficient": true,
+    "initial_replies_core_secret_leak_found": false,
+    "initial_reply_review_steps": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "strict_dialogue_gate_pass": true,
+    "strict_speaker_consistency_pass": false,
+    "conclusion": "逐题核心证据与完整结局断言充分，实际口供瑕疵按known_narrative_issues单列。"
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "4月17日闭店后，谁在什么时间打开预订柜B-3取走了《街字解剖》？",
+      "answer": "赵澄在18:48打开B-3取走了《街字解剖》",
+      "design_evidence": [
+        "外卖柜自拍短视频",
+        "电子柜开锁记录",
+        "借书与转账聊天记录"
+      ],
+      "clue_evidence": [
+        {
+          "id": "c4",
+          "title": "外卖柜自拍短视频",
+          "holder_id": "tangrui",
+          "holder": "唐芮",
+          "facts": "唐芮手机原视频拍摄于2026-04-17 18:42，前镜头自拍，后方玻璃反光中可见林沅把挂着号码0719的绿色员工卡递给赵澄；赵澄左臂夹着一本白色厚本。",
+          "requires": {
+            "trust": 1
+          },
+          "obtained_steps": [
+            9
+          ]
+        },
+        {
+          "id": "c6",
+          "title": "电子柜开锁记录",
+          "holder_id": "linyuan",
+          "holder": "林沅",
+          "facts": "林沅于2026-04-18 09:34从值班机导出的日志显示：员工卡0719登记人为林沅；2026-04-17 18:48:12，0719打开预订柜B-3；18:49:03，B-3关门；18:52:11，0719刷开员工后门离店。",
+          "requires": {
+            "exposed": "l1"
+          },
+          "obtained_steps": [
+            10
+          ]
+        },
+        {
+          "id": "c7",
+          "title": "借书与转账聊天记录",
+          "holder_id": "tangrui",
+          "holder": "唐芮",
+          "facts": "唐芮与赵澄的微信截图显示：2026-04-17 18:20唐芮发“《街字解剖》借我一晚，我给你200，拍完就还”；19:01赵澄回“行，我把预订柜那本拿出来了，柜里先塞个空白样书，明早开门前换回”；19:03唐芮向赵澄转账200元，备注“借书”。",
+          "requires": {
+            "shown": "c6",
+            "has": "c5"
+          },
+          "obtained_steps": [
+            15
+          ]
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 9,
+          "action": "talk",
+          "character_id": "tangrui",
+          "character": "唐芮",
+          "input": {
+            "character_id": "tangrui",
+            "text": "请交给我《外卖柜自拍短视频》，并说明这份材料中你亲历的事实。"
+          },
+          "quote": "可以，这段《外卖柜自拍短视频》我交给你。是我在2026-04-17 18:42用手机前镜头拍的，属于我亲自拍到的内容；视频后方玻璃反光里，能看见林沅把挂着0719的绿色员工卡递给赵澄，赵澄左臂夹着一本白色厚本。",
+          "events": [],
+          "permissions_before": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          },
+          "permissions_after": {
+            "facts": [
+              "f3",
+              "f7"
+            ],
+            "locked_secrets": [
+              "f10",
+              "f11"
+            ]
+          },
+          "exposed_before": [],
+          "exposed_after": []
+        },
+        {
+          "step": 10,
+          "action": "show",
+          "character_id": "linyuan",
+          "character": "林沅",
+          "input": {
+            "character_id": "linyuan",
+            "clue_id": "c4"
+          },
+          "quote": "……不成立了。那张0719员工卡我确实在4月17日18:42借给了赵澄，18:52前都不在我手里。你要当场核查的话，这份电子柜开锁记录我可以交给你，上面能对上0719之后开过B-3，也刷开过员工后门。",
+          "events": [
+            {
+              "type": "exposed",
+              "character": "linyuan",
+              "lie": "l1",
+              "text": "林沅的说法被拆穿了。已确认：4月17日18:42我把0719员工卡借给了赵澄，18:52前都不在我手里。"
+            }
+          ],
+          "permissions_before": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "permissions_after": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "exposed_before": [],
+          "exposed_after": [
+            "l1"
+          ]
+        },
+        {
+          "step": 16,
+          "action": "show",
+          "character_id": "zhaocheng",
+          "character": "赵澄",
+          "input": {
+            "character_id": "zhaocheng",
+            "clue_id": "c7"
+          },
+          "quote": "……对，这件事我得认。我之前那句不成立了。唐芮确实提过给我200元，借《街字解剖》一晚去拍参考页；我也确实在18:48开了B-3，把陈添预订的那本拿出来，先塞了空白样书。",
+          "events": [
+            {
+              "type": "exposed",
+              "character": "zhaocheng",
+              "lie": "l2",
+              "text": "赵澄的说法被拆穿了。已确认：我18:48开了B-3，把陈添预订的《街字解剖》拿出来，先塞了空白样书。"
+            }
+          ],
+          "permissions_before": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "permissions_after": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          },
+          "exposed_before": [
+            "l1"
+          ],
+          "exposed_after": [
+            "l1",
+            "l2"
+          ]
+        },
+        {
+          "step": 20,
+          "action": "talk",
+          "character_id": "zhaocheng",
+          "character": "赵澄",
+          "input": {
+            "character_id": "zhaocheng",
+            "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+          },
+          "quote": "我更正：我之前说自己没开过B-3、没碰过那本预订书，这话是假的。真实情况是，17:54我和林沅登记到货的唯一一册《街字解剖》，条码S2298，放进了电子预订柜B-3。后来唐芮主动提要付我200元，借这本书一晚拍作品集参考页。我动了这个心思，就在18:48开了B-3，把陈添预订的真书拿出来，先塞了一本空白样书进去。再往后，那本条码S2298的真书在21:12被唐芮寄存在校内快递柜7号，收件人是我。之前我没说实话，就是想把这事遮过去。",
+          "events": [],
+          "permissions_before": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "permissions_after": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "exposed_before": [
+            "l1",
+            "l2"
+          ],
+          "exposed_after": [
+            "l1",
+            "l2"
+          ]
+        }
+      ],
+      "manual": {
+        "core_sufficient": true,
+        "reason": "c4直接拍到林沅18:42把0719卡交给赵澄，林沅step10确认借卡至18:52。c6记录该卡18:48打开B-3，c7赵澄聊天明确承认取出预订书并替换，赵澄step16与step20确认18:48本人实施。卡片登记人、持有人和具体动作由独立材料及实际口供相互印证。",
+        "missing_required_evidence": [],
+        "actual_unsolved_gap": false
+      }
+    },
+    {
+      "id": "q2",
+      "text": "被放回B-3顶替真书的到底是什么？",
+      "answer": "赵澄16:05领出的陈列空白样书D-14",
+      "design_evidence": [
+        "空白样书内封标签",
+        "展示样书领用单",
+        "借书与转账聊天记录"
+      ],
+      "clue_evidence": [
+        {
+          "id": "c3",
+          "title": "空白样书内封标签",
+          "holder_id": "linyuan",
+          "holder": "林沅",
+          "facts": "次日从B-3取出的替代品第一页全空白，内封资产贴写有“陈列样书D-14，无内页”，背面铅笔备注“4/17 16:05 赵澄领用”。",
+          "requires": {},
+          "obtained_steps": [
+            4
+          ]
+        },
+        {
+          "id": "c5",
+          "title": "展示样书领用单",
+          "holder_id": "zhaocheng",
+          "holder": "赵澄",
+          "facts": "仓库纸质领用单记载：2026-04-17 16:05，赵澄从样书架领出“陈列样书D-14”1册，去向“前窗排面”，赵澄签名在栏内。",
+          "requires": {
+            "trust": 1
+          },
+          "obtained_steps": [
+            14
+          ]
+        },
+        {
+          "id": "c7",
+          "title": "借书与转账聊天记录",
+          "holder_id": "tangrui",
+          "holder": "唐芮",
+          "facts": "唐芮与赵澄的微信截图显示：2026-04-17 18:20唐芮发“《街字解剖》借我一晚，我给你200，拍完就还”；19:01赵澄回“行，我把预订柜那本拿出来了，柜里先塞个空白样书，明早开门前换回”；19:03唐芮向赵澄转账200元，备注“借书”。",
+          "requires": {
+            "shown": "c6",
+            "has": "c5"
+          },
+          "obtained_steps": [
+            15
+          ]
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 4,
+          "action": "talk",
+          "character_id": "linyuan",
+          "character": "林沅",
+          "input": {
+            "character_id": "linyuan",
+            "text": "你说“闭店后0719员工卡一直在我身上，没人借过。”，这个说法现在还成立吗？请说明能当场核查的材料。"
+          },
+          "quote": "这话我现在还是这么说。闭店后0719员工卡一直在我身上，没人借过。至于你要核查的，当场能看的还有这个：从B-3里拿出来的那本替代品其实不是正常书，内封资产贴写着“陈列样书D-14，无内页”，背面还记了“4/17 16:05 赵澄领用”。你先拿去看。",
+          "events": [],
+          "permissions_before": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "permissions_after": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "exposed_before": [],
+          "exposed_after": []
+        },
+        {
+          "step": 14,
+          "action": "talk",
+          "character_id": "zhaocheng",
+          "character": "赵澄",
+          "input": {
+            "character_id": "zhaocheng",
+            "text": "请交给我《展示样书领用单》，并说明这份材料中你亲历的事实。"
+          },
+          "quote": "可以，这张《展示样书领用单》我交给你。上面记的是2026-04-17 16:05，我从样书架领出过1册“陈列样书D-14”，去向写的是“前窗排面”，签名也是我本人。这个部分是我亲手经办的。",
+          "events": [],
+          "permissions_before": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "permissions_after": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "exposed_before": [
+            "l1"
+          ],
+          "exposed_after": [
+            "l1"
+          ]
+        },
+        {
+          "step": 16,
+          "action": "show",
+          "character_id": "zhaocheng",
+          "character": "赵澄",
+          "input": {
+            "character_id": "zhaocheng",
+            "clue_id": "c7"
+          },
+          "quote": "……对，这件事我得认。我之前那句不成立了。唐芮确实提过给我200元，借《街字解剖》一晚去拍参考页；我也确实在18:48开了B-3，把陈添预订的那本拿出来，先塞了空白样书。",
+          "events": [
+            {
+              "type": "exposed",
+              "character": "zhaocheng",
+              "lie": "l2",
+              "text": "赵澄的说法被拆穿了。已确认：我18:48开了B-3，把陈添预订的《街字解剖》拿出来，先塞了空白样书。"
+            }
+          ],
+          "permissions_before": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "permissions_after": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          },
+          "exposed_before": [
+            "l1"
+          ],
+          "exposed_after": [
+            "l1",
+            "l2"
+          ]
+        },
+        {
+          "step": 20,
+          "action": "talk",
+          "character_id": "zhaocheng",
+          "character": "赵澄",
+          "input": {
+            "character_id": "zhaocheng",
+            "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+          },
+          "quote": "我更正：我之前说自己没开过B-3、没碰过那本预订书，这话是假的。真实情况是，17:54我和林沅登记到货的唯一一册《街字解剖》，条码S2298，放进了电子预订柜B-3。后来唐芮主动提要付我200元，借这本书一晚拍作品集参考页。我动了这个心思，就在18:48开了B-3，把陈添预订的真书拿出来，先塞了一本空白样书进去。再往后，那本条码S2298的真书在21:12被唐芮寄存在校内快递柜7号，收件人是我。之前我没说实话，就是想把这事遮过去。",
+          "events": [],
+          "permissions_before": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "permissions_after": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "exposed_before": [
+            "l1",
+            "l2"
+          ],
+          "exposed_after": [
+            "l1",
+            "l2"
+          ]
+        }
+      ],
+      "manual": {
+        "core_sufficient": true,
+        "reason": "c3是B-3内替代品实物标签，明确为无内页D-14并标赵澄16:05领用。c5仓库领用单有其签名，赵澄step14承认本人经办。c7明确承认将空白样书放回柜中，step16实际改口承认替换。替代物身份、来源和使用动作均可核对。",
+        "missing_required_evidence": [],
+        "actual_unsolved_gap": false
+      }
+    },
+    {
+      "id": "q3",
+      "text": "真书在当晚后来到了哪里？",
+      "answer": "21:12由唐芮寄存在校内快递柜7号，收件人为赵澄",
+      "design_evidence": [
+        "借书与转账聊天记录",
+        "快递柜寄存截图"
+      ],
+      "clue_evidence": [
+        {
+          "id": "c7",
+          "title": "借书与转账聊天记录",
+          "holder_id": "tangrui",
+          "holder": "唐芮",
+          "facts": "唐芮与赵澄的微信截图显示：2026-04-17 18:20唐芮发“《街字解剖》借我一晚，我给你200，拍完就还”；19:01赵澄回“行，我把预订柜那本拿出来了，柜里先塞个空白样书，明早开门前换回”；19:03唐芮向赵澄转账200元，备注“借书”。",
+          "requires": {
+            "shown": "c6",
+            "has": "c5"
+          },
+          "obtained_steps": [
+            15
+          ]
+        },
+        {
+          "id": "c8",
+          "title": "快递柜寄存截图",
+          "holder_id": "tangrui",
+          "holder": "唐芮",
+          "facts": "唐芮手机里的校内快递柜界面显示：2026-04-17 21:12，她向7号柜寄存一本书，收件人手机号尾号5632（赵澄）；寄存照片里能看见《街字解剖》预约卡“陈添/4417”和书背条码S2298。",
+          "requires": {
+            "exposed": "l2"
+          },
+          "obtained_steps": [
+            17
+          ]
+        }
+      ],
+      "actual_testimony": [
+        {
+          "step": 15,
+          "action": "talk",
+          "character_id": "tangrui",
+          "character": "唐芮",
+          "input": {
+            "character_id": "tangrui",
+            "text": "请交给我《借书与转账聊天记录》，并说明这份材料中你亲历的事实。"
+          },
+          "quote": "可以，这份《借书与转账聊天记录》我交给你。这里面能确认的，是我在4月17日18:20主动跟赵澄说想把《街字解剖》借一晚，愿意付200元，拍完作品集参考页就还；19:03那笔200元转账也是我本人付的，备注是“借书”。",
+          "events": [],
+          "permissions_before": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          },
+          "permissions_after": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          },
+          "exposed_before": [
+            "l1"
+          ],
+          "exposed_after": [
+            "l1"
+          ]
+        },
+        {
+          "step": 17,
+          "action": "talk",
+          "character_id": "tangrui",
+          "character": "唐芮",
+          "input": {
+            "character_id": "tangrui",
+            "text": "请交给我《快递柜寄存截图》，并说明这份材料中你亲历的事实。"
+          },
+          "quote": "可以，这张《快递柜寄存截图》我交给你。这里面能确认的，是我在2026-04-17 21:12把那本《街字解剖》寄存在校内快递柜7号，收件人填的是赵澄；寄存照片里能看见书背条码S2298，还有那张预约卡。",
+          "events": [],
+          "permissions_before": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "permissions_after": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "exposed_before": [
+            "l1",
+            "l2"
+          ],
+          "exposed_after": [
+            "l1",
+            "l2"
+          ]
+        },
+        {
+          "step": 18,
+          "action": "show",
+          "character_id": "zhaocheng",
+          "character": "赵澄",
+          "input": {
+            "character_id": "zhaocheng",
+            "clue_id": "c8"
+          },
+          "quote": "我看见了。那本真书后来确实被唐芮寄存在校内快递柜7号，收件人是我，时间是21:12，条码也是S2298。这个我认。",
+          "events": [],
+          "permissions_before": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          },
+          "permissions_after": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "exposed_before": [
+            "l1",
+            "l2"
+          ],
+          "exposed_after": [
+            "l1",
+            "l2"
+          ]
+        },
+        {
+          "step": 21,
+          "action": "talk",
+          "character_id": "tangrui",
+          "character": "唐芮",
+          "input": {
+            "character_id": "tangrui",
+            "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+          },
+          "quote": "我更正一下：我不只是来“找参考书”。实际是我次日要交作品集，急着连夜拍《街字解剖》的参考页，所以主动提出花200元向赵澄借这本书一晚。之后我在21:12把这本真书寄存在校内快递柜7号，收件人写的是赵澄。别的经过里，超出我亲历的部分我不乱说。",
+          "events": [],
+          "permissions_before": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "permissions_after": {
+            "facts": [
+              "f3",
+              "f7",
+              "f10",
+              "f11"
+            ],
+            "locked_secrets": []
+          },
+          "exposed_before": [
+            "l1",
+            "l2"
+          ],
+          "exposed_after": [
+            "l1",
+            "l2"
+          ]
+        }
+      ],
+      "manual": {
+        "core_sufficient": true,
+        "reason": "c8手机寄存记录写明21:12、7号柜、收件人尾号5632赵澄，照片显示真书条码S2298与陈添预约卡。唐芮step17及step21承认本人寄存，赵澄step18确认接收去向，c7解释200元借书及真书转到唐芮手中的动机与关系。",
+        "missing_required_evidence": [],
+        "actual_unsolved_gap": false
+      }
+    }
+  ],
+  "correction_bindings": [
+    {
+      "character_id": "linyuan",
+      "character": "林沅",
+      "lie_id": "l1",
+      "claim": "闭店后0719员工卡一直在我身上，没人借过。",
+      "design_lie": "闭店后0719员工卡一直在我身上，没人借过。",
+      "claim_exact": true,
+      "until": {
+        "shown": "c4"
+      },
+      "admit_fact": "f7",
+      "admit_text": "4月17日18:42我把0719员工卡借给了赵澄，18:52前都不在我手里。",
+      "design_correction": "4月17日18:42我把0719员工卡借给了赵澄，18:52前都不在我手里。",
+      "correction_exact": true,
+      "formal_exposure_steps": [
+        10
+      ],
+      "actual_testimony": [
+        {
+          "step": 10,
+          "action": "show",
+          "character_id": "linyuan",
+          "character": "林沅",
+          "input": {
+            "character_id": "linyuan",
+            "clue_id": "c4"
+          },
+          "quote": "……不成立了。那张0719员工卡我确实在4月17日18:42借给了赵澄，18:52前都不在我手里。你要当场核查的话，这份电子柜开锁记录我可以交给你，上面能对上0719之后开过B-3，也刷开过员工后门。",
+          "events": [
+            {
+              "type": "exposed",
+              "character": "linyuan",
+              "lie": "l1",
+              "text": "林沅的说法被拆穿了。已确认：4月17日18:42我把0719员工卡借给了赵澄，18:52前都不在我手里。"
+            }
+          ],
+          "permissions_before": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6"
+            ],
+            "locked_secrets": [
+              "f7"
+            ]
+          },
+          "permissions_after": {
+            "facts": [
+              "f1",
+              "f4",
+              "f5",
+              "f6",
+              "f7"
+            ],
+            "locked_secrets": []
+          },
+          "exposed_before": [],
+          "exposed_after": [
+            "l1"
+          ]
+        }
+      ]
+    },
+    {
+      "character_id": "zhaocheng",
+      "character": "赵澄",
+      "lie_id": "l2",
+      "claim": "我闭店后没开过预订柜B-3，也没碰过陈添那本预订书。",
+      "design_lie": "我闭店后没开过预订柜B-3，也没碰过陈添那本预订书。",
+      "claim_exact": true,
+      "until": {
+        "shown": "c7"
+      },
+      "admit_fact": "f9",
+      "admit_text": "我18:48开了B-3，把陈添预订的《街字解剖》拿出来，先塞了空白样书。",
+      "design_correction": "我18:48开了B-3，把陈添预订的《街字解剖》拿出来，先塞了空白样书。",
+      "correction_exact": true,
+      "formal_exposure_steps": [
+        16
+      ],
+      "actual_testimony": [
+        {
+          "step": 16,
+          "action": "show",
+          "character_id": "zhaocheng",
+          "character": "赵澄",
+          "input": {
+            "character_id": "zhaocheng",
+            "clue_id": "c7"
+          },
+          "quote": "……对，这件事我得认。我之前那句不成立了。唐芮确实提过给我200元，借《街字解剖》一晚去拍参考页；我也确实在18:48开了B-3，把陈添预订的那本拿出来，先塞了空白样书。",
+          "events": [
+            {
+              "type": "exposed",
+              "character": "zhaocheng",
+              "lie": "l2",
+              "text": "赵澄的说法被拆穿了。已确认：我18:48开了B-3，把陈添预订的《街字解剖》拿出来，先塞了空白样书。"
+            }
+          ],
+          "permissions_before": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8"
+            ],
+            "locked_secrets": [
+              "f9",
+              "f10",
+              "f11"
+            ]
+          },
+          "permissions_after": {
+            "facts": [
+              "f2",
+              "f4",
+              "f8",
+              "f9",
+              "f10"
+            ],
+            "locked_secrets": [
+              "f11"
+            ]
+          },
+          "exposed_before": [
+            "l1"
+          ],
+          "exposed_after": [
+            "l1",
+            "l2"
+          ]
+        }
+      ]
+    }
+  ],
+  "secret_unlocks": [
+    {
+      "character": "林沅",
+      "character_id": "linyuan",
+      "fact": "f7",
+      "text": "4月17日18:42我把0719员工卡借给了赵澄，18:52前都不在我手里。",
+      "until": {
+        "shown": "c4"
+      },
+      "unlocked_steps": [
+        10
+      ],
+      "locked_at_end": false
+    },
+    {
+      "character": "赵澄",
+      "character_id": "zhaocheng",
+      "fact": "f8",
+      "text": "2026-04-17 16:05，赵澄领出陈列空白样书D-14。",
+      "until": {
+        "trust": 1
+      },
+      "unlocked_steps": [
+        13
+      ],
+      "locked_at_end": false
+    },
+    {
+      "character": "赵澄",
+      "character_id": "zhaocheng",
+      "fact": "f9",
+      "text": "我18:48开了B-3，把陈添预订的《街字解剖》拿出来，先塞了空白样书。",
+      "until": {
+        "shown": "c7"
+      },
+      "unlocked_steps": [
+        16
+      ],
+      "locked_at_end": false
+    },
+    {
+      "character": "赵澄",
+      "character_id": "zhaocheng",
+      "fact": "f10",
+      "text": "唐芮主动提出付200元向赵澄借《街字解剖》一晚，用于连夜拍作品集参考页。",
+      "until": {
+        "shown": "c7"
+      },
+      "unlocked_steps": [
+        16
+      ],
+      "locked_at_end": false
+    },
+    {
+      "character": "赵澄",
+      "character_id": "zhaocheng",
+      "fact": "f11",
+      "text": "2026-04-17 21:12，唐芮把条码S2298的真书寄存在校内快递柜7号，收件人为赵澄。",
+      "until": {
+        "shown": "c8"
+      },
+      "unlocked_steps": [
+        18
+      ],
+      "locked_at_end": false
+    },
+    {
+      "character": "唐芮",
+      "character_id": "tangrui",
+      "fact": "f7",
+      "text": "4月17日18:42我把0719员工卡借给了赵澄，18:52前都不在我手里。",
+      "until": {
+        "trust": 1
+      },
+      "unlocked_steps": [
+        8
+      ],
+      "locked_at_end": false
+    },
+    {
+      "character": "唐芮",
+      "character_id": "tangrui",
+      "fact": "f10",
+      "text": "唐芮主动提出付200元向赵澄借《街字解剖》一晚，用于连夜拍作品集参考页。",
+      "until": {
+        "shown": "c6",
+        "has": "c5"
+      },
+      "unlocked_steps": [
+        14
+      ],
+      "locked_at_end": false
+    },
+    {
+      "character": "唐芮",
+      "character_id": "tangrui",
+      "fact": "f11",
+      "text": "2026-04-17 21:12，唐芮把条码S2298的真书寄存在校内快递柜7号，收件人为赵澄。",
+      "until": {
+        "exposed": "l2"
+      },
+      "unlocked_steps": [
+        16
+      ],
+      "locked_at_end": false
+    }
+  ],
+  "initial_testimony": [
+    {
+      "step": 1,
+      "action": "talk",
+      "character_id": "linyuan",
+      "character": "林沅",
+      "input": {
+        "character_id": "linyuan",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "quote": "我是书店晚班店长。4月17日傍晚我在店里值班，17:54我和赵澄一起登记过那本《街字解剖》，放进了电子预订柜B-3。18:31闭店前，我按流程做了盘点并拍照，当时柜里还是那本书和陈添的预约卡。到第二天早上陈添来取书，才发现B-3里不对了。你先看这两份能核查的材料。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f1",
+          "f4",
+          "f5",
+          "f6"
+        ],
+        "locked_secrets": [
+          "f7"
+        ]
+      },
+      "permissions_after": {
+        "facts": [
+          "f1",
+          "f4",
+          "f5",
+          "f6"
+        ],
+        "locked_secrets": [
+          "f7"
+        ]
+      },
+      "exposed_before": [],
+      "exposed_after": []
+    },
+    {
+      "step": 2,
+      "action": "talk",
+      "character_id": "zhaocheng",
+      "character": "赵澄",
+      "input": {
+        "character_id": "zhaocheng",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "quote": "我叫赵澄，在店里做勤工助学，平时管陈列，也参与了当天到货登记。案发前我登记过那本《街字解剖》，和林沅一起把唯一一册、条码S2298的书放进了电子预订柜B-3。别的我现在说不清，但闭店后我没开过B-3，也没碰过那本预订书。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f2",
+          "f4"
+        ],
+        "locked_secrets": [
+          "f8",
+          "f9",
+          "f10",
+          "f11"
+        ]
+      },
+      "permissions_after": {
+        "facts": [
+          "f2",
+          "f4"
+        ],
+        "locked_secrets": [
+          "f8",
+          "f9",
+          "f10",
+          "f11"
+        ]
+      },
+      "exposed_before": [],
+      "exposed_after": []
+    },
+    {
+      "step": 3,
+      "action": "talk",
+      "character_id": "tangrui",
+      "character": "唐芮",
+      "input": {
+        "character_id": "tangrui",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "quote": "我是设计学院的研究生。那天我是以学生顾客的身份来店里找参考书，闭店前后我在店外停留过一阵子。别的我现在不想多说，次日要交作品集，我当时确实很着急。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f3"
+        ],
+        "locked_secrets": [
+          "f7",
+          "f10",
+          "f11"
+        ]
+      },
+      "permissions_after": {
+        "facts": [
+          "f3"
+        ],
+        "locked_secrets": [
+          "f7",
+          "f10",
+          "f11"
+        ]
+      },
+      "exposed_before": [],
+      "exposed_after": []
+    },
+    {
+      "step": 4,
+      "action": "talk",
+      "character_id": "linyuan",
+      "character": "林沅",
+      "input": {
+        "character_id": "linyuan",
+        "text": "你说“闭店后0719员工卡一直在我身上，没人借过。”，这个说法现在还成立吗？请说明能当场核查的材料。"
+      },
+      "quote": "这话我现在还是这么说。闭店后0719员工卡一直在我身上，没人借过。至于你要核查的，当场能看的还有这个：从B-3里拿出来的那本替代品其实不是正常书，内封资产贴写着“陈列样书D-14，无内页”，背面还记了“4/17 16:05 赵澄领用”。你先拿去看。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f1",
+          "f4",
+          "f5",
+          "f6"
+        ],
+        "locked_secrets": [
+          "f7"
+        ]
+      },
+      "permissions_after": {
+        "facts": [
+          "f1",
+          "f4",
+          "f5",
+          "f6"
+        ],
+        "locked_secrets": [
+          "f7"
+        ]
+      },
+      "exposed_before": [],
+      "exposed_after": []
+    },
+    {
+      "step": 5,
+      "action": "talk",
+      "character_id": "zhaocheng",
+      "character": "赵澄",
+      "input": {
+        "character_id": "zhaocheng",
+        "text": "你说“我闭店后没开过预订柜B-3，也没碰过陈添那本预订书。”，这个说法现在还成立吗？请说明能当场核查的材料。"
+      },
+      "quote": "这话现在还是一样。能当场核查的，就是到货登记：2026-04-17 17:54，我和林沅登记过唯一一册《街字解剖》，条码S2298，后来放进电子预订柜B-3。除此之外，我这边没有别的能马上说清的。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f2",
+          "f4"
+        ],
+        "locked_secrets": [
+          "f8",
+          "f9",
+          "f10",
+          "f11"
+        ]
+      },
+      "permissions_after": {
+        "facts": [
+          "f2",
+          "f4"
+        ],
+        "locked_secrets": [
+          "f8",
+          "f9",
+          "f10",
+          "f11"
+        ]
+      },
+      "exposed_before": [],
+      "exposed_after": []
+    },
+    {
+      "step": 6,
+      "action": "talk",
+      "character_id": "tangrui",
+      "character": "唐芮",
+      "input": {
+        "character_id": "tangrui",
+        "text": "我愿意按证据核查，不作无端指控。请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "quote": "我能说的就这些：我是设计学院的研究生，那天是以学生顾客的身份来店里找参考书。闭店前后，我确实在店外停留过一阵子，因为次日要交作品集，人很着急。至于更多经过，我现在不想多说。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f3"
+        ],
+        "locked_secrets": [
+          "f7",
+          "f10",
+          "f11"
+        ]
+      },
+      "permissions_after": {
+        "facts": [
+          "f3"
+        ],
+        "locked_secrets": [
+          "f7",
+          "f10",
+          "f11"
+        ]
+      },
+      "exposed_before": [],
+      "exposed_after": []
+    },
+    {
+      "step": 7,
+      "action": "talk",
+      "character_id": "tangrui",
+      "character": "唐芮",
+      "input": {
+        "character_id": "tangrui",
+        "text": "我愿意按证据核查，不作无端指控。请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "quote": "我是设计学院的研究生，那天就是以学生顾客的身份来店里找参考书。闭店前后我在店外停留过一阵子，这点我承认。次日要交作品集，我当时很着急。至于更多细节，我现在不想多说。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f3"
+        ],
+        "locked_secrets": [
+          "f7",
+          "f10",
+          "f11"
+        ]
+      },
+      "permissions_after": {
+        "facts": [
+          "f3"
+        ],
+        "locked_secrets": [
+          "f7",
+          "f10",
+          "f11"
+        ]
+      },
+      "exposed_before": [],
+      "exposed_after": []
+    },
+    {
+      "step": 8,
+      "action": "talk",
+      "character_id": "tangrui",
+      "character": "唐芮",
+      "input": {
+        "character_id": "tangrui",
+        "text": "我愿意按证据核查，不作无端指控。请提供你目前可以交付的材料，说明你亲历的经过。"
+      },
+      "quote": "我是设计学院的研究生，那天是来店里找参考书的学生顾客。闭店前后我确实在店外停留过一阵子，因为次日要交作品集，我当时很着急。别的经过，我现在不想多说。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f3"
+        ],
+        "locked_secrets": [
+          "f7",
+          "f10",
+          "f11"
+        ]
+      },
+      "permissions_after": {
+        "facts": [
+          "f3",
+          "f7"
+        ],
+        "locked_secrets": [
+          "f10",
+          "f11"
+        ]
+      },
+      "exposed_before": [],
+      "exposed_after": []
+    }
+  ],
+  "final_testimony": [
+    {
+      "step": 19,
+      "action": "talk",
+      "character_id": "linyuan",
+      "character": "林沅",
+      "input": {
+        "character_id": "linyuan",
+        "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+      },
+      "quote": "我更正：我之前说“0719员工卡一直在我身上，没人借过”是不实的。实际是4月17日18:42，我把0719员工卡借给了赵澄，18:52前都不在我手里。至于我亲历的经过，我能确定的就是这些：17:54我和赵澄登记了那本《街字解剖》，放进B-3；18:31我拍盘点照片时，B-3里还是条码S2298的真书和陈添的预约卡；第二天9:10陈添来取书，才发现里面只剩空白样书。此前我不肯承认借卡，是因为这本身就违规，我在意门店考核，也怕影响自己的勤工补助。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f1",
+          "f4",
+          "f5",
+          "f6",
+          "f7"
+        ],
+        "locked_secrets": []
+      },
+      "permissions_after": {
+        "facts": [
+          "f1",
+          "f4",
+          "f5",
+          "f6",
+          "f7"
+        ],
+        "locked_secrets": []
+      },
+      "exposed_before": [
+        "l1",
+        "l2"
+      ],
+      "exposed_after": [
+        "l1",
+        "l2"
+      ]
+    },
+    {
+      "step": 20,
+      "action": "talk",
+      "character_id": "zhaocheng",
+      "character": "赵澄",
+      "input": {
+        "character_id": "zhaocheng",
+        "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+      },
+      "quote": "我更正：我之前说自己没开过B-3、没碰过那本预订书，这话是假的。真实情况是，17:54我和林沅登记到货的唯一一册《街字解剖》，条码S2298，放进了电子预订柜B-3。后来唐芮主动提要付我200元，借这本书一晚拍作品集参考页。我动了这个心思，就在18:48开了B-3，把陈添预订的真书拿出来，先塞了一本空白样书进去。再往后，那本条码S2298的真书在21:12被唐芮寄存在校内快递柜7号，收件人是我。之前我没说实话，就是想把这事遮过去。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f2",
+          "f4",
+          "f8",
+          "f9",
+          "f10",
+          "f11"
+        ],
+        "locked_secrets": []
+      },
+      "permissions_after": {
+        "facts": [
+          "f2",
+          "f4",
+          "f8",
+          "f9",
+          "f10",
+          "f11"
+        ],
+        "locked_secrets": []
+      },
+      "exposed_before": [
+        "l1",
+        "l2"
+      ],
+      "exposed_after": [
+        "l1",
+        "l2"
+      ]
+    },
+    {
+      "step": 21,
+      "action": "talk",
+      "character_id": "tangrui",
+      "character": "唐芮",
+      "input": {
+        "character_id": "tangrui",
+        "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+      },
+      "quote": "我更正一下：我不只是来“找参考书”。实际是我次日要交作品集，急着连夜拍《街字解剖》的参考页，所以主动提出花200元向赵澄借这本书一晚。之后我在21:12把这本真书寄存在校内快递柜7号，收件人写的是赵澄。别的经过里，超出我亲历的部分我不乱说。",
+      "events": [],
+      "permissions_before": {
+        "facts": [
+          "f3",
+          "f7",
+          "f10",
+          "f11"
+        ],
+        "locked_secrets": []
+      },
+      "permissions_after": {
+        "facts": [
+          "f3",
+          "f7",
+          "f10",
+          "f11"
+        ],
+        "locked_secrets": []
+      },
+      "exposed_before": [
+        "l1",
+        "l2"
+      ],
+      "exposed_after": [
+        "l1",
+        "l2"
+      ]
+    }
+  ],
+  "full_truth_assertions": [
+    {
+      "assertion": "S2298唯一真书17:54入B-3，18:31仍在柜内，次日09:10发现被换",
+      "clues": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "testimony_steps": [
+        1,
+        19
+      ],
+      "sufficient": true
+    },
+    {
+      "assertion": "林沅违规将0719借给赵澄，赵澄18:48取出预订书并放入D-14",
+      "clues": [
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7"
+      ],
+      "testimony_steps": [
+        10,
+        14,
+        16,
+        19,
+        20
+      ],
+      "sufficient": true
+    },
+    {
+      "assertion": "唐芮付200元借书连夜拍作品集参考页",
+      "clues": [
+        "c7"
+      ],
+      "testimony_steps": [
+        15,
+        16,
+        20,
+        21
+      ],
+      "sufficient": true
+    },
+    {
+      "assertion": "21:12唐芮把真书S2298寄存7号柜，收件人为赵澄",
+      "clues": [
+        "c8"
+      ],
+      "testimony_steps": [
+        17,
+        18,
+        20,
+        21
+      ],
+      "sufficient": true
+    }
+  ],
+  "ending_check": {
+    "actual_correct": {
+      "score": 3,
+      "total": 3,
+      "ending": "end1",
+      "retry": false
+    },
+    "actual_wrong": [
+      {
+        "label": "one_wrong",
+        "score": 2,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "label": "all_wrong",
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      }
+    ],
+    "enumeration": {
+      "end1": {
+        "title": "追回真书",
+        "retry": false,
+        "when": {
+          "correct": [
+            "q1",
+            "q2",
+            "q3"
+          ]
+        },
+        "count": 1,
+        "wrong_count": 0,
+        "wrong_example": null
+      },
+      "end2": {
+        "title": "证据还差最后一环",
+        "retry": true,
+        "when": {},
+        "count": 63,
+        "wrong_count": 63,
+        "wrong_example": {
+          "q1": "林沅在18:31打开B-3取走了《街字解剖》",
+          "q2": "林沅另找来的一本库存《街字解剖》",
+          "q3": "一直在赵澄更衣柜里"
+        }
+      }
+    },
+    "wrong_answer_full_truth_count": 0,
+    "manual_direction_matches_selected_design": true
+  },
+  "known_narrative_issues": [
+    {
+      "id": "bookstore-recovery-date",
+      "category": "叙事日期指向",
+      "severity": "minor",
+      "source": [
+        "selected-design.json/truth",
+        "selected-design.json/timeline[-1]",
+        "story.yaml/ending/end1"
+      ],
+      "description": "案件在4月18日09:10才被发现，设计和结局又写凭截图“当晚”追回。语境未说明当晚指4月17日案发夜还是4月18日调查夜，追回日期存在歧义。",
+      "affects_core_question_sufficiency": false
+    },
+    {
+      "id": "bookstore-first-person-f7-step11",
+      "category": "实际口供人物指代",
+      "severity": "minor",
+      "source": [
+        "story.yaml/facts/f7",
+        "story.yaml/characters/tangrui/knows",
+        "playthrough.json/steps[10]"
+      ],
+      "description": "f7为林沅第一人称借卡陈述，也被唐芮共享。step11唐芮复述时说“18:52前都不在我手里”，误把林沅的第一人称转到自己身上。借卡事实此时已对唐芮解锁，未提前泄密，c4影像及林沅step10、step19正确确认交接人和持卡人。",
+      "actual_quote": "我看到这条记录了。它至少能对上我知道的一点：4月17日18:42，0719员工卡被借给了赵澄，18:52前都不在我手里。别的经过，我不清楚。",
+      "affects_core_question_sufficiency": false
+    }
+  ]
+}

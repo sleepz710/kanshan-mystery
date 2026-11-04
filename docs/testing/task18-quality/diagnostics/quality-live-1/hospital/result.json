@@ -1,0 +1,164 @@
+{
+  "name": "hospital",
+  "material": "我想玩恐怖一点的，医院题材",
+  "model": "deepseek-flash",
+  "quality": "fast",
+  "status": "failed",
+  "seconds": 334.47,
+  "provider_blocked": false,
+  "prelude_seconds": 5.46,
+  "checked": null,
+  "problems": [
+    "审稿、好玩度与可解性检查尚未完成。"
+  ],
+  "error": "剧本格式或结构仍有问题，草稿已保留，请重新生成。",
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1426,
+      "status": "ok",
+      "response_chars": 4396,
+      "seconds": 126.18
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7417,
+      "status": "ok",
+      "response_chars": 6049,
+      "seconds": 31.35
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 14224,
+      "status": "ok",
+      "response_chars": 1513,
+      "seconds": 4.85
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 14142,
+      "status": "ok",
+      "response_chars": 1512,
+      "seconds": 4.24
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 5882,
+      "status": "ok",
+      "response_chars": 4455,
+      "seconds": 75.72
+    },
+    {
+      "attempt": 3,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 6035,
+      "status": "ok",
+      "response_chars": 5018,
+      "seconds": 55.29
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 8039,
+      "status": "ok",
+      "response_chars": 7577,
+      "seconds": 18.54
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 16797,
+      "status": "ok",
+      "response_chars": 4684,
+      "seconds": 9.07
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 16571,
+      "status": "ok",
+      "response_chars": 4317,
+      "seconds": 8.2
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "暴雨夜的旧手术室",
+      "problems": []
+    },
+    {
+      "title": "暴雨夜的旧手术室",
+      "problems": []
+    },
+    {
+      "title": "暴雨夜的旧手术室",
+      "problems": []
+    },
+    {
+      "title": "雨夜旧楼：四楼手术室的监控缺口",
+      "problems": [
+        "格式 characters.0.secrets.0.until.has2：Extra inputs are not permitted。",
+        "格式 clues.7.requires.shown2：Extra inputs are not permitted。",
+        "格式 clues.8.requires.has2：Extra inputs are not permitted。",
+        "格式 kanshan.hints.1.done.shown：Extra inputs are not permitted。",
+        "格式 kanshan.hints.2.done.shown：Extra inputs are not permitted。",
+        "格式 kanshan.hints.3.done.shown：Extra inputs are not permitted。",
+        "格式 kanshan.hints.4.done.shown：Extra inputs are not permitted。",
+        "格式 kanshan.hints.5.done.shown：Extra inputs are not permitted。"
+      ]
+    },
+    {
+      "title": "雨夜旧楼：四楼手术室的监控缺口",
+      "problems": []
+    },
+    {
+      "title": "雨夜旧楼：四楼手术室的监控缺口",
+      "problems": [
+        "格式 clues.7.requires.shown_2：Extra inputs are not permitted。",
+        "格式 clues.8.requires.shown_2：Extra inputs are not permitted。"
+      ]
+    }
+  ],
+  "talks": [],
+  "accusations": [],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/bbd0778fe0d14333aeca3ec84e16404c/messages",
+      "status": 200,
+      "seconds": 5.43
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/bbd0778fe0d14333aeca3ec84e16404c/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/bbd0778fe0d14333aeca3ec84e16404c/messages",
+      "status": 200,
+      "seconds": 1.37
+    }
+  ]
+}

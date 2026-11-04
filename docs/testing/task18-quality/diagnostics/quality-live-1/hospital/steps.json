@@ -1,0 +1,83 @@
+[
+  {
+    "attempt": 1,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 1426,
+    "status": "ok",
+    "response_chars": 4396,
+    "seconds": 126.18
+  },
+  {
+    "attempt": 1,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 7417,
+    "status": "ok",
+    "response_chars": 6049,
+    "seconds": 31.35
+  },
+  {
+    "attempt": 1,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 14224,
+    "status": "ok",
+    "response_chars": 1513,
+    "seconds": 4.85
+  },
+  {
+    "attempt": 1,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 14142,
+    "status": "ok",
+    "response_chars": 1512,
+    "seconds": 4.24
+  },
+  {
+    "attempt": 2,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 5882,
+    "status": "ok",
+    "response_chars": 4455,
+    "seconds": 75.72
+  },
+  {
+    "attempt": 3,
+    "step": "设计稿",
+    "role": "writer",
+    "request_chars": 6035,
+    "status": "ok",
+    "response_chars": 5018,
+    "seconds": 55.29
+  },
+  {
+    "attempt": 3,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 8039,
+    "status": "ok",
+    "response_chars": 7577,
+    "seconds": 18.54
+  },
+  {
+    "attempt": 3,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 16797,
+    "status": "ok",
+    "response_chars": 4684,
+    "seconds": 9.07
+  },
+  {
+    "attempt": 3,
+    "step": "填表",
+    "role": "actor",
+    "request_chars": 16571,
+    "status": "ok",
+    "response_chars": 4317,
+    "seconds": 8.2
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "name": "bookstore",
+  "material": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fine",
+  "mode": "原最终设计的一轮正常修订",
+  "attempt": 2,
+  "budget_seconds": 1800,
+  "problems_requested": [
+    "事件在2026年4月18日09:10才发现，电子柜日志于4月18日09:34导出，但truth和完整结局紧接4月17日21:12寄存后写当晚追回，追回日期与调查先后不清。请明确追回发生在4月18日发现及调查之后，并统一truth、时间线、取得材料时间和结局叙述。保留4月17日调包及寄存时间、既有3人8线索2谎3题2结局、证据锁和答案依据。"
+  ],
+  "parent": {
+    "folder": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-fine-1\\bookstore",
+    "runtime_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
+    "selected_candidate": 1,
+    "generation_seconds": 418.82,
+    "sources_sha256": {
+      "result.json": "e6ca9131df6198b41d07db75fe2b495212e8df857d26346a30210d9e386d2cd7",
+      "selected-design.json": "c6f89fe184b84a0066f052d433574a8f47be1e401e1ec1b721bc39e836c1d0f6",
+      "story.yaml": "17f2d87167e833874f9ab53511fbcf515cccd52f73fc91c02e201763a3f6c8b6"
+    }
+  },
+  "status": "failed",
+  "error": "剧本格式经三轮修订仍不完整，请重试。",
+  "checked": null,
+  "problems": [
+    "事件在2026年4月18日09:10才发现，电子柜日志于4月18日09:34导出，但truth和完整结局紧接4月17日21:12寄存后写当晚追回，追回日期与调查先后不清。请明确追回发生在4月18日发现及调查之后，并统一truth、时间线、取得材料时间和结局叙述。保留4月17日调包及寄存时间、既有3人8线索2谎3题2结局、证据锁和答案依据。",
+    "设计稿 characters.2.evidence：Input should be a valid string，请按 design 字段契约修订。"
+  ],
+  "draft_problems": [],
+  "invalid_problems": [],
+  "revision_seconds": 148.43,
+  "steps": [
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 6151,
+      "status": "ok",
+      "response_chars": 4249,
+      "seconds": 148.41
+    }
+  ],
+  "local_checks": [],
+  "provider_blocked": false,
+  "story_id": null,
+  "cumulative_generation_seconds": 567.25,
+  "parent_sources_unchanged": true
+}
