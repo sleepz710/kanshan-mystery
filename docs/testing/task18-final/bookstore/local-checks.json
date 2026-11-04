@@ -1,0 +1,30 @@
+[
+  {
+    "title": "拾页书店调包案",
+    "problems": [
+      "最后一个结局必须是不带 when 的兜底结局。"
+    ]
+  },
+  {
+    "title": "拾页书店调包案",
+    "problems": []
+  },
+  {
+    "title": "拾页书店调包案",
+    "problems": []
+  },
+  {
+    "title": "拾页书店的空白本",
+    "problems": [
+      "格式 ending.endings.1.when.CorrectEndingWhen：Input should be a valid dictionary。",
+      "格式 ending.endings.1.when.ChoseEndingWhen：Input should be a valid dictionary。",
+      "格式 ending.endings.1.when.FallbackEndingWhen：Input should be a valid dictionary。"
+    ]
+  },
+  {
+    "title": "拾页书店的空白本",
+    "problems": [
+      "最后一个结局必须是不带 when 的兜底结局。"
+    ]
+  }
+]

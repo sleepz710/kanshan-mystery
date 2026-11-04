@@ -1,0 +1,22 @@
+{
+  "source_commit": "83715fa707a938ac77e39e7fbeff7a3f3888bf32",
+  "pytest_passed": 633,
+  "cases": [
+    {
+      "case": "hospital",
+      "story_id": "generated-d3b2cec8ba9e4e4295e71973874305a1",
+      "title": "B1层的第二次刷卡",
+      "selected_round": 1,
+      "sha256": "0bf89711842cf0d77d4fe9c625bef0265cef7f4a8f2a4a0f9e3d671481574546",
+      "checked": false
+    },
+    {
+      "case": "bookstore",
+      "story_id": "generated-ace7f9c4c9bb4112a1b44f255d8a4f3a",
+      "title": "拾页书店调包案",
+      "selected_round": 1,
+      "sha256": "6dbf25648c93f8a50b07108af691cedc459cc9824c4901ae9ae70d15d26e483e",
+      "checked": false
+    }
+  ]
+}

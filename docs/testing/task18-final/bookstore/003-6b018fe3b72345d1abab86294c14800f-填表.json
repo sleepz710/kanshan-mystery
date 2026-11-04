@@ -1,0 +1,433 @@
+{
+  "request": [
+    {
+      "role": "system",
+      "content": "忠实将设计稿逐项转成游戏数据，保持真相、人物、证据和答案依据。只修复给出的格式、引用和数量问题。\n只输出 JSON {\"story\":完整剧本对象}，不输出设计过程或 Markdown。\n服务端会填写 story 顶层 id、source、checked，模型可省略这三个元数据字段；数组中各项的 id 必须保留。其余字段如下：\ntitle、intro：标题与不剧透的汤面。\nfacts：[{id,text}]，全局真实事实表。\ncharacters：[{id,name,avatar,profile,persona,knows,secrets,lies,trust_start}]；avatar用\"角色id.png\"，trust_start=0；profile是开局公开简介，不能剧透，persona是私有人设。\nknows 是 facts.id 数组，不能填线索编号；secrets=[{fact,until}]，fact必须同时在本人knows中，表示知道但暂不说。\n逐题核对开局可公开的facts，能直接回答结局题的核心隐情必须由secrets或lies.admit锁住。设计稿中的秘密须落实成secrets，不把完整答案留在未受限的knows中。\n同一秘密事实被多人knows引用时，每个人都加锁；不能只锁事实的当事人。减少重复knows，只保留本人亲历的事实。不要把多人的核心隐情合成开局公开事实。\n证据正文若另存为facts，其公开条件必须跟随对应线索的取得条件；同义的事实、供述和复合真相也逐人加锁，不能绕过已锁的秘密提前回答结局题。\nfacts只保存各角色的公开身份、亲历观察及需锁定的秘密和承认；物证内容留在线索中，避免复制成开局公开的证据事实。每条秘密独立成fact并落实解锁条件。\nlies=[{id,claim,until,admit}]，admit是本人knows中的facts.id，必须直接纠正claim，不用仅有关联的事实。只有既未被secrets锁定、也未被尚未拆穿的lies.admit锁定的已知事实才能公开。\nclues：[{id,title,content,holder,requires}]；holder是characters.id。\nevents：[{id,when,confront,unlock}]，可为空数组。\nkanshan：{greeting,hints:[{done,vague,direct}]}，至少一条阶段提示。\nending：{questions:[{id,text,options,answer}],endings:[{id,title,when,text,retry}],truth,lessons}。\noptions是2到8个不重复字符串，answer必须与其中一个选项原文完全一致；truth为完整真相，lessons为字符串数组。\n全剧id互不重复，用小写英文/数字/下划线，首字符为英文或数字；所有引用必须存在。保留设计稿的因果、证据内容、持有人、取得条件和答案依据，不自行改写故事。\n线索content逐字保留设计稿content，问题text/options/answer逐字保留。谎话until对应设计中evidence所指的证据，不用其他日期或其他动作的材料替换。兜底结局只描述证据仍不足，不预设玩家选了某个错误人物。\n下面只是编号关系片段，省略了其余字段，不能直接当成最终剧本：\n{\"facts\":[{\"id\":\"f1\",\"text\":\"可公开事实\"},{\"id\":\"f2\",\"text\":\"保密事实\"}],\"characters\":[{\"id\":\"p1\",\"knows\":[\"f1\",\"f2\"],\"secrets\":[{\"fact\":\"f2\",\"until\":{\"shown\":\"c1\"}}],\"lies\":[{\"id\":\"l1\",\"claim\":\"等待证据推翻的说法\",\"until\":{\"shown\":\"c1\"},\"admit\":\"f2\"}]},{\"id\":\"p2\",\"knows\":[\"f1\"]}],\"clues\":[{\"id\":\"c1\",\"holder\":\"p2\",\"requires\":{}},{\"id\":\"c2\",\"holder\":\"p1\",\"requires\":{\"exposed\":\"l1\"}}],\"events\":[{\"id\":\"e1\",\"when\":{\"shown\":\"c1\",\"to\":\"p1\"},\"confront\":[\"p1\",\"p2\"],\"unlock\":[\"c2\"]}]}\n条件字段遵守以下规则：\n角色 secrets.until、lies.until 和 clues.requires 只允许 trust(0到3的整数)、shown(线索id)、has(线索id)、\nexposed(谎话id)、event(事件id)，多个键表示 AND；不要使用 clue、clues、all、any 或自造条件名。\n事件 when 必须含 to(角色id)，其余键按上述条件规则。提示 done 只用 has、exposed、event。\n提示示例 {\"done\":{\"has\":\"c1\"},\"vague\":\"核对记录\",\"direct\":\"找持有人取得记录\"}，提示done不能写shown；出示动作完成后用has记录调查进度。\n同时需要出示c1且持有c2时写 {\"shown\":\"c1\",\"has\":\"c2\"}，禁止shown_2、shown_all、until_extra。自然语言中多个证据采用这两个已有字段，不自造键。\nlies.until禁止引用自身的exposed。若l1由c1拆穿，c1.requires不能依赖exposed:l1，直接或间接依赖均会死锁。\n事件 confront 是恰好两个不同的角色 id，必须取自 characters[].id，不能放线索 id；unlock 才是 clues[].id。\n例：人物 lin、chen，已有线索 c1，事件可写 {\"id\":\"e1\",\"when\":{\"shown\":\"c1\",\"to\":\"chen\"},\"confront\":[\"lin\",\"chen\"],\"unlock\":[\"c2\"]}，且 c2 必须出现在 clues 中。\n结局 when 只允许 {\"correct\":[\"题号\"]} 或 {\"chose\":{\"题号\":\"选项原文\"}}；最后一个结局省略 when。\n完整真相结局 retry=false，需继续调查的结局才允许 retry=true。\n默认两结局时，首个完整真相结局 when.correct 列出全部结局题号且 retry=false，最后一个兜底结局 retry=true。部分题答错时不能进入完整真相结局。\n全剧谎话合计 2-5 句，角色 3-4 人、线索 8-12 条、结局题 3-5 道、结局 2-3 个。\n未指定规模时优先 3-4 人、9-10 条线索、3 句谎话、3-4 道题、2 个结局。\n只有一句题材时先设计清楚核心真相和证据因果，再填字段；恐怖题材保留压迫感与反常现象，最终仍能用现实证据解释。\n本轮设计稿保持不变。优先只返回JSON {\"fields\":{\"要修的顶层字段\":值}}，也兼容完整story。数组须完整替换，ending/kanshan字典仅更新给出的成员。只改报错处，保留其他条件、线索内容和证据对应。不得修改id、source、checked。"
+    },
+    {
+      "role": "user",
+      "content": "{\"design\": {\"truth\": \"核心真相：陈砚为填补挪用社团经费的亏空，20:42私改预订登记，20:55取走空白本，21:06将《城市雨图》以800元卖给校外书商“周记旧书”，21:20用空白本调包；林晚晴因离岗留钥匙而说谎遮掩，苏禾拍下关键照片但因怕失去勤工岗位未当场声张。结局A：若公开预订登记单、后门监控、取件通知、转账聊天和陈砚承认记录，可确认陈砚的调包、售卖与动机，并据此向“周记旧书”追索原书；结局B：若只凭空白本和监控指认而未取得转账聊天及承认记录，陈砚只承认“放错本子”，原书去向无法确认，林晚晴因离岗记录受连带调查。\", \"timeline\": [\"19:30 林晚晴将预订绝版书《城市雨图》放在服务台待取，陈砚在旁核对活动账目。\", \"20:42 陈砚趁林晚晴离开前台，独自在电脑上将预订取书人由“周老师”改为自己。\", \"20:51 林晚晴到书店前门外接电话，将服务台钥匙留在抽屉，直到21:03才返回。\", \"20:55 陈砚到学工打印店取走取件码21-03的A5空白本，并从后门回店。\", \"21:06 陈砚提牛皮纸袋从后门离开，21:08收到“周记旧书”800元转账，21:18空手回店。\", \"21:19 苏禾刷后门回店拿伞，21:20:48在预订架旁拍下陈砚将空白本放入书套的照片，21:24离开。\", \"21:30 林晚晴与陈砚发现预订书被调包，通知周老师前封存现场。\"], \"characters\": [{\"name\": \"林晚晴\", \"identity\": \"枫林大学大三学生、拾页书店学生店长\", \"motive\": \"想保住书店年度评优和自己的保研推荐，不愿暴露闭店前离岗留钥匙。\", \"secret\": \"20:51至21:03她在前门外接电话，把服务台钥匙留在抽屉，使陈砚能取走预订书并调包。\", \"lie\": \"闭店后我一直没离开前台，服务台钥匙也没离身。\", \"evidence\": \"苏禾持有的“前门手机截图”显示20:51至21:03林晚晴在门外接电话、服务台无人，拆穿其谎言。\"}, {\"name\": \"陈砚\", \"identity\": \"校学生会生活部长、拾页书店财务志愿者\", \"motive\": \"挪用社团活动经费后需补账，将绝版预订书私卖给校外书商800元。\", \"secret\": \"20:42私改预订登记，20:55取空白本，21:06将原书交“周记旧书”，21:20把空白本放入书套。\", \"lie\": \"空白本只是下午从打印店取来的样书，我没靠近过预订架。\", \"evidence\": \"林晚晴持有的“预订登记单”和“后门监控导出记录”显示20:42改登记、20:55取空白本、21:20放入书套，拆穿其谎言。\"}, {\"name\": \"苏禾\", \"identity\": \"大一勤工助学学生、拾页书店闭店值班生\", \"motive\": \"因林晚晴帮她申请助学金，想先确认情况再决定是否说出，怕失去勤工岗位。\", \"secret\": \"21:19她从后门回店拿伞，21:20:48拍到陈砚将空白本放入《城市雨图》书套，未当场声张。\", \"lie\": \"\", \"evidence\": \"无谎话；其秘密由林晚晴持有的“后门监控导出记录”与苏禾本人交出的“苏禾手机照片”互相印证。\"}], \"clues\": [{\"name\": \"预订登记单\", \"content\": \"打印时间20:43，显示《城市雨图》取书人于20:42由“周老师”改为“陈砚”，操作账号为书店财务志愿者陈砚。\", \"proves\": \"陈砚在20:42修改预订取书人。\", \"holder\": \"林晚晴\", \"acquire\": \"开局检查前台电脑旁的打印单据，林晚晴交出。\"}, {\"name\": \"空白本与取件码\", \"content\": \"空白本封底贴学工打印店取件码“21-03”，贴纸打印时间20:50，本内无字。\", \"proves\": \"被调包的书套内是打印店空白本，取件码对应后续取件记录。\", \"holder\": \"苏禾\", \"acquire\": \"开局检查服务台被调包的书套，苏禾交出内装空白本并指出封底取件码。\"}, {\"name\": \"前门手机截图\", \"content\": \"截图时间20:51至21:03连续，显示林晚晴在书店前门外接电话，服务台无人，抽屉半开。\", \"proves\": \"林晚晴20:51至21:03不在前台，其“一直未离前台、钥匙未离身”为假。\", \"holder\": \"苏禾\", \"acquire\": \"向苏禾出示“空白本与取件码”并说明需核对闭店前前台情况，苏禾信任达到1后交出手机截图。\"}, {\"name\": \"后门监控导出记录\", \"content\": \"20:55陈砚拿空白本从后门进店；21:06提牛皮纸袋出后门；21:18空手回；21:20在预订架前将空白本推入《城市雨图》书套。\", \"proves\": \"陈砚取空白本、带原书离开并在21:20调包。\", \"holder\": \"林晚晴\", \"acquire\": \"出示“前门手机截图”拆穿林晚晴“闭店后一直前台、钥匙未离身”的谎话后，林晚晴交出后门监控导出文件。\"}, {\"name\": \"打印店取件通知\", \"content\": \"20:54学工打印店通知“取件码21-03的A5空白本已可取”，20:55状态变为已取件。\", \"proves\": \"空白本是陈砚20:55才取走，并非下午带来的样品。\", \"holder\": \"陈砚\", \"acquire\": \"向陈砚出示“预订登记单”和“后门监控导出记录”，拆穿其“空白本只是下午取来的样书、没靠近预订架”的谎话后，陈砚交出手机取件通知。\"}, {\"name\": \"苏禾手机照片\", \"content\": \"照片拍摄时间21:20:48，画面显示陈砚手拿空白本站在《城市雨图》预订架前，书套已打开。\", \"proves\": \"21:20陈砚正在调包，苏禾在场拍摄。\", \"holder\": \"苏禾\", \"acquire\": \"向苏禾出示“后门监控导出记录”后，苏禾确认照片背景与时间并交出原图。\"}, {\"name\": \"书商转账聊天截图\", \"content\": \"21:08“周记旧书”转账800元，备注“《城市雨图》已收，后门自取”。\", \"proves\": \"原版书于21:06后以800元卖给校外书商。\", \"holder\": \"陈砚\", \"acquire\": \"拆穿陈砚谎话并出示“打印店取件通知”后，陈砚交出与“周记旧书”的聊天截图。\"}, {\"name\": \"陈砚承认记录\", \"content\": \"陈砚承认20:42改登记、20:55取空白本、21:06将原书交“周记旧书”并收800元、21:20放回空白本。\", \"proves\": \"陈砚完整动机、售卖去向与调包动作。\", \"holder\": \"林晚晴\", \"acquire\": \"出示“预订登记单”“后门监控导出记录”“打印店取件通知”“书商转账聊天截图”并拆穿陈砚调包行为后，陈砚承认，林晚晴当场记录。\"}], \"questions\": [{\"text\": \"谁在20:42修改《城市雨图》的预订取书人？\", \"options\": [\"林晚晴\", \"陈砚\", \"苏禾\", \"周老师\"], \"answer\": \"陈砚\", \"evidence\": [\"预订登记单\"]}, {\"text\": \"空白本被放入《城市雨图》书套的时间是？\", \"options\": [\"20:55\", \"21:06\", \"21:20\", \"21:24\"], \"answer\": \"21:20\", \"evidence\": [\"后门监控导出记录\", \"苏禾手机照片\"]}, {\"text\": \"原版《城市雨图》最终去向是？\", \"options\": [\"归还给周老师\", \"藏在书店贮藏间\", \"以800元卖给校外书商“周记旧书”\", \"被苏禾带回宿舍\"], \"answer\": \"以800元卖给校外书商“周记旧书”\", \"evidence\": [\"后门监控导出记录\", \"书商转账聊天截图\", \"陈砚承认记录\"]}], \"intro\": \"闭店后的拾页书店，预订的绝版《城市雨图》在交付前变成空白本。学生店长林晚晴、财务志愿者陈砚、值班生苏禾各有一段不愿说明的时间。请查清谁改了登记、空白本何时进入书套、原书去了哪里。\"}, \"previous_story\": {\"title\": \"拾页书店调包案\", \"intro\": \"闭店后的拾页书店，预订的绝版《城市雨图》在交付前变成空白本。学生店长林晚晴、财务志愿者陈砚、值班生苏禾各有一段不愿说明的时间。请查清谁改了登记、空白本何时进入书套、原书去了哪里。\", \"facts\": [{\"id\": \"f_lin_identity\", \"text\": \"林晚晴是枫林大学大三学生、拾页书店学生店长。\"}, {\"id\": \"f_chen_identity\", \"text\": \"陈砚是校学生会生活部长、拾页书店财务志愿者。\"}, {\"id\": \"f_su_identity\", \"text\": \"苏禾是大一勤工助学学生、拾页书店闭店值班生。\"}, {\"id\": \"f_book_on_counter\", \"text\": \"19:30林晚晴将预订绝版书《城市雨图》放在服务台待取，陈砚在旁核对活动账目。\"}, {\"id\": \"f_lin_lie_claim\", \"text\": \"林晚晴声称闭店后一直没离开前台，服务台钥匙也没离身。\"}, {\"id\": \"f_lin_absence\", \"text\": \"20:51至21:03林晚晴在书店前门外接电话，将服务台钥匙留在抽屉，前台无人。\"}, {\"id\": \"f_chen_lie_claim\", \"text\": \"陈砚声称空白本只是下午从打印店取来的样书，他没靠近过预订架。\"}, {\"id\": \"f_chen_swap\", \"text\": \"陈砚于20:42私改预订取书人，20:55取走取件码21-03的A5空白本，21:06将原书《城市雨图》交“周记旧书”，21:20用空白本调包放入书套。\"}, {\"id\": \"f_chen_sale\", \"text\": \"陈砚将《城市雨图》以800元卖给校外书商“周记旧书”，用于填补挪用社团活动经费的亏空。\"}, {\"id\": \"f_su_photo_secret\", \"text\": \"21:19苏禾从后门回店拿伞，21:20:48拍到陈砚将空白本放入《城市雨图》书套，因怕失去勤工岗位未当场声张。\"}], \"characters\": [{\"id\": \"lin\", \"name\": \"林晚晴\", \"avatar\": \"lin.png\", \"profile\": \"枫林大学大三学生，拾页书店学生店长，负责闭店与预订书交付。\", \"persona\": \"想保住书店年度评优和自己的保研推荐，不愿暴露闭店前离岗留钥匙。\", \"knows\": [\"f_lin_identity\", \"f_book_on_counter\", \"f_lin_lie_claim\", \"f_lin_absence\"], \"secrets\": [{\"fact\": \"f_lin_absence\", \"until\": {\"exposed\": \"l_lin_leave\"}}], \"lies\": [{\"id\": \"l_lin_leave\", \"claim\": \"闭店后我一直没离开前台，服务台钥匙也没离身。\", \"until\": {\"shown\": \"c_screenshot\"}, \"admit\": \"f_lin_absence\"}], \"trust_start\": 0}, {\"id\": \"chen\", \"name\": \"陈砚\", \"avatar\": \"chen.png\", \"profile\": \"校学生会生活部长，拾页书店财务志愿者，负责活动账目核对。\", \"persona\": \"挪用社团活动经费后需补账，将绝版预订书私卖给校外书商800元。\", \"knows\": [\"f_chen_identity\", \"f_book_on_counter\", \"f_chen_lie_claim\", \"f_chen_swap\", \"f_chen_sale\"], \"secrets\": [{\"fact\": \"f_chen_swap\", \"until\": {\"shown\": \"c_admit\"}}, {\"fact\": \"f_chen_sale\", \"until\": {\"shown\": \"c_transfer\"}}], \"lies\": [{\"id\": \"l_chen_sample\", \"claim\": \"空白本只是下午从打印店取来的样书，我没靠近过预订架。\", \"until\": {\"shown\": \"c_chen_pickup\"}, \"admit\": \"f_chen_swap\"}], \"trust_start\": 0}, {\"id\": \"su\", \"name\": \"苏禾\", \"avatar\": \"su.png\", \"profile\": \"大一勤工助学学生，拾页书店闭店值班生，当晚负责整理书架。\", \"persona\": \"因林晚晴帮她申请助学金，想先确认情况再决定是否说出，怕失去勤工岗位。\", \"knows\": [\"f_su_identity\", \"f_book_on_counter\", \"f_su_photo_secret\"], \"secrets\": [{\"fact\": \"f_su_photo_secret\", \"until\": {\"shown\": \"c_su_photo\"}}], \"lies\": [], \"trust_start\": 0}], \"clues\": [{\"id\": \"c_register\", \"title\": \"预订登记单\", \"content\": \"打印时间20:43，显示《城市雨图》取书人于20:42由“周老师”改为“陈砚”，操作账号为书店财务志愿者陈砚。\", \"holder\": \"lin\", \"requires\": {}}, {\"id\": \"c_blank\", \"title\": \"空白本与取件码\", \"content\": \"空白本封底贴学工打印店取件码“21-03”，贴纸打印时间20:50，本内无字。\", \"holder\": \"su\", \"requires\": {}}, {\"id\": \"c_screenshot\", \"title\": \"前门手机截图\", \"content\": \"截图时间20:51至21:03连续，显示林晚晴在书店前门外接电话，服务台无人，抽屉半开。\", \"holder\": \"su\", \"requires\": {\"shown\": \"c_blank\", \"trust\": 1}}, {\"id\": \"c_monitor\", \"title\": \"后门监控导出记录\", \"content\": \"20:55陈砚拿空白本从后门进店；21:06提牛皮纸袋出后门；21:18空手回；21:20在预订架前将空白本推入《城市雨图》书套。\", \"holder\": \"lin\", \"requires\": {\"shown\": \"c_screenshot\"}}, {\"id\": \"c_chen_pickup\", \"title\": \"打印店取件通知\", \"content\": \"20:54学工打印店通知“取件码21-03的A5空白本已可取”，20:55状态变为已取件。\", \"holder\": \"chen\", \"requires\": {\"shown\": \"c_monitor\"}}, {\"id\": \"c_su_photo\", \"title\": \"苏禾手机照片\", \"content\": \"照片拍摄时间21:20:48，画面显示陈砚手拿空白本站在《城市雨图》预订架前，书套已打开。\", \"holder\": \"su\", \"requires\": {\"shown\": \"c_monitor\"}}, {\"id\": \"c_transfer\", \"title\": \"书商转账聊天截图\", \"content\": \"21:08“周记旧书”转账800元，备注“《城市雨图》已收，后门自取”。\", \"holder\": \"chen\", \"requires\": {\"shown\": \"c_chen_pickup\"}}, {\"id\": \"c_admit\", \"title\": \"陈砚承认记录\", \"content\": \"陈砚承认20:42改登记、20:55取空白本、21:06将原书交“周记旧书”并收800元、21:20放回空白本。\", \"holder\": \"lin\", \"requires\": {\"shown\": \"c_register\", \"has\": \"c_monitor\", \"exposed\": \"l_chen_sample\"}}, {\"id\": \"c_late\", \"title\": \"闭店前十五分钟去向记录\", \"content\": \"林晚晴手机通话记录显示20:51至21:03她在书店前门外接听，与苏禾截屏时间一致。\", \"holder\": \"lin\", \"requires\": {\"shown\": \"c_screenshot\"}}], \"events\": [{\"id\": \"e_lin_confront\", \"when\": {\"shown\": \"c_screenshot\", \"to\": \"lin\"}, \"confront\": [\"lin\", \"chen\"], \"unlock\": [\"c_monitor\"]}, {\"id\": \"e_chen_confront\", \"when\": {\"shown\": \"c_monitor\", \"to\": \"chen\"}, \"confront\": [\"chen\", \"lin\"], \"unlock\": [\"c_chen_pickup\"]}, {\"id\": \"e_su_confront\", \"when\": {\"shown\": \"c_monitor\", \"to\": \"su\"}, \"confront\": [\"su\", \"chen\"], \"unlock\": [\"c_su_photo\"]}, {\"id\": \"e_chen_buyer\", \"when\": {\"shown\": \"c_chen_pickup\", \"to\": \"chen\"}, \"confront\": [\"chen\", \"su\"], \"unlock\": [\"c_transfer\"]}, {\"id\": \"e_admit\", \"when\": {\"shown\": \"c_transfer\", \"to\": \"lin\"}, \"confront\": [\"lin\", \"chen\"], \"unlock\": [\"c_admit\"]}, {\"id\": \"e_lin_late\", \"when\": {\"shown\": \"c_screenshot\", \"to\": \"su\"}, \"confront\": [\"su\", \"lin\"], \"unlock\": [\"c_late\"]}], \"kanshan\": {\"greeting\": \"闭店后的书店只剩三人和一本被调包的书，先从各自时间线问起。\", \"hints\": [{\"done\": {}, \"vague\": \"先核对预订登记和书套里的空白本。\", \"direct\": \"向前台检查打印单据，并让苏禾交出空白本看封底取件码。\"}, {\"done\": {\"has\": \"c_blank\"}, \"vague\": \"林晚晴对闭店前的时间说得太满，找她身边的人核对。\", \"direct\": \"向苏禾出示空白本并提高到信任1，取得前门手机截图。\"}, {\"done\": {\"has\": \"c_screenshot\"}, \"vague\": \"用截图逼林晚晴交出闭店监控。\", \"direct\": \"向林晚晴出示c_screenshot，拆穿离岗谎话后取得后门监控导出记录。\"}, {\"done\": {\"has\": \"c_monitor\"}, \"vague\": \"从陈砚的取件记录和苏禾的照片两头查。\", \"direct\": \"向陈砚出示后门监控取得打印店取件通知；向苏禾出示后门监控取得手机照片。\"}, {\"done\": {\"has\": \"c_chen_pickup\"}, \"vague\": \"原书去了哪里，得看陈砚的交易记录。\", \"direct\": \"拆穿陈砚的样书谎话后出示取件通知，取得书商转账聊天截图。\"}, {\"done\": {\"has\": \"c_transfer\"}, \"vague\": \"最后让陈砚当面承认完整经过。\", \"direct\": \"向林晚晴出示转账截图，由她记录陈砚的完整承认。\"}]}, \"ending\": {\"questions\": [{\"id\": \"q1\", \"text\": \"谁在20:42修改《城市雨图》的预订取书人？\", \"options\": [\"林晚晴\", \"陈砚\", \"苏禾\", \"周老师\"], \"answer\": \"陈砚\"}, {\"id\": \"q2\", \"text\": \"空白本被放入《城市雨图》书套的时间是？\", \"options\": [\"20:55\", \"21:06\", \"21:20\", \"21:24\"], \"answer\": \"21:20\"}, {\"id\": \"q3\", \"text\": \"原版《城市雨图》最终去向是？\", \"options\": [\"归还给周老师\", \"藏在书店贮藏间\", \"以800元卖给校外书商“周记旧书”\", \"被苏禾带回宿舍\"], \"answer\": \"以800元卖给校外书商“周记旧书”\"}], \"endings\": [{\"id\": \"end_truth\", \"title\": \"真相复原\", \"when\": {\"correct\": [\"q1\", \"q2\", \"q3\"]}, \"text\": \"陈砚为填补挪用社团经费的亏空，20:42私改预订登记，20:55取走空白本，21:06将《城市雨图》以800元卖给校外书商“周记旧书”，21:20用空白本调包。林晚晴离岗留钥匙的谎言与苏禾未当场声张的顾虑都被核实。书店据此向“周记旧书”追索原书。\", \"retry\": false}, {\"id\": \"end_fallback\", \"title\": \"证据不足\", \"text\": \"现有证据还不足以还原完整经过，原书去向未能确认，仍需继续调查。\", \"retry\": true}], \"truth\": \"陈砚为填补挪用社团经费的亏空，20:42私改预订登记，20:55取走空白本，21:06将《城市雨图》以800元卖给校外书商“周记旧书”，21:20用空白本调包；林晚晴因离岗留钥匙而说谎遮掩，苏禾拍下关键照片但因怕失去勤工岗位未当场声张。若公开预订登记单、后门监控、取件通知、转账聊天和陈砚承认记录，可确认陈砚的调包、售卖与动机，并据此向“周记旧书”追索原书。\", \"lessons\": [\"时间线矛盾要相互核对，不轻信单方说法。\", \"物证与本人承认能互相印证，才能锁定完整真相。\", \"离岗、留下钥匙和隐瞒拍摄都会让调查走弯路。\"]}, \"id\": \"generated-ace7f9c4c9bb4112a1b44f255d8a4f3a\", \"source\": \"generated\"}, \"problems\": [\"谎话 l_chen_sample 的拆谎引用 ['c_chen_pickup'] 与设计证据 ['预订登记单', '后门监控导出记录'] 不符，请保持设计不变，按对应线索编号修正 until。\"], \"reference_ids\": {\"facts\": [\"f_lin_identity\", \"f_chen_identity\", \"f_su_identity\", \"f_book_on_counter\", \"f_lin_lie_claim\", \"f_lin_absence\", \"f_chen_lie_claim\", \"f_chen_swap\", \"f_chen_sale\", \"f_su_photo_secret\"], \"characters\": [\"lin\", \"chen\", \"su\"], \"clues\": [\"c_register\", \"c_blank\", \"c_screenshot\", \"c_monitor\", \"c_chen_pickup\", \"c_su_photo\", \"c_transfer\", \"c_admit\", \"c_late\"], \"events\": [\"e_lin_confront\", \"e_chen_confront\", \"e_su_confront\", \"e_chen_buyer\", \"e_admit\", \"e_lin_late\"]}}"
+    }
+  ],
+  "response": {
+    "story": {
+      "title": "拾页书店调包案",
+      "intro": "闭店后的拾页书店，预订的绝版《城市雨图》在交付前变成空白本。学生店长林晚晴、财务志愿者陈砚、值班生苏禾各有一段不愿说明的时间。请查清谁改了登记、空白本何时进入书套、原书去了哪里。",
+      "facts": [
+        {
+          "id": "f_lin_identity",
+          "text": "林晚晴是枫林大学大三学生、拾页书店学生店长。"
+        },
+        {
+          "id": "f_chen_identity",
+          "text": "陈砚是校学生会生活部长、拾页书店财务志愿者。"
+        },
+        {
+          "id": "f_su_identity",
+          "text": "苏禾是大一勤工助学学生、拾页书店闭店值班生。"
+        },
+        {
+          "id": "f_book_on_counter",
+          "text": "19:30林晚晴将预订绝版书《城市雨图》放在服务台待取，陈砚在旁核对活动账目。"
+        },
+        {
+          "id": "f_lin_lie_claim",
+          "text": "林晚晴声称闭店后一直没离开前台，服务台钥匙也没离身。"
+        },
+        {
+          "id": "f_lin_absence",
+          "text": "20:51至21:03林晚晴在书店前门外接电话，将服务台钥匙留在抽屉，前台无人。"
+        },
+        {
+          "id": "f_chen_lie_claim",
+          "text": "陈砚声称空白本只是下午从打印店取来的样书，他没靠近过预订架。"
+        },
+        {
+          "id": "f_chen_swap",
+          "text": "陈砚于20:42私改预订取书人，20:55取走取件码21-03的A5空白本，21:06将原书《城市雨图》交“周记旧书”，21:20用空白本调包放入书套。"
+        },
+        {
+          "id": "f_chen_sale",
+          "text": "陈砚将《城市雨图》以800元卖给校外书商“周记旧书”，用于填补挪用社团活动经费的亏空。"
+        },
+        {
+          "id": "f_su_photo_secret",
+          "text": "21:19苏禾从后门回店拿伞，21:20:48拍到陈砚将空白本放入《城市雨图》书套，因怕失去勤工岗位未当场声张。"
+        }
+      ],
+      "characters": [
+        {
+          "id": "lin",
+          "name": "林晚晴",
+          "avatar": "lin.png",
+          "profile": "枫林大学大三学生，拾页书店学生店长，负责闭店与预订书交付。",
+          "persona": "想保住书店年度评优和自己的保研推荐，不愿暴露闭店前离岗留钥匙。",
+          "knows": [
+            "f_lin_identity",
+            "f_book_on_counter",
+            "f_lin_lie_claim",
+            "f_lin_absence"
+          ],
+          "secrets": [
+            {
+              "fact": "f_lin_absence",
+              "until": {
+                "exposed": "l_lin_leave"
+              }
+            }
+          ],
+          "lies": [
+            {
+              "id": "l_lin_leave",
+              "claim": "闭店后我一直没离开前台，服务台钥匙也没离身。",
+              "until": {
+                "shown": "c_screenshot"
+              },
+              "admit": "f_lin_absence"
+            }
+          ],
+          "trust_start": 0
+        },
+        {
+          "id": "chen",
+          "name": "陈砚",
+          "avatar": "chen.png",
+          "profile": "校学生会生活部长，拾页书店财务志愿者，负责活动账目核对。",
+          "persona": "挪用社团活动经费后需补账，将绝版预订书私卖给校外书商800元。",
+          "knows": [
+            "f_chen_identity",
+            "f_book_on_counter",
+            "f_chen_lie_claim",
+            "f_chen_swap",
+            "f_chen_sale"
+          ],
+          "secrets": [
+            {
+              "fact": "f_chen_swap",
+              "until": {
+                "shown": "c_admit"
+              }
+            },
+            {
+              "fact": "f_chen_sale",
+              "until": {
+                "shown": "c_transfer"
+              }
+            }
+          ],
+          "lies": [
+            {
+              "id": "l_chen_sample",
+              "claim": "空白本只是下午从打印店取来的样书，我没靠近过预订架。",
+              "until": {
+                "shown": "c_register",
+                "has": "c_monitor"
+              },
+              "admit": "f_chen_swap"
+            }
+          ],
+          "trust_start": 0
+        },
+        {
+          "id": "su",
+          "name": "苏禾",
+          "avatar": "su.png",
+          "profile": "大一勤工助学学生，拾页书店闭店值班生，当晚负责整理书架。",
+          "persona": "因林晚晴帮她申请助学金，想先确认情况再决定是否说出，怕失去勤工岗位。",
+          "knows": [
+            "f_su_identity",
+            "f_book_on_counter",
+            "f_su_photo_secret"
+          ],
+          "secrets": [
+            {
+              "fact": "f_su_photo_secret",
+              "until": {
+                "shown": "c_su_photo"
+              }
+            }
+          ],
+          "lies": [],
+          "trust_start": 0
+        }
+      ],
+      "clues": [
+        {
+          "id": "c_register",
+          "title": "预订登记单",
+          "content": "打印时间20:43，显示《城市雨图》取书人于20:42由“周老师”改为“陈砚”，操作账号为书店财务志愿者陈砚。",
+          "holder": "lin",
+          "requires": {}
+        },
+        {
+          "id": "c_blank",
+          "title": "空白本与取件码",
+          "content": "空白本封底贴学工打印店取件码“21-03”，贴纸打印时间20:50，本内无字。",
+          "holder": "su",
+          "requires": {}
+        },
+        {
+          "id": "c_screenshot",
+          "title": "前门手机截图",
+          "content": "截图时间20:51至21:03连续，显示林晚晴在书店前门外接电话，服务台无人，抽屉半开。",
+          "holder": "su",
+          "requires": {
+            "shown": "c_blank",
+            "trust": 1
+          }
+        },
+        {
+          "id": "c_monitor",
+          "title": "后门监控导出记录",
+          "content": "20:55陈砚拿空白本从后门进店；21:06提牛皮纸袋出后门；21:18空手回；21:20在预订架前将空白本推入《城市雨图》书套。",
+          "holder": "lin",
+          "requires": {
+            "shown": "c_screenshot"
+          }
+        },
+        {
+          "id": "c_chen_pickup",
+          "title": "打印店取件通知",
+          "content": "20:54学工打印店通知“取件码21-03的A5空白本已可取”，20:55状态变为已取件。",
+          "holder": "chen",
+          "requires": {
+            "shown": "c_monitor"
+          }
+        },
+        {
+          "id": "c_su_photo",
+          "title": "苏禾手机照片",
+          "content": "照片拍摄时间21:20:48，画面显示陈砚手拿空白本站在《城市雨图》预订架前，书套已打开。",
+          "holder": "su",
+          "requires": {
+            "shown": "c_monitor"
+          }
+        },
+        {
+          "id": "c_transfer",
+          "title": "书商转账聊天截图",
+          "content": "21:08“周记旧书”转账800元，备注“《城市雨图》已收，后门自取”。",
+          "holder": "chen",
+          "requires": {
+            "shown": "c_chen_pickup"
+          }
+        },
+        {
+          "id": "c_admit",
+          "title": "陈砚承认记录",
+          "content": "陈砚承认20:42改登记、20:55取空白本、21:06将原书交“周记旧书”并收800元、21:20放回空白本。",
+          "holder": "lin",
+          "requires": {
+            "shown": "c_register",
+            "has": "c_monitor",
+            "exposed": "l_chen_sample"
+          }
+        },
+        {
+          "id": "c_late",
+          "title": "闭店前十五分钟去向记录",
+          "content": "林晚晴手机通话记录显示20:51至21:03她在书店前门外接听，与苏禾截屏时间一致。",
+          "holder": "lin",
+          "requires": {
+            "shown": "c_screenshot"
+          }
+        }
+      ],
+      "events": [
+        {
+          "id": "e_lin_confront",
+          "when": {
+            "shown": "c_screenshot",
+            "to": "lin"
+          },
+          "confront": [
+            "lin",
+            "chen"
+          ],
+          "unlock": [
+            "c_monitor"
+          ]
+        },
+        {
+          "id": "e_chen_confront",
+          "when": {
+            "shown": "c_monitor",
+            "to": "chen"
+          },
+          "confront": [
+            "chen",
+            "lin"
+          ],
+          "unlock": [
+            "c_chen_pickup"
+          ]
+        },
+        {
+          "id": "e_su_confront",
+          "when": {
+            "shown": "c_monitor",
+            "to": "su"
+          },
+          "confront": [
+            "su",
+            "chen"
+          ],
+          "unlock": [
+            "c_su_photo"
+          ]
+        },
+        {
+          "id": "e_chen_buyer",
+          "when": {
+            "shown": "c_chen_pickup",
+            "to": "chen"
+          },
+          "confront": [
+            "chen",
+            "su"
+          ],
+          "unlock": [
+            "c_transfer"
+          ]
+        },
+        {
+          "id": "e_admit",
+          "when": {
+            "shown": "c_transfer",
+            "to": "lin"
+          },
+          "confront": [
+            "lin",
+            "chen"
+          ],
+          "unlock": [
+            "c_admit"
+          ]
+        },
+        {
+          "id": "e_lin_late",
+          "when": {
+            "shown": "c_screenshot",
+            "to": "su"
+          },
+          "confront": [
+            "su",
+            "lin"
+          ],
+          "unlock": [
+            "c_late"
+          ]
+        }
+      ],
+      "kanshan": {
+        "greeting": "闭店后的书店只剩三人和一本被调包的书，先从各自时间线问起。",
+        "hints": [
+          {
+            "done": {},
+            "vague": "先核对预订登记和书套里的空白本。",
+            "direct": "向前台检查打印单据，并让苏禾交出空白本看封底取件码。"
+          },
+          {
+            "done": {
+              "has": "c_blank"
+            },
+            "vague": "林晚晴对闭店前的时间说得太满，找她身边的人核对。",
+            "direct": "向苏禾出示空白本并提高到信任1，取得前门手机截图。"
+          },
+          {
+            "done": {
+              "has": "c_screenshot"
+            },
+            "vague": "用截图逼林晚晴交出闭店监控。",
+            "direct": "向林晚晴出示c_screenshot，拆穿离岗谎话后取得后门监控导出记录。"
+          },
+          {
+            "done": {
+              "has": "c_monitor"
+            },
+            "vague": "从陈砚的取件记录和苏禾的照片两头查。",
+            "direct": "向陈砚出示后门监控取得打印店取件通知；向苏禾出示后门监控取得手机照片。"
+          },
+          {
+            "done": {
+              "has": "c_chen_pickup"
+            },
+            "vague": "原书去了哪里，得看陈砚的交易记录。",
+            "direct": "拆穿陈砚的样书谎话后出示取件通知，取得书商转账聊天截图。"
+          },
+          {
+            "done": {
+              "has": "c_transfer"
+            },
+            "vague": "最后让陈砚当面承认完整经过。",
+            "direct": "向林晚晴出示转账截图，由她记录陈砚的完整承认。"
+          }
+        ]
+      },
+      "ending": {
+        "questions": [
+          {
+            "id": "q1",
+            "text": "谁在20:42修改《城市雨图》的预订取书人？",
+            "options": [
+              "林晚晴",
+              "陈砚",
+              "苏禾",
+              "周老师"
+            ],
+            "answer": "陈砚"
+          },
+          {
+            "id": "q2",
+            "text": "空白本被放入《城市雨图》书套的时间是？",
+            "options": [
+              "20:55",
+              "21:06",
+              "21:20",
+              "21:24"
+            ],
+            "answer": "21:20"
+          },
+          {
+            "id": "q3",
+            "text": "原版《城市雨图》最终去向是？",
+            "options": [
+              "归还给周老师",
+              "藏在书店贮藏间",
+              "以800元卖给校外书商“周记旧书”",
+              "被苏禾带回宿舍"
+            ],
+            "answer": "以800元卖给校外书商“周记旧书”"
+          }
+        ],
+        "endings": [
+          {
+            "id": "end_truth",
+            "title": "真相复原",
+            "when": {
+              "correct": [
+                "q1",
+                "q2",
+                "q3"
+              ]
+            },
+            "text": "陈砚为填补挪用社团经费的亏空，20:42私改预订登记，20:55取走空白本，21:06将《城市雨图》以800元卖给校外书商“周记旧书”，21:20用空白本调包。林晚晴离岗留钥匙的谎言与苏禾未当场声张的顾虑都被核实。书店据此向“周记旧书”追索原书。",
+            "retry": false
+          },
+          {
+            "id": "end_fallback",
+            "title": "证据不足",
+            "text": "现有证据还不足以还原完整经过，原书去向未能确认，仍需继续调查。",
+            "retry": true
+          }
+        ],
+        "truth": "陈砚为填补挪用社团经费的亏空，20:42私改预订登记，20:55取走空白本，21:06将《城市雨图》以800元卖给校外书商“周记旧书”，21:20用空白本调包；林晚晴因离岗留钥匙而说谎遮掩，苏禾拍下关键照片但因怕失去勤工岗位未当场声张。若公开预订登记单、后门监控、取件通知、转账聊天和陈砚承认记录，可确认陈砚的调包、售卖与动机，并据此向“周记旧书”追索原书。",
+        "lessons": [
+          "时间线矛盾要相互核对，不轻信单方说法。",
+          "物证与本人承认能互相印证，才能锁定完整真相。",
+          "离岗、留下钥匙和隐瞒拍摄都会让调查走弯路。"
+        ]
+      }
+    }
+  }
+}
