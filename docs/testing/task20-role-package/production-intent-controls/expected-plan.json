@@ -1,0 +1,64 @@
+{
+  "runtime_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+  "cases": [
+    {
+      "name": "original_bookstore",
+      "allowed_actions": [
+        "clarify",
+        "generate"
+      ],
+      "strategy": "new",
+      "raw_reply": "",
+      "job_creation": "QA拦截付费生成"
+    },
+    {
+      "name": "original_hospital",
+      "allowed_actions": [
+        "clarify",
+        "generate"
+      ],
+      "strategy": "new",
+      "raw_reply": "",
+      "job_creation": "QA拦截付费生成"
+    },
+    {
+      "name": "discuss_without_start",
+      "allowed_actions": [
+        "clarify",
+        "discuss"
+      ],
+      "strategy": "new",
+      "raw_reply": "",
+      "job_creation": "QA拦截付费生成"
+    },
+    {
+      "name": "seen_answer_wants_new",
+      "allowed_actions": [
+        "clarify",
+        "generate"
+      ],
+      "strategy": "new",
+      "raw_reply": "",
+      "job_creation": "QA拦截付费生成"
+    },
+    {
+      "name": "correct_previous_size",
+      "allowed_actions": [
+        "generate"
+      ],
+      "strategy": "new",
+      "raw_reply": "",
+      "job_creation": "QA拦截付费生成"
+    }
+  ],
+  "schema": "Decision.model_validate及实际输出字段集合",
+  "materials": "完整保留原始素材和本轮纠正",
+  "public_safe": "仅允许生产固定策略确认或质量档位文案",
+  "model": "gpt-5.4-2026-03-05",
+  "role": "writer",
+  "intent": true,
+  "endpoint": "/v1/responses",
+  "effort": "none",
+  "baseline_strict_matrix": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\docs\\testing\\task20-role-package\\intent-controls\\summary.json",
+  "baseline_scope_issues": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\docs\\testing\\task20-role-package\\intent-controls\\contract-corrected-assessment.json"
+}

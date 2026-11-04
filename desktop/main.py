@@ -3,9 +3,25 @@
 import logging
 import os
 from pathlib import Path
+import secrets
 import socket
 import threading
 import time
+
+
+def _listener():
+    """预绑定WebView可访问的动态端口，并把同一个socket交给后端。"""
+    for attempt in range(32):
+        listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            listener.bind(("127.0.0.1", 49152 + secrets.randbelow(16384)))
+            listener.listen(128)
+        except OSError as error:
+            listener.close()
+            if attempt == 31:
+                raise RuntimeError("未找到可用的本地端口，请稍后重新启动。") from error
+        else:
+            return listener
 
 
 def main():
@@ -40,9 +56,7 @@ def main():
 
     from backend.app import app
 
-    listener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    listener.bind(("127.0.0.1", 0))
-    listener.listen(128)
+    listener = _listener()
     port = listener.getsockname()[1]
     server = uvicorn.Server(uvicorn.Config(app, host="127.0.0.1", port=port, workers=1,
                                          log_config=None, access_log=False, timeout_graceful_shutdown=30))

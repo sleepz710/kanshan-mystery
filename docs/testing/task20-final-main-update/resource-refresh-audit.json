@@ -1,0 +1,1190 @@
+{
+  "audit_kind": "independent_readonly_final_resource_refresh_audit",
+  "checked_at_utc": "2026-11-04T15:28:45.785196+00:00",
+  "resource_source_commit": "6a2b0b0ce45e3d76d4a92d0e50730f5b1cff79d7",
+  "exe_compiled_source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "latest_main_commit": "4c6081d7e9d6154435e5f6d77b88e08237aac0bb",
+  "package_directory": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v6-6a2b0b0\\看山谜案馆",
+  "provenance": {
+    "package_path": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v6-6a2b0b0\\看山谜案馆\\构建来源.json",
+    "package_sha256": "21d4467a5c3e35e77b7c7a4f7188d619ed8b795d2ba7ed2349d8842833d15186",
+    "cache_path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache\\resource-final-build-provenance.json",
+    "cache_sha256": "94a9035064443a97ab61ac728c55e8e0d823d36351874b49088a03324b6a03ea",
+    "package_source_commit": "6a2b0b0ce45e3d76d4a92d0e50730f5b1cff79d7",
+    "package_exe_compiled_source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+    "package_resource_source_commit": "6a2b0b0ce45e3d76d4a92d0e50730f5b1cff79d7",
+    "commits_match": true
+  },
+  "runtime_and_test_source_comparison": {
+    "all_groups_equal": true,
+    "groups": [
+      {
+        "area": "backend",
+        "source_paths_equal_compiled_source": true,
+        "file_count": 29,
+        "all_bytes_equal_to_compiled_source": true,
+        "all_working_tree_bytes_equal_source": true,
+        "files": [
+          {
+            "path": "backend/__init__.py",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/agents.py",
+            "sha256": "24f5d69002895dacd75abcb81224a44777268762b9542b92ed999463c5f2a45a",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/app.py",
+            "sha256": "ebd2f3499a9eacc671cfa0886e7dc1135e33a9f4be2881103a80431cd8aba53a",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/engine.py",
+            "sha256": "2ae71170f7f8bcdca4ae805930042ef3ea7d3feb4247d28a9f238f53fdeb3b43",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/kanshan.py",
+            "sha256": "5a5a94d908b32462f809e38258eaffd89705697d5cdb5977ba60d20e3463df12",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/llm.py",
+            "sha256": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/paths.py",
+            "sha256": "e13208f13c639f97440fdbbc2de17023d3ee05e9e40920fba2e0d5a9dacd9c9c",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/__init__.py",
+            "sha256": "38de8aacecae01185944868ed0ef33e0a4af731a766c3a63352abc4a36de32cb",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/api.py",
+            "sha256": "6b986f47258f324ee799c97bd5236190bfa2b2c2720b4d9b0640270f6a43642a",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/check.py",
+            "sha256": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/ingest.py",
+            "sha256": "f76adbe9fd36aaaf1248fdaab7ca074fddb13e53fe97d3922ce306e8dcc5510b",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/mock.py",
+            "sha256": "2b247c590ecbf4910bfc3247a6c3640144e606903f61cea7c9b58700a53e37fc",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/service.py",
+            "sha256": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/share.py",
+            "sha256": "ddee26d770218cd6de495e406888669cf70fc958a4f8e953889c2838991ec6a9",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_design_first.py",
+            "sha256": "f81bccb2708f29f205e11b04c1bb80416eda7a761373bfe7bdb360f662aab8c4",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_design_preservation.py",
+            "sha256": "d6a68a913bbf998c6e25fd0aaaf40070032f25c7f40bf6cd6e5980d476856d5a",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_failures.py",
+            "sha256": "8709ac8eb336b6087d29f2b71079e70464048653d84973d9c1cc8a2a1d0bd6bc",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_generation_integrity.py",
+            "sha256": "096e8a08467f25bc2a5cc76d025efd1e6cfdac89c6ccfbc2430dd031fdb45036",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_intent_purpose.py",
+            "sha256": "66a3cd9e7051ef50eba2a89f1c88d1e7df0fce121717c02337acff7024c30684",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_material_shutdown.py",
+            "sha256": "e15068de931eb8e59893e1a66e21b7a3b5a0a81d55f87505aba0ce713c6ba168",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_openai_background.py",
+            "sha256": "85c730b722d02d697fe24de662d212a40da335a46d5cefff0942983575554c8a",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_quality_modes.py",
+            "sha256": "2c00bddfdbd6bbbbb61e0a18aedd08af8d5b99c1ba85b40378df88cd2829ec57",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_regression_20261103.py",
+            "sha256": "ea95e490a2be6581d6c61c61616cd854f98211ce4140de67a5997844cb5d59be",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_request_deadline.py",
+            "sha256": "acb027a0c4baa59b2c95d1e7edfe303e6a6222ab7189315082c2c85e77f4ff1f",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_review_verification.py",
+            "sha256": "682e99fc3e9c9524fcd0622975ce33a7e96d4ccbc65fcc2c4beb3a74c9abf063",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_share.py",
+            "sha256": "24ab9e6366b34a0e5006233900f8686ca29adfc880469f0910c65977d9fa6f14",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_studio.py",
+            "sha256": "c40311b74e9758fd87c1c78247e0c7cd5e4c75b951aefa5848da5b895f5f214e",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_task18_alignment.py",
+            "sha256": "6032d3f7ac51945b7e1f8eba90ebe8e624c7b202e4570c76b4ca6c3364cddee1",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "backend/studio/test_writer_speed.py",
+            "sha256": "1f2909eccd776080581f8dba1912bd930b64f0b9fb59d1d20e03b24c0ffecdb3",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          }
+        ]
+      },
+      {
+        "area": "desktop",
+        "source_paths_equal_compiled_source": true,
+        "file_count": 9,
+        "all_bytes_equal_to_compiled_source": true,
+        "all_working_tree_bytes_equal_source": true,
+        "files": [
+          {
+            "path": "desktop/__init__.py",
+            "sha256": "fc444c1a3f5d97a4856c1f17e90ae9b9b484ffe063584197ca27dafb2d8fb315",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "desktop/build.ps1",
+            "sha256": "e24eafc17560c56688b22b2f7584df1c865b5d2dfc0bfcb93b8094ded401560e",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "desktop/kanshan.ico",
+            "sha256": "02ca6c4082752b1048f8b78c737d3a044db43f4fe0a5c53f79d22c91b55c4827",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "desktop/main.py",
+            "sha256": "554a5884c0b38704b5b491b515a5131cfbda66acfa2a6d30791102351ba99a65",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "desktop/requirements.txt",
+            "sha256": "0e58cf9faa55f25f0535109aea717ae1f7ebf2b704e0c9372f372de16b5f5ebb",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "desktop/runtime.py",
+            "sha256": "4ec6e86e5c6d4503ea926403239ae39655eba8e522b3cbae4cac7caac5bf0263",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "desktop/settings.py",
+            "sha256": "17bdefc99de61eb56562fc0c71bee29fb372df22b44599fdb2668a284bf02f29",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "desktop/ui/index.html",
+            "sha256": "22e43084d4911c95e61c7c331c49bba8b9d236f50865e50314aa1ff7bc0bde90",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "desktop/window_frame.py",
+            "sha256": "dcb0d6fbba6c7dffaef1c118e338c312614df25698dc482238131f030b9d0d8b",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          }
+        ]
+      },
+      {
+        "area": "frontend",
+        "source_paths_equal_compiled_source": true,
+        "file_count": 34,
+        "all_bytes_equal_to_compiled_source": true,
+        "all_working_tree_bytes_equal_source": true,
+        "files": [
+          {
+            "path": "frontend/assets/audio/bgm.mp3",
+            "sha256": "d11aec5433749b8783ba7a29621f3814d1c84214052877d16ba5ca7dc19e07b0",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/assets/avatars/akai.png",
+            "sha256": "eeb609b78791abc7b38a692141768571a8d6b81dce7c0a036cdcfd3a70246721",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/assets/avatars/chenmo.png",
+            "sha256": "67982d5bee26690f5a5f5347402bf481dcb6e386e2c7af27e33605f301110679",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/assets/avatars/src/akai.svg",
+            "sha256": "a88cc4617131a7d519489e301d20b6ec85bd4a31cb037b94af29a92a0f24c204",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/assets/avatars/src/chenmo.svg",
+            "sha256": "5101c0ae2986d3310a57200b569042e450b75c21ab960c3e881b6642b6c28e6b",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/assets/avatars/src/xiaolin.svg",
+            "sha256": "792f7051c785c8cbf9b71f9ee8ffdc1cba8d848b69fdbf804aa84690afc476a2",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/assets/avatars/src/zhouming.svg",
+            "sha256": "0d3ee951767eebdec2e9abf6863ebf3d549e3d1fe4710453110722007f94e9ae",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/assets/avatars/xiaolin.png",
+            "sha256": "aad1297329171ed1762ffc81d4845513e277d5b37bed073e9ccc4f50dddf3c0c",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/assets/avatars/zhouming.png",
+            "sha256": "8284a513addd55aa979dee14c35cbb46af77807f66fd99686a77a465bfeeb7dd",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/assets/icon-180.png",
+            "sha256": "e584b812f3d8f363e32bbf428474da6d9e1bb9cb8488fefcded0311a790b0412",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/assets/logo.svg",
+            "sha256": "4a7f81bfc6b3b0a1ee2cbf2e062bf97470e03c11f1f03b2376d0ad0deb5e21b3",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/css/base.css",
+            "sha256": "7287f117d96ec6b291849f7f2ffd4ff53ba7e5bd5de8a22aea7e64cefe864f71",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/css/ending.css",
+            "sha256": "8d766ea9e9b4b3dc216a8f355e9d47847256e6b76ea83cbbdda724c649b1c414",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/css/game.css",
+            "sha256": "e88a3af41338fba10c85da49a01f1401c77a85dfeffb2d59fa19ce4a612c68ca",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/css/home.css",
+            "sha256": "198c11cf0350eab979443bd1f7539f649dcd8ef197e4066baee8ad476c50d93a",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/css/window.css",
+            "sha256": "e0a24fb87c2c876377b6d7cb478f5c2f499bc88394fe0cf544513f419d3dcdc0",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/ending.html",
+            "sha256": "c3210672f027889b97069f063316952fe6ad0ccf7d635ef13e63b51ce802cd0d",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/game.html",
+            "sha256": "f403015362128d96b1ca298dcd3f93e0b200f33af9c2b51afc8143a30f60ca7d",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/index.html",
+            "sha256": "e990d16c6f74636532ad8c0c8d507f7e0989562c8b58b9ec00397d1a6f21f7fb",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/js/api.js",
+            "sha256": "735c3a54733385a45ed5062d1b5dc80d46dd552b5dac4232171e5c28d7d35abc",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/js/ending.js",
+            "sha256": "959c29aaad0cec6339a947aea44a89ea52d80421fa1bf0fd42ac81de57c17109",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/js/game.js",
+            "sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/js/home.js",
+            "sha256": "19fb516e34de078878663d0ec2aec55cff9539f559fcd8743b125b1c762963ce",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/js/music.js",
+            "sha256": "bc705deb2b84f12499602776fc77324f8dd56372760b8bcd132a5a7778a3c9d9",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/js/store.js",
+            "sha256": "5edecddec244b96b3c4dc6aacd0b486ca52e4a3bf3f47a7e53dc0a9e9ede3e1e",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/js/ui.js",
+            "sha256": "2b39a3ac847ecc95d1e315fb9ca5edbf5408e13230c10d616fd6b54703e75752",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/js/window.js",
+            "sha256": "a3fab19f5ac4da71aee71e2be49ea49da2ba2585d429913e826c2b223cf326db",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/share/index.html",
+            "sha256": "a14dfee81e9699ba1f40fdcb3464e66a760f4bee58cd06181cab65ef6947fa68",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/share/share.css",
+            "sha256": "8d44ed2a0c7269391894d6ec187654d1e30801c45cb05bda3ace332337b0c8e0",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/share/share.js",
+            "sha256": "1558d57b73ce2da98becc8046869213636cdc9323415f2a247cec2b57ad43544",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/studio/chats.js",
+            "sha256": "8a5e149dbea92f32d48ea5a420db1c528d01ead84efb2b1c0e349a4970c52a57",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/studio/index.html",
+            "sha256": "cdd9bcd0468c181fdd884bf6657b331efe72d1796dba7bbec71b7ee4ed8260d9",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/studio/studio.css",
+            "sha256": "92efb481b14d43f3e98e38f6397b8bfd1af3d3a0f0503d4526f85b751210a61e",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "frontend/studio/studio.js",
+            "sha256": "d8e8f0313b2515c8012b5b281f70b1517c4b696ec0cdd504e0de60434bb2680b",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          }
+        ]
+      },
+      {
+        "area": "tests",
+        "source_paths_equal_compiled_source": true,
+        "file_count": 16,
+        "all_bytes_equal_to_compiled_source": true,
+        "all_working_tree_bytes_equal_source": true,
+        "files": [
+          {
+            "path": "tests/conftest.py",
+            "sha256": "8ad0e90aaceff0dda5cb1f6818b3f95f678ffee8d148fc247439883567f4100a",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/fixtures/v1/lost-tuition.yaml",
+            "sha256": "f706df0ce8efb58e5c6c878a37d59d77a8197b7d3ae1f1d157d020eec8a470b3",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_agents.py",
+            "sha256": "f877c4883437a6a908fdfa19ab7d62235a5c7d6a9aee3f5d4257b746c68166b6",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_api.py",
+            "sha256": "06668428669091b2a7986b1c97a7371a2a265eed7f841483c26dedcf65388368",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_api_v2.py",
+            "sha256": "c590142d1c5ebfac0bf4e9cda0e65fcca13e47842c7ab5da58e37c98a1d3bf91",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_check.py",
+            "sha256": "bee68ea2e1f2e7df2d76ef4c38b30c65495da46fbcd229095e030e6962696118",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_checker_regression_20261103.py",
+            "sha256": "a351e05be6c1069fdf34f3af561adb261fb9dfadd09689be2bcd1027dac4e3e6",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_clue_progress.py",
+            "sha256": "98ac899342b6c42161cb8aa89bfa904b0bc4b253effdd672c315cfe1de21249b",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_demo_samples.py",
+            "sha256": "6bdbe0f6948ce8b4f5964c3242e28da1df21567d8c7b86745c70eff79c91ad40",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_desktop.py",
+            "sha256": "08ccbeff8868e767d039d073231df1a78d6b92695099de469b56852bf3f38c0c",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_engine.py",
+            "sha256": "e06e0c5609d3ba1d23527f3a94e244f6dab1d9d1e0a417ec4f16ce095e19ec8e",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_engine_v2.py",
+            "sha256": "ff096d932b742c85fa2341d46b324c6319569bafd47cf414dd1bfba0384893ca",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_kanshan.py",
+            "sha256": "0efee02f8cc8f9ef188ee800831c8076c2451c2e1102c207b49e0e48c8344e71",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_llm.py",
+            "sha256": "3fcaff54040cd40645fda0f7fbfb9f9b4873116f674507d4c61203612a4d12a2",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_playability.py",
+            "sha256": "31676a551d395e4d0b295f24845282b104c1d92c3e180e733fb2db47326254a4",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          },
+          {
+            "path": "tests/test_quality_status.py",
+            "sha256": "a1f84e6415ac515bb29d062601ef2b7bbf033bb829595b79b2fc75bf6b0b7c84",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          }
+        ]
+      },
+      {
+        "area": "requirements.txt",
+        "source_paths_equal_compiled_source": true,
+        "file_count": 1,
+        "all_bytes_equal_to_compiled_source": true,
+        "all_working_tree_bytes_equal_source": true,
+        "files": [
+          {
+            "path": "requirements.txt",
+            "sha256": "9e80ac9fe774603437f4fdd6ab3ef5097a7c4416da72967ec8f91caa0c544e92",
+            "bytes_equal_to_compiled_source": true,
+            "working_tree_bytes_equal_source": true
+          }
+        ]
+      }
+    ]
+  },
+  "new_story_resources": {
+    "count": 4,
+    "paths": [
+      "stories/touqi-walkthrough.md",
+      "stories/touqi.yaml",
+      "stories/yeguiren-walkthrough.md",
+      "stories/yeguiren.yaml"
+    ],
+    "latest_main_diff": [],
+    "source_scope": "相对789新增两案YAML及两份walkthrough，源代码与测试沿用789。"
+  },
+  "modules": {
+    "count": 19,
+    "all_source_hashes_match": true,
+    "compiled_code_verification": "沿用同一789 EXE与已完成的19模块CArchive code object比对，不重新编译或运行。",
+    "items": [
+      {
+        "path": "backend/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/agents.py",
+        "sha256": "24f5d69002895dacd75abcb81224a44777268762b9542b92ed999463c5f2a45a",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/app.py",
+        "sha256": "ebd2f3499a9eacc671cfa0886e7dc1135e33a9f4be2881103a80431cd8aba53a",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/engine.py",
+        "sha256": "2ae71170f7f8bcdca4ae805930042ef3ea7d3feb4247d28a9f238f53fdeb3b43",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/kanshan.py",
+        "sha256": "5a5a94d908b32462f809e38258eaffd89705697d5cdb5977ba60d20e3463df12",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/llm.py",
+        "sha256": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/paths.py",
+        "sha256": "e13208f13c639f97440fdbbc2de17023d3ee05e9e40920fba2e0d5a9dacd9c9c",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/studio/__init__.py",
+        "sha256": "38de8aacecae01185944868ed0ef33e0a4af731a766c3a63352abc4a36de32cb",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/studio/api.py",
+        "sha256": "6b986f47258f324ee799c97bd5236190bfa2b2c2720b4d9b0640270f6a43642a",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/studio/check.py",
+        "sha256": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/studio/ingest.py",
+        "sha256": "f76adbe9fd36aaaf1248fdaab7ca074fddb13e53fe97d3922ce306e8dcc5510b",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/studio/mock.py",
+        "sha256": "2b247c590ecbf4910bfc3247a6c3640144e606903f61cea7c9b58700a53e37fc",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/studio/service.py",
+        "sha256": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "backend/studio/share.py",
+        "sha256": "ddee26d770218cd6de495e406888669cf70fc958a4f8e953889c2838991ec6a9",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "desktop/__init__.py",
+        "sha256": "fc444c1a3f5d97a4856c1f17e90ae9b9b484ffe063584197ca27dafb2d8fb315",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "desktop/runtime.py",
+        "sha256": "4ec6e86e5c6d4503ea926403239ae39655eba8e522b3cbae4cac7caac5bf0263",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "desktop/settings.py",
+        "sha256": "17bdefc99de61eb56562fc0c71bee29fb372df22b44599fdb2668a284bf02f29",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "desktop/window_frame.py",
+        "sha256": "dcb0d6fbba6c7dffaef1c118e338c312614df25698dc482238131f030b9d0d8b",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      },
+      {
+        "path": "desktop/main.py",
+        "sha256": "554a5884c0b38704b5b491b515a5131cfbda66acfa2a6d30791102351ba99a65",
+        "bytes_equal_to_compiled_source": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true,
+        "compiled_code_verification_reused": true
+      }
+    ]
+  },
+  "resources": {
+    "count": 41,
+    "all_equal_resource_source_latest_main_and_provenance": true,
+    "items": [
+      {
+        "path": "frontend/ending.html",
+        "bytes": 2622,
+        "sha256": "c3210672f027889b97069f063316952fe6ad0ccf7d635ef13e63b51ce802cd0d",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/game.html",
+        "bytes": 8748,
+        "sha256": "f403015362128d96b1ca298dcd3f93e0b200f33af9c2b51afc8143a30f60ca7d",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/index.html",
+        "bytes": 8761,
+        "sha256": "e990d16c6f74636532ad8c0c8d507f7e0989562c8b58b9ec00397d1a6f21f7fb",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/icon-180.png",
+        "bytes": 3227,
+        "sha256": "e584b812f3d8f363e32bbf428474da6d9e1bb9cb8488fefcded0311a790b0412",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/logo.svg",
+        "bytes": 677,
+        "sha256": "4a7f81bfc6b3b0a1ee2cbf2e062bf97470e03c11f1f03b2376d0ad0deb5e21b3",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/css/base.css",
+        "bytes": 12097,
+        "sha256": "7287f117d96ec6b291849f7f2ffd4ff53ba7e5bd5de8a22aea7e64cefe864f71",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/css/ending.css",
+        "bytes": 6022,
+        "sha256": "8d766ea9e9b4b3dc216a8f355e9d47847256e6b76ea83cbbdda724c649b1c414",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/css/game.css",
+        "bytes": 34750,
+        "sha256": "e88a3af41338fba10c85da49a01f1401c77a85dfeffb2d59fa19ce4a612c68ca",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/css/home.css",
+        "bytes": 12404,
+        "sha256": "198c11cf0350eab979443bd1f7539f649dcd8ef197e4066baee8ad476c50d93a",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/css/window.css",
+        "bytes": 2463,
+        "sha256": "e0a24fb87c2c876377b6d7cb478f5c2f499bc88394fe0cf544513f419d3dcdc0",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/js/api.js",
+        "bytes": 2496,
+        "sha256": "735c3a54733385a45ed5062d1b5dc80d46dd552b5dac4232171e5c28d7d35abc",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/js/ending.js",
+        "bytes": 5378,
+        "sha256": "959c29aaad0cec6339a947aea44a89ea52d80421fa1bf0fd42ac81de57c17109",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/js/game.js",
+        "bytes": 45935,
+        "sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/js/home.js",
+        "bytes": 20876,
+        "sha256": "19fb516e34de078878663d0ec2aec55cff9539f559fcd8743b125b1c762963ce",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/js/music.js",
+        "bytes": 5018,
+        "sha256": "bc705deb2b84f12499602776fc77324f8dd56372760b8bcd132a5a7778a3c9d9",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/js/store.js",
+        "bytes": 3238,
+        "sha256": "5edecddec244b96b3c4dc6aacd0b486ca52e4a3bf3f47a7e53dc0a9e9ede3e1e",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/js/ui.js",
+        "bytes": 10143,
+        "sha256": "2b39a3ac847ecc95d1e315fb9ca5edbf5408e13230c10d616fd6b54703e75752",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/js/window.js",
+        "bytes": 3698,
+        "sha256": "a3fab19f5ac4da71aee71e2be49ea49da2ba2585d429913e826c2b223cf326db",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/share/index.html",
+        "bytes": 1288,
+        "sha256": "a14dfee81e9699ba1f40fdcb3464e66a760f4bee58cd06181cab65ef6947fa68",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/share/share.css",
+        "bytes": 10189,
+        "sha256": "8d44ed2a0c7269391894d6ec187654d1e30801c45cb05bda3ace332337b0c8e0",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/share/share.js",
+        "bytes": 21332,
+        "sha256": "1558d57b73ce2da98becc8046869213636cdc9323415f2a247cec2b57ad43544",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/studio/chats.js",
+        "bytes": 10262,
+        "sha256": "8a5e149dbea92f32d48ea5a420db1c528d01ead84efb2b1c0e349a4970c52a57",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/studio/index.html",
+        "bytes": 4228,
+        "sha256": "cdd9bcd0468c181fdd884bf6657b331efe72d1796dba7bbec71b7ee4ed8260d9",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/studio/studio.css",
+        "bytes": 13249,
+        "sha256": "92efb481b14d43f3e98e38f6397b8bfd1af3d3a0f0503d4526f85b751210a61e",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/studio/studio.js",
+        "bytes": 22229,
+        "sha256": "d8e8f0313b2515c8012b5b281f70b1517c4b696ec0cdd504e0de60434bb2680b",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/audio/bgm.mp3",
+        "bytes": 3607159,
+        "sha256": "d11aec5433749b8783ba7a29621f3814d1c84214052877d16ba5ca7dc19e07b0",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/avatars/akai.png",
+        "bytes": 25558,
+        "sha256": "eeb609b78791abc7b38a692141768571a8d6b81dce7c0a036cdcfd3a70246721",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/avatars/chenmo.png",
+        "bytes": 32219,
+        "sha256": "67982d5bee26690f5a5f5347402bf481dcb6e386e2c7af27e33605f301110679",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/avatars/xiaolin.png",
+        "bytes": 31676,
+        "sha256": "aad1297329171ed1762ffc81d4845513e277d5b37bed073e9ccc4f50dddf3c0c",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/avatars/zhouming.png",
+        "bytes": 27727,
+        "sha256": "8284a513addd55aa979dee14c35cbb46af77807f66fd99686a77a465bfeeb7dd",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/akai.svg",
+        "bytes": 2587,
+        "sha256": "a88cc4617131a7d519489e301d20b6ec85bd4a31cb037b94af29a92a0f24c204",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/chenmo.svg",
+        "bytes": 2473,
+        "sha256": "5101c0ae2986d3310a57200b569042e450b75c21ab960c3e881b6642b6c28e6b",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/xiaolin.svg",
+        "bytes": 2324,
+        "sha256": "792f7051c785c8cbf9b71f9ee8ffdc1cba8d848b69fdbf804aa84690afc476a2",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/zhouming.svg",
+        "bytes": 1898,
+        "sha256": "0d3ee951767eebdec2e9abf6863ebf3d549e3d1fe4710453110722007f94e9ae",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "stories/lost-tuition-walkthrough.md",
+        "bytes": 5706,
+        "sha256": "497e1d0e48c4ccece67197eb51ab055d8fbb703dd6eef21d0743b5709c0558bf",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "stories/lost-tuition.yaml",
+        "bytes": 17803,
+        "sha256": "9353e1f469e116535cd746c0ad18e749cec3f655d241365976ff9d6aec3c65d5",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "stories/touqi-walkthrough.md",
+        "bytes": 5034,
+        "sha256": "9d608dc344621a6e7afa4583f8c05fb1ab700f59057ab89856d5fad08904993e",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "stories/touqi.yaml",
+        "bytes": 21771,
+        "sha256": "4c37a5b505368b1c701abefdd6cdb1bd1ef44f460c52c979f9a19daa0558cb38",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "stories/yeguiren-walkthrough.md",
+        "bytes": 6235,
+        "sha256": "0cd3aae665858cbc6fe747574108d0e225328bc8857e7ea040a8e81dcf616798",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "stories/yeguiren.yaml",
+        "bytes": 31040,
+        "sha256": "a3e7eb9829e0a9bf4f81538bc7d9b2c5a09cba085e8b5858d334294ada5682ed",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      },
+      {
+        "path": "desktop/ui/index.html",
+        "bytes": 4411,
+        "sha256": "22e43084d4911c95e61c7c331c49bba8b9d236f50865e50314aa1ff7bc0bde90",
+        "packaged_bytes_equal_resource_source": true,
+        "source_bytes_equal_latest_main": true,
+        "matches_package_provenance": true,
+        "matches_cache_provenance": true
+      }
+    ]
+  },
+  "exe": {
+    "path": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v6-6a2b0b0\\看山谜案馆\\看山谜案馆.exe",
+    "bytes": 14424641,
+    "sha256": "b9f97b9a273a64b0572ee07cb4387a0e238bb372b3336697f9e90fe3d17d52ae",
+    "same_verified_v5_exe": true,
+    "matches_both_provenance": true
+  },
+  "zip": {
+    "path": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v6-6a2b0b0.zip",
+    "sha256": "326898a85c04e490c2ef9ed2e88f10f303524aee8102aee93eed6ce432f88933",
+    "bytes": 50664751,
+    "entries": 2588,
+    "matches_cache_sha256": true,
+    "matches_cache_bytes": true,
+    "crc_pass": true
+  },
+  "prior_v5_audits": [
+    {
+      "path": "docs/testing/task20-final-main-update/source-audit.json",
+      "sha256": "5b4dfa72802d6d270d51399dd0d351b4aedc4a98dc5f7cea0e3bfbc942349149",
+      "original_bytes_preserved": true
+    },
+    {
+      "path": "docs/testing/task20-final-main-update/artifact-source-audit.json",
+      "sha256": "1dbeb86f0b00b9fd3e599a8907c845cacf09d88cf80b957bfc0f83d1b572843e",
+      "original_bytes_preserved": true
+    }
+  ],
+  "boundaries": {
+    "model_calls": 0,
+    "exe_launches": 0,
+    "recompilations": 0,
+    "production_or_music_changes_by_auditor": 0,
+    "configuration_or_key_reads": false,
+    "package_or_zip_writes": 0,
+    "provenance_bytes_unchanged": true,
+    "task18_wip_integrated": false,
+    "new_story_quality_acceptance_performed_by_this_hash_audit": false,
+    "existing_v4_new_hospital_real_questions": 2,
+    "existing_v4_new_hospital_raw_checked": true,
+    "existing_v4_new_hospital_manual_core_pass": false
+  },
+  "passed": true
+}

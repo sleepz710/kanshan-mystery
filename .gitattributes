@@ -13,3 +13,10 @@ docs/testing/task18-quality/** -text whitespace=cr-at-eol
 
 docs/testing/task19-demo/originals/*.yaml -text
 docs/testing/task19-demo/revised/*.yaml -text
+
+# 保持任务20真实验收记录与指纹的原始字节
+docs/testing/task20-role-package/** -text whitespace=cr-at-eol
+docs/testing/task20-role-v2/** -text whitespace=cr-at-eol
+docs/testing/task20-role-v3/** -text whitespace=cr-at-eol
+docs/testing/task20-frameless-quality/** -text whitespace=cr-at-eol
+docs/testing/task20-final-main-update/** -text whitespace=cr-at-eol

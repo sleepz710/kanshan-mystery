@@ -1,0 +1,242 @@
+{
+  "source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "model_evidence_source_commit": "469048869ba451c0fcb38a574e96682fd881b2e3",
+  "mode": "actual final EXE, isolated default APPDATA and copied legacy saves, offline UI",
+  "started_utc": "2026-11-04T14:15:10.689036+00:00",
+  "qa_root": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-ilvv76u5",
+  "sdk_calls": 0,
+  "sessions": [
+    {
+      "pid": 21948,
+      "port": 49867,
+      "debug_port": 39731,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-ilvv76u5\\fresh",
+        "KANSHAN_DATA_DIR_supplied": false,
+        "default_appdata": true,
+        "offline": true
+      },
+      "exit_code": 0,
+      "natural_exit_seconds": 6.83,
+      "port_released": true,
+      "request_audit": [
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "POST",
+          "path": "/api/games",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        }
+      ],
+      "blocked_model_route_attempts": 0
+    }
+  ],
+  "checks": {
+    "first_start_default_appdata": {
+      "status": "passed",
+      "first_route": "/settings/",
+      "saved_fake_key": true,
+      "private_configuration_copied": false,
+      "settings_masked": true,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-ilvv76u5\\fresh",
+        "KANSHAN_DATA_DIR_supplied": false,
+        "default_appdata": true,
+        "offline": true
+      }
+    },
+    "title_library_and_modal_window_controls": {
+      "status": "passed",
+      "official_story_id": "lost-tuition",
+      "game_id": "3cca83b432c146c3a117586277940008",
+      "modal": true,
+      "barInModal": true,
+      "popover": true,
+      "maximize_restore_native_confirmed": true,
+      "minimize_IsIconic_confirmed": true,
+      "restore_ShowWindow": true
+    },
+    "game_input_1280x720": {
+      "status": "passed",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bar": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 40,
+        "right": 1280,
+        "bottom": 40
+      },
+      "say": {
+        "x": 450.7083435058594,
+        "y": 648.75,
+        "width": 370.625,
+        "height": 42.583335876464844,
+        "right": 821.3333435058594,
+        "bottom": 691.3333358764648
+      },
+      "composer": {
+        "x": 310.66668701171875,
+        "y": 638.0833740234375,
+        "width": 570.6666870117188,
+        "height": 65.25,
+        "right": 881.3333740234375,
+        "bottom": 703.3333740234375
+      },
+      "send": {
+        "x": 829.3333740234375,
+        "y": 649.3333740234375,
+        "width": 40,
+        "height": 42,
+        "right": 869.3333740234375,
+        "bottom": 691.3333740234375
+      },
+      "evidence": {
+        "x": 322.66668701171875,
+        "y": 649.3333740234375,
+        "width": 120.04167175292969,
+        "height": 42,
+        "right": 442.70835876464844,
+        "bottom": 691.3333740234375
+      },
+      "scrollWidth": 1280
+    },
+    "header_home_and_settings_navigation": {
+      "status": "passed",
+      "settings_opened_from_title": true,
+      "home_clicked_from_settings": true,
+      "technical_record_staged": true
+    }
+  },
+  "status": "failed",
+  "error_type": "AssertionError",
+  "error": "Desktop acceptance timed out (None)",
+  "failure_ui_snapshot": {
+    "url": "http://127.0.0.1:49867/#cases",
+    "ready": "complete",
+    "menuMainHidden": true,
+    "menuStartHidden": false,
+    "controls": [
+      {
+        "name": "minimize",
+        "disabled": false,
+        "rect": {
+          "x": 1142,
+          "y": 5,
+          "width": 44,
+          "height": 35,
+          "top": 5,
+          "right": 1186,
+          "bottom": 40,
+          "left": 1142
+        }
+      },
+      {
+        "name": "toggle_maximize",
+        "disabled": false,
+        "rect": {
+          "x": 1186,
+          "y": 5,
+          "width": 44,
+          "height": 35,
+          "top": 5,
+          "right": 1230,
+          "bottom": 40,
+          "left": 1186
+        }
+      },
+      {
+        "name": "quit",
+        "disabled": false,
+        "rect": {
+          "x": 1230,
+          "y": 5,
+          "width": 44,
+          "height": 35,
+          "top": 5,
+          "right": 1274,
+          "bottom": 40,
+          "left": 1230
+        }
+      }
+    ]
+  }
+}

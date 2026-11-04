@@ -1,0 +1,31 @@
+{
+  "observed_events": [
+    "2026-11-04 22:21:30,148 INFO root 桌面后端就绪 pid=26124 port=55990",
+    "2026-11-04 22:21:58,474 INFO uvicorn.error Shutting down",
+    "2026-11-04 22:21:58,577 INFO uvicorn.error Application shutdown complete.",
+    "2026-11-04 22:21:58,577 INFO uvicorn.error Finished server process [26124]",
+    "2026-11-04 22:22:08,971 INFO root 桌面后端就绪 pid=13228 port=49997",
+    "2026-11-04 22:45:21,504 INFO uvicorn.error Shutting down",
+    "2026-11-04 22:45:21,619 INFO uvicorn.error Application shutdown complete.",
+    "2026-11-04 22:45:21,619 INFO uvicorn.error Finished server process [13228]",
+    "2026-11-04 22:50:00,039 INFO root 桌面后端就绪 pid=31556 port=51416",
+    "2026-11-04 22:50:03,633 INFO uvicorn.error Shutting down",
+    "2026-11-04 22:50:03,745 INFO uvicorn.error Application shutdown complete.",
+    "2026-11-04 22:50:03,745 INFO uvicorn.error Finished server process [31556]",
+    "2026-11-04 22:50:13,557 INFO root 桌面后端就绪 pid=21784 port=65258",
+    "2026-11-04 22:50:17,791 INFO uvicorn.error Shutting down",
+    "2026-11-04 22:50:17,897 INFO uvicorn.error Application shutdown complete.",
+    "2026-11-04 22:50:17,897 INFO uvicorn.error Finished server process [21784]",
+    "2026-11-04 22:59:33,136 INFO root 桌面后端就绪 pid=30472 port=55872",
+    "2026-11-04 22:59:37,386 INFO uvicorn.error Shutting down",
+    "2026-11-04 22:59:37,489 INFO uvicorn.error Application shutdown complete.",
+    "2026-11-04 22:59:37,489 INFO uvicorn.error Finished server process [30472]"
+  ],
+  "original_driver_exitcode": 1,
+  "original_generated_window_exitcode_captured": false,
+  "controlled_restart_and_directory_public_close_exitcode": 0,
+  "forced_kill": false,
+  "qa_key_cleared": true,
+  "generation_cancel_test_not_started": true,
+  "material_test_not_started": true
+}

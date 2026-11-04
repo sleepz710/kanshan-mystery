@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-11-04T15:28:29.514694+00:00",
+  "zip_path": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v6-6a2b0b0.zip",
+  "zip_sha256": "326898a85c04e490c2ef9ed2e88f10f303524aee8102aee93eed6ce432f88933",
+  "zip_bytes": 50664751,
+  "zip_sha_matches": true,
+  "zip_crc_passed": true,
+  "zip_entries": 2588,
+  "unique_zip_paths": 2588,
+  "all_delivery_files_byte_equal": true,
+  "known_private_keys_absent": true,
+  "private_configuration_entries": [],
+  "source_commit": "6a2b0b0ce45e3d76d4a92d0e50730f5b1cff79d7",
+  "source_module_count": 19,
+  "all_source_modules_match": true,
+  "resource_count": 41,
+  "all_resources_match": true,
+  "three_task19_samples_match_committed_source": {
+    "demo-bus-revised.yaml": true,
+    "demo-hotel-revised.yaml": true,
+    "demo-tide-revised.yaml": true
+  }
+}

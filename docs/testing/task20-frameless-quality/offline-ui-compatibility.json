@@ -1,0 +1,478 @@
+{
+  "source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "model_evidence_source_commit": "469048869ba451c0fcb38a574e96682fd881b2e3",
+  "mode": "actual final EXE, isolated default APPDATA and copied legacy saves, offline UI",
+  "started_utc": "2026-11-04T14:16:24.318650+00:00",
+  "qa_root": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-2pz86l8w",
+  "sdk_calls": 0,
+  "sessions": [
+    {
+      "pid": 33540,
+      "port": 58242,
+      "debug_port": 3375,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-2pz86l8w\\fresh",
+        "KANSHAN_DATA_DIR_supplied": false,
+        "default_appdata": true,
+        "offline": true
+      },
+      "exit_code": 0,
+      "natural_exit_seconds": 7.24,
+      "port_released": true,
+      "request_audit": [
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "POST",
+          "path": "/api/games",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "POST",
+          "path": "/api/games",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "POST",
+          "path": "/api/games",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "POST",
+          "path": "/api/games",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        }
+      ],
+      "blocked_model_route_attempts": 0
+    },
+    {
+      "pid": 27212,
+      "port": 62563,
+      "debug_port": 49187,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-2pz86l8w\\fresh",
+        "KANSHAN_DATA_DIR_supplied": false,
+        "default_appdata": true,
+        "offline": true
+      },
+      "exit_code": 0,
+      "natural_exit_seconds": 6.94,
+      "port_released": true,
+      "request_audit": [
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        }
+      ],
+      "blocked_model_route_attempts": 0
+    },
+    {
+      "pid": 34392,
+      "port": 57235,
+      "debug_port": 40235,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-2pz86l8w\\compat",
+        "KANSHAN_DATA_DIR_supplied": false,
+        "default_appdata": true,
+        "offline": true
+      },
+      "exit_code": 0,
+      "natural_exit_seconds": 7.78,
+      "port_released": true,
+      "request_audit": [
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "POST",
+          "path": "/api/games",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        }
+      ],
+      "blocked_model_route_attempts": 0
+    }
+  ],
+  "checks": {
+    "first_start_default_appdata": {
+      "status": "passed",
+      "first_route": "/settings/",
+      "saved_fake_key": true,
+      "private_configuration_copied": false,
+      "settings_masked": true,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-2pz86l8w\\fresh",
+        "KANSHAN_DATA_DIR_supplied": false,
+        "default_appdata": true,
+        "offline": true
+      }
+    },
+    "title_library_and_modal_window_controls": {
+      "status": "passed",
+      "official_story_id": "lost-tuition",
+      "game_id": "7ffd8f348bab411db24d2202f28ee3f2",
+      "modal": true,
+      "barInModal": true,
+      "popover": true,
+      "maximize_restore_native_confirmed": true,
+      "minimize_IsIconic_confirmed": true,
+      "restore_ShowWindow": true
+    },
+    "game_input_1280x720": {
+      "status": "passed",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bar": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 40,
+        "right": 1280,
+        "bottom": 40
+      },
+      "say": {
+        "x": 450.7083435058594,
+        "y": 648.75,
+        "width": 370.625,
+        "height": 42.583335876464844,
+        "right": 821.3333435058594,
+        "bottom": 691.3333358764648
+      },
+      "composer": {
+        "x": 310.66668701171875,
+        "y": 638.0833740234375,
+        "width": 570.6666870117188,
+        "height": 65.25,
+        "right": 881.3333740234375,
+        "bottom": 703.3333740234375
+      },
+      "send": {
+        "x": 829.3333740234375,
+        "y": 649.3333740234375,
+        "width": 40,
+        "height": 42,
+        "right": 869.3333740234375,
+        "bottom": 691.3333740234375
+      },
+      "evidence": {
+        "x": 322.66668701171875,
+        "y": 649.3333740234375,
+        "width": 120.04167175292969,
+        "height": 42,
+        "right": 442.70835876464844,
+        "bottom": 691.3333740234375
+      },
+      "scrollWidth": 1280
+    },
+    "header_home_and_settings_navigation": {
+      "status": "passed",
+      "settings_opened_from_title": true,
+      "home_clicked_from_settings": true,
+      "technical_record_staged": true
+    },
+    "three_demo_directory_row_starts": {
+      "status": "passed",
+      "games": [
+        {
+          "story_id": "demo-bus-revised",
+          "title": "末班车的干伞",
+          "game_id": "89498de9c3aa41dea3c7458d55c2def7",
+          "checked": true
+        },
+        {
+          "story_id": "demo-hotel-revised",
+          "title": "汐潮馆的第七位住客",
+          "game_id": "a893572097674213b8f0e71e9033389b",
+          "checked": true
+        },
+        {
+          "story_id": "demo-tide-revised",
+          "title": "潮汐第七人",
+          "game_id": "c125660ab68044cebf3c15e92e8e7d28",
+          "checked": true
+        }
+      ],
+      "fixtures_copied_before_first_launch": true,
+      "real_actor_turns": 0
+    },
+    "random_port_configuration_game_record_restore": {
+      "status": "passed",
+      "first_port": 58242,
+      "second_port": 62563,
+      "high_dynamic_port": true,
+      "technical_record_restored": true,
+      "fake_configuration_restored": true,
+      "original_game_ids_restored": [
+        "7ffd8f348bab411db24d2202f28ee3f2",
+        "89498de9c3aa41dea3c7458d55c2def7",
+        "a893572097674213b8f0e71e9033389b",
+        "c125660ab68044cebf3c15e92e8e7d28"
+      ],
+      "three_demo_true_preserved": true,
+      "backend_existing_game_validation": "422 for incomplete accusation, all four original game IDs"
+    },
+    "legacy469_two_turn_hospital_restore": {
+      "status": "passed",
+      "copied_files": [
+        {
+          "file": "browser-storage.json",
+          "sha256": "7c902dcfb4007337b190fa0ab1d5ec2d4ce71023b04a9d96653713e786c27ddf"
+        },
+        {
+          "file": "games.json",
+          "sha256": "257a1f06ad1cb9a2474a77f5872827824f43863646bbbfe5fdccfa71104719fb"
+        },
+        {
+          "file": "stories/generated-e89e568a2d8249ea8f17adf9e338ce1b.yaml",
+          "sha256": "152ce50947ceee7c8d9c6703963e7132d62a10c3beef60e2ca4d84e7e709128d"
+        }
+      ],
+      "source_directory": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-role-v3-port-final-acceptance-20261104\\live",
+      "private_config_copied": false,
+      "fake_config_created": true,
+      "original_game_id": "4b4c62c562c14d6483ee34e8ee6cdb60",
+      "story_id": "generated-e89e568a2d8249ea8f17adf9e338ce1b",
+      "turns": 2,
+      "clues": 2,
+      "checked": true,
+      "thread_and_clue_fields_equal": true,
+      "model_evidence_runtime": "469048869ba451c0fcb38a574e96682fd881b2e3",
+      "new_actor_questions": 0
+    },
+    "legacy_done_card_actual_click_and_directory_restore": {
+      "status": "passed",
+      "chat_id": "d9db7ed3ed8d4ce5a3d1003810239301",
+      "original_game_id": "4b4c62c562c14d6483ee34e8ee6cdb60",
+      "new_game_id": "2e7a1492279e4e578bd12a4305bc8a8c",
+      "story_id": "generated-e89e568a2d8249ea8f17adf9e338ce1b",
+      "checked": true,
+      "new_game_turns": 0,
+      "directory_resumed_same_new_id": true,
+      "new_generation_requests": 0,
+      "new_actor_questions": 0
+    }
+  },
+  "status": "passed",
+  "completed_utc": "2026-11-04T14:17:12.712824+00:00",
+  "provider_log_checks": [
+    {
+      "data_root": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-2pz86l8w\\fresh\\KanshanMystery",
+      "provider_http_log_entries": 0
+    },
+    {
+      "data_root": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-2pz86l8w\\compat\\KanshanMystery",
+      "provider_http_log_entries": 0
+    }
+  ],
+  "legacy_source_unchanged": true,
+  "fake_configuration_only": true,
+  "limits": [
+    "63c运行包含纯离线UI与旧档兼容检查，真实模型生成与两角色问话证据来源为469。",
+    "未安装Python的另一台Windows电脑流程由用户执行。"
+  ],
+  "qa_driver_history": [
+    {
+      "file": "offline-ui-compatibility-driver-trial1.json",
+      "status": "failed",
+      "cause": "开局导航后未等待pywebviewready使窗口按钮启用，QA已补等待。"
+    },
+    {
+      "file": "offline-ui-compatibility-driver-trial2.json",
+      "status": "failed",
+      "cause": "首页脚本与目录尚未载入即点菜单，QA已按目录载入完成等待。"
+    },
+    {
+      "file": "offline-ui-compatibility-driver-trial3.json",
+      "status": "failed",
+      "cause": "页面缓存目录后才外部复制演示案，QA夹具改为首次启动前复制。"
+    }
+  ],
+  "visual_review": {
+    "file": "game-1280x720.png",
+    "css_viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "screenshot_pixel_size": {
+      "width": 1920,
+      "height": 1080
+    },
+    "observations": "工具栏、角色区、输入框、出示与发送按钮均可见，输入区与工具栏无重叠。"
+  }
+}

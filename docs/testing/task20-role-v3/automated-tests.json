@@ -1,0 +1,13 @@
+{
+  "source_commit": "469048869ba451c0fcb38a574e96682fd881b2e3",
+  "source_tree": "fe54c71817ab231db67fc5219149abae4fdec37f",
+  "passed": 819,
+  "seconds": 24.92,
+  "warning": "Existing Starlette httpx deprecation",
+  "desktop_focused_passed": 20,
+  "desktop_focused_seconds": 1.29,
+  "previous_integrated_source": "8ec8ba7fbd92da1db0d1d20afb9a03978837ffb6",
+  "previous_passed": 813,
+  "previous_seconds": 35.59,
+  "final_build_seconds": 59.97
+}

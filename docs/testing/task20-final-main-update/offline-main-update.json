@@ -1,0 +1,167 @@
+{
+  "status": "passed",
+  "started_utc": "2026-11-04T15:28:30.345803+00:00",
+  "source_commit": "6a2b0b0ce45e3d76d4a92d0e50730f5b1cff79d7",
+  "main_source_commit": "4c6081d7e9d6154435e5f6d77b88e08237aac0bb",
+  "exe_compiled_source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "mode": "actual final EXE, isolated copy of v4 stores and stories, zero SDK",
+  "sdk_calls": 0,
+  "new_generation_requests": 0,
+  "new_actor_questions": 0,
+  "private_configuration_copied": false,
+  "fake_config_created": true,
+  "qa_data_root": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-final-main-offline-yv8x9r6b\\appdata\\KanshanMystery",
+  "legacy_source_directory": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-live-63c27ce-20261104\\live",
+  "copied_sources": [
+    {
+      "file": "browser-storage.json",
+      "sha256": "3396821c577adae4756745e0de5ee8edc6b852f4aefe3a3ace00b726b7ca5dcb"
+    },
+    {
+      "file": "games.json",
+      "sha256": "9fd69d30f376990bd0a12f5f17fc64452f56aac72578fa5a10c315037ae1d13f"
+    },
+    {
+      "file": "stories/generated-e11fedc144684d5dac61abf7c6b046ea.yaml",
+      "sha256": "af489c54f4ba53266d51fd867f156a38b55b3a09e8a446ece665f0468432e53d"
+    }
+  ],
+  "checks": {
+    "old_game_and_technical_chat_loaded": {
+      "status": "passed",
+      "original_game_id": "ff29a55210644290b580191e40d6ce44",
+      "story_id": "generated-e11fedc144684d5dac61abf7c6b046ea",
+      "turns": 2,
+      "checked": true,
+      "clue_count": 2,
+      "threads_sha256": "4ae46b5eb9f20b15794c8f9f89b8ed9abffd941957580665f014bf6005b182eb",
+      "clues_sha256": "728ef7c0dcc93ffeb86ce37ff56d12405de0ece247cfe8d0846cb506482f160f",
+      "chat_id": "265a870d29e94bad84ebcd24c4fb60d6",
+      "chat_messages_sha256": "5565e5908c05489e8ae57dcaa8ec9ec010a8d5a35606b43fc685c014690edc2a",
+      "done_job_retained": true,
+      "backend_game_validation_status": 422
+    },
+    "public_home_settings_navigation": {
+      "status": "passed",
+      "game_header_home": true,
+      "title_settings": true,
+      "settings_header_home": true,
+      "fake_configuration_masked": true
+    },
+    "new_main_stories_directory_and_engine_load": {
+      "status": "passed",
+      "stories": [
+        {
+          "story_id": "touqi",
+          "title": "头七",
+          "source": "official",
+          "directory_row_visible": true,
+          "engine_status": 201,
+          "game_id": "06d6f495574b4a99941f19c7ab6a0a44",
+          "characters": 4,
+          "questions": 5,
+          "checked": null,
+          "actor_questions": 0
+        },
+        {
+          "story_id": "yeguiren",
+          "title": "风雪夜归人",
+          "source": "official",
+          "directory_row_visible": true,
+          "engine_status": 201,
+          "game_id": "b2594cda96394e84b26f9eba6ded83f4",
+          "characters": 4,
+          "questions": 5,
+          "checked": null,
+          "actor_questions": 0
+        }
+      ]
+    },
+    "public_close_and_random_port_old_state_restore": {
+      "status": "passed",
+      "first_port": 53573,
+      "second_port": 58521,
+      "high_dynamic_ports": true,
+      "old_game_and_chat_fields_equal_after_restart": true,
+      "all_natural_exit_zero": true,
+      "all_ports_released": true,
+      "legacy_source_files_unchanged": true
+    }
+  },
+  "sessions": [
+    {
+      "pid": 15172,
+      "port": 53573,
+      "debug_port": 41100,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-final-main-offline-yv8x9r6b\\appdata",
+        "KANSHAN_DATA_DIR_supplied": false,
+        "default_appdata": true,
+        "offline": true
+      },
+      "exit_code": 0,
+      "natural_exit_seconds": 10.69,
+      "port_released": true,
+      "request_audit": [
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        }
+      ],
+      "blocked_model_route_attempts": 0
+    },
+    {
+      "pid": 31584,
+      "port": 58521,
+      "debug_port": 18945,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-final-main-offline-yv8x9r6b\\appdata",
+        "KANSHAN_DATA_DIR_supplied": false,
+        "default_appdata": true,
+        "offline": true
+      },
+      "exit_code": 0,
+      "natural_exit_seconds": 14.84,
+      "port_released": true,
+      "request_audit": [
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        }
+      ],
+      "blocked_model_route_attempts": 0
+    }
+  ],
+  "scope": "公共home/settings/close、旧game及技术聊天随机端口恢复、新增touqi/yeguiren目录与加载。三演示案沿用v4验收，音乐功能由主线验收记录负责。",
+  "completed_utc": "2026-11-04T15:29:27.532935+00:00",
+  "provider_http_log_entries": 0
+}

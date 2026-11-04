@@ -1,0 +1,1042 @@
+{
+  "reviewed_utc": "2026-11-04T13:31:27.584148+00:00",
+  "story_id": "generated-e89e568a2d8249ea8f17adf9e338ce1b",
+  "title": "鬼铃失声",
+  "source_commit": "469048869ba451c0fcb38a574e96682fd881b2e3",
+  "sources": {
+    "generated-hospital.yaml": {
+      "sha256": "152ce50947ceee7c8d9c6703963e7132d62a10c3beef60e2ca4d84e7e709128d",
+      "bytes": 12052
+    },
+    "generation-design.json": {
+      "sha256": "7d2071cea32a92e71fcaac7496e451a6e543361c5b624bb8fb676c14e774aa6b",
+      "bytes": 11589
+    }
+  },
+  "review_mode": "只读剧情与设计的定向静态审查，实际引擎条件/上下文/结局函数离线核对",
+  "real_model_calls": 0,
+  "source_modified": false,
+  "story_modified": false,
+  "raw_checked": true,
+  "raw_checked_preserved": true,
+  "actual_runtime_scope": {
+    "exe_actor_questions_reported": 2,
+    "real_complete_investigation": false,
+    "actual_testimony_reaudited_by_this_review": false,
+    "detail": "本样本实际EXE覆盖两次角色问话，尚未进行取证、出示、拆谎、秘密开放及结案的真实完整调查。静态路线中的trust=1及允许线索发放按声明条件模拟。"
+  },
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "counts": {
+    "characters": 3,
+    "clues": 9,
+    "lies": 3,
+    "questions": 3,
+    "endings": 2
+  },
+  "static_route": {
+    "status": "all_declared_conditions_reachable",
+    "real_role_reveal_behavior_executed": false,
+    "operations": [
+      {
+        "operation": "grant_if_actor_reveals",
+        "clue_id": "c1",
+        "holder": "fangshuo",
+        "conditions": {},
+        "condition_passed": true
+      },
+      {
+        "operation": "grant_if_actor_reveals",
+        "clue_id": "c2",
+        "holder": "qiaoming",
+        "conditions": {},
+        "condition_passed": true
+      },
+      {
+        "operation": "grant_if_actor_reveals",
+        "clue_id": "c3",
+        "holder": "linyue",
+        "conditions": {},
+        "condition_passed": true
+      },
+      {
+        "operation": "assume_trust_condition",
+        "character_id": "qiaoming",
+        "trust": 1,
+        "actual_social_turns_executed": false
+      },
+      {
+        "operation": "grant_if_actor_reveals",
+        "clue_id": "c4",
+        "holder": "qiaoming",
+        "conditions": {
+          "trust": 1
+        },
+        "condition_passed": true
+      },
+      {
+        "operation": "show",
+        "character_id": "fangshuo",
+        "clue_id": "c4",
+        "new_exposed_lies": [
+          "l3"
+        ]
+      },
+      {
+        "operation": "grant_if_actor_reveals",
+        "clue_id": "c8",
+        "holder": "fangshuo",
+        "conditions": {
+          "exposed": "l3"
+        },
+        "condition_passed": true
+      },
+      {
+        "operation": "show",
+        "character_id": "linyue",
+        "clue_id": "c4",
+        "new_exposed_lies": []
+      },
+      {
+        "operation": "grant_if_actor_reveals",
+        "clue_id": "c5",
+        "holder": "linyue",
+        "conditions": {
+          "shown": "c4"
+        },
+        "condition_passed": true
+      },
+      {
+        "operation": "show",
+        "character_id": "fangshuo",
+        "clue_id": "c2",
+        "new_exposed_lies": []
+      },
+      {
+        "operation": "grant_if_actor_reveals",
+        "clue_id": "c6",
+        "holder": "fangshuo",
+        "conditions": {
+          "shown": "c2",
+          "has": "c5"
+        },
+        "condition_passed": true
+      },
+      {
+        "operation": "show",
+        "character_id": "qiaoming",
+        "clue_id": "c6",
+        "new_exposed_lies": [
+          "l2"
+        ]
+      },
+      {
+        "operation": "grant_if_actor_reveals",
+        "clue_id": "c7",
+        "holder": "qiaoming",
+        "conditions": {
+          "exposed": "l2"
+        },
+        "condition_passed": true
+      },
+      {
+        "operation": "show",
+        "character_id": "fangshuo",
+        "clue_id": "c6",
+        "new_exposed_lies": []
+      },
+      {
+        "operation": "grant_if_actor_reveals",
+        "clue_id": "c9",
+        "holder": "fangshuo",
+        "conditions": {
+          "shown": "c6",
+          "has": "c8"
+        },
+        "condition_passed": true
+      },
+      {
+        "operation": "show",
+        "character_id": "linyue",
+        "clue_id": "c9",
+        "new_exposed_lies": [
+          "l1"
+        ]
+      },
+      {
+        "operation": "show",
+        "character_id": "linyue",
+        "clue_id": "c5",
+        "new_exposed_lies": []
+      },
+      {
+        "operation": "show",
+        "character_id": "fangshuo",
+        "clue_id": "c8",
+        "new_exposed_lies": []
+      },
+      {
+        "operation": "show",
+        "character_id": "fangshuo",
+        "clue_id": "c9",
+        "new_exposed_lies": []
+      }
+    ],
+    "final_clues": [
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c8",
+      "c9"
+    ],
+    "final_exposed_lies": [
+      "l1",
+      "l2",
+      "l3"
+    ],
+    "final_locked_secrets": []
+  },
+  "corrections": [
+    {
+      "character_id": "linyue",
+      "name": "林月",
+      "lie_id": "l1",
+      "claim": "23:30后我没进过B-17病房。",
+      "admit_fact_id": "f16",
+      "correction": "我23:38确实自己进了B-17，23:42才出来。",
+      "unlock_condition": {
+        "shown": "c9"
+      },
+      "directly_corrects_original_lie": true,
+      "first_person_subject": {
+        "id": "linyue",
+        "name": "林月"
+      },
+      "initially_locked": true,
+      "after_exposure_allowed": true
+    },
+    {
+      "character_id": "qiaoming",
+      "name": "乔鸣",
+      "lie_id": "l2",
+      "claim": "23:35到23:50我一直在一层门岗，没去过地下配电间。",
+      "admit_fact_id": "f17",
+      "correction": "我23:36确实去了地下配电间，亲手断了B区监护主蜂鸣的电。",
+      "unlock_condition": {
+        "shown": "c6"
+      },
+      "directly_corrects_original_lie": true,
+      "first_person_subject": {
+        "id": "qiaoming",
+        "name": "乔鸣"
+      },
+      "initially_locked": true,
+      "after_exposure_allowed": true
+    },
+    {
+      "character_id": "fangshuo",
+      "name": "方朔",
+      "lie_id": "l3",
+      "claim": "我23:40前一直在值班室写病历，没见过罗闻醒来。",
+      "admit_fact_id": "f18",
+      "correction": "我23:31确实在B-17见过罗闻醒来，还打内线叫了林月。",
+      "unlock_condition": {
+        "shown": "c4"
+      },
+      "directly_corrects_original_lie": true,
+      "first_person_subject": {
+        "id": "fangshuo",
+        "name": "方朔"
+      },
+      "initially_locked": true,
+      "after_exposure_allowed": true
+    }
+  ],
+  "question_evidence": [
+    {
+      "id": "q1",
+      "text": "2026年7月14日23:31，第一个确认罗闻醒来并把消息告诉林月的人是谁？",
+      "answer": "方朔，在B-17查房后打内线通知林月",
+      "clue_ids": [
+        "c4",
+        "c8"
+      ],
+      "selected_design_evidence": [
+        "内线录音备份",
+        "更正值班说明"
+      ],
+      "reachable_in_static_route": true,
+      "static_core_support": "supported",
+      "assessment": "c8的方朔实名签字说明其23:31亲眼见到苏醒；c4记录23:32:14方朔本人通知林月。人物与先后可对应，题干的分钟压缩另列P3。"
+    },
+    {
+      "id": "q2",
+      "text": "2026年7月14日23:36:54到23:38:58，谁亲手切断了B区监护主蜂鸣的电源？",
+      "answer": "乔鸣，在地下配电间手动切断B区监护主蜂鸣电源",
+      "clue_ids": [
+        "c6",
+        "c7"
+      ],
+      "selected_design_evidence": [
+        "误拍短视频",
+        "配电复位记录"
+      ],
+      "reachable_in_static_route": true,
+      "static_core_support": "supported",
+      "assessment": "c6正脸视频及本人通话绑定乔鸣、配电间和断电动作；c7给出23:36:54至23:38:58精确窗口。卡号名单仅作前置材料，实际行动者由视频支持。"
+    },
+    {
+      "id": "q3",
+      "text": "2026年7月14日23:40:31到23:41:07，谁因何事以何种方式杀死了罗闻？",
+      "answer": "林月，为阻止罗闻揭发她偷拿管制镇痛药，用病房枕头捂压罗闻口鼻",
+      "clue_ids": [
+        "c5",
+        "c8",
+        "c9"
+      ],
+      "selected_design_evidence": [
+        "药柜领用清单",
+        "更正值班说明",
+        "B-17床旁监护缓存视频"
+      ],
+      "reachable_in_static_route": true,
+      "static_core_support": "supported",
+      "assessment": "c9实名画面直接记录林月捂压口鼻及罗闻停止挣扎；c5两支领用、一支登记及盘点短缺，与c8罗闻当面指控偷药相互印证灭口动机。动机属于组合证据推论，当前没有新增林月真实角色认罪口供。"
+    }
+  ],
+  "ending_enumeration": {
+    "implementation": "GameEngine.accuse, in-memory independent state per combination",
+    "combinations": 64,
+    "complete_combinations": 1,
+    "wrong_complete": 0,
+    "wrong_retry_combinations": 63,
+    "results": [
+      {
+        "option_indices": [
+          0,
+          0,
+          0
+        ],
+        "score": 2,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          0,
+          1
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          0,
+          2
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          0,
+          3
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          1,
+          0
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          1,
+          1
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          1,
+          2
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          1,
+          3
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          2,
+          0
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          2,
+          1
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          2,
+          2
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          2,
+          3
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          3,
+          0
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          3,
+          1
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          3,
+          2
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          0,
+          3,
+          3
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          0,
+          0
+        ],
+        "score": 3,
+        "ending": "end1",
+        "retry": false
+      },
+      {
+        "option_indices": [
+          1,
+          0,
+          1
+        ],
+        "score": 2,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          0,
+          2
+        ],
+        "score": 2,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          0,
+          3
+        ],
+        "score": 2,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          1,
+          0
+        ],
+        "score": 2,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          1,
+          1
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          1,
+          2
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          1,
+          3
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          2,
+          0
+        ],
+        "score": 2,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          2,
+          1
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          2,
+          2
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          2,
+          3
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          3,
+          0
+        ],
+        "score": 2,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          3,
+          1
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          3,
+          2
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          1,
+          3,
+          3
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          0,
+          0
+        ],
+        "score": 2,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          0,
+          1
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          0,
+          2
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          0,
+          3
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          1,
+          0
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          1,
+          1
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          1,
+          2
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          1,
+          3
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          2,
+          0
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          2,
+          1
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          2,
+          2
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          2,
+          3
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          3,
+          0
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          3,
+          1
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          3,
+          2
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          2,
+          3,
+          3
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          0,
+          0
+        ],
+        "score": 2,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          0,
+          1
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          0,
+          2
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          0,
+          3
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          1,
+          0
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          1,
+          1
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          1,
+          2
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          1,
+          3
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          2,
+          0
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          2,
+          1
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          2,
+          2
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          2,
+          3
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          3,
+          0
+        ],
+        "score": 1,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          3,
+          1
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          3,
+          2
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      },
+      {
+        "option_indices": [
+          3,
+          3,
+          3
+        ],
+        "score": 0,
+        "ending": "end2",
+        "retry": true
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "alarm_window_causal_gap",
+      "severity": "P3",
+      "category": "因果说明省略",
+      "summary": "c7的蜂鸣静音在23:38:58结束，c9的捂压从23:40:31开始，间隔93秒。该空窗与23:38进入B区阶段重叠，实际杀害发生在蜂鸣恢复后。",
+      "computed_gap_seconds": 93,
+      "effect": "intro明确写案发前几分钟短暂失声，时间顺序可成立。结局将其称为替林月制造报警空窗，正文对该先前空窗如何帮助稍后灭口的作用说明不足。三题分别核对告知者、断电者与凶手，答案核心支持保留。",
+      "quotes": [
+        {
+          "file": "generated-hospital.yaml",
+          "field": "clues[id=c7].content",
+          "line": 175,
+          "text": "地下配电箱自带日志打印条显示：2026年7月14日23:36:54发生一次手动断电，影响区域为“B区监护主蜂鸣”；23:38:58恢复供电；打印时间为23:48。"
+        },
+        {
+          "file": "generated-hospital.yaml",
+          "field": "clues[id=c9].content",
+          "line": 187,
+          "text": "2026年7月14日23:50从B-17床旁监护导出的本地缓存视频显示：23:40:22林月独自进入镜头；23:40:31她拿起病房枕头压住罗闻口鼻；23:41:07罗闻停止挣扎；23:41:10监护画面血氧跌到0；23:42:03林月戴着一次性手套离开，期间无第二人进入。"
+        },
+        {
+          "file": "generated-hospital.yaml",
+          "field": "ending.endings[id=end1].text",
+          "line": 249,
+          "text": "你还原了完整链条：23:31方朔先在B-17见到罗闻醒来，并听见他指控林月偷拿两支蓝标芬太尼；23:32他没有上报，反而先打内线通知林月。林月因怕偷药败露，在23:38进入B区；乔鸣则于23:36:54至23:38:58切断B区监护主蜂鸣，为她制造报警空窗。最终，林月在23:40:31至23:41:07用病房枕头捂压罗闻口鼻致其死亡，23:45再补写“巡视时发现心跳骤停”。方朔随后导出床旁监护缓存视频却压下不交，乔鸣也把配电复位记录扣住。所谓“鬼铃失声”不是灵异，而是三人各怀私心共同造成的灭口与隐瞒。"
+        }
+      ]
+    },
+    {
+      "id": "q1_time_compression",
+      "severity": "P3",
+      "category": "题干时间指代",
+      "summary": "q1用23:31统领确认醒来并通知两件事，c8写23:31见到醒来，c4通知时间为23:32:14。人物答案方朔可确定，题干把相邻两分钟的动作压缩到同一时间提示。",
+      "effect": "题目的人物选择有c4与c8共同支持，时间措辞保留为局部问题。",
+      "quotes": [
+        {
+          "file": "generated-hospital.yaml",
+          "field": "ending.questions[id=q1].text",
+          "line": 223,
+          "text": "2026年7月14日23:31，第一个确认罗闻醒来并把消息告诉林月的人是谁？"
+        },
+        {
+          "file": "generated-hospital.yaml",
+          "field": "clues[id=c4].content",
+          "line": 156,
+          "text": "保安室电话备份中，2026年7月14日23:32:14有一段护士站内线录音：方朔说“B-17罗闻醒了，还叫了林月的名字，你先过来”；林月回答“别让他按铃，我马上到”。"
+        },
+        {
+          "file": "generated-hospital.yaml",
+          "field": "clues[id=c8].content",
+          "line": 181,
+          "text": "方朔补写并签名的值班说明写明：2026年7月14日23:31，我在B-17查房时见到罗闻睁眼并抓住我袖口，说“林月偷了柜里的两支蓝标镇痛药”；我因害怕惹事，只打内线叫了林月。"
+        }
+      ]
+    },
+    {
+      "id": "c3_proves_overstatement",
+      "severity": "P3",
+      "category": "设计证据解释过强",
+      "summary": "设计c3的proves将23:26已睡、无语言反应解释为持续昏睡，原c3正文只记录23:26的状态。23:31醒来与五分钟前睡眠状态可以先后成立。",
+      "effect": "c3属于开局辅助记录，三题设计证据列表均未引用它。c4与c8仍直接支持方朔曾见苏醒并通知林月。",
+      "quotes": [
+        {
+          "file": "generation-design.json",
+          "field": "response.design.clues[2].proves",
+          "line": 80,
+          "text": "林月最早控制了罗闻当晚的护理叙述，她书面记录的“持续昏睡”与后续证据存在冲突。"
+        },
+        {
+          "file": "generated-hospital.yaml",
+          "field": "clues[id=c3].content",
+          "line": 151,
+          "text": "林月手机里保存的护理系统截屏显示：2026年7月14日23:26，她录入“罗闻已睡，无语言反应”；23:45，她又录入“巡视时发现心跳骤停，立即呼叫医生”。"
+        }
+      ]
+    }
+  ],
+  "manual_full_quality_status": "P3叙事问题保留，真实角色完整调查未验收，全文人工质量状态未通过",
+  "conclusion": "三题核心静态证据可对应、声明取得链可达、三条更正直接纠正原谎且第一人称主体正确，64种结案组合中63种错答均retry。保留三项P3时间与因果措辞问题，原自动true按原样留档。"
+}

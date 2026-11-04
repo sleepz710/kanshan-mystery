@@ -1,0 +1,378 @@
+{
+  "connection_test": {
+    "ok": true,
+    "provider": "openai",
+    "actor_model": "gpt-5.4-2026-03-05",
+    "writer_model": "gpt-5.4-2026-03-05",
+    "actor_reasoning_effort": "none",
+    "writer_reasoning_effort": "high"
+  },
+  "native_menu_settings_home": true,
+  "signature": {
+    "game_id": "307e86e212d74b7eba362249925c19c6",
+    "turns": 2,
+    "clues": 2,
+    "threads": {
+      "xiaolin": [
+        {
+          "k": "me",
+          "text": "先说说你今天遇到了什么，有什么材料可以让我核对？"
+        },
+        {
+          "k": "them",
+          "text": "我……是来报案的。有人拉我进刷单群，一开始说做小单、返得很快，后来又让我垫资做连单。我昨晚按他们说的转了两万，结果我想提现的时候，他们又说账户冻结，还要我再交三万。我没再转，第二天群就解散了，人也联系不上了。这个群聊记录你可以先看。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "刷单群聊天记录"
+            }
+          ]
+        },
+        {
+          "k": "me",
+          "text": "你最后一次联系对方是什么时候？请把能核对的记录给我看看。"
+        },
+        {
+          "k": "them",
+          "text": "最后一次联系上，是我转完那两万之后。他们当晚就说我账户冻结，还要我再交三万解冻；我没继续转。再到第二天，群就散了，人也找不到了。回单我给你看，你可以先核对这笔转账。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "两万元转账回单"
+            }
+          ]
+        }
+      ],
+      "akai": [],
+      "zhouming": [],
+      "chenmo": []
+    }
+  },
+  "first_port": 55990,
+  "public_window_closes": [
+    {
+      "pid": 26124,
+      "port": 55990,
+      "debug_port": 4675,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Roaming",
+        "KANSHAN_DATA_DIR_supplied": true,
+        "default_appdata": false,
+        "offline": false
+      },
+      "exit_code": 0,
+      "natural_exit_seconds": 8.2,
+      "port_released": true,
+      "request_audit": [],
+      "blocked_model_route_attempts": 0
+    },
+    {
+      "pid": 21784,
+      "port": 65258,
+      "debug_port": 12744,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Roaming",
+        "KANSHAN_DATA_DIR_supplied": true,
+        "default_appdata": false,
+        "offline": false
+      },
+      "exit_code": 0,
+      "natural_exit_seconds": 10.0,
+      "port_released": true,
+      "request_audit": [],
+      "blocked_model_route_attempts": 0
+    },
+    {
+      "pid": 30472,
+      "port": 55872,
+      "debug_port": 37339,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Roaming",
+        "KANSHAN_DATA_DIR_supplied": true,
+        "default_appdata": false,
+        "offline": false
+      },
+      "exit_code": 0,
+      "natural_exit_seconds": 9.13,
+      "port_released": true,
+      "request_audit": [],
+      "blocked_model_route_attempts": 0
+    }
+  ],
+  "signature_restart": {
+    "port": 49997,
+    "front_and_backend_same_game": true,
+    "turns": 2
+  },
+  "preparation": [
+    {
+      "input": "我想玩恐怖一点的，医院题材",
+      "seconds_including_display": 7.67,
+      "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+      "entry": "title page new form"
+    },
+    {
+      "input": "全新",
+      "seconds_including_display": 1.98,
+      "reply": "快速还是精修？精修会比较两份设计，并增加修订轮次。实际耗时取决于素材和模型。"
+    },
+    {
+      "input": "快速",
+      "seconds_including_display": 2.14,
+      "reply": "编剧正在布置现场，完成后就能开始调查。"
+    }
+  ],
+  "generation": {
+    "seconds_after_job_observed": 507.54,
+    "job": {
+      "status": "done",
+      "progress": "剧场已准备好",
+      "story_id": "generated-e11fedc144684d5dac61abf7c6b046ea",
+      "owner_token": null,
+      "error": null,
+      "quality": "fast"
+    },
+    "stages": [
+      {
+        "seconds": 0.03,
+        "value": {
+          "status": "running",
+          "progress": "编剧正在设计真相与证据链",
+          "error": null
+        }
+      },
+      {
+        "seconds": 299.54,
+        "value": {
+          "status": "running",
+          "progress": "正在将设计稿整理成游戏剧本",
+          "error": null
+        }
+      },
+      {
+        "seconds": 341.97,
+        "value": {
+          "status": "running",
+          "progress": "正在修正剧本字段与引用",
+          "error": null
+        }
+      },
+      {
+        "seconds": 368.67,
+        "value": {
+          "status": "running",
+          "progress": "编剧正在设计真相与证据链",
+          "error": null
+        }
+      },
+      {
+        "seconds": 445.02,
+        "value": {
+          "status": "running",
+          "progress": "正在将设计稿整理成游戏剧本",
+          "error": null
+        }
+      },
+      {
+        "seconds": 490.27,
+        "value": {
+          "status": "running",
+          "progress": "审稿正在检查设计稿的因果与证据",
+          "error": null
+        }
+      },
+      {
+        "seconds": 492.45,
+        "value": {
+          "status": "running",
+          "progress": "正在检查线索能否串起来",
+          "error": null
+        }
+      },
+      {
+        "seconds": 507.51,
+        "value": {
+          "status": "done",
+          "progress": "剧场已准备好",
+          "error": null
+        }
+      }
+    ],
+    "model_steps": [
+      {
+        "round": 1,
+        "step": "设计稿",
+        "outcome": "完成",
+        "seconds": 300.49,
+        "request_characters": 1738,
+        "response_characters": 4200
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 42.22,
+        "request_characters": 7427,
+        "response_characters": 6185
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 13.37,
+        "request_characters": 14298,
+        "response_characters": 2597
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 13.43,
+        "request_characters": 14124,
+        "response_characters": 2597
+      },
+      {
+        "round": 2,
+        "step": "设计稿",
+        "outcome": "完成",
+        "seconds": 76.6,
+        "request_characters": 5987,
+        "response_characters": 4168
+      },
+      {
+        "round": 2,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 45.36,
+        "request_characters": 7395,
+        "response_characters": 6959
+      },
+      {
+        "round": 2,
+        "step": "审稿",
+        "outcome": "完成",
+        "seconds": 2.43,
+        "request_characters": 5592,
+        "response_characters": 16
+      },
+      {
+        "round": 2,
+        "step": "可解性·只给汤面",
+        "outcome": "完成",
+        "seconds": 4.83,
+        "request_characters": 579,
+        "response_characters": 49
+      },
+      {
+        "round": 2,
+        "step": "可解性·全部线索",
+        "outcome": "完成",
+        "seconds": 10.78,
+        "request_characters": 2016,
+        "response_characters": 49
+      }
+    ],
+    "frontend_clock_seconds": 509.872,
+    "frontend_clock": {
+      "started_at": 1793802142428,
+      "ended_at": 1793802652300
+    }
+  },
+  "generation_shape": {
+    "characters": 3,
+    "clues": 9,
+    "lies": 3,
+    "questions": 3,
+    "endings": 2
+  },
+  "actual_generated_card_click": true,
+  "generated_game": {
+    "id": "ff29a55210644290b580191e40d6ce44",
+    "title": "圣宁医院B区闹鬼事件",
+    "checked": true
+  },
+  "second_port": 49997,
+  "generated_dialogue": [
+    {
+      "character": {
+        "id": "luolan",
+        "name": "罗岚"
+      },
+      "seconds": 10.16,
+      "thread": [
+        {
+          "k": "me",
+          "text": "请从你的身份说起，案发前后你亲眼见到或能提供核对的材料有哪些？"
+        },
+        {
+          "k": "them",
+          "text": "我是圣宁医院B区夜班医生，案发后参与了后续抢救和记录。能拿出来核对的，我先给你一份尸体初检记录：上面写了死者的基本情况、口唇紫绀、床旁氧气流量表旋钮停在0L/min、阀门外圈有新擦痕，以及死亡时间的初步估计。这个比我现在口头回忆更准。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "尸体初检记录"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "character": {
+        "id": "mengqiao",
+        "name": "孟乔"
+      },
+      "seconds": 10.17,
+      "thread": [
+        {
+          "k": "me",
+          "text": "请从你的身份说起，案发前后你亲眼见到或能提供核对的材料有哪些？"
+        },
+        {
+          "k": "them",
+          "text": "我是圣宁医院B区的护士长，病区交接和设备情况我熟。你要核对材料，我先把我签过的这份交接表给你。上面写得很清楚：22:50时，B-12的沈川是清醒的，能回答问题，持续鼻导管给氧4升；另外旧楼备用电源当时在测试，如果再被切断，B-12磁锁会自动弹开，走廊7号摄像会黑屏大约90秒，抢救车侧袋里放着一把氧气扳手。别的事，你一项项问。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "护士站交接表"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generated_restart": {
+    "port": 51416,
+    "same_game": true,
+    "checked_preserved": true,
+    "turns": 2,
+    "clues": 2,
+    "chat_count": 1,
+    "model_config_restored": true,
+    "original_card_done_preserved": true
+  },
+  "native_menu_exit": true,
+  "directory_open": {
+    "actual_title_directory_row_click": true,
+    "port": 55872,
+    "same_game_id": "ff29a55210644290b580191e40d6ce44",
+    "checked": true,
+    "turns": 2,
+    "model_calls": 0,
+    "original_game_restored": true
+  }
+}

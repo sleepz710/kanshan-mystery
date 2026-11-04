@@ -1,0 +1,313 @@
+{
+  "connection_test": {
+    "ok": true,
+    "provider": "openai",
+    "actor_model": "gpt-5.4-2026-03-05",
+    "writer_model": "gpt-5.4-2026-03-05",
+    "actor_reasoning_effort": "none",
+    "writer_reasoning_effort": "high"
+  },
+  "native_menu_settings_home": true,
+  "signature": {
+    "game_id": "eb33984920ea46a182b7d4dc209d66b2",
+    "turns": 2,
+    "clues": 2,
+    "threads": {
+      "xiaolin": [
+        {
+          "k": "me",
+          "text": "先说说你今天遇到了什么，有什么材料可以让我核对？"
+        },
+        {
+          "k": "them",
+          "text": "我……是来报案的。有人拉我进刷单群，先给点小任务，后面就让我垫钱做连单。我昨晚转了两万进去，结果他们又说账户冻结，还要我再交钱，我没再转。第二天群就散了，人也联系不上了。这两份你可以先看，一个是群聊记录，一个是转账回单。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "刷单群聊天记录"
+            }
+          ]
+        },
+        {
+          "k": "me",
+          "text": "你最后一次联系对方是什么时候？请把能核对的记录给我看看。"
+        },
+        {
+          "k": "them",
+          "text": "最后一次就是我转完那两万以后。对方马上说我账户冻结了，还要我再交三万解冻，我没再转。再后来到 8 月 29 日，群就解散了，人也联系不上。这个转账回单你先看。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "两万元转账回单"
+            }
+          ]
+        }
+      ],
+      "akai": [],
+      "zhouming": [],
+      "chenmo": []
+    }
+  },
+  "first_port": 21918,
+  "signature_restart": {
+    "port": 15567,
+    "front_and_backend_same_game": true,
+    "turns": 2
+  },
+  "preparation": [
+    {
+      "input": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+      "seconds_including_display": 21.23,
+      "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。"
+    },
+    {
+      "input": "全新",
+      "seconds_including_display": 10.01,
+      "reply": "快速还是精修？精修会比较两份设计，并增加修订轮次。实际耗时取决于素材和模型。"
+    },
+    {
+      "input": "精修",
+      "seconds_including_display": 16.76,
+      "reply": "编剧正在布置现场，完成后就能开始调查。"
+    }
+  ],
+  "generation": {
+    "seconds_after_job_observed": 1069.69,
+    "job": {
+      "status": "done",
+      "progress": "剧场已准备好",
+      "story_id": "generated-aa265696b355482193dc7bcb09aa7550",
+      "owner_token": null,
+      "error": null,
+      "quality": "fine"
+    },
+    "stages": [
+      {
+        "seconds": 0.01,
+        "value": {
+          "status": "running",
+          "progress": "精修正在比较两条独立推理方案",
+          "error": null
+        }
+      },
+      {
+        "seconds": 534.32,
+        "value": {
+          "status": "running",
+          "progress": "编剧正在设计真相与证据链",
+          "error": null
+        }
+      },
+      {
+        "seconds": 963.8,
+        "value": {
+          "status": "running",
+          "progress": "正在将设计稿整理成游戏剧本",
+          "error": null
+        }
+      },
+      {
+        "seconds": 1009.72,
+        "value": {
+          "status": "running",
+          "progress": "正在修正剧本字段与引用",
+          "error": null
+        }
+      },
+      {
+        "seconds": 1051.26,
+        "value": {
+          "status": "running",
+          "progress": "审稿正在检查设计稿的因果与证据",
+          "error": null
+        }
+      },
+      {
+        "seconds": 1056.43,
+        "value": {
+          "status": "running",
+          "progress": "正在检查线索能否串起来",
+          "error": null
+        }
+      },
+      {
+        "seconds": 1069.61,
+        "value": {
+          "status": "done",
+          "progress": "剧场已准备好",
+          "error": null
+        }
+      }
+    ],
+    "model_steps": [
+      {
+        "round": 2,
+        "step": "设计稿",
+        "outcome": "完成",
+        "seconds": 429.4,
+        "request_characters": 1870,
+        "response_characters": 4194
+      },
+      {
+        "round": 2,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 46.07,
+        "request_characters": 7401,
+        "response_characters": 6918
+      },
+      {
+        "round": 2,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 41.45,
+        "request_characters": 14968,
+        "response_characters": 6854
+      },
+      {
+        "round": 2,
+        "step": "审稿",
+        "outcome": "完成",
+        "seconds": 5.19,
+        "request_characters": 5598,
+        "response_characters": 16
+      },
+      {
+        "round": 2,
+        "step": "可解性·只给汤面",
+        "outcome": "完成",
+        "seconds": 10.16,
+        "request_characters": 775,
+        "response_characters": 49
+      },
+      {
+        "round": 2,
+        "step": "可解性·全部线索",
+        "outcome": "完成",
+        "seconds": 5.88,
+        "request_characters": 2113,
+        "response_characters": 140
+      }
+    ],
+    "frontend_clock_seconds": 1076.293,
+    "frontend_clock": {
+      "started_at": 1793793973436,
+      "ended_at": 1793795049729
+    }
+  },
+  "generation_shape": {
+    "characters": 3,
+    "clues": 8,
+    "lies": 2,
+    "questions": 3,
+    "endings": 2
+  },
+  "actual_generated_card_click": true,
+  "generated_game": {
+    "id": "c5a1634b9a424f9497f580dec7d8e237",
+    "title": "空白本",
+    "checked": true
+  },
+  "second_port": 15567,
+  "generated_dialogue": [
+    {
+      "character": {
+        "id": "li_lan",
+        "name": "李岚"
+      },
+      "seconds": 20.7,
+      "thread": [
+        {
+          "k": "me",
+          "text": "请从你的身份说起，案发前后你亲眼见到或能提供核对的材料有哪些？"
+        },
+        {
+          "k": "them",
+          "text": "我叫李岚，在校园书店上晚班，平时看店、做晚间盘点，也管预订架。昨晚我能提供核对的，主要是我签过的闭店盘点表。至于你问的那本《城市影像志》，我关店前后没把它从R3预订架拿出来过。盘点表你可以先看。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "闭店盘点表"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "character": {
+        "id": "zhou_jing",
+        "name": "周竞"
+      },
+      "seconds": 21.71,
+      "thread": [
+        {
+          "k": "me",
+          "text": "请从你的身份说起，案发前后你亲眼见到或能提供核对的材料有哪些？"
+        },
+        {
+          "k": "them",
+          "text": "我叫周竞，在校园打印中心做夜班兼职，店里的裁纸和封装设备我都熟。能拿来核对的，先给你这张打印中心的工单。上面能对到我昨晚19:47开过裁纸机，19:51登记取用过一张透明热缩膜。别的我现在就先说这些。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c3",
+              "title": "打印中心裁切工单"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "generated_restart": {
+    "port": 4475,
+    "same_game": true,
+    "checked_preserved": true,
+    "turns": 2,
+    "clues": 2,
+    "chat_count": 1,
+    "model_config_restored": true,
+    "original_card_done_preserved": true
+  },
+  "native_menu_exit": true,
+  "directory_open": {
+    "actual_directory_button_click": true,
+    "port": 40546,
+    "new_game_id": "34d270c9aa5444e1be934218fb35c6c6",
+    "checked": true,
+    "turns": 0,
+    "model_calls": 0,
+    "original_game_still_available": true
+  },
+  "close_while_generating": {
+    "job_id": "ded5db669a1144edac4488d1babdaf3c",
+    "status_before": "running",
+    "progress_before": "编剧正在设计真相与证据链",
+    "seconds": 20.86,
+    "clean_exit": true,
+    "port_released": true,
+    "provider_response_id": "resp_0b6623de3fe1a35c006aeb250f2f8c87d18a7e523fcdeac92c",
+    "provider_cancel_http_status": 200,
+    "no_partial_publication_after_restart": true
+  },
+  "material_close": {
+    "stage": "material dialogue before generation job",
+    "provider_response_id": "resp_0cb19680c813f157006aeb2557762087d291b9f5f802850a20",
+    "active_before_close": true,
+    "seconds": 50.18,
+    "clean_exit": true,
+    "port_released": true,
+    "provider_cancel_http_status": 200,
+    "published_stories_unchanged": true
+  }
+}

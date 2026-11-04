@@ -1,0 +1,18 @@
+{
+  "source_commit": "8ec8ba7fbd92da1db0d1d20afb9a03978837ffb6",
+  "port": 6667,
+  "first_settings_page_loaded": false,
+  "private_config_created": false,
+  "desktop_log_events": [
+    "2026-11-04 20:51:32,292 INFO uvicorn.error Started server process [12724]",
+    "2026-11-04 20:51:32,292 INFO uvicorn.error Waiting for application startup.",
+    "2026-11-04 20:51:32,294 INFO uvicorn.error Application startup complete.",
+    "2026-11-04 20:51:32,310 INFO root 桌面后端就绪 pid=12724 port=6667",
+    "2026-11-04 20:52:15,565 INFO uvicorn.error Shutting down",
+    "2026-11-04 20:52:15,667 INFO uvicorn.error Waiting for application shutdown.",
+    "2026-11-04 20:52:15,667 INFO uvicorn.error Application shutdown complete.",
+    "2026-11-04 20:52:15,667 INFO uvicorn.error Finished server process [12724]"
+  ],
+  "model_calls": 0,
+  "outcome": "observer timed out at first settings page, process then exited normally"
+}

@@ -1,0 +1,185 @@
+{
+  "source_commit": "df344149dba248ced9fb74ea7da387db06497c5e",
+  "assessment_kind": "仅对已保存五份原输出按现有源明文复核预期，不新增模型调用",
+  "expected_correction_reason": "原generate硬预期忽略play首次允许一次策略确认。动作合法性与raw reply内容范围分开判断，不能将原矩阵重标为5pass。",
+  "rule_sources": [
+    {
+      "source": "backend/studio/service.py::_chat_prompt",
+      "quote": "play 模式只问一次策略确认，下一次就生成；直接开始则立即生成，绝不回复谜底或秘密。"
+    },
+    {
+      "source": "backend/studio/service.py::_chat_prompt",
+      "quote": "有汤底默认 seen，只有汤面默认 unseen，只有想法默认 new；用户明确选择优先。"
+    },
+    {
+      "source": "SPEC.md",
+      "quote": "- 只有 `play` 自己玩:对话里不剧透,不说出生成剧本的真相和人物的秘密。11-04 起前端不再提供出题给朋友入口,后端的 `share` 模式保留未用。"
+    },
+    {
+      "source": "SPEC.md",
+      "quote": "- `play` 模式开始生成前最多问一个问题,默认值按素材预选:素材里有汤底,默认「看过答案」;只有汤面,默认「没看过」;只有想法,默认「全新」。玩家说「直接开始」就用默认值。"
+    }
+  ],
+  "source_files_sha256": {
+    "service.py": "2f5de6d7c539ee230cb221cb77a6ceb49a8a551dcdcd8dcb015bd3226f98632c",
+    "SPEC.md": "d21e9b57fd949767fd8d090e44e99537a72a2437967c4f48246b5f5829095a18"
+  },
+  "original_record_sha256": {
+    "original_bookstore.json": "be52b58a2f25b96828af9856a60c706f95d289149853c8c8d95f23e419bb886d",
+    "original_hospital.json": "0ac50456f30a3d797000399bd2c49131f189d7cecd0087159611181936feaec1",
+    "discuss_without_start.json": "309ae1257fef03dfef243c257927a3245d2487dbd9d6524dd8e1f7b7c22eba48",
+    "seen_answer_wants_new.json": "12b553fceacf27126e214d3407d9eaf2a5c7a4bc587fe64fe9d73356d8283faf",
+    "correct_previous_size.json": "c5a9520f48bdf3195d7251781cba41ed7e6a377b906a5d4ded8bf8f943a3cd9c",
+    "summary.json": "f99f1cccfdec81b956b7348d18b17c25b9bd2cd4e1794e7dd53c7361736e47af"
+  },
+  "original_strict_matrix_preserved": true,
+  "new_model_calls": 0,
+  "cases": [
+    {
+      "name": "original_bookstore",
+      "original_strict_matched": false,
+      "decision_action": "clarify",
+      "decision_strategy": "new",
+      "schema_valid": true,
+      "materials_preserved": true,
+      "generated_jobs": 0,
+      "rule_references": [
+        0,
+        1
+      ],
+      "user_visible_reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+      "raw_reply_summary": "可以玩。先确认策略：这题按你的设定属于【new】全新改编，我会做成现代校园书店、现实因果、3个人、8条线索、2句谎话、3个结局题、2个结局的短篇推理。你下一条只要回复“开始”或补充你想要的风格（偏日常/偏悬疑/偏情感），我就直接生成。",
+      "model_raw_new_story_content": false,
+      "model_raw_existing_answer_disclosure_found": false,
+      "user_visible_new_story_or_answer_found": false,
+      "raw_reply_extra_optional_style_invitation": true,
+      "corrected_expected_actions": [
+        "clarify",
+        "generate"
+      ],
+      "action_contract_pass": true,
+      "assessment": "首次素材提交允许一次策略确认，clarify/new并非违反现有动作契约。原硬性generate预期超出既有规则，原strict结果继续保留。",
+      "raw_reply_issue": "raw reply还邀请补充偏日常/悬疑/情感风格，超出必要策略确认。play对外固定文案屏蔽了这段可选邀请。"
+    },
+    {
+      "name": "original_hospital",
+      "original_strict_matched": false,
+      "decision_action": "clarify",
+      "decision_strategy": "new",
+      "schema_valid": true,
+      "materials_preserved": true,
+      "generated_jobs": 0,
+      "rule_references": [
+        0,
+        1
+      ],
+      "user_visible_reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+      "raw_reply_summary": "可以，做成恐怖医院题材。先确认一下：这次按“new”全新创作来玩，还是你想改编某个现成故事？你回复“new”或“改编”就行。",
+      "model_raw_new_story_content": false,
+      "model_raw_existing_answer_disclosure_found": false,
+      "user_visible_new_story_or_answer_found": false,
+      "raw_reply_extra_optional_style_invitation": false,
+      "corrected_expected_actions": [
+        "clarify",
+        "generate"
+      ],
+      "action_contract_pass": true,
+      "assessment": "首次素材提交允许一次策略确认，clarify/new并非违反现有动作契约。原硬性generate预期超出既有规则，原strict结果继续保留。"
+    },
+    {
+      "name": "discuss_without_start",
+      "original_strict_matched": true,
+      "decision_action": "clarify",
+      "decision_strategy": "new",
+      "schema_valid": true,
+      "materials_preserved": true,
+      "generated_jobs": 0,
+      "rule_references": [
+        0,
+        1
+      ],
+      "user_visible_reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+      "raw_reply_summary": "可以。医院题材很适合做压迫感和信息错位。先确认一次创作策略：你这次是想\n1. 只借医院题材灵感，写一个全新的案子（new）\n2. 基于你心里已有答案的案子，重写呈现方式（seen）\n3. 保留反转、不提前暴露真相地设计案子（unseen）\n\n你当前给的信息更像 new；如果你不特别改，我下一条就按 new 继续和你聊氛围方向，不开始生成正文，也不透露谜底。",
+      "model_raw_new_story_content": false,
+      "model_raw_existing_answer_disclosure_found": false,
+      "user_visible_new_story_or_answer_found": false,
+      "raw_reply_extra_optional_style_invitation": false,
+      "corrected_expected_actions": [
+        "clarify",
+        "discuss"
+      ],
+      "action_contract_pass": true,
+      "assessment": "明确先聊且不要开始，当前返回clarify/new且无job，符合本轮禁止生成要求。"
+    },
+    {
+      "name": "seen_answer_wants_new",
+      "original_strict_matched": false,
+      "decision_action": "clarify",
+      "decision_strategy": "new",
+      "schema_valid": true,
+      "materials_preserved": true,
+      "generated_jobs": 0,
+      "rule_references": [
+        0,
+        1
+      ],
+      "user_visible_reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+      "raw_reply_summary": "确认一下：你要用【医院氛围】为灵感，写一个【全新、现实向】的推理海龟汤，并且在 play 模式下【不透露新的谜底】。如果没问题，我下一条就直接生成。",
+      "model_raw_new_story_content": false,
+      "model_raw_existing_answer_disclosure_found": false,
+      "user_visible_new_story_or_answer_found": false,
+      "raw_reply_extra_optional_style_invitation": false,
+      "corrected_expected_actions": [
+        "clarify",
+        "generate"
+      ],
+      "action_contract_pass": true,
+      "assessment": "首次素材提交允许一次策略确认，clarify/new并非违反现有动作契约。原硬性generate预期超出既有规则，原strict结果继续保留。"
+    },
+    {
+      "name": "correct_previous_size",
+      "original_strict_matched": true,
+      "decision_action": "generate",
+      "decision_strategy": "new",
+      "schema_valid": true,
+      "materials_preserved": true,
+      "generated_jobs": 0,
+      "rule_references": [
+        0,
+        1
+      ],
+      "user_visible_reply": "快速还是精修？精修会比较两份设计，并增加修订轮次。实际耗时取决于素材和模型。",
+      "raw_reply_summary": "【校园书店·空白预订本】\n\n【汤面】\n周五晚，大学校园里的“知行书屋”闭店后，店员按流程清点预订区，发现一本写着顾客姓名的预订新书还在原位，封膜也像没动过。可第二天一早，顾客来取书时，拆开才发现里面根本不是印好的新书，而是一本裁切装订都很像、却整册空白的白本。\n\n书店没有失窃记录，收银系统正常，门锁也没有被破坏。奇怪的是，昨晚闭店后到今早开门前，真正接触过预订区的人，似乎只有四个。\n\n你要判断：这本书是怎么被换掉的？是谁在说谎？目的又是什么？\n\n【人物】\n1. 林澈，男，22岁，校园书店兼职店员。负责晚班关店、预订书登记，做事仔细，但最近正为转正考核发愁。\n2. 周棠，女，21岁，学生会宣传部成员，也是这本预订书的登记顾客。次日一早来取书，声称自己急着用书做活动参考。\n3. 许航，男，23岁，研究生，常在书店帮忙做新书活动布置，与店长关系熟，昨晚闭店前后都在店里附近出现过。\n4. 马会，女，35岁，书店店长。管钥匙、监控备份和预订流程，最近正在申请和校方续签场地。\n\n【10条线索】\n1. 这本预订书前一天下午刚到店，系统入库时间为16:42，预订签上写着“周棠”，由林澈放入预订区最上层",
+      "model_raw_new_story_content": true,
+      "model_raw_existing_answer_disclosure_found": false,
+      "user_visible_new_story_or_answer_found": false,
+      "raw_reply_extra_optional_style_invitation": false,
+      "corrected_expected_actions": [
+        "generate"
+      ],
+      "action_contract_pass": true,
+      "assessment": "已有一次确认，后续明确纠正为4人10线索并要求全新生成，返回generate/new。前后两条素材完整保留，用户可见只显示质量档位问句。",
+      "raw_reply_issue": "raw Decision.reply创作了四个人物、十条线索与两个可能结局，不能作出模型只判意、没有编写剧情的断言。该内容未出现在用户可见response.reply中。",
+      "raw_reply_evidence": {
+        "character_quote": "1. 林澈，男，22岁，校园书店兼职店员。",
+        "plot_quote": "店内监控在21:17到21:26之间短暂黑屏九分钟",
+        "ending_quote": "【两个可能结局】"
+      }
+    }
+  ],
+  "totals": {
+    "decision_schema_passed": 5,
+    "new_strategy_passed": 5,
+    "materials_preserved_passed": 5,
+    "action_contract_passed": 5,
+    "user_visible_flow_safe": 5,
+    "raw_reply_scope_issues": 2,
+    "original_strict_matches": 2
+  },
+  "unqualified_five_case_pass": false,
+  "known_issues": [
+    "首次书店raw reply含额外风格邀请。",
+    "已有确认的改规模raw reply擅自生成剧情与可能结局，play固定文案屏蔽该内容。"
+  ],
+  "scope": "只验证固定聊天的判意、素材保留与对外回复，_start_job被QA拦截，未验证新生成剧本。"
+}

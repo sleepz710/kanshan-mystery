@@ -1,0 +1,39 @@
+{
+  "source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "observed_windows": [
+    {
+      "handle": 15665634,
+      "IsIconic": true,
+      "rectangle": [
+        -21333,
+        -21333,
+        -21175,
+        -21307
+      ]
+    }
+  ],
+  "browser_viewport": [
+    154,
+    22
+  ],
+  "browser_quit_disabled": false,
+  "browser_quit_hit": false,
+  "model_requests_added": 0,
+  "recovery": {
+    "recovered_own_pid": 13228,
+    "restored_from_minimized": true,
+    "viewport_after_restore": {
+      "width": 1320,
+      "height": 859,
+      "focus": true,
+      "disabled": false
+    },
+    "public_quit_hit": {
+      "x": 1292,
+      "y": 22.5,
+      "hit": true
+    },
+    "production_code_changed": false,
+    "model_calls": 0
+  }
+}

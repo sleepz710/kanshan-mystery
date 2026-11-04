@@ -277,7 +277,14 @@ class StudioService:
                     {"role": "user", "content": json.dumps(context, ensure_ascii=False)},
                 ]
                 for retry in range(2):
-                    raw = await checker.complete_for(messages, role="writer", mock_response=self._mock_decision(chat, text, additions))
+                    request_task = asyncio.create_task(checker.complete_for(messages, role="writer", mock_response=self._mock_decision(chat, text, additions), intent=chat.mode == "play"))
+                    self.tasks.add(request_task)
+                    request_task.add_done_callback(self.tasks.discard)
+                    try:
+                        raw = await asyncio.shield(request_task)
+                    except asyncio.CancelledError:
+                        request_task.cancel()
+                        raise
                     try:
                         decision = Decision.model_validate(raw)
                         break
@@ -341,6 +348,7 @@ class StudioService:
 unseen=没看过答案，保留反转；seen=看过答案，重写谜底，原答案作诱饵；new=只借灵感写全新。
 有汤底默认 seen，只有汤面默认 unseen，只有想法默认 new；用户明确选择优先。
 play 模式只问一次策略确认，下一次就生成；直接开始则立即生成，绝不回复谜底或秘密。
+play素材判意的reply使用空字符串，程序生成确认文案，剧情由设计阶段完成。
 share 模式可以讨论完整剧情，用户要求开始时生成。题材全接，超自然/科幻改为现实因果，只改编不照搬。'''
 
     @staticmethod

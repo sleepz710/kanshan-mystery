@@ -1,0 +1,374 @@
+{
+  "runtime_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+  "source": "正式StudioService.message与complete_for(role=writer,intent=True)",
+  "expected_contract_predeclared": true,
+  "expected_plan_file": "production-intent-controls/expected-plan.json",
+  "first_batch_matrix_unchanged": true,
+  "first_schema_pass_count": 4,
+  "first_raw_reply_empty_count": 5,
+  "pipeline_pass_after_existing_format_repair_count": 5,
+  "normal_format_repair_cases": 1,
+  "first_live_requests": 5,
+  "continuation_live_requests": 1,
+  "total_live_requests": 6,
+  "source_and_old_evidence_unchanged": true,
+  "model_configuration": {
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "intent": true,
+    "endpoint": "/v1/responses",
+    "effort": "none",
+    "writer_base_model_authorization_verified": true
+  },
+  "rows": [
+    {
+      "name": "original_bookstore",
+      "private_model": {
+        "first_response_schema_valid": true,
+        "first_reply_empty": true,
+        "first_response": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "format_repair_used": false,
+        "final_response": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "final_schema_valid": true,
+        "final_requested_fields_present": true,
+        "final_reply_empty": true
+      },
+      "public_pipeline": {
+        "decision": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "response": {
+          "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+          "job": null
+        },
+        "action_matched": true,
+        "strategy_matched": true,
+        "materials_preserved": true,
+        "materials_after": [
+          "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。"
+        ],
+        "public_safe": true,
+        "design_jobs_created": 0,
+        "passed": true
+      },
+      "artifacts": {
+        "first_file": "production-intent-controls/original_bookstore.json",
+        "first_sha256": "9bf1e4e3ef7c4d7b63946d1bdbf17ebd3923753b52561f8b335b58d92b6dda49"
+      },
+      "seconds": {
+        "first_response_pipeline": 57.21,
+        "normal_format_continuation": 0
+      }
+    },
+    {
+      "name": "original_hospital",
+      "private_model": {
+        "first_response_schema_valid": true,
+        "first_reply_empty": true,
+        "first_response": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "format_repair_used": false,
+        "final_response": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "final_schema_valid": true,
+        "final_requested_fields_present": true,
+        "final_reply_empty": true
+      },
+      "public_pipeline": {
+        "decision": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "response": {
+          "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+          "job": null
+        },
+        "action_matched": true,
+        "strategy_matched": true,
+        "materials_preserved": true,
+        "materials_after": [
+          "我想玩恐怖一点的，医院题材"
+        ],
+        "public_safe": true,
+        "design_jobs_created": 0,
+        "passed": true
+      },
+      "artifacts": {
+        "first_file": "production-intent-controls/original_hospital.json",
+        "first_sha256": "5d80ef82ea12f5d01bb56247b4db40d0c8f548a7cc88cccce9f4c6a45de85227"
+      },
+      "seconds": {
+        "first_response_pipeline": 16.41,
+        "normal_format_continuation": 0
+      }
+    },
+    {
+      "name": "discuss_without_start",
+      "private_model": {
+        "first_response_schema_valid": true,
+        "first_reply_empty": true,
+        "first_response": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "format_repair_used": false,
+        "final_response": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "final_schema_valid": true,
+        "final_requested_fields_present": true,
+        "final_reply_empty": true
+      },
+      "public_pipeline": {
+        "decision": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "response": {
+          "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+          "job": null
+        },
+        "action_matched": true,
+        "strategy_matched": true,
+        "materials_preserved": true,
+        "materials_after": [
+          "我想聊一个医院题材的推理案，先聊聊可能的氛围，不要开始生成，也不要告诉我谜底。"
+        ],
+        "public_safe": true,
+        "design_jobs_created": 0,
+        "passed": true
+      },
+      "artifacts": {
+        "first_file": "production-intent-controls/discuss_without_start.json",
+        "first_sha256": "f801b89d3ab1dc89a7cb124435b7b913823bce1f0ca4424d31d30894a61dedcf"
+      },
+      "seconds": {
+        "first_response_pipeline": 6.65,
+        "normal_format_continuation": 0
+      }
+    },
+    {
+      "name": "seen_answer_wants_new",
+      "private_model": {
+        "first_response_schema_valid": true,
+        "first_reply_empty": true,
+        "first_response": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "format_repair_used": false,
+        "final_response": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "final_schema_valid": true,
+        "final_requested_fields_present": true,
+        "final_reply_empty": true
+      },
+      "public_pipeline": {
+        "decision": {
+          "action": "clarify",
+          "strategy": "new",
+          "reply": "",
+          "tool": null,
+          "arguments": {}
+        },
+        "response": {
+          "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+          "job": null
+        },
+        "action_matched": true,
+        "strategy_matched": true,
+        "materials_preserved": true,
+        "materials_after": [
+          "我已经看过原答案了，希望只保留医院氛围，写一个全新的现实推理故事。请按全新开始生成，不要告诉我新的谜底。"
+        ],
+        "public_safe": true,
+        "design_jobs_created": 0,
+        "passed": true
+      },
+      "artifacts": {
+        "first_file": "production-intent-controls/seen_answer_wants_new.json",
+        "first_sha256": "adb16036751870abf6314f4132ead649d748a6c66945320d06b06e498ec678a3"
+      },
+      "seconds": {
+        "first_response_pipeline": 76.84,
+        "normal_format_continuation": 0
+      }
+    },
+    {
+      "name": "correct_previous_size",
+      "private_model": {
+        "first_response_schema_valid": false,
+        "first_reply_empty": true,
+        "first_response": {
+          "action": "generate",
+          "strategy": "new",
+          "reply": "",
+          "tool": "generate_story",
+          "arguments": {
+            "mode": "play",
+            "title": "空白预订本",
+            "setting": "现代校园书店，闭店后发生的现实推理事件",
+            "requirements": {
+              "characters": 4,
+              "clues": 10,
+              "lies": 2,
+              "ending_questions": 3,
+              "endings": 2,
+              "tone": "短篇、现实、可推理、线索相互印证、人物动机清楚",
+              "do_not_reveal_solution": true
+            },
+            "premise": "闭店后，一本已经被学生预订的书，在次日交接时被发现换成了外观相同的空白本。事件发生在校园书店内部，涉及预订流程、闭店巡视、监控盲区与个人动机。",
+            "materials": [
+              "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。",
+              "改为4个人、10条线索，仍为2句谎话、3个结局题和2个结局。按这个最新规模全新生成，其他要求保留，不要告诉我谜底。"
+            ]
+          }
+        },
+        "format_repair_used": true,
+        "final_response": {
+          "action": "generate",
+          "strategy": "new",
+          "reply": "",
+          "tool": "generate_story",
+          "arguments": {
+            "mode": "play",
+            "setting": "现代校园书店",
+            "premise": "闭店后，一本预订书被换成了空白本",
+            "cast_count": "4",
+            "clue_count": "10",
+            "lie_count": "2",
+            "ending_questions": "3",
+            "ending_count": "2",
+            "constraints": "现实推理、线索相互印证、人物动机清楚、不要直接透露谜底",
+            "materials": "用户已将规模更新为4个人、10条线索，其他要求保留，并明确按最新规模全新生成"
+          }
+        },
+        "final_schema_valid": true,
+        "final_requested_fields_present": true,
+        "final_reply_empty": true,
+        "first_schema_errors": [
+          {
+            "type": "string_type",
+            "loc": [
+              "arguments",
+              "requirements"
+            ],
+            "msg": "Input should be a valid string",
+            "url": "https://errors.pydantic.dev/2.14/v/string_type"
+          },
+          {
+            "type": "string_type",
+            "loc": [
+              "arguments",
+              "materials"
+            ],
+            "msg": "Input should be a valid string",
+            "url": "https://errors.pydantic.dev/2.14/v/string_type"
+          }
+        ]
+      },
+      "public_pipeline": {
+        "decision": {
+          "action": "generate",
+          "strategy": "new",
+          "reply": "",
+          "tool": "generate_story",
+          "arguments": {
+            "mode": "play",
+            "setting": "现代校园书店",
+            "premise": "闭店后，一本预订书被换成了空白本",
+            "cast_count": "4",
+            "clue_count": "10",
+            "lie_count": "2",
+            "ending_questions": "3",
+            "ending_count": "2",
+            "constraints": "现实推理、线索相互印证、人物动机清楚、不要直接透露谜底",
+            "materials": "用户已将规模更新为4个人、10条线索，其他要求保留，并明确按最新规模全新生成"
+          }
+        },
+        "response": {
+          "reply": "快速还是精修？精修会比较两份设计，并增加修订轮次。实际耗时取决于素材和模型。",
+          "job": null
+        },
+        "action_matched": true,
+        "strategy_matched": true,
+        "materials_preserved": true,
+        "materials_after": [
+          "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+          "刚才的人物和线索数量改为4个人、10条线索，仍为2句谎话、3个结局题和2个结局。按这个最新规模全新生成，其他要求保留，不要告诉我谜底。"
+        ],
+        "public_safe": true,
+        "design_jobs_created": 0,
+        "passed": true
+      },
+      "artifacts": {
+        "first_file": "production-intent-controls/correct_previous_size.json",
+        "first_sha256": "c2a298bf0c37a7278867b056210cd6b12673f26a7b43eb38c130dfe12f06acfa",
+        "continuation_file": "production-intent-controls-size-continuation/correct_previous_size.json",
+        "continuation_sha256": "1aadb195d367e33b4d7d0ba2ccafb92c1738dbb4401353dbd49aa38585ee556b",
+        "original_first_messages_sha256": "0b4f5014d3feb9aab30631ab209eb937d8720da2aaf84ea308de9477468571ab",
+        "replayed_first_messages_sha256": "0b4f5014d3feb9aab30631ab209eb937d8720da2aaf84ea308de9477468571ab",
+        "replayed_bad_response_exact": true,
+        "new_live_retry_messages_sha256": "d2b2cdf5cc2f24fd0d620265d89e964f28d12a13badb680d214e3cee588335b8"
+      },
+      "seconds": {
+        "first_response_pipeline": 11.2,
+        "normal_format_continuation": 15.66
+      }
+    }
+  ],
+  "desktop_normal_pipeline_release_supported": true,
+  "limitations": [
+    "前4例首答通过，第5例首答arguments结构不合法，经生产已有第2次格式修复后通过。",
+    "第5续验逐字回放原首答并核对原messages哈希，仅增加一次正常格式修复HTTP调用。",
+    "设计生成由QA替身拦截，本记录验证判意入口与公开文案；最终EXE真实生成继续独立验收。",
+    "原Responses-none实验strict 2/5矩阵及两个raw reply限制完整保留。"
+  ]
+}

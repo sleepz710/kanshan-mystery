@@ -1,0 +1,42 @@
+[
+  {
+    "case": "original_bookstore",
+    "endpoint": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "input_sha256": "a7eeaced78dae86a2135ac006b5c4339992c0053a30624878a1176402ac45c4d"
+  },
+  {
+    "case": "original_hospital",
+    "endpoint": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "input_sha256": "46dae35e90d4f58dd51717a1025b95353fc27d32bd4cc5b5813ffec71f7d6d29"
+  },
+  {
+    "case": "discuss_without_start",
+    "endpoint": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "input_sha256": "e04f414e75e098888b3f24451cf44102919d9c3dd47b8fa045a5aa307f501aa2"
+  },
+  {
+    "case": "seen_answer_wants_new",
+    "endpoint": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "input_sha256": "5124fdeab5855f1c5858597fad2f8c22fe114dc76305c6fee95988b9a81e5365"
+  },
+  {
+    "case": "correct_previous_size",
+    "endpoint": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "input_sha256": "807fc8f4cb351ea4c049bb40821ed933a200da0819269b8184f7f778cb11df88"
+  }
+]

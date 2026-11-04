@@ -1,0 +1,12 @@
+[
+  {
+    "case": "correct_previous_size",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "effort": "none",
+    "role": "writer",
+    "intent": true,
+    "writer_authorization_matched": true,
+    "input_sha256": "d2b2cdf5cc2f24fd0d620265d89e964f28d12a13badb680d214e3cee588335b8"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "executable_source": "8ec8ba7fbd92da1db0d1d20afb9a03978837ffb6",
+  "original_failed_default_port": 6667,
+  "direct_loopback_http_status": 200,
+  "browser_navigation_result": {
+    "frameId": "46EE011420F28E5AD4196F4C77003931",
+    "loaderId": "4CDE61A27D084640AA7C4BD4779C9EE7",
+    "errorText": "net::ERR_UNSAFE_PORT",
+    "isDownload": false
+  },
+  "browser": {
+    "url": "chrome-error://chromewebdata/",
+    "body": "嗯… 无法访问此页面\n\nhttp://127.0.0.1:6667/settings/ 上的网页似乎有问题，或者可能已永久移动到新的 Web 地址。\n\nERR_UNSAFE_PORT\nMicrosoft Edge"
+  },
+  "probe_app_random_port": 40733,
+  "model_calls": 0,
+  "network_configuration_changed": false
+}

@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "audit_utc": "2026-11-04T15:15:15.825523+00:00",
+  "audit_kind": "readonly_frozen_source_comparison",
+  "reviewer": "alignment",
+  "source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "source_tree": "9536b03832d361ea6cf1637091a4ad4b76eb046d",
+  "main_commit": "a0422579be71169a43fa4f73f01acb9044b9bec3",
+  "v4_model_tested_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "worktree": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104",
+  "boundaries": {
+    "model_calls": 0,
+    "executable_launches": 0,
+    "production_file_edits": 0,
+    "configuration_or_key_reads": false,
+    "new_artifact_inspection": "pending desktop final EXE path and build provenance",
+    "task18_wip_integrated": false
+  },
+  "net_production_diff": [
+    {
+      "path": "backend/studio/check.py",
+      "added": 6,
+      "removed": 6,
+      "sha256_source": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7",
+      "sha256_main": "af213be8119a1f2023e1d88e68939ae72a2f6b38a65be185b971f57ae6b4a6f7"
+    },
+    {
+      "path": "backend/studio/service.py",
+      "added": 9,
+      "removed": 1,
+      "sha256_source": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+      "sha256_main": "57d1ed9d899ba1739976dfe9b638e26cb2f3450f804c7ad8afb919cfb06c3cde"
+    },
+    {
+      "path": "desktop/main.py",
+      "added": 17,
+      "removed": 3,
+      "sha256_source": "554a5884c0b38704b5b491b515a5131cfbda66acfa2a6d30791102351ba99a65",
+      "sha256_main": "e9267310ba8e475440fe280c58951c31753fbda3135d505ea56ceb9b0c7695ae"
+    }
+  ],
+  "production_changed_files_exactly_expected": true,
+  "production_change_scope": {
+    "backend/studio/check.py": "素材判意purpose使用同writer配置，已核实OpenAI后台intent none，设计默认high保留。",
+    "backend/studio/service.py": "素材判意任务纳入关闭生命周期管理，仅play传intent，play回复空字符串契约。",
+    "desktop/main.py": "预绑定WebView可访问的动态端口并将同一socket交给后端。"
+  },
+  "other_changed_files": {
+    "attributes": [
+      ".gitattributes"
+    ],
+    "tests": [
+      "backend/studio/test_intent_purpose.py",
+      "backend/studio/test_material_shutdown.py",
+      "tests/test_desktop.py"
+    ],
+    "documentation_and_evidence_count": 82,
+    "attributes_scope": "保留验收记录原始字节。"
+  },
+  "backend": {
+    "source_tree": "d91eb129f92a1f0f61edd7970c898ad9020ab3d8",
+    "v4_tree": "d91eb129f92a1f0f61edd7970c898ad9020ab3d8",
+    "tracked_files": 29,
+    "all_git_bytes_equal_to_v4": true,
+    "all_working_tree_bytes_equal_source": true,
+    "files": [
+      {
+        "path": "backend/__init__.py",
+        "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "v4_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "working_tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/agents.py",
+        "source_sha256": "24f5d69002895dacd75abcb81224a44777268762b9542b92ed999463c5f2a45a",
+        "v4_sha256": "24f5d69002895dacd75abcb81224a44777268762b9542b92ed999463c5f2a45a",
+        "working_tree_sha256": "24f5d69002895dacd75abcb81224a44777268762b9542b92ed999463c5f2a45a",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/app.py",
+        "source_sha256": "ebd2f3499a9eacc671cfa0886e7dc1135e33a9f4be2881103a80431cd8aba53a",
+        "v4_sha256": "ebd2f3499a9eacc671cfa0886e7dc1135e33a9f4be2881103a80431cd8aba53a",
+        "working_tree_sha256": "ebd2f3499a9eacc671cfa0886e7dc1135e33a9f4be2881103a80431cd8aba53a",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/engine.py",
+        "source_sha256": "2ae71170f7f8bcdca4ae805930042ef3ea7d3feb4247d28a9f238f53fdeb3b43",
+        "v4_sha256": "2ae71170f7f8bcdca4ae805930042ef3ea7d3feb4247d28a9f238f53fdeb3b43",
+        "working_tree_sha256": "2ae71170f7f8bcdca4ae805930042ef3ea7d3feb4247d28a9f238f53fdeb3b43",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/kanshan.py",
+        "source_sha256": "5a5a94d908b32462f809e38258eaffd89705697d5cdb5977ba60d20e3463df12",
+        "v4_sha256": "5a5a94d908b32462f809e38258eaffd89705697d5cdb5977ba60d20e3463df12",
+        "working_tree_sha256": "5a5a94d908b32462f809e38258eaffd89705697d5cdb5977ba60d20e3463df12",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/llm.py",
+        "source_sha256": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+        "v4_sha256": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+        "working_tree_sha256": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/paths.py",
+        "source_sha256": "e13208f13c639f97440fdbbc2de17023d3ee05e9e40920fba2e0d5a9dacd9c9c",
+        "v4_sha256": "e13208f13c639f97440fdbbc2de17023d3ee05e9e40920fba2e0d5a9dacd9c9c",
+        "working_tree_sha256": "e13208f13c639f97440fdbbc2de17023d3ee05e9e40920fba2e0d5a9dacd9c9c",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/__init__.py",
+        "source_sha256": "38de8aacecae01185944868ed0ef33e0a4af731a766c3a63352abc4a36de32cb",
+        "v4_sha256": "38de8aacecae01185944868ed0ef33e0a4af731a766c3a63352abc4a36de32cb",
+        "working_tree_sha256": "38de8aacecae01185944868ed0ef33e0a4af731a766c3a63352abc4a36de32cb",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/api.py",
+        "source_sha256": "6b986f47258f324ee799c97bd5236190bfa2b2c2720b4d9b0640270f6a43642a",
+        "v4_sha256": "6b986f47258f324ee799c97bd5236190bfa2b2c2720b4d9b0640270f6a43642a",
+        "working_tree_sha256": "6b986f47258f324ee799c97bd5236190bfa2b2c2720b4d9b0640270f6a43642a",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/check.py",
+        "source_sha256": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7",
+        "v4_sha256": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7",
+        "working_tree_sha256": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/ingest.py",
+        "source_sha256": "f76adbe9fd36aaaf1248fdaab7ca074fddb13e53fe97d3922ce306e8dcc5510b",
+        "v4_sha256": "f76adbe9fd36aaaf1248fdaab7ca074fddb13e53fe97d3922ce306e8dcc5510b",
+        "working_tree_sha256": "f76adbe9fd36aaaf1248fdaab7ca074fddb13e53fe97d3922ce306e8dcc5510b",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/mock.py",
+        "source_sha256": "2b247c590ecbf4910bfc3247a6c3640144e606903f61cea7c9b58700a53e37fc",
+        "v4_sha256": "2b247c590ecbf4910bfc3247a6c3640144e606903f61cea7c9b58700a53e37fc",
+        "working_tree_sha256": "2b247c590ecbf4910bfc3247a6c3640144e606903f61cea7c9b58700a53e37fc",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/service.py",
+        "source_sha256": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+        "v4_sha256": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+        "working_tree_sha256": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/share.py",
+        "source_sha256": "ddee26d770218cd6de495e406888669cf70fc958a4f8e953889c2838991ec6a9",
+        "v4_sha256": "ddee26d770218cd6de495e406888669cf70fc958a4f8e953889c2838991ec6a9",
+        "working_tree_sha256": "ddee26d770218cd6de495e406888669cf70fc958a4f8e953889c2838991ec6a9",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_design_first.py",
+        "source_sha256": "f81bccb2708f29f205e11b04c1bb80416eda7a761373bfe7bdb360f662aab8c4",
+        "v4_sha256": "f81bccb2708f29f205e11b04c1bb80416eda7a761373bfe7bdb360f662aab8c4",
+        "working_tree_sha256": "f81bccb2708f29f205e11b04c1bb80416eda7a761373bfe7bdb360f662aab8c4",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_design_preservation.py",
+        "source_sha256": "d6a68a913bbf998c6e25fd0aaaf40070032f25c7f40bf6cd6e5980d476856d5a",
+        "v4_sha256": "d6a68a913bbf998c6e25fd0aaaf40070032f25c7f40bf6cd6e5980d476856d5a",
+        "working_tree_sha256": "d6a68a913bbf998c6e25fd0aaaf40070032f25c7f40bf6cd6e5980d476856d5a",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_failures.py",
+        "source_sha256": "8709ac8eb336b6087d29f2b71079e70464048653d84973d9c1cc8a2a1d0bd6bc",
+        "v4_sha256": "8709ac8eb336b6087d29f2b71079e70464048653d84973d9c1cc8a2a1d0bd6bc",
+        "working_tree_sha256": "8709ac8eb336b6087d29f2b71079e70464048653d84973d9c1cc8a2a1d0bd6bc",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_generation_integrity.py",
+        "source_sha256": "096e8a08467f25bc2a5cc76d025efd1e6cfdac89c6ccfbc2430dd031fdb45036",
+        "v4_sha256": "096e8a08467f25bc2a5cc76d025efd1e6cfdac89c6ccfbc2430dd031fdb45036",
+        "working_tree_sha256": "096e8a08467f25bc2a5cc76d025efd1e6cfdac89c6ccfbc2430dd031fdb45036",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_intent_purpose.py",
+        "source_sha256": "66a3cd9e7051ef50eba2a89f1c88d1e7df0fce121717c02337acff7024c30684",
+        "v4_sha256": "66a3cd9e7051ef50eba2a89f1c88d1e7df0fce121717c02337acff7024c30684",
+        "working_tree_sha256": "66a3cd9e7051ef50eba2a89f1c88d1e7df0fce121717c02337acff7024c30684",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_material_shutdown.py",
+        "source_sha256": "e15068de931eb8e59893e1a66e21b7a3b5a0a81d55f87505aba0ce713c6ba168",
+        "v4_sha256": "e15068de931eb8e59893e1a66e21b7a3b5a0a81d55f87505aba0ce713c6ba168",
+        "working_tree_sha256": "e15068de931eb8e59893e1a66e21b7a3b5a0a81d55f87505aba0ce713c6ba168",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_openai_background.py",
+        "source_sha256": "85c730b722d02d697fe24de662d212a40da335a46d5cefff0942983575554c8a",
+        "v4_sha256": "85c730b722d02d697fe24de662d212a40da335a46d5cefff0942983575554c8a",
+        "working_tree_sha256": "85c730b722d02d697fe24de662d212a40da335a46d5cefff0942983575554c8a",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_quality_modes.py",
+        "source_sha256": "2c00bddfdbd6bbbbb61e0a18aedd08af8d5b99c1ba85b40378df88cd2829ec57",
+        "v4_sha256": "2c00bddfdbd6bbbbb61e0a18aedd08af8d5b99c1ba85b40378df88cd2829ec57",
+        "working_tree_sha256": "2c00bddfdbd6bbbbb61e0a18aedd08af8d5b99c1ba85b40378df88cd2829ec57",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_regression_20261103.py",
+        "source_sha256": "ea95e490a2be6581d6c61c61616cd854f98211ce4140de67a5997844cb5d59be",
+        "v4_sha256": "ea95e490a2be6581d6c61c61616cd854f98211ce4140de67a5997844cb5d59be",
+        "working_tree_sha256": "ea95e490a2be6581d6c61c61616cd854f98211ce4140de67a5997844cb5d59be",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_request_deadline.py",
+        "source_sha256": "acb027a0c4baa59b2c95d1e7edfe303e6a6222ab7189315082c2c85e77f4ff1f",
+        "v4_sha256": "acb027a0c4baa59b2c95d1e7edfe303e6a6222ab7189315082c2c85e77f4ff1f",
+        "working_tree_sha256": "acb027a0c4baa59b2c95d1e7edfe303e6a6222ab7189315082c2c85e77f4ff1f",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_review_verification.py",
+        "source_sha256": "682e99fc3e9c9524fcd0622975ce33a7e96d4ccbc65fcc2c4beb3a74c9abf063",
+        "v4_sha256": "682e99fc3e9c9524fcd0622975ce33a7e96d4ccbc65fcc2c4beb3a74c9abf063",
+        "working_tree_sha256": "682e99fc3e9c9524fcd0622975ce33a7e96d4ccbc65fcc2c4beb3a74c9abf063",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_share.py",
+        "source_sha256": "24ab9e6366b34a0e5006233900f8686ca29adfc880469f0910c65977d9fa6f14",
+        "v4_sha256": "24ab9e6366b34a0e5006233900f8686ca29adfc880469f0910c65977d9fa6f14",
+        "working_tree_sha256": "24ab9e6366b34a0e5006233900f8686ca29adfc880469f0910c65977d9fa6f14",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_studio.py",
+        "source_sha256": "c40311b74e9758fd87c1c78247e0c7cd5e4c75b951aefa5848da5b895f5f214e",
+        "v4_sha256": "c40311b74e9758fd87c1c78247e0c7cd5e4c75b951aefa5848da5b895f5f214e",
+        "working_tree_sha256": "c40311b74e9758fd87c1c78247e0c7cd5e4c75b951aefa5848da5b895f5f214e",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_task18_alignment.py",
+        "source_sha256": "6032d3f7ac51945b7e1f8eba90ebe8e624c7b202e4570c76b4ca6c3364cddee1",
+        "v4_sha256": "6032d3f7ac51945b7e1f8eba90ebe8e624c7b202e4570c76b4ca6c3364cddee1",
+        "working_tree_sha256": "6032d3f7ac51945b7e1f8eba90ebe8e624c7b202e4570c76b4ca6c3364cddee1",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "backend/studio/test_writer_speed.py",
+        "source_sha256": "1f2909eccd776080581f8dba1912bd930b64f0b9fb59d1d20e03b24c0ffecdb3",
+        "v4_sha256": "1f2909eccd776080581f8dba1912bd930b64f0b9fb59d1d20e03b24c0ffecdb3",
+        "working_tree_sha256": "1f2909eccd776080581f8dba1912bd930b64f0b9fb59d1d20e03b24c0ffecdb3",
+        "git_bytes_equal_to_v4": true,
+        "working_tree_bytes_equal_source": true
+      }
+    ]
+  },
+  "frontend": {
+    "source_tree": "05cf2cb17fde65683fead26e1cdd8e732b7143bf",
+    "main_tree": "05cf2cb17fde65683fead26e1cdd8e732b7143bf",
+    "tracked_files": 34,
+    "all_git_bytes_equal_to_main": true,
+    "all_working_tree_bytes_equal_source": true,
+    "files": [
+      {
+        "path": "frontend/assets/audio/bgm.mp3",
+        "sha256": "d11aec5433749b8783ba7a29621f3814d1c84214052877d16ba5ca7dc19e07b0",
+        "bytes": 3607159,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/assets/avatars/akai.png",
+        "sha256": "eeb609b78791abc7b38a692141768571a8d6b81dce7c0a036cdcfd3a70246721",
+        "bytes": 25558,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/assets/avatars/chenmo.png",
+        "sha256": "67982d5bee26690f5a5f5347402bf481dcb6e386e2c7af27e33605f301110679",
+        "bytes": 32219,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/akai.svg",
+        "sha256": "a88cc4617131a7d519489e301d20b6ec85bd4a31cb037b94af29a92a0f24c204",
+        "bytes": 2587,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/chenmo.svg",
+        "sha256": "5101c0ae2986d3310a57200b569042e450b75c21ab960c3e881b6642b6c28e6b",
+        "bytes": 2473,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/xiaolin.svg",
+        "sha256": "792f7051c785c8cbf9b71f9ee8ffdc1cba8d848b69fdbf804aa84690afc476a2",
+        "bytes": 2324,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/assets/avatars/src/zhouming.svg",
+        "sha256": "0d3ee951767eebdec2e9abf6863ebf3d549e3d1fe4710453110722007f94e9ae",
+        "bytes": 1898,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/assets/avatars/xiaolin.png",
+        "sha256": "aad1297329171ed1762ffc81d4845513e277d5b37bed073e9ccc4f50dddf3c0c",
+        "bytes": 31676,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/assets/avatars/zhouming.png",
+        "sha256": "8284a513addd55aa979dee14c35cbb46af77807f66fd99686a77a465bfeeb7dd",
+        "bytes": 27727,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/assets/icon-180.png",
+        "sha256": "e584b812f3d8f363e32bbf428474da6d9e1bb9cb8488fefcded0311a790b0412",
+        "bytes": 3227,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/assets/logo.svg",
+        "sha256": "4a7f81bfc6b3b0a1ee2cbf2e062bf97470e03c11f1f03b2376d0ad0deb5e21b3",
+        "bytes": 677,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/css/base.css",
+        "sha256": "7287f117d96ec6b291849f7f2ffd4ff53ba7e5bd5de8a22aea7e64cefe864f71",
+        "bytes": 12097,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/css/ending.css",
+        "sha256": "8d766ea9e9b4b3dc216a8f355e9d47847256e6b76ea83cbbdda724c649b1c414",
+        "bytes": 6022,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/css/game.css",
+        "sha256": "e88a3af41338fba10c85da49a01f1401c77a85dfeffb2d59fa19ce4a612c68ca",
+        "bytes": 34750,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/css/home.css",
+        "sha256": "198c11cf0350eab979443bd1f7539f649dcd8ef197e4066baee8ad476c50d93a",
+        "bytes": 12404,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/css/window.css",
+        "sha256": "e0a24fb87c2c876377b6d7cb478f5c2f499bc88394fe0cf544513f419d3dcdc0",
+        "bytes": 2463,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/ending.html",
+        "sha256": "c3210672f027889b97069f063316952fe6ad0ccf7d635ef13e63b51ce802cd0d",
+        "bytes": 2622,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/game.html",
+        "sha256": "f403015362128d96b1ca298dcd3f93e0b200f33af9c2b51afc8143a30f60ca7d",
+        "bytes": 8748,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/index.html",
+        "sha256": "e990d16c6f74636532ad8c0c8d507f7e0989562c8b58b9ec00397d1a6f21f7fb",
+        "bytes": 8761,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/js/api.js",
+        "sha256": "735c3a54733385a45ed5062d1b5dc80d46dd552b5dac4232171e5c28d7d35abc",
+        "bytes": 2496,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/js/ending.js",
+        "sha256": "959c29aaad0cec6339a947aea44a89ea52d80421fa1bf0fd42ac81de57c17109",
+        "bytes": 5378,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/js/game.js",
+        "sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+        "bytes": 45935,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/js/home.js",
+        "sha256": "19fb516e34de078878663d0ec2aec55cff9539f559fcd8743b125b1c762963ce",
+        "bytes": 20876,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/js/music.js",
+        "sha256": "bc705deb2b84f12499602776fc77324f8dd56372760b8bcd132a5a7778a3c9d9",
+        "bytes": 5018,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/js/store.js",
+        "sha256": "5edecddec244b96b3c4dc6aacd0b486ca52e4a3bf3f47a7e53dc0a9e9ede3e1e",
+        "bytes": 3238,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/js/ui.js",
+        "sha256": "2b39a3ac847ecc95d1e315fb9ca5edbf5408e13230c10d616fd6b54703e75752",
+        "bytes": 10143,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/js/window.js",
+        "sha256": "a3fab19f5ac4da71aee71e2be49ea49da2ba2585d429913e826c2b223cf326db",
+        "bytes": 3698,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/share/index.html",
+        "sha256": "a14dfee81e9699ba1f40fdcb3464e66a760f4bee58cd06181cab65ef6947fa68",
+        "bytes": 1288,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/share/share.css",
+        "sha256": "8d44ed2a0c7269391894d6ec187654d1e30801c45cb05bda3ace332337b0c8e0",
+        "bytes": 10189,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/share/share.js",
+        "sha256": "1558d57b73ce2da98becc8046869213636cdc9323415f2a247cec2b57ad43544",
+        "bytes": 21332,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/studio/chats.js",
+        "sha256": "8a5e149dbea92f32d48ea5a420db1c528d01ead84efb2b1c0e349a4970c52a57",
+        "bytes": 10262,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/studio/index.html",
+        "sha256": "cdd9bcd0468c181fdd884bf6657b331efe72d1796dba7bbec71b7ee4ed8260d9",
+        "bytes": 4228,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/studio/studio.css",
+        "sha256": "92efb481b14d43f3e98e38f6397b8bfd1af3d3a0f0503d4526f85b751210a61e",
+        "bytes": 13249,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "frontend/studio/studio.js",
+        "sha256": "d8e8f0313b2515c8012b5b281f70b1517c4b696ec0cdd504e0de60434bb2680b",
+        "bytes": 22229,
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      }
+    ]
+  },
+  "runtime_and_window_frame": {
+    "all_equal_main": true,
+    "files": [
+      {
+        "path": "desktop/runtime.py",
+        "sha256": "4ec6e86e5c6d4503ea926403239ae39655eba8e522b3cbae4cac7caac5bf0263",
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      },
+      {
+        "path": "desktop/window_frame.py",
+        "sha256": "dcb0d6fbba6c7dffaef1c118e338c312614df25698dc482238131f030b9d0d8b",
+        "git_bytes_equal_to_main": true,
+        "working_tree_bytes_equal_source": true
+      }
+    ]
+  },
+  "automated_tests": {
+    "source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+    "reported_passed": 826,
+    "source": "desktop frozen-source message",
+    "independently_rerun_by_this_audit": false
+  },
+  "model_evidence_boundary": {
+    "existing_v4_real_generation_source": "63c27ce268c62788cf455552f09010131aa88ac3",
+    "latest_existing_v4_hospital_dialogue_turns": 2,
+    "new_v5_complete_generation_or_human_playthrough_performed_by_this_audit": false,
+    "v4_raw_checked": true,
+    "v4_manual_core_pass": false,
+    "v4_narrative_review": "docs/testing/task20-frameless-quality/narrative-review-v4.json",
+    "task18_wip": "dae1c16cfe8f9c2b130fe42c834b7bc8db4afa0d 保留独立WIP，当前后端与v4字节一致。"
+  },
+  "source_audit_pass": true
+}

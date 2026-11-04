@@ -1,0 +1,92 @@
+{
+  "runtime_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+  "model": "gpt-5.4-2026-03-05",
+  "intent": true,
+  "effort": "none",
+  "endpoint": "/v1/responses",
+  "all_matched": true,
+  "cases_completed": 1,
+  "provider_blocked": false,
+  "baseline_records_unchanged": true,
+  "production_source_unchanged": true,
+  "source_sha256": {
+    "backend/studio/service.py": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+    "backend/studio/check.py": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7"
+  },
+  "results": [
+    {
+      "name": "correct_previous_size",
+      "runtime_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+      "expected_actions": [
+        "generate"
+      ],
+      "expected_strategy": "new",
+      "text": "刚才的人物和线索数量改为4个人、10条线索，仍为2句谎话、3个结局题和2个结局。按这个最新规模全新生成，其他要求保留，不要告诉我谜底。",
+      "baseline_record_sha256": "c5a9520f48bdf3195d7251781cba41ed7e6a377b906a5d4ded8bf8f943a3cd9c",
+      "baseline_strict_matched": true,
+      "production_function": "StudioService.message -> complete_for(intent=True)",
+      "background_effort_patch": false,
+      "mode": "已有首次坏答的正常格式重试续验",
+      "first_response_source": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\docs\\testing\\task20-role-package\\production-intent-controls\\correct_previous_size.json",
+      "first_response_source_sha256": "c2a298bf0c37a7278867b056210cd6b12673f26a7b43eb38c130dfe12f06acfa",
+      "first_response_replayed": true,
+      "new_live_calls_limit": 1,
+      "response": {
+        "reply": "快速还是精修？精修会比较两份设计，并增加修订轮次。实际耗时取决于素材和模型。",
+        "job": null
+      },
+      "raw": {
+        "action": "generate",
+        "strategy": "new",
+        "reply": "",
+        "tool": "generate_story",
+        "arguments": {
+          "mode": "play",
+          "setting": "现代校园书店",
+          "premise": "闭店后，一本预订书被换成了空白本",
+          "cast_count": "4",
+          "clue_count": "10",
+          "lie_count": "2",
+          "ending_questions": "3",
+          "ending_count": "2",
+          "constraints": "现实推理、线索相互印证、人物动机清楚、不要直接透露谜底",
+          "materials": "用户已将规模更新为4个人、10条线索，其他要求保留，并明确按最新规模全新生成"
+        }
+      },
+      "decision": {
+        "action": "generate",
+        "strategy": "new",
+        "reply": "",
+        "tool": "generate_story",
+        "arguments": {
+          "mode": "play",
+          "setting": "现代校园书店",
+          "premise": "闭店后，一本预订书被换成了空白本",
+          "cast_count": "4",
+          "clue_count": "10",
+          "lie_count": "2",
+          "ending_questions": "3",
+          "ending_count": "2",
+          "constraints": "现实推理、线索相互印证、人物动机清楚、不要直接透露谜底",
+          "materials": "用户已将规模更新为4个人、10条线索，其他要求保留，并明确按最新规模全新生成"
+        }
+      },
+      "schema_valid": true,
+      "requested_fields_present": true,
+      "action_matched": true,
+      "strategy_matched": true,
+      "raw_reply_empty": true,
+      "materials_preserved": true,
+      "public_safe": true,
+      "generated_jobs": 0,
+      "matched": true,
+      "seconds": 15.66,
+      "materials_after": [
+        "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+        "刚才的人物和线索数量改为4个人、10条线索，仍为2句谎话、3个结局题和2个结局。按这个最新规模全新生成，其他要求保留，不要告诉我谜底。"
+      ],
+      "input_sha256": "0b4f5014d3feb9aab30631ab209eb937d8720da2aaf84ea308de9477468571ab"
+    }
+  ],
+  "scope": "五个固定聊天完整判意流程，实际生产intent=True，剧情生成由QA替身拦截，仅验证本组输入。"
+}

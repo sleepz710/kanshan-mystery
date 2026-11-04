@@ -1,0 +1,12 @@
+{
+  "source_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+  "source_tree": "0fbb64f3dc29b1272c2cb2ca9c337375531aec2a",
+  "command": "python -m pytest -q",
+  "passed": 812,
+  "seconds": 36.35,
+  "warnings": [
+    "Existing Starlette TestClient httpx deprecation"
+  ],
+  "focused_intent_and_shutdown_tests": 12,
+  "focused_seconds": 10.26
+}

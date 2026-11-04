@@ -1,0 +1,225 @@
+{
+  "runtime_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+  "model": "gpt-5.4-2026-03-05",
+  "intent": true,
+  "effort": "none",
+  "endpoint": "/v1/responses",
+  "all_matched": false,
+  "cases_completed": 5,
+  "provider_blocked": false,
+  "baseline_records_unchanged": true,
+  "production_source_unchanged": true,
+  "source_sha256": {
+    "backend/studio/service.py": "d09cb8bd14b5e90b94ad76567f5252bfb57e25b4c7bedfe3188952c407ac13c9",
+    "backend/studio/check.py": "b8f952721a9fd6976bea1d1e1fafbeaad5349949cdee39c42f55bbf10c8ee7d7"
+  },
+  "results": [
+    {
+      "name": "original_bookstore",
+      "runtime_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+      "expected_actions": [
+        "clarify",
+        "generate"
+      ],
+      "expected_strategy": "new",
+      "text": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+      "baseline_record_sha256": "be52b58a2f25b96828af9856a60c706f95d289149853c8c8d95f23e419bb886d",
+      "baseline_strict_matched": false,
+      "production_function": "StudioService.message -> complete_for(intent=True)",
+      "background_effort_patch": false,
+      "response": {
+        "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+        "job": null
+      },
+      "raw": {
+        "action": "clarify",
+        "strategy": "new",
+        "reply": "",
+        "tool": null,
+        "arguments": {}
+      },
+      "decision": {
+        "action": "clarify",
+        "strategy": "new",
+        "reply": "",
+        "tool": null,
+        "arguments": {}
+      },
+      "schema_valid": true,
+      "requested_fields_present": true,
+      "action_matched": true,
+      "strategy_matched": true,
+      "raw_reply_empty": true,
+      "materials_preserved": true,
+      "public_safe": true,
+      "generated_jobs": 0,
+      "matched": true,
+      "seconds": 57.21,
+      "materials_after": [
+        "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。"
+      ],
+      "input_sha256": "2ac37f3eeec4660242354ff74fed1daae7a475bd29479aeb83a698e966095944"
+    },
+    {
+      "name": "original_hospital",
+      "runtime_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+      "expected_actions": [
+        "clarify",
+        "generate"
+      ],
+      "expected_strategy": "new",
+      "text": "我想玩恐怖一点的，医院题材",
+      "baseline_record_sha256": "0ac50456f30a3d797000399bd2c49131f189d7cecd0087159611181936feaec1",
+      "baseline_strict_matched": false,
+      "production_function": "StudioService.message -> complete_for(intent=True)",
+      "background_effort_patch": false,
+      "response": {
+        "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+        "job": null
+      },
+      "raw": {
+        "action": "clarify",
+        "strategy": "new",
+        "reply": "",
+        "tool": null,
+        "arguments": {}
+      },
+      "decision": {
+        "action": "clarify",
+        "strategy": "new",
+        "reply": "",
+        "tool": null,
+        "arguments": {}
+      },
+      "schema_valid": true,
+      "requested_fields_present": true,
+      "action_matched": true,
+      "strategy_matched": true,
+      "raw_reply_empty": true,
+      "materials_preserved": true,
+      "public_safe": true,
+      "generated_jobs": 0,
+      "matched": true,
+      "seconds": 16.41,
+      "materials_after": [
+        "我想玩恐怖一点的，医院题材"
+      ],
+      "input_sha256": "e50111e14101fd558cc0b4341c78b087b8b301911c658ba9044acf35cdbfc300"
+    },
+    {
+      "name": "discuss_without_start",
+      "runtime_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+      "expected_actions": [
+        "clarify",
+        "discuss"
+      ],
+      "expected_strategy": "new",
+      "text": "我想聊一个医院题材的推理案，先聊聊可能的氛围，不要开始生成，也不要告诉我谜底。",
+      "baseline_record_sha256": "309ae1257fef03dfef243c257927a3245d2487dbd9d6524dd8e1f7b7c22eba48",
+      "baseline_strict_matched": true,
+      "production_function": "StudioService.message -> complete_for(intent=True)",
+      "background_effort_patch": false,
+      "response": {
+        "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+        "job": null
+      },
+      "raw": {
+        "action": "clarify",
+        "strategy": "new",
+        "reply": "",
+        "tool": null,
+        "arguments": {}
+      },
+      "decision": {
+        "action": "clarify",
+        "strategy": "new",
+        "reply": "",
+        "tool": null,
+        "arguments": {}
+      },
+      "schema_valid": true,
+      "requested_fields_present": true,
+      "action_matched": true,
+      "strategy_matched": true,
+      "raw_reply_empty": true,
+      "materials_preserved": true,
+      "public_safe": true,
+      "generated_jobs": 0,
+      "matched": true,
+      "seconds": 6.65,
+      "materials_after": [
+        "我想聊一个医院题材的推理案，先聊聊可能的氛围，不要开始生成，也不要告诉我谜底。"
+      ],
+      "input_sha256": "65d33fd609d99b0ba1c92ae99dc35060d4b230441312b397ca65a327828c956b"
+    },
+    {
+      "name": "seen_answer_wants_new",
+      "runtime_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+      "expected_actions": [
+        "clarify",
+        "generate"
+      ],
+      "expected_strategy": "new",
+      "text": "我已经看过原答案了，希望只保留医院氛围，写一个全新的现实推理故事。请按全新开始生成，不要告诉我新的谜底。",
+      "baseline_record_sha256": "12b553fceacf27126e214d3407d9eaf2a5c7a4bc587fe64fe9d73356d8283faf",
+      "baseline_strict_matched": false,
+      "production_function": "StudioService.message -> complete_for(intent=True)",
+      "background_effort_patch": false,
+      "response": {
+        "reply": "默认按「全新」改编。你可以回复「没看过答案」「看过答案」或「全新」，也可以说「直接开始」。如果素材中有多个故事，请同时指出要改编哪一段。",
+        "job": null
+      },
+      "raw": {
+        "action": "clarify",
+        "strategy": "new",
+        "reply": "",
+        "tool": null,
+        "arguments": {}
+      },
+      "decision": {
+        "action": "clarify",
+        "strategy": "new",
+        "reply": "",
+        "tool": null,
+        "arguments": {}
+      },
+      "schema_valid": true,
+      "requested_fields_present": true,
+      "action_matched": true,
+      "strategy_matched": true,
+      "raw_reply_empty": true,
+      "materials_preserved": true,
+      "public_safe": true,
+      "generated_jobs": 0,
+      "matched": true,
+      "seconds": 76.84,
+      "materials_after": [
+        "我已经看过原答案了，希望只保留医院氛围，写一个全新的现实推理故事。请按全新开始生成，不要告诉我新的谜底。"
+      ],
+      "input_sha256": "a2d132fde48d25769eb934cf04343d1e081d1319463f761d30a35afecc78e038"
+    },
+    {
+      "name": "correct_previous_size",
+      "runtime_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+      "expected_actions": [
+        "generate"
+      ],
+      "expected_strategy": "new",
+      "text": "刚才的人物和线索数量改为4个人、10条线索，仍为2句谎话、3个结局题和2个结局。按这个最新规模全新生成，其他要求保留，不要告诉我谜底。",
+      "baseline_record_sha256": "c5a9520f48bdf3195d7251781cba41ed7e6a377b906a5d4ded8bf8f943a3cd9c",
+      "baseline_strict_matched": true,
+      "production_function": "StudioService.message -> complete_for(intent=True)",
+      "background_effort_patch": false,
+      "error": "LLMError",
+      "provider_status": null,
+      "schema_valid": false,
+      "matched": false,
+      "seconds": 11.2,
+      "materials_after": [
+        "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。"
+      ],
+      "input_sha256": "0b4f5014d3feb9aab30631ab209eb937d8720da2aaf84ea308de9477468571ab"
+    }
+  ],
+  "scope": "五个固定聊天完整判意流程，实际生产intent=True，剧情生成由QA替身拦截，仅验证本组输入。"
+}

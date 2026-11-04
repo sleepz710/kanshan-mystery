@@ -1,0 +1,25 @@
+{
+  "observations": [
+    {
+      "response_id": "resp_0bffc62ebdb64453006aeb2fcd236887d19911eeea7efe7435",
+      "observed_at": "2026-11-04T13:25:40.205664+00:00",
+      "new_generation_requests": 0,
+      "status": "completed",
+      "created_at": 1793798093.0,
+      "output_text_characters": 4364,
+      "output_blocks": 2,
+      "usage": {
+        "input_tokens": 1196,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 25814,
+        "output_tokens_details": {
+          "reasoning_tokens": 25814
+        },
+        "total_tokens": 27010
+      }
+    }
+  ]
+}

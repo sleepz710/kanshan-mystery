@@ -1,0 +1,81 @@
+{
+  "source_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+  "steps": [
+    {
+      "job_id": "97734664fc8e430f99d19e4624472263-1",
+      "round": 1,
+      "step": "设计稿",
+      "outcome": "超时",
+      "seconds": 541.65,
+      "input_characters": 1833,
+      "output_characters": 0
+    },
+    {
+      "job_id": "97734664fc8e430f99d19e4624472263-2",
+      "round": 1,
+      "step": "设计稿",
+      "outcome": "超时",
+      "seconds": 541.51,
+      "input_characters": 1833,
+      "output_characters": 0
+    },
+    {
+      "job_id": "97734664fc8e430f99d19e4624472263",
+      "round": 2,
+      "step": "设计稿",
+      "outcome": "完成",
+      "seconds": 429.4,
+      "input_characters": 1870,
+      "output_characters": 4194
+    },
+    {
+      "job_id": "97734664fc8e430f99d19e4624472263",
+      "round": 2,
+      "step": "填表",
+      "outcome": "完成",
+      "seconds": 46.07,
+      "input_characters": 7401,
+      "output_characters": 6918
+    },
+    {
+      "job_id": "97734664fc8e430f99d19e4624472263",
+      "round": 2,
+      "step": "填表",
+      "outcome": "完成",
+      "seconds": 41.45,
+      "input_characters": 14968,
+      "output_characters": 6854
+    },
+    {
+      "job_id": "97734664fc8e430f99d19e4624472263",
+      "round": 2,
+      "step": "审稿",
+      "outcome": "完成",
+      "seconds": 5.19,
+      "input_characters": 5598,
+      "output_characters": 16
+    },
+    {
+      "job_id": "97734664fc8e430f99d19e4624472263",
+      "round": 2,
+      "step": "可解性·只给汤面",
+      "outcome": "完成",
+      "seconds": 10.16,
+      "input_characters": 775,
+      "output_characters": 49
+    },
+    {
+      "job_id": "97734664fc8e430f99d19e4624472263",
+      "round": 2,
+      "step": "可解性·全部线索",
+      "outcome": "完成",
+      "seconds": 5.88,
+      "input_characters": 2113,
+      "output_characters": 140
+    }
+  ],
+  "frontend_clock_seconds": 1076.293,
+  "story_id": "generated-aa265696b355482193dc7bcb09aa7550",
+  "story_sha256": "6abafc319f6627eb8f61d9dc81938b0ffb918dd0f740ba7b5c772b61c6acec67",
+  "checked": true
+}

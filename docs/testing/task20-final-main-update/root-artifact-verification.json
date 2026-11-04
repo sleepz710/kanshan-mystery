@@ -1,0 +1,31 @@
+{
+  "checked_at_utc": "2026-11-04T15:17:52.668028+00:00",
+  "zip_sha256": "b8b44f224e1fabbbbfd3a6adba5bc5b04cd955f91e388bc6329d616c154efdcc",
+  "zip_bytes": 50638510,
+  "zip_sha_matches": true,
+  "zip_crc_passed": true,
+  "zip_entries": 2584,
+  "unique_zip_paths": 2584,
+  "all_delivery_files_byte_equal": true,
+  "known_private_keys_absent": true,
+  "private_configuration_entries": [],
+  "source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "source_module_count": 19,
+  "all_source_modules_match": true,
+  "resource_count": 37,
+  "all_resources_match": true,
+  "three_task19_revised_samples": {
+    "demo-bus-revised.yaml": {
+      "sha256": "bb2b897be67c16ba44aa2e70e3fceab5ef78bf476eaa5eca07e759ca73fb7d4c",
+      "source_byte_equal": true
+    },
+    "demo-hotel-revised.yaml": {
+      "sha256": "644ea25b41546f92ad17e47d531c011ee84683328bcebee1e58f6e8373f45f96",
+      "source_byte_equal": true
+    },
+    "demo-tide-revised.yaml": {
+      "sha256": "1c45853478591e4258062335c667b193429f10452a94e66438e4d23c270b926a",
+      "source_byte_equal": true
+    }
+  }
+}

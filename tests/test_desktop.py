@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from types import SimpleNamespace
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, Mock
 
 from fastapi.testclient import TestClient
 import pytest
@@ -180,3 +180,55 @@ def test_first_launch_resolves_directory_and_enables_autoplay(monkeypatch, tmp_p
     monkeypatch.setattr(desktop_main.logging, "basicConfig", verify_startup)
     with pytest.raises(StartupReached):
         desktop_main.main()
+
+
+@pytest.mark.parametrize("offset", [0, 6667, 16383])
+def test_listener_uses_webview_accessible_port_range(monkeypatch, offset):
+    from desktop import main as entry
+
+    listener = Mock()
+    constructor = Mock(return_value=listener)
+    monkeypatch.setattr(entry.socket, "socket", constructor)
+    random_offset = Mock(return_value=offset)
+    monkeypatch.setattr(entry.secrets, "randbelow", random_offset)
+    assert entry._listener() is listener
+    random_offset.assert_called_once_with(16384)
+    listener.bind.assert_called_once_with(("127.0.0.1", 49152 + offset))
+    listener.listen.assert_called_once_with(128)
+    listener.close.assert_not_called()
+    assert 49152 + offset != 6667
+
+
+@pytest.mark.parametrize("failed_operation", ["bind", "listen"])
+def test_listener_closes_failed_socket_before_retry(monkeypatch, failed_operation):
+    from desktop import main as entry
+
+    failed, available = Mock(), Mock()
+    getattr(failed, failed_operation).side_effect = OSError("port unavailable")
+    constructor = Mock(side_effect=[failed, available])
+    monkeypatch.setattr(entry.socket, "socket", constructor)
+    monkeypatch.setattr(entry.secrets, "randbelow", lambda width: 0)
+    assert entry._listener() is available
+    assert constructor.call_count == 2
+    failed.close.assert_called_once_with()
+    available.close.assert_not_called()
+    available.bind.assert_called_once_with(("127.0.0.1", 49152))
+    available.listen.assert_called_once_with(128)
+
+
+def test_listener_exhaustion_closes_every_failed_socket(monkeypatch):
+    from desktop import main as entry
+
+    listeners = [Mock() for _ in range(32)]
+    for listener in listeners:
+        listener.bind.side_effect = OSError("all candidates unavailable")
+    constructor = Mock(side_effect=listeners)
+    monkeypatch.setattr(entry.socket, "socket", constructor)
+    monkeypatch.setattr(entry.secrets, "randbelow", lambda width: 0)
+    with pytest.raises(RuntimeError, match="未找到可用的本地端口") as raised:
+        entry._listener()
+    assert isinstance(raised.value.__cause__, OSError)
+    assert constructor.call_count == 32
+    for listener in listeners:
+        listener.close.assert_called_once_with()
+        listener.listen.assert_not_called()

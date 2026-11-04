@@ -1,0 +1,15 @@
+{
+  "zip_sha256": "1a409d77b073842abcef78eae0f5b00afe6e755314396f7bbaf32a866656c246",
+  "zip_bytes": 50635943,
+  "zip_sha_matches": true,
+  "zip_crc_passed": true,
+  "zip_entries": 2583,
+  "all_delivery_files_byte_equal": true,
+  "known_private_key_absent": true,
+  "private_config_entries": [],
+  "source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "source_modules": 19,
+  "all_source_modules_match": true,
+  "resources": 36,
+  "all_resources_match": true
+}

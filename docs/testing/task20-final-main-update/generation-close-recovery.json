@@ -1,0 +1,93 @@
+{
+  "source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "main_source_commit": "a0422579be71169a43fa4f73f01acb9044b9bec3",
+  "started_at_utc": "2026-11-04T15:19:03.868403+00:00",
+  "purpose": "only generation-in-progress public close and restart cleanup",
+  "complete_new_generation_requested": false,
+  "v4_completed_case_source": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "forced_kill": false,
+  "qa_only_retry_after_home_button_disabled": {
+    "original_source_unchanged": true,
+    "previous_provider_calls": 0,
+    "production_changes": 0
+  },
+  "copied_only_existing_game_browser_storage_and_stories": true,
+  "before": {
+    "port": 64892,
+    "game_id": "ff29a55210644290b580191e40d6ce44",
+    "turns": 2,
+    "clues": 2,
+    "checked": true,
+    "story_ids": [
+      "generated-e11fedc144684d5dac61abf7c6b046ea",
+      "lost-tuition"
+    ]
+  },
+  "material_seconds": 10.46,
+  "job_id": "064f41a498c444c9a28e84246b4a5c29",
+  "response_id": "resp_0aacd3a334238541006aeb4cfb44c087d293027f54e53bf76a",
+  "job_status_before_close": "running",
+  "provider_before_close": {
+    "id": "resp_0aacd3a334238541006aeb4cfb44c087d293027f54e53bf76a",
+    "status": "in_progress",
+    "created_at": 1793805563.0,
+    "output_items": 0
+  },
+  "close": {
+    "pid": 28736,
+    "port": 64892,
+    "debug_port": 57401,
+    "environment": {
+      "PATH": "C:\\Windows;C:\\Windows\\System32",
+      "APPDATA": "C:\\Users\\HW\\AppData\\Roaming",
+      "KANSHAN_DATA_DIR_supplied": true,
+      "default_appdata": false,
+      "offline": false
+    },
+    "exit_code": 0,
+    "natural_exit_seconds": 9.34,
+    "port_released": true,
+    "request_audit": [],
+    "blocked_model_route_attempts": 0
+  },
+  "same_id_cancel_http_statuses": [
+    200
+  ],
+  "provider_after_exit": {
+    "id": "resp_0aacd3a334238541006aeb4cfb44c087d293027f54e53bf76a",
+    "status": "cancelled",
+    "output_items": 0
+  },
+  "restart": {
+    "port": 52245,
+    "random_port_changed": true,
+    "same_game_id": "ff29a55210644290b580191e40d6ce44",
+    "turns": 2,
+    "clues": 2,
+    "threads_exact_equal": true,
+    "checked_preserved": true,
+    "original_done_card_preserved": true,
+    "published_story_ids_unchanged": true,
+    "partial_tmp_count": 0
+  },
+  "restart_close": {
+    "pid": 30776,
+    "port": 52245,
+    "debug_port": 24499,
+    "environment": {
+      "PATH": "C:\\Windows;C:\\Windows\\System32",
+      "APPDATA": "C:\\Users\\HW\\AppData\\Roaming",
+      "KANSHAN_DATA_DIR_supplied": true,
+      "default_appdata": false,
+      "offline": false
+    },
+    "exit_code": 0,
+    "natural_exit_seconds": 5.76,
+    "port_released": true,
+    "request_audit": [],
+    "blocked_model_route_attempts": 0
+  },
+  "status": "passed",
+  "qa_key_cleared": true,
+  "ended_at_utc": "2026-11-04T15:19:51.261629+00:00"
+}

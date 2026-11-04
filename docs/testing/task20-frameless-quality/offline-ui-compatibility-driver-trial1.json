@@ -1,0 +1,77 @@
+{
+  "source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "model_evidence_source_commit": "469048869ba451c0fcb38a574e96682fd881b2e3",
+  "mode": "actual final EXE, isolated default APPDATA and copied legacy saves, offline UI",
+  "started_utc": "2026-11-04T14:11:31.679171+00:00",
+  "qa_root": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-3zvx0y79",
+  "sdk_calls": 0,
+  "sessions": [
+    {
+      "pid": 29748,
+      "port": 65142,
+      "debug_port": 42627,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-3zvx0y79\\fresh",
+        "KANSHAN_DATA_DIR_supplied": false,
+        "default_appdata": true,
+        "offline": true
+      },
+      "exit_code": 0,
+      "natural_exit_seconds": 10.39,
+      "port_released": true,
+      "request_audit": [
+        {
+          "method": "PUT",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/settings",
+          "blocked": false
+        },
+        {
+          "method": "GET",
+          "path": "/api/stories",
+          "blocked": false
+        },
+        {
+          "method": "POST",
+          "path": "/api/games",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        },
+        {
+          "method": "PUT",
+          "path": "/api/desktop/storage",
+          "blocked": false
+        }
+      ],
+      "blocked_model_route_attempts": 0
+    }
+  ],
+  "checks": {
+    "first_start_default_appdata": {
+      "status": "passed",
+      "first_route": "/settings/",
+      "saved_fake_key": true,
+      "private_configuration_copied": false,
+      "settings_masked": true,
+      "environment": {
+        "PATH": "C:\\Windows;C:\\Windows\\System32",
+        "APPDATA": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-offline-63c27ce-3zvx0y79\\fresh",
+        "KANSHAN_DATA_DIR_supplied": false,
+        "default_appdata": true,
+        "offline": true
+      }
+    }
+  },
+  "status": "failed",
+  "error_type": "AssertionError",
+  "error": "Control is not hittable: [data-window=\"toggle_maximize\"]"
+}

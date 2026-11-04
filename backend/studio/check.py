@@ -436,7 +436,7 @@ def check_playability(story: dict) -> list[str]:
     return problems
 
 
-async def complete_for(messages: list[dict], *, role: str, mock_response: dict) -> dict:
+async def complete_for(messages: list[dict], *, role: str, mock_response: dict, intent: bool = False) -> dict:
     """07 可独立接两组模型；不依赖任务 02 尚未合并的 llm.py 升级。"""
     if llm.is_mock_mode():
         return deepcopy(mock_response)
@@ -449,8 +449,8 @@ async def complete_for(messages: list[dict], *, role: str, mock_response: dict) 
     host = urlsplit(base).hostname
     if urlsplit(base).scheme not in {"http", "https"} or not host:
         raise llm.LLMError("模型接口地址需要使用 HTTP 或 HTTPS。", status_code=503)
-    extra = {"extra_body": {"thinking": {"type": "enabled" if writer else "disabled"}}} if host == "api.deepseek.com" else {}
-    if host == "api.deepseek.com" and writer:
+    extra = {"extra_body": {"thinking": {"type": "enabled" if writer and not intent else "disabled"}}} if host == "api.deepseek.com" else {}
+    if host == "api.deepseek.com" and writer and not intent:
         extra["reasoning_effort"] = "high"
     openai_reasoning = llm._openai_reasoning_options(base, model, role)
     extra.update(openai_reasoning)
@@ -462,7 +462,7 @@ async def complete_for(messages: list[dict], *, role: str, mock_response: dict) 
                 for attempt in (1, 2):
                     try:
                         if writer and openai_reasoning:
-                            return await _background_json(client, model, messages)
+                            return await _background_json(client, model, messages, effort="none" if intent else "high")
                         response = await client.chat.completions.create(model=model, messages=messages, response_format={"type": "json_object"}, **extra)
                         return _decode(response)
                     except APIError as exc:
@@ -498,11 +498,11 @@ async def _cancel_background_response(client, response_id: str) -> None:
                 raise
 
 
-async def _background_json(client, model: str, messages: list[dict]) -> dict:
+async def _background_json(client, model: str, messages: list[dict], *, effort: str = "high") -> dict:
     background_client = client.with_options(timeout=30, max_retries=0)
     response = await background_client.responses.create(
         model=model, input=messages, background=True, store=False,
-        reasoning={"effort": "high"}, text={"format": {"type": "json_object"}},
+        reasoning={"effort": effort}, text={"format": {"type": "json_object"}},
     )
     response_id = response.id
     failures = 0

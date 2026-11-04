@@ -1,0 +1,11 @@
+{
+  "source_commit": "7890182acaeefd0236e232ef2903000b46f61b5b",
+  "main_source_commit": "a0422579be71169a43fa4f73f01acb9044b9bec3",
+  "pytest_passed": 826,
+  "pytest_seconds": 21.55,
+  "pytest_wall_seconds": 24.02,
+  "existing_warning_count": 1,
+  "clean_build_seconds": 120.8,
+  "test_log": ".cache/music-final-pytest.log",
+  "build_log": ".cache/music-final-build.log"
+}

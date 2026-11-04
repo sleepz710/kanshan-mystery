@@ -1,0 +1,75 @@
+{
+  "connection_test": {
+    "ok": true,
+    "provider": "openai",
+    "actor_model": "gpt-5.4-2026-03-05",
+    "writer_model": "gpt-5.4-2026-03-05",
+    "actor_reasoning_effort": "none",
+    "writer_reasoning_effort": "high"
+  },
+  "native_menu_settings_home": true,
+  "signature": {
+    "game_id": "3946c92fd00f4065bf18496df01ac53a",
+    "turns": 2,
+    "clues": 2,
+    "threads": {
+      "xiaolin": [
+        {
+          "k": "me",
+          "text": "先说说你今天遇到了什么，有什么材料可以让我核对？"
+        },
+        {
+          "k": "them",
+          "text": "我……是来报案的。有人拉我进刷单群，前面一直让做小单，后面又让我垫大额，说做完能一起返。结果我把两万块转出去以后，他们又说账户冻结了，还要我再交钱，我没再转。后来群也散了，人联系不上了。这份群聊天记录你可以先看。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "刷单群聊天记录"
+            }
+          ]
+        },
+        {
+          "k": "me",
+          "text": "你最后一次联系对方是什么时候？请把能核对的记录给我看看。"
+        },
+        {
+          "k": "them",
+          "text": "最后一次就是他们让我再交三万“解冻”的时候，之后我就没再理了。第二天群也散了，人直接失联。这个转账回单你拿去核对吧，是我8月28日晚上转出去的，两万块。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "两万元转账回单"
+            }
+          ]
+        }
+      ],
+      "akai": [],
+      "zhouming": [],
+      "chenmo": []
+    }
+  },
+  "first_port": 25173,
+  "signature_restart": {
+    "port": 13886,
+    "front_and_backend_same_game": true,
+    "turns": 2
+  },
+  "dialogue_failure": {
+    "input": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+    "page_text": "看山谜案馆\n新建剧场\n自己玩\n对话记录\n新对话\n新对话\n自己玩\n刚刚\n\n记录存在这个浏览器里。服务器重启后，旧对话只能查看，不能接着聊。\n\n编\n新建剧场\n\n把一碗海龟汤、一段小说、一个网址，或者一句「我想玩一个发生在……的案子」交给编剧。编剧会安排人物、证据和谎话，几分钟后开一局新的。\n\n自己玩\n编剧保留谜底，生成完直接开局\n出题给朋友\n可以和编剧讨论剧情，生成后拿到分享链接\n编\n编剧\n\n把文字、txt/md 文件或网址发给我，一起布置一个推理剧场。这是自己玩模式，我会保留谜底。\n\n贴一碗海龟汤\n说一句想法\n改编网页上的故事\n上传文件\n发给编剧的话\n\n可上传 txt、md 文件（每个 256 KB 内），网址会自动读取正文。\n\n模型响应超时，请稍后重试。"
+  },
+  "source_commit": "df344149dba248ced9fb74ea7da387db06497c5e",
+  "stage": "material dialogue before generation job",
+  "production_call_deadline_seconds": 540,
+  "generation_jobs_created": 0,
+  "provider_response_id": "resp_0adf90f26f7318f8006aeb1387598487d2b677a18d2f1dc69a",
+  "provider_cancel_http_status": 200,
+  "observer_ended_after_service_terminal": true,
+  "subsequent_paid_calls_stopped": true
+}
