@@ -229,7 +229,14 @@ class StudioService:
                     {"role": "user", "content": json.dumps(context, ensure_ascii=False)},
                 ]
                 for retry in range(2):
-                    raw = await checker.complete_for(messages, role="writer", mock_response=self._mock_decision(chat, text, additions))
+                    request_task = asyncio.create_task(checker.complete_for(messages, role="writer", mock_response=self._mock_decision(chat, text, additions)))
+                    self.tasks.add(request_task)
+                    request_task.add_done_callback(self.tasks.discard)
+                    try:
+                        raw = await asyncio.shield(request_task)
+                    except asyncio.CancelledError:
+                        request_task.cancel()
+                        raise
                     try:
                         decision = Decision.model_validate(raw)
                         break
