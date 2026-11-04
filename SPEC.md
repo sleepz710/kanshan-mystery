@@ -310,6 +310,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 
 - 出题给朋友(任务 13)已不提供入口:下面涉及 share 模式、owner 接口、出题人令牌的条目描述的是保留未用的代码,新功能不要接它们,交作品后删除。
 - 检查器是异步 `await check(story)`；可选关键字参数 `complete` 接收与 `complete_for` 同签名的异步调用函数，供生成任务分别记录两次盲答的耗时；默认仍使用 `complete_for`。`check_structure(story)` 只做程序检查。模拟模式返回固定盲答，不表示已经完成真实语义评测。
+  - `complete_for` 的可选用途参数 `intent=False` 用于素材判意。自己玩对话传入 `intent=True`，读取编剧组的模型、接口和密钥，官方OpenAI Responses使用 `effort=none`，DeepSeek关闭thinking。判意只返回操作与策略，play的reply要求空字符串，程序提供确认文案并保存到对话历史，原素材交给设计阶段。出题模式讨论、推理设计和汤面盲答按编剧高思考用途执行。
 - 06 补充 `requirements.txt` 的 `python-multipart`、`trafilatura` 依赖，在 `create_app` 的静态目录挂载前调用 `mount_studio(application)`；应用通过 `app.state.studio` 持有会话和生成任务。测试放 `backend/studio/test_studio.py`；既有 API 路由清单断言改为包含游戏接口，允许新增剧场路由。`.env.example` 补编剧/演员配置并保留旧版 `LLM_MODEL`，方便 02 升级前联调。
 - 生成剧本使用服务端随机 `generated-<uuid>` 编号，写入 `data/stories/`。每轮依次设计、填表、审稿与检查，填表的本地问题在同一设计内最多修两次。审稿、好玩度、可解性问题交回下一轮设计，最终保留问题最少的可运行候选。仍有问题时存 `checked: false`，公开回复保持不剧透。不能被引擎读取或走通的候选只保存在 `data/drafts/`。
 - DeepSeek及其他兼容服务快速600秒/精修900秒，官方OpenAI GPT-5.4高思考快速1200秒/精修1800秒，分别最多三轮/四轮，均预留最后10秒保存。`complete_for` 对已核实官方OpenAI编剧使用540秒单次墙钟，其他调用180秒，初次编剧判意、SDK重试和JSON格式重发均在对应期限内，服务端空行保活也计入等待。设计超时可进入下一轮，填表超时可在同设计内重试，连续超时保留明确原因。总预算耗尽与服务关闭取消按原流程处理。
@@ -332,8 +333,9 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 
 | 用途 | 默认模型 | 思考模式 |
 |---|---|---|
+| 自己玩素材判意与策略选择 | 使用编剧组模型、接口与密钥 | 关 |
 | 演员组负责角色、核查、对质、刘看山、AI 试玩、设计稿填表、审稿、可解性检查里的「给全部线索」 | `deepseek-flash` | 关 |
-| 编剧组负责编剧对话、推理设计稿、可解性检查里的「只给汤面」 | `deepseek-flash` | 开 |
+| 编剧组负责出题模式对话、推理设计稿、可解性检查里的「只给汤面」 | `deepseek-flash` | 开 |
 
 - `.env`:
 
@@ -348,7 +350,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
   LLM_MOCK=0
   ```
 
-- 生成流水线的 DeepSeek 编剧调用显式使用 `reasoning_effort=high` 并保持 `thinking=enabled`，作为质量对照基线，实际质量与耗时按完整轮次记录；快速600秒和精修900秒预算继续保留。编剧对话沿用原模型调用设置。依据见 [DeepSeek思考模式](https://api-docs.deepseek.com/guides/thinking_mode/)。DeepSeek 默认开思考模式。演员的请求要加 `extra_body={"thinking": {"type": "disabled"}}`;思考模式下 `temperature` 不生效。OpenAI 不认这个参数,`llm.py` 按接口地址决定加不加。细节以 [DeepSeek 文档](https://api-docs.deepseek.com/guides/thinking_mode/) 为准。旧模型名 `deepseek-chat`、`deepseek-reasoner` 按官方公告 2026-07-24 下线,不要再用。
+- 生成流水线的 DeepSeek 编剧调用显式使用 `reasoning_effort=high` 并保持 `thinking=enabled`，作为质量对照基线，实际质量与耗时按完整轮次记录，快速600秒和精修900秒预算继续保留。自己玩素材判意使用编剧配置并关闭思考，出题模式对话使用编剧思考设置。依据见 [DeepSeek思考模式](https://api-docs.deepseek.com/guides/thinking_mode/)。DeepSeek默认开思考模式，演员请求使用 `extra_body={"thinking": {"type": "disabled"}}`，思考模式下temperature不生效。OpenAI不认该专属参数，llm.py按接口地址选择。细节见[DeepSeek文档](https://api-docs.deepseek.com/guides/thinking_mode/)。旧模型名deepseek-chat、deepseek-reasoner按官方公告2026-07-24下线。
 - 2026-11-04按用户指定OpenAI接口追加质量对照，使用账户实际可用的`gpt-5.4-2026-03-05`，编剧high、演员none。对官方OpenAI的GPT-5.4调用显式设置reasoning_effort，带输出上限的调用采用max_completion_tokens。接口参数适配纳入任务18的backend/llm.py及check.py回归，模型配置和密钥仅在本机隔离环境使用。长设计Chat Completions实测连续无正文且连接失败，OpenAI编剧生成改用Responses后台任务轮询，后台实测超过290秒仍in_progress，官方OpenAI编剧单次期限据此设为540秒，完整一轮370.13秒后，OpenAI整体快速1200秒/精修1800秒，其他模型单次180秒。按整体预算收尾，后台创建请求关闭SDK自动重发，轮询使用同一响应编号，连接/超时/5xx最多3次连续重试，成功清零，402/429及请求/鉴权失败直接结束；取消或超时有界取消远端任务，演员仍用无思考JSON调用。固定相同素材、正式流程和检查，耗时单列，按实际证据判定模型差异。模型参数依据[OpenAI GPT-5.4文档](https://developers.openai.com/api/docs/models/gpt-5.4)。
 - DeepSeek 演员请求使用 `temperature=0`,优先保证事实与结构稳定;编剧思考模式和其他服务不附加这个参数。
 - 运行:`pip install -r requirements.txt`,`uvicorn backend.app:app --reload`,打开 http://localhost:8000。
