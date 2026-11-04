@@ -99,6 +99,9 @@ async def test_generation_prompts_keep_evidence_and_supported_conditions(studio,
     review_prompt = calls[2]["system"]
     assert "线索正文是作者确认的客观事实" in review_prompt
     assert "每条必须指出现有文本的具体冲突或缺口" in review_prompt
+    assert "错误选项用于排除，可以与证据冲突" in review_prompt
+    assert "不能凭truth、proves、常识或人物私有secret补齐玩家证据" in review_prompt
+    assert "改口须直接纠正同一句谎话" in review_prompt
 
 
 @pytest.mark.asyncio
@@ -218,10 +221,11 @@ async def test_fine_first_round_uses_eight_calls_and_blind_tests_only_selected_s
                 both_designs_started.set()
             await asyncio.wait_for(both_designs_started.wait(), timeout=1)
             response["design"]["intro"] = f"独立技术方案{branch}"
+            response["design"]["clues"][0]["content"] += response["design"]["intro"]
         elif kind == "story":
             response["story"]["intro"] = payload["design"]["intro"]
             response["story"]["title"] = payload["design"]["intro"]
-            response["story"]["clues"][0]["content"] += payload["design"]["intro"]
+            response["story"]["clues"][0]["content"] = payload["design"]["clues"][0]["content"]
         elif kind == "problems" and payload["design"]["intro"] == "独立技术方案1":
             response["problems"] = ["方案一需要补充证据动机。"]
         return response
@@ -462,3 +466,35 @@ async def test_review_timeout_publishes_existing_local_candidate_as_unchecked(st
     assert story["title"] == mock_story()["title"]
     assert any("未完成" in problem for problem in job.problems)
     assert mock_story()["ending"]["truth"] not in json.dumps(job.public(), ensure_ascii=False)
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("section,field,value", [
+    ("characters", "name", ["非法数组姓名"]),
+    ("clues", "holder", {"name": "非法对象持有人"}),
+    ("questions", "evidence", "非法单字符串依据"),
+])
+async def test_bad_nested_design_preserves_previous_playable_story(studio, monkeypatch, section, field, value):
+    designs = 0
+
+    async def later_bad_design(kind, payload, response):
+        nonlocal designs
+        if kind == "design":
+            designs += 1
+            if designs > 1:
+                response["design"][section][0][field] = value
+        elif kind == "problems":
+            response["problems"] = ["需要下一轮补充动机材料"]
+        return response
+
+    calls = capture_model(monkeypatch, later_bad_design)
+    job = Job("nested-design-preserve", "chat", "play")
+    await studio._generate(job, ["技术回归素材"], "new")
+
+    assert designs == 3
+    assert len([call for call in calls if call["kind"] == "story"]) == 1
+    story = saved_story(studio, job)
+    assert job.status == "done" and story["title"] == mock_story()["title"]
+    assert story["checked"] is False
+    assert any(section in problem and field in problem for problem in calls[-1]["payload"]["problems"])
+    assert story["ending"]["truth"] not in json.dumps(job.public(), ensure_ascii=False)

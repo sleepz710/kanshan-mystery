@@ -447,7 +447,7 @@ async def complete_for(messages: list[dict], *, role: str, mock_response: dict) 
         raise llm.LLMError("模型接口地址需要使用 HTTP 或 HTTPS。", status_code=503)
     extra = {"extra_body": {"thinking": {"type": "enabled" if writer else "disabled"}}} if host == "api.deepseek.com" else {}
     if host == "api.deepseek.com" and writer:
-        extra["reasoning_effort"] = "low"
+        extra["reasoning_effort"] = "high"
     deadline = asyncio.timeout(MODEL_CALL_TIMEOUT)
     try:
         async with deadline:

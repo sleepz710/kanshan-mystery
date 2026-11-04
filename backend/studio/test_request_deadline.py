@@ -111,7 +111,7 @@ async def test_generation_thinking_effort_preserves_roles(monkeypatch, install_h
     if base == "https://api.deepseek.com":
         assert payload["thinking"] == {"type": "enabled" if role == "writer" else "disabled"}
         if role == "writer":
-            assert payload["reasoning_effort"] == "low"
+            assert payload["reasoning_effort"] == "high"
         else:
             assert "reasoning_effort" not in payload
     else:
