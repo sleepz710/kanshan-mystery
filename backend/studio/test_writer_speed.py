@@ -25,6 +25,7 @@ def runtime_root():
 
 @pytest.fixture(autouse=True)
 def offline_models(monkeypatch, runtime_root):
+    monkeypatch.setattr(checker, "check_playability", lambda story: [])
     monkeypatch.setattr(llm, "_ENV_FILE", runtime_root / "missing.env")
     monkeypatch.setenv("LLM_MOCK", "1")
     for name in (
@@ -70,22 +71,28 @@ async def test_one_round_uses_writer_actor_then_two_blind_answers(runtime_root, 
 
     assert job.status == "done"
     assert saved_story(studio, job)["checked"] is True
-    assert [call["role"] for call in calls] == ["writer", "actor", "writer", "actor"]
-    assert calls[1]["mock_response"] == {"problems": []}
-    assert "problems" in calls[1]["messages"][0]["content"]
-    assert calls[2]["mock_response"] == {"answers": {q["id"]: None for q in mock_story()["ending"]["questions"]}}
-    assert set(calls[3]["mock_response"]) == {"answers"}
-    assert calls[3]["mock_response"]["answers"]
+    assert [call["role"] for call in calls] == ["writer", "actor", "actor", "writer", "actor"]
+    assert set(calls[0]["mock_response"]) == {"design"}
+    assert set(calls[1]["mock_response"]) == {"story"}
+    assert calls[2]["mock_response"] == {"problems": []}
+    assert "problems" in calls[2]["messages"][0]["content"]
+    assert calls[3]["mock_response"] == {"answers": {q["id"]: None for q in mock_story()["ending"]["questions"]}}
+    assert set(calls[4]["mock_response"]) == {"answers"}
+    assert calls[4]["mock_response"]["answers"]
 
 
 @pytest.mark.asyncio
 async def test_generation_contract_explains_reference_types_without_schema(runtime_root, monkeypatch):
     _, job, calls = await generate(runtime_root, monkeypatch)
     assert job.status == "done"
-    generation = calls[0]["messages"]
+    design = json.loads(calls[0]["messages"][-1]["content"])
+    assert set(design) == {"materials", "strategy", "previous_design", "problems"}
+    assert design["previous_design"] is None and design["problems"] == []
+    generation = calls[1]["messages"]
     payload = json.loads(generation[-1]["content"])
 
-    assert set(payload) == {"materials", "strategy", "previous_story", "problems", "reference_ids"}
+    assert set(payload) == {"design", "previous_story", "problems", "reference_ids"}
+    assert payload["design"] == calls[0]["mock_response"]["design"]
     assert payload["previous_story"] is None and payload["problems"] == []
     for call in calls[:2]:
         assert "schema" not in json.loads(call["messages"][-1]["content"])

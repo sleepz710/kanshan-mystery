@@ -23,6 +23,7 @@ from backend.studio.service import StudioService
 
 @pytest.fixture(autouse=True)
 def mock_mode(monkeypatch, tmp_path):
+    monkeypatch.setattr(checker, "check_playability", lambda story: [])
     monkeypatch.setenv("LLM_MOCK", "1")
     monkeypatch.setattr(llm, "_ENV_FILE", tmp_path / "missing.env")
 
@@ -167,11 +168,11 @@ async def test_repair_problems_are_sent_to_next_writer_round(tmp_path, monkeypat
     job = studio.jobs[result["job"]["id"]]
     assert job.status == "done" and job.problems == []
     model_inputs = [json.loads(batch[-1]["content"]) for batch in calls]
-    generation_inputs = [incoming for incoming in model_inputs if "previous_story" in incoming]
+    generation_inputs = [incoming for incoming in model_inputs if "previous_design" in incoming]
     assert len(generation_inputs) == 2
-    assert generation_inputs[0]["previous_story"] is None
+    assert generation_inputs[0]["previous_design"] is None
     assert generation_inputs[1]["problems"] == ["c4 依赖错误"]
-    assert generation_inputs[1]["previous_story"]["title"] == mock_story()["title"]
+    assert generation_inputs[1]["previous_design"] == StudioService._mock_design()
 
 
 @pytest.mark.asyncio
@@ -182,7 +183,7 @@ async def test_model_outage_fails_job_and_allows_retry(tmp_path, monkeypatch):
 
     async def outage(messages, **kwargs):
         incoming = json.loads(messages[-1]["content"])
-        if "materials" in incoming and "previous_story" in incoming:
+        if "materials" in incoming and "previous_design" in incoming:
             raise LLMError("模型服务暂时不可用")
         return await original(messages, **kwargs)
 

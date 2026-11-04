@@ -25,6 +25,7 @@ def runtime_root():
 
 @pytest.fixture(autouse=True)
 def offline_models(monkeypatch, runtime_root):
+    monkeypatch.setattr(checker, "check_playability", lambda story: [])
     monkeypatch.setenv("LLM_MOCK", "1")
     monkeypatch.setattr(llm, "_ENV_FILE", runtime_root / "missing.env")
     for name in (
@@ -194,17 +195,17 @@ async def test_bad_later_generation_cannot_replace_playable_initial_draft(
 
     async def model(messages, **kwargs):
         nonlocal generations
-        if "materials" in payload(messages):
+        if "design" in kwargs["mock_response"]:
             generations += 1
-            if generations == 1:
-                return {"story": valid_story()}
-            if stop == "deadline":
+            if generations > 1 and stop == "deadline":
                 blocked.set()
                 await asyncio.Event().wait()
-            return {"story": damaged_story("INVALID_LATER_DRAFT", damage)}
+            return deepcopy(kwargs["mock_response"])
+        if "story" in kwargs["mock_response"]:
+            return {"story": valid_story() if generations == 1 else damaged_story("INVALID_LATER_DRAFT", damage)}
         if "problems" in kwargs["mock_response"]:
             return {"problems": []}
-        if kwargs["role"] == "actor":
+        if "answers" in kwargs["mock_response"] and kwargs["role"] == "actor":
             # 首轮盲答缺少证据，触发后续修订；后续坏稿不能覆盖首轮可运行稿。
             return {"answers": {q["id"]: None for q in mock_story()["ending"]["questions"]}}
         return deepcopy(kwargs["mock_response"])
@@ -233,7 +234,7 @@ async def test_local_condition_error_is_passed_to_the_repair_model(runtime_root,
         nonlocal generations
         incoming = payload(messages)
         calls.append(deepcopy(incoming))
-        if "materials" in incoming:
+        if "story" in kwargs["mock_response"]:
             generations += 1
             story = damaged_story("INVALID_FIRST_DRAFT") if generations == 1 else valid_story("REPAIRED_GENERATION")
             return {"story": story}
@@ -265,9 +266,14 @@ async def test_later_model_error_preserves_a_playable_candidate(
     async def model(messages, **kwargs):
         nonlocal generations, failed
         incoming = payload(messages)
-        if "materials" in incoming:
+        if "design" in kwargs["mock_response"]:
             generations += 1
-            step = "later_generation" if generations > 1 else "generation"
+            if generations > 1 and failure_step == "later_generation":
+                failed = True
+                raise llm.LLMError("模拟后续模型调用失败，请重试。")
+            return deepcopy(kwargs["mock_response"])
+        if "story" in kwargs["mock_response"]:
+            step = "generation"
         elif "problems" in kwargs["mock_response"]:
             step = "review"
         else:
