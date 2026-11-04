@@ -118,10 +118,13 @@ async def test_strategy_confirmation_starts_without_a_model_call(
     monkeypatch.setattr(studio, "_generate", record_generation)
     try:
         result = await studio.message(chat_id, command, {})
+        assert result["job"] is None and "快速" in result["reply"] and "精修" in result["reply"]
+        assert generated == [] and chat.strategy == strategy
+        result = await studio.message(chat_id, "快速", {})
         await asyncio.gather(*list(studio.tasks))
         assert result["job"] is not None
         assert generated == [(result["job"]["id"], strategy)]
-        assert chat.strategy == strategy
+        assert chat.strategy == strategy and chat.quality == "fast"
     finally:
         await studio.close()
 

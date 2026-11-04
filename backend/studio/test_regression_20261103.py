@@ -134,6 +134,9 @@ async def test_substantive_text_or_attachments_still_use_the_normal_flow(
     monkeypatch.setattr(studio, "_generate", record_generation)
     try:
         response = await studio.message(chat_id, text, files)
+        if response["job"] is None:
+            assert "快速" in response["reply"] and "精修" in response["reply"]
+            response = await studio.message(chat_id, "快速", {})
         await asyncio.gather(*list(studio.tasks))
         assert response["job"] is not None and len(requests) == len(generated) == 1
         assert any("校园图书馆" in material for material in generated[0])
@@ -168,6 +171,9 @@ async def test_shutdown_during_publication_does_not_leave_a_failed_visible_story
     chat_id = studio.create_chat(mode)["chat_id"]
     try:
         response = await studio.message(chat_id, "生成一份纯技术测试案件。", {})
+        if response["job"] is None:
+            assert "快速" in response["reply"]
+            response = await studio.message(chat_id, "快速", {})
         job = studio.jobs[response["job"]["id"]]
         assert await asyncio.to_thread(entered.wait, 2), "应先进入后台发布步骤。"
         closing = asyncio.create_task(studio.close())

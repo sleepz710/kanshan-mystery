@@ -135,6 +135,7 @@
       return true;
     }
     job.offline = false;
+    if (data.quality === 'fast' || data.quality === 'fine') job.quality = data.quality;
     if (data.status === 'running') {
       if (data.progress && data.progress !== job.steps.at(-1)) job.steps.push(data.progress);
       return true;

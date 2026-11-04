@@ -196,8 +196,8 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 | 方法 | 路径 | 请求 | 返回 |
 |---|---|---|---|
 | POST | `/api/studio/chats` | `{"mode": "play"}`,前端只用 play;share 保留未用 | `{chat_id, reply}`,`reply` 是编剧的开场白 |
-| POST | `/api/studio/chats/{chat_id}/messages` | multipart:`text`,可带多个 `files` | `{reply, job}`;开始生成时 `job` 为 `{id}`,否则为 null |
-| GET | `/api/studio/jobs/{job_id}` | | `{status, progress, story_id, owner_token, error}`;`status` 为 running / done / failed;`owner_token` 只在 share 模式给(保留未用) |
+| POST | `/api/studio/chats/{chat_id}/messages` | multipart:`text`,可带多个 `files` | `{reply, job}`，开始生成时 `job` 为 `{id, quality}`，否则为 null |
+| GET | `/api/studio/jobs/{job_id}` | | `{status, progress, story_id, owner_token, error, quality}`，`quality` 为 fast / fine，`status` 为 running / done / failed，`owner_token` 只在 share 模式给(保留未用) |
 | GET | `/api/stories/{story_id}/owner` | 请求头 `X-Owner-Token` | `{story, games: [{game_id, turns, clues, exposed, ending}]}`:完整剧本和对局进度;出题给朋友已不提供入口,保留未用 |
 
 `progress` 只写不剧透的话,例如「编剧正在布置现场」。`done` 时 `story_id` 可以直接用来开局。首页带 `?story=<story_id>` 时直接开局。
@@ -278,6 +278,12 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 6. 日志步骤名为「设计稿」「填表」「审稿」「可解性·只给汤面」「可解性·全部线索」。
 7. 写入 `data/stories/<id>.yaml`,`source: generated`,出现在案件列表。
 
+改编策略确认后，本地固定询问「快速（约 3 分钟）还是精修（约 8 分钟，可以先去玩别的案子）？」。玩家回复「快速」「精修」直接启动相应档位，回复「直接开始」跳过询问使用快速。快捷按钮和档位进度会保存在编剧页的本地记录中。
+
+- 快速档使用上述三轮流程，总预算 600 秒，最后 10 秒用于保存。
+- 精修档总预算 900 秒，最多四轮。首轮并行写两份独立设计稿，各自填表和审稿，按程序问题数、好玩度问题数、审稿问题数依次比较，选中一份执行两次可解性检查。另一份不发布。后续轮次修订选中的设计及全部质量问题，全部通过或按已耗时估算不足再跑一轮时保存当前最好稿件。
+- `eval/pregen.py` 支持按素材数组用精修档批量生成 6–8 个案件，默认模拟，显式 `--live` 才调用真实模型；JSON/CSV 保存耗时、各项检查和具体失败，产物进入生成案件目录。
+
 ### 6.8 剧本检查
 
 `check(story) -> {"ok": bool, "problems": ["……"]}`。`problems` 每条一句,写清哪里坏了,例如「c7 拿不到:它要求 l3 被拆穿,但拆穿 l3 的 c4 拿不到」。
@@ -299,7 +305,7 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 - 检查器是异步 `await check(story)`；可选关键字参数 `complete` 接收与 `complete_for` 同签名的异步调用函数，供生成任务分别记录两次盲答的耗时；默认仍使用 `complete_for`。`check_structure(story)` 只做程序检查。模拟模式返回固定盲答，不表示已经完成真实语义评测。
 - 06 补充 `requirements.txt` 的 `python-multipart`、`trafilatura` 依赖，在 `create_app` 的静态目录挂载前调用 `mount_studio(application)`；应用通过 `app.state.studio` 持有会话和生成任务。测试放 `backend/studio/test_studio.py`；既有 API 路由清单断言改为包含游戏接口，允许新增剧场路由。`.env.example` 补编剧/演员配置并保留旧版 `LLM_MODEL`，方便 02 升级前联调。
 - 生成剧本使用服务端随机 `generated-<uuid>` 编号，写入 `data/stories/`。每轮依次设计、填表、审稿与检查，填表的本地问题在同一设计内最多修两次。审稿、好玩度、可解性问题交回下一轮设计，最终保留问题最少的可运行候选。仍有问题时存 `checked: false`，公开回复保持不剧透。不能被引擎读取或走通的候选只保存在 `data/drafts/`。
-- 生成预算 600 秒，其中最后 10 秒预留给保存。`complete_for` 的一次完整模型调用使用 180 秒墙钟期限，初次编剧判意、SDK 重试和 JSON 格式重发均在该调用的期限内，服务端持续返回空行保活也计入等待时间。写稿单次超时可进入下一轮，仍共用最多三轮与 590 秒生成预算。三轮尝试仍以写稿超时结束时返回明确的超时原因。总预算耗尽与服务关闭取消按原流程处理。
+- 快速预算 600 秒、最多三轮，精修预算 900 秒、最多四轮，均预留最后 10 秒保存。`complete_for` 的一次完整模型调用使用 180 秒墙钟期限，初次编剧判意、SDK 重试和 JSON 格式重发均在该期限内，服务端空行保活也计入等待。设计超时可进入下一轮，填表超时可在同设计内重试，连续超时保留明确原因。总预算耗尽与服务关闭取消按原流程处理。
 - 每次拿到编剧初稿或修订稿先做本地格式与程序检查，把具体问题交给修订步骤。模型调用超时或总预算耗尽时保留已有可运行候选并标记 `checked: false`。只有有问题的候选时保留私有草稿，提示重新生成。没有候选且总预算耗尽则提示「生成超时，请重试。」。后续轮次的坏输出不覆盖此前可运行的候选。终端逐次记录任务编号、轮次、模型步骤和耗时，失败时记录原因。服务商异常日志仅包含角色、异常类型和 HTTP 状态码。
 - 条件 JSON schema 明确列出允许字段与取值：事件必须指定 `to`，提示完成条件只用 `has`、`exposed`、`event`；检查器与引擎使用相同协议。编剧看到本地检查的具体问题后修订，禁止静默丢弃未知条件。
 - 引用字段的 schema 和错误提示注明目标类别，特别是 `events.confront` 只能引用两名角色，`unlock` 才引用线索；修订输入附角色、线索、事实与事件的分类编号表。已有素材后的精确确认按钮与策略选项直接创建任务，复用或切换已确认策略，不再调用模型重复判意；否定句和素材引语沿用正常对话流程。
@@ -318,8 +324,8 @@ YAML 的 `[a, b]` 写法里,逗号会把文字拆开;含逗号的选项用 `- ` 
 
 | 用途 | 默认模型 | 思考模式 |
 |---|---|---|
-| 演员:角色、核查、对质、刘看山、AI 试玩、审稿问题检查、可解性检查里的「给全部线索」 | `deepseek-flash` | 关,要快 |
-| 编剧:编剧对话、生成、可解性检查里的「只给汤面」 | `deepseek-flash` | 开 |
+| 演员组负责角色、核查、对质、刘看山、AI 试玩、设计稿填表、审稿、可解性检查里的「给全部线索」 | `deepseek-flash` | 关 |
+| 编剧组负责编剧对话、推理设计稿、可解性检查里的「只给汤面」 | `deepseek-flash` | 开 |
 
 - `.env`:
 

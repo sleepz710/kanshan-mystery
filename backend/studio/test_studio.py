@@ -56,6 +56,15 @@ def finish(client):
     client.portal.call(wait_jobs, client.app.state.studio)
 
 
+async def request_fast_generation(studio, chat_id, text):
+    response = await studio.message(chat_id, text, {})
+    assert response["job"] is None
+    assert "快速" in response["reply"] and "精修" in response["reply"]
+    response = await studio.message(chat_id, "快速", {})
+    assert response["job"]["quality"] == "fast"
+    return response
+
+
 def test_http_text_confirmation_generation_and_no_spoilers(client):
     chat = new_chat(client)
     first = client.post(f"/api/studio/chats/{chat}/messages", data={"text": "汤面：桌上有个空信封。汤底：秘书把信藏起来了。"})
@@ -141,7 +150,7 @@ async def test_three_repairs_save_unchecked_without_exposing_problems(tmp_path, 
     checker_mock = AsyncMock(return_value={"ok": False, "problems": ["林青是真凶但缺少证据"]})
     monkeypatch.setattr(checker, "check", checker_mock)
     chat = studio.create_chat("play")["chat_id"]
-    result = await studio.message(chat, "生成一个办公室案子", {})
+    result = await request_fast_generation(studio, chat, "生成一个办公室案子")
     await wait_jobs(studio)
     job = studio.jobs[result["job"]["id"]]
     assert checker_mock.await_count == 3
@@ -163,7 +172,7 @@ async def test_repair_problems_are_sent_to_next_writer_round(tmp_path, monkeypat
     monkeypatch.setattr(checker, "complete_for", recording)
     monkeypatch.setattr(checker, "check", AsyncMock(side_effect=[{"ok": False, "problems": ["c4 依赖错误"]}, {"ok": True, "problems": []}]))
     chat = studio.create_chat("play")["chat_id"]
-    result = await studio.message(chat, "生成一个新案子", {})
+    result = await request_fast_generation(studio, chat, "生成一个新案子")
     await wait_jobs(studio)
     job = studio.jobs[result["job"]["id"]]
     assert job.status == "done" and job.problems == []
@@ -188,7 +197,7 @@ async def test_model_outage_fails_job_and_allows_retry(tmp_path, monkeypatch):
         return await original(messages, **kwargs)
 
     monkeypatch.setattr(checker, "complete_for", outage)
-    response = await studio.message(chat, "生成一个案子", {})
+    response = await request_fast_generation(studio, chat, "生成一个案子")
     await wait_jobs(studio)
     assert studio.jobs[response["job"]["id"]].status == "failed"
     assert list(tmp_path.glob("*.yaml")) == []
@@ -210,8 +219,10 @@ async def test_concurrent_messages_share_one_running_job(tmp_path, monkeypatch):
 
     monkeypatch.setattr(studio, "_pipeline", blocked)
     chat = studio.create_chat("play")["chat_id"]
-    one, two = await asyncio.gather(studio.message(chat, "生成一个案子", {}), studio.message(chat, "开始生成", {}))
-    assert one["job"] == two["job"] and len(studio.jobs) == 1
+    prompt = await studio.message(chat, "生成一个案子", {})
+    assert prompt["job"] is None and "快速" in prompt["reply"] and "精修" in prompt["reply"]
+    one, two = await asyncio.gather(studio.message(chat, "快速", {}), studio.message(chat, "开始生成", {}))
+    assert one["job"]["id"] == two["job"]["id"] and len(studio.jobs) == 1
     gate.set()
     await wait_jobs(studio)
 
@@ -227,8 +238,8 @@ async def test_shutdown_marks_pending_job_failed(tmp_path, monkeypatch):
 
     monkeypatch.setattr(studio, "_pipeline", pending)
     chat = studio.create_chat("play")["chat_id"]
-    result = await studio.message(chat, "生成一个案子", {})
-    await entered.wait()
+    result = await request_fast_generation(studio, chat, "生成一个案子")
+    await asyncio.wait_for(entered.wait(), 2)
     await studio.close()
     assert studio.jobs[result["job"]["id"]].status == "failed"
 
@@ -291,7 +302,7 @@ async def test_redirect_is_rechecked_and_cannot_enter_private_network(monkeypatc
 async def test_close_before_task_starts_does_not_leave_running_job(tmp_path):
     studio = StudioService(tmp_path)
     chat = studio.create_chat("play")["chat_id"]
-    result = await studio.message(chat, "生成一个案子", {})
+    result = await request_fast_generation(studio, chat, "生成一个案子")
     await studio.close()
     assert studio.jobs[result["job"]["id"]].status == "failed"
 
