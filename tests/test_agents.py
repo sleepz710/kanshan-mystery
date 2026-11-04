@@ -187,6 +187,117 @@ async def test_actor_and_checker_rules_allow_evasion_but_reject_invented_origin(
     assert "授权优先" in checker_rules
 
 
+@pytest.mark.parametrize("exposed", [False, True])
+@pytest.mark.asyncio
+async def test_actor_and_checker_requests_preserve_personal_lie_stage(monkeypatch, context, exposed):
+    claim = "我从没进过旧手术室。"
+    admit = {"id": "f_enter", "text": "我进过旧手术室。"}
+    context["character"].update(id="qin", name="秦岳")
+    context["facts"] = [{"id": "f_role", "text": "秦岳是副院长。"}]
+    context["available_clues"] = []
+    context["history"] = []
+    context["shown_clue"] = {"id": "c_audio", "title": "对讲录音", "content": "录音中有秦岳在旧手术室说话的声音。"}
+    context["active_lies"] = [] if exposed else [{"id": "l_enter", "claim": claim}]
+    context["exposed_lies"] = [{"id": "l_enter", "claim": claim, "admit": admit}] if exposed else []
+    candidate = valid_reply(reply="我进过旧手术室，这点我改口。", reveal=[])
+    actor_reply = candidate if exposed else valid_reply(reply="录音里有这样的声音，别的我现在不想多说。", reveal=[])
+    verdict = {"ok": exposed, "leaked": [], "contradiction": "" if exposed else "尚未拆穿本人谎话就明确改口。"}
+    calls = fake_model(monkeypatch, [actor_reply, verdict])
+
+    assert await agents.reply(context) == actor_reply
+    assert await agents.check_reply(context, candidate) == verdict
+
+    for call in calls:
+        rules = call["messages"][0]["content"]
+        payload = json.loads(call["messages"][-1]["content"])
+        assert "本人陈述尚未 exposed" in rules
+        assert "录音里有这样的声音" in rules
+        assert "我进过旧手术室，这点我改口" in rules
+        assert "进入 exposed_lies 后" in rules
+        assert payload["active_lies"] == context["active_lies"]
+        assert payload["exposed_lies"] == context["exposed_lies"]
+        assert payload["shown_clue"] == context["shown_clue"]
+    checker_rules = calls[1]["messages"][0]["content"]
+    checker_payload = json.loads(calls[1]["messages"][-1]["content"])
+    assert "此阶段要求优先于第6条证据转述授权" in checker_rules
+    assert ("f_enter" in checker_payload["allowed_fact_ids"]) is exposed
+
+
+@pytest.mark.parametrize("attributed", [False, True])
+@pytest.mark.asyncio
+async def test_actor_and_checker_requests_keep_original_first_person_speaker(monkeypatch, context, attributed):
+    context["character"].update(id="tang", name="唐芮")
+    context["facts"] = [{
+        "id": "f_card", "text": "4月17日18:42我把0719员工卡借给了赵澄，18:52前都不在我手里。",
+        "first_person_subject": {"id": "lin", "name": "林沅"},
+    }]
+    context["forbidden_facts"] = []
+    context["active_lies"] = []
+    context["exposed_lies"] = []
+    context["available_clues"] = []
+    context["shown_clue"] = {"id": "c_log", "title": "门卡记录", "content": "0719员工卡登记人为林沅。"}
+    candidate = valid_reply(
+        reply="林沅说卡在18:52前都不在她手里。" if attributed else "18:52前都不在我手里。",
+        reveal=[],
+    )
+    actor_reply = valid_reply(reply="林沅说卡在18:52前都不在她手里。", reveal=[])
+    verdict = {"ok": attributed, "leaked": [], "contradiction": "" if attributed else "将林沅的经历误当成唐芮本人经历。"}
+    calls = fake_model(monkeypatch, [actor_reply, verdict])
+
+    assert await agents.reply(context) == actor_reply
+    assert await agents.check_reply(context, candidate) == verdict
+
+    for call in calls:
+        rules = call["messages"][0]["content"]
+        payload = json.loads(call["messages"][-1]["content"])
+        assert "“我”指原说话人" in rules
+        assert "first_person_subject" in rules
+        assert "林沅说卡在18:52前都不在她手里" in rules
+        assert payload["character"]["name"] == "唐芮"
+        assert payload["facts"] == context["facts"]
+    checker_rules = calls[1]["messages"][0]["content"]
+    checker_payload = json.loads(calls[1]["messages"][-1]["content"])
+    assert "主体错位属于 contradiction" in checker_rules
+    assert "即使事件事实本身已公开" in checker_rules
+    assert checker_payload["allowed_fact_ids"] == ["f_card"]
+    assert checker_payload["forbidden_fact_ids"] == []
+
+
+@pytest.mark.asyncio
+async def test_fact_subject_metadata_is_whitelisted_for_actor_and_checker(monkeypatch, context):
+    subject = {"id": "lin", "name": "林沅"}
+    decorated = {
+        "id": "f_card", "text": "我把0719员工卡借给了赵澄。",
+        "first_person_subject": {**subject, "private": "SUBJECT_PRIVATE_CANARY"},
+        "unknown": "FACT_PRIVATE_CANARY",
+    }
+    context["facts"] = [deepcopy(decorated)]
+    context["exposed_lies"][0]["admit"] = {**deepcopy(decorated), "id": "f_met"}
+    context["forbidden_facts"] = [{**deepcopy(decorated), "id": "f_hidden"}]
+    before = deepcopy(context)
+    calls = fake_model(monkeypatch, [valid_reply(), {"ok": True, "leaked": [], "contradiction": ""}])
+
+    await agents.reply(context)
+    await agents.check_reply(context, valid_reply())
+
+    for call in calls:
+        payload = json.loads(call["messages"][-1]["content"])
+        for fact in (payload["facts"][0], payload["exposed_lies"][0]["admit"]):
+            assert set(fact) == {"id", "text", "first_person_subject"}
+            assert fact["first_person_subject"] == subject
+            assert fact["text"] == decorated["text"]
+    actor_payload = json.loads(calls[0]["messages"][-1]["content"])
+    checker_payload = json.loads(calls[1]["messages"][-1]["content"])
+    assert "forbidden_facts" not in actor_payload
+    assert checker_payload["forbidden_facts"] == [{
+        "id": "f_hidden", "text": decorated["text"], "first_person_subject": subject,
+    }]
+    serialized = json.dumps(calls, ensure_ascii=False)
+    assert "SUBJECT_PRIVATE_CANARY" not in serialized
+    assert "FACT_PRIVATE_CANARY" not in serialized
+    assert context == before
+
+
 @pytest.mark.asyncio
 async def test_confrontation_uses_separate_private_contexts(monkeypatch, context):
     first, second = deepcopy(context), deepcopy(context)

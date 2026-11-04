@@ -205,6 +205,67 @@ async def test_private_facts_history_and_shown_conditions_are_scoped(engine, age
 
 
 @pytest.mark.asyncio
+async def test_shared_first_person_admission_keeps_owner_in_context(engine, agent_calls):
+    game_id = start(engine)
+    state = engine.games[game_id]
+    owner, listener = state.story["characters"][:2]
+    owner["name"], listener["name"] = "林沅", "唐芮"
+    fact = {"id": "f_shared_card", "text": "4月17日18:42我把0719员工卡借给了赵澄，18:52前都不在我手里。"}
+    owner["lies"] = [{"id": "l_card", "claim": "卡一直在我身上。", "until": {"shown": "c1"}, "admit": fact["id"]}]
+    owner["knows"].append(fact["id"])
+    listener["knows"].append(fact["id"])
+    state.story["facts"].append(fact)
+    original_story = deepcopy(state.story)
+    expected = {**fact, "first_person_subject": {"id": owner["id"], "name": "林沅"}}
+
+    await engine.talk(game_id, listener["id"], "门卡是谁借出的？")
+
+    context = agent_calls["reply"][-1][0]
+    assert context["character"]["name"] == "唐芮"
+    assert next(f for f in context["facts"] if f["id"] == fact["id"]) == expected
+    state = engine.games[game_id]
+    assert state.story == original_story
+    blocked = engine._context(state, owner["id"], "卡呢？")
+    assert next(f for f in blocked["forbidden_facts"] if f["id"] == fact["id"]) == expected
+    state.exposed_lies.add("l_card")
+    exposed = engine._context(state, owner["id"], "请改口。")
+    assert exposed["exposed_lies"][0]["admit"] == expected
+    assert next(f for f in exposed["facts"] if f["id"] == fact["id"]) == expected
+    exposed["exposed_lies"][0]["admit"]["first_person_subject"]["name"] = "已改上下文"
+    assert state.story == original_story
+
+
+@pytest.mark.parametrize("case", ["one_owner", "same_owner_twice", "two_owners", "same_name_two_owners", "no_first_person", "no_admit_owner"])
+def test_first_person_subject_only_marks_unique_admission_owner(engine, case):
+    game_id = start(engine)
+    state = engine.games[game_id]
+    owner, other = state.story["characters"][:2]
+    fact = {"id": "f_subject", "text": "林沅把卡借给赵澄。" if case == "no_first_person" else "我把卡借给赵澄。"}
+    state.story["facts"].append(fact)
+    other["knows"].append(fact["id"])
+    owner["lies"] = [] if case == "no_admit_owner" else [
+        {"id": "l_subject", "claim": "卡没借人。", "until": {"shown": "c1"}, "admit": fact["id"]},
+    ]
+    if case == "same_owner_twice":
+        owner["lies"].append({**owner["lies"][0], "id": "l_subject_again"})
+    if case in {"two_owners", "same_name_two_owners"}:
+        other["lies"] = [{**owner["lies"][0], "id": "l_other_subject"}]
+        state.exposed_lies.add("l_other_subject")
+    if case == "same_name_two_owners":
+        other["name"] = owner["name"]
+    original_story = deepcopy(state.story)
+
+    context = engine._context(state, other["id"], "借卡的情况呢？")
+
+    actual = next(f for f in context["facts"] if f["id"] == fact["id"])
+    expected = deepcopy(fact)
+    if case in {"one_owner", "same_owner_twice"}:
+        expected["first_person_subject"] = {"id": owner["id"], "name": owner["name"]}
+    assert actual == expected
+    assert state.story == original_story
+
+
+@pytest.mark.asyncio
 async def test_failed_check_rewrites_once_and_commits_only_final_reply(engine, monkeypatch, agent_calls):
     checks = iter([False, True])
 
