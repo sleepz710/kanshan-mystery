@@ -1,16 +1,16 @@
 {
-  "generated_utc": "2026-11-04T08:27:35.252791+00:00",
+  "generated_utc": "2026-11-04T08:48:55.582491+00:00",
   "mode": "offline HTTP replay of previously accepted actor and confrontation outputs",
   "real_model_calls": 0,
-  "source_commit": "d2813a53686ef1472eb58e22c45a7f071104a380",
+  "source_commit": "b02f0c5515355f0f7e87f1b6114ba6aa70a0e735",
   "source_runtime_dirty": false,
   "source_sha256": {
     "backend/engine.py": "cec23ba807933c8feffedc2350d4f561d458137009280b552853aa3580332fd8",
     "backend/agents.py": "b950f79a906eb1d5a65200481c40c6a7e0f9d02c1a9e69f648396302d5b2d0a8",
     "backend/app.py": "b28b20ba39f946570f0340a37324e6a53d46cacf52a6becdcfbd05248a87c579",
     "backend/llm.py": "b356e73387c494b510b294fd199555c73e9399f27b037bb3674b09bed224a5f6",
-    "backend/studio/check.py": "3e84b41cc3d70cc80099acdb10814e62063101c8b67e8a927978263b4349de59",
-    "backend/studio/service.py": "697baf1a8dd16250b1c536d96e3a7f418e311701000ae2ded4481135bdf39823"
+    "backend/studio/check.py": "7f2fe6a2fb167dc8d19ceea926124a3f652049ad68c15f084c2c40da220e9d8a",
+    "backend/studio/service.py": "d5e4da8c4b7a320f138a579213fcb640e56142871a62cc4f1d0cd8b241612e7c"
   },
   "cases": [
     {

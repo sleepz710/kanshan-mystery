@@ -369,7 +369,7 @@
 - 依赖:18。
 - 进展:
   - 2026-11-04，修复档位问句调整后的前端按钮识别。`frontend/studio/studio.js` 同时识别新「快速还是精修」与历史「快速（约3分钟）还是精修」问句，旧对话恢复后仍提供快速/精修。SPEC同步新文案，档位耗时按素材与模型记录。离线执行实际renderSuggest的10项Node断言通过，覆盖新旧问句、历史恢复、按钮发送和普通对话行为；语法检查通过，证据见 `docs/testing/task19-compat/quality-suggestions.json`。
-  - 2026-11-04，从最新main `bc4d9ef` 新建 `task/19-demo-compatibility`，复核三份已验收人工修订演示案。原稿/修订稿与manifest指纹及独立编号映射一致，原稿checked:false、人工稿checked:true保持实际验收状态。任务18收敛源码 `d2813a5` 的结构与好玩度、开局权限和最终秘密开放均通过。
+  - 2026-11-04，从最新main `bc4d9ef` 新建 `task/19-demo-compatibility`，复核三份已验收人工修订演示案。原稿/修订稿与manifest指纹及独立编号映射一致，原稿checked:false、人工稿checked:true保持实际验收状态。任务18收敛源码 `b02f0c5` 的结构与好玩度、开局权限和最终秘密开放均通过。
   - 用原真实角色与对质输出，通过正常ASGI HTTP路线完整回放13/17/16步，三案10/10线索、3/3、3/3、4/4拆谎、5/2/2事件及4/4结案与基线公开结果逐项一致。每案256组合穷举的错答完整真相为0，实际一错及全错均进入retry结局。本轮模型调用0，真实口供与双盲对应原验收记录。三份演示案的兼容缺陷0项。
   - 新增源码指纹、逐步权限与结果证据及复现脚本，见 `docs/testing/2026-11-04-task19-compatibility.md` 和 `docs/testing/task19-compat/`。独立分支最终全量pytest为642项通过，29.98秒，1项现有Starlette/httpx提示。队员主观体验与视频录制继续待交付环境执行，任务21继续暂停。
   - 2026-11-04，继续PR #39，完成《汐潮馆的第七位住客》《潮汐第七人》《末班车的干伞》三个人工修订演示案。原稿逐字节保存，原/修订稿SHA256及独立编号映射见 `docs/testing/task19-demo/manifest.json`，原始生成稿仍为checked:false。
