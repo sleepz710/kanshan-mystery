@@ -129,6 +129,56 @@ async def test_format_retry_requests_fields_without_rewriting_evidence(studio, m
 
 
 @pytest.mark.asyncio
+async def test_mismatched_lie_evidence_is_repaired_with_the_same_design(studio, monkeypatch):
+    fills = 0
+
+    async def repair(kind, payload, response):
+        nonlocal fills
+        if kind == "design":
+            response["design"]["characters"][0]["evidence"] = "王平持有的监控记录"
+        elif kind == "story":
+            fills += 1
+            if fills == 1:
+                response["story"]["characters"][0]["lies"][0]["until"] = {"shown": "c3"}
+            else:
+                return {"fields": {"characters": mock_story()["characters"]}}
+        return response
+
+    calls = capture_model(monkeypatch, repair)
+    job = Job("evidence-repair", "chat", "play")
+    await studio._generate(job, ["技术素材"], "new")
+
+    requests = [call for call in calls if call["kind"] == "story"]
+    assert len(requests) == 2
+    assert requests[0]["payload"]["design"] == requests[1]["payload"]["design"]
+    assert any("l1" in problem and "监控记录" in problem for problem in requests[1]["payload"]["problems"])
+    assert saved_story(studio, job)["characters"][0]["lies"][0]["until"] == {"shown": "c1"}
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("existing_draft", [False, True])
+async def test_three_mismatched_evidence_fills_preserve_existing_draft(studio, monkeypatch, existing_draft):
+    async def wrong_evidence(kind, payload, response):
+        if kind == "design":
+            response["design"]["characters"][0]["evidence"] = "王平持有的监控记录"
+        elif kind == "story":
+            response["story"]["characters"][0]["lies"][0]["until"] = {"shown": "c3"}
+        return response
+
+    calls = capture_model(monkeypatch, wrong_evidence)
+    job = Job("evidence-exhausted", "chat", "play")
+    previous = checker.Story.model_validate(mock_story()).model_dump() if existing_draft else None
+    job.draft, job.draft_problems = previous, ["原稿问题"] if previous else []
+    candidate = await studio._make_candidate(job, 1, ["技术素材"], "new", None, [], "generated-evidence")
+
+    assert [call["kind"] for call in calls] == ["design", "story", "story", "story"]
+    assert candidate.story is None and candidate.local
+    assert job.draft is previous
+    assert job.draft_problems == (["原稿问题"] if existing_draft else [])
+    assert job.invalid_draft is not None
+
+
+@pytest.mark.asyncio
 async def test_fine_first_round_uses_eight_calls_and_blind_tests_only_selected_story(studio, monkeypatch):
     both_designs_started = asyncio.Event()
     designs_started = 0

@@ -422,6 +422,27 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
                 result[kind] = [record["id"] for record in records if isinstance(record, dict) and isinstance(record.get("id"), str)]
         return result
 
+    @staticmethod
+    def _evidence_problems(design: dict, story: dict) -> list[str]:
+        problems = []
+        for character in story["characters"]:
+            source = next((item for item in design["characters"] if item.get("name") == character["name"]), None)
+            if source is None or not isinstance(source.get("evidence"), str):
+                continue
+            named_evidence = [item["name"] for item in design["clues"]
+                              if isinstance(item.get("name"), str) and item["name"] in source["evidence"]]
+            if not named_evidence:
+                continue
+            expected = {clue["id"] for clue in story["clues"] if clue["title"] in named_evidence}
+            for lie in character["lies"]:
+                actual = {value for key, value in lie["until"].items() if key in {"shown", "has"}}
+                if actual - expected:
+                    problems.append(
+                        f"谎话 {lie['id']} 的拆谎引用 {sorted(actual)} 与设计证据 {named_evidence} 不符，"
+                        "请保持设计不变，按对应线索编号修正 until。"
+                    )
+        return problems
+
     async def _archive_invalid(self, job: Job):
         if job.invalid_draft is None:
             return
@@ -588,6 +609,11 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
                 previous_story = raw_story
                 saved_draft, saved_problems = job.draft, job.draft_problems
                 normalized, fill_problems = self._keep_draft(job, raw_story, ["审稿、好玩度与可解性检查尚未完成。"])
+                if normalized is not None and not fill_problems:
+                    fill_problems = self._evidence_problems(candidate.design, normalized)
+                    if fill_problems:
+                        job.invalid_draft, job.invalid_problems = deepcopy(normalized), list(fill_problems)
+                        job.draft, job.draft_problems = saved_draft, saved_problems
                 if saved_draft is not None:
                     job.draft, job.draft_problems = saved_draft, saved_problems
                 if normalized is not None and not fill_problems:
