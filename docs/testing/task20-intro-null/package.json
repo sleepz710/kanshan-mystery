@@ -1,0 +1,22 @@
+{
+  "base_main": "16a13da",
+  "runtime_source_commit": "2a8a463144ce62d2ffd18bb67418ec7f99ccea1c",
+  "resource_source_commit": "8f9c097d86fcd73d793b6187db8f26ed978b2be4",
+  "resource_path": "frontend/js/game.js",
+  "resource_sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+  "exe_sha256": "03228edbe1a5816689030fd3a9c20fd9cbdcbd312b029b8dc4ff5ccf82731b39",
+  "backup_zip_path": "D:\\阅读周比赛\\kanshan-task20-intro-null-20261104\\.cache\\v2-before-intro-null-fix.zip",
+  "backup_zip_sha256": "8854a4561555bca867dbfeb908d2557d1ca232186e0f6c252c438772d40eee9f",
+  "zip_path": "D:\\阅读周比赛\\看山谜案馆-质量收敛交付版-20261104-v2.zip",
+  "zip_sha256": "9cb3a41d78bc0b0b902792afc6359d5e5b9ac267a2e7937fa13cc42b7b1e5032",
+  "zip_bytes": 46998762,
+  "file_count": 2580,
+  "changed_files": [
+    "看山谜案馆-质量收敛交付版-20261104-v2/看山谜案馆/_internal/frontend/js/game.js",
+    "看山谜案馆-质量收敛交付版-20261104-v2/看山谜案馆/构建来源.json"
+  ],
+  "no_new_or_missing_files": true,
+  "zip_crc_passed": true,
+  "zip_bytes_match_directory": true,
+  "resource_bytes_match_main": true
+}
