@@ -13,6 +13,10 @@ def main():
     directory.mkdir(parents=True, exist_ok=True)
     directory = directory.resolve()
     os.environ.update(KANSHAN_DATA_DIR=str(directory), KANSHAN_DESKTOP="1", LLM_MOCK="0")
+    browser_args = os.environ.get("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "")
+    os.environ["WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS"] = (
+        f"{browser_args} --autoplay-policy=no-user-gesture-required".strip()
+    )
     (directory / "logs").mkdir(exist_ok=True)
     logging.basicConfig(filename=directory / "logs" / "desktop.log", encoding="utf-8", level=logging.INFO,
                         format="%(asctime)s %(levelname)s %(name)s %(message)s")

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/game.css">
   <script src="/js/ui.js" defer></script>
+  <script src="/js/music.js" defer></script>
   <script src="/js/api.js" defer></script>
   <script src="/js/store.js" defer></script>
   <script src="/js/game.js" defer></script>
@@ -28,6 +29,9 @@
         <span class="stat stat-red" data-stat="exposed"><b>0</b>拆穿</span>
       </div>
       <button class="btn btn-ghost btn-sm" type="button" id="btn-intro"><i data-icon="file"></i><span>汤面</span></button>
+      <button class="btn btn-ghost btn-sm btn-icon" type="button" id="toggle-music" aria-label="关闭背景音乐" aria-pressed="true" hidden>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/><path data-music-off d="m3 3 18 18" hidden/></svg>
+      </button>
       <button class="btn btn-primary btn-sm" type="button" data-action="accuse"><i data-icon="gavel"></i><span>提交推理</span></button>
     </header>
 
