@@ -465,7 +465,8 @@ share 模式可以讨论完整剧情，用户要求开始时生成。题材全�
             if not isinstance(acquire, str) or "出示" not in acquire:
                 continue
             named_evidence = [item["name"] for item in design["clues"]
-                              if isinstance(item.get("name"), str) and item["name"] in acquire]
+                              if isinstance(item.get("name"), str) and item["name"] in acquire
+                              and item["name"] != source.get("name")]
             if len(named_evidence) == 1:
                 expected = clue_ids.get(named_evidence[0])
                 if (expected and clue["requires"].get("has") == expected
