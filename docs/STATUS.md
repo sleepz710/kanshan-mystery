@@ -20,6 +20,7 @@
 - 评测数据要做,不因时间砍范围。
 - 不部署公网:评委在我们的电脑上用桌面版体验,作品体验链接(可选项)不提交。只在本机玩,不再区分自己玩和出题给朋友,编剧页只保留自己玩;分享相关代码保留不用(11-04 定)。
 - 招牌案件的人名、金额、楼号不改。
+- 招牌案件扩成三个，新增两个走惊悚推理方向，不限反诈题材。第二个「头七」已写成 `stories/touqi.yaml`，设计见 `docs/story-touqi.md`(11-04 定)。
 - 协作方式:Git + `AGENTS.md` / `SPEC.md` / `TASKS.md`。任务当面分配,一个任务一个分支,agent 做完自己开 Pull Request,在 GitHub 上合并。
 - 团队 4 人,写代码用的 AI 账号:GPT Pro 10x 一个、GPT Plus 两个、Claude Code 一个。
 - GitHub 仓库 `sleepz710/kanshan-mystery`,队员已加入,默认分支 `main`。
@@ -51,8 +52,11 @@
 
 ## 记录
 
+- 2026-11-04，新增招牌案件「风雪夜归人」：`stories/yeguiren.yaml`、`stories/yeguiren-walkthrough.md`、`docs/story-yeguiren.md`，包含 4 个角色、14 条线索、5 句谎话和 5 个结局。与「头七」一同通过结构与好玩度检查，完整 pytest 808 项通过；双盲答、真实模型试玩与四张头像待补。
+
 - 2026-11-04，按用户截图完成桌面无边框窗口并获预览确认。六页共用窗口顶栏，首页透明叠放，其余页面预留高度；原生拖动、边缘缩放与工作区最大化由 Windows 消息处理保留。模态弹窗通过顶层 popover 保持窗口按钮可交互。807 项自动测试通过，实际窗口状态、游戏/编剧布局和弹窗命中已验证。原生鼠标拖动、吸附和跨屏缩放待人工复核。分支已同步 origin/main a18623e 的背景音乐和汤面修复交接，交接见任务 20。
 - 2026-11-04，用户测试v2桌面包出现经典案汤面null，定位为包内game.js漏带main已合并的 `8f9c097`弹窗节点过滤。本机v2目录同步资源并记录覆盖来源，实际EXE九项DOM复验通过，模型调用0，最新main完整801项通过。同名v2 ZIP已重建，SHA256为 `9cb3a41d78bc0b0b902792afc6359d5e5b9ac267a2e7937fa13cc42b7b1e5032`，仅game.js和构建来源变化，原ZIP已备份。交付细节见 `docs/testing/2026-11-04-task20-intro-null-package.md`。
+- 2026-11-04，Claude Code 按用户要求新增招牌案件「头七」：`stories/touqi.yaml`、`stories/touqi-walkthrough.md`、`docs/story-touqi.md`。程序检查与好玩度检查通过，模拟整局 13 条线索、5 句谎话、e1 全部可达，`tests/` 408 项通过；双盲答与真实模型试玩待做，四张头像待补。
 
 - 2026-11-04:Claude Code 按用户要求接着做任务 21(分支 `task/21-title-screen`):首页改成标题画面，编剧页和结局页去掉出题给朋友的入口，`/api/stories` 加 `created_at`(SPEC 6.2 已同步)。任务表之外改了两处:`frontend/js/store.js` 加 `list()` 供案件行显示调查到第几回合;`backend/app.py` 的 `StoryInfo` 加 `created_at` 字段。编剧接口、附件限制和快捷素材从 `studio.js` 挪进 `frontend/studio/chats.js`，首页「新建剧场」和编剧页共用。背景音乐文件 `frontend/assets/audio/bgm.mp3` 待队员放入。合并任务 17–20 进来的 main 后，编剧页沿用任务 19 的档位问句匹配。
 
