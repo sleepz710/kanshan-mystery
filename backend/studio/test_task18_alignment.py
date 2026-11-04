@@ -1,0 +1,339 @@
+"""任务 18/19 的调用边界、字段修补和不完整设计回归。"""
+
+import asyncio
+from copy import deepcopy
+import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
+import pytest
+import pytest_asyncio
+import yaml
+
+from backend import llm
+from backend.studio import check as checker
+from backend.studio.mock import mock_story
+from backend.studio.service import Job, StudioService
+
+
+@pytest_asyncio.fixture
+async def studio(monkeypatch):
+    with TemporaryDirectory(prefix="kanshan-task18-alignment-") as directory:
+        monkeypatch.setenv("LLM_MOCK", "1")
+        monkeypatch.setattr(llm, "_ENV_FILE", Path(directory) / "missing.env")
+        for name in ("LLM_API_KEY", "LLM_WRITER_API_KEY", "OPENAI_API_KEY"):
+            monkeypatch.delenv(name, raising=False)
+
+        def no_sdk(*args, **kwargs):
+            pytest.fail("流程回归必须使用离线模型替身。")
+
+        monkeypatch.setattr(llm, "AsyncOpenAI", no_sdk)
+        monkeypatch.setattr(checker, "AsyncOpenAI", no_sdk)
+        monkeypatch.setattr(checker, "check_playability", lambda story: [])
+        service = StudioService(Path(directory) / "stories")
+        try:
+            yield service
+        finally:
+            await service.close()
+
+
+def capture_model(monkeypatch, transform=None):
+    calls = []
+
+    async def complete(messages, *, role, mock_response):
+        kind = next(iter(mock_response))
+        payload = json.loads(messages[-1]["content"])
+        calls.append({"kind": kind, "role": role, "payload": payload, "system": messages[0]["content"]})
+        response = deepcopy(mock_response)
+        if transform is not None:
+            return await transform(kind, payload, response)
+        return response
+
+    monkeypatch.setattr(checker, "complete_for", complete)
+    return calls
+
+
+def saved_story(studio, job):
+    return yaml.safe_load((studio.stories_dir / f"{job.story_id}.yaml").read_text(encoding="utf-8"))
+
+
+@pytest.mark.asyncio
+async def test_fast_confirmation_runs_five_steps_and_reviews_only_design(studio, monkeypatch):
+    calls = capture_model(monkeypatch)
+    chat_id = studio.create_chat("play")["chat_id"]
+    studio.chats[chat_id].materials = ["一封信的技术回归素材"]
+    studio.chats[chat_id].asked = True
+
+    response = await studio.message(chat_id, "快速", {})
+    await asyncio.gather(*list(studio.tasks))
+    job = studio.jobs[response["job"]["id"]]
+
+    assert response["job"]["quality"] == job.public()["quality"] == "fast"
+    assert [(call["kind"], call["role"]) for call in calls] == [
+        ("design", "writer"), ("story", "actor"), ("problems", "actor"),
+        ("answers", "writer"), ("answers", "actor"),
+    ]
+    review = calls[2]["payload"]
+    assert set(review) == {"design", "strategy"}
+    assert review["design"] == calls[1]["payload"]["design"]
+    assert job.status == "done" and saved_story(studio, job)["checked"] is True
+
+
+@pytest.mark.asyncio
+async def test_fine_first_round_uses_eight_calls_and_blind_tests_only_selected_story(studio, monkeypatch):
+    both_designs_started = asyncio.Event()
+    designs_started = 0
+
+    async def choose(kind, payload, response):
+        nonlocal designs_started
+        if kind == "design":
+            designs_started += 1
+            branch = designs_started
+            if designs_started == 2:
+                both_designs_started.set()
+            await asyncio.wait_for(both_designs_started.wait(), timeout=1)
+            response["design"]["intro"] = f"独立技术方案{branch}"
+        elif kind == "story":
+            response["story"]["intro"] = payload["design"]["intro"]
+            response["story"]["title"] = payload["design"]["intro"]
+            response["story"]["clues"][0]["content"] += payload["design"]["intro"]
+        elif kind == "problems" and payload["design"]["intro"] == "独立技术方案1":
+            response["problems"] = ["方案一需要补充证据动机。"]
+        return response
+
+    calls = capture_model(monkeypatch, choose)
+    job = Job("fine-alignment", "chat", "play", quality="fine")
+    await studio._generate(job, ["技术素材"], "new")
+
+    assert len(calls) == 8
+    assert [call["kind"] for call in calls[:6]].count("design") == 2
+    assert [call["kind"] for call in calls[:6]].count("story") == 2
+    assert [call["kind"] for call in calls[:6]].count("problems") == 2
+    assert [call["kind"] for call in calls[:2]] == ["design", "design"]
+    assert [(call["kind"], call["role"]) for call in calls[-2:]] == [
+        ("answers", "writer"), ("answers", "actor"),
+    ]
+    assert all(call["role"] == "writer" for call in calls if call["kind"] == "design")
+    assert all(call["role"] == "actor" for call in calls if call["kind"] in {"story", "problems"})
+    assert all(call["payload"]["intro"] == "独立技术方案2" for call in calls[-2:])
+    assert "独立技术方案2" in calls[-1]["payload"]["clues"][0]["content"]
+    assert job.status == "done" and saved_story(studio, job)["title"] == "独立技术方案2"
+    assert saved_story(studio, job)["checked"] is True
+    assert len(list(studio.stories_dir.glob("*.yaml"))) == 1
+
+
+@pytest.mark.asyncio
+async def test_three_failed_fills_start_new_design_instead_of_fourth_fill(studio, monkeypatch):
+    design_count = 0
+
+    async def fail_first_design(kind, payload, response):
+        nonlocal design_count
+        if kind == "design":
+            design_count += 1
+            response["design"]["intro"] = f"技术设计{design_count}"
+        elif kind == "story" and design_count == 1:
+            response["story"]["characters"][0]["knows"] = ["unknown_fact"]
+        return response
+
+    calls = capture_model(monkeypatch, fail_first_design)
+    job = Job("fill-exhausted", "chat", "play")
+    await studio._generate(job, ["技术素材"], "new")
+
+    assert [call["kind"] for call in calls] == [
+        "design", "story", "story", "story", "design", "story", "problems", "answers", "answers",
+    ]
+    fills = [call["payload"] for call in calls if call["kind"] == "story"]
+    assert fills[0]["design"] == fills[1]["design"] == fills[2]["design"]
+    assert fills[3]["design"]["intro"] == "技术设计2"
+    assert any("unknown_fact" in problem for problem in fills[2]["problems"])
+    assert job.status == "done" and saved_story(studio, job)["checked"] is True
+
+
+@pytest.mark.asyncio
+async def test_ending_fields_preserve_truth_questions_and_replace_endings_array(studio, monkeypatch):
+    original = mock_story()
+    replacement = [deepcopy(original["ending"]["endings"][0]), deepcopy(original["ending"]["endings"][-1])]
+    fills = 0
+
+    async def repair(kind, payload, response):
+        nonlocal fills
+        if kind == "story":
+            fills += 1
+            if fills == 1:
+                response["story"]["ending"]["endings"][-1]["text"] = ""
+            else:
+                return {"fields": {"ending": {"endings": replacement}}}
+        return response
+
+    calls = capture_model(monkeypatch, repair)
+    job = Job("ending-fields", "chat", "play")
+    await studio._generate(job, ["技术素材"], "new")
+
+    story = saved_story(studio, job)
+    assert story["ending"]["truth"] == original["ending"]["truth"]
+    assert story["ending"]["questions"] == original["ending"]["questions"]
+    assert [ending["id"] for ending in story["ending"]["endings"]] == [item["id"] for item in replacement]
+    assert story["ending"]["lessons"] == original["ending"]["lessons"]
+    assert fills == 2 and len([call for call in calls if call["kind"] == "design"]) == 1
+    assert job.status == "done" and story["checked"] is True
+
+
+@pytest.mark.asyncio
+async def test_kanshan_fields_preserve_greeting_and_replace_hints(studio, monkeypatch):
+    original = mock_story()
+    replacement = [deepcopy(original["kanshan"]["hints"][0])]
+    fills = 0
+
+    async def repair(kind, payload, response):
+        nonlocal fills
+        if kind == "story":
+            fills += 1
+            if fills == 1:
+                response["story"]["kanshan"]["hints"][-1]["direct"] = ""
+            else:
+                return {"fields": {"kanshan": {"hints": replacement}}}
+        return response
+
+    capture_model(monkeypatch, repair)
+    job = Job("kanshan-fields", "chat", "play")
+    await studio._generate(job, ["技术素材"], "new")
+
+    story = saved_story(studio, job)
+    assert story["kanshan"]["greeting"] == original["kanshan"]["greeting"]
+    assert story["kanshan"]["hints"] == replacement
+    assert fills == 2 and story["checked"] is True
+
+
+@pytest.mark.asyncio
+async def test_top_level_array_fields_replace_the_whole_previous_array(studio, monkeypatch):
+    replacement = deepcopy(mock_story()["clues"])
+    replacement[0]["title"] = "修正后的监控记录"
+    fills = 0
+
+    async def repair(kind, payload, response):
+        nonlocal fills
+        if kind == "story":
+            fills += 1
+            if fills == 1:
+                response["story"]["clues"][0]["holder"] = "missing_character"
+                response["story"]["clues"].append({"id": "stale_clue", "title": "待移除的材料", "content": "旧版多余材料", "holder": "wang"})
+            else:
+                return {"fields": {"clues": replacement}}
+        return response
+
+    capture_model(monkeypatch, repair)
+    job = Job("array-fields", "chat", "play")
+    await studio._generate(job, ["技术素材"], "new")
+
+    story = saved_story(studio, job)
+    assert [clue["id"] for clue in story["clues"]] == [clue["id"] for clue in replacement]
+    assert story["clues"][0]["title"] == "修正后的监控记录"
+    assert "stale_clue" not in {clue["id"] for clue in story["clues"]}
+    assert fills == 2 and story["checked"] is True
+
+
+@pytest.mark.asyncio
+async def test_first_fill_fields_require_a_complete_story_before_any_merge(studio, monkeypatch):
+    fills = 0
+
+    async def first_fields(kind, payload, response):
+        nonlocal fills
+        if kind == "story":
+            fills += 1
+            if fills == 1:
+                return {"fields": {"title": "没有完整旧稿"}}
+        return response
+
+    calls = capture_model(monkeypatch, first_fields)
+    job = Job("first-fields", "chat", "play")
+    await studio._generate(job, ["技术素材"], "new")
+
+    requests = [call for call in calls if call["kind"] == "story"]
+    assert len(requests) == 2 and requests[1]["payload"]["previous_story"] is None
+    assert any("首次填表" in problem and "完整" in problem for problem in requests[1]["payload"]["problems"])
+    assert job.status == "done" and saved_story(studio, job)["checked"] is True
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("field,value", [("id", "hijacked"), ("source", "official"), ("checked", True), ("unknown", "extra")])
+async def test_fields_reject_metadata_and_unknown_keys_without_modifying_previous_story(studio, monkeypatch, field, value):
+    fills = 0
+
+    async def repair(kind, payload, response):
+        nonlocal fills
+        if kind == "story":
+            fills += 1
+            if fills == 1:
+                response["story"].pop("intro")
+            elif fills == 2:
+                return {"fields": {"intro": mock_story()["intro"], field: value}}
+            else:
+                return {"fields": {"intro": mock_story()["intro"]}}
+        return response
+
+    calls = capture_model(monkeypatch, repair)
+    job = Job("metadata-fields", "chat", "play")
+    await studio._generate(job, ["技术素材"], "new")
+
+    requests = [call for call in calls if call["kind"] == "story"]
+    assert len(requests) == 3
+    assert "intro" not in requests[2]["payload"]["previous_story"]
+    assert any("fields须为" in problem for problem in requests[2]["payload"]["problems"])
+    story = saved_story(studio, job)
+    assert story["id"] == job.story_id and story["id"].startswith("generated-")
+    assert story["source"] == "generated" and "unknown" not in story
+    assert job.status == "done" and story["checked"] is True
+
+
+@pytest.mark.asyncio
+async def test_bare_complete_design_proceeds_without_an_extra_design_request(studio, monkeypatch):
+    async def bare_design(kind, payload, response):
+        return response["design"] if kind == "design" else response
+
+    calls = capture_model(monkeypatch, bare_design)
+    job = Job("bare-design", "chat", "play")
+    await studio._generate(job, ["技术素材"], "new")
+
+    assert len(calls) == 5
+    assert calls[1]["payload"]["design"] == StudioService._mock_design()
+    assert job.status == "done" and saved_story(studio, job)["checked"] is True
+
+
+@pytest.mark.asyncio
+async def test_incomplete_bare_design_cannot_fill_using_previous_valid_design(studio, monkeypatch):
+    previous = StudioService._mock_design()
+    incomplete = deepcopy(previous)
+    incomplete.pop("timeline")
+
+    async def missing_design_field(kind, payload, response):
+        assert kind == "design", "缺少设计字段时应返回具体问题，不能进入填表。"
+        assert payload["previous_design"] == previous
+        return incomplete
+
+    calls = capture_model(monkeypatch, missing_design_field)
+    job = Job("incomplete-design", "chat", "play")
+    candidate = await studio._make_candidate(job, 2, ["技术素材"], "new", previous, [], "generated-incomplete")
+
+    assert len(calls) == 1 and candidate.story is None and candidate.local
+    assert job.draft is None and not list(studio.stories_dir.glob("*.yaml"))
+
+
+@pytest.mark.asyncio
+async def test_review_timeout_publishes_existing_local_candidate_as_unchecked(studio, monkeypatch):
+    async def timeout_review(kind, payload, response):
+        if kind == "problems":
+            raise checker.ModelTimeoutError("技术测试审稿超时。")
+        return response
+
+    calls = capture_model(monkeypatch, timeout_review)
+    job = Job("review-timeout", "chat", "play")
+    await studio._generate(job, ["技术素材"], "new")
+
+    assert [(call["kind"], call["role"]) for call in calls] == [
+        ("design", "writer"), ("story", "actor"), ("problems", "actor"),
+    ]
+    story = saved_story(studio, job)
+    assert job.status == "done" and story["checked"] is False
+    assert story["title"] == mock_story()["title"]
+    assert any("未完成" in problem for problem in job.problems)
+    assert mock_story()["ending"]["truth"] not in json.dumps(job.public(), ensure_ascii=False)
