@@ -1,0 +1,91 @@
+{
+  "source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "steps": [
+    {
+      "job_id": "f102a079e83b49038e01adb6a4c22344",
+      "round": 1,
+      "step": "设计稿",
+      "outcome": "完成",
+      "seconds": 300.49,
+      "input_characters": 1738,
+      "output_characters": 4200
+    },
+    {
+      "job_id": "f102a079e83b49038e01adb6a4c22344",
+      "round": 1,
+      "step": "填表",
+      "outcome": "完成",
+      "seconds": 42.22,
+      "input_characters": 7427,
+      "output_characters": 6185
+    },
+    {
+      "job_id": "f102a079e83b49038e01adb6a4c22344",
+      "round": 1,
+      "step": "填表",
+      "outcome": "完成",
+      "seconds": 13.37,
+      "input_characters": 14298,
+      "output_characters": 2597
+    },
+    {
+      "job_id": "f102a079e83b49038e01adb6a4c22344",
+      "round": 1,
+      "step": "填表",
+      "outcome": "完成",
+      "seconds": 13.43,
+      "input_characters": 14124,
+      "output_characters": 2597
+    },
+    {
+      "job_id": "f102a079e83b49038e01adb6a4c22344",
+      "round": 2,
+      "step": "设计稿",
+      "outcome": "完成",
+      "seconds": 76.6,
+      "input_characters": 5987,
+      "output_characters": 4168
+    },
+    {
+      "job_id": "f102a079e83b49038e01adb6a4c22344",
+      "round": 2,
+      "step": "填表",
+      "outcome": "完成",
+      "seconds": 45.36,
+      "input_characters": 7395,
+      "output_characters": 6959
+    },
+    {
+      "job_id": "f102a079e83b49038e01adb6a4c22344",
+      "round": 2,
+      "step": "审稿",
+      "outcome": "完成",
+      "seconds": 2.43,
+      "input_characters": 5592,
+      "output_characters": 16
+    },
+    {
+      "job_id": "f102a079e83b49038e01adb6a4c22344",
+      "round": 2,
+      "step": "可解性·只给汤面",
+      "outcome": "完成",
+      "seconds": 4.83,
+      "input_characters": 579,
+      "output_characters": 49
+    },
+    {
+      "job_id": "f102a079e83b49038e01adb6a4c22344",
+      "round": 2,
+      "step": "可解性·全部线索",
+      "outcome": "完成",
+      "seconds": 10.78,
+      "input_characters": 2016,
+      "output_characters": 49
+    }
+  ],
+  "frontend_clock_seconds": 509.872,
+  "selected_round": 2,
+  "selected_design_response_id": "resp_0df1d23fb047fe31006aeb411194e087d09f439221a693a15d",
+  "raw_checked": true,
+  "manual_core_passed": false
+}

@@ -1,0 +1,596 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-11-04T14:50:54.590146+00:00",
+  "review_kind": "readonly_independent_narrative_audit",
+  "reviewer": "alignment",
+  "runtime_source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "boundaries": {
+    "model_calls": 0,
+    "new_generation_requests": 0,
+    "production_edits": 0,
+    "original_yaml_unchanged": true,
+    "actual_role_turns": 2,
+    "actual_role_characters": [
+      "罗岚",
+      "孟乔"
+    ],
+    "complete_human_playthrough": false,
+    "configs_or_keys_read": false
+  },
+  "sources": {
+    "story": {
+      "path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-live-63c27ce-20261104\\live\\stories\\generated-e11fedc144684d5dac61abf7c6b046ea.yaml",
+      "sha256": "af489c54f4ba53266d51fd867f156a38b55b3a09e8a446ece665f0468432e53d"
+    },
+    "selected_design": {
+      "path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\docs\\testing\\task20-frameless-quality\\generation-selected-design.json",
+      "sha256": "a2bfee4eedd35083603a8c4bd1aff10dec6150b7375e049478b537738d6a182c",
+      "round": 2,
+      "status": "completed",
+      "response_id": "resp_0df1d23fb047fe31006aeb411194e087d09f439221a693a15d",
+      "new_generation_requests": 0,
+      "binding": "unique response GET id between last round1 fill and round2 design completion"
+    },
+    "desktop_result": {
+      "path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-frameless-live-63c27ce-20261104\\live\\result.json",
+      "sha256": "8b9c6c2ae0730ea8153fe7d03ab685c794040b7897764845fa710160de8e707e"
+    }
+  },
+  "case": {
+    "id": "generated-e11fedc144684d5dac61abf7c6b046ea",
+    "title": "圣宁医院B区闹鬼事件",
+    "raw_checked": true,
+    "manual_core_pass": false,
+    "manual_status": "unmet_P2_direct_lie_rebuttal_and_gated_evidence_fact_copy_authorization",
+    "shape": {
+      "characters": 3,
+      "clues": 9,
+      "lies": 3,
+      "questions": 3,
+      "endings": 2
+    }
+  },
+  "generation": {
+    "seconds_after_job_observed": 507.54,
+    "frontend_clock_seconds": 509.872,
+    "selected_round": 2,
+    "model_steps": [
+      {
+        "round": 1,
+        "step": "设计稿",
+        "outcome": "完成",
+        "seconds": 300.49,
+        "request_characters": 1738,
+        "response_characters": 4200
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 42.22,
+        "request_characters": 7427,
+        "response_characters": 6185
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 13.37,
+        "request_characters": 14298,
+        "response_characters": 2597
+      },
+      {
+        "round": 1,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 13.43,
+        "request_characters": 14124,
+        "response_characters": 2597
+      },
+      {
+        "round": 2,
+        "step": "设计稿",
+        "outcome": "完成",
+        "seconds": 76.6,
+        "request_characters": 5987,
+        "response_characters": 4168
+      },
+      {
+        "round": 2,
+        "step": "填表",
+        "outcome": "完成",
+        "seconds": 45.36,
+        "request_characters": 7395,
+        "response_characters": 6959
+      },
+      {
+        "round": 2,
+        "step": "审稿",
+        "outcome": "完成",
+        "seconds": 2.43,
+        "request_characters": 5592,
+        "response_characters": 16
+      },
+      {
+        "round": 2,
+        "step": "可解性·只给汤面",
+        "outcome": "完成",
+        "seconds": 4.83,
+        "request_characters": 579,
+        "response_characters": 49
+      },
+      {
+        "round": 2,
+        "step": "可解性·全部线索",
+        "outcome": "完成",
+        "seconds": 10.78,
+        "request_characters": 2016,
+        "response_characters": 49
+      }
+    ],
+    "quality_true_provenance": {
+      "observed": [
+        "saved YAML checked:true",
+        "desktop generated_game.checked:true",
+        "round2 design/fill/review/two solvability stages completed"
+      ],
+      "raw_review_and_blind_outputs_persisted": false,
+      "qualification": "真实完整试玩与人工审查独立于自动checked。原始true保持，本人工审查未通过。"
+    }
+  },
+  "design_story_alignment": {
+    "all_clue_content_exact_equal": true,
+    "clues": [
+      {
+        "clue": "c1",
+        "name": "尸体初检记录",
+        "content_exact_equal": true,
+        "story_holder": "luolan",
+        "design_holder": "罗岚",
+        "story_requires": {},
+        "design_acquire": "开局可见。"
+      },
+      {
+        "clue": "c2",
+        "name": "护士站交接表",
+        "content_exact_equal": true,
+        "story_holder": "mengqiao",
+        "design_holder": "孟乔",
+        "story_requires": {},
+        "design_acquire": "开局可见。"
+      },
+      {
+        "clue": "c3",
+        "name": "走廊前段监控摘录",
+        "content_exact_equal": true,
+        "story_holder": "mahui",
+        "design_holder": "马会",
+        "story_requires": {},
+        "design_acquire": "开局可见。"
+      },
+      {
+        "clue": "c4",
+        "name": "药柜领用清单",
+        "content_exact_equal": true,
+        "story_holder": "mengqiao",
+        "design_holder": "孟乔",
+        "story_requires": {
+          "shown": "c1"
+        },
+        "design_acquire": "出示《尸体初检记录》后，孟乔会拿出药柜领用清单，说明针孔比死亡早得多。"
+      },
+      {
+        "clue": "c5",
+        "name": "地下室监控与配电间门禁",
+        "content_exact_equal": true,
+        "story_holder": "mahui",
+        "design_holder": "马会",
+        "story_requires": {
+          "trust": 1
+        },
+        "design_acquire": "信任达到1后，马会愿意调出自己没上报的地下室备份监控。"
+      },
+      {
+        "clue": "c6",
+        "name": "电子病历修改日志",
+        "content_exact_equal": true,
+        "story_holder": "luolan",
+        "design_holder": "罗岚",
+        "story_requires": {
+          "shown": "c4"
+        },
+        "design_acquire": "出示《药柜领用清单》后，罗岚为自保会交出电子病历修改日志副本。"
+      },
+      {
+        "clue": "c7",
+        "name": "货梯监控截帧",
+        "content_exact_equal": true,
+        "story_holder": "mengqiao",
+        "design_holder": "孟乔",
+        "story_requires": {
+          "exposed": "l2"
+        },
+        "design_acquire": "拆穿孟乔已有谎话后，她会交出货梯监控截帧，辩称后面的搬运是马会处理的。"
+      },
+      {
+        "clue": "c8",
+        "name": "床栏录音文件",
+        "content_exact_equal": true,
+        "story_holder": "luolan",
+        "design_holder": "罗岚",
+        "story_requires": {
+          "exposed": "l1"
+        },
+        "design_acquire": "拆穿罗岚已有谎话后，罗岚会交出他从病床终端拷走的床栏录音文件。"
+      },
+      {
+        "clue": "c9",
+        "name": "停用儿科病区清洁车记录仪",
+        "content_exact_equal": true,
+        "story_holder": "mahui",
+        "design_holder": "马会",
+        "story_requires": {
+          "shown": "c7"
+        },
+        "design_acquire": "出示《货梯监控截帧》后，马会会拿出自己没敢删掉的清洁车记录仪原文件。"
+      }
+    ],
+    "lie_correction_bindings": [
+      {
+        "character": "罗岚",
+        "lie": "l1",
+        "claim": "23:00后我没进过B-12隔离病房。",
+        "claim_exact_equal_design_lie": true,
+        "admit_fact": "f14",
+        "admit_text": "23:00后我进过B-12隔离病房。",
+        "admit_exact_equal_design_correction": true,
+        "until": {
+          "shown": "c3"
+        },
+        "design_evidence": "马会持有的《走廊前段监控摘录》拍到罗岚本人在23:14和23:27两次进入B-12。"
+      },
+      {
+        "character": "孟乔",
+        "lie": "l2",
+        "claim": "备用电源跳闸时我一直在护士站。",
+        "claim_exact_equal_design_lie": true,
+        "admit_fact": "f16",
+        "admit_text": "备用电源跳闸时我不在护士站。",
+        "admit_exact_equal_design_correction": true,
+        "until": {
+          "shown": "c5"
+        },
+        "design_evidence": "马会持有的《地下室监控与配电间门禁》拍到孟乔本人在23:20扳下B区备用电源。"
+      },
+      {
+        "character": "马会",
+        "lie": "l3",
+        "claim": "我整晚都没进过B-12。",
+        "claim_exact_equal_design_lie": true,
+        "admit_fact": "f18",
+        "admit_text": "我那晚进过B-12。",
+        "admit_exact_equal_design_correction": true,
+        "until": {
+          "shown": "c7"
+        },
+        "design_evidence": "孟乔持有的《货梯监控截帧》拍到23:34马会本人从B-12方向把推床送入货梯。"
+      }
+    ],
+    "c5_c8_design_story_comparison": [
+      {
+        "id": "c5",
+        "design_content": "配电间门禁日志显示：2026-10-30 23:19:18，工卡N004孟乔开门进入；地下室备份监控截图显示：23:20:05孟乔本人把标注“B区备用电源”的手柄扳到OFF，23:24:01她从内侧出门。",
+        "story_content": "配电间门禁日志显示：2026-10-30 23:19:18，工卡N004孟乔开门进入；地下室备份监控截图显示：23:20:05孟乔本人把标注“B区备用电源”的手柄扳到OFF，23:24:01她从内侧出门。",
+        "exact_equal": true
+      },
+      {
+        "id": "c8",
+        "design_content": "B-12病床护栏自动同步的语音文件时间为2026-10-30 23:23:41至23:23:58，内容为：沈川男声说“孟护士长，名单不在这儿，别关氧气——”；随后可听见金属阀门转动声、连续低氧报警，以及一名女性说“你不交出来，就当是你自己断的”。",
+        "story_content": "B-12病床护栏自动同步的语音文件时间为2026-10-30 23:23:41至23:23:58，内容为：沈川男声说“孟护士长，名单不在这儿，别关氧气——”；随后可听见金属阀门转动声、连续低氧报警，以及一名女性说“你不交出来，就当是你自己断的”。",
+        "exact_equal": true
+      }
+    ],
+    "conclusion": "本案c5/c8和全部线索正文来自同一选中设计，逐字一致。未见填表造成时间内容漂移。"
+  },
+  "questions": [
+    {
+      "question": "q1",
+      "answer": "孟乔",
+      "assertions": {
+        "time": "2026-10-30 23:20",
+        "location": "地下配电间",
+        "identity": "孟乔本人",
+        "action": "亲手切断B区备用电源"
+      },
+      "design_evidence": [
+        "c5"
+      ],
+      "available_evidence": [
+        {
+          "clue": "c5",
+          "gate": {
+            "trust": 1
+          },
+          "supports": "截图明确“23:20:05孟乔本人”把指定电源手柄扳到OFF。身份依据包含本人画面。"
+        }
+      ],
+      "manual_static_sufficiency": "supported",
+      "actual_testimony": "该题所需马会口供和c5尚未在本次两角色泛问中取得。"
+    },
+    {
+      "question": "q2",
+      "answer": "孟乔",
+      "assertions": {
+        "time": "2026-10-30 23:23至23:25",
+        "location": "B-12",
+        "identity": "孟乔",
+        "action": "关闭沈川氧气并导致窒息"
+      },
+      "design_evidence": [
+        "c1",
+        "c8"
+      ],
+      "available_evidence": [
+        {
+          "clue": "c1",
+          "gate": {},
+          "supports": "记录明确死者、供氧中断死亡及23:23至23:25死亡区间。"
+        },
+        {
+          "clue": "c8",
+          "gate": {
+            "exposed": "l1"
+          },
+          "supports": "B-12床栏录音23:23:41至23:23:58，沈川直称“孟护士长”并请求别关氧气，继而阀门转动、低氧报警和女性威胁回应。按可靠线索联合支持身份与动作。"
+        }
+      ],
+      "reachable_chain": [
+        "开局向马会取得c3",
+        "向罗岚出示c3，拆l1并开放c8",
+        "取得c8"
+      ],
+      "manual_static_sufficiency": "supported_by_combined_literal_evidence",
+      "timeline_boundary": "c5没有连续占用声明，不据两张截图断定双地同时。离开配电间再返程未叙明，列P3。",
+      "actual_testimony": "c1已由罗岚实际交出。拆l1、c8和孟乔f17尚无本案真实口供记录。"
+    },
+    {
+      "question": "q3",
+      "answer": "马会",
+      "assertions": {
+        "time": "2026-10-30 23:34",
+        "identity": "马会本人",
+        "action": "把盖白单的沈川尸体从B-12推上货梯"
+      },
+      "design_evidence": [
+        "c7",
+        "c9"
+      ],
+      "available_evidence": [
+        {
+          "clue": "c7",
+          "gate": {
+            "exposed": "l2"
+          },
+          "supports": "23:34:22明确拍到马会本人从B-12方向把标B-12的白单推床送入货梯。直接支持执行者、时间、推床进货梯。",
+          "not_explicit": "未直接拍到进入B-12，也未直接展示白单下尸体身份。"
+        },
+        {
+          "clue": "c9",
+          "gate": {
+            "shown": "c7"
+          },
+          "supports": "23:36:10马会将同一张B-12白单推床送入307，孟乔安排假报警，马会承认拿钱。",
+          "not_explicit": "没有补出马会进入B-12的画面。"
+        }
+      ],
+      "supporting_other_evidence": [
+        "c1确认沈川已死",
+        "c2确认沈川所在B-12及案前状态"
+      ],
+      "later_locked_testimony": {
+        "character": "马会",
+        "fact": "f19",
+        "text": "马会23:34进了B-12，把沈川的尸体推上货梯，又送进停用儿科307。",
+        "gate": {
+          "shown": "c9"
+        },
+        "status": "YAML中定义为可开放秘密，未在本案实际取得，不能把作者事实当已完成口供。"
+      },
+      "manual_static_sufficiency": "actor_time_and_lift_action_supported_body_and_room_origin_require_chain_inference_or_actual_later_testimony",
+      "boundary": "不单凭缺少室内镜头判定q3必然多解。l3作为拆谎目标的直接反驳缺口另列P2。"
+    }
+  ],
+  "P2_issues": [
+    {
+      "id": "l3_entry_not_directly_rebutted",
+      "category": "design_semantic_evidence_gap",
+      "target_lie": {
+        "character": "马会",
+        "claim": "我整晚都没进过B-12。",
+        "correction": "我那晚进过B-12。",
+        "until": {
+          "shown": "c7"
+        }
+      },
+      "evidence_before_exposure": {
+        "c7": "2026-10-30 23:34:22的货梯监控截帧拍到：马会本人从B-12方向把一张左下角写有“B-12”蓝字的白单推床送入货梯；23:34:28，孟乔站在梯外按住开门键。",
+        "prerequisite_c5": "配电间门禁日志显示：2026-10-30 23:19:18，工卡N004孟乔开门进入；地下室备份监控截图显示：23:20:05孟乔本人把标注“B区备用电源”的手柄扳到OFF，23:24:01她从内侧出门。"
+      },
+      "finding": "c7只记录从B-12方向推床进入货梯，可以反驳“没送床进货梯”。它没有直接否定“整晚没进B-12”。取得c7之前的c5证明孟乔切电，不含马会进入病房的材料。",
+      "post_exposure_boundary": "f18就是拆后admit，f19是出示c9后的秘密。不能用二者、设计secret或proves来补拆谎前证据。c9也未拍到进B-12。",
+      "consequence": "引擎出示c7即拆l3并让马会承认更窄的室内行踪，缺少与该谎话对象匹配的直接前置证据。",
+      "source_ownership": "该缺口已经写在选中设计characters.evidence和clues.content，填表逐字忠实复制。"
+    },
+    {
+      "id": "gated_clue_full_text_copied_into_unlocked_facts",
+      "category": "compiled_disclosure_condition_omission",
+      "contract_quote": "证据正文若另存为facts，其公开条件必须跟随对应线索的取得条件",
+      "contract_source": "backend/studio/service.py STORY_FIELDS",
+      "context_rule_source": "backend/engine.py Engine._context computes allowed = (knows - blocked_secrets_and_unexposed_admits) | admitted",
+      "copies": [
+        {
+          "character": "孟乔",
+          "character_id": "mengqiao",
+          "clue": "c4",
+          "clue_title": "药柜领用清单",
+          "clue_requires": {
+            "shown": "c1"
+          },
+          "fact": "f7",
+          "fact_equals_clue_content": true,
+          "in_knows": true,
+          "secret_or_lie_admit_protected": false,
+          "initial_allowed_by_context_formula": true,
+          "fact_text": "B区智能药柜日志显示：2026-10-30 22:40:31，账号A017罗岚打开镇静药抽屉，领出咪达唑仑10mg一支；抽屉快照拍到药瓶在他右手中；同一时段沈川医嘱中没有该药。"
+        },
+        {
+          "character": "罗岚",
+          "character_id": "luolan",
+          "clue": "c6",
+          "clue_title": "电子病历修改日志",
+          "clue_requires": {
+            "shown": "c4"
+          },
+          "fact": "f9",
+          "fact_equals_clue_content": true,
+          "in_knows": true,
+          "secret_or_lie_admit_protected": false,
+          "initial_allowed_by_context_formula": true,
+          "fact_text": "医院EMR后台日志显示：2026-10-30 23:28:17，账号A017罗岚新建记录“23:21接护士站通知后进入B-12启动抢救”；系统版本对比显示，这条记录在23:28前并不存在。"
+        },
+        {
+          "character": "孟乔",
+          "character_id": "mengqiao",
+          "clue": "c7",
+          "clue_title": "货梯监控截帧",
+          "clue_requires": {
+            "exposed": "l2"
+          },
+          "fact": "f10",
+          "fact_equals_clue_content": true,
+          "in_knows": true,
+          "secret_or_lie_admit_protected": false,
+          "initial_allowed_by_context_formula": true,
+          "fact_text": "2026-10-30 23:34:22的货梯监控截帧拍到：马会本人从B-12方向把一张左下角写有“B-12”蓝字的白单推床送入货梯；23:34:28，孟乔站在梯外按住开门键。"
+        }
+      ],
+      "finding": "这三条facts逐字复制延后取得的线索全文，却没有对应secret/admit锁。孟乔初始facts因此可包含后续货梯截帧全文，提前授权说明第三题执行者与23:34推床动作。",
+      "actual_observed_leak": false,
+      "actual_boundary": "现有两次泛问仅交出c1/c2，没有针对这些内容的真实追问。这里证实的是初始授权门槛遗漏。"
+    }
+  ],
+  "P3_narrative_issues": [
+    {
+      "id": "electrical_room_return_path_unspecified",
+      "facts": [
+        "c5在23:20:05拍到孟乔扳电源，23:24:01拍到她从内侧出门",
+        "c8在23:23:41至23:23:58记录B-12内被称孟护士长的女性回应及关氧声音"
+      ],
+      "finding": "两处位置之间的离开及返回路径没有叙明。c5和设计都未声明23:20至23:24连续在配电间，现文本不足以构成硬时间冲突。"
+    },
+    {
+      "id": "midnight_ghost_scene_handoff_unspecified",
+      "intro": "暴雨夜，圣宁医院封存半年的B区旧隔离走廊突然响起监护仪，B-12病房里一名刚被盖上白布的病人又触发了低氧报警；零点后，停用儿科层的货梯门自己打开，白色推床缓缓滑出。值夜的人都说“旧病区又闹鬼了”，但你知道，鬼不会替自己刷门禁。",
+      "finding": "案前序幕在零点后呈现货梯推床滑出，证据c9写23:36先放307并约半小时后报警。后续具体如何把307推床布置成货梯滑出尚未交代。保留为叙事衔接问题。"
+    },
+    {
+      "id": "dispensing_vs_medication_wording",
+      "fact": "罗岚在22:40擅自为沈川领用了咪达唑仑，想让这名情绪激动的病人安静到天亮。",
+      "finding": "药柜线索明确违规领药。结局“违规用药”可能比已取得材料更宽，未另写实际施药过程。核心死因仍由c1/c8独立支持。"
+    }
+  ],
+  "withdrawn_claim": {
+    "claim": "c5说明孟乔23:20至23:24一直留在配电间，故与c8双地同时形成硬冲突",
+    "reason": "原文“23:24:01她从内侧出门”被误读成“才出门”，补入连续占用。原文与选中设计均无“一直”“才”或完整进出记录。",
+    "replacement": "撤回硬时间矛盾结论，仅保留未叙明往返路径的P3。"
+  },
+  "actual_testimony": [
+    {
+      "character": {
+        "id": "luolan",
+        "name": "罗岚"
+      },
+      "seconds": 10.16,
+      "thread": [
+        {
+          "k": "me",
+          "text": "请从你的身份说起，案发前后你亲眼见到或能提供核对的材料有哪些？"
+        },
+        {
+          "k": "them",
+          "text": "我是圣宁医院B区夜班医生，案发后参与了后续抢救和记录。能拿出来核对的，我先给你一份尸体初检记录：上面写了死者的基本情况、口唇紫绀、床旁氧气流量表旋钮停在0L/min、阀门外圈有新擦痕，以及死亡时间的初步估计。这个比我现在口头回忆更准。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c1",
+              "title": "尸体初检记录"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "character": {
+        "id": "mengqiao",
+        "name": "孟乔"
+      },
+      "seconds": 10.17,
+      "thread": [
+        {
+          "k": "me",
+          "text": "请从你的身份说起，案发前后你亲眼见到或能提供核对的材料有哪些？"
+        },
+        {
+          "k": "them",
+          "text": "我是圣宁医院B区的护士长，病区交接和设备情况我熟。你要核对材料，我先把我签过的这份交接表给你。上面写得很清楚：22:50时，B-12的沈川是清醒的，能回答问题，持续鼻导管给氧4升；另外旧楼备用电源当时在测试，如果再被切断，B-12磁锁会自动弹开，走廊7号摄像会黑屏大约90秒，抢救车侧袋里放着一把氧气扳手。别的事，你一项项问。"
+        },
+        {
+          "k": "clues",
+          "items": [
+            {
+              "id": "c2",
+              "title": "护士站交接表"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "secret_lock_review": {
+    "primary_confession_f17": {
+      "owner": "孟乔",
+      "until": {
+        "shown": "c8"
+      },
+      "also_lie_admit": false
+    },
+    "body_move_f19": {
+      "owner": "马会",
+      "until": {
+        "shown": "c9"
+      },
+      "also_lie_admit": false
+    },
+    "corrections_exactly_bound": true,
+    "full_text_copies_unlocked": [
+      "f7",
+      "f9",
+      "f10"
+    ]
+  },
+  "ending_gate_static_review": {
+    "full_truth_ending": {
+      "correct": [
+        "q1",
+        "q2",
+        "q3"
+      ]
+    },
+    "full_truth_retry": false,
+    "fallback_retry": true,
+    "all_questions_required": true,
+    "actual_wrong_answer_playthrough_performed_for_this_new_case": false
+  }
+}

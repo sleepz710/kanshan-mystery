@@ -1,0 +1,27 @@
+{
+  "main_source_commit": "c945eb00acec69e9f9a63f3eb30c1f54f07e1d9e",
+  "integrated_source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "integrated_tree": "246a4a283e641f0d069335465bf74f486b0aa598",
+  "production_net_diff": {
+    "backend/studio/check.py": "intent purpose only, +6/-6",
+    "backend/studio/service.py": "material task ownership and play purpose, +9/-1",
+    "desktop/main.py": "safe bound listener only, +17/-3"
+  },
+  "frontend_all_bytes_equal_to_main": true,
+  "runtime_and_window_frame_equal_to_main": true,
+  "window_api_ast_equal_to_main_root_verified": true,
+  "model_and_game_flow_files_equal_to_tested_469": {
+    "backend/llm.py": true,
+    "backend/agents.py": true,
+    "backend/engine.py": true,
+    "backend/studio/service.py": true,
+    "backend/studio/check.py": true,
+    "frontend/studio/studio.js": true,
+    "frontend/studio/chats.js": true,
+    "frontend/js/api.js": true,
+    "frontend/js/game.js": true,
+    "frontend/js/store.js": true
+  },
+  "tested_model_source_commit": "469048869ba451c0fcb38a574e96682fd881b2e3",
+  "real_model_calls_in_this_merge_stage": 0
+}

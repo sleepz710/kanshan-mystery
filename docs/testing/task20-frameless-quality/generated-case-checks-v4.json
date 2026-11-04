@@ -1,0 +1,16 @@
+{
+  "source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "selected_round": 2,
+  "selected_design_response_id": "resp_0df1d23fb047fe31006aeb411194e087d09f439221a693a15d",
+  "story_id": "generated-e11fedc144684d5dac61abf7c6b046ea",
+  "story_sha256": "af489c54f4ba53266d51fd867f156a38b55b3a09e8a446ece665f0468432e53d",
+  "raw_checked": true,
+  "structure_and_compile_problems": [],
+  "selected_design_alignment_problems": [],
+  "playability_problems": [],
+  "manual_core_passed": false,
+  "manual_status": "修前真实样本，人工两个P2未通过",
+  "actual_real_character_questions": 2,
+  "actual_real_full_investigation": false,
+  "model_calls_added": 0
+}

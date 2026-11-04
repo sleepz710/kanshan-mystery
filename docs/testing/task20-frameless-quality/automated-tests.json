@@ -1,0 +1,7 @@
+{
+  "source_commit": "63c27ce268c62788cf455552f09010131aa88ac3",
+  "passed": 825,
+  "seconds": 39.16,
+  "warning": "Existing Starlette httpx deprecation",
+  "build_seconds": 94.19
+}

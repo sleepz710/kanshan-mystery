@@ -170,7 +170,8 @@
   "backup_search": {
     "allowed_roots": [
       "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache",
-      "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-role-v2-intent-final-build-20261104"
+      "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-role-v2-intent-final-build-20261104",
+      "D:\\阅读周比赛\\kanshan-task20-intro-null-20261104\\.cache"
     ],
     "candidates": [
       {
@@ -202,10 +203,21 @@
         "bytes": 1401781,
         "sha256": "9ff48077b30930a3f4b4cb0b12ea6b66d7ae0bea9a0110e1183b878179a6e2c2",
         "matches_accepted_archive": false
+      },
+      {
+        "path": "D:\\阅读周比赛\\kanshan-task20-intro-null-20261104\\.cache\\v2-before-intro-null-fix.zip",
+        "bytes": 46998487,
+        "sha256": "8854a4561555bca867dbfeb908d2557d1ca232186e0f6c252c438772d40eee9f",
+        "matches_accepted_archive": true,
+        "zip_file_count": 2580,
+        "zip_crc_passed": true
       }
     ],
-    "accepted_8854_backup_found": false,
-    "scope": "仅已知TEMP构建目录和本分支.cache，无全盘搜索。"
+    "accepted_8854_backup_found": true,
+    "accepted_8854_backup_path": "D:\\阅读周比赛\\kanshan-task20-intro-null-20261104\\.cache\\v2-before-intro-null-fix.zip",
+    "accepted_8854_backup_sha256": "8854a4561555bca867dbfeb908d2557d1ca232186e0f6c252c438772d40eee9f",
+    "scope": "追加读取已合并PR44的package.json明确指定的单个.cache ZIP，没有全盘搜索、移动、恢复或覆盖。",
+    "initial_limited_search_record": "backup_search_history[0]"
   },
   "read_only_guards": {
     "models_called": 0,
@@ -215,10 +227,126 @@
     "user_archive_or_delivery_files_written": false,
     "private_configuration_contents_output": false
   },
-  "conclusion": "当前v2内容相对验收来源只定位到game.js空值渲染修复及其构建来源元数据更新。EXE与2573份已核对程序文件相同，3份演示案、manifest和验收说明均对应原打包输入。当前ZIP指纹已变化，原8854验收指纹不再描述该ZIP。",
+  "conclusion": "追加按已合并PR44记录找到原8854 ZIP备份，绝对路径和指纹已实读确认。旧备份与当前9cb3 ZIP的2580个文件清单一致，逐字变化仅game.js空值过滤修复及构建来源.json，EXE不变。初次限定范围未找到备份的搜索记录作为历史保留。",
   "limitations": [
-    "限定范围内未找到原8854 ZIP备份，旧ZIP容器头、压缩记录和原始条目时间不能逐字比较。",
-    "原metadata字节由验收记录和原打包脚本在内存重建，不能称为找到原ZIP备份。",
-    "此记录不推断修改主体，也不覆盖当前v2或独立v3交付。"
-  ]
+    "原8854 ZIP备份现已定位，当前结论以实读指纹和直接成员字节比较为准。",
+    "原metadata曾由验收记录和打包脚本在内存重建，本次已与找到备份中的真实metadata SHA核对一致。",
+    "本记录没有移动、恢复、重包或覆盖v2及独立新交付文件。"
+  ],
+  "backup_search_history": [
+    {
+      "phase": "initial_limited_search",
+      "diagnostic_sha256_before_update": "899df9e81ae0cc1a8b7b6d965c9641dbdece7eab918049ebfcd8a9057011def6",
+      "record": {
+        "allowed_roots": [
+          "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache",
+          "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-role-v2-intent-final-build-20261104"
+        ],
+        "candidates": [
+          {
+            "path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache\\role-v2-candidate-084b67e.zip",
+            "bytes": 46996894,
+            "sha256": "979c52a9da7e6b2a1e858b471d3806545fdc5aa2df9f62a0b591f220ec32744c",
+            "matches_accepted_archive": false
+          },
+          {
+            "path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache\\role-v2-candidate-df344149.zip",
+            "bytes": 46998661,
+            "sha256": "241011dec83a4acbc023a0df46b2bfa861a3bf7bd22a2bf0691893d9f68a1329",
+            "matches_accepted_archive": false
+          },
+          {
+            "path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache\\role-v2-external-change-210006.zip",
+            "bytes": 46998762,
+            "sha256": "9cb3a41d78bc0b0b902792afc6359d5e5b9ac267a2e7937fa13cc42b7b1e5032",
+            "matches_accepted_archive": false
+          },
+          {
+            "path": "D:\\阅读周比赛\\kanshan-task20-role-package-20261104\\.cache\\role-v3-candidate-8ec8ba7.zip",
+            "bytes": 47005866,
+            "sha256": "e2343bd0d43ccc157abd2bb04459f96bdd9cd905631701fcd5af0bf84aede8a7",
+            "matches_accepted_archive": false
+          },
+          {
+            "path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-role-v2-intent-final-build-20261104\\dist\\看山谜案馆\\_internal\\base_library.zip",
+            "bytes": 1401781,
+            "sha256": "9ff48077b30930a3f4b4cb0b12ea6b66d7ae0bea9a0110e1183b878179a6e2c2",
+            "matches_accepted_archive": false
+          }
+        ],
+        "accepted_8854_backup_found": false,
+        "scope": "仅已知TEMP构建目录和本分支.cache，无全盘搜索。"
+      }
+    }
+  ],
+  "backup_followup": {
+    "checked_at_utc": "2026-11-04T13:59:48.813686+00:00",
+    "main_commit": "c945eb00acec69e9f9a63f3eb30c1f54f07e1d9e",
+    "report_commit": "b20f57c52e676e6806c553baaa9c445ff9cbb6dd",
+    "report_path": "docs/testing/2026-11-04-task20-intro-null-package.md",
+    "package_record_path": "docs/testing/task20-intro-null/package.json",
+    "package_record_git_blob_sha256": "355de946b19145774bf3118fa70722061e046b2891ecc75e898fda0a482b33c6",
+    "located_followup_directory": "D:\\阅读周比赛\\kanshan-task20-intro-null-20261104",
+    "currently_registered_worktree": false,
+    "accepted_archive_backup": {
+      "path": "D:\\阅读周比赛\\kanshan-task20-intro-null-20261104\\.cache\\v2-before-intro-null-fix.zip",
+      "bytes": 46998487,
+      "sha256": "8854a4561555bca867dbfeb908d2557d1ca232186e0f6c252c438772d40eee9f",
+      "matches_accepted_archive": true,
+      "zip_file_count": 2580,
+      "zip_crc_passed": true
+    },
+    "old_and_current_member_names_equal": true,
+    "direct_member_content_changes": [
+      {
+        "entry": "看山谜案馆-质量收敛交付版-20261104-v2/看山谜案馆/构建来源.json",
+        "old_bytes": 7447,
+        "new_bytes": 7975,
+        "old_sha256": "5c45439ecd904f789190ae068abc1ca8ff5f6be49283ee25993f89724a857afd",
+        "new_sha256": "f92f8f5bfc998774ac8ccc64ca8c9a7a04a2eb52ef478b29a0174eab1eb3bacc",
+        "old_zip_timestamp": [
+          2026,
+          11,
+          4,
+          19,
+          59,
+          24
+        ],
+        "new_zip_timestamp": [
+          2026,
+          11,
+          4,
+          20,
+          56,
+          16
+        ]
+      },
+      {
+        "entry": "看山谜案馆-质量收敛交付版-20261104-v2/看山谜案馆/_internal/frontend/js/game.js",
+        "old_bytes": 45797,
+        "new_bytes": 45935,
+        "old_sha256": "d3395a275a97309bfddca9bba20c20cef171e61040a9f9c931c51fe5d4ba6fae",
+        "new_sha256": "585ddba5a00d3998000ea0e1876cc83b4b35aa6bad052c58d2aacd6aba8bf775",
+        "old_zip_timestamp": [
+          2026,
+          11,
+          4,
+          19,
+          58,
+          52
+        ],
+        "new_zip_timestamp": [
+          2026,
+          11,
+          4,
+          20,
+          54,
+          48
+        ]
+      }
+    ],
+    "old_metadata_matches_prior_in_memory_reconstruction": true,
+    "accepted_backup_unchanged_after_read": true,
+    "current_user_zip_unchanged_after_read": true
+  }
 }

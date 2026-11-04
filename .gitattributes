@@ -18,3 +18,4 @@ docs/testing/task19-demo/revised/*.yaml -text
 docs/testing/task20-role-package/** -text whitespace=cr-at-eol
 docs/testing/task20-role-v2/** -text whitespace=cr-at-eol
 docs/testing/task20-role-v3/** -text whitespace=cr-at-eol
+docs/testing/task20-frameless-quality/** -text whitespace=cr-at-eol
