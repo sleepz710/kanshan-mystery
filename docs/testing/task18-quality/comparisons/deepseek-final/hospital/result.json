@@ -1,0 +1,384 @@
+{
+  "runtime_commit": "30180444163ea3df16ce4014dde5fd4bbbd9d32b",
+  "name": "hospital",
+  "material": "我想玩恐怖一点的，医院题材",
+  "model": "deepseek-flash",
+  "quality": "fast",
+  "status": "done",
+  "seconds": 361.61,
+  "provider_blocked": false,
+  "prelude_seconds": 5.14,
+  "checked": false,
+  "problems": [
+    "第1题答“苏婉刷卡”缺独立身份与动作依据：走廊监控只写“拿白色卡片刷卡”，未拍卡号或N-07字样；门禁记录只证明N-07刷开。应补“监控清晰拍到卡片正面N-07”或让苏婉承认1:47用N-07刷卡，再列该证据。",
+    "第2题答“苏婉注射”主要靠病历附页中苏婉事后承认，但该承认的取得必须先拆穿“整夜在休息室”谎话，而拆穿依赖走廊监控；走廊监控的取得又依赖药柜登记本与电梯截图，链条可执行。但题面证据“周海病历附页”同时含临时医嘱和承认，须明确1:50注射的承认与监控中1:50动作对应；现走廊监控只记1:44推车、1:47进入、2:55离开，未记1:50注射，缺少直接动作画面。应补监控“1:50苏婉在床旁推药”或病历承认中明确“约1:50在床旁推药”。",
+    "第3题答“林致远经办运出”由冷链运输单和林致远承认、3:05推冷藏箱画面支撑，成立；但冷链运输单取得需先用陈默签名比对样本拆穿林致远“签名是陈默自己签的”谎话，而陈默签名比对样本取得需先向陈默出示药柜登记本，链条可执行，无需报错。"
+  ],
+  "error": "检查未全部通过，试玩可能遇到线索或推理问题。",
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1566,
+      "status": "ok",
+      "response_chars": 4783,
+      "seconds": 92.58
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7900,
+      "status": "ok",
+      "response_chars": 6664,
+      "seconds": 17.09
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 15185,
+      "status": "ok",
+      "response_chars": 1029,
+      "seconds": 4.52
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 15270,
+      "status": "ok",
+      "response_chars": 2128,
+      "seconds": 5.75
+    },
+    {
+      "attempt": 1,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5738,
+      "status": "ok",
+      "response_chars": 487,
+      "seconds": 4.41
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 696,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 3.71
+    },
+    {
+      "attempt": 1,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 2276,
+      "status": "ok",
+      "response_chars": 50,
+      "seconds": 1.93
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 6781,
+      "status": "ok",
+      "response_chars": 5576,
+      "seconds": 80.15
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 8693,
+      "status": "ok",
+      "response_chars": 8597,
+      "seconds": 20.93
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 18218,
+      "status": "ok",
+      "response_chars": 8660,
+      "seconds": 16.44
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 18220,
+      "status": "ok",
+      "response_chars": 8660,
+      "seconds": 16.02
+    },
+    {
+      "attempt": 3,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 7324,
+      "status": "ok",
+      "response_chars": 5797,
+      "seconds": 51.84
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 8914,
+      "status": "ok",
+      "response_chars": 9100,
+      "seconds": 23.16
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 18724,
+      "status": "ok",
+      "response_chars": 2220,
+      "seconds": 5.03
+    },
+    {
+      "attempt": 3,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 18935,
+      "status": "ok",
+      "response_chars": 9134,
+      "seconds": 17.44
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "负一层治疗室",
+      "problems": [
+        "最后一个结局必须是不带 when 的兜底结局。"
+      ]
+    },
+    {
+      "title": "负一层治疗室",
+      "problems": []
+    },
+    {
+      "title": "负一层治疗室",
+      "problems": []
+    },
+    {
+      "title": "负一层的刷卡声",
+      "problems": []
+    },
+    {
+      "title": "负一层的刷卡声",
+      "problems": []
+    },
+    {
+      "title": "负一层的刷卡声",
+      "problems": []
+    },
+    {
+      "title": "负一层的针眼",
+      "problems": [
+        "l_chen 承认的事实 f_handover_138 不在 chen 的 knows 中。"
+      ]
+    },
+    {
+      "title": "负一层的针眼",
+      "problems": []
+    },
+    {
+      "title": "负一层的针眼",
+      "problems": []
+    }
+  ],
+  "talks": [],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "苏婉",
+        "q2": "苏婉",
+        "q3": "林致远"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e_truth",
+          "title": "真相大白",
+          "text": "走廊监控、冷链运输单与伪造同意书一一对上：苏婉刷卡、注射，林致远冒签医嘱、摘取组织并运出，陈默被胁迫借卡。三人被带走，案件告破。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "陈默",
+        "q2": "苏婉",
+        "q3": "林致远"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e_insufficient",
+          "title": "证据不足",
+          "text": "你出示的证据仍不足以锁定刷卡者和主谋，林致远以“执行医嘱、毫不知情”脱身，负一层治疗室次日重新上锁。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "陈默",
+        "q2": "陈默",
+        "q3": "陈默"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "e_insufficient",
+          "title": "证据不足",
+          "text": "你出示的证据仍不足以锁定刷卡者和主谋，林致远以“执行医嘱、毫不知情”脱身，负一层治疗室次日重新上锁。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.04
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/58e96931a2e649f99f8a0a3b4e3e5cd0/messages",
+      "status": 200,
+      "seconds": 5.1
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/58e96931a2e649f99f8a0a3b4e3e5cd0/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/58e96931a2e649f99f8a0a3b4e3e5cd0/messages",
+      "status": 200,
+      "seconds": 1.07
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.09
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.04
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/0367219124b74d1ba0ca3d79c1bde41e/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/dfb642530aea45c1bb389b89fe9bb888/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/b481dff90f154f418ed12067d95fade1/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-881a6bf7fb92466588f4a10f6db2a598",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-quality-live-3-20261104\\hospital\\stories\\generated-881a6bf7fb92466588f4a10f6db2a598.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "endings": {
+    "e_truth": {
+      "title": "真相大白",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "e_insufficient": {
+      "title": "证据不足",
+      "retry": true,
+      "when": {},
+      "count": 63,
+      "wrong_count": 63,
+      "wrong_example": {
+        "q1": "陈默",
+        "q2": "陈默",
+        "q3": "陈默"
+      }
+    }
+  },
+  "opens": true,
+  "selected_candidate": 1,
+  "design_alignment": []
+}

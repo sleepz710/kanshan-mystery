@@ -1,0 +1,1450 @@
+{
+  "story_id": "generated-c861632295254772a872f894e82a4a3b",
+  "steps": [
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "lin",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 12.14,
+      "response": {
+        "reply": "我是书店学生店长，案发那晚主要在店里负责闭店和清点。前门这边我能说明的，就是我后来去检查过门锁，之后又回到店内。现在能给你先核查这份前门监控片段。",
+        "new_clues": [
+          {
+            "id": "c_front",
+            "title": "前门监控落锁片段",
+            "content": "5月16日21:05许知遥空手从前门离店；21:10林澄锁前门；21:20前门监控显示林澄检查门锁后返回店内，21:20至21:30无人从前门进出。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity"
+            ],
+            "locked_secrets": [
+              "f_xu_secret"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_front"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity"
+            ],
+            "locked_secrets": [
+              "f_xu_secret"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "zhou",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 13.41,
+      "response": {
+        "reply": "我叫周岚，在书店做兼职，平时管还书箱和入库。那天我记得21:10打烊后就从前门走了，之后没再回书店。现在我这边没什么可多说的，能核的就去查店里的出入情况。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_front"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity"
+            ],
+            "locked_secrets": [
+              "f_xu_secret"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_front"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity"
+            ],
+            "locked_secrets": [
+              "f_xu_secret"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "xu",
+        "text": "请介绍你案发前后的行踪，并提供现在可以核查的材料。"
+      },
+      "status_code": 200,
+      "seconds": 5.2,
+      "response": {
+        "reply": "我是许知遥，文学社社长，也是《群山回声》的预订人。案发前后我这边现在能拿出来核查的，先是这张预订凭条：我在5月16日20:52下单了一本《群山回声》签名版，21:00到店确认过。你先看这个。",
+        "new_clues": [
+          {
+            "id": "c_receipt",
+            "title": "许知遥的预订凭条",
+            "content": "许知遥手机预订凭条显示：5月16日20:52下单《群山回声》签名版一本，预订人许知遥，备注“老邱的书，别走平台，取到后付余款”，21:00到店确认。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_front"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity"
+            ],
+            "locked_secrets": [
+              "f_xu_secret"
+            ]
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_front",
+          "c_receipt"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "lin",
+        "text": "请交给我《空白预订本》，并说明这份材料中你亲历的事实。"
+      },
+      "status_code": 200,
+      "seconds": 13.43,
+      "response": {
+        "reply": "可以，这本我交给你。那晚我在闭店清点，21:30时柜台上待取的《群山回声》是一本空白本，封面贴着预订标签，标签下面能看到库存码SP-0417；我翻到扉页时，没有看到签名。",
+        "new_clues": [
+          {
+            "id": "c_blank",
+            "title": "空白预订本",
+            "content": "5月16日21:30闭店清点时，柜台上待取的《群山回声》为空白本，封面贴“许知遥预订”标签，标签下库存码SP-0417，扉页无签名。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_front",
+          "c_receipt"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_blank",
+          "c_front",
+          "c_receipt"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "show",
+      "input": {
+        "character_id": "lin",
+        "clue_id": "c_front"
+      },
+      "status_code": 200,
+      "seconds": 6.13,
+      "response": {
+        "reply": "这段我认。前门那边当晚就是这样，我21:10锁了前门，21:20去检查门锁后又回到店里。你要继续核的话，我把后门这份记录也交给你。",
+        "new_clues": [
+          {
+            "id": "c_backdoor",
+            "title": "后门门禁与楼道监控记录",
+            "content": "5月16日21:12和21:20，门禁系统记录卡号Z-027、登记人周岚的员工卡刷开后门；后门楼道摄像头同时拍到周岚本人在后门读卡器前刷卡并进出，21:20后再无后门刷卡记录。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_blank",
+          "c_front",
+          "c_receipt"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_front",
+          "c_receipt"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "show",
+      "input": {
+        "character_id": "zhou",
+        "clue_id": "c_backdoor"
+      },
+      "status_code": 200,
+      "seconds": 22.13,
+      "response": {
+        "reply": "我改口，之前那话不对。那晚我确实21:12从后门回了店里，21:16把空白本放上柜台、把真书拿走，21:18又把真书塞进待回收纸箱夹层，21:20从后门离开。你要核的话，这条微信我可以交给你。",
+        "new_clues": [
+          {
+            "id": "c_wechat",
+            "title": "林澄指使藏书的微信",
+            "content": "周岚手机微信显示：5月16日21:17林澄发给周岚“先把书塞进待回收箱夹层，明早我来处理”；周岚21:18回复“好”。5月17日调查中，周岚在调查者出示后门门禁与楼道监控记录后承认原话有误：她21:12从后门返回，21:16调换，21:18按微信藏真书，21:20从后门离开，并非21:10后没再回店。"
+          }
+        ],
+        "events": [
+          {
+            "type": "exposed",
+            "character": "zhou",
+            "lie": "lie_zhou",
+            "text": "周岚的说法被拆穿了。已确认：周岚21:12从后门返回，21:16将空白本放上柜台、取走真书，21:18按林澄微信将真书藏入待回收纸箱夹层。"
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "lin": 0,
+          "zhou": 1,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_front",
+          "c_receipt"
+        ],
+        "exposed": [],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 0,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity"
+            ],
+            "locked_secrets": [
+              "f_zhou_secret"
+            ]
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_front",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "show",
+      "input": {
+        "character_id": "lin",
+        "clue_id": "c_wechat"
+      },
+      "status_code": 200,
+      "seconds": 9.65,
+      "response": {
+        "reply": "……我承认，我之前那句话不对。是我在21:17发微信让周岚把真书先塞进待回收纸箱夹层，我当时也在后场，看见她调包了，但我没有拦。后场这段监控你拿去核。",
+        "new_clues": [
+          {
+            "id": "c_camera",
+            "title": "后场监控21:16—21:18",
+            "content": "书店后场监控显示：5月16日21:16周岚把空白本放到柜台预订标签下，并从柜台内侧取走真书进入后场；21:18周岚将真书放入待回收纸箱夹层；林澄21:16—21:18跟进后场，在旁未阻止。5月17日调查中，林澄在调查者出示林澄指使藏书的微信后承认原话有误：她确实让周岚把书放进待回收纸箱夹层，并在后场看见周岚调包未阻止。"
+          }
+        ],
+        "events": [
+          {
+            "type": "exposed",
+            "character": "lin",
+            "lie": "lie_lin",
+            "text": "林澄的说法被拆穿了。已确认：林澄在21:16—21:18在后场看见周岚调包却未阻止，21:17微信指使周岚把真书藏入待回收纸箱夹层，事后隐瞒。"
+          }
+        ],
+        "hint": null,
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_front",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 0,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity"
+            ],
+            "locked_secrets": [
+              "f_lin_secret"
+            ]
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_camera",
+          "c_front",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "show",
+      "input": {
+        "character_id": "zhou",
+        "clue_id": "c_camera"
+      },
+      "status_code": 200,
+      "seconds": 7.48,
+      "response": {
+        "reply": "你这份我认。东西就是我放进待回收纸箱夹层的。那本真书你可以直接去看，我把这条线索交给你：从夹层里取出的《群山回声》，书脊库存码和空白本标签能对上，外面还有我工牌压痕。",
+        "new_clues": [
+          {
+            "id": "c_book",
+            "title": "还书箱夹层真书",
+            "content": "5月17日调查时从待回收纸箱夹层取出的《群山回声》真书：扉页有作者签名，书脊库存码SP-0417，与空白本所贴标签编号一致；夹层外有周岚工牌压痕。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_camera",
+          "c_front",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_book",
+          "c_camera",
+          "c_front",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "show",
+      "input": {
+        "character_id": "xu",
+        "clue_id": "c_blank"
+      },
+      "status_code": 200,
+      "seconds": 8.06,
+      "response": {
+        "reply": "我看到了。那本贴着我名字的，21:30时确实是空白本。这个我能补一份我手机里的照片给你：20:58我拍过柜台里的书，当时拍到的就是库存码 SP-0417。",
+        "new_clues": [
+          {
+            "id": "c_photo",
+            "title": "柜台照片",
+            "content": "许知遥手机照片显示：5月16日20:58从柜台内侧拍摄，真书《群山回声》书脊库存码SP-0417，旁边压着周岚签字的还书箱登记单；照片发送社团群时间为20:59。"
+          }
+        ],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_book",
+          "c_camera",
+          "c_front",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_book",
+          "c_camera",
+          "c_front",
+          "c_photo",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "lin",
+        "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+      },
+      "status_code": 200,
+      "seconds": 8.26,
+      "response": {
+        "reply": "我更正：闭店后，不是“没让她放”，而是我在21:17发微信让周岚把真书藏进待回收纸箱夹层。21:16到21:18我人在后场，亲眼看见她调包，也没有拦。之前我隐瞒了这件事。我怕把事情说出来，会把我自己牵进去，也怕丢掉店长这份位置。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_book",
+          "c_camera",
+          "c_front",
+          "c_photo",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_book",
+          "c_camera",
+          "c_front",
+          "c_photo",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "zhou",
+        "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+      },
+      "status_code": 200,
+      "seconds": 8.34,
+      "response": {
+        "reply": "我更正：我不是21:10打烊后就从前门走了、也没再回来。实际是我21:12从后门回了店里，21:16把空白本放上柜台、拿走真书，21:18按林澄微信把真书藏进待回收纸箱夹层，21:20又从后门离开。此前我撒谎，就是想先把自己撇干净。至于别的，我亲手做过的就这些。",
+        "new_clues": [],
+        "events": [],
+        "hint": null,
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_book",
+          "c_camera",
+          "c_front",
+          "c_photo",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_book",
+          "c_camera",
+          "c_front",
+          "c_photo",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    },
+    {
+      "action": "talk",
+      "input": {
+        "character_id": "xu",
+        "text": "调查材料已经逐项核查。请直接更正你此前不实的说法，并说明你亲历的真实经过、动机和此前保密的事实。"
+      },
+      "status_code": 200,
+      "seconds": 7.78,
+      "response": {
+        "reply": "我更正一下：我之前没主动说明的，是我20:58进过柜台内侧，还拍了照片。预订备注也确实写着“老邱的书，别走平台，取到后付余款”。我当时是怕这件事说出来，会被人追着问代订和差价，所以才含糊过去。就我亲历的部分，只能确认这些：我是《群山回声》的预订人，20:52下单，21:00到店确认过；20:58我在柜台内侧拍到过那本书，库存码是SP-0417。别的我不想乱说。",
+        "new_clues": [],
+        "events": [],
+        "hint": "线索已经收齐，可以整理证据并提交推理。",
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        }
+      },
+      "before": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_book",
+          "c_camera",
+          "c_front",
+          "c_photo",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      },
+      "after": {
+        "acquired": [
+          "c_backdoor",
+          "c_blank",
+          "c_book",
+          "c_camera",
+          "c_front",
+          "c_photo",
+          "c_receipt",
+          "c_wechat"
+        ],
+        "exposed": [
+          "lie_lin",
+          "lie_zhou"
+        ],
+        "events": [],
+        "trust": {
+          "lin": 1,
+          "zhou": 1,
+          "xu": 0
+        },
+        "permissions": {
+          "lin": {
+            "facts": [
+              "f_lin_identity",
+              "f_lin_secret"
+            ],
+            "locked_secrets": []
+          },
+          "zhou": {
+            "facts": [
+              "f_zhou_identity",
+              "f_zhou_secret"
+            ],
+            "locked_secrets": []
+          },
+          "xu": {
+            "facts": [
+              "f_xu_identity",
+              "f_xu_secret"
+            ],
+            "locked_secrets": []
+          }
+        }
+      }
+    }
+  ],
+  "complete": true,
+  "initial": {
+    "acquired": [],
+    "exposed": [],
+    "events": [],
+    "trust": {
+      "lin": 0,
+      "zhou": 0,
+      "xu": 0
+    },
+    "permissions": {
+      "lin": {
+        "facts": [
+          "f_lin_identity"
+        ],
+        "locked_secrets": [
+          "f_lin_secret"
+        ]
+      },
+      "zhou": {
+        "facts": [
+          "f_zhou_identity"
+        ],
+        "locked_secrets": [
+          "f_zhou_secret"
+        ]
+      },
+      "xu": {
+        "facts": [
+          "f_xu_identity"
+        ],
+        "locked_secrets": [
+          "f_xu_secret"
+        ]
+      }
+    }
+  },
+  "final": {
+    "acquired": [
+      "c_backdoor",
+      "c_blank",
+      "c_book",
+      "c_camera",
+      "c_front",
+      "c_photo",
+      "c_receipt",
+      "c_wechat"
+    ],
+    "exposed": [
+      "lie_lin",
+      "lie_zhou"
+    ],
+    "events": [],
+    "trust": {
+      "lin": 1,
+      "zhou": 1,
+      "xu": 0
+    },
+    "permissions": {
+      "lin": {
+        "facts": [
+          "f_lin_identity",
+          "f_lin_secret"
+        ],
+        "locked_secrets": []
+      },
+      "zhou": {
+        "facts": [
+          "f_zhou_identity",
+          "f_zhou_secret"
+        ],
+        "locked_secrets": []
+      },
+      "xu": {
+        "facts": [
+          "f_xu_identity",
+          "f_xu_secret"
+        ],
+        "locked_secrets": []
+      }
+    }
+  },
+  "accusation": {
+    "score": 3,
+    "total": 3,
+    "results": {
+      "q1": true,
+      "q2": true,
+      "q3": true
+    },
+    "ending": {
+      "id": "end_true",
+      "title": "真相大白",
+      "text": "真书追回，周岚承担调包与赔偿责任，林澄承担指使藏匿和校纪管理责任，许知遥取消代订并受批评。",
+      "retry": false
+    },
+    "rating": "S"
+  },
+  "wrong_answers": [
+    {
+      "label": "one_wrong",
+      "answers": {
+        "q1": "林澄的员工卡和本人",
+        "q2": "21:16—21:18",
+        "q3": "林澄"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "end_fallback",
+          "title": "证据不足",
+          "text": "现有证据仍不足以完整还原调包经过，部分责任无法落实，需要继续调查。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "label": "all_wrong",
+      "answers": {
+        "q1": "林澄的员工卡和本人",
+        "q2": "20:55—20:58",
+        "q3": "周岚"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "end_fallback",
+          "title": "证据不足",
+          "text": "现有证据仍不足以完整还原调包经过，部分责任无法落实，需要继续调查。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ]
+}

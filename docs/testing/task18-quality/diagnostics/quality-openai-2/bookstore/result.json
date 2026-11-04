@@ -1,0 +1,63 @@
+{
+  "runtime_commit": "022f9f46e597adcd9baa0a06ff379562abd5b7e8",
+  "name": "bookstore",
+  "material": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fast",
+  "status": "failed",
+  "seconds": 255.77,
+  "provider_blocked": false,
+  "prelude_seconds": 31.79,
+  "checked": null,
+  "problems": [],
+  "error": "编剧模型服务暂时不可用，请稍后重试。",
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1637,
+      "status": "ok",
+      "response_chars": 3886,
+      "seconds": 247.78
+    },
+    {
+      "attempt": 1,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7003,
+      "status": "failed",
+      "error": "LLMError",
+      "seconds": 7.51
+    }
+  ],
+  "local_checks": [],
+  "talks": [],
+  "accusations": [],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/0ea070d137364286b8d250b591463853/messages",
+      "status": 200,
+      "seconds": 31.79
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/0ea070d137364286b8d250b591463853/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/0ea070d137364286b8d250b591463853/messages",
+      "status": 200,
+      "seconds": 0.61
+    }
+  ]
+}

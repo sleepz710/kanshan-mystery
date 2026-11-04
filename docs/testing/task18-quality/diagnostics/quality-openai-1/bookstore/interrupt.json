@@ -1,0 +1,5 @@
+{
+  "status": "cancelled",
+  "reason": "医院连续长请求无正文且APIConnectionError，停止同类后续请求以定位传输问题。",
+  "quality_result": null
+}

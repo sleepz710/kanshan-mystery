@@ -1,0 +1,247 @@
+[
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "hospital",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "model": "deepseek-flash",
+    "role": "actor",
+    "thinking": "disabled",
+    "reasoning_effort": null
+  }
+]

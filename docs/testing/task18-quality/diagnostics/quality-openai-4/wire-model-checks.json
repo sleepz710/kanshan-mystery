@@ -1,0 +1,207 @@
+[
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "operation": "cancel",
+    "path": "/v1/responses/resp_099ee6e95742b591006aeaf10e2f8c87d2aca2d60ca518d761/cancel"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "bookstore",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/responses",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "operation": "create",
+    "path": "/v1/chat/completions",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "actor",
+    "reasoning_effort": "none"
+  }
+]

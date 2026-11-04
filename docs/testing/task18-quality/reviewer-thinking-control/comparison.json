@@ -1,0 +1,231 @@
+{
+  "model": "gpt-5.4-2026-03-05",
+  "review_rules_runtime_commit": "a5c0c68d474a6d58e26613e35b142c03145d882f",
+  "controls": [
+    {
+      "case": "positive",
+      "same_messages": true,
+      "same_model": true,
+      "same_endpoint": true,
+      "same_mode": true,
+      "same_deadline": true,
+      "prompt_sha256": "6ffc6dee42ca0bbbcbbcfdd2795fb8ab8d61b438f113c6dd3567808f749074f8",
+      "user_input_sha256": "20aeb87500cd3583ddcd2b14d82104c7ca9eea21652dcc6542ecb43c9255d854",
+      "none": {
+        "effort": "none",
+        "endpoint": "/v1/responses",
+        "mode": "responses_background",
+        "seconds": 19.89,
+        "matched": true,
+        "quality_evaluated": true,
+        "error": null,
+        "response": {
+          "problems": []
+        },
+        "final_provider_state": {
+          "case": "positive",
+          "method": "GET",
+          "path": "/v1/responses/resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+          "http_status": 200,
+          "id": "resp_0380855708797a02006aeb0e03f22087d2987dd7809ae09bf1",
+          "status": "completed",
+          "usage": {
+            "input_tokens": 4386,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 12,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 4398
+          }
+        }
+      },
+      "high": {
+        "effort": "high",
+        "endpoint": "/v1/responses",
+        "mode": "responses_background",
+        "seconds": 542.36,
+        "matched": false,
+        "quality_evaluated": false,
+        "error": "ModelTimeoutError",
+        "response": null,
+        "final_provider_state": {
+          "case": "positive",
+          "method": "POST",
+          "path": "/v1/responses/resp_0941179c58b38dbd006aeb0dc1c6b487d2aa549a311088cff7/cancel",
+          "http_status": 200,
+          "id": "resp_0941179c58b38dbd006aeb0dc1c6b487d2aa549a311088cff7",
+          "status": "cancelled",
+          "usage": null
+        }
+      }
+    },
+    {
+      "case": "unrelated_admission",
+      "same_messages": true,
+      "same_model": true,
+      "same_endpoint": true,
+      "same_mode": true,
+      "same_deadline": true,
+      "prompt_sha256": "6ffc6dee42ca0bbbcbbcfdd2795fb8ab8d61b438f113c6dd3567808f749074f8",
+      "user_input_sha256": "2e10c68c2269e837df4564d5db302dd6c9081e0c26280895f770f4a3fe4f402f",
+      "none": {
+        "effort": "none",
+        "endpoint": "/v1/responses",
+        "mode": "responses_background",
+        "seconds": 76.94,
+        "matched": true,
+        "quality_evaluated": true,
+        "error": null,
+        "response": {
+          "problems": [
+            "线索“改口记录”与苏雯原谎话不匹配：原话是否认“23:40我没下过B1”，但该记录只承认“三年前替外婆保存过相册”，既未更正当晚时间，也未承认去过B1，不能作为拆穿后改口。应把改口内容改为明确承认当晚约23:40进入B1，或删除其“直接纠正B1行踪谎话”的证明定位。"
+          ]
+        },
+        "final_provider_state": {
+          "case": "unrelated_admission",
+          "method": "GET",
+          "path": "/v1/responses/resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+          "http_status": 200,
+          "id": "resp_04651eadcf1dc80d006aeb0e03f65887d29518b8531b8b12ba",
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1603,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 125,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1728
+          }
+        }
+      },
+      "high": {
+        "effort": "high",
+        "endpoint": "/v1/responses",
+        "mode": "responses_background",
+        "seconds": 55.72,
+        "matched": true,
+        "quality_evaluated": true,
+        "error": null,
+        "response": {
+          "problems": [
+            "“改口记录”与苏雯原谎话错配：原话是否认“23:40下过B1”，但该线索正文只承认“三年前替外婆保存过相册”，还明确写“没有承认当晚去过B1”，并未更正对象、时间、地点与动作，不能作为谎话拆穿后的改口。应把内容改为明确承认当晚23:40去过B1/刷卡取相册，或删除其“直接纠正B1行踪谎话”的定位。"
+          ]
+        },
+        "final_provider_state": {
+          "case": "unrelated_admission",
+          "method": "GET",
+          "path": "/v1/responses/resp_04a0b64eaab87860006aeb0dc1e0f487d290376c70b9459434",
+          "http_status": 200,
+          "id": "resp_04a0b64eaab87860006aeb0dc1e0f487d290376c70b9459434",
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1603,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 3946,
+            "output_tokens_details": {
+              "reasoning_tokens": 3946
+            },
+            "total_tokens": 5549
+          }
+        }
+      }
+    },
+    {
+      "case": "missing_identity",
+      "same_messages": true,
+      "same_model": true,
+      "same_endpoint": true,
+      "same_mode": true,
+      "same_deadline": true,
+      "prompt_sha256": "6ffc6dee42ca0bbbcbbcfdd2795fb8ab8d61b438f113c6dd3567808f749074f8",
+      "user_input_sha256": "c9f7d77daf92e48dfecc609f30e236d31a14c6015a8730c4e868d0aed387ea24",
+      "none": {
+        "effort": "none",
+        "endpoint": "/v1/responses",
+        "mode": "responses_background",
+        "seconds": 10.77,
+        "matched": true,
+        "quality_evaluated": true,
+        "error": null,
+        "response": {
+          "problems": [
+            "题目“23:40本人刷开B1门的是谁？”标准答案写苏雯，但现有仅有线索《门禁单》记载“23:40卡号KL07刷开B1门，登记人为林知远”。按公开材料只能证明该卡在该时刻开门及登记人身份，不能把登记人或苏雯直接等同实际刷卡者；且苏雯否认下B1的谎话也未作为可拆穿流程写入题目依据。应补能直接指向刷卡者身份的材料或可取得承认，如录像、目击、苏雯改口口供等，否则改题为询问哪张卡/谁名下卡开门。"
+          ]
+        },
+        "final_provider_state": {
+          "case": "missing_identity",
+          "method": "GET",
+          "path": "/v1/responses/resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+          "http_status": 200,
+          "id": "resp_0dbf123f3d42bbd7006aeb0e04751087d1a9cbce28c8d9b3ba",
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1424,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 176,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 1600
+          }
+        }
+      },
+      "high": {
+        "effort": "high",
+        "endpoint": "/v1/responses",
+        "mode": "responses_background",
+        "seconds": 26.64,
+        "matched": true,
+        "quality_evaluated": true,
+        "error": null,
+        "response": {
+          "problems": [
+            "线索《门禁单》只写“23:40卡号KL07刷开B1门，登记人为林知远”，只能证明卡号、时间与门已开，不能把登记人等同刷卡者，更不能推出苏雯本人下到B1。因此题目“23:40本人刷开B1门的是谁？”答案填“苏雯”缺少身份与动作依据，也无法直接拆穿苏雯“23:40我没下过B1”的谎话。应补入能直接指认苏雯本人刷卡/进入B1的录像、目击或承认，或改题为问刷开的卡号/门是否打开。"
+          ]
+        },
+        "final_provider_state": {
+          "case": "missing_identity",
+          "method": "GET",
+          "path": "/v1/responses/resp_0a4b6d3e0484cfaf006aeb0dc2537087d185172c563d6512ac",
+          "http_status": 200,
+          "id": "resp_0a4b6d3e0484cfaf006aeb0dc2537087d185172c563d6512ac",
+          "status": "completed",
+          "usage": {
+            "input_tokens": 1424,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 2049,
+            "output_tokens_details": {
+              "reasoning_tokens": 1457
+            },
+            "total_tokens": 3473
+          }
+        }
+      }
+    }
+  ],
+  "responses_none_completed_matches": 3,
+  "responses_high_completed_matches": 2,
+  "responses_high_positive": "queued_until_deadline_then_cancelled",
+  "limitations": [
+    "每个固定输入每种effort仅一次。",
+    "旧Chat-none与本组Responses接口不同，仅作参考。",
+    "high正例未完成推理，无法比较该例审稿质量。"
+  ]
+}

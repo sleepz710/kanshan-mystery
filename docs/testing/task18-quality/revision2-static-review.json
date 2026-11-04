@@ -1,0 +1,106 @@
+{
+  "runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+  "mode": "offline static read and engine path with stub actors",
+  "real_model_calls": 0,
+  "bookstore": {
+    "scale": [
+      3,
+      8,
+      2,
+      3,
+      2
+    ],
+    "structure_passed": true,
+    "playability_passed": true,
+    "design_alignment_passed": true,
+    "original_claim_correction_preserved": true,
+    "original_questions_preserved": true,
+    "date_gap_resolved_in_design_and_story": true,
+    "source_sha256": {
+      "story.yaml": "9d0966f0269cf67cd6551296a9f69c73cb126b0a2658790adcb3be6f7c135c31",
+      "selected-design.json": "ff252a1e4798ef36b15b9a5835f7654d1eb6d0c9f171f29583467157375d195b"
+    },
+    "trace_review": "pending_complete_trace"
+  },
+  "hospital_review": {
+    "classification": "false_positive",
+    "review_file": "002-审稿.json",
+    "lie": "我昨晚只在主楼会议室，从没进过旧手术室。",
+    "correction": "昨晚1点24分我进过旧手术室。",
+    "named_disproving_evidence": "苏芮持有的《观察窗偷拍视频》直接拍到秦岳于2026年7月14日01:24进入1号旧手术室。",
+    "steps": [
+      {
+        "action": "talk",
+        "character_id": "cheng_kun",
+        "clue_id": null,
+        "new_clues": [
+          "c2"
+        ],
+        "exposed": []
+      },
+      {
+        "action": "talk",
+        "character_id": "cheng_kun",
+        "clue_id": null,
+        "new_clues": [
+          "c4"
+        ],
+        "exposed": []
+      },
+      {
+        "action": "show",
+        "character_id": "su_rui",
+        "clue_id": "c4",
+        "new_clues": [
+          "c1",
+          "c5",
+          "c7"
+        ],
+        "exposed": [
+          "l1"
+        ]
+      },
+      {
+        "action": "show",
+        "character_id": "qin_yue",
+        "clue_id": "c5",
+        "new_clues": [
+          "c3"
+        ],
+        "exposed": [
+          "l1",
+          "l3"
+        ]
+      },
+      {
+        "action": "show",
+        "character_id": "cheng_kun",
+        "clue_id": "c5",
+        "new_clues": [
+          "c6",
+          "c9"
+        ],
+        "exposed": [
+          "l1",
+          "l2",
+          "l3"
+        ]
+      },
+      {
+        "action": "show",
+        "character_id": "qin_yue",
+        "clue_id": "c6",
+        "new_clues": [
+          "c8"
+        ],
+        "exposed": [
+          "l1",
+          "l2",
+          "l3"
+        ]
+      }
+    ],
+    "c8_obtained": true,
+    "explanation": "c5支持correction并反驳lie，既有natural evidence与acquire足以规定触发；未依赖额外秦口供。"
+  }
+}

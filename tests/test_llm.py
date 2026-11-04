@@ -210,6 +210,44 @@ def test_writer_can_use_its_own_provider_key_and_model(monkeypatch):
     }
 
 
+@pytest.mark.parametrize("purpose", ["actor", "writer"])
+def test_official_gpt54_explicit_completion_limit_survives_json_retry(monkeypatch, purpose):
+    real_mode(monkeypatch)
+    monkeypatch.setenv("LLM_BASE_URL", "https://api.openai.com/v1")
+    monkeypatch.setenv("LLM_ACTOR_MODEL", "gpt-5.4-2026-03-05")
+    monkeypatch.setenv("LLM_WRITER_MODEL", "gpt-5.4-2026-03-05")
+    _, create = fake_client(monkeypatch)
+    create.side_effect = [
+        SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content="{"), finish_reason="stop")]),
+        SimpleNamespace(choices=[SimpleNamespace(message=SimpleNamespace(content='{"ok":true}'), finish_reason="stop")]),
+    ]
+
+    assert asyncio.run(llm.complete_json([], purpose=purpose, max_tokens=2048)) == {"ok": True}
+    assert create.await_count == 2
+    for call in create.await_args_list:
+        assert call.kwargs["max_completion_tokens"] == 2048
+        assert call.kwargs["reasoning_effort"] == ("none" if purpose == "actor" else "high")
+        assert "max_tokens" not in call.kwargs and "extra_body" not in call.kwargs
+
+
+@pytest.mark.parametrize("base_url,model", [
+    ("https://model.example.test/v1", "gpt-5.4-2026-03-05"),
+    ("https://api.openai.com.example.test/v1", "gpt-5.4"),
+    ("https://api.openai.com/v1", "gpt-5.4-pro"),
+    ("https://api.openai.com/v1", "gpt-5.4-mini"),
+    ("https://api.openai.com/v1", "gpt-4o"),
+])
+def test_gpt54_adaptation_is_scoped_to_verified_official_models(monkeypatch, base_url, model):
+    real_mode(monkeypatch)
+    monkeypatch.setenv("LLM_BASE_URL", base_url)
+    monkeypatch.setenv("LLM_ACTOR_MODEL", model)
+    _, create = fake_client(monkeypatch)
+    asyncio.run(llm.complete_json([]))
+    assert create.await_args.kwargs["max_tokens"] == 1024
+    assert "reasoning_effort" not in create.await_args.kwargs
+    assert "max_completion_tokens" not in create.await_args.kwargs
+
+
 def test_writer_specific_settings_can_work_without_actor_settings(monkeypatch):
     monkeypatch.setenv("LLM_MOCK", "0")
     monkeypatch.setenv("LLM_BASE_URL", "invalid-unused-actor-url")

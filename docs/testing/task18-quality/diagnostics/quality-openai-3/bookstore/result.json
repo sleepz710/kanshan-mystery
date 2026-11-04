@@ -1,0 +1,276 @@
+{
+  "runtime_commit": "d2813a53686ef1472eb58e22c45a7f071104a380",
+  "name": "bookstore",
+  "material": "我想玩一个现代校园书店里的案子：闭店后，一本预订书被换成了空白本。请改编成3个人、8条线索、2句谎话、3个结局题、2个结局的短篇现实推理，线索能相互印证，人物动机清楚。",
+  "model": "gpt-5.4-2026-03-05",
+  "quality": "fast",
+  "status": "done",
+  "seconds": 359.55,
+  "provider_blocked": false,
+  "prelude_seconds": 15.74,
+  "checked": true,
+  "problems": [],
+  "error": null,
+  "steps": [
+    {
+      "attempt": 1,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 1695,
+      "status": "ok",
+      "response_chars": 4097,
+      "seconds": 217.71
+    },
+    {
+      "attempt": 2,
+      "step": "设计稿",
+      "role": "writer",
+      "request_chars": 5852,
+      "status": "ok",
+      "response_chars": 4214,
+      "seconds": 48.7
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 7421,
+      "status": "ok",
+      "response_chars": 5875,
+      "seconds": 41.14
+    },
+    {
+      "attempt": 2,
+      "step": "填表",
+      "role": "actor",
+      "request_chars": 13845,
+      "status": "ok",
+      "response_chars": 5850,
+      "seconds": 29.53
+    },
+    {
+      "attempt": 2,
+      "step": "审稿",
+      "role": "actor",
+      "request_chars": 5338,
+      "status": "ok",
+      "response_chars": 16,
+      "seconds": 3.01
+    },
+    {
+      "attempt": 2,
+      "step": "可解性·只给汤面",
+      "role": "writer",
+      "request_chars": 796,
+      "status": "ok",
+      "response_chars": 49,
+      "seconds": 9.28
+    },
+    {
+      "attempt": 2,
+      "step": "可解性·全部线索",
+      "role": "actor",
+      "request_chars": 2119,
+      "status": "ok",
+      "response_chars": 167,
+      "seconds": 10.06
+    }
+  ],
+  "local_checks": [
+    {
+      "title": "A-7封套里的空白样刊",
+      "problems": []
+    },
+    {
+      "title": "A-7封套里的空白样刊",
+      "problems": []
+    }
+  ],
+  "talks": [],
+  "accusations": [
+    {
+      "input": "all_correct",
+      "answers": {
+        "q1": "林悠在2026-09-18 20:55把A-7封套里的正式版《城市植物图鉴》换成了空白样刊。",
+        "q2": "林悠在2026-09-18 20:59把真书藏进后门写有“退货样刊 9/18”的纸箱里。",
+        "q3": "她想按260元把真书在校内转卖，用来补当晚十点前要交的800元房租。"
+      },
+      "result": {
+        "score": 3,
+        "total": 3,
+        "results": {
+          "q1": true,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e_ending_truth",
+          "title": "追责结局",
+          "text": "你完整还原了这场调包：林悠先在20:55把A-7封套里的正式版《城市植物图鉴》换成空白样刊，再在20:59把真书塞进后门“退货样刊 9/18”纸箱，准备按260元转卖，用来补当晚到期的房租。周砚因为担心自己违规离岗，最初隐瞒了20:59回后门取保温杯的事实，但后门记录和交接登记证明真书在21:18已被当场取回。证据链足以追究林悠的责任。",
+          "retry": false
+        },
+        "rating": "S"
+      }
+    },
+    {
+      "input": "one_wrong",
+      "answers": {
+        "q1": "周砚在2026-09-18 20:46送胶带时把A-7封套里的书换成了空白样刊。",
+        "q2": "林悠在2026-09-18 20:59把真书藏进后门写有“退货样刊 9/18”的纸箱里。",
+        "q3": "她想按260元把真书在校内转卖，用来补当晚十点前要交的800元房租。"
+      },
+      "result": {
+        "score": 2,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": true,
+          "q3": true
+        },
+        "ending": {
+          "id": "e_ending_retry",
+          "title": "仍需继续调查",
+          "text": "你已经发现封套里的书不对劲，但现有证据还不足以同时坐实调包者、藏匿地点与转卖动机。继续核对监控、后门记录和当事人的手机材料，才能把整件事讲完整。",
+          "retry": true
+        },
+        "rating": "B"
+      }
+    },
+    {
+      "input": "all_wrong",
+      "answers": {
+        "q1": "周砚在2026-09-18 20:46送胶带时把A-7封套里的书换成了空白样刊。",
+        "q2": "周砚在2026-09-18 20:59把真书带回监控室抽屉里。",
+        "q3": "她只是想恶作剧，让顾言第二天再来取书。"
+      },
+      "result": {
+        "score": 0,
+        "total": 3,
+        "results": {
+          "q1": false,
+          "q2": false,
+          "q3": false
+        },
+        "ending": {
+          "id": "e_ending_retry",
+          "title": "仍需继续调查",
+          "text": "你已经发现封套里的书不对劲，但现有证据还不足以同时坐实调包者、藏匿地点与转卖动机。继续核对监控、后门记录和当事人的手机材料，才能把整件事讲完整。",
+          "retry": true
+        },
+        "rating": "C"
+      }
+    }
+  ],
+  "http": [
+    {
+      "method": "POST",
+      "path": "/api/studio/chats",
+      "status": 201,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/f5995195d8a44042a1dd79940e42365d/messages",
+      "status": 200,
+      "seconds": 15.73
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/f5995195d8a44042a1dd79940e42365d/messages",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/studio/chats/f5995195d8a44042a1dd79940e42365d/messages",
+      "status": 200,
+      "seconds": 0.91
+    },
+    {
+      "method": "GET",
+      "path": "/api/stories",
+      "status": 200,
+      "seconds": 0.12
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.02
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.03
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/1852748b94fc42319f335f1f59b6bd2a/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.04
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/265a2478093e46f0acfe29dab76a435f/accuse",
+      "status": 200,
+      "seconds": 0.0
+    },
+    {
+      "method": "POST",
+      "path": "/api/games",
+      "status": 201,
+      "seconds": 0.04
+    },
+    {
+      "method": "POST",
+      "path": "/api/games/db87ff6ea391441385b1d37f0e25c8d0/accuse",
+      "status": 200,
+      "seconds": 0.0
+    }
+  ],
+  "story_id": "generated-4f4c2025deeb461fa60a4b3342cec7b6",
+  "story_path": "C:\\Users\\HW\\AppData\\Local\\Temp\\kanshan-task18-quality-openai-3-20261104\\bookstore\\stories\\generated-4f4c2025deeb461fa60a4b3342cec7b6.yaml",
+  "structure": {
+    "ok": true,
+    "problems": []
+  },
+  "playability": [],
+  "endings": {
+    "e_ending_truth": {
+      "title": "追责结局",
+      "retry": false,
+      "when": {
+        "correct": [
+          "q1",
+          "q2",
+          "q3"
+        ]
+      },
+      "count": 1,
+      "wrong_count": 0,
+      "wrong_example": null
+    },
+    "e_ending_retry": {
+      "title": "仍需继续调查",
+      "retry": true,
+      "when": {},
+      "count": 26,
+      "wrong_count": 26,
+      "wrong_example": {
+        "q1": "林悠在2026-09-18 20:55把A-7封套里的正式版《城市植物图鉴》换成了空白样刊。",
+        "q2": "林悠在2026-09-18 20:59把真书藏进后门写有“退货样刊 9/18”的纸箱里。",
+        "q3": "她只是想恶作剧，让顾言第二天再来取书。"
+      }
+    }
+  },
+  "opens": true,
+  "selected_candidate": 2,
+  "design_alignment": []
+}

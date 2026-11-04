@@ -1,0 +1,94 @@
+{
+  "cases": [
+    {
+      "case": "hospital",
+      "source_directory": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-revision2\\hospital",
+      "quality": "fine",
+      "mode": "人工审稿后的精修续修",
+      "current_round_seconds": 329.76,
+      "cumulative_generation_seconds": 2268.55,
+      "timing_lineage": [
+        {
+          "stage": "原始生成",
+          "quality": "fast",
+          "seconds": 1183.24
+        },
+        {
+          "stage": "录音笔连续性修订",
+          "quality": "fast",
+          "seconds": 755.55
+        },
+        {
+          "stage": "人工审稿后的精修续修",
+          "quality": "fine",
+          "seconds": 329.76
+        }
+      ],
+      "runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+      "status": "done",
+      "model": "gpt-5.4-2026-03-05",
+      "story_id": "generated-0593810d0916419a9cf5112efb7459b4",
+      "source_story_sha256": "072617db5a1436dc532afb421a63e75533dc4dd4ed993d9ee8542604fcdb6cfe",
+      "result_present": true,
+      "generation_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+      "actor_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+      "actor_replay_file": "actor-replay/hospital/playthrough.json"
+    },
+    {
+      "case": "bookstore",
+      "source_directory": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-revision2\\bookstore",
+      "quality": "fine",
+      "mode": "人工审稿后的精修续修",
+      "current_round_seconds": 204.93,
+      "cumulative_generation_seconds": 772.18,
+      "timing_lineage": [
+        {
+          "stage": "原始生成",
+          "quality": "fine",
+          "seconds": 418.82
+        },
+        {
+          "stage": "追回日期修订（设计类型检查失败）",
+          "quality": "fine",
+          "seconds": 148.43
+        },
+        {
+          "stage": "人工审稿后的精修续修",
+          "quality": "fine",
+          "seconds": 204.93
+        }
+      ],
+      "runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+      "status": "done",
+      "model": "gpt-5.4-2026-03-05",
+      "story_id": "generated-ff691d8c7dc242ea852f10fc4bdb0cfc",
+      "source_story_sha256": "9d0966f0269cf67cd6551296a9f69c73cb126b0a2658790adcb3be6f7c135c31",
+      "result_present": true,
+      "generation_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+      "actor_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+      "actor_replay_file": "actor-replay/bookstore/playthrough.json"
+    }
+  ],
+  "actor_revalidation": [
+    {
+      "case": "bookstore",
+      "source_directory": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-revision2\\bookstore",
+      "actor_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+      "generation_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+      "playthrough_present": true,
+      "complete": true,
+      "story_sha256": "9d0966f0269cf67cd6551296a9f69c73cb126b0a2658790adcb3be6f7c135c31",
+      "selected_design_sha256": "ff252a1e4798ef36b15b9a5835f7654d1eb6d0c9f171f29583467157375d195b"
+    },
+    {
+      "case": "hospital",
+      "source_directory": "D:\\阅读周比赛\\kanshan-task18-quality-20261104\\.cache\\quality-openai-revision2\\hospital",
+      "actor_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+      "generation_runtime_commit": "084b67e0f6162cd165e518da4fd284aec82d9407",
+      "playthrough_present": true,
+      "complete": true,
+      "story_sha256": "072617db5a1436dc532afb421a63e75533dc4dd4ed993d9ee8542604fcdb6cfe",
+      "selected_design_sha256": "60fb0918927f0c2d537cbfa73f3326b9a94e23fa2fbeee0e785b53c293583273"
+    }
+  ]
+}

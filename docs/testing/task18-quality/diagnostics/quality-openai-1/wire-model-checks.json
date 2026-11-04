@@ -1,0 +1,65 @@
+[
+  {
+    "case": "hospital",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "hospital",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  },
+  {
+    "case": "bookstore",
+    "model": "gpt-5.4-2026-03-05",
+    "role": "writer",
+    "thinking": "enabled",
+    "reasoning_effort": "high"
+  }
+]

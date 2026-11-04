@@ -1,0 +1,180 @@
+id: generated-c861632295254772a872f894e82a4a3b
+title: 群山回声的空白本
+source: generated
+intro: 现代校园书店闭店清点，预订的签名版《群山回声》变成空白本。学生店长林澄、兼职店员周岚、预订人许知遥各有说法；前门、后门、手机记录和监控线索分散在三人手中。请核对每个时间、每张卡和每次交接，找出调包经过，并分清谁实施了调换、谁事后隐瞒。
+facts:
+- id: f_lin_identity
+  text: 林澄是校园书店学生店长，负责闭店与预订登记。
+- id: f_zhou_identity
+  text: 周岚是书店兼职店员，负责还书箱与入库。
+- id: f_xu_identity
+  text: 许知遥是文学社社长，也是《群山回声》的预订人。
+- id: f_lin_secret
+  text: 林澄在21:16—21:18在后场看见周岚调包却未阻止，21:17微信指使周岚把真书藏入待回收纸箱夹层，事后隐瞒。
+- id: f_zhou_secret
+  text: 周岚21:12从后门返回，21:16将空白本放上柜台、取走真书，21:18按林澄微信将真书藏入待回收纸箱夹层。
+- id: f_xu_secret
+  text: 许知遥的预订备注写明“老邱的书，别走平台，取到后付余款”；20:58她进柜台内侧拍照，怕被追责所以未主动说明。
+characters:
+- id: lin
+  name: 林澄
+  avatar: lin.png
+  profile: 校园书店学生店长，负责闭店与预订登记。
+  persona: 认真负责但怕丢职位，遇事容易回避。
+  knows:
+  - f_lin_identity
+  - f_lin_secret
+  secrets:
+  - fact: f_lin_secret
+    until:
+      shown: c_wechat
+  lies:
+  - id: lie_lin
+    claim: 闭店后我没让周岚把任何东西放进待回收纸箱夹层。
+    until:
+      shown: c_wechat
+    admit: f_lin_secret
+  trust_start: 0
+- id: zhou
+  name: 周岚
+  avatar: zhou.png
+  profile: 书店兼职店员，负责还书箱与入库。
+  persona: 手脚麻利但爱占小便宜，出事会先撇清自己。
+  knows:
+  - f_zhou_identity
+  - f_zhou_secret
+  secrets:
+  - fact: f_zhou_secret
+    until:
+      shown: c_backdoor
+  lies:
+  - id: lie_zhou
+    claim: 21:10打烊后我就从前门走了，没再回书店。
+    until:
+      shown: c_backdoor
+    admit: f_zhou_secret
+  trust_start: 0
+- id: xu
+  name: 许知遥
+  avatar: xu.png
+  profile: 文学社社长、《群山回声》预订人。
+  persona: 热情外向，但涉及代订差价时说话会含糊。
+  knows:
+  - f_xu_identity
+  - f_xu_secret
+  secrets:
+  - fact: f_xu_secret
+    until:
+      has: c_receipt
+  lies: []
+  trust_start: 0
+clues:
+- id: c_blank
+  title: 空白预订本
+  content: 5月16日21:30闭店清点时，柜台上待取的《群山回声》为空白本，封面贴“许知遥预订”标签，标签下库存码SP-0417，扉页无签名。
+  holder: lin
+  requires: {}
+- id: c_front
+  title: 前门监控落锁片段
+  content: 5月16日21:05许知遥空手从前门离店；21:10林澄锁前门；21:20前门监控显示林澄检查门锁后返回店内，21:20至21:30无人从前门进出。
+  holder: lin
+  requires: {}
+- id: c_receipt
+  title: 许知遥的预订凭条
+  content: 许知遥手机预订凭条显示：5月16日20:52下单《群山回声》签名版一本，预订人许知遥，备注“老邱的书，别走平台，取到后付余款”，21:00到店确认。
+  holder: xu
+  requires: {}
+- id: c_backdoor
+  title: 后门门禁与楼道监控记录
+  content: 5月16日21:12和21:20，门禁系统记录卡号Z-027、登记人周岚的员工卡刷开后门；后门楼道摄像头同时拍到周岚本人在后门读卡器前刷卡并进出，21:20后再无后门刷卡记录。
+  holder: lin
+  requires:
+    shown: c_front
+- id: c_photo
+  title: 柜台照片
+  content: 许知遥手机照片显示：5月16日20:58从柜台内侧拍摄，真书《群山回声》书脊库存码SP-0417，旁边压着周岚签字的还书箱登记单；照片发送社团群时间为20:59。
+  holder: xu
+  requires:
+    shown: c_blank
+- id: c_wechat
+  title: 林澄指使藏书的微信
+  content: 周岚手机微信显示：5月16日21:17林澄发给周岚“先把书塞进待回收箱夹层，明早我来处理”；周岚21:18回复“好”。5月17日调查中，周岚在调查者出示后门门禁与楼道监控记录后承认原话有误：她21:12从后门返回，21:16调换，21:18按微信藏真书，21:20从后门离开，并非21:10后没再回店。
+  holder: zhou
+  requires:
+    shown: c_backdoor
+- id: c_camera
+  title: 后场监控21:16—21:18
+  content: 书店后场监控显示：5月16日21:16周岚把空白本放到柜台预订标签下，并从柜台内侧取走真书进入后场；21:18周岚将真书放入待回收纸箱夹层；林澄21:16—21:18跟进后场，在旁未阻止。5月17日调查中，林澄在调查者出示林澄指使藏书的微信后承认原话有误：她确实让周岚把书放进待回收纸箱夹层，并在后场看见周岚调包未阻止。
+  holder: lin
+  requires:
+    shown: c_wechat
+- id: c_book
+  title: 还书箱夹层真书
+  content: 5月17日调查时从待回收纸箱夹层取出的《群山回声》真书：扉页有作者签名，书脊库存码SP-0417，与空白本所贴标签编号一致；夹层外有周岚工牌压痕。
+  holder: zhou
+  requires:
+    shown: c_camera
+events: []
+kanshan:
+  greeting: 你们可以先核对公开记录，再针对矛盾点出示证据。
+  hints:
+  - done:
+      has: c_front
+    vague: 前门记录只能说明一部分。
+    direct: 拿前门记录去找林澄要后门记录。
+  - done:
+      has: c_backdoor
+    vague: 后门记录指向特定员工卡。
+    direct: 出示后门记录拆穿周岚的谎话，获取微信。
+  - done:
+      has: c_wechat
+    vague: 微信内容涉及藏匿指使。
+    direct: 用微信让林澄交出后场监控。
+  - done:
+      has: c_camera
+    vague: 监控显示调包过程。
+    direct: 向周岚出示监控，要求打开夹层取出真书。
+ending:
+  questions:
+  - id: q1
+    text: 后门门禁与楼道监控记录显示，5月16日21:12和21:20刷开后门的是登记在谁名下的员工卡，且楼道摄像头拍到谁本人？
+    options:
+    - 林澄的员工卡和本人
+    - 周岚的员工卡和本人
+    - 许知遥的员工卡和本人
+    answer: 周岚的员工卡和本人
+  - id: q2
+    text: 后场监控显示，周岚在哪一时段把空白本放上柜台预订标签下并取走真书？
+    options:
+    - 20:55—20:58
+    - 21:16—21:18
+    - 21:30以后
+    answer: 21:16—21:18
+  - id: q3
+    text: 21:17微信中，要求周岚把真书放进待回收纸箱夹层的人是谁？
+    options:
+    - 林澄
+    - 周岚
+    - 许知遥
+    answer: 林澄
+  endings:
+  - id: end_true
+    title: 真相大白
+    text: 真书追回，周岚承担调包与赔偿责任，林澄承担指使藏匿和校纪管理责任，许知遥取消代订并受批评。
+    when:
+      correct:
+      - q1
+      - q2
+      - q3
+    retry: false
+  - id: end_fallback
+    title: 证据不足
+    text: 现有证据仍不足以完整还原调包经过，部分责任无法落实，需要继续调查。
+    when: {}
+    retry: true
+  truth: 5月16日晚周岚为截留许知遥代老邱预订的签名版《群山回声》，用本人员工卡从后门返回，21:16以空白本调换真书，21:18按林澄21:17微信指使藏入待回收纸箱夹层；林澄因怕失职和指使藏匿暴露而隐瞒并谎称未让周岚放东西；许知遥仅代订赚差价未参与调包。若取得后门记录、微信、后场监控和夹层真书，真书追回，周岚承担调包与赔偿责任，林澄承担指使藏匿和校纪管理责任，许知遥取消代订并受批评。
+  lessons:
+  - 核对时间与监控记录能发现矛盾。
+  - 谎言需要证据拆穿。
+  - 代订行为应透明合规。
+checked: true
